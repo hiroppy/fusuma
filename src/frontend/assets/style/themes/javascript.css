@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
+@import '../variable';
+@import '../mixins';
+
+@font-face {
+  font-family: Stratum;
+  src: url('../../fonts/StratumNo1 Medium.ttf');
+}
+
+.bespoke-parent {
+  /* stylelint-disable */
+  font-family: Stratum, 'Helvetica Neue For Number', 'Hiragino Kaku Gothic ProN', 'メイリオ', Arial,
+    sans-serif;
+  /* stylelint-enable */
+}
+
+.bespoke-backdrop {
+  background: var(--color-gray);
+}
+
+.bespoke-backdrop.title {
+  background: var(--color-node);
+}
+
+.bespoke-backdrop.end {
+  background: var(--color-js);
+}
+
+.ref-link:hover {
+  color: var(--color-js);
+}
+
+h2 {
+  color: var(--color-js);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.25rem;
+  text-transform: none;
+}
+
+h3 {
+  font-family: inherit;
+  font-style: normal;
+}
+
+strong {
+  color: var(--color-orange);
+  font-size: 2.1rem;
+  font-weight: bold;
+}
+
+img {
+  width: 90%;
+}

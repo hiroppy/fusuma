@@ -1,0 +1,32 @@
+@define-mixin base {
+  align-items: center;
+  background: var(--color-black);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 2000;
+}
+
+.page-loader {
+  @mixin base;
+}
+
+.page-loader-fadeout {
+  @mixin base;
+  animation: fadeout 1.5s forwards;
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

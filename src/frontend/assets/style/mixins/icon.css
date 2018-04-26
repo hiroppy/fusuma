@@ -1,0 +1,11 @@
+/* @define-mixin */
+/* stylelint-disable */
+@define-mixin icon $src, $height: 120px, $width: 120px {
+  background: url($(src));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: $(height);
+  text-align: center;
+  width: $(width);
+}

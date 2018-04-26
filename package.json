@@ -1,0 +1,77 @@
+{
+  "name": "fusuma",
+  "version": "0.0.1",
+  "description": "easily make slides with markdown",
+  "main": "index.js",
+  "bin": {
+    "fusuma": "./bin/fusuma.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiroppy/fusuma.git"
+  },
+  "keywords": [
+    "slide",
+    "markdown"
+  ],
+  "author": "abouthiroppy <git@about-hiroppy.com> (http://about-hiroppy.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hiroppy/fusuma/issues"
+  },
+  "homepage": "https://github.com/hiroppy/fusuma#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "bespoke": "^1.1.0",
+    "bespoke-backdrop": "^1.0.0",
+    "bespoke-convenient": "^1.0.0",
+    "bespoke-fullscreen": "^1.0.0",
+    "bespoke-hash": "^1.1.0",
+    "bespoke-jumpy": "^1.0.1",
+    "bespoke-keys": "^1.1.0",
+    "bespoke-progress": "^1.0.0",
+    "bespoke-scale": "^1.0.1",
+    "bespoke-theme-nebula": "^1.0.1",
+    "bespoke-touch": "^1.0.0",
+    "caporal": "^0.10.0",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "font-awesome": "^4.7.0",
+    "globby": "^8.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.2.0",
+    "js-yaml": "^3.11.0",
+    "markdown-loader": "^2.0.2",
+    "offline-plugin": "^5.0.0",
+    "ora": "^2.0.0",
+    "postcss-browser-reporter": "^0.5.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-loader": "^2.1.4",
+    "postcss-mixins": "^6.2.0",
+    "postcss-reporter": "^5.0.0",
+    "postcss-smart-import": "^0.7.6",
+    "prismjs": "^1.14.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-loading": "^2.0.2",
+    "react-sidebar": "^2.3.2",
+    "rmfr": "^2.0.0",
+    "screenfull": "^3.3.2",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.6.0",
+    "webpack-dev-server": "^3.1.3",
+    "webpack-merge": "^4.1.2",
+    "webpack-stylish": "^0.1.8"
+  }
+}

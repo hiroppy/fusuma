@@ -1,0 +1,9 @@
+/* @define-mixin */
+/* stylelint-disable */
+@define-mixin padding-pre $vertical-padding: 30px, $horizontal-padding: 50px {
+  width: 100%;
+
+  & > code {
+    padding: 0 $(vertical-padding) $(horizontal-padding) !important;
+  }
+}
