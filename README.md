@@ -6,6 +6,8 @@
   <strong>📝 easily make slides with markdown</strong>
 </div>
 
+[![npm](https://img.shields.io/npm/v/fusuma.svg?style=flat-square)](https://www.npmjs.com/package/fusuma)
+
 Just write down the markdown and make the cool slide.
 
 _Move core codes from [hiroppy/slides](https://github.com/hiroppy/slides)._
