@@ -15,6 +15,7 @@ async function deploy() {}
 
 process.on('unhandledRejection', (err, p) => {
   console.log(err);
+  process.exit(1);
 });
 
 module.exports = {

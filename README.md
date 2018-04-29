@@ -92,12 +92,12 @@ TODO
 
 ```yaml
 meta:
-  url: https://slide.hiroppy.me
+  url: https://slides.hiroppy.me
   name: the present and future of JavaScript
   author: Yuta Hiroto
   description: Explain how specifications are determined and how it will be in the future.
   thumbnail: https://avatars1.githubusercontent.com/u/1725583?v=4&s=200
-  siteName: slide.hiroppy.me
+  siteName: slides.hiroppy.me
 slide:
   theme: js
 extends:

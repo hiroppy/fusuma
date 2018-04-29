@@ -8,14 +8,12 @@ const { init, read } = require('../src/configs/fusumarc');
 const { start, build } = require('../src');
 const { version } = require('../package.json');
 
-const configFileName = '.fusumarc.yml';
-
 prog
   .version(version)
   .command('start', 'Start with webpack-dev-server')
   .action(async (args, options, logger) => {
     const spinner = ora('Starting with webpack-dev-server').start();
-    const config = await read(join(process.cwd(), configFileName));
+    const config = await read(process.cwd());
 
     start(config, () => {
       spinner.stop();
@@ -25,7 +23,7 @@ prog
   // .option('-d <dir>', 'Delete ./dist')
   .action(async (args, options, logger) => {
     const spinner = ora('Building with webpack').start();
-    const config = await read(join(process.cwd(), configFileName));
+    const config = await read(process.cwd());
 
     await rmfr(join(process.cwd(), 'dist'));
     await build(config);
@@ -34,7 +32,7 @@ prog
   .command('init', 'Create a configure file')
   .action(async (args, options, logger) => {
     console.log('Create new configure file');
-    await init(join(process.cwd(), configFileName));
+    await init(process.cwd());
   })
   .command('deploy', 'Deploy to GitHub pages')
   .action((args, options, logger) => {
