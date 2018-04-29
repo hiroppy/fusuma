@@ -73,5 +73,8 @@
     "webpack-merge": "^4.1.2",
     "webpack-stylish": "^0.1.8",
     "workbox-webpack-plugin": "^3.1.0"
+  },
+  "devDependencies": {
+    "jest": "^22.4.3"
   }
 }
