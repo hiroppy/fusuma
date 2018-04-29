@@ -34,7 +34,11 @@ async function init(baseDir) {
 
 async function read(baseDir) {
   try {
-    const { filename, ext } = getFilenameForDirectory(baseDir);
+    const { filename, ext } = getFilenameForDirectory(baseDir) || {};
+
+    if (filename === undefined) {
+      throw new Error('Could not find a configure file. init command creates a configure file.');
+    }
 
     switch (ext) {
       case '.yml':

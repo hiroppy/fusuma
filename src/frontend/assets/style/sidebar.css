@@ -1,4 +1,4 @@
-@import "./variable";
+@import './variable';
 
 .btn-sidebar {
   bottom: 20px;
@@ -26,7 +26,7 @@
   }
 
   & > div {
-    align-items: center;
+    align-items: left;
     display: flex;
     justify-content: space-around;
     width: 150px;

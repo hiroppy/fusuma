@@ -13,8 +13,8 @@ async function build(config) {
 
 async function deploy() {}
 
-process.on('unhandledRejection', (err, p) => {
-  console.log(err);
+process.on('unhandledRejection', (err) => {
+  console.error(err);
   process.exit(1);
 });
 
