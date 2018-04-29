@@ -5,10 +5,6 @@
  *
  * - postcss-cssnext
  *   - autoprefixer
- * - postcss-smart-import
- *   - postcss-import
- *   - postcss-url
- *   - postcss-assets
  */
 
 const devConfig = (webpack) => {
@@ -16,7 +12,7 @@ const devConfig = (webpack) => {
     plugins: [
       require('postcss-reporter'),
       require('postcss-browser-reporter'),
-      require('postcss-smart-import')({ addDependencyTo: webpack }),
+      require('postcss-import'),
       require('postcss-mixins'),
       require('postcss-cssnext')
     ]
@@ -25,11 +21,7 @@ const devConfig = (webpack) => {
 
 const prodConfig = (webpack) => {
   return {
-    plugins: [
-      require('postcss-smart-import')({ addDependencyTo: webpack }),
-      require('postcss-mixins'),
-      require('postcss-cssnext')
-    ]
+    plugins: [require('postcss-import'), require('postcss-mixins'), require('postcss-cssnext')]
   };
 };
 

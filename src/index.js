@@ -11,11 +11,14 @@ async function build(config) {
   await webpackBuild(webpackConfig(config));
 }
 
+async function deploy() {}
+
 process.on('unhandledRejection', (err, p) => {
   console.log(err);
 });
 
 module.exports = {
   start,
-  build
+  build,
+  deploy
 };

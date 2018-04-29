@@ -37,6 +37,8 @@ Please see [samples](/samples)
 
 ## Install
 
+Node version is over 8.
+
 ```sh
 $ npm i fusuma --save-dev # or npm i fusuma -g
 
@@ -101,6 +103,10 @@ slide:
 extends:
   css: style.css
 ```
+
+### Theme
+
+Provide themes.
 
 ## Slide Syntax
 
