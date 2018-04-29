@@ -1,7 +1,7 @@
 'use strict';
 
 const webpack = require('webpack');
-const OfflinePlugin = require('offline-plugin');
+const workboxPlugin = require('workbox-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -25,10 +25,13 @@ module.exports = {
     ]
   },
   plugins: [
-    // new OfflinePlugin(),
-    new ExtractTextPlugin('[md5:contenthash:hex:10].css'),
+    new ExtractTextPlugin({
+      filename: '[md5:contenthash:hex:10].css'
+      allChunks: true
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin()
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new workboxPlugin.GenerateSW()
   ],
   optimization: {
     minimizer: [new UglifyJsPlugin()]
