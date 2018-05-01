@@ -11,24 +11,25 @@ const config =
     ? require('./webpack.dev.config')
     : require('./webpack.prod.config');
 
-module.exports = ({ meta, slide, extends: fileExtends }) => {
+module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   const { url, name, description, thumbnail, siteName } = meta;
   const { theme } = slide;
 
   const { js: jsPath, css: cssPath } = fileExtends ? fileExtends : {};
+  const { basePath } = internal;
 
   const common = {
     name,
     entry: [path.resolve(__dirname, '..', 'frontend', 'lib', 'index.js')],
     output: {
-      path: path.resolve(process.cwd(), 'dist'),
+      path: path.resolve(basePath, 'dist'),
       filename: '[hash].js'
     },
     module: {
       rules: [
         {
           test: /\.js$/,
-          exclude: path.resolve(process.cwd(), 'node_modules'),
+          exclude: path.resolve(basePath, 'node_modules'),
           use: {
             loader: 'babel-loader',
             options: require('../configs/babelrc')
@@ -61,9 +62,9 @@ module.exports = ({ meta, slide, extends: fileExtends }) => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        'process.env.JS_PATH': JSON.stringify(path.join(process.cwd(), jsPath || '')),
-        'process.env.CSS_PATH': JSON.stringify(path.join(process.cwd(), cssPath || '')),
-        'process.env.SLIDE_PATH': JSON.stringify(path.join(process.cwd(), 'slides')),
+        'process.env.JS_PATH': JSON.stringify(path.join(basePath, jsPath || '')),
+        'process.env.CSS_PATH': JSON.stringify(path.join(basePath, cssPath || '')),
+        'process.env.SLIDE_PATH': JSON.stringify(path.join(basePath, 'slides')),
         'process.env.URL': JSON.stringify(url),
         'process.env.THEME': JSON.stringify(theme),
         'process.env.TITLE': JSON.stringify(name)
@@ -81,7 +82,7 @@ module.exports = ({ meta, slide, extends: fileExtends }) => {
     ]
   };
 
-  if (jsPath && jsPath.match(/\+*.js$/i)) common.entry.push(path.join(process.cwd(), jsPath));
+  if (jsPath && jsPath.match(/\+*.js$/i)) common.entry.push(path.join(basePath, jsPath));
 
   return merge.smart(common, config);
 };

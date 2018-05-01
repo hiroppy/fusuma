@@ -10,23 +10,40 @@ const { version } = require('../package.json');
 
 prog
   .version(version)
+  .description('CLI for easily make slides with markdown')
   .command('start', 'Start with webpack-dev-server')
+  .option('-d <directory>', 'Directory to load')
   .action(async (args, options, logger) => {
     const spinner = ora('Starting with webpack-dev-server').start();
-    const config = await read(process.cwd());
+    const basePath = join(process.cwd(), options.d || '');
+    const config = await read(basePath);
 
-    start(config, () => {
-      spinner.stop();
-    });
+    start(
+      {
+        ...config,
+        internal: {
+          basePath
+        }
+      },
+      () => {
+        spinner.stop();
+      }
+    );
   })
   .command('build', 'Build with webpack')
-  // .option('-d <dir>', 'Delete ./dist')
+  .option('-d <directory>', 'Directory to load')
   .action(async (args, options, logger) => {
     const spinner = ora('Building with webpack').start();
-    const config = await read(process.cwd());
+    const basePath = join(process.cwd(), options.d || '');
+    const config = await read(basePath);
 
-    await rmfr(join(process.cwd(), 'dist'));
-    await build(config);
+    await rmfr(join(basePath, 'dist'));
+    await build({
+      ...config,
+      internal: {
+        basePath
+      }
+    });
     spinner.stop();
   })
   .command('init', 'Create a configure file')
