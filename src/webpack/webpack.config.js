@@ -29,7 +29,6 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
       rules: [
         {
           test: /\.js$/,
-          exclude: path.resolve(basePath, 'node_modules'),
           use: {
             loader: 'babel-loader',
             options: require('../configs/babelrc')
