@@ -5,7 +5,7 @@ const ora = require('ora');
 const rmfr = require('rmfr');
 const prog = require('caporal');
 const { init, read } = require('../src/configs/fusumarc');
-const { start, build } = require('../src');
+const { start, build, deploy } = require('../src');
 const { version } = require('../package.json');
 
 prog
@@ -52,8 +52,13 @@ prog
     await init(process.cwd());
   })
   .command('deploy', 'Deploy to GitHub pages')
-  .action((args, options, logger) => {
-    console.log('TODO');
+  .action(async (args, options, logger) => {
+    const spinner = ora('Publishing to gh-pages').start();
+    const basePath = join(process.cwd(), options.d || '');
+
+    await deploy(join(basePath, 'dist'));
+
+    spinner.stop();
   });
 
 prog.parse(process.argv);

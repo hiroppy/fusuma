@@ -75,6 +75,7 @@
     "workbox-webpack-plugin": "^3.1.0"
   },
   "devDependencies": {
+    "gh-pages": "^1.1.0",
     "jest": "^22.4.3"
   }
 }
