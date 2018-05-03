@@ -46,6 +46,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^1.1.0",
     "globby": "^8.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -75,7 +76,6 @@
     "workbox-webpack-plugin": "^3.1.0"
   },
   "devDependencies": {
-    "gh-pages": "^1.1.0",
     "jest": "^22.4.3"
   }
 }
