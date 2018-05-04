@@ -4,6 +4,7 @@ const fs = require('fs');
 const { join, extname } = require('path');
 const { promisify } = require('util');
 const yaml = require('js-yaml');
+const pSearch = require('preferred-search');
 
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
@@ -33,37 +34,18 @@ async function init(baseDir) {
 }
 
 async function read(baseDir) {
-  try {
-    const { filename, ext } = getFilenameForDirectory(baseDir) || {};
+  const file = pSearch(baseDir, configFileNames);
 
-    if (filename === undefined) {
-      throw new Error('Could not find a configure file. init command creates a configure file.');
-    }
-
-    switch (ext) {
-      case '.yml':
-        return yaml.safeLoad(await readFileAsync(filename, 'utf8'));
-      case '.js':
-        return require(filename);
-    }
-  } catch (e) {
-    throw e;
-  }
-}
-
-function getFilenameForDirectory(directory) {
-  for (let i = 0; i < configFileNames.length; i++) {
-    const filename = join(directory, configFileNames[i]);
-
-    if (fs.existsSync(filename) && fs.statSync(filename).isFile()) {
-      return {
-        filename,
-        ext: extname(filename)
-      };
-    }
+  if (file === null) {
+    throw new Error('Could not find a configure file. init command creates a configure file.');
   }
 
-  return null;
+  switch (extname(file)) {
+    case '.yml':
+      return yaml.safeLoad(await readFileAsync(file, 'utf8'));
+    case '.js':
+      return require(file);
+  }
 }
 
 module.exports = {
