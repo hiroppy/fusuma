@@ -86,7 +86,7 @@ Build slides using webpack and output to `dist`.
 
 ### Deploy
 
-TODO
+Deploy `dist` to gh-pages.
 
 ## .fusumarc.yml
 

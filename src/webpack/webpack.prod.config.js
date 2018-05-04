@@ -26,7 +26,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: '[md5:contenthash:hex:10].css'
+      filename: '[md5:contenthash:hex:10].css',
       allChunks: true
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
