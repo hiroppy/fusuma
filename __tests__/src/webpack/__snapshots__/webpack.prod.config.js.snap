@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`webpack.prod should match settings 1`] = `
+Object {
+  "mode": "production",
+  "module": Object {
+    "rules": Array [
+      Object {
+        "test": /\\\\\\.css\\$/,
+        "use": Array [
+          Object {
+            "loader": "/Users/about_hiroppy/Programming/fusuma/node_modules/extract-text-webpack-plugin/dist/loader.js",
+            "options": Object {
+              "omit": 1,
+              "remove": true,
+            },
+          },
+          Object {
+            "loader": "style-loader",
+          },
+          Object {
+            "loader": "css-loader",
+          },
+          Object {
+            "loader": "postcss-loader",
+            "options": Object {
+              "plugins": Array [
+                [Function],
+                [Function],
+                [Function],
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
+  "optimization": Object {
+    "minimizer": Array [
+      UglifyJsPlugin {
+        "options": Object {
+          "cache": false,
+          "exclude": undefined,
+          "extractComments": false,
+          "include": undefined,
+          "parallel": false,
+          "sourceMap": false,
+          "test": /\\\\\\.js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
+          "uglifyOptions": Object {
+            "output": Object {
+              "comments": /\\^\\\\\\*\\*!\\|@preserve\\|@license\\|@cc_on/,
+            },
+          },
+          "warningsFilter": [Function],
+        },
+        "sourceMapsCache": WeakMap {},
+      },
+    ],
+  },
+  "plugins": Array [
+    ExtractTextPlugin {
+      "filename": "[md5:contenthash:hex:10].css",
+      "id": 1,
+      "options": Object {
+        "allChunks": true,
+      },
+    },
+    OccurrenceOrderPlugin {
+      "preferEntry": undefined,
+    },
+    AggressiveMergingPlugin {
+      "options": Object {},
+    },
+    GenerateSW {
+      "config": Object {
+        "chunks": Array [],
+        "exclude": Array [
+          /\\\\\\.map\\$/,
+          /\\^manifest\\.\\*\\\\\\.js\\(\\?:on\\)\\?\\$/,
+        ],
+        "excludeChunks": Array [],
+        "importScripts": Array [],
+        "importWorkboxFrom": "cdn",
+        "importsDirectory": "",
+        "precacheManifestFilename": "precache-manifest.[manifestHash].js",
+        "swDest": "service-worker.js",
+      },
+    },
+  ],
+}
+`;

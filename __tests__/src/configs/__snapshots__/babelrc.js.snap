@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`babelrc should match settings 1`] = `
+Object {
+  "compact": true,
+  "presets": Array [
+    Array [
+      "env",
+      Object {
+        "modules": false,
+        "targets": Object {
+          "browsers": "last 1 version",
+        },
+      },
+    ],
+    "react",
+    "stage-1",
+  ],
+}
+`;

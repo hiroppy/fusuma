@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fusuma init 1`] = `
+"meta:
+  url:
+  name:
+  author:
+  description:
+  thumbnail:
+  siteName:
+slide:
+  theme: js
+extends:
+  js:
+  css:
+"
+`;
+
+exports[`fusuma read 1`] = `
+Object {
+  "extends": Object {
+    "css": null,
+    "js": null,
+  },
+  "meta": Object {
+    "author": null,
+    "description": null,
+    "name": "yml",
+    "siteName": null,
+    "thumbnail": null,
+    "url": null,
+  },
+  "slide": Object {
+    "theme": "js",
+  },
+}
+`;
+
+exports[`fusuma read 2`] = `
+Object {
+  "extends": Object {
+    "css": "",
+    "js": "",
+  },
+  "meta": Object {
+    "author": "",
+    "description": "",
+    "name": "js",
+    "siteName": "",
+    "thumbnail": "",
+    "url": "",
+  },
+  "slide": Object {
+    "theme": "",
+  },
+}
+`;

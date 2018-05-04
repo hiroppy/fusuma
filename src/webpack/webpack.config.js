@@ -1,15 +1,10 @@
 'use strict';
 
-const path = require('path');
+let path = require('path'); // for rewire
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const Stylish = require('webpack-stylish');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const config =
-  process.env.NODE_ENV !== 'production'
-    ? require('./webpack.dev.config')
-    : require('./webpack.prod.config');
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   const { url, name, description, thumbnail, siteName } = meta || {};
@@ -17,6 +12,11 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
 
   const { js: jsPath, css: cssPath } = fileExtends || {};
   const { basePath } = internal;
+
+  const config =
+    process.env.NODE_ENV !== 'production'
+      ? require('./webpack.dev.config')
+      : require('./webpack.prod.config');
 
   const common = {
     name,
