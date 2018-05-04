@@ -13,12 +13,13 @@ Just write down the markdown and make the cool slide.
 _Move core codes from [hiroppy/slides](https://github.com/hiroppy/slides)._
 
 ## Demo
+Generated slide is [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/).
 
-* [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/)
+Repository sample is [hiroppy/fusuma-sample](https://github.com/hiroppy/fusuma-sample).
 
 ## Directory Structure
 
-Please see [samples](/samples)
+Please see [samples](/samples) or Demo repository.
 
 ```
 .
@@ -36,8 +37,7 @@ Please see [samples](/samples)
 ```
 
 ## Install
-
-Node version is over 8.
+node versions > v8
 
 ```sh
 $ npm i fusuma --save-dev # or npm i fusuma -g
@@ -49,13 +49,10 @@ $ yarn add fusuma --dev
 ## Usage
 
 ```sh
-   fusuma 0.0.1
+   fusuma 0.0.7 - CLI for easily make slides with markdown
    USAGE
-
      fusuma <command> [options]
-
    COMMANDS
-
      start               Start with webpack-dev-server
      build               Build with webpack
      init                Create a configure file
