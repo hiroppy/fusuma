@@ -12,10 +12,10 @@ const config =
     : require('./webpack.prod.config');
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
-  const { url, name, description, thumbnail, siteName } = meta;
-  const { theme } = slide;
+  const { url, name, description, thumbnail, siteName } = meta || {};
+  const { theme } = slide || {};
 
-  const { js: jsPath, css: cssPath } = fileExtends ? fileExtends : {};
+  const { js: jsPath, css: cssPath } = fileExtends || {};
   const { basePath } = internal;
 
   const common = {

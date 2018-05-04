@@ -10,7 +10,6 @@ function start(config, cb) {
 function build(config) {
   return new Promise((resolve, reject) => {
     webpack(config, (err, res) => {
-      // console.log(res);
       if (err) reject(err);
       resolve();
     });
