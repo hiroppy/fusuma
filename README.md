@@ -10,7 +10,7 @@
 
 Just write down the markdown and make the cool slide.
 
-_Move core codes from [hiroppy/slides](https://github.com/hiroppy/slides)._
+_Moved core codes from [hiroppy/slides](https://github.com/hiroppy/slides)._
 
 ## Demo
 Generated slide is [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/).
@@ -35,6 +35,12 @@ Please see [samples](/samples) or Demo repository.
 
 2 directories, 7 files
 ```
+
+## Feature
+- support [bespoke.js](https://github.com/bespokejs/bespoke)
+- support SNS, fullscreen, Presenter Mode
+- support development mode, production build and deploy
+- overwriting of js and css is possible
 
 ## Install
 node versions > v8
@@ -68,24 +74,7 @@ $ yarn add fusuma --dev
      -v, --verbose      Verbose mode - will also output debug messages
 ```
 
-### Init
-
-Generate a configuration file for Fusuma.  
-The configuration file's name is `.fusumarc.yml`.
-
-### start
-
-Run with webpack-dev-server.
-
-### Build
-
-Build slides using webpack and output to `dist`.
-
-### Deploy
-
-Deploy `dist` to gh-pages.
-
-## .fusumarc.yml
+## rc
 
 Support for `yaml` and `js`.
 
@@ -141,79 +130,7 @@ module.exports = {
 Provide themes.
 
 ## Slide Syntax
-
-All slides are written in HTML or markdown.
-
-### Contents
-
-Get the content of the slide and display it as a list in the sidebar.
-
-#### Slide
-
-```md
-<!-- contents -->
-
-## Contents
-```
-
-### Background
-
-Change the slide's background.
-
-#### Slide
-
-```md
-<!-- background: xxx -->
-
-## title
-```
-
-#### CSS
-
-```css
-.bespoke-backdrop.xxx {
-  background: red;
-}
-```
-
-### Section Title
-
-This is the common setting of the slide for the title of the section.
-
-#### Slide
-
-```md
-<!-- sectionTitle -->
-
-## title
-```
-
-#### CSS
-
-```css
-.bespoke-backdrop.section-title {
-  background: red;
-}
-
-.section-title h2 {
-  color: var(--color-js);
-}
-```
-
-### Presenter Note
-
-#### Slide
-
-```md
-## title
-
-<!-- note
-This is the presenter note.
-This sentence can be seen when using Presenter Mode.
--->
-```
-
-![](./images/presenter-host.png)
+See [docs/slide.md](./docs/slide.md).
 
 ## Presenter Mode
 
@@ -221,3 +138,15 @@ Click the rocket(:rocket:) icon from the bottom right menu(三) and then slides 
 
 Host: `?presenter=host`  
 View: `?presenter=view`
+
+![](./images/presenter-host.png)
+
+## Library
+- Bespoke
+- Babel
+- webpack
+- Postcss
+- Prism
+- React
+- Workbox
+- font-awesome
