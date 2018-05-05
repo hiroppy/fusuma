@@ -4,9 +4,27 @@ const { join } = require('path');
 const ora = require('ora');
 const rmfr = require('rmfr');
 const prog = require('caporal');
+const remoteOriginUrl = require('remote-origin-url');
 const { init, read } = require('../src/configs/fusumarc');
 const { start, build, deploy } = require('../src');
 const { version } = require('../package.json');
+
+function getRemoteOriginUrl(basePath) {
+  return new Promise((resolve) => {
+    remoteOriginUrl(`${basePath}/.git/config`, (err, url) => {
+      if (err) {
+        console.error('Could not find github url');
+        resolve('');
+      }
+      else {
+        url = url || '';
+
+        if (url.includes('git@')) resolve(`https://github.com/${url.split(':')[1]}`);
+        else resolve(url);
+      }
+    });
+  });
+}
 
 prog
   .version(version)
@@ -17,12 +35,14 @@ prog
     const spinner = ora('Starting with webpack-dev-server').start();
     const basePath = join(process.cwd(), options.d || '');
     const config = await read(basePath);
+    const remoteOrigin = await getRemoteOriginUrl(basePath);
 
     start(
       {
         ...config,
         internal: {
-          basePath
+          basePath,
+          remoteOrigin
         }
       },
       () => {
@@ -36,12 +56,14 @@ prog
     const spinner = ora('Building with webpack').start();
     const basePath = join(process.cwd(), options.d || '');
     const config = await read(basePath);
+    const remoteOrigin = await getRemoteOriginUrl(basePath);
 
     await rmfr(join(basePath, 'dist'));
     await build({
       ...config,
       internal: {
-        basePath
+        basePath,
+        remoteOrigin
       }
     });
     spinner.stop();

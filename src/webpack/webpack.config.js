@@ -11,7 +11,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   const { theme } = slide || {};
 
   const { js: jsPath, css: cssPath } = fileExtends || {};
-  const { basePath } = internal;
+  const { basePath, remoteOrigin } = internal;
 
   const config =
     process.env.NODE_ENV !== 'production'
@@ -66,7 +66,8 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         'process.env.SLIDE_PATH': JSON.stringify(path.join(basePath, 'slides')),
         'process.env.URL': JSON.stringify(url),
         'process.env.THEME': JSON.stringify(theme),
-        'process.env.TITLE': JSON.stringify(name)
+        'process.env.TITLE': JSON.stringify(name),
+        'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin)
       }),
       new HtmlWebpackPlugin({
         url,

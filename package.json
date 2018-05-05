@@ -66,6 +66,7 @@
     "react-dom": "^16.3.2",
     "react-loading": "^2.0.2",
     "react-sidebar": "^2.3.2",
+    "remote-origin-url": "^1.0.0",
     "rmfr": "^2.0.0",
     "screenfull": "^3.3.2",
     "style-loader": "^0.21.0",
