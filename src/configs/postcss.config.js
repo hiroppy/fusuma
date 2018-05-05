@@ -19,4 +19,8 @@ const devConfig = (webpack) => {
 
 const prodConfig = (webpack) => common;
 
-module.exports = process.env.NODE_ENV !== 'production' ? devConfig : prodConfig;
+function postcss() {
+  return process.env.NODE_ENV !== 'production' ? devConfig : prodConfig;
+}
+
+module.exports = postcss;

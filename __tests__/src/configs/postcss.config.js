@@ -8,7 +8,7 @@ describe('postcss', () => {
   it('should match settings when NODE_ENV is development', () => {
     process.env.NODE_ENV = 'development';
 
-    const postcss = require('../../../src/configs/postcss.config');
+    const postcss = require('../../../src/configs/postcss.config')();
 
     expect(postcss()).toMatchSnapshot();
   });
@@ -16,7 +16,7 @@ describe('postcss', () => {
   it('should match settings when NODE_ENV is production', () => {
     process.env.NODE_ENV = 'production';
 
-    const postcss = require('../../../src/configs/postcss.config');
+    const postcss = require('../../../src/configs/postcss.config')();
 
     expect(postcss()).toMatchSnapshot();
   });

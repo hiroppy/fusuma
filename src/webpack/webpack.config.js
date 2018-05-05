@@ -15,8 +15,8 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
 
   const config =
     process.env.NODE_ENV !== 'production'
-      ? require('./webpack.dev.config')
-      : require('./webpack.prod.config');
+      ? require('./webpack.dev.config')()
+      : require('./webpack.prod.config')();
 
   const common = {
     name,
@@ -41,7 +41,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
             'css-loader', // dont't use css-modules
             {
               loader: 'postcss-loader',
-              options: require('../configs/postcss.config')(webpack)
+              options: require('../configs/postcss.config')()(webpack)
             }
           ]
         },

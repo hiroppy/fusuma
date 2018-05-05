@@ -9,7 +9,7 @@ Object {
         "test": /\\\\\\.css\\$/,
         "use": Array [
           Object {
-            "loader": "/Users/about_hiroppy/Programming/fusuma/node_modules/extract-text-webpack-plugin/dist/loader.js",
+            "loader": "stub",
             "options": Object {
               "omit": 1,
               "remove": true,
@@ -25,8 +25,6 @@ Object {
             "loader": "postcss-loader",
             "options": Object {
               "plugins": Array [
-                [Function],
-                [Function],
                 [Function],
                 [Function],
                 [Function],

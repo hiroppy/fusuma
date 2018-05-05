@@ -1,4 +1,4 @@
-const rewire = require("rewire");
+const rewire = require('rewire');
 
 describe('webpack.config', () => {
   const rc = {
@@ -47,6 +47,15 @@ describe('webpack.config', () => {
       join: (p) => `stub/${p}`
     });
 
-    expect(webpack(rc)).toMatchSnapshot();
+    const res = webpack(rc);
+
+    // can not stub using rewire
+    res.module.rules.forEach((rule) => {
+      if (rule.test.toString() === '/\\.css$/') {
+        rule.use[0].loader = 'stub';
+      }
+    });
+
+    expect(res).toMatchSnapshot();
   });
 });

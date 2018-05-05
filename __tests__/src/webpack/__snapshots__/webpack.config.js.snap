@@ -87,6 +87,7 @@ Object {
       "definitions": Object {
         "process.env.CSS_PATH": "\\"stub/.\\"",
         "process.env.JS_PATH": "\\"stub/.\\"",
+        "process.env.REMOTE_ORIGIN_URL": undefined,
         "process.env.SLIDE_PATH": "\\"stub/.\\"",
         "process.env.THEME": undefined,
         "process.env.TITLE": "\\"test\\"",
@@ -178,7 +179,7 @@ Object {
         "test": /\\\\\\.css\\$/,
         "use": Array [
           Object {
-            "loader": "/Users/about_hiroppy/Programming/fusuma/node_modules/extract-text-webpack-plugin/dist/loader.js",
+            "loader": "stub",
             "options": Object {
               "omit": 1,
               "remove": true,
@@ -190,8 +191,6 @@ Object {
             "loader": "postcss-loader",
             "options": Object {
               "plugins": Array [
-                [Function],
-                [Function],
                 [Function],
                 [Function],
                 [Function],
@@ -252,6 +251,7 @@ Object {
       "definitions": Object {
         "process.env.CSS_PATH": "\\"stub/.\\"",
         "process.env.JS_PATH": "\\"stub/.\\"",
+        "process.env.REMOTE_ORIGIN_URL": undefined,
         "process.env.SLIDE_PATH": "\\"stub/.\\"",
         "process.env.THEME": undefined,
         "process.env.TITLE": "\\"test\\"",
