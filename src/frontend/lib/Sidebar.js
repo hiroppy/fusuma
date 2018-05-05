@@ -18,9 +18,7 @@ const Inner = (props) => (
     <div className="sidebar-social">
       <a
         rel="noopener noreferrer"
-        href={`https://twitter.com/intent/tweet?text=${process.env.TITLE} by hiroppy ${
-          process.env.URL
-          }`}
+        href={`https://twitter.com/intent/tweet?text=${process.env.TITLE} ${process.env.URL}`}
         target="_blank"
         className="fa fa-twitter"
       />
@@ -50,16 +48,14 @@ const Inner = (props) => (
         }}
         className="fa fa-rocket"
       />
-      {
-        process.env.REMOTE_ORIGIN_URL ? (
-          <a
-            rel="noopener noreferrer"
-            href={process.env.REMOTE_ORIGIN_URL}
-            target="_blank"
-            className="fa fa-github"
-          />
-        ) : null
-      }
+      {process.env.REMOTE_ORIGIN_URL ? (
+        <a
+          rel="noopener noreferrer"
+          href={process.env.REMOTE_ORIGIN_URL}
+          target="_blank"
+          className="fa fa-github"
+        />
+      ) : null}
     </div>
     <div className="sidebar-contents">
       {props.contents.map((content, i) => (
