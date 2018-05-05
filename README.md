@@ -14,6 +14,7 @@ Just write down the markdown and make the cool slide.
 _Moved core codes from [hiroppy/slides](https://github.com/hiroppy/slides)._
 
 ## Demo
+
 Generated slide is [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/).
 
 Repository sample is [hiroppy/fusuma-sample](https://github.com/hiroppy/fusuma-sample).
@@ -38,12 +39,14 @@ Please see [samples](/samples) or Demo repository.
 ```
 
 ## Feature
-- support [bespoke.js](https://github.com/bespokejs/bespoke)
-- support SNS, fullscreen, Presenter Mode
-- support development mode, production build and deploy
-- overwriting of js and css is possible
+
+* support [bespoke.js](https://github.com/bespokejs/bespoke)
+* support SNS, fullscreen, Presenter Mode
+* support development mode, production build and deploy
+* overwriting of js and css is possible
 
 ## Install
+
 node versions > v8
 
 ```sh
@@ -131,6 +134,7 @@ module.exports = {
 Provide themes.
 
 ## Slide Syntax
+
 See [docs/slide.md](./docs/slide.md).
 
 ## Presenter Mode
@@ -143,11 +147,12 @@ View: `?presenter=view`
 ![](./images/presenter-host.png)
 
 ## Library
-- Bespoke
-- Babel
-- webpack
-- Postcss
-- Prism
-- React
-- Workbox
-- font-awesome
+
+* Bespoke
+* Babel
+* webpack
+* Postcss
+* Prism
+* React
+* Workbox
+* font-awesome

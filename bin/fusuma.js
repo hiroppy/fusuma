@@ -15,8 +15,7 @@ function getRemoteOriginUrl(basePath) {
       if (err) {
         console.error('Could not find github url');
         resolve('');
-      }
-      else {
+      } else {
         url = url || '';
 
         if (url.includes('git@')) resolve(`https://github.com/${url.split(':')[1]}`);

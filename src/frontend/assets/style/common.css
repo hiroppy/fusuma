@@ -1,7 +1,7 @@
-@import "./variable";
-@import "./loader";
-@import "./sidebar";
-@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro"); /* for highlight.js */
+@import './variable';
+@import './loader';
+@import './sidebar';
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro'); /* for highlight.js */
 
 :root {
   --icon-size: 150px;
@@ -22,16 +22,16 @@ img {
 pre {
   background: var(--color-white) !important;
   border-radius: 10px;
-  font-size: .7rem;
+  font-size: 0.7rem;
   min-width: 50%;
 
   & code {
-    font-family: "Source Code Pro", monospace !important;
+    font-family: 'Source Code Pro', monospace !important;
   }
 }
 
 .fa-hatena:before {
-  content: "B!";
+  content: 'B!';
   font-family: Verdana;
   font-weight: bold;
 }

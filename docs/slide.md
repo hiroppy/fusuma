@@ -51,7 +51,7 @@ This is the common setting of the slide for the title of the section.
 ### css
 
 ```css
-@import "fusuma/src/frontend/assets/style/variable";
+@import 'fusuma/src/frontend/assets/style/variable';
 
 .bespoke-backdrop.section-title {
   background: red;

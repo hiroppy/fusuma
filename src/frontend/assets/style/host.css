@@ -1,4 +1,4 @@
-@import "./variable";
+@import './variable';
 
 .host-container {
   background: var(--color-black);

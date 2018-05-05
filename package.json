@@ -7,16 +7,15 @@
     "fusuma": "./bin/fusuma.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "fmt": "prettier --write **/*.{js,json,css,md}",
+    "precommit": "pretty-quick --staged"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hiroppy/fusuma.git"
   },
-  "keywords": [
-    "slide",
-    "markdown"
-  ],
+  "keywords": ["slide", "markdown"],
   "author": "abouthiroppy <git@about-hiroppy.com> (http://about-hiroppy.com)",
   "license": "MIT",
   "bugs": {
@@ -78,7 +77,10 @@
     "workbox-webpack-plugin": "^3.1.0"
   },
   "devDependencies": {
+    "husky": "^0.14.3",
     "jest": "^22.4.3",
+    "prettier": "^1.12.1",
+    "pretty-quick": "^1.4.1",
     "rewire": "^4.0.1"
   }
 }
