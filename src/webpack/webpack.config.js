@@ -67,7 +67,8 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         'process.env.URL': JSON.stringify(url),
         'process.env.THEME': JSON.stringify(theme),
         'process.env.TITLE': JSON.stringify(name),
-        'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin)
+        'process.env.BASE_PATH': JSON.stringify(basePath),
+        'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin || meta.repositoryUrl)
       }),
       new HtmlWebpackPlugin({
         url,
