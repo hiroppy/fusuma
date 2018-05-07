@@ -85,6 +85,7 @@ Object {
   "plugins": Array [
     DefinePlugin {
       "definitions": Object {
+        "process.env.BASE_PATH": "\\".\\"",
         "process.env.CSS_PATH": "\\"stub/.\\"",
         "process.env.JS_PATH": "\\"stub/.\\"",
         "process.env.REMOTE_ORIGIN_URL": undefined,
@@ -249,6 +250,7 @@ Object {
   "plugins": Array [
     DefinePlugin {
       "definitions": Object {
+        "process.env.BASE_PATH": "\\".\\"",
         "process.env.CSS_PATH": "\\"stub/.\\"",
         "process.env.JS_PATH": "\\"stub/.\\"",
         "process.env.REMOTE_ORIGIN_URL": undefined,
