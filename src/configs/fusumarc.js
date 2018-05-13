@@ -16,8 +16,10 @@ const configFileYml = `meta:
   description:
   thumbnail:
   siteName:
+  sns: # twitter, hatena
+    - twitter
 slide:
-  theme: js
+  theme:
 extends:
   js:
   css:

@@ -13,21 +13,40 @@ const styles = {
   }
 };
 
+const url = process.env.URL;
+const sns = process.env.SNS;
+const title = process.env.TITLE;
+
 const Inner = (props) => (
   <React.Fragment>
     <div className="sidebar-social">
-      <a
-        rel="noopener noreferrer"
-        href={`https://twitter.com/intent/tweet?text=${process.env.TITLE} ${process.env.URL}`}
-        target="_blank"
-        className="fa fa-twitter"
-      />
-      <a
-        rel="noopener noreferrer"
-        href={`http://b.hatena.ne.jp/entry/${process.env.URL}`}
-        target="_blank"
-        className="fa fa-hatena"
-      />
+      {Array.isArray(sns) &&
+        url &&
+        title &&
+        sns.map((s) => {
+          if (s === 'twitter') {
+            return (
+              <a
+                key="twitter"
+                rel="noopener noreferrer"
+                href={`https://twitter.com/intent/tweet?text=${title} ${url}`}
+                target="_blank"
+                className="fa fa-twitter"
+              />
+            );
+          }
+          if (s === 'hatena') {
+            return (
+              <a
+                rel="noopener noreferrer"
+                key="hatena"
+                href={`http://b.hatena.ne.jp/entry/${url}`}
+                target="_blank"
+                className="fa fa-hatena"
+              />
+            );
+          }
+        })}
     </div>
     <div className="sidebar-control">
       <a onClick={() => props.goTo(0)} className="fa fa-fast-backward" />

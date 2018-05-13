@@ -6,6 +6,7 @@ module.exports = {
     description: 'test',
     thumbnail: 'url',
     siteName: 'siteName'
+    // sns: ['twitter', 'hatena']
   },
   slide: {
     theme: 'js'

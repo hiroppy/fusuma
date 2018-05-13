@@ -7,7 +7,7 @@ const Stylish = require('webpack-stylish');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
-  const { url, name, description, thumbnail, siteName } = meta || {};
+  const { url, name, description, thumbnail, siteName, sns } = meta || {};
   const { theme } = slide || {};
 
   const { js: jsPath, css: cssPath } = fileExtends || {};
@@ -65,6 +65,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         'process.env.CSS_PATH': JSON.stringify(path.join(basePath, cssPath || '')),
         'process.env.SLIDE_PATH': JSON.stringify(path.join(basePath, 'slides')),
         'process.env.URL': JSON.stringify(url),
+        'process.env.SNS': JSON.stringify(sns),
         'process.env.THEME': JSON.stringify(theme),
         'process.env.TITLE': JSON.stringify(name),
         'process.env.BASE_PATH': JSON.stringify(basePath),
