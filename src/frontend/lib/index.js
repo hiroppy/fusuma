@@ -21,14 +21,6 @@ try {
   console.error(e);
 }
 
-if (process.env.CSS_PATH && process.env.CSS_PATH.match(/\+*.css$/i)) {
-  try {
-    require(process.env.CSS_PATH);
-  } catch (e) {
-    console.error(e);
-  }
-}
-
 const slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH));
 
 if (theme === undefined) throw new Error('Could not find theme');

@@ -50,6 +50,7 @@ prog
       }
     );
   })
+
   .command('build', 'Build with webpack')
   .option('-d <directory>', 'Directory to load')
   .action(async (args, options, logger) => {
@@ -68,11 +69,13 @@ prog
     });
     spinner.stop();
   })
+
   .command('init', 'Create a configure file')
   .action(async (args, options, logger) => {
     console.log('Create new configure file');
     await init(process.cwd());
   })
+
   .command('deploy', 'Deploy to GitHub pages')
   .action(async (args, options, logger) => {
     const spinner = ora('Publishing to gh-pages').start();
@@ -82,10 +85,16 @@ prog
 
     spinner.stop();
   })
+
   .command('pdf', 'Export as PDF')
   .option('-i <input>', 'Specified URL or Filename')
   .option('-o <output>', 'Specified Filename')
   .action(async (args, options, logger) => {
+    if (options.i === undefined) {
+      console.log('Require input URL or Filename');
+      process.exit(1);
+    }
+
     const spinner = ora('Exporting as PDF').start();
 
     await spawn('npx', ['decktape', 'automatic', options.i, options.o || 'slide.pdf']);

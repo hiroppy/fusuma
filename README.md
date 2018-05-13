@@ -84,7 +84,7 @@ $ yarn add fusuma --dev
      -v, --verbose      Verbose mode - will also output debug messages
 ```
 
-## rc
+## Configuration File
 
 Support for `yaml` and `js`.
 

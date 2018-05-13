@@ -15,8 +15,8 @@
     "type": "git",
     "url": "git+https://github.com/hiroppy/fusuma.git"
   },
-  "keywords": ["slide", "markdown"],
-  "author": "abouthiroppy <git@about-hiroppy.com> (http://about-hiroppy.com)",
+  "keywords": ["slide", "markdown", "tool", "cli", "presentation", "react", "bespoke"],
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hiroppy/fusuma/issues"

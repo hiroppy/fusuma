@@ -85,6 +85,9 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   };
 
   if (jsPath && jsPath.match(/\+*.js$/i)) common.entry.push(path.join(basePath, jsPath));
+  if (cssPath && path.extname(cssPath) === '.css') {
+    common.entry.push(path.resolve(__dirname, '..', 'frontend', 'lib', 'custom-css.js'));
+  }
 
   return merge.smart(common, config);
 };
