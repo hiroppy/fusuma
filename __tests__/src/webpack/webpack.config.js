@@ -30,6 +30,7 @@ describe('webpack.config', () => {
     webpack.__set__('process.env.NODE_ENV', 'development');
     webpack.__set__('__dirname', 'stabDir');
     webpack.__set__('path', {
+      ...require('path'),
       resolve: () => 'stab',
       join: (p) => `stub/${p}`
     });
@@ -43,6 +44,7 @@ describe('webpack.config', () => {
     webpack.__set__('process.env.NODE_ENV', 'production');
     webpack.__set__('__dirname', 'stabDir');
     webpack.__set__('path', {
+      ...require('path'),
       resolve: () => 'stab',
       join: (p) => `stub/${p}`
     });
