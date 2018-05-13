@@ -4,6 +4,7 @@ const { join } = require('path');
 const ora = require('ora');
 const rmfr = require('rmfr');
 const prog = require('caporal');
+const { spawn } = require('child-process-promise');
 const remoteOriginUrl = require('remote-origin-url');
 const { init, read } = require('../src/configs/fusumarc');
 const { start, build, deploy } = require('../src');
@@ -80,6 +81,21 @@ prog
     await deploy(join(basePath, 'dist'));
 
     spinner.stop();
+  })
+  .command('pdf', 'Export as PDF')
+  .option('-i <input>', 'Specified URL or Filename')
+  .option('-o <output>', 'Specified Filename')
+  .action(async (args, options, logger) => {
+    const spinner = ora('Exporting as PDF').start();
+
+    await spawn('npx', ['decktape', 'automatic', options.i, options.o || 'slide.pdf']);
+
+    spinner.stop();
   });
 
 prog.parse(process.argv);
+
+process.on('unhandledRejection', (err) => {
+  console.error(err);
+  process.exit(1);
+});

@@ -44,6 +44,7 @@ Please see [samples](/samples) or Demo repository.
 * support SNS, fullscreen, Presenter Mode
 * support development mode, production build and deploy
 * overwriting of js and css is possible
+* export as PDF
 
 ## Install
 
@@ -59,14 +60,19 @@ $ yarn add fusuma --dev
 ## Usage
 
 ```sh
-   fusuma 0.0.7 - CLI for easily make slides with markdown
+   fusuma 0.1.1 - CLI for easily make slides with markdown
+
    USAGE
+
      fusuma <command> [options]
+
    COMMANDS
+
      start               Start with webpack-dev-server
      build               Build with webpack
      init                Create a configure file
      deploy              Deploy to GitHub pages
+     pdf                 Export as PDF
      help <command>      Display help for a specific command
 
    GLOBAL OPTIONS

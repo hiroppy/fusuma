@@ -21,11 +21,6 @@ function deploy(dir) {
   });
 }
 
-process.on('unhandledRejection', (err) => {
-  console.error(err);
-  process.exit(1);
-});
-
 module.exports = {
   start,
   build,
