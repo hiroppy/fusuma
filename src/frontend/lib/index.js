@@ -6,10 +6,6 @@ let theme;
 
 try {
   switch (process.env.THEME) {
-    case 'js':
-      theme = require('bespoke-theme-nebula');
-      require('../assets/style/themes/javascript.css');
-      break;
     case 'nebula':
     case 'bespoke-theme-nebula':
       theme = require('bespoke-theme-nebula');

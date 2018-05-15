@@ -9,7 +9,7 @@ meta:
     - twitter
     - hatena
 slide:
-  theme: js
+  theme: nebula
 extends:
   css: style.css
 development:
