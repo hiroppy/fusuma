@@ -15,9 +15,9 @@ _Moved core codes from [hiroppy/slides](https://github.com/hiroppy/slides)._
 
 ## Demo
 
-Generated slide is [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/).
+Introduction slide of Fusuma is [here](https://hiroppy.github.io/fusuma-sample/) and it's repository sample is [hiroppy/fusuma-sample](https://github.com/hiroppy/fusuma-sample).
 
-Repository sample is [hiroppy/fusuma-sample](https://github.com/hiroppy/fusuma-sample).
+Generated slide is [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/).
 
 ## Directory Structure
 
@@ -139,9 +139,15 @@ module.exports = {
 
 </details>
 
-### Theme
+### Themes
 
-Provide themes.
+* Cube
+* Voltaire
+* Nebula (default)
+
+https://github.com/bespokejs/bespoke#themes
+
+Or you can specify a theme.
 
 ## Slide Syntax
 

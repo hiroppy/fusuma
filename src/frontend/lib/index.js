@@ -6,9 +6,18 @@ let theme;
 
 try {
   switch (process.env.THEME) {
+    case '':
     case 'nebula':
     case 'bespoke-theme-nebula':
       theme = require('bespoke-theme-nebula');
+      break;
+    case 'voltaire':
+    case 'bespoke-theme-voltaire':
+      theme = require('bespoke-theme-voltaire');
+      break;
+    case 'cube':
+    case 'bespoke-theme-cube':
+      theme = require('bespoke-theme-cube');
       break;
     default:
       theme = require(`${process.env.BASE_PATH}/node_modules/${process.env.THEME}`);
