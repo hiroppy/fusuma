@@ -90,18 +90,18 @@ prog
   })
 
   .command('pdf', 'Export as PDF')
-  .option('-i <input>', 'Specified URL')
+  .option('-i <input>', 'Specified Directory')
   .option('-o <output>', 'Specified Filename')
   .action(async (args, options, logger) => {
     const port = 3455;
-    const input = options.i || `http://localhost:${port}`;
-    const output = options.o || 'slide.pdf';
+    const input = join(process.cwd(), options.i || 'dist');
+    const output = join(process.cwd(), options.o || 'slide.pdf');
 
     await buildProcess();
 
     const spinner = ora('Exporting as PDF').start();
 
-    await pdf(join(process.cwd(), 'dist'), join(process.cwd(), 'slide.pdf'), port);
+    await pdf(input, output, port);
 
     spinner.stop();
   });
