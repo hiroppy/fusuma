@@ -4,10 +4,9 @@ const { join } = require('path');
 const ora = require('ora');
 const rmfr = require('rmfr');
 const prog = require('caporal');
-const { spawn } = require('child-process-promise');
 const remoteOriginUrl = require('remote-origin-url');
 const { init, read } = require('../src/configs/fusumarc');
-const { start, build, deploy } = require('../src');
+const { start, build, deploy, pdf } = require('../src');
 const { version } = require('../package.json');
 
 function getRemoteOriginUrl(basePath) {
@@ -97,7 +96,7 @@ prog
 
     const spinner = ora('Exporting as PDF').start();
 
-    await spawn('npx', ['decktape', 'automatic', options.i, options.o || 'slide.pdf']);
+    await pdf(options.i, options.o);
 
     spinner.stop();
   });

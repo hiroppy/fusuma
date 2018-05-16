@@ -8,4 +8,5 @@ meta:
 slide:
   theme: nebula
 extends:
+  js: index.js
   css: style.css

@@ -2,7 +2,7 @@
   "name": "fusuma",
   "version": "0.1.4",
   "description": "easily make slides with markdown",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
     "fusuma": "./bin/fusuma.js"
   },

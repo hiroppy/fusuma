@@ -1,6 +1,7 @@
 'use strict';
 
 const ghpages = require('gh-pages');
+const { spawn } = require('child-process-promise');
 const { start: webpackStart, build: webpackBuild } = require('./webpack');
 const webpackConfig = require('./webpack/webpack.config');
 
@@ -21,8 +22,13 @@ function deploy(dir) {
   });
 }
 
+async function pdf(input, output = 'slide.pdf') {
+  await spawn('npx', ['decktape', 'automatic', input, output]);
+}
+
 module.exports = {
   start,
   build,
-  deploy
+  deploy,
+  pdf
 };

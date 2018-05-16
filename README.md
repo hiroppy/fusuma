@@ -172,3 +172,9 @@ View: `?presenter=view`
 * React
 * Workbox
 * font-awesome
+
+## API
+
+```js
+const { start, build, deploy, pdf } = require('fusuma');
+```
