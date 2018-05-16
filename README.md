@@ -48,7 +48,7 @@ Please see [samples](/samples) or Demo repository.
 
 ## Install
 
-node versions > v8
+Node versions > v8
 
 ```sh
 $ npm i fusuma --save-dev # or npm i fusuma -g
@@ -104,7 +104,7 @@ meta:
     - twitter
     - hatena
 slide:
-  theme: js
+  theme: nebula
 extends:
   js: index.js
   css: style.css
@@ -128,7 +128,7 @@ module.exports = {
     sns: ['twitter', 'hatena']
   },
   slide: {
-    theme: 'js'
+    theme: 'nebula'
   },
   extends: {
     js: 'index.js',

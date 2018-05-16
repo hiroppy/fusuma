@@ -1,13 +1,10 @@
 meta:
   url: https://slide.hiroppy.me
-  name: the present and future of JavaScript
+  name: Fusuma
   author: hiroppy
-  description: test
+  description: Introduce Fusuma
   thumbnail: url
-  siteName: siteName
-  sns:
-    - twitter
-    - hatena
+  siteName: hiroppy.me
 slide:
   theme: nebula
 extends:
