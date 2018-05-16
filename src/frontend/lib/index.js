@@ -19,8 +19,8 @@ try {
     case 'bespoke-theme-cube':
       theme = require('bespoke-theme-cube');
       break;
-    default:
-      theme = require(`${process.env.BASE_PATH}/node_modules/${process.env.THEME}`);
+    // default:
+    //   theme = require(`${process.env.BASE_PATH}/node_modules/${process.env.THEME}`);
   }
 } catch (e) {
   console.error(e);

@@ -72,6 +72,7 @@
     "remote-origin-url": "^1.0.0",
     "rmfr": "^2.0.0",
     "screenfull": "^3.3.2",
+    "serve": "^6.5.7",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.6.0",

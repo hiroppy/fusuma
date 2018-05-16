@@ -25,6 +25,23 @@ function getRemoteOriginUrl(basePath) {
   });
 }
 
+async function buildProcess(directory) {
+  const spinner = ora('Building with webpack').start();
+  const basePath = join(process.cwd(), directory || '');
+  const config = await read(basePath);
+  const remoteOrigin = await getRemoteOriginUrl(basePath);
+
+  await rmfr(join(basePath, 'dist'));
+  await build({
+    ...config,
+    internal: {
+      basePath,
+      remoteOrigin
+    }
+  });
+  spinner.stop();
+}
+
 prog
   .version(version)
   .description('CLI for easily make slides with markdown')
@@ -53,25 +70,12 @@ prog
   .command('build', 'Build with webpack')
   .option('-d <directory>', 'Directory to load')
   .action(async (args, options, logger) => {
-    const spinner = ora('Building with webpack').start();
-    const basePath = join(process.cwd(), options.d || '');
-    const config = await read(basePath);
-    const remoteOrigin = await getRemoteOriginUrl(basePath);
-
-    await rmfr(join(basePath, 'dist'));
-    await build({
-      ...config,
-      internal: {
-        basePath,
-        remoteOrigin
-      }
-    });
-    spinner.stop();
+    await buildProcess(options.d);
   })
 
   .command('init', 'Create a configure file')
   .action(async (args, options, logger) => {
-    console.log('Create new configure file');
+    console.log('Create new configure file.');
     await init(process.cwd());
   })
 
@@ -86,17 +90,18 @@ prog
   })
 
   .command('pdf', 'Export as PDF')
-  .option('-i <input>', 'Specified URL or Filename')
+  .option('-i <input>', 'Specified URL')
   .option('-o <output>', 'Specified Filename')
   .action(async (args, options, logger) => {
-    if (options.i === undefined) {
-      console.log('Require input URL or Filename');
-      process.exit(1);
-    }
+    const port = 3455;
+    const input = options.i || `http://localhost:${port}`;
+    const output = options.o || 'slide.pdf';
+
+    await buildProcess();
 
     const spinner = ora('Exporting as PDF').start();
 
-    await pdf(options.i, options.o);
+    await pdf(join(process.cwd(), 'dist'), join(process.cwd(), 'slide.pdf'), port);
 
     spinner.stop();
   });

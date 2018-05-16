@@ -19,7 +19,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
       : require('./webpack.prod.config')();
 
   const common = {
-    name,
+    name: name || 'slide',
     entry: [path.resolve(__dirname, '..', 'frontend', 'lib', 'index.js')],
     output: {
       path: path.resolve(basePath, 'dist'),
@@ -66,7 +66,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         'process.env.SLIDE_PATH': JSON.stringify(path.join(basePath, 'slides')),
         'process.env.URL': JSON.stringify(url),
         'process.env.SNS': JSON.stringify(sns),
-        'process.env.THEME': JSON.stringify(theme),
+        'process.env.THEME': JSON.stringify(theme || ''),
         'process.env.TITLE': JSON.stringify(name),
         'process.env.BASE_PATH': JSON.stringify(basePath),
         'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin || meta.repositoryUrl)
@@ -74,9 +74,9 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
       new HtmlWebpackPlugin({
         url,
         filename: 'index.html',
-        title: name,
+        title: name || 'slide',
         template: path.join(__dirname, 'template.ejs'),
-        image: thumbnail,
+        image: thumbnail || '',
         siteName,
         description
       }),

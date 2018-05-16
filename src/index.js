@@ -1,5 +1,6 @@
 'use strict';
 
+const serve = require('serve');
 const ghpages = require('gh-pages');
 const { spawn } = require('child-process-promise');
 const { start: webpackStart, build: webpackBuild } = require('./webpack');
@@ -22,8 +23,18 @@ function deploy(dir) {
   });
 }
 
-async function pdf(input, output = 'slide.pdf') {
-  await spawn('npx', ['decktape', 'automatic', input, output]);
+async function pdf(input, output = 'slide.pdf', port = 3455) {
+  const server = serve(input, { port });
+
+  await new Promise((resolve) => setTimeout(() => resolve(), 3000));
+
+  try {
+    await spawn('npx', ['decktape', 'automatic', `http://localhost:${port}`, output]);
+  } catch (e) {
+    console.error(e);
+  } finally {
+    server.stop();
+  }
 }
 
 module.exports = {
