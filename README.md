@@ -89,7 +89,7 @@ Please see [samples](/samples) or Demo repository.
 ## Usage
 
 ```sh
-   fusuma 0.1.1 - CLI for easily make slides with markdown
+   fusuma 0.2.1 - CLI for easily make slides with markdown
 
    USAGE
 
@@ -97,9 +97,9 @@ Please see [samples](/samples) or Demo repository.
 
    COMMANDS
 
+     init                Create a configure file
      start               Start with webpack-dev-server
      build               Build with webpack
-     init                Create a configure file
      deploy              Deploy to GitHub pages
      pdf                 Export as PDF
      help <command>      Display help for a specific command
@@ -134,6 +134,7 @@ meta:
     - hatena
 slide:
   theme: nebula
+  sidebar: true
 extends:
   js: index.js
   css: style.css
@@ -157,7 +158,8 @@ module.exports = {
     sns: ['twitter', 'hatena']
   },
   slide: {
-    theme: 'nebula'
+    theme: 'nebula',
+    sidebar: true
   },
   extends: {
     js: 'index.js',
