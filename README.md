@@ -19,6 +19,54 @@ Introduction slide of Fusuma is [here](https://hiroppy.github.io/fusuma-sample/)
 
 Generated slide is [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/).
 
+## Install
+
+Node versions > v8
+
+```sh
+$ npm i fusuma --save-dev # or npm i fusuma -g
+
+# if you want to use yarn
+$ yarn add fusuma --dev
+```
+
+## Procedure
+
+Just execute the following three lines for executing, generating and deploying slides!
+
+```sh
+$ npm i fusuma -D
+$ npx fusuma init
+$ mkdir slides && touch slides/title.md && echo '# Hello😄' > slides/title.md
+
+# --- executable tasks---
+$ npx fusuma start                     # development
+$ NODE_ENV=production npx fusuma build # production
+$ npx fusuma deploy                    # deploy to github pages
+$ npx fusuma pdf                       # export as PDF from HTML
+
+# --- Tree ---
+$ tree -a
+.
+├── .fusumarc.yml
+└── slides
+    └── title.md
+
+1 directory, 2 files
+```
+
+When `npx fusuma start` is executed, it is output as follows.
+
+![](./images/procedure-screenshot.png)
+
+## Feature
+
+* support [bespoke.js](https://github.com/bespokejs/bespoke)
+* support SNS, fullscreen, Presenter Mode
+* support development mode, production build and deploy
+* overwriting of js and css is possible
+* export as PDF
+
 ## Directory Structure
 
 Please see [samples](/samples) or Demo repository.
@@ -36,25 +84,6 @@ Please see [samples](/samples) or Demo repository.
 └── style.css           <-- optional for rewriting
 
 2 directories, 7 files
-```
-
-## Feature
-
-* support [bespoke.js](https://github.com/bespokejs/bespoke)
-* support SNS, fullscreen, Presenter Mode
-* support development mode, production build and deploy
-* overwriting of js and css is possible
-* export as PDF
-
-## Install
-
-Node versions > v8
-
-```sh
-$ npm i fusuma --save-dev # or npm i fusuma -g
-
-# if you want to use yarn
-$ yarn add fusuma --dev
 ```
 
 ## Usage
