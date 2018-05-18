@@ -16,6 +16,12 @@ describe('webpack.prod', () => {
       }
     });
 
+    res.plugins.forEach((p) => {
+      if (p.constructor.name === 'ExtractTextPlugin') {
+        p.id = -1;
+      }
+    });
+
     expect(res).toMatchSnapshot();
   });
 });

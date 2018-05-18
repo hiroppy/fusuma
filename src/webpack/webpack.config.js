@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   const { url, name, description, thumbnail, siteName, sns } = meta || {};
-  const { theme } = slide || {};
+  const { theme, sidebar } = slide || {};
 
   const { js: jsPath, css: cssPath } = fileExtends || {};
   const { basePath, remoteOrigin } = internal;
@@ -67,6 +67,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         'process.env.URL': JSON.stringify(url),
         'process.env.SNS': JSON.stringify(sns),
         'process.env.THEME': JSON.stringify(theme || ''),
+        'process.env.SIDEBAR': JSON.stringify(sidebar === undefined ? true : sidebar),
         'process.env.TITLE': JSON.stringify(name),
         'process.env.BASE_PATH': JSON.stringify(basePath),
         'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin || meta.repositoryUrl)
@@ -84,7 +85,9 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
     ]
   };
 
-  if (jsPath && jsPath.match(/\+*.js$/i)) common.entry.push(path.join(basePath, jsPath));
+  if (jsPath && jsPath.match(/\+*.js$/i)) {
+    common.entry.push(path.join(basePath, jsPath));
+  }
   if (cssPath && path.extname(cssPath) === '.css') {
     common.entry.push(path.resolve(__dirname, '..', 'frontend', 'lib', 'custom-css.js'));
   }

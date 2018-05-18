@@ -89,6 +89,7 @@ Object {
         "process.env.CSS_PATH": "\\"stub/.\\"",
         "process.env.JS_PATH": "\\"stub/.\\"",
         "process.env.REMOTE_ORIGIN_URL": undefined,
+        "process.env.SIDEBAR": "true",
         "process.env.SLIDE_PATH": "\\"stub/.\\"",
         "process.env.SNS": undefined,
         "process.env.THEME": "\\"\\"",
@@ -255,6 +256,7 @@ Object {
         "process.env.CSS_PATH": "\\"stub/.\\"",
         "process.env.JS_PATH": "\\"stub/.\\"",
         "process.env.REMOTE_ORIGIN_URL": undefined,
+        "process.env.SIDEBAR": "true",
         "process.env.SLIDE_PATH": "\\"stub/.\\"",
         "process.env.SNS": undefined,
         "process.env.THEME": "\\"\\"",
@@ -305,7 +307,7 @@ Object {
     },
     ExtractTextPlugin {
       "filename": "[md5:contenthash:hex:10].css",
-      "id": 1,
+      "id": -1,
       "options": Object {
         "allChunks": true,
       },

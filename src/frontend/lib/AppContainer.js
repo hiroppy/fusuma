@@ -114,27 +114,41 @@ class AppContainer extends React.Component {
   };
 
   render() {
-    return (
-      <Sidebar
-        goTo={this.goTo}
-        opened={this.state.opened}
-        contents={this.contents}
-        onSetOpen={this.onSetSidebarOpen}
-        slideInfo={this.state.slideInfo}
-      >
-        <Loader displayed={this.state.loader} />
-        {this.content ? (
-          <this.content slides={this.slides} loadedBespoke={!this.state.loader} />
-        ) : (
-          <Base slides={this.slides} />
-        ) /* for common */}
-        <i
-          style={{ width: 50 }}
-          className="btn-sidebar fa fa-bars"
-          onClick={() => this.onSetSidebarOpen(true)}
-        />
-      </Sidebar>
-    );
+    console.log(process.env.SIDEBAR);
+    if (process.env.SIDEBAR) {
+      return (
+        <Sidebar
+          goTo={this.goTo}
+          opened={this.state.opened}
+          contents={this.contents}
+          onSetOpen={this.onSetSidebarOpen}
+          slideInfo={this.state.slideInfo}
+        >
+          <Loader displayed={this.state.loader} />
+          {this.content ? (
+            <this.content slides={this.slides} loadedBespoke={!this.state.loader} />
+          ) : (
+            <Base slides={this.slides} />
+          ) /* for common */}
+          <i
+            style={{ width: 50 }}
+            className="btn-sidebar fa fa-bars"
+            onClick={() => this.onSetSidebarOpen(true)}
+          />
+        </Sidebar>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <Loader displayed={this.state.loader} />
+          {this.content ? (
+            <this.content slides={this.slides} loadedBespoke={!this.state.loader} />
+          ) : (
+            <Base slides={this.slides} />
+          ) /* for common */}
+        </React.Fragment>
+      );
+    }
   }
 }
 

@@ -60,7 +60,7 @@ Object {
   "plugins": Array [
     ExtractTextPlugin {
       "filename": "[md5:contenthash:hex:10].css",
-      "id": 1,
+      "id": -1,
       "options": Object {
         "allChunks": true,
       },

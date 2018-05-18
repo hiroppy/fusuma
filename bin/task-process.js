@@ -3,6 +3,7 @@
 const { join } = require('path');
 const ora = require('ora');
 const rmfr = require('rmfr');
+const merge = require('deepmerge');
 const remoteOriginUrl = require('remote-origin-url');
 const { init, read } = require('../src/configs/fusumarc');
 const { start, build, deploy, pdf } = require('../src');
@@ -46,9 +47,9 @@ async function startProcess(basePath) {
   );
 }
 
-async function buildProcess(basePath) {
+async function buildProcess(basePath, extendedConfig = {}) {
   const spinner = ora('Building with webpack').start();
-  const config = await read(basePath);
+  const config = merge(await read(basePath), extendedConfig);
   const remoteOrigin = await getRemoteOriginUrl(basePath);
 
   await rmfr(join(basePath, 'dist'));
@@ -75,7 +76,11 @@ async function pdfProcess(basePath, { input: i, output: o }) {
   const input = join(process.cwd(), i || 'dist');
   const output = join(process.cwd(), o || 'slide.pdf');
 
-  await buildProcess(basePath);
+  await buildProcess(basePath, {
+    slide: {
+      sidebar: false
+    }
+  });
 
   const spinner = ora('Exporting as PDF').start();
 

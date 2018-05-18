@@ -19,7 +19,8 @@ const configFileYml = `meta:
   sns: # twitter, hatena
     - twitter
 slide:
-  theme:
+  sidebar: true
+  theme: nebula
 extends:
   js:
   css:
