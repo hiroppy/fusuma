@@ -39,12 +39,6 @@ $ npm i fusuma -D
 $ npx fusuma init
 $ mkdir slides && touch slides/title.md && echo '# Hello😄' > slides/title.md
 
-# --- executable tasks---
-$ npx fusuma start                     # development
-$ NODE_ENV=production npx fusuma build # production
-$ npx fusuma deploy                    # deploy to github pages
-$ npx fusuma pdf                       # export as PDF from HTML
-
 # --- Tree ---
 $ tree -a
 .
@@ -53,6 +47,12 @@ $ tree -a
     └── title.md
 
 1 directory, 2 files
+
+# --- executable tasks---
+$ npx fusuma start                     # development
+$ NODE_ENV=production npx fusuma build # production
+$ npx fusuma deploy                    # deploy to github pages
+$ npx fusuma pdf                       # export as PDF from HTML
 ```
 
 When `npx fusuma start` is executed, it is output as follows.
