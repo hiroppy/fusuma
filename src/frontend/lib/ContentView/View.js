@@ -1,3 +1,5 @@
+/* eslint-disable  react/prop-types */
+
 /*
  * View for Presentation mode
  */
@@ -6,7 +8,7 @@ import React from 'react';
 import Base from './Base';
 
 class View extends React.Component {
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     window.addEventListener('storage', (e) => {
       if (e.key === 'page') {
         const page = JSON.parse(e.newValue).page;
@@ -21,9 +23,7 @@ class View extends React.Component {
   }
 
   render() {
-    return (
-      <Base slides={this.props.slides} />
-    );
+    return <Base slides={this.props.slides} />;
   }
 }
 

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "jest",
+    "lint": "lynt --react --ignore dist --env jest",
     "fmt": "prettier --write **/*.{js,json,css,md}",
     "precommit": "pretty-quick --staged"
   },
@@ -85,6 +86,7 @@
   "devDependencies": {
     "husky": "^0.14.3",
     "jest": "^22.4.3",
+    "lynt": "^0.1.0",
     "prettier": "^1.12.1",
     "pretty-quick": "^1.4.1",
     "rewire": "^4.0.1"

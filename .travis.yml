@@ -11,5 +11,6 @@ os:
 before_script:
   - npm install
   - npm test
+  - npm run lint
 notifications:
   slack: about-hiroppy:rzKYJ3zRPzBaak3TeaTmPSH5

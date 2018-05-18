@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 import Sidebar from 'react-sidebar';
 import screenfull from 'screenfull';

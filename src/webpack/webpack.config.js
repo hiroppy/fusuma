@@ -1,6 +1,7 @@
 'use strict';
 
-let path = require('path'); // for rewire
+// make use of `let` for rewire
+let path = require('path'); // eslint-disable-line prefer-const
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const Stylish = require('webpack-stylish');

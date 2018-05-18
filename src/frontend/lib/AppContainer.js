@@ -1,3 +1,5 @@
+/* eslint-disable  react/prop-types */
+
 import React from 'react';
 import Loader from './Loader';
 import Sidebar from './Sidebar';
@@ -83,7 +85,7 @@ class AppContainer extends React.Component {
     }, 5000);
   }
 
-  componentWillUpdate() {
+  UNSAFE_componentWillUpdate() {
     if (this.setupBespokeFlag) {
       this.setupBespoke();
       this.setupBespokeFlag = false;
@@ -114,7 +116,6 @@ class AppContainer extends React.Component {
   };
 
   render() {
-    console.log(process.env.SIDEBAR);
     if (process.env.SIDEBAR) {
       return (
         <Sidebar

@@ -1,3 +1,5 @@
+/* eslint-disable  react/prop-types */
+
 /**
  * Host for Presentation mode
  */
@@ -28,7 +30,7 @@ class Host extends React.Component {
     import('../setup-prism');
   }
 
-  componentWillReceiveProps(p) {
+  UNSAFE_componentWillReceiveProps(p) {
     // to load when bespoke loading is completed
     if (p.loadedBespoke && !this.loaded) {
       window.slide.bespoke.on('activate', (e) => {
