@@ -11,7 +11,6 @@ module.exports = {
     theme: 'bespoke-theme-voltaire'
   },
   extends: {
-    js: 'index.js',
     css: 'style.css'
   }
 };

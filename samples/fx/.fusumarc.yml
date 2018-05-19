@@ -1,0 +1,11 @@
+meta:
+  url: https://slide.hiroppy.me
+  name: Fusuma
+  author: hiroppy
+  description: Introduce Fusuma
+  thumbnail: url
+  siteName: hiroppy.me
+slide:
+  theme: nebula
+extends:
+  css: style.css
