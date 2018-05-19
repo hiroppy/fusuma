@@ -71,6 +71,8 @@ When `npx fusuma start` is executed, it is output as follows.
 
 Please see [samples](/samples) or Demo repository.
 
+Slide order is numeric, alphabetical.
+
 ```
 .
 ├── .fusumarc.yml       <-- a configuration file

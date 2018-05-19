@@ -67,7 +67,7 @@ Change the slide's background.
 Set animation of page transition.
 use [bespoke-fx](https://github.com/hiroppy/bespoke-fx).
 
-The slides described is this.
+The slides described is [here](https://hiroppy.github.io/fusuma-fx-sample/).
 
 ### Direction
 
