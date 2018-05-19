@@ -36,7 +36,7 @@ Just execute the following three lines for executing, generating and deploying s
 ```sh
 $ npm i fusuma -D
 $ npx fusuma init
-$ mkdir slides && touch slides/title.md && echo '# Hello😄' > slides/title.md
+$ mkdir slides && echo '# Hello😄' > slides/title.md
 
 # --- Tree ---
 $ tree -a
