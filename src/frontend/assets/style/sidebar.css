@@ -26,7 +26,7 @@
   }
 
   & > div {
-    align-items: left;
+    align-items: flex-start;
     display: flex;
     justify-content: space-around;
     width: 150px;
@@ -45,7 +45,7 @@
   }
 
   & .sidebar-contents {
-    align-items: left;
+    align-items: flex-start;
     flex-direction: column;
     margin: 30px 15px;
     width: auto;
