@@ -145,6 +145,17 @@ Object {
       "requestTimeout": 10000,
     },
   ],
+  "resolve": Object {
+    "modules": Array [
+      "node_modules",
+      "stab",
+    ],
+  },
+  "resolveLoader": Object {
+    "modules": Array [
+      "stab",
+    ],
+  },
 }
 `;
 
@@ -334,5 +345,16 @@ Object {
       },
     },
   ],
+  "resolve": Object {
+    "modules": Array [
+      "node_modules",
+      "stab",
+    ],
+  },
+  "resolveLoader": Object {
+    "modules": Array [
+      "stab",
+    ],
+  },
 }
 `;
