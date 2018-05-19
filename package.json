@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test:ci": "npm run test && codecov",
     "lint": "lynt --react --env jest --ignore samples",
     "fmt": "prettier --write **/*.{js,json,css,md}",
     "precommit": "pretty-quick --staged"
@@ -91,5 +92,9 @@
     "prettier": "^1.12.1",
     "pretty-quick": "^1.4.1",
     "rewire": "^4.0.1"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
