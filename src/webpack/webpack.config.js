@@ -27,7 +27,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
       filename: '[hash].js'
     },
     resolveLoader: {
-      modules: [path.resolve(__dirname, '..', '..', 'node_modules')]
+      modules: ['node_modules', path.resolve(__dirname, '..', '..', 'node_modules')]
     },
     resolve: {
       modules: ['node_modules', path.resolve(__dirname, '..', '..', 'node_modules')]

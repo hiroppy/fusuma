@@ -153,6 +153,7 @@ Object {
   },
   "resolveLoader": Object {
     "modules": Array [
+      "node_modules",
       "stab",
     ],
   },
@@ -353,6 +354,7 @@ Object {
   },
   "resolveLoader": Object {
     "modules": Array [
+      "node_modules",
       "stab",
     ],
   },
