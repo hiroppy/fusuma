@@ -10,7 +10,8 @@ os:
   - linux
 before_script:
   - npm install
-  - npm test
+  - npm i codecov
+  - npm run test:ci
   - npm run lint
 notifications:
   slack: about-hiroppy:rzKYJ3zRPzBaak3TeaTmPSH5
