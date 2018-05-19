@@ -1,5 +1,9 @@
 const parseAttrs = (content) => {
   const res = {
+    fx: {
+      direction: '',
+      transition: ''
+    },
     note: '',
     contents: [],
     className: '',
@@ -7,6 +11,18 @@ const parseAttrs = (content) => {
   };
 
   if (content === undefined) return res;
+
+  {
+    const arr = content.match(/<!-- direction: (.+) -->/);
+
+    res.fx.direction = arr ? arr[1] : 'horizontal';
+  }
+
+  {
+    const arr = content.match(/<!-- transition: (.+) -->/);
+
+    res.fx.transition = arr ? arr[1] : 'none';
+  }
 
   // contents
   {

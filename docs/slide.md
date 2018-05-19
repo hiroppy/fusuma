@@ -8,7 +8,7 @@ Get the content of the slide and display it as a list in the sidebar.
 
 e.g. https://hiroppy.github.io/fusuma-sample/#3
 
-### md
+### Markdown
 
 ```md
 <!-- contents -->
@@ -16,31 +16,11 @@ e.g. https://hiroppy.github.io/fusuma-sample/#3
 ## Contents
 ```
 
-## Background
-
-Change the slide's background.
-
-### md
-
-```md
-<!-- background: xxx -->
-
-## title
-```
-
-### css
-
-```css
-.bespoke-backdrop.xxx {
-  background: red;
-}
-```
-
 ## Section Title
 
 This is the common setting of the slide for the title of the section.
 
-### md
+### Markdown
 
 ```md
 <!-- sectionTitle -->
@@ -48,7 +28,7 @@ This is the common setting of the slide for the title of the section.
 ## title
 ```
 
-### css
+### CSS
 
 ```css
 @import 'fusuma/src/frontend/assets/style/variable';
@@ -62,11 +42,62 @@ This is the common setting of the slide for the title of the section.
 }
 ```
 
+## Background
+
+Change the slide's background.
+
+### Markdown
+
+```md
+<!-- background: xxx -->
+
+## title
+```
+
+### CSS
+
+```css
+.bespoke-backdrop.xxx {
+  background: red;
+}
+```
+
+## Animation
+
+Set animation of page transition.
+use [bespoke-fx](https://github.com/hiroppy/bespoke-fx).
+
+The slides described is this.
+
+### Direction
+
+The properties of `direction` are `vertical` and `horizontal`(default).
+
+#### Markdown
+
+```md
+<!-- direction: vertical -->
+
+## title
+```
+
+### Transition
+
+See [bespoke-fx#transitions](https://github.com/ebow/bespoke-fx#transitions).
+
+#### Markdown
+
+```md
+<!-- transition: room -->
+
+## title
+```
+
 ## Presenter Note
 
 A note to display when Presenter Mode.
 
-### md
+### Markdown
 
 ```md
 ## title

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "lynt --react --env jest",
+    "lint": "lynt --react --env jest --ignore samples",
     "fmt": "prettier --write **/*.{js,json,css,md}",
     "precommit": "pretty-quick --staged"
   },
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
+    "@about_hiroppy/bespoke-fx": "0.0.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",

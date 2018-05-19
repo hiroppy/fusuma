@@ -9,15 +9,14 @@
 [![npm](https://img.shields.io/npm/v/fusuma.svg?style=flat-square)](https://www.npmjs.com/package/fusuma)
 [![Travis](https://img.shields.io/travis/hiroppy/fusuma.svg?style=flat-square)](https://travis-ci.org/hiroppy/fusuma)
 
-Just write down the markdown and make the cool slide.
+Just write the markdown and make the cool slide.
 
-_Moved core codes from [hiroppy/slides](https://github.com/hiroppy/slides)._
+## Demos
 
-## Demo
-
-Introduction slide of Fusuma is [here](https://hiroppy.github.io/fusuma-sample/) and it's repository sample is [hiroppy/fusuma-sample](https://github.com/hiroppy/fusuma-sample).
-
-Generated slide is [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/).
+* [introduction slide of Fusuma](https://hiroppy.github.io/fusuma-sample/) [[repository](https://github.com/hiroppy/fusuma-sample)]
+* [animation slide]() [[repository]()]
+* [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/) [[repository](https://github.com/hiroppy/slides/tree/master/slides/the-present-and-future-of-JavaScript)]
+* other my slide [[repository](https://github.com/hiroppy/slides#my-slides)]
 
 ## Install
 

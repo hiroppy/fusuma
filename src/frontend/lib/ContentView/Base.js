@@ -9,6 +9,8 @@ const Base = (props) => (
         key={i /* fix */}
         className={slide.meta.className}
         data-bespoke-backdrop={slide.meta.background}
+        data-bespoke-fx-direction={slide.meta.fx.direction}
+        data-bespoke-fx-transition={slide.meta.fx.transition}
         dangerouslySetInnerHTML={{ __html: slide.context }}
       />
     ))}
