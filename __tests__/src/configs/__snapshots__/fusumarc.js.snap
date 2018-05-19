@@ -5,10 +5,9 @@ exports[`fusuma init 1`] = `
   url:
   name:
   author:
-  description:
   thumbnail:
-  siteName:
-  sns: # twitter, hatena
+  description:
+  sns:
     - twitter
 slide:
   sidebar: true
