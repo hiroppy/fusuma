@@ -1,10 +1,12 @@
 <div align="center">
-  <h1>Fusuma</h1>
+  <img src="./media/logo.svg">
 </div>
 
 <div align="center">
   <strong>📝 easily make slides with markdown</strong>
 </div>
+
+<br />
 
 [![npm](https://img.shields.io/npm/v/fusuma.svg?style=flat-square)](https://www.npmjs.com/package/fusuma)
 [![Travis](https://img.shields.io/travis/hiroppy/fusuma.svg?style=flat-square)](https://travis-ci.org/hiroppy/fusuma)
@@ -58,7 +60,7 @@ $ npx fusuma pdf                       # export as PDF from HTML
 
 When `npx fusuma start` is executed, it is output as follows.
 
-![](./images/procedure-screenshot.png)
+![](./media/procedure-screenshot.png)
 
 ## Feature
 
@@ -195,7 +197,7 @@ Click the rocket(:rocket:) icon from the bottom right menu(三) and then slides 
 Host: `?presenter=host`  
 View: `?presenter=view`
 
-![](./images/presenter-host.png)
+![](./media/presenter-host.png)
 
 ## Library
 
