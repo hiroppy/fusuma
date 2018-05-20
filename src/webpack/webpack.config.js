@@ -48,7 +48,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
             'css-loader', // dont't use css-modules
             {
               loader: 'postcss-loader',
-              options: require('../configs/postcss.config')()(webpack)
+              options: require('../configs/postcss.config')()()
             }
           ]
         },

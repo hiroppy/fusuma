@@ -16,7 +16,7 @@ const config = {
     author: null,
     thumbnail: null,
     description: null,
-    sns: ['twitter']
+    sns: ['twitter'] // twitter, hatena
   },
   slide: {
     sidebar: true,
