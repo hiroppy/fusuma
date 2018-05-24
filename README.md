@@ -17,8 +17,8 @@ Just write the markdown and make the cool slide.
 
 ## Demos
 
-* [introduction slide of Fusuma](https://hiroppy.github.io/fusuma-sample/) [[repository](https://github.com/hiroppy/fusuma-sample)]
-* [animation slide](https://hiroppy.github.io/fusuma-fx-sample/) [[repository](https://github.com/hiroppy/fusuma-fx-sample)]
+* [introduction slide of Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
+* [animation slide](https://hiroppy.github.io/fusuma/fx/) [[repository](/samples/fx)]
 * [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/) [[repository](https://github.com/hiroppy/slides/tree/master/slides/the-present-and-future-of-JavaScript)]
 * other my slide [[repository](https://github.com/hiroppy/slides#my-slides)]
 
