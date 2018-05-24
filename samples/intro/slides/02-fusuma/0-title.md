@@ -1,0 +1,3 @@
+<!-- sectionTitle -->
+
+## What is Fusuma?

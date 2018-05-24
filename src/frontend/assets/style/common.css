@@ -1,0 +1,33 @@
+@import './variable';
+@import './loader';
+@import './sidebar';
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro'); /* for highlight.js */
+
+a {
+  padding-left: 0;
+}
+
+li {
+  margin: 0;
+}
+
+img {
+  width: 90%;
+}
+
+pre {
+  background: var(--color-white) !important;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  min-width: 50%;
+
+  & code {
+    font-family: 'Source Code Pro', monospace !important;
+  }
+}
+
+.fa-hatena:before {
+  content: 'B!';
+  font-family: Verdana;
+  font-weight: bold;
+}

@@ -1,0 +1,76 @@
+:root {
+  --color-gray: #b7b8b7;
+}
+
+.bespoke-backdrop {
+  background: var(--color-gray);
+}
+
+.bespoke-backdrop.hyper-drive {
+  background: url('./images/source.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.big {
+  font-size: 3rem;
+}
+
+/* .tc39 {
+  @mixin icon './images/tc39.png';
+} */
+
+.timeline {
+  border-left: 2px solid #888;
+  padding: 10px;
+  text-align: left;
+
+  & thead {
+    border-bottom: 1px solid #888;
+  }
+
+  & th {
+    padding: 5px 20px;
+  }
+}
+
+.stages-list {
+  font-size: 0.9rem;
+  text-align: left;
+
+  & th {
+    padding: 10px;
+
+    &:first-child {
+      padding-left: 50px;
+      width: 100px;
+    }
+  }
+
+  & strong {
+    font-size: 1.7rem;
+  }
+}
+
+.champion {
+  font-size: 0.6rem;
+}
+
+.proposal-updates-table {
+  font-size: 0.8rem;
+
+  & tbody {
+    & th {
+      padding: 2px 10px;
+    }
+  }
+}
+
+.node-fest {
+  width: 70%;
+}
+
+.required {
+  /* color: var(--color-js); */
+  margin-right: 5px;
+}

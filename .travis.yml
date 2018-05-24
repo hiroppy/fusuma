@@ -1,0 +1,17 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+    - node_modules
+node_js:
+  - 8
+  - 10
+os:
+  - linux
+before_script:
+  - npm install
+  - npm i codecov
+  - npm run test:ci
+  - npm run lint
+notifications:
+  slack: about-hiroppy:rzKYJ3zRPzBaak3TeaTmPSH5

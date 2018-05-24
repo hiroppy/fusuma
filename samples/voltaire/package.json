@@ -1,0 +1,14 @@
+{
+  "name": "voltaire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "abouthiroppy <git@about-hiroppy.com> (http://about-hiroppy.com)",
+  "license": "MIT",
+  "dependencies": {
+    "bespoke-theme-voltaire": "^1.0.1"
+  }
+}

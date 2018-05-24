@@ -1,0 +1,47 @@
+@import './variable';
+
+.host-container {
+  background: var(--color-black);
+  display: flex;
+  padding: 20px;
+}
+
+.host-note {
+  width: 60%;
+
+  & pre {
+    background: transparent !important;
+    color: var(--color-white);
+    font-size: 1.2rem;
+    margin: 15px;
+    white-space: pre-wrap;
+  }
+}
+
+.host-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 40px);
+  justify-content: flex-end;
+  width: 40%;
+
+  & > h2 {
+    color: var(--color-main);
+  }
+
+  /* TODO: we should decide the design
+  & .host-slides {
+    color: var(--color-white);
+    display: none;
+    font-size: 1.3rem;
+    flex: .9;
+  }
+  */
+
+  & .host-next-slide {
+    height: 180px;
+    position: relative;
+    width: 320px;
+  }
+}

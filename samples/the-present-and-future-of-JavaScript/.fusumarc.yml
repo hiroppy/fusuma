@@ -1,0 +1,14 @@
+meta:
+  url: https://slide.hiroppy.me
+  name: the present and future of JavaScript
+  author: hiroppy
+  description: test
+  thumbnail: url
+  siteName: siteName
+  sns:
+    - twitter
+    - hatena
+slide:
+  theme: nebula
+extends:
+  css: style.css

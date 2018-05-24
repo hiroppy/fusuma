@@ -1,0 +1,71 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+:root {
+  --orange-color: #ff874d;
+  --cyan-color: #0ac2d2;
+  --yellow-color: #fdc162;
+  --red-color: #fd6a62;
+
+  --random-color-1: #7bb7fa;
+  --random-color-2: #60d7a9;
+  --random-color-3: #f68dbb;
+  --random-color-4: #ffcc99;
+}
+
+h1 {
+  color: var(--orange-color);
+}
+
+h2 {
+  margin-bottom: 30px;
+}
+
+p {
+  font-family: helvetica, arial, sans-serif;
+}
+
+pre {
+  background: rgba(255, 255, 255, 0.4) !important;
+
+  & > code {
+    color: #fff !important;
+    font-size: 1.1rem !important;
+    text-shadow: none !important;
+  }
+}
+
+.bespoke-parent {
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+
+.bespoke-backdrop:nth-child(4n + 1) {
+  background: var(--random-color-1);
+}
+
+.bespoke-backdrop:nth-child(4n + 2) {
+  background: var(--random-color-2);
+}
+
+.bespoke-backdrop:nth-child(4n + 3) {
+  background: var(--random-color-3);
+}
+
+.bespoke-backdrop:nth-child(4n + 4) {
+  background: var(--random-color-4);
+}
+
+.bespoke-backdrop.title {
+  background: var(--cyan-color);
+}
+
+.bespoke-backdrop.contents {
+  background: var(--yellow-color);
+}
+
+.bespoke-backdrop.section-title {
+  background: var(--red-color);
+}
+
+.bespoke-backdrop.end {
+  background: var(--cyan-color);
+}
