@@ -55,6 +55,28 @@ Object {
               ],
             },
           },
+          Object {
+            "loader": "string-replace-loader",
+            "options": Object {
+              "multiple": Array [
+                Object {
+                  "flags": "g",
+                  "replace": ".bespoke-parent",
+                  "search": "__body",
+                },
+                Object {
+                  "flags": "g",
+                  "replace": ".bespoke-backdrop",
+                  "search": "__bg",
+                },
+                Object {
+                  "flags": "g",
+                  "replace": ".bespoke-backdrop.section-title",
+                  "search": "__section-title",
+                },
+              ],
+            },
+          },
         ],
       },
       Object {
@@ -195,6 +217,28 @@ Object {
         "use": Array [
           Object {
             "loader": "stub",
+            "options": Object {
+              "multiple": Array [
+                Object {
+                  "flags": "g",
+                  "replace": ".bespoke-parent",
+                  "search": "__body",
+                },
+                Object {
+                  "flags": "g",
+                  "replace": ".bespoke-backdrop",
+                  "search": "__bg",
+                },
+                Object {
+                  "flags": "g",
+                  "replace": ".bespoke-backdrop.section-title",
+                  "search": "__section-title",
+                },
+              ],
+            },
+          },
+          Object {
+            "loader": "/Users/about_hiroppy/Programming/fusuma/node_modules/extract-text-webpack-plugin/dist/loader.js",
             "options": Object {
               "omit": 1,
               "remove": true,

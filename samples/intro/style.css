@@ -16,18 +16,16 @@ h2 {
   src: url('./StratumNo1 Medium.ttf');
 }
 
-.bespoke-parent {
-  /* stylelint-disable */
+__body {
   font-family: Stratum, 'Helvetica Neue For Number', 'Hiragino Kaku Gothic ProN', 'メイリオ', Arial,
     sans-serif;
-  /* stylelint-enable */
 }
 
-.bespoke-backdrop.title {
+__bg.title {
   background: #464646;
 }
 
-.bespoke-backdrop.end {
+__bg.end {
   background: var(--main-color);
 }
 
@@ -35,11 +33,11 @@ h2 {
   color: var(--sub-color);
 }
 
-.bespoke-backdrop.section-title {
+__section-title {
   background: var(--main-color);
 }
 
-.section-title h2 {
+.section-title > h2 {
   color: var(--sub-color);
   margin-bottom: 0;
 }
