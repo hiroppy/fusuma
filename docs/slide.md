@@ -2,6 +2,12 @@
 
 All slides are written in HTML or markdown.
 
+## CSS Class Name Aliases
+
+* `__body` -> `.bespoke-parent`
+* `__bg` -> `.bespoke-backdrop`
+* `__section-title` -> `.bespoke-backdrop.section-title`
+
 ## Contents
 
 Get the content of the slide and display it as a list in the sidebar.
@@ -31,14 +37,12 @@ This is the common setting of the slide for the title of the section.
 ### CSS
 
 ```css
-@import 'fusuma/src/frontend/assets/style/variable';
-
 .bespoke-backdrop.section-title {
   background: red;
 }
 
 .section-title h2 {
-  color: var(--color-js);
+  color: red;
 }
 ```
 
