@@ -1,3 +1,4 @@
+const { isAbsolute } = require('path');
 const rewire = require('rewire');
 
 describe('webpack.config', () => {
@@ -54,7 +55,9 @@ describe('webpack.config', () => {
     // can not stub using rewire
     res.module.rules.forEach((rule) => {
       if (rule.test.toString() === '/\\.css$/') {
-        rule.use[0].loader = 'stub';
+        rule.use.forEach((r) => {
+          if (r.loader && isAbsolute(r.loader)) r.loader = 'stub';
+        });
       }
     });
 

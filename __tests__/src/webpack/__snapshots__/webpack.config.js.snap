@@ -216,7 +216,7 @@ Object {
         "test": /\\\\\\.css\\$/,
         "use": Array [
           Object {
-            "loader": "stub",
+            "loader": "string-replace-loader",
             "options": Object {
               "multiple": Array [
                 Object {
@@ -238,7 +238,7 @@ Object {
             },
           },
           Object {
-            "loader": "/Users/about_hiroppy/Programming/fusuma/node_modules/extract-text-webpack-plugin/dist/loader.js",
+            "loader": "stub",
             "options": Object {
               "omit": 1,
               "remove": true,
