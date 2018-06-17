@@ -52,10 +52,10 @@ $ tree -a
 1 directory, 2 files
 
 # --- executable tasks---
-$ npx fusuma start                     # development
-$ NODE_ENV=production npx fusuma build # production
-$ npx fusuma deploy                    # deploy to github pages
-$ npx fusuma pdf                       # export as PDF from HTML
+$ npx fusuma start    # development
+$ npx fusuma build    # build as NODE_ENV=production
+$ npx fusuma deploy   # deploy to github pages
+$ npx fusuma pdf      # export as PDF from HTML
 ```
 
 When `npx fusuma start` is executed, it is output as follows.
@@ -95,7 +95,7 @@ Slide order is numeric, alphabetical.
 ## Usage
 
 ```sh
-   fusuma 0.2.1 - CLI for easily make slides with markdown
+   fusuma 0.4.1 - CLI for easily make slides with markdown
 
    USAGE
 
