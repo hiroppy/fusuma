@@ -10,7 +10,7 @@ describe('postcss', () => {
 
     const postcss = require('../../../src/configs/postcss.config')();
 
-    expect(postcss()).toMatchSnapshot();
+    expect(postcss).toMatchSnapshot();
   });
 
   it('should match settings when NODE_ENV is production', () => {
@@ -18,6 +18,6 @@ describe('postcss', () => {
 
     const postcss = require('../../../src/configs/postcss.config')();
 
-    expect(postcss()).toMatchSnapshot();
+    expect(postcss).toMatchSnapshot();
   });
 });

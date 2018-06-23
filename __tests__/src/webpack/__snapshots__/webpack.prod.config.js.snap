@@ -8,19 +8,8 @@ Object {
       Object {
         "test": /\\\\\\.css\\$/,
         "use": Array [
-          Object {
-            "loader": "stub",
-            "options": Object {
-              "omit": 1,
-              "remove": true,
-            },
-          },
-          Object {
-            "loader": "style-loader",
-          },
-          Object {
-            "loader": "css-loader",
-          },
+          "stub/mini-css-extract-plugin",
+          "css-loader",
           Object {
             "loader": "postcss-loader",
             "options": Object {
@@ -28,6 +17,28 @@ Object {
                 [Function],
                 [Function],
                 [Function],
+              ],
+            },
+          },
+          Object {
+            "loader": "string-replace-loader",
+            "options": Object {
+              "multiple": Array [
+                Object {
+                  "flags": "g",
+                  "replace": ".bespoke-parent",
+                  "search": "__body",
+                },
+                Object {
+                  "flags": "g",
+                  "replace": ".bespoke-backdrop",
+                  "search": "__bg",
+                },
+                Object {
+                  "flags": "g",
+                  "replace": ".bespoke-backdrop.section-title",
+                  "search": "__section-title",
+                },
               ],
             },
           },
@@ -43,7 +54,7 @@ Object {
           "exclude": undefined,
           "extractComments": false,
           "include": undefined,
-          "parallel": false,
+          "parallel": true,
           "sourceMap": false,
           "test": /\\\\\\.js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
           "uglifyOptions": Object {
@@ -55,14 +66,48 @@ Object {
         },
         "sourceMapsCache": WeakMap {},
       },
+      OptimizeCssAssetsWebpackPlugin {
+        "deleteAssetsMap": Object {},
+        "options": Object {
+          "assetNameRegExp": /\\\\\\.css\\$/g,
+          "assetProcessors": Array [
+            Object {
+              "phase": "compilation.optimize-chunk-assets",
+              "processor": [Function],
+              "regExp": /\\\\\\.css\\$/g,
+            },
+          ],
+          "canPrint": undefined,
+          "cssProcessor": [Function],
+          "cssProcessorOptions": Object {
+            "discardComments": Object {
+              "removeAll": true,
+            },
+            "safe": true,
+          },
+        },
+        "phaseAssetProcessors": Object {
+          "compilation.optimize-assets": Array [],
+          "compilation.optimize-chunk-assets": Array [
+            Object {
+              "phase": "compilation.optimize-chunk-assets",
+              "processor": [Function],
+              "regExp": /\\\\\\.css\\$/g,
+            },
+          ],
+          "emit": Array [],
+        },
+        "pluginDescriptor": Object {
+          "name": "OptimizeCssAssetsWebpackPlugin",
+        },
+      },
     ],
   },
   "plugins": Array [
-    ExtractTextPlugin {
-      "filename": "[md5:contenthash:hex:10].css",
-      "id": -1,
+    MiniCssExtractPlugin {
       "options": Object {
-        "allChunks": true,
+        "chunkFilename": "[id].[hash].css",
+        "filename": "[name].[hash].css",
       },
     },
     OccurrenceOrderPlugin {

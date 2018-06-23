@@ -39,6 +39,24 @@ Object {
         },
       },
       Object {
+        "test": /\\\\\\.md\\$/,
+        "use": Array [
+          "html-loader",
+          "markdown-loader",
+        ],
+      },
+      Object {
+        "test": /\\\\\\.\\(png\\|jpg\\|gif\\|svg\\?\\)\\$/,
+        "use": Array [
+          "file-loader",
+          "image-webpack-loader",
+        ],
+      },
+      Object {
+        "test": /\\\\\\.\\(eot\\|ttf\\|woff2\\?\\)\\$/,
+        "use": "file-loader",
+      },
+      Object {
         "test": /\\\\\\.css\\$/,
         "use": Array [
           "style-loader",
@@ -78,24 +96,6 @@ Object {
             },
           },
         ],
-      },
-      Object {
-        "test": /\\\\\\.md\\$/,
-        "use": Array [
-          "html-loader",
-          "markdown-loader",
-        ],
-      },
-      Object {
-        "test": /\\\\\\.\\(png\\|jpg\\|gif\\|svg\\?\\)\\$/,
-        "use": Array [
-          "file-loader",
-          "image-webpack-loader",
-        ],
-      },
-      Object {
-        "test": /\\\\\\.\\(eot\\|ttf\\|woff2\\?\\)\\$/,
-        "use": "file-loader",
       },
     ],
   },
@@ -213,8 +213,41 @@ Object {
         },
       },
       Object {
+        "test": /\\\\\\.md\\$/,
+        "use": Array [
+          "html-loader",
+          "markdown-loader",
+        ],
+      },
+      Object {
+        "test": /\\\\\\.\\(png\\|jpg\\|gif\\|svg\\?\\)\\$/,
+        "use": Array [
+          "file-loader",
+          "image-webpack-loader",
+        ],
+      },
+      Object {
+        "test": /\\\\\\.\\(eot\\|ttf\\|woff2\\?\\)\\$/,
+        "use": "file-loader",
+      },
+      Object {
         "test": /\\\\\\.css\\$/,
         "use": Array [
+          "style-loader",
+          "/Users/about_hiroppy/Programming/fusuma/node_modules/mini-css-extract-plugin/dist/loader.js",
+          "css-loader",
+          Object {
+            "loader": "postcss-loader",
+            "options": Object {
+              "plugins": Array [
+                [Function],
+                [Function],
+                [Function],
+                [Function],
+                [Function],
+              ],
+            },
+          },
           Object {
             "loader": "string-replace-loader",
             "options": Object {
@@ -237,44 +270,7 @@ Object {
               ],
             },
           },
-          Object {
-            "loader": "stub",
-            "options": Object {
-              "omit": 1,
-              "remove": true,
-            },
-          },
-          "style-loader",
-          "css-loader",
-          Object {
-            "loader": "postcss-loader",
-            "options": Object {
-              "plugins": Array [
-                [Function],
-                [Function],
-                [Function],
-              ],
-            },
-          },
         ],
-      },
-      Object {
-        "test": /\\\\\\.md\\$/,
-        "use": Array [
-          "html-loader",
-          "markdown-loader",
-        ],
-      },
-      Object {
-        "test": /\\\\\\.\\(png\\|jpg\\|gif\\|svg\\?\\)\\$/,
-        "use": Array [
-          "file-loader",
-          "image-webpack-loader",
-        ],
-      },
-      Object {
-        "test": /\\\\\\.\\(eot\\|ttf\\|woff2\\?\\)\\$/,
-        "use": "file-loader",
       },
     ],
   },
@@ -287,7 +283,7 @@ Object {
           "exclude": undefined,
           "extractComments": false,
           "include": undefined,
-          "parallel": false,
+          "parallel": true,
           "sourceMap": false,
           "test": /\\\\\\.js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
           "uglifyOptions": Object {
@@ -298,6 +294,41 @@ Object {
           "warningsFilter": [Function],
         },
         "sourceMapsCache": WeakMap {},
+      },
+      OptimizeCssAssetsWebpackPlugin {
+        "deleteAssetsMap": Object {},
+        "options": Object {
+          "assetNameRegExp": /\\\\\\.css\\$/g,
+          "assetProcessors": Array [
+            Object {
+              "phase": "compilation.optimize-chunk-assets",
+              "processor": [Function],
+              "regExp": /\\\\\\.css\\$/g,
+            },
+          ],
+          "canPrint": undefined,
+          "cssProcessor": [Function],
+          "cssProcessorOptions": Object {
+            "discardComments": Object {
+              "removeAll": true,
+            },
+            "safe": true,
+          },
+        },
+        "phaseAssetProcessors": Object {
+          "compilation.optimize-assets": Array [],
+          "compilation.optimize-chunk-assets": Array [
+            Object {
+              "phase": "compilation.optimize-chunk-assets",
+              "processor": [Function],
+              "regExp": /\\\\\\.css\\$/g,
+            },
+          ],
+          "emit": Array [],
+        },
+        "pluginDescriptor": Object {
+          "name": "OptimizeCssAssetsWebpackPlugin",
+        },
       },
     ],
   },
@@ -361,11 +392,10 @@ Object {
         },
       },
     },
-    ExtractTextPlugin {
-      "filename": "[md5:contenthash:hex:10].css",
-      "id": -1,
+    MiniCssExtractPlugin {
       "options": Object {
-        "allChunks": true,
+        "chunkFilename": "[id].[hash].css",
+        "filename": "[name].[hash].css",
       },
     },
     OccurrenceOrderPlugin {

@@ -19,8 +19,4 @@ const devConfig = () => {
 
 const prodConfig = () => common;
 
-function postcss() {
-  return process.env.NODE_ENV !== 'production' ? devConfig : prodConfig;
-}
-
-module.exports = postcss;
+module.exports = process.env.NODE_ENV !== 'production' ? devConfig : prodConfig;

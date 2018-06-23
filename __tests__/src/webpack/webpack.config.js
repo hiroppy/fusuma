@@ -56,16 +56,16 @@ describe('webpack.config', () => {
     res.module.rules.forEach((rule) => {
       if (rule.test.toString() === '/\\.css$/') {
         rule.use.forEach((r) => {
-          if (r.loader && isAbsolute(r.loader)) r.loader = 'stub';
+          if (typeof r === 'string' && isAbsolute(r)) r = 'stub/mini-css-etract-plugin';
         });
       }
     });
 
-    res.plugins.forEach((p) => {
-      if (p.constructor.name === 'ExtractTextPlugin') {
-        p.id = -1;
-      }
-    });
+    // res.plugins.forEach((p) => {
+    //   if (p.constructor.name === 'ExtractTextPlugin') {
+    //     p.id = -1;
+    //   }
+    // });
 
     expect(res).toMatchSnapshot();
   });

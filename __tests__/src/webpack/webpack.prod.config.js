@@ -12,15 +12,15 @@ describe('webpack.prod', () => {
     // can not stub using rewire
     res.module.rules.forEach((rule) => {
       if (rule.test.toString() === '/\\.css$/') {
-        rule.use[0].loader = 'stub';
+        rule.use[0] = 'stub/mini-css-extract-plugin';
       }
     });
 
-    res.plugins.forEach((p) => {
-      if (p.constructor.name === 'ExtractTextPlugin') {
-        p.id = -1;
-      }
-    });
+    // res.plugins.forEach((p) => {
+    //   console.log(p.constructor.name);
+    //   if (p.constructor.name === 'MiniCssExtractPlugin') {
+    //   }
+    // });
 
     expect(res).toMatchSnapshot();
   });

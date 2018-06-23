@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const Stylish = require('webpack-stylish');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const css = require('./css');
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   const { url, name, description, thumbnail, siteName, sns } = meta || {};
@@ -42,39 +43,6 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
           }
         },
         {
-          test: /\.css$/,
-          use: [
-            'style-loader',
-            'css-loader', // dont't use css-modules
-            {
-              loader: 'postcss-loader',
-              options: require('../configs/postcss.config')()()
-            },
-            {
-              loader: 'string-replace-loader',
-              options: {
-                multiple: [
-                  {
-                    search: '__body',
-                    replace: '.bespoke-parent',
-                    flags: 'g'
-                  },
-                  {
-                    search: '__bg',
-                    replace: '.bespoke-backdrop',
-                    flags: 'g'
-                  },
-                  {
-                    search: '__section-title',
-                    replace: '.bespoke-backdrop.section-title',
-                    flags: 'g'
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
           test: /\.md$/,
           use: ['html-loader', 'markdown-loader']
         },
@@ -85,7 +53,8 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         {
           test: /\.(eot|ttf|woff2?)$/,
           use: 'file-loader'
-        }
+        },
+        css()
       ]
     },
     plugins: [
