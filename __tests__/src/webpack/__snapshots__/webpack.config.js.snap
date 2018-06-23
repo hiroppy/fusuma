@@ -234,7 +234,7 @@ Object {
         "test": /\\\\\\.css\\$/,
         "use": Array [
           "style-loader",
-          "/Users/about_hiroppy/Programming/fusuma/node_modules/mini-css-extract-plugin/dist/loader.js",
+          "stub/",
           "css-loader",
           Object {
             "loader": "postcss-loader",

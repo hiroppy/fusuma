@@ -8,7 +8,7 @@ Object {
       Object {
         "test": /\\\\\\.css\\$/,
         "use": Array [
-          "stub/mini-css-extract-plugin",
+          "stub/",
           "css-loader",
           Object {
             "loader": "postcss-loader",

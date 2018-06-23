@@ -1,3 +1,4 @@
+const { isAbsolute } = require('path');
 const rewire = require('rewire');
 
 describe('webpack.prod', () => {
@@ -12,7 +13,9 @@ describe('webpack.prod', () => {
     // can not stub using rewire
     res.module.rules.forEach((rule) => {
       if (rule.test.toString() === '/\\.css$/') {
-        rule.use[0] = 'stub/mini-css-extract-plugin';
+        rule.use.forEach((r, i) => {
+          if (typeof r === 'string' && isAbsolute(r)) rule.use[i] = 'stub/';
+        });
       }
     });
 

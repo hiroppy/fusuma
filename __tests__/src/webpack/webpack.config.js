@@ -55,8 +55,8 @@ describe('webpack.config', () => {
     // can not stub using rewire
     res.module.rules.forEach((rule) => {
       if (rule.test.toString() === '/\\.css$/') {
-        rule.use.forEach((r) => {
-          if (typeof r === 'string' && isAbsolute(r)) r = 'stub/mini-css-etract-plugin';
+        rule.use.forEach((r, i) => {
+          if (typeof r === 'string' && isAbsolute(r)) rule.use[i] = 'stub/';
         });
       }
     });
