@@ -18,7 +18,8 @@ class AppContainer extends React.Component {
       loader: true,
       slideInfo: {
         total: 0,
-        current: 0
+        index: 0,
+        current: 0 // string
       }
     };
 
@@ -67,18 +68,24 @@ class AppContainer extends React.Component {
     }
 
     setTimeout(() => {
+      const index = window.slide.bespoke.slide() + 1;
+
       this.setState({
         slideInfo: {
           total: `${this.slides.length}`.padStart(2, '0'),
-          current: `${window.slide.bespoke.slide() + 1}`.padStart(2, '0')
+          index,
+          current: `${index}`.padStart(2, '0')
         }
       });
 
       window.slide.bespoke.on('activate', () => {
+        const index = window.slide.bespoke.slide() + 1;
+
         this.setState({
           slideInfo: {
             ...this.state.slideInfo,
-            current: `${window.slide.bespoke.slide() + 1}`.padStart(2, '0')
+            index,
+            current: `${index}`.padStart(2, '0')
           }
         });
       });
@@ -115,41 +122,38 @@ class AppContainer extends React.Component {
     window.slide.bespoke = setupBespoke(this.props.theme);
   };
 
+  getContent = () => {
+    return (
+      <React.Fragment>
+        <Loader displayed={this.state.loader} />
+        {this.content ? (
+          <this.content slides={this.slides} loadedBespoke={!this.state.loader} />
+        ) : (
+          <Base slides={this.slides} currentIndex={this.state.slideInfo.index} />
+        ) /* for common */}
+      </React.Fragment>
+    );
+  };
+
   render() {
-    if (process.env.SIDEBAR) {
-      return (
-        <Sidebar
-          goTo={this.goTo}
-          opened={this.state.opened}
-          contents={this.contents}
-          onSetOpen={this.onSetSidebarOpen}
-          slideInfo={this.state.slideInfo}
-        >
-          <Loader displayed={this.state.loader} />
-          {this.content ? (
-            <this.content slides={this.slides} loadedBespoke={!this.state.loader} />
-          ) : (
-            <Base slides={this.slides} />
-          ) /* for common */}
-          <i
-            style={{ width: 50 }}
-            className="btn-sidebar fa fa-bars"
-            onClick={() => this.onSetSidebarOpen(true)}
-          />
-        </Sidebar>
-      );
-    } else {
-      return (
-        <React.Fragment>
-          <Loader displayed={this.state.loader} />
-          {this.content ? (
-            <this.content slides={this.slides} loadedBespoke={!this.state.loader} />
-          ) : (
-            <Base slides={this.slides} />
-          ) /* for common */}
-        </React.Fragment>
-      );
-    }
+    return process.env.SIDEBAR ? (
+      <Sidebar
+        goTo={this.goTo}
+        opened={this.state.opened}
+        contents={this.contents}
+        onSetOpen={this.onSetSidebarOpen}
+        slideInfo={this.state.slideInfo}
+      >
+        {this.getContent()}
+        <i
+          style={{ width: 50 }}
+          className="btn-sidebar fa fa-bars"
+          onClick={() => this.onSetSidebarOpen(true)}
+        />
+      </Sidebar>
+    ) : (
+      this.getContent()
+    );
   }
 }
 
