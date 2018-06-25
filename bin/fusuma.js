@@ -13,7 +13,7 @@ prog
     await taskProcess('init');
   })
 
-  .command('start', 'Start with webpack-dev-server')
+  .command('start', 'Start with webpack-serve')
   .option('-d <directory>', 'Directory to load')
   .action(async (args, options, logger) => {
     await taskProcess('start', { dir: options.d });

@@ -7,7 +7,7 @@ USAGE
 
 COMMANDS
 
-  start               Start with webpack-dev-server
+  start               Start with webpack-serve
   build               Build with webpack
   init                Create a configure file
   deploy              Deploy to GitHub pages

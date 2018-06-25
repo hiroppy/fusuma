@@ -95,7 +95,7 @@ Slide order is numeric, alphabetical.
 ## Usage
 
 ```sh
-   fusuma 0.4.1 - CLI for easily make slides with markdown
+   fusuma 0.5.1 - CLI for easily make slides with markdown
 
    USAGE
 
@@ -104,7 +104,7 @@ Slide order is numeric, alphabetical.
    COMMANDS
 
      init                Create a configure file
-     start               Start with webpack-dev-server
+     start               Start with webpack-serve
      build               Build with webpack
      deploy              Deploy to GitHub pages
      pdf                 Export as PDF

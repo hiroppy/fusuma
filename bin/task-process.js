@@ -29,7 +29,7 @@ async function initProcess() {
 }
 
 async function startProcess(basePath) {
-  const spinner = ora('Starting with webpack-dev-server').start();
+  const spinner = ora('Starting with webpack-serve').start();
   const config = await read(basePath);
   const remoteOrigin = await getRemoteOriginUrl(basePath);
 
