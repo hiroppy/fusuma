@@ -12,14 +12,15 @@ class AppContainer extends React.Component {
   constructor(props) {
     super(props);
 
+    console.log(location.hash);
     this.state = {
       loaded: false, // only use presenter mode
       opened: false, // TODO: refactor to `status: {}`
       loader: true,
       slideInfo: {
         total: 0,
-        index: 0,
-        current: 0 // string
+        index: location.hash.slice(1) || 0,
+        current: '0' // string
       }
     };
 

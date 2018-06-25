@@ -1,10 +1,10 @@
 'use strict';
 
 const webpack = require('webpack');
-const webpackDevServer = require('./webpack-dev-server');
+const webpackServe = require('./webpack-serve');
 
 function start(config, cb) {
-  webpackDevServer(config, cb);
+  webpackServe(config, cb);
 }
 
 function build(config) {
