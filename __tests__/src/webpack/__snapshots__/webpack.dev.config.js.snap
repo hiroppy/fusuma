@@ -2,13 +2,6 @@
 
 exports[`webpack.dev should match settings 1`] = `
 Object {
-  "devServer": Object {
-    "contentBase": ".",
-    "hot": true,
-    "inline": true,
-    "port": 8080,
-    "quiet": true,
-  },
   "devtool": "cheap-module-eval-source-map",
   "mode": "development",
   "plugins": Array [
