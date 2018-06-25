@@ -1,6 +1,5 @@
 'use strict';
 
-const webpack = require('webpack');
 const serve = require('webpack-serve');
 
 async function run(config, cb) {
