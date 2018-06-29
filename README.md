@@ -220,3 +220,4 @@ const { start, build, deploy, pdf } = require('fusuma');
 
 * [Markdown だけで綺麗なスライドを作る CLI を作っている](http://blog.hiroppy.me/entry/fusuma)
 * [Introduce Fusuma that is a helper for creating a slide](https://medium.com/@about_hiroppy/introduce-fusuma-that-is-a-helper-for-creating-a-slide-10d54775f255)
+* [Introducing Fusuma: A helper for creating slides with markdown](https://dev.to/abouthiroppy/introduce-fusuma-that-is-a-helper-for-creating-a-slide-536)
