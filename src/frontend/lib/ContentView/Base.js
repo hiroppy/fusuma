@@ -12,7 +12,7 @@ const Base = ({ slides, currentIndex }) => (
         data-bespoke-fx-direction={slide.meta.fx.direction}
         data-bespoke-fx-transition={slide.meta.fx.transition}
         dangerouslySetInnerHTML={{
-          __html: i + 1 < currentIndex + 5 ? slide.context : '<div />'
+          __html: slide.context
         }}
       />
     ))}
