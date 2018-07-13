@@ -1,14 +1,13 @@
 'use strict';
 
-/**
- * packages
- *
- * - postcss-cssnext
- *   - autoprefixer
- */
-
 const common = {
-  plugins: [require('postcss-import'), require('postcss-mixins'), require('postcss-cssnext')]
+  plugins: [
+    require('postcss-import'),
+    require('postcss-mixins'),
+    require('postcss-preset-env')({
+      stage: 0
+    })
+  ]
 };
 
 const devConfig = () => {
