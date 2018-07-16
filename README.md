@@ -73,7 +73,7 @@ When `npx fusuma start` is executed, it is output as follows.
 
 ## Directory Structure
 
-Please see [samples](/samples) or Demo repository.
+Please see [samples](/samples) or [Verification Repository](https://github.com/issue-verifier/fusuma).
 
 Slide order is numeric, alphabetical.
 
@@ -95,7 +95,7 @@ Slide order is numeric, alphabetical.
 ## Usage
 
 ```sh
-   fusuma 0.5.1 - CLI for easily make slides with markdown
+   fusuma 0.5.3 - CLI for easily make slides with markdown
 
    USAGE
 

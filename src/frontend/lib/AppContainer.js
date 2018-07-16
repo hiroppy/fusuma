@@ -12,7 +12,6 @@ class AppContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(location.hash);
     this.state = {
       loaded: false, // only use presenter mode
       opened: false, // TODO: refactor to `status: {}`
