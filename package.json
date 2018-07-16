@@ -69,6 +69,7 @@
     "postcss-mixins": "^6.2.0",
     "postcss-preset-env": "^5.2.1",
     "postcss-reporter": "^5.0.0",
+    "postcss-url": "^7.3.2",
     "preferred-search": "^1.0.0",
     "prismjs": "^1.14.0",
     "react": "^16.3.2",
