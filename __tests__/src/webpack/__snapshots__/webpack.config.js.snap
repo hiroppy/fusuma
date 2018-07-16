@@ -53,11 +53,18 @@ Object {
         "test": /\\\\\\.css\\$/,
         "use": Array [
           "style-loader",
-          "css-loader",
+          Object {
+            "loader": "css-loader",
+            "options": Object {
+              "importLoaders": 2,
+              "modules": false,
+            },
+          },
           Object {
             "loader": "postcss-loader",
             "options": Object {
               "plugins": Array [
+                [Function],
                 [Function],
                 [Function],
                 [Function],
@@ -228,11 +235,18 @@ Object {
         "use": Array [
           "style-loader",
           "stub/",
-          "css-loader",
+          Object {
+            "loader": "css-loader",
+            "options": Object {
+              "importLoaders": 2,
+              "modules": false,
+            },
+          },
           Object {
             "loader": "postcss-loader",
             "options": Object {
               "plugins": Array [
+                [Function],
                 [Function],
                 [Function],
                 [Function],

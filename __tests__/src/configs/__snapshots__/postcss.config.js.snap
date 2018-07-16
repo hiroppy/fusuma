@@ -8,6 +8,7 @@ Object {
     [Function],
     [Function],
     [Function],
+    [Function],
   ],
 }
 `;
@@ -15,6 +16,7 @@ Object {
 exports[`postcss should match settings when NODE_ENV is production 1`] = `
 Object {
   "plugins": Array [
+    [Function],
     [Function],
     [Function],
     [Function],
