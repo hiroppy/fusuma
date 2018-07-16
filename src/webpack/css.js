@@ -7,7 +7,13 @@ module.exports = (env = 'dev') => {
     test: /\.css$/,
     use: [
       env === 'dev' ? 'style-loader' : MiniCssExtractPlugin.loader,
-      'css-loader', // dont't use css-modules
+      {
+        loader: 'css-loader',
+        options: {
+          modules: false,
+          importLoaders: 2
+        }
+      },
       {
         loader: 'postcss-loader',
         options: require('../configs/postcss.config')()
