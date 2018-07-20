@@ -1,3 +1,6 @@
+import React from 'react';
+import reactElementToJSXString from 'react-element-to-jsx-string';
+
 const parseAttrs = (content) => {
   const res = {
     fx: {
@@ -5,8 +8,9 @@ const parseAttrs = (content) => {
       transition: ''
     },
     note: '',
-    contents: [],
+    sectionTitle: '',
     className: '',
+    shouldReplace: false,
     background: 'default'
   };
 
@@ -24,24 +28,6 @@ const parseAttrs = (content) => {
     res.fx.transition = arr ? arr[1] : 'none';
   }
 
-  // contents
-  {
-    const arr = content.match(/<!-- contents -->/);
-
-    if (arr) {
-      const regex = /<a href="(.*?)"\>(.*?)</g; // eslint-disable-line no-useless-escape
-      let matches;
-
-      while ((matches = regex.exec(arr.input))) {
-        // eslint-disable-line no-cond-assign
-        res.contents.push({
-          href: matches[1],
-          text: matches[2]
-        });
-      }
-    }
-  }
-
   // background
   {
     const arr = content.match(/<!-- background: (.+) -->/);
@@ -50,9 +36,14 @@ const parseAttrs = (content) => {
   }
 
   // section-title
-  if (content.match(/<!-- sectionTitle -->/)) {
-    res.background = 'section-title';
-    res.className = 'section-title';
+  {
+    const arr = content.match(/<!-- sectionTitle: (.+) -->/);
+
+    if (arr) {
+      res.background = 'section-title';
+      res.className = 'section-title';
+      res.sectionTitle = arr[1];
+    }
   }
 
   // note
@@ -60,6 +51,13 @@ const parseAttrs = (content) => {
     const arr = content.match(/<!-- note[\s\S]*-->/g);
 
     res.note = arr ? arr[0].replace(/<!-- note/g, '').replace(/-->/g, '') : '';
+  }
+
+  // support for replace-html
+  {
+    const arr = content.match(/<!-- contents -->/);
+
+    if (arr) res.shouldReplace = true;
   }
 
   return res;

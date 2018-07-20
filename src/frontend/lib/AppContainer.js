@@ -6,6 +6,7 @@ import Sidebar from './Sidebar';
 import Base from './ContentView/Base';
 import router from './utils/router';
 import parseAttrs from './utils/parse-attrs';
+import { insertContentsList } from './utils/replace-html';
 import setupBespoke from './setup-bespoke';
 
 class AppContainer extends React.Component {
@@ -24,10 +25,10 @@ class AppContainer extends React.Component {
     };
 
     this.slides = [];
-    this.contents = [];
+    this.contentsList = [];
     this.setupBespokeFlag = false; // for lazy load
 
-    props.slides.forEach((slide) => {
+    props.slides.forEach((slide, i) => {
       const meta = parseAttrs(slide);
 
       this.slides.push({
@@ -35,10 +36,21 @@ class AppContainer extends React.Component {
         context: slide
       });
 
-      if (meta.contents.length !== 0) {
-        this.contents = meta.contents;
+      if (meta.sectionTitle !== '') {
+        this.contentsList.push({
+          title: meta.sectionTitle,
+          index: i + 1
+        });
       }
     });
+
+    if (this.contentsList.length !== 0) {
+      this.slides.forEach((e, i) => {
+        if (e.meta.shouldReplace) {
+          this.slides[i].context = insertContentsList(e.context, this.contentsList);
+        }
+      });
+    }
 
     const mode = router();
 
@@ -140,7 +152,7 @@ class AppContainer extends React.Component {
       <Sidebar
         goTo={this.goTo}
         opened={this.state.opened}
-        contents={this.contents}
+        contents={this.contentsList}
         onSetOpen={this.onSetSidebarOpen}
         slideInfo={this.state.slideInfo}
       >
