@@ -1,4 +1,4 @@
-<!-- sectionTitle -->
+<!-- sectionTitle: slide -->
 
 ## Slide Syntax
 

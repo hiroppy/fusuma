@@ -1,3 +1,3 @@
-<!-- sectionTitle -->
+<!-- sectionTitle: usage -->
 
 ## Usage

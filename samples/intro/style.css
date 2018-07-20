@@ -13,7 +13,7 @@ h2 {
 
 @font-face {
   font-family: Stratum;
-  src: url('./StratumNo1 Medium.ttf');
+  /* src: url('./StratumNo1 Medium.ttf'); */
 }
 
 __body {
