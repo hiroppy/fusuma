@@ -10,26 +10,29 @@ All slides are written in HTML or markdown.
 
 ## Contents
 
-Get the content of the slide and display it as a list in the sidebar.
-
-e.g. https://hiroppy.github.io/fusuma-sample/#3
+If you want to automatically make the slide registered to `sectionTitle` a table of contents, add the following.
 
 ### Markdown
 
 ```md
+## Contents
+
+<div>
+
 <!-- contents -->
 
-## Contents
+</div>
 ```
 
 ## Section Title
 
-This is the common setting of the slide for the title of the section.
+This is the common setting of the slide for the title of the section.  
+This will affect the sidebar's table of contents list and `contents`.
 
 ### Markdown
 
 ```md
-<!-- sectionTitle -->
+<!-- sectionTitle: title -->
 
 ## title
 ```
