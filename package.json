@@ -74,6 +74,7 @@
     "prismjs": "^1.14.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-element-to-jsx-string": "^14.0.1",
     "react-loading": "^2.0.2",
     "react-sidebar": "^2.3.2",
     "remote-origin-url": "^1.0.0",
