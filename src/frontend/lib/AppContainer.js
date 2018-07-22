@@ -79,7 +79,12 @@ class AppContainer extends React.Component {
       import('./setup-prism'); // other types(presenter mode: host, view) require lazy loading
     }
 
-    setTimeout(() => {
+    // load Sidebar
+    import(/* webpackChunkName: 'Sidebar' */
+    /* webpackPrefetch: true */
+    './Sidebar').then(({ default: SidebarComponent }) => {
+      this.setState({ SidebarComponent });
+
       const index = window.slide.bespoke.slide() + 1;
 
       this.setState({
@@ -101,13 +106,6 @@ class AppContainer extends React.Component {
           }
         });
       });
-    }, 4000);
-
-    // load Sidebar
-    import(/* webpackChunkName: 'Sidebar' */
-    /* webpackPrefetch: true */
-    './Sidebar').then(({ default: SidebarComponent }) => {
-      this.setState({ SidebarComponent });
     });
   }
 
