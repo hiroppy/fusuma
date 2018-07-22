@@ -2,6 +2,11 @@ import createBody from './create-body';
 import fetchSlides from './fetch-slides';
 import './setup-default';
 
+// TODO: maybe need to use production path...
+// if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('/service-worker.js');
+// }
+
 let theme;
 
 try {
