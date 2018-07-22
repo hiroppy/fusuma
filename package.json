@@ -19,7 +19,15 @@
     "type": "git",
     "url": "git+https://github.com/hiroppy/fusuma.git"
   },
-  "keywords": ["slide", "markdown", "tool", "cli", "presentation", "react", "bespoke"],
+  "keywords": [
+    "slide",
+    "markdown",
+    "tool",
+    "cli",
+    "presentation",
+    "react",
+    "bespoke"
+  ],
   "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
   "license": "MIT",
   "bugs": {
@@ -94,7 +102,7 @@
     "husky": "^0.14.3",
     "jest": "^22.4.3",
     "lynt": "^0.1.0",
-    "prettier": "^1.12.1",
+    "prettier": "^1.13.7",
     "pretty-quick": "^1.4.1",
     "rewire": "^4.0.1"
   },
