@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Loader from './Loader';
-import Sidebar from './Sidebar';
 import Base from './ContentView/Base';
 import router from './utils/router';
 import parseAttrs from './utils/parse-attrs';
@@ -17,6 +16,7 @@ class AppContainer extends React.Component {
       loaded: false, // only use presenter mode
       opened: false, // TODO: refactor to `status: {}`
       loader: true,
+      SidebarComponent: null, // for lazy load
       slideInfo: {
         total: 0,
         index: location.hash.slice(1) || 0,
@@ -102,6 +102,13 @@ class AppContainer extends React.Component {
         });
       });
     }, 4000);
+
+    // load Sidebar
+    import(/* webpackChunkName: 'Sidebar' */
+    /* webpackPrefetch: true */
+    './Sidebar').then(({ default: SidebarComponent }) => {
+      this.setState({ SidebarComponent });
+    });
   }
 
   UNSAFE_componentWillUpdate() {
@@ -148,23 +155,28 @@ class AppContainer extends React.Component {
   };
 
   render() {
-    return process.env.SIDEBAR ? (
-      <Sidebar
-        goTo={this.goTo}
-        opened={this.state.opened}
-        contents={this.contentsList}
-        onSetOpen={this.onSetSidebarOpen}
-        slideInfo={this.state.slideInfo}
-      >
+    return (
+      <React.Fragment>
+        {process.env.SIDEBAR ? (
+          <React.Fragment>
+            {this.state.SidebarComponent ? (
+              <this.state.SidebarComponent
+                goTo={this.goTo}
+                opened={this.state.opened}
+                contents={this.contentsList}
+                onSetOpen={this.onSetSidebarOpen}
+                slideInfo={this.state.slideInfo}
+              />
+            ) : null}
+            <i
+              style={{ width: 50 }}
+              className="btn-sidebar fa fa-bars"
+              onClick={() => this.onSetSidebarOpen(true)}
+            />
+          </React.Fragment>
+        ) : null}
         {this.getContent()}
-        <i
-          style={{ width: 50 }}
-          className="btn-sidebar fa fa-bars"
-          onClick={() => this.onSetSidebarOpen(true)}
-        />
-      </Sidebar>
-    ) : (
-      this.getContent()
+      </React.Fragment>
     );
   }
 }

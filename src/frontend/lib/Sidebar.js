@@ -96,9 +96,7 @@ const SidebarComponent = (props) => (
     styles={styles}
     sidebarClassName="sidebar"
     onSetOpen={props.onSetOpen}
-  >
-    {props.children}
-  </Sidebar>
+  />
 );
 
 export default SidebarComponent;
