@@ -7,7 +7,7 @@
 }
 
 .host-note {
-  width: 60%;
+  width: 50%;
 
   & pre {
     background: transparent !important;
@@ -24,7 +24,7 @@
   flex-direction: column;
   height: calc(100vh - 40px);
   justify-content: flex-end;
-  width: 40%;
+  width: 50%;
 
   & > h2 {
     color: var(--color-main);
@@ -40,8 +40,8 @@
   */
 
   & .host-next-slide {
-    height: 180px;
+    height: 270px;
     position: relative;
-    width: 320px;
+    width: 480px;
   }
 }

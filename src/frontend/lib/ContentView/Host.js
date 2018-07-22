@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import Base from './Base';
 import '../../assets/style/host.css';
 
 class Host extends React.Component {
@@ -17,6 +18,10 @@ class Host extends React.Component {
       meta: {
         note: '',
         className: '',
+        fx: {
+          direction: 'horizontal',
+          transition: 'none'
+        },
         background: 'default'
       },
       content: '<h2>finish</h2>'
@@ -76,16 +81,7 @@ class Host extends React.Component {
             ) : null
           */}
           <h2>next</h2>
-          <article className="host-next-slide">
-            {this.slides.map((slide, i) => (
-              <section
-                key={i /* fix */}
-                className={slide.meta.className}
-                data-bespoke-backdrop={slide.meta.background}
-                dangerouslySetInnerHTML={{ __html: slide.context }}
-              />
-            ))}
-          </article>
+          <Base slides={this.slides} className="host-next-slide" />;
         </div>
       </div>
     );

@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-const Base = ({ slides, currentIndex }) => (
-  <article>
+const Base = ({ slides, currentIndex, className = undefined }) => (
+  <article className={className}>
     {slides.map((slide, i) => (
       <section
         key={i /* fix */}
