@@ -17,10 +17,10 @@ Just write the markdown and make the cool slide.
 
 ## Demos
 
-* [introduction slide of Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
-* [animation slide](https://hiroppy.github.io/fusuma/fx/) [[repository](/samples/fx)]
-* [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/) [[repository](https://github.com/hiroppy/slides/tree/master/slides/the-present-and-future-of-JavaScript)]
-* other my slide [[repository](https://github.com/hiroppy/slides#my-slides)]
+- [introduction slide of Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
+- [animation slide](https://hiroppy.github.io/fusuma/fx/) [[repository](/samples/fx)]
+- [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/) [[repository](https://github.com/hiroppy/slides/tree/master/slides/the-present-and-future-of-JavaScript)]
+- other my slide [[repository](https://github.com/hiroppy/slides#my-slides)]
 
 ## Install
 
@@ -64,12 +64,12 @@ When `npx fusuma start` is executed, it is output as follows.
 
 ## Feature
 
-* support [bespoke.js](https://github.com/bespokejs/bespoke)
-* support animations of page transition
-* support SNS, fullscreen, Presenter Mode
-* support development mode, production build and deploy
-* overwriting of js and css is possible
-* export as PDF
+- support [bespoke.js](https://github.com/bespokejs/bespoke)
+- support animations of page transition
+- support SNS, fullscreen, Presenter Mode
+- support development mode, production build and deploy
+- overwriting of js and css is possible
+- export as PDF
 
 ## Directory Structure
 
@@ -135,6 +135,7 @@ meta:
   description: Explain how specifications are determined and how it will be in the future.
   thumbnail: https://avatars1.githubusercontent.com/u/1725583?v=4&s=200
   siteName: slides.hiroppy.me
+  repositoryUrl: https://github.com/hiroppy/fusuma
   sns:
     - twitter
     - hatena
@@ -161,7 +162,8 @@ module.exports = {
     description: 'test',
     thumbnail: 'url',
     siteName: 'siteName',
-    sns: ['twitter', 'hatena']
+    sns: ['twitter', 'hatena'],
+    repositoryUrl: 'https://github.com/hiroppy/fusuma'
   },
   slide: {
     theme: 'nebula',
@@ -178,9 +180,9 @@ module.exports = {
 
 ### Themes
 
-* Cube
-* Voltaire
-* Nebula (default)
+- Cube
+- Voltaire
+- Nebula (default)
 
 https://github.com/bespokejs/bespoke#themes
 
@@ -201,14 +203,14 @@ View: `?presenter=view`
 
 ## Library
 
-* Bespoke
-* Babel
-* webpack
-* Postcss
-* Prism
-* React
-* Workbox
-* font-awesome
+- Bespoke
+- Babel
+- webpack
+- Postcss
+- Prism
+- React
+- Workbox
+- font-awesome
 
 ## API
 
@@ -218,6 +220,6 @@ const { start, build, deploy, pdf } = require('fusuma');
 
 ## Articles
 
-* [Markdown だけで綺麗なスライドを作る CLI を作っている](http://blog.hiroppy.me/entry/fusuma)
-* [Introduce Fusuma that is a helper for creating a slide](https://medium.com/@about_hiroppy/introduce-fusuma-that-is-a-helper-for-creating-a-slide-10d54775f255)
-* [Introducing Fusuma: A helper for creating slides with markdown](https://dev.to/abouthiroppy/introduce-fusuma-that-is-a-helper-for-creating-a-slide-536)
+- [Markdown だけで綺麗なスライドを作る CLI を作っている](http://blog.hiroppy.me/entry/fusuma)
+- [Introduce Fusuma that is a helper for creating a slide](https://medium.com/@about_hiroppy/introduce-fusuma-that-is-a-helper-for-creating-a-slide-10d54775f255)
+- [Introducing Fusuma: A helper for creating slides with markdown](https://dev.to/abouthiroppy/introduce-fusuma-that-is-a-helper-for-creating-a-slide-536)

@@ -5,6 +5,8 @@ meta:
   description: Introduce Fusuma
   thumbnail: url
   siteName: hiroppy.me
+  repositoryUrl: https://github.com/hiroppy/fusuma
+  sns: ['twitter']
 slide:
   theme: nebula
 extends:

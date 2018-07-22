@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const css = require('./css');
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
-  const { url, name, description, thumbnail, siteName, sns } = meta || {};
+  const { url, name, description, thumbnail, siteName, sns, repositoryUrl } = meta || {};
   const { theme, sidebar } = slide || {};
 
   const { js: jsPath, css: cssPath } = fileExtends || {};
@@ -67,7 +67,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         'process.env.SIDEBAR': JSON.stringify(sidebar === undefined ? true : sidebar),
         'process.env.TITLE': JSON.stringify(name),
         'process.env.BASE_PATH': JSON.stringify(basePath),
-        'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin || meta.repositoryUrl)
+        'process.env.REMOTE_ORIGIN_URL': JSON.stringify(repositoryUrl || remoteOrigin)
       }),
       new HtmlWebpackPlugin({
         url,

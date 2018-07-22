@@ -101,7 +101,7 @@ class AppContainer extends React.Component {
           }
         });
       });
-    }, 5000);
+    }, 4000);
   }
 
   UNSAFE_componentWillUpdate() {
