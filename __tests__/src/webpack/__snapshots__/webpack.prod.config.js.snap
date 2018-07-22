@@ -109,6 +109,19 @@ Object {
         },
       },
     ],
+    "splitChunks": Object {
+      "cacheGroups": Object {
+        "vendor": Object {
+          "chunks": "initial",
+          "enforce": true,
+          "name": "vendor",
+          "test": /node_modules/,
+        },
+      },
+    },
+  },
+  "output": Object {
+    "filename": "[name].[hash].js",
   },
   "plugins": Array [
     MiniCssExtractPlugin {
@@ -116,9 +129,6 @@ Object {
         "chunkFilename": "[id].[hash].css",
         "filename": "[name].[hash].css",
       },
-    },
-    OccurrenceOrderPlugin {
-      "preferEntry": undefined,
     },
     AggressiveMergingPlugin {
       "options": Object {},

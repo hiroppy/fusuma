@@ -2,15 +2,9 @@
 
 exports[`webpack.dev should match settings 1`] = `
 Object {
-  "devtool": "cheap-module-eval-source-map",
   "mode": "development",
-  "plugins": Array [
-    HotModuleReplacementPlugin {
-      "fullBuildTimeout": 200,
-      "multiStep": undefined,
-      "options": Object {},
-      "requestTimeout": 10000,
-    },
-  ],
+  "output": Object {
+    "filename": "[name].js",
+  },
 }
 `;

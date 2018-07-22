@@ -2,7 +2,6 @@
 
 exports[`webpack.config should return settings when NODE_ENV is development 1`] = `
 Object {
-  "devtool": "cheap-module-eval-source-map",
   "entry": Array [
     "stab",
   ],
@@ -101,7 +100,7 @@ Object {
   },
   "name": "test",
   "output": Object {
-    "filename": "[hash].js",
+    "filename": "[name].js",
     "path": "stab",
   },
   "plugins": Array [
@@ -159,12 +158,6 @@ Object {
           "warnings": 0,
         },
       },
-    },
-    HotModuleReplacementPlugin {
-      "fullBuildTimeout": 200,
-      "multiStep": undefined,
-      "options": Object {},
-      "requestTimeout": 10000,
     },
   ],
   "resolve": Object {
@@ -338,9 +331,19 @@ Object {
         },
       },
     ],
+    "splitChunks": Object {
+      "cacheGroups": Object {
+        "vendor": Object {
+          "chunks": "initial",
+          "enforce": true,
+          "name": "vendor",
+          "test": /node_modules/,
+        },
+      },
+    },
   },
   "output": Object {
-    "filename": "[hash].js",
+    "filename": "[name].[hash].js",
     "path": "stab",
   },
   "plugins": Array [
@@ -404,9 +407,6 @@ Object {
         "chunkFilename": "[id].[hash].css",
         "filename": "[name].[hash].css",
       },
-    },
-    OccurrenceOrderPlugin {
-      "preferEntry": undefined,
     },
     AggressiveMergingPlugin {
       "options": Object {},

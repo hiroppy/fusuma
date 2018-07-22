@@ -10,6 +10,9 @@ const css = require('./css');
 function prod() {
   return {
     mode: 'production',
+    output: {
+      filename: '[name].[hash].js'
+    },
     module: {
       rules: [css('prod')]
     },
@@ -18,7 +21,6 @@ function prod() {
         filename: '[name].[hash].css',
         chunkFilename: '[id].[hash].css'
       }),
-      new webpack.optimize.OccurrenceOrderPlugin(),
       new webpack.optimize.AggressiveMergingPlugin(),
       new workboxPlugin.GenerateSW()
     ],
@@ -28,9 +30,24 @@ function prod() {
           parallel: true
         }),
         new OptimizeCSSAssetsPlugin({
-          cssProcessorOptions: { safe: true, discardComments: { removeAll: true } }
+          cssProcessorOptions: {
+            safe: true,
+            discardComments: {
+              removeAll: true
+            }
+          }
         })
-      ]
+      ],
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /node_modules/,
+            name: 'vendor',
+            chunks: 'initial',
+            enforce: true
+          }
+        }
+      }
     }
   };
 }

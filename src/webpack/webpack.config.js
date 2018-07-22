@@ -24,8 +24,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
     name: name || 'slide',
     entry: [path.resolve(__dirname, '..', 'frontend', 'lib', 'index.js')],
     output: {
-      path: path.resolve(basePath, 'dist'),
-      filename: '[hash].js'
+      path: path.resolve(basePath, 'dist')
     },
     resolveLoader: {
       modules: ['node_modules', path.resolve(__dirname, '..', '..', 'node_modules')]
