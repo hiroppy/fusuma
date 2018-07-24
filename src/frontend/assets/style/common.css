@@ -20,11 +20,12 @@ pre {
   border-radius: 10px;
   font-size: 0.7rem;
   min-width: 50%;
-  width: 90%;
+  max-width: 90%;
+}
 
-  & code {
-    font-family: 'Source Code Pro', monospace !important;
-  }
+code {
+  font-family: 'Source Code Pro', monospace !important;
+  padding: 0 3px;
 }
 
 .fa-hatena:before {
