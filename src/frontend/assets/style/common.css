@@ -20,6 +20,7 @@ pre {
   border-radius: 10px;
   font-size: 0.7rem;
   min-width: 50%;
+  width: 90%;
 
   & code {
     font-family: 'Source Code Pro', monospace !important;
