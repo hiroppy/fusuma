@@ -12,6 +12,7 @@ exports[`fusuma init 1`] = `
 slide:
   sidebar: true
   theme: nebula
+  targetBlank: true
 extends:
   js:
   css:

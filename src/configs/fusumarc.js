@@ -20,7 +20,8 @@ const config = {
   },
   slide: {
     sidebar: true,
-    theme: 'nebula'
+    theme: 'nebula',
+    targetBlank: true
   },
   extends: {
     js: null,

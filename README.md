@@ -142,6 +142,7 @@ meta:
 slide:
   theme: nebula
   sidebar: true
+  targetBlank: true
 extends:
   js: index.js
   css: style.css
@@ -167,7 +168,8 @@ module.exports = {
   },
   slide: {
     theme: 'nebula',
-    sidebar: true
+    sidebar: true,
+    targetBlank: true
   },
   extends: {
     js: 'index.js',

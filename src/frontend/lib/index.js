@@ -1,6 +1,7 @@
 import createBody from './create-body';
 import fetchSlides from './fetch-slides';
 import './setup-default';
+import setTargetBlank from './utils/target-blank';
 
 // TODO: maybe need to use production path...
 // if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
@@ -36,3 +37,5 @@ const slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH));
 if (theme === undefined) throw new Error('Could not find theme');
 
 createBody(slidesInfo.slides, theme);
+
+if (process.env.TARGET_BLANK) setTargetBlank();
