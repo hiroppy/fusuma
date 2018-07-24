@@ -3,7 +3,7 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 
 export function insertContentsList(content, list) {
   const html = (
-    <ul class="contents">
+    <ul className="contents">
       {list.map((e, i) => (
         <li key={i}>
           <a href={`#${e.index}`}>{e.title}</a>

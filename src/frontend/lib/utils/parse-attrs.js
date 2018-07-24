@@ -1,6 +1,3 @@
-import React from 'react';
-import reactElementToJSXString from 'react-element-to-jsx-string';
-
 const parseAttrs = (content) => {
   const res = {
     fx: {

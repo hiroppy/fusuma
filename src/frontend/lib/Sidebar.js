@@ -97,7 +97,7 @@ const SidebarComponent = (props) => (
     sidebarClassName="sidebar"
     onSetOpen={props.onSetOpen}
   >
-    '' {/* react-slider requires props.children... */}
+    &apos;{/* react-slider requires props.children... */}
   </Sidebar>
 );
 

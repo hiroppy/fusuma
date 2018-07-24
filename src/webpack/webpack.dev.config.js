@@ -1,7 +1,5 @@
 'use strict';
 
-const webpack = require('webpack');
-
 function dev() {
   return {
     mode: 'development',
