@@ -11,15 +11,16 @@ function prod() {
   return {
     mode: 'production',
     output: {
-      filename: '[name].[hash].js'
+      filename: '[name].[chunkhash].bundle.js',
+      chunkFilename: '[name].[id].[chunkhash].bundle.js'
     },
     module: {
       rules: [css('prod')]
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: '[name].[hash].css',
-        chunkFilename: '[id].[hash].css'
+        filename: '[name].[chunkhash].css',
+        chunkFilename: '[name].[id].[chunkhash].css'
       }),
       new webpack.optimize.AggressiveMergingPlugin(),
       new workboxPlugin.GenerateSW()
@@ -47,7 +48,8 @@ function prod() {
             enforce: true
           }
         }
-      }
+      },
+      runtimeChunk: 'single'
     }
   };
 }
