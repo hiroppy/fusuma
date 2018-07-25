@@ -65,7 +65,7 @@ When `npx fusuma start` is executed, it is output as follows.
 ## Feature
 
 - support [bespoke.js](https://github.com/bespokejs/bespoke)
-- support animations of page transition
+- support animations of page transition and lazy-load
 - support SNS, fullscreen, Presenter Mode
 - support development mode, production build and deploy
 - overwriting of js and css is possible
