@@ -7,8 +7,10 @@
 import React from 'react';
 import Base from './Base';
 
-class View extends React.Component {
-  UNSAFE_componentWillMount() {
+class View extends React.PureComponent {
+  constructor() {
+    super();
+
     window.addEventListener('storage', (e) => {
       if (e.key === 'page') {
         const page = JSON.parse(e.newValue).page;
@@ -18,12 +20,8 @@ class View extends React.Component {
     });
   }
 
-  componentDidMount() {
-    import('../setup-prism');
-  }
-
   render() {
-    return <Base slides={this.props.slides} />;
+    return <Base slides={this.props.slides} lazyload={false} />;
   }
 }
 

@@ -332,6 +332,7 @@ Object {
         },
       },
     ],
+    "runtimeChunk": "single",
     "splitChunks": Object {
       "cacheGroups": Object {
         "vendor": Object {
@@ -344,7 +345,8 @@ Object {
     },
   },
   "output": Object {
-    "filename": "[name].[hash].js",
+    "chunkFilename": "[name].[id].[chunkhash].bundle.js",
+    "filename": "[name].[chunkhash].bundle.js",
     "path": "stab",
   },
   "plugins": Array [
@@ -406,8 +408,8 @@ Object {
     },
     MiniCssExtractPlugin {
       "options": Object {
-        "chunkFilename": "[id].[hash].css",
-        "filename": "[name].[hash].css",
+        "chunkFilename": "[name].[id].[chunkhash].css",
+        "filename": "[name].[chunkhash].css",
       },
     },
     AggressiveMergingPlugin {

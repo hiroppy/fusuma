@@ -4,12 +4,16 @@ import React from 'react';
 import Prism from 'prismjs';
 
 class Base extends React.PureComponent {
+  componentDidMount() {
+    Prism.highlightAll();
+  }
+
   componentDidUpdate() {
     Prism.highlightAll();
   }
 
   render() {
-    const { slides, currentIndex, className = undefined } = this.props;
+    const { slides, currentIndex, className = undefined, lazyload = true } = this.props;
 
     return (
       <article className={className}>
@@ -21,7 +25,10 @@ class Base extends React.PureComponent {
             data-bespoke-fx-direction={slide.meta.fx.direction}
             data-bespoke-fx-transition={slide.meta.fx.transition}
             dangerouslySetInnerHTML={{
-              __html: currentIndex >= i - 5 && currentIndex <= i + 5 ? slide.context : '<div />'
+              __html:
+                (currentIndex >= i - 5 && currentIndex <= i + 5) || !lazyload
+                  ? slide.context
+                  : '<div />'
             }}
           />
         ))}

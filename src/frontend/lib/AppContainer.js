@@ -74,10 +74,7 @@ class AppContainer extends React.Component {
   }
 
   componentDidMount() {
-    if (router() === 'common') {
-      this.setupBespoke();
-      import('./setup-prism'); // other types(presenter mode: host, view) require lazy loading
-    }
+    if (router() === 'common') this.setupBespoke();
 
     // load Sidebar
     import(/* webpackChunkName: 'Sidebar' */

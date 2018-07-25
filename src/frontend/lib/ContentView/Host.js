@@ -24,15 +24,11 @@ class Host extends React.Component {
         },
         background: 'default'
       },
-      content: '<h2>finish</h2>'
+      content: '<h2>Finish</h2>'
     };
 
     this.slides.shift(); // delete the first page
     this.slides = [...this.slides, lastPage];
-  }
-
-  componentDidMount() {
-    import('../setup-prism');
   }
 
   UNSAFE_componentWillReceiveProps(p) {
@@ -81,7 +77,7 @@ class Host extends React.Component {
             ) : null
           */}
           <h2>next</h2>
-          <Base slides={this.slides} className="host-next-slide" />;
+          <Base slides={this.slides} className="host-next-slide" lazyload={false} />;
         </div>
       </div>
     );
