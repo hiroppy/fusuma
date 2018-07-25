@@ -9,6 +9,7 @@ node_js:
 os:
   - linux
 before_script:
+  - npm i -g npm
   - npm install
   - npm i codecov
   - npm run test:ci
