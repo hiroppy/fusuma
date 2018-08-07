@@ -17,7 +17,7 @@ Just write the markdown and make the cool slide.
 
 ## Demos
 
-- [introduction slide of Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
+- [introduction slide of Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro-with-separator)]
 - [animation slide](https://hiroppy.github.io/fusuma/fx/) [[repository](/samples/fx)]
 - [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/) [[repository](https://github.com/hiroppy/slides/tree/master/slides/the-present-and-future-of-JavaScript)]
 - other my slide [[repository](https://github.com/hiroppy/slides#my-slides)]
@@ -90,6 +90,22 @@ Slide order is numeric, alphabetical.
 └── style.css           <-- optional for rewriting
 
 2 directories, 7 files
+```
+
+Also, slides can be divided by `---` too.
+
+```md
+<!-- background: title -->
+
+# Title
+
+---
+
+<!-- background: red -->
+
+## Hi😜
+
+This page is the next page of the title.
 ```
 
 ## Usage

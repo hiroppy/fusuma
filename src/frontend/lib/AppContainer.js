@@ -7,6 +7,8 @@ import router from './utils/router';
 import parseAttrs from './utils/parse-attrs';
 import { insertContentsList } from './utils/replace-html';
 import setupBespoke from './setup-bespoke';
+import divideSlide from './utils/divide-slides';
+import divideSlides from './utils/divide-slides';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -28,7 +30,9 @@ class AppContainer extends React.Component {
     this.contentsList = [];
     this.setupBespokeFlag = false; // for lazy load
 
-    props.slides.forEach((slide, i) => {
+    const slides = divideSlides(props.slides);
+
+    slides.forEach((slide, i) => {
       const meta = parseAttrs(slide);
 
       this.slides.push({
