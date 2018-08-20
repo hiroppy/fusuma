@@ -58,6 +58,17 @@ class AppContainer extends React.Component {
     if (!window.slide) {
       this.setupBespoke();
 
+      // TODO: refactor
+      const index = window.slide.bespoke.slide();
+      this.setState({
+        slideInfo: {
+          ...this.state.slideInfo,
+          index: index + 1,
+          total: `${this.slides.length}`.padStart(2, '0'),
+          current: `${index + 1}`.padStart(2, '0')
+        }
+      });
+
       window.slide.bespoke.on('activate', () => {
         setTimeout(() => {
           const index = window.slide.bespoke.slide();

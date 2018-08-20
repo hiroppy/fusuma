@@ -4,7 +4,7 @@ function setTargetBlank() {
       if (e.target.host === location.host || e.target.href === '') return;
 
       e.preventDefault();
-      window.open(e.target.href, '_blank', 'noopener');
+      window.open(e.target.href, '_blank');
     }
   });
 }

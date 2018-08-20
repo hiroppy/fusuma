@@ -30,9 +30,7 @@ const Inner = (props) => (
             return (
               <a
                 key="twitter"
-                rel="noopener noreferrer"
                 href={`https://twitter.com/intent/tweet?text=${title} ${url}`}
-                target="_blank"
                 className="fa fa-twitter"
               />
             );
@@ -40,10 +38,8 @@ const Inner = (props) => (
           if (s === 'hatena') {
             return (
               <a
-                rel="noopener noreferrer"
                 key="hatena"
                 href={`http://b.hatena.ne.jp/entry/${url}`}
-                target="_blank"
                 className="fa fa-hatena"
               />
             );
@@ -62,23 +58,9 @@ const Inner = (props) => (
         onClick={() => (screenfull.enabled ? screenfull.toggle() : undefined)}
         className="fa fa-arrows-alt"
       />
-      <a
-        onClick={async () => {
-          props.runPresentationMode();
-          // window.location.href = '?presenter=host';
-          // await openView();
-          // window.location.href = '?presenter=host';
-          // window.open('?presenter=view', '_blank', 'width=800,height=600');
-        }}
-        className="fa fa-rocket"
-      />
+      <a onClick={() => props.runPresentationMode()} className="fa fa-rocket" />
       {process.env.REMOTE_ORIGIN_URL ? (
-        <a
-          rel="noopener noreferrer"
-          href={process.env.REMOTE_ORIGIN_URL}
-          target="_blank"
-          className="fa fa-github"
-        />
+        <a href={process.env.REMOTE_ORIGIN_URL} className="fa fa-github" />
       ) : null}
     </div>
     <div className="sidebar-contents">
