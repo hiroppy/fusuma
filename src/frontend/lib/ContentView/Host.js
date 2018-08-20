@@ -43,6 +43,7 @@ class Host extends React.PureComponent {
     return (
       <div className="host-container">
         <div className="host-note">
+          <a className="fa fa-times terminate-button" onClick={this.props.terminate} />
           {window.slide ? (
             <pre>
               {!!location.hash && ~~location.hash.match(/#(.*)/)[1] !== 1 // for 0 page
@@ -56,7 +57,6 @@ class Host extends React.PureComponent {
             <span className="current-slide-num">
               {window.slide ? window.slide.bespoke.slide() + 1 : 1} / {this.slides.length}
             </span>
-            <a className="fa fa-times" onClick={this.props.terminate} />
           </div>
           <h2>next</h2>
           <Base
