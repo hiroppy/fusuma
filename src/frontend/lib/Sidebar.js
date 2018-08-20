@@ -63,9 +63,12 @@ const Inner = (props) => (
         className="fa fa-arrows-alt"
       />
       <a
-        onClick={() => {
-          window.location.href = '?presenter=host';
-          window.open('?presenter=view', '_blank', 'width=800,height=600');
+        onClick={async () => {
+          props.runPresentationMode();
+          // window.location.href = '?presenter=host';
+          // await openView();
+          // window.location.href = '?presenter=host';
+          // window.open('?presenter=view', '_blank', 'width=800,height=600');
         }}
         className="fa fa-rocket"
       />

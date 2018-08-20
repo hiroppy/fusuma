@@ -8,7 +8,7 @@ import React from 'react';
 import Base from './Base';
 import '../../assets/style/host.css';
 
-class Host extends React.Component {
+class Host extends React.PureComponent {
   constructor(props) {
     super();
 
@@ -22,30 +22,15 @@ class Host extends React.Component {
           direction: 'horizontal',
           transition: 'none'
         },
-        background: 'default'
+        background: 'default',
+        sectionTitle: '',
+        shouldReplace: false
       },
-      content: '<h2>Finish</h2>'
+      context: '<h2>Finish</h2>'
     };
 
     this.slides.shift(); // delete the first page
     this.slides = [...this.slides, lastPage];
-  }
-
-  UNSAFE_componentWillReceiveProps(p) {
-    // to load when bespoke loading is completed
-    if (p.loadedBespoke && !this.loaded) {
-      window.slide.bespoke.on('activate', (e) => {
-        localStorage.setItem(
-          'page',
-          JSON.stringify({
-            date: Date.now(),
-            page: e.index
-          })
-        );
-      });
-
-      this.loaded = true;
-    }
   }
 
   render() {
@@ -67,21 +52,22 @@ class Host extends React.Component {
           ) : null}
         </div>
         <div className="host-info">
-          {/* TODO: currently, this view is displayed none
-            window.slide ? (
-              <div className="host-slides">
-                <span>
-                  {window.slide.bespoke.slide() + 1} / {this.slides.length}
-                </span>
-              </div>
-            ) : null
-          */}
+          <div className="host-slides">
+            <span className="current-slide-num">
+              {window.slide ? window.slide.bespoke.slide() + 1 : 1} / {this.slides.length}
+            </span>
+            <a className="fa fa-times" onClick={this.props.terminate} />
+          </div>
           <h2>next</h2>
-          <Base slides={this.slides} className="host-next-slide" lazyload={false} />;
+          <Base
+            slides={this.slides}
+            className="host-next-slide"
+            lazyload={false}
+            currentIndex={index}
+          />
         </div>
       </div>
     );
   }
 }
-
 export default Host;
