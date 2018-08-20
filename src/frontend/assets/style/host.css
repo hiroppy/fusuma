@@ -45,3 +45,21 @@
     width: 480px;
   }
 }
+
+.host-slides {
+  color: var(--color-gray);
+  margin: 30px 0;
+
+  & > *:not(:first-child) {
+    margin-left: 15px;
+  }
+
+  & .current-slide-num {
+    font-size: 1.2rem;
+  }
+
+  & a {
+    font-size: 1.5rem;
+    border-bottom: none;
+  }
+}

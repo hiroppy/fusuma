@@ -1,21 +1,16 @@
-/* eslint-disable  react/prop-types */
-
 import React from 'react';
 import Loader from './Loader';
 import Base from './ContentView/Base';
-import router from './utils/router';
-import parseAttrs from './utils/parse-attrs';
-import { insertContentsList } from './utils/replace-html';
 import setupBespoke from './setup-bespoke';
-import divideSlide from './utils/divide-slides';
-import divideSlides from './utils/divide-slides';
+import router from './utils/router';
+import createHtmlSlides from './slides/create-html-slides';
+import PresentationController from './presentation-mode/Controller'; // common and host
 
 class AppContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loaded: false, // only use presenter mode
       opened: false, // TODO: refactor to `status: {}`
       loader: true,
       SidebarComponent: null, // for lazy load
@@ -26,106 +21,73 @@ class AppContainer extends React.Component {
       }
     };
 
-    this.slides = [];
-    this.contentsList = [];
-    this.setupBespokeFlag = false; // for lazy load
+    const { slides, contentsList } = createHtmlSlides(props.slides);
+    this.slides = slides;
+    this.contentsList = contentsList;
+    this.ContentComponent = null;
+    this.presentationApiId = null;
 
-    const slides = divideSlides(props.slides);
+    this.routeMode();
 
-    slides.forEach((slide, i) => {
-      const meta = parseAttrs(slide);
-
-      this.slides.push({
-        meta,
-        context: slide
-      });
-
-      if (meta.sectionTitle !== '') {
-        this.contentsList.push({
-          title: meta.sectionTitle,
-          index: i + 1
-        });
-      }
-    });
-
-    if (this.contentsList.length !== 0) {
-      this.slides.forEach((e, i) => {
-        if (e.meta.shouldReplace) {
-          this.slides[i].context = insertContentsList(e.context, this.contentsList);
-        }
-      });
-    }
-
-    const mode = router();
-
-    if (mode === 'view') {
-      import(/* webpackChunkName: 'presenter.view' */ './ContentView/View').then((e) => {
-        this.content = e.default;
-        this.setState({ loaded: true });
-        this.setupBespokeFlag = true;
-        this.changeLoaderState();
-      });
-    } else if (mode === 'host') {
-      import(/* webpackChunkName: 'presenter.host' */ './ContentView/Host').then((e) => {
-        this.content = e.default;
-        this.setState({ loaded: true });
-        this.setupBespokeFlag = true;
-        this.changeLoaderState();
-      });
-    } else {
-      this.changeLoaderState();
+    if (['common', 'host'].includes(this.mode)) {
+      this.presentationController = new PresentationController();
     }
   }
 
-  componentDidMount() {
-    if (router() === 'common') this.setupBespoke();
+  async routeMode(mode) {
+    this.mode = mode || router();
 
-    // load Sidebar
-    import(/* webpackChunkName: 'Sidebar' */
-    /* webpackPrefetch: true */
-    './Sidebar').then(({ default: SidebarComponent }) => {
-      this.setState({ SidebarComponent });
+    if (this.mode === 'common') {
+      this.ContentComponent = Base;
+    } else {
+      const { default: Comp } =
+        this.mode === 'view'
+          ? await import(/* webpackChunkName: 'presenter.view' */ './ContentView/View')
+          : await import(/* webpackChunkName: 'presenter.host' */ './ContentView/Host');
 
-      const index = window.slide.bespoke.slide() + 1;
+      this.ContentComponent = Comp;
+    }
 
-      this.setState({
-        slideInfo: {
-          total: `${this.slides.length}`.padStart(2, '0'),
-          index,
-          current: `${index}`.padStart(2, '0')
-        }
-      });
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        this.setState({ loader: false, opened: false });
+        resolve();
+      }, 500);
+    });
+
+    if (!window.slide) {
+      this.setupBespoke();
 
       window.slide.bespoke.on('activate', () => {
-        const index = window.slide.bespoke.slide() + 1;
+        setTimeout(() => {
+          const index = window.slide.bespoke.slide();
 
-        this.setState({
-          slideInfo: {
-            ...this.state.slideInfo,
-            index,
-            current: `${index}`.padStart(2, '0')
+          this.setState({
+            slideInfo: {
+              ...this.state.slideInfo,
+              index: index + 1,
+              total: `${this.slides.length}`.padStart(2, '0'),
+              current: `${index + 1}`.padStart(2, '0')
+            }
+          });
+
+          if (this.mode !== 'view' && this.presentationController) {
+            this.presentationController.changePage(index);
           }
-        });
+        }, 0);
       });
-    });
-  }
-
-  UNSAFE_componentWillUpdate() {
-    if (this.setupBespokeFlag) {
-      this.setupBespoke();
-      this.setupBespokeFlag = false;
     }
   }
 
-  changeLoaderState = () => {
-    // eslint-disable-line react/sort-comp
-    window.onload = () => {
-      setTimeout(() => this.setState({ loader: false }), 500);
-    };
-  };
+  async componentDidMount() {
+    const {
+      default: SidebarComponent
+    } = await import(/* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar');
+
+    this.setState({ SidebarComponent });
+  }
 
   goTo = (num) => {
-    // eslint-disable-line react/sort-comp
     window.slide.bespoke.slide(num);
   };
 
@@ -140,23 +102,28 @@ class AppContainer extends React.Component {
     window.slide.bespoke = setupBespoke(this.props.theme);
   };
 
-  getContent = () => {
-    return (
-      <React.Fragment>
-        <Loader displayed={this.state.loader} />
-        {this.content ? (
-          <this.content slides={this.slides} loadedBespoke={!this.state.loader} />
-        ) : (
-          <Base slides={this.slides} currentIndex={this.state.slideInfo.index} />
-        ) /* for common */}
-      </React.Fragment>
-    );
+  onRunPresentationMode = async () => {
+    try {
+      this.presentationApiId = await this.presentationController.openView();
+
+      window.slide = null;
+      this.routeMode('host');
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  terminate = () => {
+    if (this.presentationController) this.presentationController.terminate();
+
+    window.slide = null;
+    this.routeMode('common');
   };
 
   render() {
     return (
       <React.Fragment>
-        {process.env.SIDEBAR ? (
+        {process.env.SIDEBAR && this.mode === 'common' ? (
           <React.Fragment>
             {this.state.SidebarComponent ? (
               <this.state.SidebarComponent
@@ -165,6 +132,7 @@ class AppContainer extends React.Component {
                 contents={this.contentsList}
                 onSetOpen={this.onSetSidebarOpen}
                 slideInfo={this.state.slideInfo}
+                runPresentationMode={this.onRunPresentationMode}
               />
             ) : null}
             <i
@@ -174,7 +142,14 @@ class AppContainer extends React.Component {
             />
           </React.Fragment>
         ) : null}
-        {this.getContent()}
+        <Loader displayed={this.state.loader} />
+        {this.ContentComponent ? (
+          <this.ContentComponent
+            slides={this.slides}
+            terminate={this.terminate}
+            currentIndex={this.state.slideInfo.index}
+          />
+        ) : null}
       </React.Fragment>
     );
   }

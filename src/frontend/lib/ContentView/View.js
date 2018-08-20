@@ -6,22 +6,22 @@
 
 import React from 'react';
 import Base from './Base';
+import PresentationReceiver from '../presentation-mode/Receiver';
 
 class View extends React.PureComponent {
   constructor() {
     super();
 
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'page') {
-        const page = JSON.parse(e.newValue).page;
-
-        window.slide.bespoke.slide(page);
-      }
+    this.presentationReceiver = new PresentationReceiver();
+    this.presentationReceiver.onChangePage((pageNum) => {
+      window.slide.bespoke.slide(pageNum);
     });
   }
 
   render() {
-    return <Base slides={this.props.slides} lazyload={false} />;
+    return (
+      <Base slides={this.props.slides} lazyload={false} currentIndex={this.props.currentIndex} />
+    );
   }
 }
 

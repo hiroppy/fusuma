@@ -2,7 +2,9 @@
 
 exports[`webpack.config should return settings when NODE_ENV is development 1`] = `
 Object {
+  "devtool": "inline-cheap-module-source-map",
   "entry": Array [
+    "babel-polyfill",
     "stab",
   ],
   "mode": "development",
@@ -179,6 +181,7 @@ Object {
 exports[`webpack.config should return settings when NODE_ENV is production 1`] = `
 Object {
   "entry": Array [
+    "babel-polyfill",
     "stab",
   ],
   "mode": "production",
