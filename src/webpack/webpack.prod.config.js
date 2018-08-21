@@ -48,8 +48,7 @@ function prod() {
             enforce: true
           }
         }
-      },
-      runtimeChunk: 'single'
+      }
     }
   };
 }
