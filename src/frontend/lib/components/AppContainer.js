@@ -1,10 +1,10 @@
 import React from 'react';
 import Loader from './Loader';
-import Base from './ContentView/Base';
-import setupBespoke from './setup-bespoke';
-import router from './utils/router';
-import createHtmlSlides from './slides/create-html-slides';
-import PresentationController from './presentation-mode/Controller'; // common and host
+import Base from '../ContentView/Base';
+import setupBespoke from '../setup-bespoke';
+import router from '../utils/router';
+import createHtmlSlides from '../slides/create-html-slides';
+import PresentationController from '../presentation-mode/Controller'; // common and host
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -42,8 +42,8 @@ class AppContainer extends React.Component {
     } else {
       const { default: Comp } =
         this.mode === 'view'
-          ? await import(/* webpackChunkName: 'presenter.view' */ './ContentView/View')
-          : await import(/* webpackChunkName: 'presenter.host' */ './ContentView/Host');
+          ? await import(/* webpackChunkName: 'presenter.view' */ '../ContentView/View')
+          : await import(/* webpackChunkName: 'presenter.host' */ '../ContentView/Host');
 
       this.ContentComponent = Comp;
     }
