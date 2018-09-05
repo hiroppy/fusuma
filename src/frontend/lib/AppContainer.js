@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdMenu } from 'react-icons/md';
 import Loader from './Loader';
 import Base from './ContentView/Base';
 import setupBespoke from './setup-bespoke';
@@ -146,11 +147,7 @@ class AppContainer extends React.Component {
                 runPresentationMode={this.onRunPresentationMode}
               />
             ) : null}
-            <i
-              style={{ width: 50 }}
-              className="btn-sidebar fa fa-bars"
-              onClick={() => this.onSetSidebarOpen(true)}
-            />
+            <MdMenu className="btn-sidebar" onClick={() => this.onSetSidebarOpen(true)} />
           </React.Fragment>
         ) : null}
         <Loader displayed={this.state.loader} />

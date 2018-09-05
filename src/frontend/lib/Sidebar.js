@@ -3,6 +3,8 @@
 import React from 'react';
 import Sidebar from 'react-sidebar';
 import screenfull from 'screenfull';
+import { FaTwitter, FaGithub } from 'react-icons/fa';
+import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay } from 'react-icons/md';
 
 const styles = {
   sidebar: {
@@ -28,11 +30,9 @@ const Inner = (props) => (
         sns.map((s) => {
           if (s === 'twitter') {
             return (
-              <a
-                key="twitter"
-                href={`https://twitter.com/intent/tweet?text=${title} ${url}`}
-                className="fa fa-twitter"
-              />
+              <a key="twitter" href={`https://twitter.com/intent/tweet?text=${title} ${url}`}>
+                <FaTwitter />
+              </a>
             );
           }
           if (s === 'hatena') {
@@ -47,20 +47,19 @@ const Inner = (props) => (
         })}
     </div>
     <div className="sidebar-control">
-      <a onClick={() => props.goTo(0)} className="fa fa-fast-backward" />
+      <MdFirstPage onClick={() => props.goTo(0)} />
       <span>
         {props.slideInfo.current} / {props.slideInfo.total}
       </span>
-      <a onClick={() => props.goTo(props.slideInfo.total - 1)} className="fa fa-fast-forward" />
+      <MdLastPage onClick={() => props.goTo(props.slideInfo.total - 1)} />
     </div>
     <div>
-      <a
-        onClick={() => (screenfull.enabled ? screenfull.toggle() : undefined)}
-        className="fa fa-arrows-alt"
-      />
-      <a onClick={() => props.runPresentationMode()} className="fa fa-rocket" />
+      <MdFullscreen onClick={() => (screenfull.enabled ? screenfull.toggle() : undefined)} />
+      <MdAirplay onClick={() => props.runPresentationMode()} style={{ width: 18, height: 18 }} />
       {process.env.REMOTE_ORIGIN_URL ? (
-        <a href={process.env.REMOTE_ORIGIN_URL} className="fa fa-github" />
+        <a href={process.env.REMOTE_ORIGIN_URL}>
+          <FaGithub style={{ width: 18, height: 18, marginTop: 8 }} />
+        </a>
       ) : null}
     </div>
     <div className="sidebar-contents">

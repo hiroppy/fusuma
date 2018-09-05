@@ -16,6 +16,12 @@
   font-size: 1.2rem;
   padding: 30px;
 
+  & svg {
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+  }
+
   & a {
     border: none;
     cursor: pointer;
@@ -26,7 +32,7 @@
   }
 
   & > div {
-    align-items: flex-start;
+    align-items: center;
     display: flex;
     justify-content: space-around;
     width: 150px;
