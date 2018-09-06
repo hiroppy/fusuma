@@ -229,7 +229,6 @@ View: `?presenter=view`
 - Prism
 - React
 - Workbox
-- font-awesome
 
 ## API
 
