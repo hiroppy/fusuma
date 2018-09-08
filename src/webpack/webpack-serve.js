@@ -18,7 +18,7 @@ async function run(config, cb) {
   server.on('build-finished', () => {
     const { protocol, host, port } = server.options;
 
-    console.log(`Running on ${protocol}://${host}:${port} .`);
+    console.log(`Running on ${protocol}://${host}:${port}`);
 
     if (!flag) cb();
     flag = true;
