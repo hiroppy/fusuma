@@ -101,12 +101,12 @@
     "workbox-webpack-plugin": "^3.1.0"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
-    "jest": "^22.4.3",
-    "lynt": "^0.1.0",
-    "prettier": "^1.13.7",
-    "pretty-quick": "^1.4.1",
-    "rewire": "^4.0.1"
+    "husky": "0.14.3",
+    "jest": "22.4.3",
+    "lynt": "0.1.0",
+    "prettier": "1.13.7",
+    "pretty-quick": "1.4.1",
+    "rewire": "4.0.1"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
