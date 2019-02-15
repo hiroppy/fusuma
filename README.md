@@ -160,6 +160,7 @@ slide:
   theme: nebula
   sidebar: true
   targetBlank: true
+  pageNumbber: false
 extends:
   js: index.js
   css: style.css
@@ -186,7 +187,8 @@ module.exports = {
   slide: {
     theme: 'nebula',
     sidebar: true,
-    targetBlank: true
+    targetBlank: true,
+    pageNumber: false
   },
   extends: {
     js: 'index.js',

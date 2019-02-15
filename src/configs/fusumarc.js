@@ -21,7 +21,8 @@ const config = {
   slide: {
     sidebar: true,
     theme: 'nebula',
-    targetBlank: true
+    targetBlank: true,
+    pageNumber: false
   },
   extends: {
     js: null,
