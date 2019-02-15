@@ -160,7 +160,7 @@ slide:
   theme: nebula
   sidebar: true
   targetBlank: true
-  pageNumbber: false
+  pageNumber: false
 extends:
   js: index.js
   css: style.css
