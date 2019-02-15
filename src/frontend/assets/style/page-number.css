@@ -1,0 +1,10 @@
+@import './variable';
+
+.page-number {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  color: var(--color-white);
+  font-size: 1em;
+}

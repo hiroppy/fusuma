@@ -6,6 +6,7 @@ import setupBespoke from './setup-bespoke';
 import router from './utils/router';
 import createHtmlSlides from './slides/create-html-slides';
 import PresentationController from './presentation-mode/Controller'; // common and host
+import PageNumber from './PageNumber';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -151,6 +152,7 @@ class AppContainer extends React.Component {
           </React.Fragment>
         ) : null}
         <Loader displayed={this.state.loader} />
+        {process.env.PAGE_NUMBER && <PageNumber index={this.state.slideInfo.index} />}
         {this.ContentComponent ? (
           <this.ContentComponent
             slides={this.slides}
