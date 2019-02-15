@@ -102,7 +102,7 @@ Object {
   },
   "name": "test",
   "output": Object {
-    "filename": "[name].js",
+    "filename": "bundle.js",
     "path": "stab",
   },
   "plugins": Array [

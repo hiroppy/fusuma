@@ -5,7 +5,7 @@ Object {
   "devtool": "inline-cheap-module-source-map",
   "mode": "development",
   "output": Object {
-    "filename": "[name].js",
+    "filename": "bundle.js",
   },
 }
 `;

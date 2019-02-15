@@ -5,7 +5,7 @@ describe('webpack.prod', () => {
   test('should match settings', () => {
     const prod = rewire('../../../src/webpack/webpack.prod.config');
 
-    prod.__set__('process.env.NODE_ENV', 'production');
+    process.env.NDOE_ENV = 'production';
     prod.__set__('__dirname', 'stabDir');
 
     const res = prod();
@@ -26,5 +26,7 @@ describe('webpack.prod', () => {
     // });
 
     expect(res).toMatchSnapshot();
+
+    process.env.NDOE_ENV = 'test';
   });
 });
