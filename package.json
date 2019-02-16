@@ -56,7 +56,7 @@
     "bespoke-theme-nebula": "^1.0.1",
     "bespoke-theme-voltaire": "^1.0.1",
     "bespoke-touch": "^1.0.0",
-    "caporal": "^0.10.0",
+    "caporal": "^1.0.0",
     "child-process-promise": "^2.2.1",
     "css-loader": "^0.28.11",
     "decktape": "^2.8.8",
