@@ -60,7 +60,7 @@
     "child-process-promise": "^2.2.1",
     "css-loader": "^0.28.11",
     "decktape": "^2.8.8",
-    "deepmerge": "^2.1.0",
+    "deepmerge": "^3.0.0",
     "file-loader": "^1.1.11",
     "font-awesome": "^4.7.0",
     "gh-pages": "^1.2.0",
