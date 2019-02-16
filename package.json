@@ -74,7 +74,7 @@
     "ora": "^2.0.0",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-import": "^11.1.0",
-    "postcss-loader": "^2.1.4",
+    "postcss-loader": "^3.0.0",
     "postcss-mixins": "^6.2.0",
     "postcss-preset-env": "^5.2.1",
     "postcss-reporter": "^5.0.0",
