@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "@about_hiroppy/bespoke-fx": "0.0.5",
+    "@hiroppy/bespoke-fx": "0.0.5",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-polyfill": "^6.26.0",
