@@ -95,14 +95,14 @@
     "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.6.0",
+    "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.1.2",
-    "webpack-serve": "^1.0.4",
     "webpack-stylish": "^0.1.8",
     "workbox-webpack-plugin": "^3.1.0"
   },
   "devDependencies": {
     "husky": "0.14.3",
-    "jest": "22.4.3",
+    "jest": "^24.5.0",
     "lynt": "0.5.5",
     "prettier": "1.16.4",
     "pretty-quick": "1.10.0",
