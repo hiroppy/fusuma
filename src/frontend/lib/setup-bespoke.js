@@ -1,5 +1,5 @@
 import bespoke from 'bespoke';
-import fx from '@about_hiroppy/bespoke-fx';
+import fx from '@hiroppy/bespoke-fx';
 import hash from 'bespoke-hash';
 import keys from 'bespoke-keys';
 import touch from 'bespoke-touch';
@@ -9,7 +9,7 @@ import progress from 'bespoke-progress';
 import backdrop from 'bespoke-backdrop';
 import fullscreen from 'bespoke-fullscreen';
 
-import '@about_hiroppy/bespoke-fx/demo/animations.css';
+import '@hiroppy/bespoke-fx/demo/animations.css';
 
 const setup = (theme, opts = []) => {
   const common = [keys(), hash(), touch(), scale(), jumpy(), progress(), backdrop(), fullscreen()];
