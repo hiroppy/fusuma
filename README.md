@@ -112,16 +112,16 @@ This page is the next page of the title.
 ## Usage
 
 ```sh
-   fusuma 0.5.3 - CLI for easily make slides with markdown
+   fusuma.js 0.10.2 - CLI for easily make slides with markdown
 
    USAGE
 
-     fusuma <command> [options]
+     fusuma.js <command> [options]
 
    COMMANDS
 
      init                Create a configure file
-     start               Start with webpack-serve
+     start               Start with webpack-dev-server
      build               Build with webpack
      deploy              Deploy to GitHub pages
      pdf                 Export as PDF
