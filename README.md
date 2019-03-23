@@ -17,7 +17,7 @@ Just write MarkDown and make a cool slide.
 
 ## Demos
 
-- [introduction slide of Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro-with-separator)]
+- [introduction slide of Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
 - [animation slide](https://hiroppy.github.io/fusuma/fx/) [[repository](/samples/fx)]
 - [the present and future of JavaScript](https://slides.hiroppy.me/the-present-and-future-of-JavaScript/) [[repository](https://github.com/hiroppy/slides/tree/master/slides/the-present-and-future-of-JavaScript)]
 - other my slide [[repository](https://github.com/hiroppy/slides#my-slides)]
