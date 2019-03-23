@@ -36,6 +36,7 @@ async function pdf(input, output = 'slide.pdf', port = 3455) {
   server.listen(port);
 
   try {
+    await spawn('npm', ['install', 'decktape', '--no-save']);
     await spawn('npx', ['decktape', 'automatic', `http://localhost:${port}`, output]);
   } catch (e) {
     console.error(e);
