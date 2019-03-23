@@ -1,6 +1,8 @@
 'use strict';
 
-const serve = require('serve');
+const { relative } = require('path');
+const http = require('http');
+const handler = require('serve-handler');
 const ghpages = require('gh-pages');
 const { spawn } = require('child-process-promise');
 const { start: webpackStart, build: webpackBuild } = require('./webpack');
@@ -26,16 +28,19 @@ function deploy(dir) {
 }
 
 async function pdf(input, output = 'slide.pdf', port = 3455) {
-  const server = serve(input, { port });
+  const publicPath = relative(process.cwd(), input);
+  const server = http.createServer(async (req, res) => {
+    return await handler(req, res, { public: publicPath });
+  });
 
-  await new Promise((resolve) => setTimeout(() => resolve(), 3000));
+  server.listen(port);
 
   try {
     await spawn('npx', ['decktape', 'automatic', `http://localhost:${port}`, output]);
   } catch (e) {
     console.error(e);
   } finally {
-    server.stop();
+    server.close();
   }
 }
 
