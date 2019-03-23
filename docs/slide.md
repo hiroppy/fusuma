@@ -4,9 +4,9 @@ All slides are written in HTML or markdown.
 
 ## CSS Class Name Aliases
 
-* `__body` -> `.bespoke-parent`
-* `__bg` -> `.bespoke-backdrop`
-* `__section-title` -> `.bespoke-backdrop.section-title`
+- `__body` -> `.bespoke-parent`
+- `__bg` -> `.bespoke-backdrop`
+- `__section-title` -> `.bespoke-backdrop.section-title`
 
 ## Contents
 
