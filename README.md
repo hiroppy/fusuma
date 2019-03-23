@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <strong>📝 easily make slides with markdown</strong>
+  <strong>📝 easily make slides with MarkDown</strong>
 </div>
 
 <br />
@@ -13,7 +13,7 @@
 [![AppVeyor](https://img.shields.io/appveyor/ci/hiroppy/fusuma.svg?style=flat-square)](https://ci.appveyor.com/project/hiroppy/fusuma)
 [![Codecov](https://img.shields.io/codecov/c/github/hiroppy/fusuma.svg?style=flat-square)](https://codecov.io/gh/hiroppy/fusuma)
 
-Just write the markdown and make the cool slide.
+Just write MarkDown and make a cool slide.
 
 ## Demos
 
@@ -58,7 +58,7 @@ $ npx fusuma deploy   # deploy to github pages
 $ npx fusuma pdf      # export as PDF from HTML
 ```
 
-When `npx fusuma start` is executed, it is output as follows.
+When `npx fusuma start` is executed, it is an output as follows.
 
 ![](./media/procedure-screenshot.png)
 
