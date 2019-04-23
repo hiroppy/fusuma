@@ -29,7 +29,7 @@ class Host extends React.PureComponent {
       context: '<h2>Finish</h2>'
     };
 
-    this.slides.shift(); // delete the first page
+    this.firstSlide = this.slides.shift(); // delete the first page
     this.slides = [...this.slides, lastPage];
   }
 
@@ -48,7 +48,7 @@ class Host extends React.PureComponent {
             <pre>
               {!!location.hash && ~~location.hash.match(/#(.*)/)[1] !== 1 // for 0 page
                 ? this.slides[index].meta.note
-                : ''}
+                : this.firstSlide.meta.note}
             </pre>
           ) : null}
         </div>

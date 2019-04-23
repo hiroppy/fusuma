@@ -1,5 +1,9 @@
 <!-- background: title -->
 
+<!-- note
+Hi!
+-->
+
 # About Fusuma
 
 <br />

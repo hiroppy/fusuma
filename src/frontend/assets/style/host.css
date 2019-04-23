@@ -13,7 +13,8 @@
   & pre {
     background: transparent !important;
     color: var(--color-white);
-    font-size: 1.2rem;
+    font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+    font-size: 1.5rem;
     margin: 15px;
     white-space: pre-wrap;
   }
