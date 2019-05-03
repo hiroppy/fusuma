@@ -74,7 +74,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         url,
         filename: 'index.html',
         title: name || 'slide',
-        template: path.join(__dirname, 'template.ejs'),
+        template: path.join(__dirname, 'template.html'),
         image: thumbnail || '',
         siteName,
         description
