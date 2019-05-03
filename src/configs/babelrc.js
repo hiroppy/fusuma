@@ -3,16 +3,15 @@
 module.exports = {
   presets: [
     [
-      'env',
+      '@babel/preset-env',
       {
-        modules: false,
         targets: {
           browsers: 'last 1 version'
         }
       }
     ],
-    'react',
-    'stage-1'
+    '@babel/preset-react'
   ],
+  plugins: ['@babel/plugin-syntax-dynamic-import', '@babel/plugin-proposal-class-properties'],
   compact: true
 };
