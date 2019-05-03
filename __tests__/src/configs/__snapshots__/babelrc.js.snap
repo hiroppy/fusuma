@@ -3,18 +3,21 @@
 exports[`babelrc should match settings 1`] = `
 Object {
   "compact": true,
+  "plugins": Array [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread",
+  ],
   "presets": Array [
     Array [
-      "env",
+      "@babel/preset-env",
       Object {
-        "modules": false,
         "targets": Object {
           "browsers": "last 1 version",
         },
       },
     ],
-    "react",
-    "stage-1",
+    "@babel/preset-react",
   ],
 }
 `;
