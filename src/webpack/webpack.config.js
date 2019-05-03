@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const css = require('./css');
+const babelrc = require('../configs/babelrc');
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   const { url, name, description, thumbnail, siteName, sns, repositoryUrl } = meta || {};
@@ -33,10 +34,10 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.m?js$/,
           use: {
             loader: 'babel-loader',
-            options: require('../configs/babelrc')
+            options: babelrc
           }
         },
         {
@@ -61,7 +62,15 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         'process.env.SLIDE_PATH': JSON.stringify(path.join(basePath, 'slides')),
         'process.env.URL': JSON.stringify(url),
         'process.env.SNS': JSON.stringify(sns),
-        'process.env.THEME': JSON.stringify(theme || ''),
+        'process.env.THEME': webpack.DefinePlugin.runtimeValue(() => {
+          const t = /^nebula$|^voltaire$|^cube$/.test(theme)
+            ? `bespoke-theme-${theme}`
+            : /^bespoke-theme-nebula$|^bespoke-theme-voltaire$|^bespoke-theme-cube$/.test(theme)
+            ? theme
+            : 'bespoke-theme-nebula';
+
+          return JSON.stringify(t);
+        }),
         'process.env.SIDEBAR': JSON.stringify(sidebar === undefined ? true : sidebar),
         'process.env.TITLE': JSON.stringify(name),
         'process.env.BASE_PATH': JSON.stringify(basePath),
