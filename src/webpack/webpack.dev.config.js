@@ -1,7 +1,5 @@
 'use strict';
 
-const webpack = require('webpack');
-
 function dev() {
   return {
     mode: 'development',
@@ -9,7 +7,6 @@ function dev() {
     output: {
       filename: 'bundle.js'
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()],
     devServer: {
       hot: true,
       port: 8080,
