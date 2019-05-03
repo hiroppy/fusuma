@@ -1,4 +1,4 @@
-class Controller {
+export class Controller {
   constructor() {
     this.receiverQuery = '?presenter=view';
     this.apiType =
@@ -52,5 +52,3 @@ class Controller {
     }
   }
 }
-
-export default Controller;

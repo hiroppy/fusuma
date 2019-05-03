@@ -1,6 +1,6 @@
-import createBody from './create-body';
-import fetchSlides from './fetch-slides';
-import './setup-default';
+import { createBody } from './utils/createBody';
+import { fetchSlides } from './utils/fetchSlides';
+import './setup/css';
 
 // TODO: maybe need to use production path...
 // if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
@@ -15,8 +15,8 @@ import './setup-default';
 
   if (process.env.TARGET_BLANK) {
     const {
-      default: setTargetBlank
-    } = await import(/* webpackPreload: true, webpackChunkName: "target-blank" */ './utils/target-blank');
+      setTargetBlank
+    } = await import(/* webpackPreload: true, webpackChunkName: "target-blank" */ './utils/targetBlank');
 
     setTargetBlank();
   }
