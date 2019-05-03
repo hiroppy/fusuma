@@ -5,7 +5,6 @@ const webpackDevServer = require('webpack-dev-server');
 
 function run(config, cb) {
   const url = `http://localhost:${config.devServer.port}`;
-
   const devUrls = [`webpack-dev-server/client?${url}`, 'webpack/hot/dev-server'];
 
   if (typeof config.entry === 'string') config.entry = [config.entry];
