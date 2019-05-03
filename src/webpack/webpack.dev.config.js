@@ -12,7 +12,6 @@ function dev() {
     plugins: [new webpack.HotModuleReplacementPlugin()],
     devServer: {
       hot: true,
-      quiet: true,
       port: 8080,
       inline: true,
       contentBase: '.'

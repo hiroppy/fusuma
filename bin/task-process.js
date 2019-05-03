@@ -29,7 +29,7 @@ async function initProcess() {
 }
 
 async function startProcess(basePath) {
-  const spinner = ora('Starting with webpack-dev-server').start();
+  const spinner = ora('Starting with webpack-dev-server...').start();
   const config = await read(basePath);
   const remoteOrigin = await getRemoteOriginUrl(basePath);
 
@@ -48,7 +48,7 @@ async function startProcess(basePath) {
 }
 
 async function buildProcess(basePath, extendedConfig = {}) {
-  const spinner = ora('Building with webpack').start();
+  const spinner = ora('Building with webpack...').start();
   const config = merge(await read(basePath), extendedConfig);
   const remoteOrigin = await getRemoteOriginUrl(basePath);
 
@@ -64,7 +64,7 @@ async function buildProcess(basePath, extendedConfig = {}) {
 }
 
 async function deployProcess(basePath) {
-  const spinner = ora('Publishing to gh-pages').start();
+  const spinner = ora('Publishing to gh-pages...').start();
 
   await deploy(join(basePath, 'dist'));
 
