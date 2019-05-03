@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ../../bin/fusuma start"
+    "start": "node ../../bin/fusuma start",
+    "build": "node ../../bin/fusuma build"
   },
   "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
   "license": "MIT"

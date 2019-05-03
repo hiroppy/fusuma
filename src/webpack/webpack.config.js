@@ -4,7 +4,6 @@
 let path = require('path'); // eslint-disable-line prefer-const
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const Stylish = require('webpack-stylish');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const css = require('./css');
 
@@ -79,8 +78,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         image: thumbnail || '',
         siteName,
         description
-      }),
-      new Stylish()
+      })
     ]
   };
 
