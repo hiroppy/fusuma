@@ -1,6 +1,7 @@
 'use strict';
 
-const path = require('path');
+// for rewire
+let path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');

@@ -7,34 +7,36 @@ Object {
     "hot": true,
     "inline": true,
     "port": 8080,
-    "quiet": true,
   },
   "devtool": "inline-cheap-module-source-map",
   "entry": Array [
-    "babel-polyfill",
+    "@babel/polyfill",
     "stab",
   ],
   "mode": "development",
   "module": Object {
     "rules": Array [
       Object {
-        "test": /\\\\\\.js\\$/,
+        "test": /\\\\\\.m\\?js\\$/,
         "use": Object {
           "loader": "babel-loader",
           "options": Object {
             "compact": true,
+            "plugins": Array [
+              "@babel/plugin-syntax-dynamic-import",
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-proposal-object-rest-spread",
+            ],
             "presets": Array [
               Array [
-                "env",
+                "@babel/preset-env",
                 Object {
-                  "modules": false,
                   "targets": Object {
                     "browsers": "last 1 version",
                   },
                 },
               ],
-              "react",
-              "stage-1",
+              "@babel/preset-react",
             ],
           },
         },
@@ -124,7 +126,10 @@ Object {
         "process.env.SLIDE_PATH": "\\"stub/.\\"",
         "process.env.SNS": undefined,
         "process.env.TARGET_BLANK": "true",
-        "process.env.THEME": "\\"\\"",
+        "process.env.THEME": RuntimeValue {
+          "fileDependencies": Array [],
+          "fn": [Function],
+        },
         "process.env.TITLE": "\\"test\\"",
         "process.env.URL": "\\"url\\"",
       },
@@ -153,29 +158,6 @@ Object {
         "xhtml": false,
       },
     },
-    StylishReporter {
-      "rendered": Object {
-        "footer": false,
-        "header": false,
-      },
-      "state": Object {
-        "active": 0,
-        "hashes": Array [],
-        "instances": 0,
-        "time": 0,
-        "totals": Object {
-          "errors": 0,
-          "time": 0,
-          "warnings": 0,
-        },
-      },
-    },
-    HotModuleReplacementPlugin {
-      "fullBuildTimeout": 200,
-      "multiStep": undefined,
-      "options": Object {},
-      "requestTimeout": 10000,
-    },
   ],
   "resolve": Object {
     "modules": Array [
@@ -195,30 +177,33 @@ Object {
 exports[`webpack.config should return settings when NODE_ENV is production 1`] = `
 Object {
   "entry": Array [
-    "babel-polyfill",
+    "@babel/polyfill",
     "stab",
   ],
   "mode": "production",
   "module": Object {
     "rules": Array [
       Object {
-        "test": /\\\\\\.js\\$/,
+        "test": /\\\\\\.m\\?js\\$/,
         "use": Object {
           "loader": "babel-loader",
           "options": Object {
             "compact": true,
+            "plugins": Array [
+              "@babel/plugin-syntax-dynamic-import",
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-proposal-object-rest-spread",
+            ],
             "presets": Array [
               Array [
-                "env",
+                "@babel/preset-env",
                 Object {
-                  "modules": false,
                   "targets": Object {
                     "browsers": "last 1 version",
                   },
                 },
               ],
-              "react",
-              "stage-1",
+              "@babel/preset-react",
             ],
           },
         },
@@ -378,7 +363,10 @@ Object {
         "process.env.SLIDE_PATH": "\\"stub/.\\"",
         "process.env.SNS": undefined,
         "process.env.TARGET_BLANK": "true",
-        "process.env.THEME": "\\"\\"",
+        "process.env.THEME": RuntimeValue {
+          "fileDependencies": Array [],
+          "fn": [Function],
+        },
         "process.env.TITLE": "\\"test\\"",
         "process.env.URL": "\\"url\\"",
       },
@@ -405,23 +393,6 @@ Object {
         "title": "test",
         "url": "url",
         "xhtml": false,
-      },
-    },
-    StylishReporter {
-      "rendered": Object {
-        "footer": false,
-        "header": false,
-      },
-      "state": Object {
-        "active": 0,
-        "hashes": Array [],
-        "instances": 0,
-        "time": 0,
-        "totals": Object {
-          "errors": 0,
-          "time": 0,
-          "warnings": 0,
-        },
       },
     },
     MiniCssExtractPlugin {
