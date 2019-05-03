@@ -1,7 +1,6 @@
 'use strict';
 
-// make use of `let` for rewire
-let path = require('path'); // eslint-disable-line prefer-const
+const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -21,7 +20,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
 
   const common = {
     name: name || 'slide',
-    entry: ['@babel/polyfill', path.resolve(__dirname, '..', 'frontend', 'lib', 'index.js')],
+    entry: ['@babel/polyfill', path.resolve(__dirname, '..', 'client', 'src', 'index.js')],
     output: {
       path: path.resolve(basePath, 'dist')
     },
@@ -86,7 +85,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
     common.entry.push(path.join(basePath, jsPath));
   }
   if (cssPath && path.extname(cssPath) === '.css') {
-    common.entry.push(path.resolve(__dirname, '..', 'frontend', 'lib', 'custom-css.js'));
+    common.entry.push(path.resolve(__dirname, '..', 'client', 'src', 'custom-css.js'));
   }
 
   return merge.smart(common, config);
