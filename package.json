@@ -9,7 +9,6 @@
   "scripts": {
     "test": "jest",
     "test:ci": "npm run test && codecov",
-    "lint": "lynt --react --env jest --ignore samples",
     "fmt": "prettier --write **/*.{js,json,css,md}",
     "precommit": "pretty-quick --staged",
     "build:samples": "node scripts/build-samples.js",
@@ -102,7 +101,6 @@
   "devDependencies": {
     "husky": "0.14.3",
     "jest": "24.5.0",
-    "lynt": "0.5.5",
     "prettier": "1.16.4",
     "pretty-quick": "1.10.0",
     "rewire": "4.0.1"
