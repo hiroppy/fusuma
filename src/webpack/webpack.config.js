@@ -22,7 +22,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
 
   const common = {
     name: name || 'slide',
-    entry: ['babel-polyfill', path.resolve(__dirname, '..', 'frontend', 'lib', 'index.js')],
+    entry: ['@babel/polyfill', path.resolve(__dirname, '..', 'frontend', 'lib', 'index.js')],
     output: {
       path: path.resolve(basePath, 'dist')
     },
