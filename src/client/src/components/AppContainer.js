@@ -1,14 +1,14 @@
 import React from 'react';
 import { MdMenu } from 'react-icons/md';
-import Loader from './Loader';
-import Base from './ContentView/Base';
-import setupBespoke from './setup-bespoke';
-import router from './utils/router';
-import createHtmlSlides from './slides/create-html-slides';
-import PresentationController from './presentation-mode/Controller'; // common and host
-import PageNumber from './PageNumber';
+import { Loader } from './Loader';
+import { Base } from './ContentView/Base';
+import { setup as setupBespoke } from '../setup/bespoke';
+import { router } from '../router';
+import { createHtmlSlides } from '../utils/createHtmlSlides';
+import { Controller as PresentationController } from './presentationMode/Controller'; // common and host
+import { PageNumber } from './PageNumber';
 
-class AppContainer extends React.Component {
+export class AppContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -94,7 +94,7 @@ class AppContainer extends React.Component {
 
   async componentDidMount() {
     const {
-      default: SidebarComponent
+      SidebarComponent
     } = await import(/* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar');
 
     this.setState({ SidebarComponent });
@@ -135,9 +135,9 @@ class AppContainer extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         {process.env.SIDEBAR && this.mode === 'common' ? (
-          <React.Fragment>
+          <>
             {this.state.SidebarComponent ? (
               <this.state.SidebarComponent
                 goTo={this.goTo}
@@ -149,7 +149,7 @@ class AppContainer extends React.Component {
               />
             ) : null}
             <MdMenu className="btn-sidebar" onClick={() => this.onSetSidebarOpen(true)} />
-          </React.Fragment>
+          </>
         ) : null}
         <Loader displayed={this.state.loader} />
         {process.env.PAGE_NUMBER && <PageNumber index={this.state.slideInfo.index} />}
@@ -160,9 +160,7 @@ class AppContainer extends React.Component {
             currentIndex={this.state.slideInfo.index}
           />
         ) : null}
-      </React.Fragment>
+      </>
     );
   }
 }
-
-export default AppContainer;

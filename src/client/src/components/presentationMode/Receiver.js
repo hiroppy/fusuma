@@ -1,4 +1,4 @@
-class Receiver {
+export class Receiver {
   constructor() {
     this.apiType =
       navigator.presentation && navigator.presentation.receiver ? 'presentation' : 'localStorage';
@@ -42,5 +42,3 @@ class Receiver {
     }
   }
 }
-
-export default Receiver;

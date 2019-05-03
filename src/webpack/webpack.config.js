@@ -94,7 +94,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
     common.entry.push(path.join(basePath, jsPath));
   }
   if (cssPath && path.extname(cssPath) === '.css') {
-    common.entry.push(path.resolve(__dirname, '..', 'client', 'src', 'custom-css.js'));
+    common.entry.push(path.resolve(__dirname, '..', 'client', 'src', 'utils', 'customCss.js'));
   }
 
   return merge.smart(common, config);

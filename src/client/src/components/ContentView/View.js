@@ -1,14 +1,12 @@
-/* eslint-disable  react/prop-types */
-
 /*
  * View for Presentation mode
  */
 
 import React from 'react';
-import Base from './Base';
-import PresentationReceiver from '../presentation-mode/Receiver';
+import { Base } from './Base';
+import { Receiver as PresentationReceiver } from '../presentationMode/Receiver';
 
-class View extends React.PureComponent {
+export default class View extends React.PureComponent {
   constructor() {
     super();
 
@@ -24,5 +22,3 @@ class View extends React.PureComponent {
     );
   }
 }
-
-export default View;

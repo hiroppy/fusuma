@@ -3,7 +3,7 @@
 import React from 'react';
 import Prism from 'prismjs';
 
-class Base extends React.PureComponent {
+export class Base extends React.PureComponent {
   componentDidMount() {
     Prism.highlightAll();
   }
@@ -36,5 +36,3 @@ class Base extends React.PureComponent {
     );
   }
 }
-
-export default Base;

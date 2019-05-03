@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 import Sidebar from 'react-sidebar';
 import screenfull from 'screenfull';
@@ -22,7 +20,7 @@ const sns = process.env.SNS;
 const title = process.env.TITLE;
 
 const Inner = (props) => (
-  <React.Fragment>
+  <>
     <div className="sidebar-social">
       {Array.isArray(sns) &&
         url &&
@@ -69,10 +67,10 @@ const Inner = (props) => (
         </a>
       ))}
     </div>
-  </React.Fragment>
+  </>
 );
 
-const SidebarComponent = (props) => (
+export const SidebarComponent = (props) => (
   <Sidebar
     sidebar={Inner(props)}
     shadow={false}
@@ -84,5 +82,3 @@ const SidebarComponent = (props) => (
     &apos;{/* react-slider requires props.children... */}
   </Sidebar>
 );
-
-export default SidebarComponent;

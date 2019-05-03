@@ -1,4 +1,4 @@
-const fetchSlides = (dir) => {
+export function fetchSlides(dir) {
   /**
    * get all md and html contents
    * @param {Array<string>} context - filenames
@@ -14,6 +14,4 @@ const fetchSlides = (dir) => {
   }
 
   return fetchAll(dir);
-};
-
-export default fetchSlides;
+}

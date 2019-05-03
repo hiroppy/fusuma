@@ -1,4 +1,4 @@
-const parseAttrs = (content) => {
+export function parseAttrs(content) {
   const res = {
     fx: {
       direction: '',
@@ -58,6 +58,4 @@ const parseAttrs = (content) => {
   }
 
   return res;
-};
-
-export default parseAttrs;
+}

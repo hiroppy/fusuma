@@ -1,14 +1,12 @@
-/* eslint-disable  react/prop-types */
-
 /**
  * Host for Presentation mode
  */
 
 import React from 'react';
-import Base from './Base';
-import '../../assets/style/host.css';
+import { Base } from './Base';
+import '../../../assets/style/host.css';
 
-class Host extends React.PureComponent {
+export default class Host extends React.PureComponent {
   constructor(props) {
     super();
 
@@ -70,4 +68,3 @@ class Host extends React.PureComponent {
     );
   }
 }
-export default Host;
