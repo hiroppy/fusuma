@@ -16,7 +16,6 @@ export default class Host extends React.PureComponent {
       meta: {
         note: '',
         className: '',
-        background: 'default',
         sectionTitle: '',
         shouldReplace: false
       },

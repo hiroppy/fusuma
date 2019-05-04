@@ -1,10 +1,10 @@
-<!-- background: title -->
+<!-- classes: title -->
 
 <!-- note
 Hi!
 -->
 
-# About Fusuma
+# Introducing Fusuma
 
 <br />
 

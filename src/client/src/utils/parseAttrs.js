@@ -1,21 +1,24 @@
-const defaultClass = 'size-50 aligncenter wrap';
+import classnames from 'classnames';
 
 export function parseAttrs(content) {
   const res = {
     note: '',
     sectionTitle: '',
     className: '',
-    shouldReplace: false,
-    background: 'default'
+    shouldReplace: false
   };
+  const classes = ['aligncenter'];
 
   if (content === undefined) return res;
 
-  // background
+  // class
   {
-    const arr = content.match(/<!-- background: (.+) -->/);
+    const arr = content.match(/<!-- classes: (.+) -->/);
 
-    res.background = arr ? arr[1] : 'default';
+    // TODO: multiple string
+    if (arr) {
+      classes.push(arr[1]);
+    }
   }
 
   // section-title
@@ -23,8 +26,7 @@ export function parseAttrs(content) {
     const arr = content.match(/<!-- sectionTitle: (.+) -->/);
 
     if (arr) {
-      res.background = 'section-title';
-      res.className = 'section-title';
+      classes.push('section-title');
       res.sectionTitle = arr[1];
     }
   }
@@ -42,6 +44,9 @@ export function parseAttrs(content) {
 
     if (arr) res.shouldReplace = true;
   }
+
+  // convert from an array to a string
+  res.className = classnames(classes);
 
   return res;
 }
