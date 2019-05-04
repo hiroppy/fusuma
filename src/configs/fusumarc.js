@@ -19,10 +19,11 @@ const config = {
     sns: ['twitter'] // twitter, hatena
   },
   slide: {
+    loop: true,
     sidebar: true,
-    theme: 'nebula',
     targetBlank: true,
-    pageNumber: false
+    showIndex: false,
+    isVertical: false
   },
   extends: {
     js: null,
