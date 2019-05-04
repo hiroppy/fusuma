@@ -4,6 +4,7 @@
   bottom: 20px;
   color: var(--color-white);
   cursor: pointer;
+  fill: #abc;
   font-size: 1.5rem !important;
   left: 30px;
   position: absolute;

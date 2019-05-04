@@ -1,15 +1,22 @@
 @import './variable';
 @import './loader';
 @import './sidebar';
-@import './page-number';
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro'); /* for highlight.js */
 
 a {
   padding-left: 0;
 }
 
+ul {
+  text-align: left;
+}
+
 li {
   margin: 0;
+}
+
+body {
+  font-size: 24px;
 }
 
 img {
@@ -17,9 +24,8 @@ img {
 }
 
 pre {
-  background: var(--color-white) !important;
+  background: var(--color-white);
   border-radius: 10px;
-  font-size: 0.7rem;
   min-width: 50%;
   max-width: 90%;
 }
