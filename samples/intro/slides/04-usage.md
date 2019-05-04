@@ -1,4 +1,4 @@
-<!-- sectionTitle: usage -->
+<!-- sectionTitle: Usage -->
 
 ## Usage
 

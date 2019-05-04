@@ -3,43 +3,31 @@
   --sub-color: #ff874d;
 }
 
-h1 {
-  color: var(--main-color);
-}
-
 h2 {
+  color: var(--main-color);
   margin-bottom: 30px;
 }
 
-@font-face {
-  font-family: Stratum;
-  /* src: url('./StratumNo1 Medium.ttf'); */
+body {
+  /* common background color */
+  background: #f5f5f5;
 }
 
-__body {
-  font-family: Stratum, 'Helvetica Neue For Number', 'Hiragino Kaku Gothic ProN', 'メイリオ', Arial,
-    sans-serif;
-}
-
-__bg.title {
+.title {
   background: #464646;
+  color: var(--main-color);
 }
 
-__bg.end {
-  background: var(--main-color);
+.section-title {
+  background: #777;
+
+  & > h2 {
+    color: var(--sub-color);
+  }
 }
 
-#the-end {
+.end {
   color: var(--sub-color);
-}
-
-__section-title {
-  background: var(--main-color);
-}
-
-.section-title > h2 {
-  color: var(--sub-color);
-  margin-bottom: 0;
 }
 
 .hand {

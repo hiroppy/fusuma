@@ -15,13 +15,13 @@ export class Base extends React.PureComponent {
   render() {
     const { slides, currentIndex, className = undefined, lazyload = true } = this.props;
 
+    // class="vertical"
     return (
       <article className={className} id="webslides">
         {slides.map((slide, i) => (
           <section
             key={i /* fix */}
-            // className={slide.meta.className}
-            className="aligncenter wrap"
+            className={slide.meta.className}
             dangerouslySetInnerHTML={{
               __html:
                 (currentIndex >= i - 5 && currentIndex <= i + 5) || !lazyload

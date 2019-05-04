@@ -43,6 +43,7 @@
     "babel-loader": "^8.0.5",
     "caporal": "0.10.0",
     "child-process-promise": "2.2.1",
+    "classnames": "^2.2.6",
     "css-loader": "0.28.11",
     "deepmerge": "2.1.0",
     "file-loader": "1.1.11",

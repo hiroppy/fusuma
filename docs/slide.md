@@ -2,12 +2,6 @@
 
 All slides are written in HTML or markdown.
 
-## CSS Class Name Aliases
-
-- `__body` -> `.bespoke-parent`
-- `__bg` -> `.bespoke-backdrop`
-- `__section-title` -> `.bespoke-backdrop.section-title`
-
 ## Contents
 
 If you want to automatically make the slide registered to `sectionTitle` a table of contents, add the following.
@@ -40,11 +34,8 @@ This will affect the sidebar's table of contents list and `contents`.
 ### CSS
 
 ```css
-.bespoke-backdrop.section-title {
+.section-title {
   background: red;
-}
-
-.section-title h2 {
   color: red;
 }
 ```
