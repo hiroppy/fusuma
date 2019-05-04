@@ -1,3 +1,0 @@
-<!-- sectionTitle: Transition -->
-
-## Transition

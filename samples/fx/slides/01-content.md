@@ -1,5 +1,0 @@
-<!-- background: contents -->
-
-## Contents
-
-<!-- contents -->
