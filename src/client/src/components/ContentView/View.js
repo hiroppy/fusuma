@@ -12,7 +12,9 @@ export default class View extends React.PureComponent {
 
     this.presentationReceiver = new PresentationReceiver();
     this.presentationReceiver.onChangePage((pageNum) => {
-      window.slide.bespoke.slide(pageNum);
+      if (window.slide) {
+        window.slide.goToSlide(pageNum);
+      }
     });
   }
 

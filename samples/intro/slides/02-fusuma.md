@@ -4,13 +4,11 @@
 
 ---
 
-## Feature
+## Features
 
 _Fusuma is a helper that easily make slides with markdown._
 
 Aiming to be able to make slides and release them in quickly.
-
-<br />
 
 - make a cool slide with bespoke.js
 - support development, production and deploy tasks
