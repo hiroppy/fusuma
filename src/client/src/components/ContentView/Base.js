@@ -21,10 +21,7 @@ export class Base extends React.PureComponent {
           <section
             key={i /* fix */}
             // className={slide.meta.className}
-            className="size-50 aligncenter"
-            // data-bespoke-backdrop={slide.meta.background}
-            // data-bespoke-fx-direction={slide.meta.fx.direction}
-            // data-bespoke-fx-transition={slide.meta.fx.transition}
+            className="aligncenter wrap"
             dangerouslySetInnerHTML={{
               __html:
                 (currentIndex >= i - 5 && currentIndex <= i + 5) || !lazyload

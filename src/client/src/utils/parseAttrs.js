@@ -1,9 +1,7 @@
+const defaultClass = 'size-50 aligncenter wrap';
+
 export function parseAttrs(content) {
   const res = {
-    fx: {
-      direction: '',
-      transition: ''
-    },
     note: '',
     sectionTitle: '',
     className: '',
@@ -12,18 +10,6 @@ export function parseAttrs(content) {
   };
 
   if (content === undefined) return res;
-
-  {
-    const arr = content.match(/<!-- direction: (.+) -->/);
-
-    res.fx.direction = arr ? arr[1] : 'horizontal';
-  }
-
-  {
-    const arr = content.match(/<!-- transition: (.+) -->/);
-
-    res.fx.transition = arr ? arr[1] : 'none';
-  }
 
   // background
   {

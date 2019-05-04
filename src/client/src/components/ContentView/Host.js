@@ -16,10 +16,6 @@ export default class Host extends React.PureComponent {
       meta: {
         note: '',
         className: '',
-        fx: {
-          direction: 'horizontal',
-          transition: 'none'
-        },
         background: 'default',
         sectionTitle: '',
         shouldReplace: false
@@ -32,11 +28,7 @@ export default class Host extends React.PureComponent {
   }
 
   render() {
-    const index = window.slide
-      ? window.slide.bespoke.slide() - 1 < 0
-        ? 0
-        : window.slide.bespoke.slide() - 1
-      : 0;
+    const index = window.slide ? window.slide.currentSlideI_ : 0;
 
     return (
       <div className="host-container">
@@ -44,7 +36,7 @@ export default class Host extends React.PureComponent {
           <a className="fa fa-times terminate-button" onClick={this.props.terminate} />
           {window.slide ? (
             <pre>
-              {!!location.hash && ~~location.hash.match(/#(.*)/)[1] !== 1 // for 0 page
+              {!!location.hash && ~~location.hash.match(/#slide=(.*)/)[1] !== 1 // for 0 page
                 ? this.slides[index].meta.note
                 : this.firstSlide.meta.note}
             </pre>
@@ -53,7 +45,7 @@ export default class Host extends React.PureComponent {
         <div className="host-info">
           <div className="host-slides">
             <span className="current-slide-num">
-              {window.slide ? window.slide.bespoke.slide() + 1 : 1} / {this.slides.length}
+              {window.slide ? index + 1 : 1} / {this.slides.length}
             </span>
           </div>
           <h2>next</h2>

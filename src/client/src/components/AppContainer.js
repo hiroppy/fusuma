@@ -5,7 +5,6 @@ import { Base } from './ContentView/Base';
 import { router } from '../router';
 import { createHtmlSlides } from '../utils/createHtmlSlides';
 import { Controller as PresentationController } from './presentationMode/Controller'; // common and host
-import { PageNumber } from './PageNumber';
 import { setup as setupWebSlides } from '../setup/webSlides';
 
 export class AppContainer extends React.Component {
@@ -39,6 +38,14 @@ export class AppContainer extends React.Component {
     }
   }
 
+  async componentDidMount() {
+    const {
+      SidebarComponent
+    } = await import(/* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar');
+
+    this.setState({ SidebarComponent });
+  }
+
   async routeMode(mode) {
     this.mode = mode || router();
 
@@ -67,20 +74,12 @@ export class AppContainer extends React.Component {
 
       window.slide.el.addEventListener('ws:slide-change', (e) => {
         this.updateSlideState(e.detail.currentSlide0);
+
+        if (this.mode !== 'view' && this.presentationController) {
+          this.presentationController.changePage(window.slide.currentSlideI_);
+        }
       });
-
-      if (this.mode !== 'view' && this.presentationController) {
-        this.presentationController.changePage(); // TODO: fix
-      }
     }
-  }
-
-  async componentDidMount() {
-    const {
-      SidebarComponent
-    } = await import(/* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar');
-
-    this.setState({ SidebarComponent });
   }
 
   goTo = (num) => {

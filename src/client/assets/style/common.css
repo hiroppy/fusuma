@@ -8,11 +8,12 @@ a {
 }
 
 ul {
-  text-align: left;
+  margin: 0 auto;
 }
 
 li {
   margin: 0;
+  text-align: left;
 }
 
 body {
@@ -28,6 +29,11 @@ pre {
   border-radius: 10px;
   min-width: 50%;
   max-width: 90%;
+  width: auto;
+}
+
+pre[class*='language-'] {
+  margin: 0.5em auto;
 }
 
 code {

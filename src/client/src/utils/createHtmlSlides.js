@@ -52,7 +52,7 @@ function insertContentsList(content, list) {
     <ul className="contents">
       {list.map((e, i) => (
         <li key={i}>
-          <a href={`#${e.index}`}>{e.title}</a>
+          <a href={`#slide=${e.index}`}>{e.title}</a>
         </li>
       ))}
     </ul>

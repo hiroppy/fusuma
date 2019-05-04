@@ -62,7 +62,7 @@ const Inner = (props) => (
     </div>
     <div className="sidebar-contents">
       {props.contents.map((content, i) => (
-        <a href={`#${content.index}`} key={i}>
+        <a href={`#slide=${content.index}`} key={i}>
           - {content.title}
         </a>
       ))}
