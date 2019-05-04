@@ -52,7 +52,11 @@ const Inner = (props) => (
       <MdLastPage onClick={() => props.goTo(props.slideInfo.total - 1)} />
     </div>
     <div>
-      <MdFullscreen onClick={() => (screenfull.enabled ? screenfull.toggle() : undefined)} />
+      <MdFullscreen
+        onClick={() => {
+          screenfull.enabled ? screenfull.toggle() : undefined;
+        }}
+      />
       <MdAirplay onClick={() => props.runPresentationMode()} style={{ width: 18, height: 18 }} />
       {process.env.REMOTE_ORIGIN_URL ? (
         <a href={process.env.REMOTE_ORIGIN_URL}>

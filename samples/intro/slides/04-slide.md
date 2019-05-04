@@ -1,4 +1,4 @@
-<!-- sectionTitle: slide -->
+<!-- sectionTitle: Syntax Provided by Fusuma -->
 
 ## Syntax Provided by Fusuma
 

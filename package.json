@@ -76,7 +76,7 @@
     "react-sidebar": "2.3.2",
     "remote-origin-url": "1.0.0",
     "rmfr": "2.0.0",
-    "screenfull": "3.3.2",
+    "screenfull": "^4.2.0",
     "serve": "7.0.0",
     "style-loader": "0.23.0",
     "table": "^5.2.3",
