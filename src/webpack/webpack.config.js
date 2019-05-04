@@ -10,8 +10,7 @@ const babelrc = require('../configs/babelrc');
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   const { url, name, description, thumbnail, siteName, sns, repositoryUrl } = meta || {};
-  const { theme, sidebar, targetBlank = true, pageNumber = false } = slide || {};
-
+  const { sidebar, targetBlank = true, pageNumber = false } = slide || {};
   const { js: jsPath, css: cssPath } = fileExtends || {};
   const { basePath, remoteOrigin } = internal;
 
@@ -63,15 +62,6 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         'process.env.SLIDE_PATH': JSON.stringify(path.join(basePath, 'slides')),
         'process.env.URL': JSON.stringify(url),
         'process.env.SNS': JSON.stringify(sns),
-        'process.env.THEME': webpack.DefinePlugin.runtimeValue(() => {
-          const t = /^nebula$|^voltaire$|^cube$/.test(theme)
-            ? `bespoke-theme-${theme}`
-            : /^bespoke-theme-nebula$|^bespoke-theme-voltaire$|^bespoke-theme-cube$/.test(theme)
-            ? theme
-            : 'bespoke-theme-nebula';
-
-          return JSON.stringify(t);
-        }),
         'process.env.SIDEBAR': JSON.stringify(sidebar === undefined ? true : sidebar),
         'process.env.TITLE': JSON.stringify(name),
         'process.env.BASE_PATH': JSON.stringify(basePath),

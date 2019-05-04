@@ -19,6 +19,8 @@ const url = process.env.URL;
 const sns = process.env.SNS;
 const title = process.env.TITLE;
 
+const formatStr = (num) => `${num}`.padStart(2, '0');
+
 const Inner = (props) => (
   <>
     <div className="sidebar-social">
@@ -46,9 +48,7 @@ const Inner = (props) => (
     </div>
     <div className="sidebar-control">
       <MdFirstPage onClick={() => props.goTo(0)} />
-      <span>
-        {props.slideInfo.current} / {props.slideInfo.total}
-      </span>
+      <span>{`${formatStr(props.slideInfo.index + 1)} / ${formatStr(props.slideInfo.total)}`}</span>
       <MdLastPage onClick={() => props.goTo(props.slideInfo.total - 1)} />
     </div>
     <div>

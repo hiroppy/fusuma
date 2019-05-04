@@ -8,10 +8,9 @@ import './setup/css';
 // }
 
 (async () => {
-  const { default: theme } = await import(/* webpackChunkName: "theme" */ process.env.THEME);
   const slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH));
 
-  createBody(slidesInfo.slides, theme);
+  createBody(slidesInfo.slides);
 
   if (process.env.TARGET_BLANK) {
     const {

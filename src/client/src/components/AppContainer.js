@@ -2,15 +2,19 @@ import React from 'react';
 import { MdMenu } from 'react-icons/md';
 import { Loader } from './Loader';
 import { Base } from './ContentView/Base';
-import { setup as setupBespoke } from '../setup/bespoke';
 import { router } from '../router';
 import { createHtmlSlides } from '../utils/createHtmlSlides';
 import { Controller as PresentationController } from './presentationMode/Controller'; // common and host
 import { PageNumber } from './PageNumber';
+import { setup as setupWebSlides } from '../setup/webSlides';
 
 export class AppContainer extends React.Component {
   constructor(props) {
     super(props);
+
+    let index = location.hash.match(/^#slide=(.+?)$/);
+
+    index = index !== null ? index[1] - 1 : 0;
 
     this.state = {
       opened: false, // TODO: refactor to `status: {}`
@@ -18,8 +22,7 @@ export class AppContainer extends React.Component {
       SidebarComponent: null, // for lazy load
       slideInfo: {
         total: 0,
-        index: location.hash.slice(1) || 0,
-        current: '0' // string
+        index
       }
     };
 
@@ -58,37 +61,17 @@ export class AppContainer extends React.Component {
     });
 
     if (!window.slide) {
-      this.setupBespoke();
+      window.slide = setupWebSlides();
 
-      // TODO: refactor
-      const index = window.slide.bespoke.slide();
-      this.setState({
-        slideInfo: {
-          ...this.state.slideInfo,
-          index: index + 1,
-          total: `${this.slides.length}`.padStart(2, '0'),
-          current: `${index + 1}`.padStart(2, '0')
-        }
+      this.updateSlideState(this.state.slideInfo.index);
+
+      window.slide.el.addEventListener('ws:slide-change', (e) => {
+        this.updateSlideState(e.detail.currentSlide0);
       });
 
-      window.slide.bespoke.on('activate', () => {
-        setTimeout(() => {
-          const index = window.slide.bespoke.slide();
-
-          this.setState({
-            slideInfo: {
-              ...this.state.slideInfo,
-              index: index + 1,
-              total: `${this.slides.length}`.padStart(2, '0'),
-              current: `${index + 1}`.padStart(2, '0')
-            }
-          });
-
-          if (this.mode !== 'view' && this.presentationController) {
-            this.presentationController.changePage(index);
-          }
-        }, 0);
-      });
+      if (this.mode !== 'view' && this.presentationController) {
+        this.presentationController.changePage(); // TODO: fix
+      }
     }
   }
 
@@ -101,18 +84,23 @@ export class AppContainer extends React.Component {
   }
 
   goTo = (num) => {
-    window.slide.bespoke.slide(num);
+    if (window.slide) {
+      window.slide.goToSlide(num);
+    }
+  };
+
+  updateSlideState = (index) => {
+    this.setState({
+      slideInfo: {
+        ...this.state.slideInfo,
+        total: this.slides.length,
+        index
+      }
+    });
   };
 
   onSetSidebarOpen = (opened) => {
     this.setState({ opened });
-  };
-
-  setupBespoke = () => {
-    // hmmm.... I have no idea
-    // because DOM tree must be built when calling setupBespoke.
-    window.slide = {};
-    window.slide.bespoke = setupBespoke(this.props.theme);
   };
 
   onRunPresentationMode = async () => {
@@ -136,9 +124,9 @@ export class AppContainer extends React.Component {
   render() {
     return (
       <>
-        {process.env.SIDEBAR && this.mode === 'common' ? (
+        {process.env.SIDEBAR && this.mode === 'common' && (
           <>
-            {this.state.SidebarComponent ? (
+            {this.state.SidebarComponent && (
               <this.state.SidebarComponent
                 goTo={this.goTo}
                 opened={this.state.opened}
@@ -147,19 +135,18 @@ export class AppContainer extends React.Component {
                 slideInfo={this.state.slideInfo}
                 runPresentationMode={this.onRunPresentationMode}
               />
-            ) : null}
+            )}
             <MdMenu className="btn-sidebar" onClick={() => this.onSetSidebarOpen(true)} />
           </>
-        ) : null}
+        )}
         <Loader displayed={this.state.loader} />
-        {process.env.PAGE_NUMBER && <PageNumber index={this.state.slideInfo.index} />}
-        {this.ContentComponent ? (
+        {this.ContentComponent && (
           <this.ContentComponent
             slides={this.slides}
             terminate={this.terminate}
             currentIndex={this.state.slideInfo.index}
           />
-        ) : null}
+        )}
       </>
     );
   }
