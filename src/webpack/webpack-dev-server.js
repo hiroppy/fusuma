@@ -24,7 +24,7 @@ function run(config, cb) {
 
   compiler.plugin('done', () => {
     if (!flag) {
-      console.log(`serve ${url}`);
+      console.log(`Running at ${url}`);
 
       cb();
       flag = true;

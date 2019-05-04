@@ -1,13 +1,12 @@
 'use strict';
 
-const webpack = require('webpack');
-const workboxPlugin = require('workbox-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const css = require('./css');
-
 function prod() {
+  const webpack = require('webpack');
+  const workboxPlugin = require('workbox-webpack-plugin');
+  const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+  const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+  const css = require('./css');
+
   return {
     mode: 'production',
     output: {
@@ -27,9 +26,6 @@ function prod() {
     ],
     optimization: {
       minimizer: [
-        new UglifyJsPlugin({
-          parallel: true
-        }),
         new OptimizeCSSAssetsPlugin({
           cssProcessorOptions: {
             safe: true,
