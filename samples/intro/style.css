@@ -32,6 +32,7 @@ body {
 
 .hand {
   bottom: 20px;
-  left: 100px;
+  font-size: 32px;
+  left: 80px;
   position: fixed;
 }

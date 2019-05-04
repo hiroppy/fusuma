@@ -34,19 +34,22 @@ meta:
   url:
   name:
   author:
-  description:
   thumbnail:
-  siteName:
-  sns: # twitter, hatena
+  description:
+  sns:
     - twitter
 slide:
-  theme:
+  loop: true
+  sidebar: true
+  targetBlank: true
+  showIndex: false
+  isVertical: false
 extends:
   js:
   css:
 ```
 
-`fusuma init` creates a configuration file.
+`npx fusuma init` creates the configuration file.
 
 ---
 
@@ -68,6 +71,8 @@ extends:
 └── style.css      <-- optional
 ```
 
+`.fusuma.yml` and `slides/` are required.
+
 ---
 
 ## Sample tasks
@@ -78,8 +83,9 @@ extends:
 {
   "scripts": {
     "start": "fusuma start",
-    "build": "NODE_ENV=production fusuma build",
-    "deploy": "npm run build && fusuma deploy"
+    "build": "fusuma build",
+    "deploy": "npm run build && fusuma deploy",
+    "pdf": "fusuma pdf"
   },
 }
 ```
