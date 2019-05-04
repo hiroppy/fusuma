@@ -4,7 +4,7 @@
 
 ---
 
-## Command
+## CLI
 
 ```txt
 USAGE
@@ -75,7 +75,7 @@ extends:
 
 ---
 
-## Sample tasks
+## Tasks
 
 ```js
 // package.json
