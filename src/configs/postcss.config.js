@@ -13,7 +13,7 @@ const common = {
 
 const devConfig = () => {
   return {
-    plugins: [...common.plugins, require('postcss-reporter'), require('postcss-browser-reporter')]
+    plugins: [...common.plugins, require('postcss-reporter')]
   };
 };
 

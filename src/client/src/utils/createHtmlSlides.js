@@ -1,5 +1,4 @@
 import React from 'react';
-import reactElementToJSXString from 'react-element-to-jsx-string';
 import { parseAttrs } from './parseAttrs';
 
 export function createHtmlSlides(arr) {
@@ -48,15 +47,22 @@ function divideSlides(slides) {
 }
 
 function insertContentsList(content, list) {
-  const html = (
-    <ul className="contents">
-      {list.map((e, i) => (
-        <li key={i}>
-          <a href={`#slide=${e.index}`}>{e.title}</a>
-        </li>
-      ))}
-    </ul>
-  );
+  const html = `
+    <div class="toc size-70 aligncenter">
+      <ol>
+        ${list
+          .map(
+            (e, i) => `<li>
+            <a href="#slide=${e.index}" title="${e.title}">
+              <span class="chapter">${e.title}</span>
+              <span class="toc-page">${e.index}</span>
+            </a>
+          </li>`
+          )
+          .join('')}
+      </ol>
+    </div>
+  `;
 
-  return content.replace(/<!-- contents -->/, reactElementToJSXString(html));
+  return content.replace(/<!-- contents -->/, html);
 }

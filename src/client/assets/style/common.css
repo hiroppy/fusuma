@@ -46,3 +46,7 @@ code {
   font-family: Verdana;
   font-weight: bold;
 }
+
+.toc {
+  background: transparent;
+}
