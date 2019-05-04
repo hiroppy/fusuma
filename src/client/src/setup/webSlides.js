@@ -3,7 +3,8 @@ import 'webslides';
 export function setup() {
   const ws = new window.WebSlides({
     loop: process.env.LOOP,
-    showIndex: process.env.SHOW_INDEX
+    showIndex: process.env.SHOW_INDEX,
+    navigateOnScroll: false
   });
 
   return ws;
