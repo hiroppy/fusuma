@@ -8,7 +8,7 @@ meta:
   repositoryUrl: https://github.com/hiroppy/fusuma
   sns: ['twitter']
 slide:
-  theme: nebula
+  showIndex: true
 extends:
   js: index.js
   css: style.css
