@@ -71,7 +71,7 @@ $ npx fusuma deploy   # deploy to github pages
 $ npx fusuma pdf      # export as PDF from HTML
 ```
 
-When `npx fusuma start` is executed, fusuma will create a slide as follows.
+When `npx fusuma start` is executed, fusuma will create a slide as follows and serves localhost:8080.
 
 ![](./media/procedure-screenshot.png)
 
@@ -85,9 +85,9 @@ Slide order is numeric, alphabetical.
 
 ```
 .
-├── .fusumarc.yml       <-- a configuration file
+├── .fusumarc.yml       <-- the configuration file
 ├── index.js            <-- optional for rewriting
-├── slides              <-- slides written by Markdown or HTML
+├── slides              <-- slides written by MarkDown or HTML
 │   ├── 0-title.md
 │   ├── 01-content.md
 │   ├── 02-body
@@ -107,7 +107,7 @@ This is the first slide.
 
 ---
 
-## ✌️
+## 🤭
 
 This is the second slide.
 ```
@@ -208,7 +208,7 @@ module.exports = {
 
 ## Slide Syntax
 
-See the example slide:) [Syntax Provided by Fusuma](./samples/intro/04-slide.md)
+See the example slide:) [Syntax Provided by Fusuma](./samples/intro/slides/04-slide.md)
 
 ## Presenter Mode
 
