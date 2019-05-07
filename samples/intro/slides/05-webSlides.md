@@ -95,7 +95,7 @@ Just 5 basic animations: `.fadeIn`, `.fadeInUp`, `.zoomIn`, `.slideInLeft`, and 
 
 ---
 
-## WebSlides has many Components not introduced this slides, <br />please refer to the document. 🙏
+## WebSlides has many components not introduced this slides, <br />please refer to the document. 🙏
 
 <br />
 
