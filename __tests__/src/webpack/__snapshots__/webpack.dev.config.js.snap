@@ -7,11 +7,29 @@ Object {
     "hot": true,
     "inline": true,
     "port": 8080,
+    "quiet": true,
   },
   "devtool": "inline-cheap-module-source-map",
   "mode": "development",
   "output": Object {
     "filename": "bundle.js",
   },
+  "plugins": Array [
+    FriendlyErrorsWebpackPlugin {
+      "compilationSuccessInfo": Object {},
+      "formatters": Array [
+        [Function],
+        [Function],
+        [Function],
+      ],
+      "onErrors": undefined,
+      "shouldClearConsole": true,
+      "transformers": Array [
+        [Function],
+        [Function],
+        [Function],
+      ],
+    },
+  ],
 }
 `;

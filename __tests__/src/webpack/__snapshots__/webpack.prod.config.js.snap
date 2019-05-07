@@ -25,29 +25,6 @@ Object {
                 [Function],
                 [Function],
                 [Function],
-                [Function],
-              ],
-            },
-          },
-          Object {
-            "loader": "string-replace-loader",
-            "options": Object {
-              "multiple": Array [
-                Object {
-                  "flags": "g",
-                  "replace": ".bespoke-parent",
-                  "search": "__body",
-                },
-                Object {
-                  "flags": "g",
-                  "replace": ".bespoke-backdrop",
-                  "search": "__bg",
-                },
-                Object {
-                  "flags": "g",
-                  "replace": ".bespoke-backdrop.section-title",
-                  "search": "__section-title",
-                },
               ],
             },
           },
@@ -57,23 +34,25 @@ Object {
   },
   "optimization": Object {
     "minimizer": Array [
-      UglifyJsPlugin {
+      TerserPlugin {
         "options": Object {
           "cache": false,
+          "cacheKeys": [Function],
+          "chunkFilter": [Function],
           "exclude": undefined,
           "extractComments": false,
           "include": undefined,
+          "minify": undefined,
           "parallel": true,
           "sourceMap": false,
-          "test": /\\\\\\.js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
-          "uglifyOptions": Object {
+          "terserOptions": Object {
             "output": Object {
-              "comments": /\\^\\\\\\*\\*!\\|@preserve\\|@license\\|@cc_on/,
+              "comments": /\\^\\\\\\*\\*!\\|@preserve\\|@license\\|@cc_on/i,
             },
           },
+          "test": /\\\\\\.m\\?js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
           "warningsFilter": [Function],
         },
-        "sourceMapsCache": WeakMap {},
       },
       OptimizeCssAssetsWebpackPlugin {
         "deleteAssetsMap": Object {},

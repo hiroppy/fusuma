@@ -7,6 +7,7 @@ Object {
     "hot": true,
     "inline": true,
     "port": 8080,
+    "quiet": true,
   },
   "devtool": "inline-cheap-module-source-map",
   "entry": Array [
@@ -79,29 +80,6 @@ Object {
                 [Function],
                 [Function],
                 [Function],
-                [Function],
-              ],
-            },
-          },
-          Object {
-            "loader": "string-replace-loader",
-            "options": Object {
-              "multiple": Array [
-                Object {
-                  "flags": "g",
-                  "replace": ".bespoke-parent",
-                  "search": "__body",
-                },
-                Object {
-                  "flags": "g",
-                  "replace": ".bespoke-backdrop",
-                  "search": "__bg",
-                },
-                Object {
-                  "flags": "g",
-                  "replace": ".bespoke-backdrop.section-title",
-                  "search": "__section-title",
-                },
               ],
             },
           },
@@ -119,17 +97,15 @@ Object {
       "definitions": Object {
         "process.env.BASE_PATH": "\\".\\"",
         "process.env.CSS_PATH": "\\"stub/.\\"",
+        "process.env.IS_VERTICAL": "false",
         "process.env.JS_PATH": "\\"stub/.\\"",
-        "process.env.PAGE_NUMBER": "false",
+        "process.env.LOOP": "true",
         "process.env.REMOTE_ORIGIN_URL": undefined,
+        "process.env.SHOW_INDEX": "false",
         "process.env.SIDEBAR": "true",
         "process.env.SLIDE_PATH": "\\"stub/.\\"",
         "process.env.SNS": undefined,
         "process.env.TARGET_BLANK": "true",
-        "process.env.THEME": RuntimeValue {
-          "fileDependencies": Array [],
-          "fn": [Function],
-        },
         "process.env.TITLE": "\\"test\\"",
         "process.env.URL": "\\"url\\"",
       },
@@ -157,6 +133,21 @@ Object {
         "url": "url",
         "xhtml": false,
       },
+    },
+    FriendlyErrorsWebpackPlugin {
+      "compilationSuccessInfo": Object {},
+      "formatters": Array [
+        [Function],
+        [Function],
+        [Function],
+      ],
+      "onErrors": undefined,
+      "shouldClearConsole": true,
+      "transformers": Array [
+        [Function],
+        [Function],
+        [Function],
+      ],
     },
   ],
   "resolve": Object {
@@ -247,29 +238,6 @@ Object {
                 [Function],
                 [Function],
                 [Function],
-                [Function],
-              ],
-            },
-          },
-          Object {
-            "loader": "string-replace-loader",
-            "options": Object {
-              "multiple": Array [
-                Object {
-                  "flags": "g",
-                  "replace": ".bespoke-parent",
-                  "search": "__body",
-                },
-                Object {
-                  "flags": "g",
-                  "replace": ".bespoke-backdrop",
-                  "search": "__bg",
-                },
-                Object {
-                  "flags": "g",
-                  "replace": ".bespoke-backdrop.section-title",
-                  "search": "__section-title",
-                },
               ],
             },
           },
@@ -280,23 +248,25 @@ Object {
   "name": "test",
   "optimization": Object {
     "minimizer": Array [
-      UglifyJsPlugin {
+      TerserPlugin {
         "options": Object {
           "cache": false,
+          "cacheKeys": [Function],
+          "chunkFilter": [Function],
           "exclude": undefined,
           "extractComments": false,
           "include": undefined,
+          "minify": undefined,
           "parallel": true,
           "sourceMap": false,
-          "test": /\\\\\\.js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
-          "uglifyOptions": Object {
+          "terserOptions": Object {
             "output": Object {
-              "comments": /\\^\\\\\\*\\*!\\|@preserve\\|@license\\|@cc_on/,
+              "comments": /\\^\\\\\\*\\*!\\|@preserve\\|@license\\|@cc_on/i,
             },
           },
+          "test": /\\\\\\.m\\?js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
           "warningsFilter": [Function],
         },
-        "sourceMapsCache": WeakMap {},
       },
       OptimizeCssAssetsWebpackPlugin {
         "deleteAssetsMap": Object {},
@@ -356,17 +326,15 @@ Object {
       "definitions": Object {
         "process.env.BASE_PATH": "\\".\\"",
         "process.env.CSS_PATH": "\\"stub/.\\"",
+        "process.env.IS_VERTICAL": "false",
         "process.env.JS_PATH": "\\"stub/.\\"",
-        "process.env.PAGE_NUMBER": "false",
+        "process.env.LOOP": "true",
         "process.env.REMOTE_ORIGIN_URL": undefined,
+        "process.env.SHOW_INDEX": "false",
         "process.env.SIDEBAR": "true",
         "process.env.SLIDE_PATH": "\\"stub/.\\"",
         "process.env.SNS": undefined,
         "process.env.TARGET_BLANK": "true",
-        "process.env.THEME": RuntimeValue {
-          "fileDependencies": Array [],
-          "fn": [Function],
-        },
         "process.env.TITLE": "\\"test\\"",
         "process.env.URL": "\\"url\\"",
       },
