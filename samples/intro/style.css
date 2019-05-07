@@ -30,6 +30,10 @@ body {
   color: var(--sub-color);
 }
 
+.link {
+  color: var(--sub-color);
+}
+
 .hand {
   bottom: 20px;
   font-size: 32px;
