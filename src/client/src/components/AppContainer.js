@@ -4,14 +4,15 @@ import { Loader } from './Loader';
 import { Base } from './ContentView/Base';
 import { router } from '../router';
 import { createHtmlSlides } from '../utils/createHtmlSlides';
-import { Controller as PresentationController } from './presentationMode/Controller'; // common and host
 import { setup as setupWebSlides } from '../setup/webSlides';
 
 export class AppContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    let index = location.hash.match(/^#slide=(.+?)$/);
+    const parsedUrl = new URL(window.location.href);
+
+    let index = parsedUrl.hash.match(/^#slide=(.+?)$/);
 
     index = index !== null ? index[1] - 1 : 0;
 
@@ -19,6 +20,7 @@ export class AppContainer extends React.Component {
       opened: false, // TODO: refactor to `status: {}`
       loader: true,
       SidebarComponent: null, // for lazy load
+      isSidebar: true,
       slideInfo: {
         total: 0,
         index
@@ -27,27 +29,43 @@ export class AppContainer extends React.Component {
 
     const { slides, contentsList } = createHtmlSlides(props.slides);
     this.slides = slides;
+    this.params = parsedUrl.searchParams;
     this.contentsList = contentsList;
     this.ContentComponent = null;
-    this.presentationApiId = null;
 
     this.routeMode();
+  }
 
-    if (['common', 'host'].includes(this.mode)) {
-      this.presentationController = new PresentationController();
-    }
+  componentWillMount() {
+    this.changeSidebarState();
   }
 
   async componentDidMount() {
-    const {
-      SidebarComponent
-    } = await import(/* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar');
+    if (this.state.isSidebar) {
+      const {
+        SidebarComponent
+      } = await import(/* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar');
 
-    this.setState({ SidebarComponent });
+      this.setState({ SidebarComponent });
+    }
   }
 
+  changeSidebarState = () => {
+    const isSidebar =
+      this.params.get('sidebar') === 'false' || !process.env.SIDEBAR || this.mode !== 'common'
+        ? false
+        : true;
+
+    this.setState({ isSidebar });
+  };
+
   async routeMode(mode) {
-    this.mode = mode || router();
+    if (this.mode !== undefined) {
+      this.mode = mode || router();
+      this.changeSidebarState();
+    } else {
+      this.mode = mode || router();
+    }
 
     if (this.mode === 'common') {
       this.ContentComponent = Base;
@@ -60,12 +78,16 @@ export class AppContainer extends React.Component {
       this.ContentComponent = Comp;
     }
 
-    await new Promise((resolve) => {
-      setTimeout(() => {
-        this.setState({ loader: false, opened: false });
-        resolve();
-      }, 500);
-    });
+    if (this.mode === 'host') {
+      this.setState({ loader: false, opened: false });
+    } else {
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          this.setState({ loader: false, opened: false });
+          resolve();
+        }, 500);
+      });
+    }
 
     if (!window.slide) {
       window.slide = setupWebSlides();
@@ -74,10 +96,6 @@ export class AppContainer extends React.Component {
 
       window.slide.el.addEventListener('ws:slide-change', (e) => {
         this.updateSlideState(e.detail.currentSlide0);
-
-        if (this.mode !== 'view' && this.presentationController) {
-          this.presentationController.changePage(window.slide.currentSlideI_);
-        }
       });
     }
   }
@@ -102,20 +120,12 @@ export class AppContainer extends React.Component {
     this.setState({ opened });
   };
 
-  onRunPresentationMode = async () => {
-    try {
-      this.presentationApiId = await this.presentationController.openView();
-
-      window.slide = null;
-      this.routeMode('host');
-    } catch (e) {
-      console.error(e);
-    }
+  onRunPresentationMode = () => {
+    window.slide = null;
+    this.routeMode('host');
   };
 
   terminate = () => {
-    if (this.presentationController) this.presentationController.terminate();
-
     window.slide = null;
     this.routeMode('common');
   };
@@ -123,12 +133,13 @@ export class AppContainer extends React.Component {
   render() {
     return (
       <>
-        {process.env.SIDEBAR && this.mode === 'common' && (
+        {this.state.isSidebar && (
           <>
             {this.state.SidebarComponent && (
               <this.state.SidebarComponent
                 goTo={this.goTo}
                 opened={this.state.opened}
+                terminate={this.terminate}
                 contents={this.contentsList}
                 onSetOpen={this.onSetSidebarOpen}
                 slideInfo={this.state.slideInfo}

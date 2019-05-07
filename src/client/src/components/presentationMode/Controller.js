@@ -3,6 +3,7 @@ export class Controller {
     this.receiverQuery = '?presenter=view';
     this.apiType =
       typeof window.PresentationRequest === 'function' ? 'presentation' : 'localStorage';
+    this.windowId = null;
   }
 
   openView() {
@@ -19,7 +20,7 @@ export class Controller {
 
         this.presentationRequest.start().catch((err) => reject(err));
       } else {
-        window.open(this.receiverQuery, '_blank', 'width=800,height=600');
+        this.windowId = window.open(this.receiverQuery, '_blank', 'width=800,height=600');
         resolve();
       }
     });
@@ -49,6 +50,9 @@ export class Controller {
       this.presentationConnection.terminate();
       this.presentationConnection.close();
       this.presentationConnection = null;
+    } else if (this.windowId) {
+      this.windowId.close();
+      this.windowId = null;
     }
   }
 }
