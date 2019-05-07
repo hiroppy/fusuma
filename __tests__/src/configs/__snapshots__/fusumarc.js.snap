@@ -10,10 +10,11 @@ exports[`fusuma init 1`] = `
   sns:
     - twitter
 slide:
+  loop: true
   sidebar: true
-  theme: nebula
   targetBlank: true
-  pageNumber: false
+  showIndex: false
+  isVertical: false
 extends:
   js:
   css:
