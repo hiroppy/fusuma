@@ -10,10 +10,6 @@
 - `contents`
 - `note`
 
-<br />
-
-https://github.com/hiroppy/fusuma/blob/master/docs/slide.md
-
 ---
 
 ## Split Slides
