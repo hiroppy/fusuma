@@ -25,7 +25,7 @@ COMMANDS
 
 ## Configuration File
 
-Fusuma supports `yaml` and `js`.
+Fusuma supports `yaml` and `js`, and `npx fusuma init` creates the configuration file.
 
 ```yml
 # .fusumarc.yml
@@ -48,8 +48,6 @@ extends:
   js:
   css:
 ```
-
-`npx fusuma init` creates the configuration file.
 
 ---
 

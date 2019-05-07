@@ -11,6 +11,10 @@ a {
   padding-left: 0;
 }
 
+p {
+  margin: 0;
+}
+
 ul {
   margin: 0 auto;
 }
@@ -39,6 +43,12 @@ pre[class*='language-'] {
 code {
   font-family: 'Source Code Pro', monospace !important;
   padding: 0 3px;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  font-size: 20px;
+  line-height: 1.2;
 }
 
 .fa-hatena:before {
