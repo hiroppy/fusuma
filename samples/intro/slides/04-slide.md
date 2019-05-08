@@ -2,14 +2,6 @@
 
 ## Syntax Provided by Fusuma
 
-<br />
-
-- `---`
-- `classes:`
-- `sectionTitle:`
-- `contents`
-- `note`
-
 ---
 
 ## Split Slides

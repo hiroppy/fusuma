@@ -17,9 +17,4 @@ Node.js values backward compatibility. However, Node.js already has a module sys
 It's very difficult to implement ESM so as not to break the existing code.
 -->
 
-# Introducing Fusuma
-
-<br />
-
-<a href="https://github.com/hiroppy/fusuma" class="link">🤓repo </a>
-<a href="https://github.com/hiroppy/fusuma/tree/master/samples/intro" class="link"> ✍️code</a>
+# Introducing Fusuma 😎

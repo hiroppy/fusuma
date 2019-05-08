@@ -1,6 +1,8 @@
-<!-- sectionTitle: Introduce WebSlides -->
+<!-- sectionTitle: Introducing WebSlides -->
 
-## Introduce WebSlides
+## Introducing WebSlides
+
+<br />
 
 Please see [WebSlides's demo](https://webslides.tv/demos/components#slide=5) for details.
 
@@ -76,16 +78,6 @@ This slide is using `header`, `footer` and `bg-*` provided by WebSlides.
 ```
 
 See [Simple CSS Alignments](https://webslides.tv/demos/components#slide=14).
-
----
-
-## .background.anim
-
-https://webslides.tv/demos/components#slide=100
-
-## Muted
-
-https://webslides.tv/demos/components#slide=102
 
 ---
 

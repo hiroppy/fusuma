@@ -19,7 +19,7 @@
 
 <br />
 
-### just write MarkDown and execute with CLI😍
+### just write in MarkDown and execute with CLI😍
 
 ---
 
