@@ -73,6 +73,7 @@ Object {
             },
             "safe": true,
           },
+          "cssProcessorPluginOptions": Object {},
         },
         "phaseAssetProcessors": Object {
           "compilation.optimize-assets": Array [],
@@ -121,7 +122,7 @@ Object {
         "chunks": Array [],
         "exclude": Array [
           /\\\\\\.map\\$/,
-          /\\^manifest\\.\\*\\\\\\.js\\(\\?:on\\)\\?\\$/,
+          /\\^manifest\\.\\*\\\\\\.js\\?\\$/,
         ],
         "excludeChunks": Array [],
         "importScripts": Array [],
