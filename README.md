@@ -35,6 +35,10 @@ Just write MarkDown and create cool slides.😎
 - [introduction slide of Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
 - others [[repository](https://github.com/hiroppy/slides#my-slides)]
 
+You can also try Fusuma in Gitpod, a one-click online IDE for GitHub:
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hiroppy/fusuma/blob/master/samples/intro/slides/0-title.md)
+
 ## Install
 
 Node versions > v8

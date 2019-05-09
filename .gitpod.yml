@@ -1,0 +1,6 @@
+ports:
+  - port: 8080
+    onOpen: open-preview
+tasks:
+  - before: npm link
+    command: cd samples/intro && npx fusuma start

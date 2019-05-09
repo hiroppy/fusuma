@@ -4,6 +4,7 @@ exports[`webpack.config should return settings when NODE_ENV is development 1`] 
 Object {
   "devServer": Object {
     "contentBase": ".",
+    "disableHostCheck": true,
     "hot": true,
     "inline": true,
     "port": 8080,
