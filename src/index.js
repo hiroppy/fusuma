@@ -33,16 +33,18 @@ async function pdf(input, output = 'slide.pdf', port = 3455) {
     return await handler(req, res, { public: publicPath });
   });
 
-  server.listen(port);
-
-  try {
-    await spawn('npm', ['install', 'decktape', '--no-save']);
-    await spawn('npx', ['decktape', 'webslides', `http://localhost:${port}`, output]);
-  } catch (e) {
-    console.error(e);
-  } finally {
-    server.close();
-  }
+  server.listen(port, async () => {
+    try {
+      await spawn('npm', ['install', 'decktape', '--no-save']);
+      await spawn('npx', ['decktape', 'automatic', `http://localhost:${port}`, output], {
+        stdio: 'inherit'
+      });
+    } catch (e) {
+      console.error(e);
+    } finally {
+      server.close();
+    }
+  });
 }
 
 module.exports = {

@@ -78,11 +78,12 @@ async function pdfProcess(basePath, { input: i, output: o }) {
 
   await buildProcess(basePath, {
     slide: {
+      loop: false,
       sidebar: false
     }
   });
 
-  const spinner = ora('Exporting as PDF').start();
+  const spinner = ora('Exporting as PDF...').start();
 
   await pdf(input, output, port);
 
