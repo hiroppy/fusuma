@@ -10,7 +10,7 @@ Fusuma is compatible with [Presentation API](https://developer.mozilla.org/en-US
 
 but you can also use this mode if you use browsers which don't have Presentation API
 
-because Fusuma can fallback to using localstrage.
+because Fusuma can fallback to using localstorage.
 
 ---
 
