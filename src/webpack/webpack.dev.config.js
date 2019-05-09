@@ -14,7 +14,8 @@ function dev() {
       port: 8080,
       quiet: true,
       inline: true,
-      contentBase: '.'
+      contentBase: '.',
+      disableHostCheck: true
     },
     plugins: [new FriendlyErrorsWebpackPlugin()]
   };

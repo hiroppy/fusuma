@@ -4,6 +4,7 @@ exports[`webpack.dev should match settings 1`] = `
 Object {
   "devServer": Object {
     "contentBase": ".",
+    "disableHostCheck": true,
     "hot": true,
     "inline": true,
     "port": 8080,
