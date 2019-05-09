@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <strong>📝 Make slides with MarkDown easily.</strong>
+  <strong>📝 Make slides with Markdown easily.</strong>
 </div>
 
 <br />
@@ -87,7 +87,7 @@ Slide order is numeric, alphabetical.
 .
 ├── .fusumarc.yml       <-- the configuration file
 ├── index.js            <-- optional for rewriting
-├── slides              <-- slides written by MarkDown or HTML
+├── slides              <-- slides written by Markdown or HTML
 │   ├── 0-title.md
 │   ├── 01-content.md
 │   ├── 02-body
@@ -117,7 +117,7 @@ This is the second slide.
 Fusuma provides CLI.
 
 ```sh
-   fusuma.js 0.10.2 - CLI for easily make slides with markdown
+   fusuma.js 1.0.0 - CLI for easily make slides with Markdown
 
    USAGE
 

@@ -6,7 +6,7 @@ const { version } = require('../package.json');
 
 prog
   .version(version)
-  .description('CLI for easily make slides with markdown')
+  .description('CLI for easily make slides with Markdown')
 
   .command('init', 'Create a configure file')
   .action(async (args, options, logger) => {

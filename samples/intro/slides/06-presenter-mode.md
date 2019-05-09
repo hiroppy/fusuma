@@ -38,7 +38,7 @@ This sentence can be seen when using Presenter Mode.
 
 ## Speaker Note
 
-This page is written with the following markdown.
+This page is written with the following Markdown.
 
 ```md
 <!-- note

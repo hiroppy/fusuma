@@ -6,7 +6,7 @@
 
 ## Features
 
-#### _Fusuma is a helper which makes slides using MarkDown easily._
+#### _Fusuma is a helper which makes slides using Markdown easily._
 
 <br />
 
@@ -19,7 +19,7 @@
 
 <br />
 
-### just write in MarkDown and execute with CLI😍
+### just write in Markdown and execute with CLI😍
 
 ---
 
