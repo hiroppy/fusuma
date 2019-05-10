@@ -90,7 +90,7 @@ extends:
 
 ---
 
-## Syntax Highlight
+## Syntax Highlighting
 
 Fusuma uses [prismjs](https://prismjs.com/).
 

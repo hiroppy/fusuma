@@ -171,6 +171,12 @@ slide:
   targetBlank: true
   showIndex: false
   isVertical: false
+  code:
+    languages:
+      - javascript
+    plugins:
+      - line-numbers
+    theme: default
 extends:
   js: index.js
   css: style.css
@@ -199,7 +205,12 @@ module.exports = {
     sidebar: true,
     targetBlank: true,
     showIndex: false,
-    isVertical: false
+    isVertical: false,
+    code: {
+      languages: ['javascript'],
+      plugins: ['line-numbers'],
+      theme: 'default'
+    }
   },
   extends: {
     js: 'index.js',
@@ -213,6 +224,24 @@ module.exports = {
 ## Slide Syntax
 
 See the example slide:) [Syntax Provided by Fusuma](./samples/intro/slides/04-slide.md)
+
+## Code Syntax Highlighting
+
+Fusuma uses [Prism.js](https://prismjs.com/).  
+You can specify `languages`, `plugins`, `theme` to `.fusumrc`.
+Please see [babel-plugin-prismjs](https://github.com/mAAdhaTTah/babel-plugin-prismjs) for detail.
+
+```yml
+slide:
+  code:
+    languages: # the default is ['javascript']
+      - javascript
+    plugins: # the default is []
+      - line-numbers
+    theme: default # the default is "default"
+```
+
+[Playground of Prism.js](https://prismjs.com/test.html#language=markup)
 
 ## Presenter Mode
 
