@@ -65,3 +65,7 @@ body {
 .grid {
   width: 100%;
 }
+
+span.title {
+  background: inherit;
+}
