@@ -75,7 +75,7 @@ extends:
 
 ## Tasks
 
-```js
+```json
 // package.json
 
 {
@@ -84,6 +84,28 @@ extends:
     "build": "fusuma build",
     "deploy": "npm run build && fusuma deploy",
     "pdf": "fusuma pdf"
-  },
+  }
 }
+```
+
+---
+
+## Syntax Highlight
+
+Fusuma uses [prismjs](https://prismjs.com/).
+
+Please set languages to `.fusumarc.yml` or `.fusumarc.js` if you want to use these.
+
+<br />
+
+```yml
+# .fusumarc.yml
+
+slide:
+  code:
+    languages:
+      - javascript
+    plugins:
+      - line-numbers
+    theme: twilight
 ```

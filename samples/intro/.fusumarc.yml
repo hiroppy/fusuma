@@ -9,6 +9,11 @@ meta:
   sns: ['twitter']
 slide:
   showIndex: true
+  code:
+    languages:
+      - yaml
+      - json
+      - markdown
 extends:
   js: index.js
   css: style.css
