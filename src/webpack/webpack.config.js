@@ -6,11 +6,10 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const css = require('./css');
-const babelrc = require('../configs/babelrc');
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   const { url, name, description, thumbnail, siteName, sns, repositoryUrl } = meta || {};
-  const { sidebar, targetBlank = true, showIndex = false, isVertical = false, loop = true } =
+  const { sidebar, targetBlank = true, showIndex = false, isVertical = false, loop = true, code } =
     slide || {};
   const { js: jsPath, css: cssPath } = fileExtends || {};
   const { basePath, remoteOrigin } = internal;
@@ -38,7 +37,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
           test: /\.m?js$/,
           use: {
             loader: 'babel-loader',
-            options: babelrc
+            options: require('../configs/babelrc')(code)
           }
         },
         {

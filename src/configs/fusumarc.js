@@ -23,7 +23,13 @@ const config = {
     sidebar: true,
     targetBlank: true,
     showIndex: false,
-    isVertical: false
+    isVertical: false,
+    // https://github.com/mAAdhaTTah/babel-plugin-prismjs#configuring-the-plugin
+    code: {
+      languages: ['javascript'],
+      plugins: [],
+      theme: 'default'
+    }
   },
   extends: {
     js: null,

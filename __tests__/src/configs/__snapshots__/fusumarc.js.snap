@@ -15,6 +15,11 @@ slide:
   targetBlank: true
   showIndex: false
   isVertical: false
+  code:
+    languages:
+      - javascript
+    plugins: []
+    theme: default
 extends:
   js:
   css:
