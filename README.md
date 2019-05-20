@@ -13,7 +13,7 @@
 [![AppVeyor](https://img.shields.io/appveyor/ci/hiroppy/fusuma.svg?style=flat-square)](https://ci.appveyor.com/project/hiroppy/fusuma)
 [![Codecov](https://img.shields.io/codecov/c/github/hiroppy/fusuma.svg?style=flat-square)](https://codecov.io/gh/hiroppy/fusuma)
 
-Just write MarkDown and create cool slides.😎
+Just write Markdown and create cool slides.😎
 
 ## Features
 
