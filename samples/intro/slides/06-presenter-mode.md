@@ -12,6 +12,10 @@ but you can also use this mode if you use browsers which don't have Presentation
 
 because Fusuma can fallback to using localstorage.
 
+<br />
+
+**Since iframes are used internally, recommend that you use this feature in your localhost.**
+
 ---
 
 ## Setup
