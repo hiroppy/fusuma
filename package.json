@@ -75,7 +75,7 @@
     "remote-origin-url": "2.0.0",
     "rmfr": "2.0.0",
     "screenfull": "^4.2.0",
-    "serve": "11.0.0",
+    "serve": "11.0.1",
     "style-loader": "0.23.1",
     "table": "^5.2.3",
     "terser-webpack-plugin": "^1.2.3",
