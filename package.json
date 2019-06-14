@@ -45,7 +45,7 @@
     "child-process-promise": "2.2.1",
     "classnames": "^2.2.6",
     "css-loader": "2.1.1",
-    "deepmerge": "3.2.0",
+    "deepmerge": "3.2.1",
     "file-loader": "4.0.0",
     "font-awesome": "4.7.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
