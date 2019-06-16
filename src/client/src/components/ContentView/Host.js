@@ -132,17 +132,25 @@ export default class Host extends React.PureComponent {
       <div className="host-container">
         <div className="host-left-box">
           <div className="host-note">
-            {this.slides && <pre>{this.slides[index].meta.note}</pre>}
+            {this.slides && <pre>{this.slides[index].fusumaProps.note}</pre>}
           </div>
         </div>
         <div className="host-right-box">
           <div className="host-slide-layer">
             <h2>Current</h2>
-            <iframe src={`${this.slideUrl}${index + 1}`} width="100%" height="100%" />
+            <iframe
+              src={`${this.slideUrl.replace(/slide=(\d)/, `slide=${index + 1}`)}`}
+              width="100%"
+              height="100%"
+            />
           </div>
           <div className="host-slide-layer">
             <h2>Next</h2>
-            <iframe src={`${this.slideUrl}${index + 2}`} width="100%" height="100%" />
+            <iframe
+              src={`${this.slideUrl.replace(/slide=(\d)/, `slide=${index + 2}`)}`}
+              width="100%"
+              height="100%"
+            />
           </div>
         </div>
         <div className="host-bottom-box">
