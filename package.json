@@ -72,6 +72,7 @@
     "react-icons": "^3.6.1",
     "react-loading": "2.0.3",
     "react-sidebar": "3.0.2",
+    "remark-emoji": "^2.0.2",
     "remote-origin-url": "2.0.0",
     "rmfr": "2.0.0",
     "screenfull": "^4.2.0",
