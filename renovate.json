@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base"],
+  "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
   "labels": ["renovate"],
   "major": {
     "groupName": "all major dependencies"
