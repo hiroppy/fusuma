@@ -34,7 +34,7 @@ export class Base extends React.PureComponent {
               fusumaProps.sectionTitle ? 'section-title' : undefined
             )}
           >
-            <Slide />
+            {(currentIndex >= i - 5 && currentIndex <= i + 5) || !lazyload ? <Slide /> : <div />}
           </section>
         ))}
       </article>

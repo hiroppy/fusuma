@@ -43,11 +43,9 @@ export class AppContainer extends React.Component {
     }
   }
 
-  componentWillMount() {
-    this.changeSidebarState();
-  }
-
   async componentDidMount() {
+    this.changeSidebarState();
+
     const slides = AppContainer.createProps(this.props.slides);
 
     this.setState({ ...slides });
