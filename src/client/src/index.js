@@ -7,8 +7,10 @@ import './setup/css';
 //   navigator.serviceWorker.register('/service-worker.js');
 // }
 
+import * as React from 'react';
+
 (async () => {
-  const slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, false, /\.md$/));
+  const slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, false, /\.mdx?$/));
 
   createBody(slidesInfo.slides);
 

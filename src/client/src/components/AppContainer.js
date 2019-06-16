@@ -3,8 +3,8 @@ import { MdMenu } from 'react-icons/md';
 import { Loader } from './Loader';
 import { Base } from './ContentView/Base';
 import { router } from '../router';
-import { createHtmlSlides } from '../utils/createHtmlSlides';
 import { setup as setupWebSlides } from '../setup/webSlides';
+import { ToC } from './ToC';
 
 export class AppContainer extends React.Component {
   constructor(props) {
@@ -27,10 +27,31 @@ export class AppContainer extends React.Component {
       }
     };
 
-    const { slides, contentsList } = createHtmlSlides(props.slides);
-    this.slides = slides;
+    {
+      const slidesArr = props.slides.map((s) => s.slides).flat();
+      const propsArr = props.slides.map((s) => s.fusumaProps).flat();
+
+      propsArr.reduce((acc, { sectionTitle }, i) => {
+        if (sectionTitle) {
+          acc.push({
+            title: sectionTitle,
+            index: i + 1
+          });
+        }
+        return acc;
+      }, (this.contentsList = []));
+
+      this.slides = slidesArr.map((slide, i) => {
+        const props = propsArr[i];
+
+        return {
+          slide: props.contents ? ToC({ list: this.contentsList }) : slide,
+          fusumaProps: props
+        };
+      });
+    }
+
     this.params = parsedUrl.searchParams;
-    this.contentsList = contentsList;
     this.ContentComponent = null;
 
     this.routeMode();
@@ -42,9 +63,9 @@ export class AppContainer extends React.Component {
 
   async componentDidMount() {
     if (this.state.isSidebar) {
-      const {
-        SidebarComponent
-      } = await import(/* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar');
+      const { SidebarComponent } = await import(
+        /* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar'
+      );
 
       this.setState({ SidebarComponent });
     }
