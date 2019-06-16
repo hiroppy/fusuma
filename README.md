@@ -17,6 +17,7 @@ Just write Markdown and create cool slides.😎
 ## Features
 
 - supports [mdx](https://github.com/mdx-js/mdx)
+  - you can write JavaScript in Markdown
 - supports [WebSlides](https://webslides.tv)
 - supports [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API)
   - also, it works even without Presentation API
