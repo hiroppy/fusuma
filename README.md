@@ -256,5 +256,25 @@ slide:
 ## API
 
 ```js
-const { start, build, deploy, pdf } = require('fusuma');
+const start = require('@fusuma/task-start');
+const build = require('@fusuma/task-build');
+const pdf = require('@fusuma/task-pdf');
+const deploy = require('@fusuma/task-ghp');
+const init = require('@fusuma/task-init');
 ```
+
+## Development
+
+### Setup
+
+```sh
+$ npm run setup
+```
+
+### Link local packages
+
+```sh
+$ npx lerna add @fusuma/xxx --scope=@fusuma/yyy
+```
+
+see https://github.com/lerna/lerna/tree/master/commands/add

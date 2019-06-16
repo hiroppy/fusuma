@@ -1,0 +1,450 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`webpack.config should return settings when NODE_ENV is development 1`] = `
+Object {
+  "devServer": Object {
+    "contentBase": ".",
+    "disableHostCheck": true,
+    "hot": true,
+    "inline": true,
+    "port": 8080,
+    "quiet": true,
+  },
+  "devtool": "inline-cheap-module-source-map",
+  "entry": Array [
+    "@babel/polyfill",
+    "stub//Users/about_hiroppy/Programming/fusuma/packages/webpack/node_modules/@fusuma/client",
+  ],
+  "mode": "development",
+  "module": Object {
+    "rules": Array [
+      Object {
+        "test": /\\\\\\.m\\?js\\$/,
+        "use": Object {
+          "loader": "babel-loader",
+          "options": Object {
+            "compact": true,
+            "cwd": "/Users/about_hiroppy/Programming/fusuma/packages/webpack/node_modules/@fusuma/configs",
+            "plugins": Array [
+              "@babel/plugin-syntax-dynamic-import",
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-proposal-object-rest-spread",
+              Array [
+                "prismjs",
+                Object {
+                  "css": false,
+                  "languages": Array [],
+                  "plugins": Array [],
+                  "theme": "default",
+                },
+              ],
+            ],
+            "presets": Array [
+              Array [
+                "@babel/preset-env",
+                Object {
+                  "targets": Object {
+                    "browsers": "last 1 version",
+                  },
+                },
+              ],
+              "@babel/preset-react",
+            ],
+          },
+        },
+      },
+      Object {
+        "test": /\\\\\\.mdx\\?\\$/,
+        "use": Array [
+          Object {
+            "loader": "babel-loader",
+            "options": Object {
+              "compact": true,
+              "cwd": "/Users/about_hiroppy/Programming/fusuma/packages/webpack/node_modules/@fusuma/configs",
+              "plugins": Array [
+                "@babel/plugin-syntax-dynamic-import",
+                "@babel/plugin-proposal-class-properties",
+                "@babel/plugin-proposal-object-rest-spread",
+                Array [
+                  "prismjs",
+                  Object {
+                    "css": false,
+                    "languages": Array [],
+                    "plugins": Array [],
+                    "theme": "default",
+                  },
+                ],
+              ],
+              "presets": Array [
+                Array [
+                  "@babel/preset-env",
+                  Object {
+                    "targets": Object {
+                      "browsers": "last 1 version",
+                    },
+                  },
+                ],
+                "@babel/preset-react",
+              ],
+            },
+          },
+          "stub/stabDir",
+        ],
+      },
+      Object {
+        "test": /\\\\\\.\\(png\\|jpg\\|gif\\|svg\\?\\)\\$/,
+        "use": Array [
+          "file-loader",
+          "image-webpack-loader",
+        ],
+      },
+      Object {
+        "test": /\\\\\\.\\(eot\\|ttf\\|woff2\\?\\)\\$/,
+        "use": "file-loader",
+      },
+      Object {
+        "test": /\\\\\\.css\\$/,
+        "use": Array [
+          "style-loader",
+          Object {
+            "loader": "css-loader",
+            "options": Object {
+              "importLoaders": 2,
+              "modules": false,
+            },
+          },
+          Object {
+            "loader": "postcss-loader",
+            "options": Object {
+              "plugins": Array [
+                [Function],
+                [Function],
+                [Function],
+                [Function],
+                [Function],
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
+  "name": "test",
+  "output": Object {
+    "filename": "bundle.js",
+    "path": "stab",
+  },
+  "plugins": Array [
+    DefinePlugin {
+      "definitions": Object {
+        "process.env.BASE_PATH": "\\".\\"",
+        "process.env.CSS_PATH": "\\"stub/.\\"",
+        "process.env.IS_VERTICAL": "false",
+        "process.env.JS_PATH": "\\"stub/.\\"",
+        "process.env.LOOP": "true",
+        "process.env.REMOTE_ORIGIN_URL": undefined,
+        "process.env.SHOW_INDEX": "false",
+        "process.env.SIDEBAR": "true",
+        "process.env.SLIDE_PATH": "\\"stub/.\\"",
+        "process.env.SNS": undefined,
+        "process.env.TARGET_BLANK": "true",
+        "process.env.TITLE": "\\"test\\"",
+        "process.env.URL": "\\"url\\"",
+      },
+    },
+    HtmlWebpackPlugin {
+      "options": Object {
+        "cache": true,
+        "chunks": "all",
+        "chunksSortMode": "auto",
+        "compile": true,
+        "description": "description",
+        "excludeChunks": Array [],
+        "favicon": false,
+        "filename": "index.html",
+        "hash": false,
+        "image": "thumbnail",
+        "inject": true,
+        "meta": Object {},
+        "minify": false,
+        "showErrors": true,
+        "siteName": "siteName",
+        "template": "stub/stabDir",
+        "templateParameters": [Function],
+        "title": "test",
+        "url": "url",
+        "xhtml": false,
+      },
+    },
+    FriendlyErrorsWebpackPlugin {
+      "compilationSuccessInfo": Object {},
+      "formatters": Array [
+        [Function],
+        [Function],
+        [Function],
+      ],
+      "onErrors": undefined,
+      "shouldClearConsole": true,
+      "transformers": Array [
+        [Function],
+        [Function],
+        [Function],
+      ],
+    },
+  ],
+  "resolve": Object {
+    "modules": Array [
+      "node_modules",
+      "stab",
+      "stub//Users/about_hiroppy/Programming/fusuma/packages/webpack/node_modules/@fusuma/client",
+      "stub//Users/about_hiroppy/Programming/fusuma/packages/webpack/node_modules/@fusuma/configs",
+    ],
+  },
+  "resolveLoader": Object {
+    "modules": Array [
+      "node_modules",
+      "stab",
+      "stub//Users/about_hiroppy/Programming/fusuma/packages/webpack/node_modules/@fusuma/client",
+      "stub//Users/about_hiroppy/Programming/fusuma/packages/webpack/node_modules/@fusuma/configs",
+    ],
+  },
+}
+`;
+
+exports[`webpack.config should return settings when NODE_ENV is production 1`] = `
+Object {
+  "entry": Array [
+    "@babel/polyfill",
+    "stab",
+  ],
+  "mode": "production",
+  "module": Object {
+    "rules": Array [
+      Object {
+        "test": /\\\\\\.m\\?js\\$/,
+        "use": Object {
+          "loader": "babel-loader",
+          "options": Object {
+            "compact": true,
+            "plugins": Array [
+              "@babel/plugin-syntax-dynamic-import",
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-proposal-object-rest-spread",
+            ],
+            "presets": Array [
+              Array [
+                "@babel/preset-env",
+                Object {
+                  "targets": Object {
+                    "browsers": "last 1 version",
+                  },
+                },
+              ],
+              "@babel/preset-react",
+            ],
+          },
+        },
+      },
+      Object {
+        "test": /\\\\\\.md\\$/,
+        "use": Array [
+          "html-loader",
+          "markdown-loader",
+        ],
+      },
+      Object {
+        "test": /\\\\\\.\\(png\\|jpg\\|gif\\|svg\\?\\)\\$/,
+        "use": Array [
+          "file-loader",
+          "image-webpack-loader",
+        ],
+      },
+      Object {
+        "test": /\\\\\\.\\(eot\\|ttf\\|woff2\\?\\)\\$/,
+        "use": "file-loader",
+      },
+      Object {
+        "test": /\\\\\\.css\\$/,
+        "use": Array [
+          "style-loader",
+          "stub/",
+          Object {
+            "loader": "css-loader",
+            "options": Object {
+              "importLoaders": 2,
+              "modules": false,
+            },
+          },
+          Object {
+            "loader": "postcss-loader",
+            "options": Object {
+              "plugins": Array [
+                [Function],
+                [Function],
+                [Function],
+                [Function],
+                [Function],
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
+  "name": "test",
+  "optimization": Object {
+    "minimizer": Array [
+      TerserPlugin {
+        "options": Object {
+          "cache": false,
+          "cacheKeys": [Function],
+          "chunkFilter": [Function],
+          "exclude": undefined,
+          "extractComments": false,
+          "include": undefined,
+          "minify": undefined,
+          "parallel": true,
+          "sourceMap": false,
+          "terserOptions": Object {
+            "output": Object {
+              "comments": /\\^\\\\\\*\\*!\\|@preserve\\|@license\\|@cc_on/i,
+            },
+          },
+          "test": /\\\\\\.m\\?js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
+          "warningsFilter": [Function],
+        },
+      },
+      OptimizeCssAssetsWebpackPlugin {
+        "deleteAssetsMap": Object {},
+        "options": Object {
+          "assetNameRegExp": /\\\\\\.css\\$/g,
+          "assetProcessors": Array [
+            Object {
+              "phase": "compilation.optimize-chunk-assets",
+              "processor": [Function],
+              "regExp": /\\\\\\.css\\$/g,
+            },
+          ],
+          "canPrint": undefined,
+          "cssProcessor": [Function],
+          "cssProcessorOptions": Object {
+            "discardComments": Object {
+              "removeAll": true,
+            },
+            "safe": true,
+          },
+        },
+        "phaseAssetProcessors": Object {
+          "compilation.optimize-assets": Array [],
+          "compilation.optimize-chunk-assets": Array [
+            Object {
+              "phase": "compilation.optimize-chunk-assets",
+              "processor": [Function],
+              "regExp": /\\\\\\.css\\$/g,
+            },
+          ],
+          "emit": Array [],
+        },
+        "pluginDescriptor": Object {
+          "name": "OptimizeCssAssetsWebpackPlugin",
+        },
+      },
+    ],
+    "runtimeChunk": "single",
+    "splitChunks": Object {
+      "cacheGroups": Object {
+        "vendor": Object {
+          "chunks": "initial",
+          "enforce": true,
+          "name": "vendor",
+          "test": /node_modules/,
+        },
+      },
+    },
+  },
+  "output": Object {
+    "chunkFilename": "[name].[id].[chunkhash].bundle.js",
+    "filename": "[name].[chunkhash].bundle.js",
+    "path": "stab",
+  },
+  "plugins": Array [
+    DefinePlugin {
+      "definitions": Object {
+        "process.env.BASE_PATH": "\\".\\"",
+        "process.env.CSS_PATH": "\\"stub/.\\"",
+        "process.env.IS_VERTICAL": "false",
+        "process.env.JS_PATH": "\\"stub/.\\"",
+        "process.env.LOOP": "true",
+        "process.env.REMOTE_ORIGIN_URL": undefined,
+        "process.env.SHOW_INDEX": "false",
+        "process.env.SIDEBAR": "true",
+        "process.env.SLIDE_PATH": "\\"stub/.\\"",
+        "process.env.SNS": undefined,
+        "process.env.TARGET_BLANK": "true",
+        "process.env.TITLE": "\\"test\\"",
+        "process.env.URL": "\\"url\\"",
+      },
+    },
+    HtmlWebpackPlugin {
+      "options": Object {
+        "cache": true,
+        "chunks": "all",
+        "chunksSortMode": "auto",
+        "compile": true,
+        "description": "description",
+        "excludeChunks": Array [],
+        "favicon": false,
+        "filename": "index.html",
+        "hash": false,
+        "image": "thumbnail",
+        "inject": true,
+        "meta": Object {},
+        "minify": false,
+        "showErrors": true,
+        "siteName": "siteName",
+        "template": "stub/stabDir",
+        "templateParameters": [Function],
+        "title": "test",
+        "url": "url",
+        "xhtml": false,
+      },
+    },
+    MiniCssExtractPlugin {
+      "options": Object {
+        "chunkFilename": "[name].[id].[chunkhash].css",
+        "filename": "[name].[chunkhash].css",
+      },
+    },
+    AggressiveMergingPlugin {
+      "options": Object {},
+    },
+    GenerateSW {
+      "config": Object {
+        "chunks": Array [],
+        "exclude": Array [
+          /\\\\\\.map\\$/,
+          /\\^manifest\\.\\*\\\\\\.js\\(\\?:on\\)\\?\\$/,
+        ],
+        "excludeChunks": Array [],
+        "importScripts": Array [],
+        "importWorkboxFrom": "cdn",
+        "importsDirectory": "",
+        "precacheManifestFilename": "precache-manifest.[manifestHash].js",
+        "swDest": "service-worker.js",
+      },
+    },
+  ],
+  "resolve": Object {
+    "modules": Array [
+      "node_modules",
+      "stab",
+    ],
+  },
+  "resolveLoader": Object {
+    "modules": Array [
+      "node_modules",
+      "stab",
+    ],
+  },
+}
+`;

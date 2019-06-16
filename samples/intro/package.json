@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ../../bin/fusuma start",
-    "build": "node ../../bin/fusuma build"
+    "start": "node ../../packages/fusuma/src/cli.js start",
+    "build": "node ../../packages/fusuma/src/cli.js build",
+    "pdf": "node ../../packages/fusuma/src/cli.js pdf"
   },
   "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "styled-components": "^4.3.1"
+  }
 }
