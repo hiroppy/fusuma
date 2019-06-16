@@ -24,32 +24,10 @@ export class AppContainer extends React.Component {
       slideInfo: {
         total: 0,
         index
-      }
+      },
+      slides: [],
+      contentsList: []
     };
-
-    {
-      const slidesArr = props.slides.map((s) => s.slides).flat();
-      const propsArr = props.slides.map((s) => s.fusumaProps).flat();
-
-      propsArr.reduce((acc, { sectionTitle }, i) => {
-        if (sectionTitle) {
-          acc.push({
-            title: sectionTitle,
-            index: i + 1
-          });
-        }
-        return acc;
-      }, (this.contentsList = []));
-
-      this.slides = slidesArr.map((slide, i) => {
-        const props = propsArr[i];
-
-        return {
-          slide: props.contents ? ToC({ list: this.contentsList }) : slide,
-          fusumaProps: props
-        };
-      });
-    }
 
     this.params = parsedUrl.searchParams;
     this.ContentComponent = null;
@@ -57,11 +35,23 @@ export class AppContainer extends React.Component {
     this.routeMode();
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (module.hot) {
+      const slides = AppContainer.createProps(props.slides);
+
+      return { ...slides };
+    }
+  }
+
   componentWillMount() {
     this.changeSidebarState();
   }
 
   async componentDidMount() {
+    const slides = AppContainer.createProps(this.props.slides);
+
+    this.setState({ ...slides });
+
     if (this.state.isSidebar) {
       const { SidebarComponent } = await import(
         /* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar'
@@ -69,6 +59,33 @@ export class AppContainer extends React.Component {
 
       this.setState({ SidebarComponent });
     }
+  }
+
+  static createProps(slides) {
+    const slidesArr = slides.map((s) => s.slides).flat();
+    const propsArr = slides.map((s) => s.fusumaProps).flat();
+    const res = {};
+
+    propsArr.reduce((acc, { sectionTitle }, i) => {
+      if (sectionTitle) {
+        acc.push({
+          title: sectionTitle,
+          index: i + 1
+        });
+      }
+      return acc;
+    }, (res.contentsList = []));
+
+    res.slides = slidesArr.map((slide, i) => {
+      const props = propsArr[i];
+
+      return {
+        slide: props.contents ? ToC({ list: res.contentsList }) : slide,
+        fusumaProps: props
+      };
+    });
+
+    return res;
   }
 
   changeSidebarState = () => {
@@ -131,7 +148,7 @@ export class AppContainer extends React.Component {
     this.setState({
       slideInfo: {
         ...this.state.slideInfo,
-        total: this.slides.length,
+        total: this.state.slides.length,
         index
       }
     });
@@ -161,7 +178,7 @@ export class AppContainer extends React.Component {
                 goTo={this.goTo}
                 opened={this.state.opened}
                 terminate={this.terminate}
-                contents={this.contentsList}
+                contents={this.state.contentsList}
                 onSetOpen={this.onSetSidebarOpen}
                 slideInfo={this.state.slideInfo}
                 runPresentationMode={this.onRunPresentationMode}
@@ -173,7 +190,7 @@ export class AppContainer extends React.Component {
         <Loader displayed={this.state.loader} />
         {this.ContentComponent && (
           <this.ContentComponent
-            slides={this.slides}
+            slides={this.state.slides}
             terminate={this.terminate}
             currentIndex={this.state.slideInfo.index}
           />

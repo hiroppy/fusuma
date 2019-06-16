@@ -7,10 +7,15 @@ import './setup/css';
 //   navigator.serviceWorker.register('/service-worker.js');
 // }
 
-import * as React from 'react';
-
 (async () => {
-  const slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, false, /\.mdx?$/));
+  let slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
+
+  if (module.hot) {
+    module.hot.accept(slidesInfo.id, () => {
+      slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
+      createBody(slidesInfo.slides);
+    });
+  }
 
   createBody(slidesInfo.slides);
 
