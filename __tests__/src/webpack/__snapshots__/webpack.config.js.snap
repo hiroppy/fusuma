@@ -53,10 +53,40 @@ Object {
         },
       },
       Object {
-        "test": /\\\\\\.md\\$/,
+        "test": /\\\\\\.mdx\\?\\$/,
         "use": Array [
-          "html-loader",
-          "markdown-loader",
+          Object {
+            "loader": "babel-loader",
+            "options": Object {
+              "compact": true,
+              "plugins": Array [
+                "@babel/plugin-syntax-dynamic-import",
+                "@babel/plugin-proposal-class-properties",
+                "@babel/plugin-proposal-object-rest-spread",
+                Array [
+                  "prismjs",
+                  Object {
+                    "css": false,
+                    "languages": Array [],
+                    "plugins": Array [],
+                    "theme": "default",
+                  },
+                ],
+              ],
+              "presets": Array [
+                Array [
+                  "@babel/preset-env",
+                  Object {
+                    "targets": Object {
+                      "browsers": "last 1 version",
+                    },
+                  },
+                ],
+                "@babel/preset-react",
+              ],
+            },
+          },
+          "stub/stabDir",
         ],
       },
       Object {
