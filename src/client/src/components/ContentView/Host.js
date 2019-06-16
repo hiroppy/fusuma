@@ -76,8 +76,10 @@ export default class Host extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    const { origin, pathname } = new URL(window.location);
+
     this.slides = props.slides; // TODO: separate from current reference
-    this.slideUrl = `${window.location.href}?sidebar=false#slide=`;
+    this.slideUrl = `${origin}/${pathname}?sidebar=false#slide=`;
     this.presentationController = new PresentationController();
     this.presentationApiId = null;
 
@@ -139,7 +141,7 @@ export default class Host extends React.PureComponent {
           <div className="host-slide-layer">
             <h2>Current</h2>
             <iframe
-              src={`${this.slideUrl.replace(/slide=(\d)/, `slide=${index + 1}`)}`}
+              src={`${this.slideUrl.replace(/slide=(\d?)/, `slide=${index + 1}`)}`}
               width="100%"
               height="100%"
             />
@@ -147,7 +149,7 @@ export default class Host extends React.PureComponent {
           <div className="host-slide-layer">
             <h2>Next</h2>
             <iframe
-              src={`${this.slideUrl.replace(/slide=(\d)/, `slide=${index + 2}`)}`}
+              src={`${this.slideUrl.replace(/slide=(\d?)/, `slide=${index + 2}`)}`}
               width="100%"
               height="100%"
             />

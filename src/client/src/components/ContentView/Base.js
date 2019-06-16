@@ -3,8 +3,27 @@
 import React from 'react';
 import Prism from 'prismjs';
 import classnames from 'classnames';
+import { setup as setupWebSlides } from '../../setup/webSlides';
 
-export class Base extends React.PureComponent {
+export class Base extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      currentIndex: 0
+    };
+
+    if (!window.slide) {
+      setTimeout(() => {
+        window.slide = setupWebSlides();
+        window.slide.el.addEventListener('ws:slide-change', (e) => {
+          this.props.onChangeSlideIndex(e.detail.currentSlide0);
+          this.setState({ currentIndex: e.detail.currentSlide0 });
+        });
+      }, 0);
+    }
+  }
+
   componentDidMount() {
     Prism.highlightAll();
   }
@@ -13,10 +32,17 @@ export class Base extends React.PureComponent {
     Prism.highlightAll();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.hash !== nextProps.hash || !window.slide) {
+      return true;
+    }
+
+    return false;
+  }
+
   render() {
     const {
       slides,
-      currentIndex,
       className = undefined,
       // showIndex(webSlides) checks all slides so lazyload can not be used together
       lazyload = !process.env.SHOW_INDEX // TODO: fix
@@ -34,7 +60,11 @@ export class Base extends React.PureComponent {
               fusumaProps.sectionTitle ? 'section-title' : undefined
             )}
           >
-            {(currentIndex >= i - 5 && currentIndex <= i + 5) || !lazyload ? <Slide /> : <div />}
+            {(this.state.currentIndex >= i - 5 && this.state.currentIndex <= i + 5) || !lazyload ? (
+              <Slide />
+            ) : (
+              <div />
+            )}
           </section>
         ))}
       </article>

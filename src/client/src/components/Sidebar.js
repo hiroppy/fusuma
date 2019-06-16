@@ -47,9 +47,15 @@ const Inner = (props) => (
         })}
     </div>
     <div className="sidebar-control">
-      <MdFirstPage onClick={() => props.goTo(0)} />
-      <span>{`${formatStr(props.slideInfo.index + 1)} / ${formatStr(props.slideInfo.total)}`}</span>
-      <MdLastPage onClick={() => props.goTo(props.slideInfo.total - 1)} />
+      {window.slide && (
+        <>
+          <MdFirstPage onClick={() => props.goTo(0)} />
+          <span>{`${formatStr(props.currentIndex + 1)} / ${formatStr(
+            window.slide.slides.length
+          )}`}</span>
+          <MdLastPage onClick={() => props.goTo(window.slide.slides.length - 1)} />
+        </>
+      )}
     </div>
     <div>
       <MdFullscreen

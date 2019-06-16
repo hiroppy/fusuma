@@ -2,7 +2,6 @@ import React from 'react';
 import { MdMenu } from 'react-icons/md';
 import { Base } from './ContentView/Base';
 import { router } from '../router';
-import { setup as setupWebSlides } from '../setup/webSlides';
 import { ToC } from './ToC';
 
 export class AppContainer extends React.Component {
@@ -19,12 +18,9 @@ export class AppContainer extends React.Component {
       opened: false, // TODO: refactor to `status: {}`
       SidebarComponent: null, // for lazy load
       isSidebar: true,
-      slideInfo: {
-        total: 0,
-        index
-      },
       slides: [],
-      contentsList: []
+      contentsList: [],
+      currentIndex: index
     };
 
     this.params = parsedUrl.searchParams;
@@ -41,23 +37,7 @@ export class AppContainer extends React.Component {
     }
   }
 
-  setupWS = () => {
-    if (!window.slide) {
-      window.slide = setupWebSlides();
-
-      this.updateSlideState(this.state.slideInfo.index);
-      window.slide.el.addEventListener('ws:slide-change', (e) => {
-        console.log(e.detail.currentSlide0);
-        this.updateSlideState(e.detail.currentSlide0);
-      });
-    }
-  };
-
   async componentDidMount() {
-    if (this.mode !== 'view') {
-      this.setupWS();
-    }
-
     this.changeSidebarState();
 
     const slides = AppContainer.createProps(this.props.slides);
@@ -130,13 +110,6 @@ export class AppContainer extends React.Component {
 
     if (this.mode === 'host') {
       this.setState({ opened: false });
-    } else if (this.mode === 'view') {
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          this.setupWS();
-          resolve();
-        }, 500);
-      });
     }
   }
 
@@ -146,18 +119,14 @@ export class AppContainer extends React.Component {
     }
   };
 
-  updateSlideState = (index) => {
-    this.setState({
-      slideInfo: {
-        ...this.state.slideInfo,
-        total: this.state.slides.length,
-        index
-      }
-    });
-  };
-
   onSetSidebarOpen = (opened) => {
     this.setState({ opened });
+  };
+
+  onChangeSlideIndex = (currentIndex) => {
+    if (this.state.isSidebar) {
+      this.setState({ currentIndex });
+    }
   };
 
   onRunPresentationMode = () => {
@@ -182,7 +151,7 @@ export class AppContainer extends React.Component {
                 terminate={this.terminate}
                 contents={this.state.contentsList}
                 onSetOpen={this.onSetSidebarOpen}
-                slideInfo={this.state.slideInfo}
+                currentIndex={this.state.currentIndex}
                 runPresentationMode={this.onRunPresentationMode}
               />
             )}
@@ -191,9 +160,10 @@ export class AppContainer extends React.Component {
         )}
         {this.ContentComponent && (
           <this.ContentComponent
+            hash={this.props.hash}
             slides={this.state.slides}
             terminate={this.terminate}
-            currentIndex={this.state.slideInfo.index}
+            onChangeSlideIndex={this.onChangeSlideIndex}
           />
         )}
       </>

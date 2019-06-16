@@ -13,7 +13,7 @@ import './setup/css';
   if (module.hot) {
     module.hot.accept(slidesInfo.id, () => {
       slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
-      createBody(slidesInfo.slides);
+      createBody(slidesInfo.slides, Math.random());
     });
   }
 
