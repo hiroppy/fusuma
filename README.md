@@ -9,8 +9,7 @@
 <br />
 
 [![npm](https://img.shields.io/npm/v/fusuma.svg?style=flat-square)](https://www.npmjs.com/package/fusuma)
-[![Travis](https://img.shields.io/travis/hiroppy/fusuma.svg?style=flat-square)](https://travis-ci.org/hiroppy/fusuma)
-[![AppVeyor](https://img.shields.io/appveyor/ci/hiroppy/fusuma.svg?style=flat-square)](https://ci.appveyor.com/project/hiroppy/fusuma)
+[![Azure](https://img.shields.io/azure-devops/build/hiroppy/11c2bed9-94f9-46ea-a0f9-908f1763e0c4/1.svg?style=flat-square)](https://dev.azure.com/hiroppy/fusuma)
 [![Codecov](https://img.shields.io/codecov/c/github/hiroppy/fusuma.svg?style=flat-square)](https://codecov.io/gh/hiroppy/fusuma)
 
 Just write Markdown and create cool slides.😎
@@ -28,7 +27,7 @@ Just write Markdown and create cool slides.😎
   - deploying to GitHub Pages
 - supports SNS, OGP, FullScreen, and etc...
 - supports Presenter Mode
-  - you can give a speech while watching a presenter's notes and a timer
+  - you can give a speech while watching a presenter's notes and timer
 - customizes JavaScript and CSS freely
 
 ## Demos
