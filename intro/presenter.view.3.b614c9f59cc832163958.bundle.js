@@ -1,0 +1,26 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[3],{
+
+/***/ 370:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(3);
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./src/client/src/components/ContentView/Base.js + 1 modules
+var Base = __webpack_require__(95);
+
+// CONCATENATED MODULE: ./src/client/src/components/presentationMode/Receiver.js
+function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}function _createClass(Constructor,protoProps,staticProps){if(protoProps)_defineProperties(Constructor.prototype,protoProps);if(staticProps)_defineProperties(Constructor,staticProps);return Constructor;}var Receiver=/*#__PURE__*/function(){function Receiver(){_classCallCheck(this,Receiver);this.apiType=navigator.presentation&&navigator.presentation.receiver?'presentation':'localStorage';if(this.apiType==='presentation')this.setUp();}_createClass(Receiver,[{key:"registerEvent",value:function registerEvent(name,cb){navigator.presentation.receiver.connectionList.then(function(list){list.connections.forEach(function(connection){connection.addEventListener(name,cb);});list.addEventListener('connectionavailable',function(event){cb(event.connection);});});}},{key:"setUp",value:function setUp(){this.registerEvent('close',function(e){console.log(e);});}},{key:"onChangePage",value:function onChangePage(cb){if(this.apiType==='presentation'){this.registerEvent('message',function(e){var page=JSON.parse(e.data).page;cb(page);});}else{window.addEventListener('storage',function(e){if(e.key==='page'){var page=JSON.parse(e.newValue).page;cb(page);}});}}}]);return Receiver;}();
+// CONCATENATED MODULE: ./src/client/src/components/ContentView/View.js
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return View_View; });
+function _typeof(obj){if(typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"){_typeof=function _typeof(obj){return typeof obj;};}else{_typeof=function _typeof(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};}return _typeof(obj);}function View_classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function View_defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}function View_createClass(Constructor,protoProps,staticProps){if(protoProps)View_defineProperties(Constructor.prototype,protoProps);if(staticProps)View_defineProperties(Constructor,staticProps);return Constructor;}function _possibleConstructorReturn(self,call){if(call&&(_typeof(call)==="object"||typeof call==="function")){return call;}return _assertThisInitialized(self);}function _assertThisInitialized(self){if(self===void 0){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return self;}function _getPrototypeOf(o){_getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function _getPrototypeOf(o){return o.__proto__||Object.getPrototypeOf(o);};return _getPrototypeOf(o);}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function");}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,writable:true,configurable:true}});if(superClass)_setPrototypeOf(subClass,superClass);}function _setPrototypeOf(o,p){_setPrototypeOf=Object.setPrototypeOf||function _setPrototypeOf(o,p){o.__proto__=p;return o;};return _setPrototypeOf(o,p);}/*
+ * View for Presentation mode
+ */var View_View=/*#__PURE__*/function(_React$PureComponent){_inherits(View,_React$PureComponent);function View(){var _this;View_classCallCheck(this,View);_this=_possibleConstructorReturn(this,_getPrototypeOf(View).call(this));_this.presentationReceiver=new Receiver();_this.presentationReceiver.onChangePage(function(pageNum){if(window.slide){window.slide.goToSlide(pageNum);}});return _this;}View_createClass(View,[{key:"render",value:function render(){return react_default.a.createElement(Base["a" /* Base */],{slides:this.props.slides,lazyload:true,currentIndex:this.props.currentIndex});}}]);return View;}(react_default.a.PureComponent);
+
+/***/ })
+
+}]);
