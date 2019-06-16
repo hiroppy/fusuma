@@ -63,6 +63,10 @@ function fusumaMdxPlugin() {
         slide = [];
       } else {
         slide.push(n);
+
+        if (n.type === 'jsx') {
+          n.value = n.value.replace(/src="(.+?\.(png|jpg|gif|svg?))"/, 'src={require("$1")}');
+        }
       }
     });
 
