@@ -1,6 +1,5 @@
 import React from 'react';
 import { MdMenu } from 'react-icons/md';
-import { Loader } from './Loader';
 import { Base } from './ContentView/Base';
 import { router } from '../router';
 import { setup as setupWebSlides } from '../setup/webSlides';
@@ -18,7 +17,6 @@ export class AppContainer extends React.Component {
 
     this.state = {
       opened: false, // TODO: refactor to `status: {}`
-      loader: true,
       SidebarComponent: null, // for lazy load
       isSidebar: true,
       slideInfo: {
@@ -43,7 +41,23 @@ export class AppContainer extends React.Component {
     }
   }
 
+  setupWS = () => {
+    if (!window.slide) {
+      window.slide = setupWebSlides();
+
+      this.updateSlideState(this.state.slideInfo.index);
+      window.slide.el.addEventListener('ws:slide-change', (e) => {
+        console.log(e.detail.currentSlide0);
+        this.updateSlideState(e.detail.currentSlide0);
+      });
+    }
+  };
+
   async componentDidMount() {
+    if (this.mode !== 'view') {
+      this.setupWS();
+    }
+
     this.changeSidebarState();
 
     const slides = AppContainer.createProps(this.props.slides);
@@ -115,23 +129,13 @@ export class AppContainer extends React.Component {
     }
 
     if (this.mode === 'host') {
-      this.setState({ loader: false, opened: false });
-    } else {
+      this.setState({ opened: false });
+    } else if (this.mode === 'view') {
       await new Promise((resolve) => {
         setTimeout(() => {
-          this.setState({ loader: false, opened: false });
+          this.setupWS();
           resolve();
         }, 500);
-      });
-    }
-
-    if (!window.slide) {
-      window.slide = setupWebSlides();
-
-      this.updateSlideState(this.state.slideInfo.index);
-
-      window.slide.el.addEventListener('ws:slide-change', (e) => {
-        this.updateSlideState(e.detail.currentSlide0);
       });
     }
   }
@@ -185,7 +189,6 @@ export class AppContainer extends React.Component {
             <MdMenu className="btn-sidebar" onClick={() => this.onSetSidebarOpen(true)} />
           </>
         )}
-        <Loader displayed={this.state.loader} />
         {this.ContentComponent && (
           <this.ContentComponent
             slides={this.state.slides}
