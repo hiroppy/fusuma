@@ -41,8 +41,14 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
           }
         },
         {
-          test: /\.md$/,
-          use: ['html-loader', 'markdown-loader']
+          test: /\.mdx?$/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: require('../configs/babelrc')(code)
+            },
+            path.join(__dirname, './fusuma-loader.js')
+          ]
         },
         {
           test: /\.(png|jpg|gif|svg?)$/,
