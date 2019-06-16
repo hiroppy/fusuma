@@ -20,7 +20,7 @@ export default class View extends React.PureComponent {
 
   render() {
     return (
-      <Base slides={this.props.slides} lazyload={true} currentIndex={this.props.currentIndex} />
+      <Base slides={this.props.slides} lazyload={false} currentIndex={this.props.currentIndex} />
     );
   }
 }

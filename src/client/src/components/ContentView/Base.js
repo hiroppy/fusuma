@@ -17,7 +17,10 @@ export class Base extends React.Component {
       setTimeout(() => {
         window.slide = setupWebSlides();
         window.slide.el.addEventListener('ws:slide-change', (e) => {
-          this.props.onChangeSlideIndex(e.detail.currentSlide0);
+          if (this.props.onChangeSlideIndex) {
+            this.props.onChangeSlideIndex(e.detail.currentSlide0);
+          }
+
           this.setState({ currentIndex: e.detail.currentSlide0 });
         });
       }, 0);
