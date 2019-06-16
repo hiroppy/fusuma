@@ -15,6 +15,7 @@ slide:
       - json
       - markdown
       - javascript
+      - css
 extends:
   js: index.js
   css: style.css
