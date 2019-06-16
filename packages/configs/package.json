@@ -1,0 +1,35 @@
+{
+  "name": "@fusuma/configs",
+  "version": "1.1.2",
+  "description": "configs for fusuma",
+  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiroppy/fusuma.git"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hiroppy/fusuma/issues"
+  },
+  "homepage": "https://github.com/hiroppy/fusuma#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-prismjs": "^1.0.2",
+    "js-yaml": "3.13.1",
+    "postcss-import": "12.0.1",
+    "postcss-mixins": "6.2.1",
+    "postcss-preset-env": "6.6.0",
+    "postcss-reporter": "6.0.1",
+    "postcss-url": "8.0.0",
+    "preferred-search": "1.0.0",
+    "prismjs": "^1.16.0"
+  }
+}

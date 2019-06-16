@@ -1,0 +1,23 @@
+{
+  "name": "@fusuma/utils",
+  "version": "1.1.2",
+  "description": "utils for fusuma",
+  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiroppy/fusuma.git"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hiroppy/fusuma/issues"
+  },
+  "homepage": "https://github.com/hiroppy/fusuma#readme",
+  "dependencies": {
+    "remote-origin-url": "2.0.0",
+    "rmfr": "2.0.0"
+  }
+}

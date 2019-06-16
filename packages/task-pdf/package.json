@@ -1,0 +1,25 @@
+{
+  "name": "@fusuma/task-pdf",
+  "version": "1.1.2",
+  "description": "pdf task for fusuma",
+  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiroppy/fusuma.git"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hiroppy/fusuma/issues"
+  },
+  "homepage": "https://github.com/hiroppy/fusuma#readme",
+  "dependencies": {
+    "child-process-promise": "2.2.1",
+    "decktape": "^2.9.3",
+    "serve": "11.0.1",
+    "serve-handler": "^6.0.1"
+  }
+}

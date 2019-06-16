@@ -1,42 +1,45 @@
 {
   "name": "fusuma",
   "version": "1.1.2",
-  "private": true,
   "description": "easily make slides with markdown",
+  "bin": {
+    "fusuma": "./src/cli.js"
+  },
   "scripts": {
     "test": "jest",
     "test:ci": "npm run test && codecov",
     "fmt": "prettier --write **/*.{js,json,css,md}",
     "precommit": "pretty-quick --staged",
+    "release": "standard-version",
     "build:samples": "node scripts/build-samples.js",
-    "deploy:samples": "npm run build:samples && node scripts/deploy-samples.js",
-    "setup": "npm run link && npm run bootstrap",
-    "link": "lerna link",
-    "bootstrap": "lerna bootstrap",
-    "clean": "lerna clean",
-    "version": "lerna version --conventional-commits",
-    "release": "lerna publish from-package"
+    "deploy:samples": "npm run build:samples && node scripts/deploy-samples.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hiroppy/fusuma.git"
   },
+  "keywords": [
+    "slide",
+    "markdown",
+    "tool",
+    "cli",
+    "presentation",
+    "react"
+  ],
   "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hiroppy/fusuma/issues"
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
-  "devDependencies": {
-    "husky": "2.4.1",
-    "jest": "24.8.0",
-    "lerna": "^3.15.0",
-    "prettier": "1.18.2",
-    "pretty-quick": "1.11.1",
-    "rewire": "4.0.1"
-  },
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+  "dependencies": {
+    "@fusuma/cli": "^1.1.2",
+    "@fusuma/configs": "^1.1.2",
+    "@fusuma/task-build": "^1.1.2",
+    "@fusuma/task-ghp": "^1.1.2",
+    "@fusuma/task-init": "^1.1.2",
+    "@fusuma/task-start": "^1.1.2",
+    "@fusuma/utils": "^1.1.2",
+    "deepmerge": "3.2.1"
   }
 }

@@ -33,6 +33,8 @@ jobs:
           command: custom
           customCommand: ci
         displayName: 'Install dependencies'
+      - script: npm run setup
+        displayName: 'Setup monorepo'
       - script: npm i codecov
         displayName: 'Install codecov'
       - script: npm run test:ci
@@ -69,6 +71,8 @@ jobs:
           command: custom
           customCommand: ci
         displayName: 'Install dependencies'
+      - script: npm run setup
+        displayName: 'Setup monorepo'
       - script: npm i codecov
         displayName: 'Install codecov'
       - script: npm run test:ci
@@ -108,6 +112,8 @@ jobs:
           command: custom
           customCommand: ci
         displayName: 'Install dependencies'
+      - script: npm run setup
+        displayName: 'Setup monorepo'
       - script: npm i codecov
         displayName: 'Install codecov'
       - script: npm run test:ci
