@@ -76,7 +76,7 @@ async function pdfProcess(basePath, { input: i, output: o }) {
     const { execSync } = require('child_process');
     execSync('npm install @fusuma/task-pdf --no-save', { stdio: 'inherit' });
 
-    const { pdf } = require('@fusuma/task-pdf');
+    const pdf = require('@fusuma/task-pdf');
 
     await pdf(input, output, port);
   } catch (e) {

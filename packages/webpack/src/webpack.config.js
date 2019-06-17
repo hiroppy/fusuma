@@ -8,8 +8,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { babel: babelrc } = require('@fusuma/configs');
 const css = require('./css');
 
-const configsBasePath = path.resolve(__dirname, '..', 'node_modules', '@fusuma', 'configs');
-const clientBasePath = path.resolve(__dirname, '..', 'node_modules', '@fusuma', 'client');
+const configsEntryPoint = require.resolve('@fusuma/configs');
+const configsBasePath = configsEntryPoint.split('/src')[0];
+const clientEntryPoint = require.resolve('@fusuma/client');
+const clientBasePath = clientEntryPoint.split('/src')[0];
 
 module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
   const { url, name, description, thumbnail, siteName, sns, repositoryUrl } = meta || {};
@@ -25,7 +27,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
 
   const common = {
     name: name || 'slide',
-    entry: ['@babel/polyfill', path.join(clientBasePath, 'src', 'index.js')],
+    entry: ['@babel/polyfill', clientEntryPoint],
     output: {
       path: path.resolve(basePath, 'dist')
     },
