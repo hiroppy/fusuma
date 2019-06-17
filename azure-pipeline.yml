@@ -84,9 +84,10 @@ jobs:
     strategy:
       maxParallel: 5
       matrix:
-        node-12:
-          node_version: ^12.0.0
-          webpack_version: latest
+        # npm run bootstrap cannot be run
+        # node-12:
+        #   node_version: ^12.0.0
+        #   webpack_version: latest
         node-10:
           node_version: ^10.13.0
           webpack_version: latest
