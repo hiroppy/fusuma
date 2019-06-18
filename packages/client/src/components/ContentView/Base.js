@@ -46,11 +46,10 @@ export class Base extends React.Component {
   render() {
     const {
       slides,
-      className = undefined,
       // showIndex(webSlides) checks all slides so lazyload can not be used together
       lazyload = !process.env.SHOW_INDEX // TODO: fix
     } = this.props;
-    const articleClass = process.env.IS_VERTICAL ? classnames('vertical', className) : className;
+    const articleClass = process.env.IS_VERTICAL ? 'vertical' : undefined;
 
     return (
       <article className={articleClass} id="webslides">
@@ -59,7 +58,7 @@ export class Base extends React.Component {
             key={i /* fix */}
             className={classnames(
               'aligncenter',
-              fusumaProps.className,
+              fusumaProps.classes,
               fusumaProps.sectionTitle ? 'section-title' : undefined
             )}
           >

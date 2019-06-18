@@ -5,7 +5,6 @@
 import React from 'react';
 import { FaTimes, FaPlay, FaStop, FaRegHourglass } from 'react-icons/fa';
 import { Controller as PresentationController } from '../presentationMode/Controller'; // common and host
-import { Base } from './Base';
 import '../../../assets/style/host.css';
 
 class Timer extends React.PureComponent {
