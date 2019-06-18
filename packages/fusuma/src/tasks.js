@@ -71,17 +71,18 @@ async function pdfProcess(basePath, { input: i, output: o }) {
 
   const spinner = loader('Exporting as PDF...').start();
 
-  // TODO: fix lazy-load
+  const { execSync } = require('child_process');
+  let pdf;
+
   try {
-    const { execSync } = require('child_process');
+    pdf = require('@fusuma/task-pdf');
+  } catch (e) {
     execSync('npm install @fusuma/task-pdf --no-save', { stdio: 'inherit' });
 
-    const pdf = require('@fusuma/task-pdf');
-
-    await pdf(input, output, port);
-  } catch (e) {
-    console.error(e);
+    pdf = require('@fusuma/task-pdf');
   }
+
+  await pdf(input, output, port);
 
   spinner.stop();
 }
