@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
+    "child-process-promise": "^2.2.1",
     "remote-origin-url": "2.0.0",
     "rmfr": "2.0.0"
   }

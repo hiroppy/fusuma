@@ -2,7 +2,7 @@
 
 const { join } = require('path');
 const { loader } = require('@fusuma/cli');
-const { deleteDir, getRemoteOriginUrl } = require('@fusuma/utils');
+const { deleteDir, getRemoteOriginUrl, lazyloadModule } = require('@fusuma/utils');
 const { fusuma } = require('@fusuma/configs');
 const ghp = require('@fusuma/task-ghp');
 const init = require('@fusuma/task-init');
@@ -71,20 +71,25 @@ async function pdfProcess(basePath, { input: i, output: o }) {
 
   const spinner = loader('Exporting as PDF...').start();
 
-  const { execSync } = require('child_process');
-  let pdf;
-
   try {
-    pdf = require('@fusuma/task-pdf');
+    const pack = '@fusuma/task-pdf';
+    // for debug using intro
+    // const pack = join(__dirname, '../../../samples/intro/node_modules/@fusuma/task-pdf');
+
+    const pdf = await lazyloadModule(pack, (type) => {
+      if (type === 'fallback') {
+        spinner.color = 'yellow';
+        spinner.text = `Installing ${pack}`;
+      }
+    });
+
+    await pdf(input, output, port);
+
+    spinner.stop();
   } catch (e) {
-    execSync('npm install @fusuma/task-pdf --no-save', { stdio: 'inherit' });
-
-    pdf = require('@fusuma/task-pdf');
+    console.error(e);
+    process.exit(1);
   }
-
-  await pdf(input, output, port);
-
-  spinner.stop();
 }
 
 function tasks({ type, options }) {
