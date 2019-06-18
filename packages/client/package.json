@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/client",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "client for fusuma",
   "main": "src/index.js",
   "publishConfig": {

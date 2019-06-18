@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/webpack",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "webpack for fusuma",
   "main": "src/index.js",
   "publishConfig": {
@@ -18,8 +18,8 @@
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "@fusuma/client": "^1.2.0",
-    "@fusuma/configs": "^1.2.0",
+    "@fusuma/client": "^1.2.3",
+    "@fusuma/configs": "^1.2.3",
     "@mdx-js/mdx": "^1.0.20",
     "@mdx-js/react": "^1.0.20",
     "babel-loader": "^8.0.5",
