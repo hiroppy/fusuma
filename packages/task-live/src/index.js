@@ -15,6 +15,7 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
   let key = null;
   let timer = null;
   let twitter = null;
+  const comments = [];
   const commentsEvent = new EventEmitter();
 
   // twitter mode requires a searched keyword and keys
@@ -63,6 +64,11 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
     if (wss.clients.size === 1 && timer === null && twitter) {
       startInterval();
     }
+
+    if (comments.length !== 0) {
+      ws.send(JSON.stringify(comments));
+    }
+
     ws.on('close', () => {
       // stop interval
       if (wss.clients.size === 0) {
@@ -81,6 +87,7 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
 
   // from twitter and api endpoint(post: /comments)
   commentsEvent.on('data', (data) => {
+    comments.push(...data);
     wss.broadcast(JSON.stringify(data));
   });
 
