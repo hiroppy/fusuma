@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from 'react-sidebar';
+import { slide as Menu } from 'react-burger-menu';
 import screenfull from 'screenfull';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay } from 'react-icons/md';
@@ -21,8 +21,14 @@ const title = process.env.TITLE;
 
 const formatStr = (num) => `${num}`.padStart(2, '0');
 
-const Inner = (props) => (
-  <>
+export const SidebarComponent = (props) => (
+  <Menu
+    isOpen={props.isOpen}
+    disableAutoFocus
+    onStateChange={props.onStateChange}
+    outerContainerId="root"
+    pageWrapId="webslides"
+  >
     <div className="sidebar-social">
       {Array.isArray(sns) &&
         url &&
@@ -49,46 +55,42 @@ const Inner = (props) => (
     <div className="sidebar-control">
       {window.slide && (
         <>
-          <MdFirstPage onClick={() => props.goTo(0)} />
+          <MdFirstPage onClick={() => props.goTo(0)} className="sidebar-cursor" />
           <span>{`${formatStr(props.currentIndex + 1)} / ${formatStr(
             window.slide.slides.length
           )}`}</span>
-          <MdLastPage onClick={() => props.goTo(window.slide.slides.length - 1)} />
+          <MdLastPage
+            onClick={() => props.goTo(window.slide.slides.length - 1)}
+            className="sidebar-cursor"
+          />
         </>
       )}
     </div>
-    <div>
+    <div className="sidebar-tools">
       <MdFullscreen
+        style={{ width: 26, height: 26 }}
         onClick={() => {
           screenfull.enabled ? screenfull.toggle() : undefined;
         }}
+        className="sidebar-cursor"
       />
-      <MdAirplay onClick={() => props.runPresentationMode()} style={{ width: 18, height: 18 }} />
+      <MdAirplay
+        onClick={() => props.runPresentationMode()}
+        style={{ width: 19, height: 19, marginTop: 1 }}
+        className="sidebar-cursor"
+      />
       {process.env.REMOTE_ORIGIN_URL ? (
         <a href={process.env.REMOTE_ORIGIN_URL}>
-          <FaGithub style={{ width: 18, height: 18, marginTop: 8 }} />
+          <FaGithub style={{ width: 20, height: 20, marginTop: 3, color: '#f5f5f5' }} />
         </a>
       ) : null}
     </div>
-    <div className="sidebar-contents">
+    <ul className="sidebar-contents">
       {props.contents.map((content, i) => (
-        <a href={`#slide=${content.index}`} key={i}>
-          - {content.title}
-        </a>
+        <li key={i}>
+          <a href={`#slide=${content.index}`}>{content.title}</a>
+        </li>
       ))}
-    </div>
-  </>
-);
-
-export const SidebarComponent = (props) => (
-  <Sidebar
-    sidebar={Inner(props)}
-    shadow={false}
-    open={props.opened}
-    styles={styles}
-    sidebarClassName="sidebar"
-    onSetOpen={props.onSetOpen}
-  >
-    {''} {/* react-slider requires props.children... */}
-  </Sidebar>
+    </ul>
+  </Menu>
 );
