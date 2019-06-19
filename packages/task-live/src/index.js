@@ -38,6 +38,10 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
 
       console.info('Twitter mode is enabled.');
     }
+  } else {
+    console.warn(
+      'Twitter mode is disabled. If you want to enable, you must specify an searched keyword'
+    );
   }
 
   const app = express();

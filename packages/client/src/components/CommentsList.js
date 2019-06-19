@@ -26,8 +26,6 @@ export class CommentsList extends React.Component {
     this.ws.onmessage = ({ data }) => {
       const comments = JSON.parse(data);
 
-      console.log(comments);
-
       if (Array.isArray(comments) && comments.length !== 0) {
         if (comments[0].message === 'Rate limit exceeded') {
           // TODO: implement

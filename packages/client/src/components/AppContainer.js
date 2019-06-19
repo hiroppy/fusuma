@@ -26,6 +26,7 @@ export class AppContainer extends React.Component {
 
     this.params = parsedUrl.searchParams;
     this.ContentComponent = null;
+    this.isLive = this.params.get('isLive');
 
     this.routeMode();
   }
@@ -118,8 +119,8 @@ export class AppContainer extends React.Component {
     }
 
     if (this.mode === 'host') {
-      this.setState({ opened: false });
-    } else if (process.env.IS_LIVE) {
+      this.setState({ opened: false, CommentsListComponent: null });
+    } else if (process.env.IS_LIVE && this.isLive !== 'false') {
       this.setupLive();
     }
   }

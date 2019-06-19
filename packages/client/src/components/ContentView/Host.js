@@ -78,7 +78,7 @@ export default class Host extends React.PureComponent {
     const { origin, pathname } = new URL(window.location);
 
     this.slides = props.slides; // TODO: separate from current reference
-    this.slideUrl = `${origin}/${pathname}?sidebar=false#slide=`;
+    this.slideUrl = `${origin}/${pathname}?sidebar=false&isLive=false#slide=`;
     this.presentationController = new PresentationController();
     this.presentationApiId = null;
 

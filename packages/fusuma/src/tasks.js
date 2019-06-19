@@ -72,10 +72,7 @@ async function pdfProcess(basePath, { input: i, output: o }) {
   const spinner = loader('Exporting as PDF...').start();
 
   try {
-    const pack = '@fusuma/task-pdf';
-    // for debug
-    // const pack = join(__dirname, '../../task-pdf');
-
+    const pack = process.env.FUSUMA_DEBUG ? join(__dirname, '../../task-pdf') : '@fusuma/task-pdf';
     const pdf = await lazyloadModule(pack, (type) => {
       if (type === 'fallback') {
         spinner.color = 'yellow';
@@ -93,12 +90,6 @@ async function pdfProcess(basePath, { input: i, output: o }) {
 }
 
 async function live(basePath, { keyword, internal, port, dir }) {
-  if (!keyword) {
-    console.warn(
-      'Twitter mode is disabled. If you want to enable, you must specify an searched keyword'
-    );
-  }
-
   await buildProcess(basePath, {
     server: {
       port,
@@ -110,10 +101,9 @@ async function live(basePath, { keyword, internal, port, dir }) {
   const spinner = loader('Setup live mode...').start();
 
   try {
-    const pack = '@fusuma/task-live';
-    // for debug
-    // const pack = join(__dirname, '../../task-live');
-
+    const pack = process.env.FUSUMA_DEBUG
+      ? join(__dirname, '../../task-live')
+      : '@fusuma/task-live';
     const liveServer = await lazyloadModule(pack, (type) => {
       if (type === 'fallback') {
         spinner.color = 'yellow';

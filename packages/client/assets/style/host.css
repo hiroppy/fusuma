@@ -5,6 +5,7 @@
   display: grid;
   padding: 0 20px;
   height: 100vh;
+  min-width: 720px;
   grid-template-rows: 1fr 50px;
   grid-template-columns: 1fr 480px;
   grid-template-areas:
@@ -21,6 +22,7 @@
   grid-area: left;
   margin: 20px 0;
   color: var(--color-white);
+  width: calc(100vw - 480px - 20px * 2);
 
   & > .host-note {
     & pre {
