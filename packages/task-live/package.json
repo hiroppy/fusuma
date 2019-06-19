@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/task-live",
-  "version": "1.4.0",
+  "version": "1.4.2",
   "description": "live task for fusuma",
   "main": "src/index.js",
   "publishConfig": {

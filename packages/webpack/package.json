@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/webpack",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "webpack for fusuma",
   "main": "src/index.js",
   "publishConfig": {
