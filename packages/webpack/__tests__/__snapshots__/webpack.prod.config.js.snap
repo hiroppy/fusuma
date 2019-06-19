@@ -95,7 +95,7 @@ Object {
     "splitChunks": Object {
       "cacheGroups": Object {
         "vendor": Object {
-          "chunks": "all",
+          "chunks": "initial",
           "enforce": true,
           "name": "vendor",
           "test": /node_modules/,
