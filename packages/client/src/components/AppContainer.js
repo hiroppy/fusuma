@@ -15,8 +15,8 @@ export class AppContainer extends React.Component {
     index = index !== null ? index[1] - 1 : 0;
 
     this.state = {
-      opened: false, // TODO: refactor to `status: {}`
       isSidebar: true,
+      isOpenSidebar: false,
       slides: [],
       contentsList: [],
       currentIndex: index,
@@ -119,7 +119,7 @@ export class AppContainer extends React.Component {
     }
 
     if (this.mode === 'host') {
-      this.setState({ opened: false, CommentsListComponent: null });
+      this.setState({ isOpenSidebar: false, CommentsListComponent: null });
     } else if (process.env.IS_LIVE && this.isLive !== 'false') {
       this.setupLive();
     }
@@ -131,8 +131,10 @@ export class AppContainer extends React.Component {
     }
   };
 
-  onSetSidebarOpen = (opened) => {
-    this.setState({ opened });
+  onSetSidebarOpen = ({ isOpen }) => {
+    if (this.state.isOpenSidebar !== isOpen) {
+      this.setState({ isOpenSidebar: isOpen });
+    }
   };
 
   onChangeSlideIndex = (currentIndex) => {
@@ -159,15 +161,18 @@ export class AppContainer extends React.Component {
             {this.state.SidebarComponent && (
               <this.state.SidebarComponent
                 goTo={this.goTo}
-                opened={this.state.opened}
+                isOpen={this.state.isOpenSidebar}
                 terminate={this.terminate}
                 contents={this.state.contentsList}
-                onSetOpen={this.onSetSidebarOpen}
+                onStateChange={this.onSetSidebarOpen}
                 currentIndex={this.state.currentIndex}
                 runPresentationMode={this.onRunPresentationMode}
               />
             )}
-            <MdMenu className="btn-sidebar" onClick={() => this.onSetSidebarOpen(true)} />
+            <MdMenu
+              className="btn-sidebar"
+              onClick={() => this.onSetSidebarOpen({ isOpen: true })}
+            />
           </>
         )}
         {this.ContentComponent && (

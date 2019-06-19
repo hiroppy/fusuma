@@ -1,5 +1,5 @@
 @import './variable';
-@import './sidebar';
+@import './sidebar.css';
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro'); /* for highlight.js */
 
 body {
