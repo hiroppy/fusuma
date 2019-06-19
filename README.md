@@ -26,6 +26,8 @@ Just write Markdown and create cool slides.😎
   - production build
   - exporting as PDF
   - deploying to GitHub Pages
+  - live mode
+    - fusuma can stream comments such as Twitter during the presentation
 - supports SNS, OGP, FullScreen, and etc...
 - supports Presenter Mode
   - you can give a speech while watching a presenter's notes and timer
@@ -122,11 +124,11 @@ This is the second slide.
 Fusuma provides CLI.
 
 ```sh
-   fusuma.js 1.0.0 - CLI for easily make slides with Markdown
+   cli.js 1.3.0 - CLI for easily make slides with Markdown
 
    USAGE
 
-     fusuma.js <command> [options]
+     cli.js <command> [options]
 
    COMMANDS
 
@@ -135,6 +137,7 @@ Fusuma provides CLI.
      build               Build with webpack
      deploy              Deploy to GitHub pages
      pdf                 Export as PDF
+     live                Start live mode
      help <command>      Display help for a specific command
 
    GLOBAL OPTIONS
