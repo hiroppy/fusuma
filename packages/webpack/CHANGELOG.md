@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/hiroppy/fusuma/compare/v1.4.0...v1.4.1) (2019-06-19)
+
+### Bug Fixes
+
+- **webpack:** don't use chunks:all in splitChunks ([61b0a42](https://github.com/hiroppy/fusuma/commit/61b0a42))
+
 # [1.4.0](https://github.com/hiroppy/fusuma/compare/v1.3.0...v1.4.0) (2019-06-19)
 
 **Note:** Version bump only for package @fusuma/webpack
