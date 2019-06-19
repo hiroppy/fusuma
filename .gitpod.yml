@@ -2,5 +2,5 @@ ports:
   - port: 8080
     onOpen: open-preview
 tasks:
-  - before: npm link
-    command: cd samples/intro && npx fusuma start
+  - before: npm link && npm run setup
+    command: cd samples/intro && npm i && npm start
