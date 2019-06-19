@@ -39,7 +39,7 @@ module.exports = ({
 
   const common = {
     name: name || 'slide',
-    entry: ['@babel/polyfill', clientEntryPoint],
+    entry: [clientEntryPoint],
     output: {
       path: path.resolve(basePath, 'dist')
     },

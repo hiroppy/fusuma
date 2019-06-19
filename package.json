@@ -38,5 +38,6 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
-  }
+  },
+  "dependencies": {}
 }
