@@ -8,11 +8,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - introduce live mode ([f13985a](https://github.com/hiroppy/fusuma/commit/f13985a))
-
-## [1.2.3](https://github.com/hiroppy/fusuma/compare/v1.2.2...v1.2.3) (2019-06-18)
-
-**Note:** Version bump only for package @fusuma/task-init
-
-# [1.2.0](https://github.com/hiroppy/fusuma/compare/v1.1.2...v1.2.0) (2019-06-17)
-
-**Note:** Version bump only for package @fusuma/task-init
