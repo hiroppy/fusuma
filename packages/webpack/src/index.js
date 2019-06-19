@@ -8,15 +8,19 @@ function start(config, cb) {
   webpackDevServer(combineConfig(config), cb);
 }
 
-function build(config) {
+function build(config, isOutput = true) {
   const webpack = require('webpack');
   const outputBuildInfo = require('./outputBuildInfo');
 
   return new Promise((resolve, reject) => {
     webpack(combineConfig(config), (err, res) => {
-      if (err) reject(err);
+      if (err) {
+        return reject(err);
+      }
 
-      outputBuildInfo(res);
+      if (isOutput) {
+        outputBuildInfo(res);
+      }
 
       resolve();
     });

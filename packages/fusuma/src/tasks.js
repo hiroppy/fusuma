@@ -33,19 +33,23 @@ async function startProcess(basePath) {
   );
 }
 
-async function buildProcess(basePath, extendedConfig = {}) {
+async function buildProcess(basePath, extendedConfig = {}, isOutput = true) {
   const spinner = loader('Building with webpack...').start();
   const config = merge(await fusuma.read(basePath), extendedConfig);
   const remoteOrigin = await getRemoteOriginUrl(basePath);
 
   await deleteDir(join(basePath, 'dist'));
-  await build({
-    ...config,
-    internal: {
-      basePath,
-      remoteOrigin
-    }
-  });
+  await build(
+    {
+      ...config,
+      internal: {
+        basePath,
+        remoteOrigin
+      }
+    },
+    isOutput
+  );
+
   spinner.stop();
 }
 
@@ -62,12 +66,16 @@ async function pdfProcess(basePath, { input: i, output: o }) {
   const input = join(process.cwd(), i || 'dist');
   const output = join(process.cwd(), o || 'slide.pdf');
 
-  await buildProcess(basePath, {
-    slide: {
-      loop: false,
-      sidebar: false
-    }
-  });
+  await buildProcess(
+    basePath,
+    {
+      slide: {
+        loop: false,
+        sidebar: false
+      }
+    },
+    false
+  );
 
   const spinner = loader('Exporting as PDF...').start();
 
@@ -90,13 +98,17 @@ async function pdfProcess(basePath, { input: i, output: o }) {
 }
 
 async function live(basePath, { keyword, internal, port, dir }) {
-  await buildProcess(basePath, {
-    server: {
-      port,
-      isLive: true,
-      keyword
-    }
-  });
+  await buildProcess(
+    basePath,
+    {
+      server: {
+        port,
+        isLive: true,
+        keyword
+      }
+    },
+    false
+  );
 
   const spinner = loader('Setup live mode...').start();
 
