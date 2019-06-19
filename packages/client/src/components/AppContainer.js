@@ -16,11 +16,12 @@ export class AppContainer extends React.Component {
 
     this.state = {
       opened: false, // TODO: refactor to `status: {}`
-      SidebarComponent: null, // for lazy load
       isSidebar: true,
       slides: [],
       contentsList: [],
-      currentIndex: index
+      currentIndex: index,
+      SidebarComponent: null, // for lazy load
+      CommentsListComponent: null // for lazy load
     };
 
     this.params = parsedUrl.searchParams;
@@ -89,6 +90,14 @@ export class AppContainer extends React.Component {
     this.setState({ isSidebar });
   };
 
+  async setupLive() {
+    const { CommentsList: CommentsListComponent } = await import(
+      /* webpackChunkName: 'live' */ './CommentsList'
+    );
+
+    this.setState({ CommentsListComponent });
+  }
+
   async routeMode(mode) {
     if (this.mode !== undefined) {
       this.mode = mode || router();
@@ -110,6 +119,8 @@ export class AppContainer extends React.Component {
 
     if (this.mode === 'host') {
       this.setState({ opened: false });
+    } else if (process.env.IS_LIVE) {
+      this.setupLive();
     }
   }
 
@@ -166,6 +177,7 @@ export class AppContainer extends React.Component {
             onChangeSlideIndex={this.onChangeSlideIndex}
           />
         )}
+        {this.state.CommentsListComponent && <this.state.CommentsListComponent />}
       </>
     );
   }

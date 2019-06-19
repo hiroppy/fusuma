@@ -10,8 +10,8 @@ const start = require('@fusuma/task-start');
 const build = require('@fusuma/task-build');
 const merge = require('deepmerge');
 
-async function initProcess() {
-  await init(process.cwd());
+async function initProcess({ schema }) {
+  await init(process.cwd(), schema);
 }
 
 async function startProcess(basePath) {
@@ -73,8 +73,8 @@ async function pdfProcess(basePath, { input: i, output: o }) {
 
   try {
     const pack = '@fusuma/task-pdf';
-    // for debug using intro
-    // const pack = join(__dirname, '../../../samples/intro/node_modules/@fusuma/task-pdf');
+    // for debug
+    // const pack = join(__dirname, '../../task-pdf');
 
     const pdf = await lazyloadModule(pack, (type) => {
       if (type === 'fallback') {
@@ -92,12 +92,55 @@ async function pdfProcess(basePath, { input: i, output: o }) {
   }
 }
 
+async function live(basePath, { keyword, internal, port, dir }) {
+  if (!keyword) {
+    console.warn(
+      'Twitter mode is disabled. If you want to enable, you must specify an searched keyword'
+    );
+  }
+
+  await buildProcess(basePath, {
+    server: {
+      port,
+      isLive: true,
+      keyword
+    }
+  });
+
+  const spinner = loader('Setup live mode...').start();
+
+  try {
+    const pack = '@fusuma/task-live';
+    // for debug
+    // const pack = join(__dirname, '../../task-live');
+
+    const liveServer = await lazyloadModule(pack, (type) => {
+      if (type === 'fallback') {
+        spinner.color = 'yellow';
+        spinner.text = `Installing ${pack}`;
+      }
+    });
+
+    spinner.stop();
+
+    liveServer({
+      dir,
+      port,
+      internal,
+      keyword
+    });
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+}
+
 function tasks({ type, options }) {
   const basePath = join(process.cwd(), options.dir || '');
 
   switch (type) {
     case 'init':
-      return initProcess();
+      return initProcess(options);
     case 'start':
       return startProcess(basePath);
     case 'build':
@@ -106,6 +149,8 @@ function tasks({ type, options }) {
       return deployProcess(basePath);
     case 'pdf':
       return pdfProcess(basePath, options);
+    case 'live':
+      return live(basePath, options);
   }
 }
 

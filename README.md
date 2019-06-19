@@ -253,6 +253,30 @@ slide:
 
 ![](./media/presenter-host.png)
 
+## Live Mode
+
+fusuma can fetch tweets from Twitter. In addition, fusuma have an api endpoint.  
+If you specify a `keyword` and `authentication keys`, fetching from twitter will be enabled.  
+Since comments can be sent to fusuma itself, you can use in the private case.  
+Also, this mode can run with Presenter Mode.
+
+```sh
+# create .env
+$ npx fusuma init -s live
+# edit .env and add .env to .gitignore
+$ npx fusuma live -w '#javascript' # npx fusuma live --help
+# Also, you can
+$ open http://localhost:3000
+```
+
+![](./media/live.png)
+
+### Post a comment
+
+```sh
+$ curl -X POST -H "Content-Type: application/json" -d '{"text":"hello:)"}' localhost:3000/api/comments
+```
+
 ## API
 
 ```js

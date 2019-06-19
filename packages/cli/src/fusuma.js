@@ -12,10 +12,13 @@ async function cli() {
       .description('CLI for easily make slides with Markdown')
 
       .command('init', 'Create a configure file')
+      .option('-s [type]', 'Specified schema type')
       .action((args, options, logger) => {
         resolve({
           type: 'init',
-          options: {}
+          options: {
+            schema: options.s
+          }
         });
       })
 
@@ -39,7 +42,7 @@ async function cli() {
 
       .command('deploy', 'Deploy to GitHub pages')
       .option('-d <directory>', 'Directory to load')
-      .action(async (args, options, logger) => {
+      .action((args, options, logger) => {
         resolve({
           type: 'deploy',
           options: { dir: options.d }
@@ -49,12 +52,28 @@ async function cli() {
       .command('pdf', 'Export as PDF')
       .option('-i <input>', 'Specified Directory')
       .option('-o <output>', 'Specified Filename')
-      .action(async (args, options, logger) => {
+      .action((args, options, logger) => {
         resolve({
           type: 'pdf',
           options: {
             input: options.i,
             output: options.o
+          }
+        });
+      })
+
+      .command('live', 'Start live mode')
+      .option('-i <interval>', 'Set interval time(ms)', prog.INT, 6000)
+      .option('-w <keyword>', 'Specified searched keyword')
+      .option('-p <port>', 'Server port', prog.INT, 3000)
+      .action((args, options, logger) => {
+        resolve({
+          type: 'live',
+          options: {
+            dir: options.d,
+            port: options.p,
+            keyword: options.w,
+            interval: options.i
           }
         });
       });
