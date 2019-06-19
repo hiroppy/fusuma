@@ -44,7 +44,7 @@ function prod() {
           vendor: {
             test: /node_modules/,
             name: 'vendor',
-            chunks: 'all',
+            chunks: 'initial',
             enforce: true
           }
         }
