@@ -13,11 +13,23 @@ const configsBasePath = configsEntryPoint.split('/src')[0];
 const clientEntryPoint = require.resolve('@fusuma/client');
 const clientBasePath = clientEntryPoint.split('/src')[0];
 
-module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
-  const { url, name, description, thumbnail, siteName, sns, repositoryUrl } = meta || {};
-  const { sidebar, targetBlank = true, showIndex = false, isVertical = false, loop = true, code } =
-    slide || {};
-  const { js: jsPath, css: cssPath } = fileExtends || {};
+module.exports = ({
+  meta = {},
+  slide = {},
+  extends: fileExtends = {},
+  internal = {},
+  server = {}
+}) => {
+  const { url, name, description, thumbnail, siteName, sns, repositoryUrl } = meta;
+  const {
+    sidebar,
+    targetBlank = true,
+    showIndex = false,
+    isVertical = false,
+    loop = true,
+    code
+  } = slide;
+  const { js: jsPath, css: cssPath } = fileExtends;
   const { basePath, remoteOrigin } = internal;
 
   const config =
@@ -97,7 +109,10 @@ module.exports = ({ meta, slide, extends: fileExtends, internal }) => {
         'process.env.TARGET_BLANK': JSON.stringify(targetBlank),
         'process.env.SHOW_INDEX': JSON.stringify(showIndex),
         'process.env.IS_VERTICAL': JSON.stringify(isVertical),
-        'process.env.LOOP': JSON.stringify(loop)
+        'process.env.LOOP': JSON.stringify(loop),
+        'process.env.IS_LIVE': JSON.stringify(!!server.isLive),
+        'process.env.SERVER_PORT': JSON.stringify(server.port),
+        'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword)
       }),
       new HtmlWebpackPlugin({
         url,

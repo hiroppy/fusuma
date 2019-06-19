@@ -1,7 +1,7 @@
 {
-  "name": "@fusuma/client",
+  "name": "@fusuma/task-live",
   "version": "1.2.3",
-  "description": "client for fusuma",
+  "description": "live task for fusuma",
   "main": "src/index.js",
   "publishConfig": {
     "access": "public"
@@ -17,15 +17,10 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "classnames": "^2.2.6",
-    "font-awesome": "4.7.0",
-    "prismjs": "1.16.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-icons": "^3.6.1",
-    "react-pose": "^4.0.8",
-    "react-sidebar": "3.0.2",
-    "screenfull": "^4.2.0",
-    "webslides": "^1.4.2"
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "twitter": "^1.7.1",
+    "ws": "^7.0.1"
   }
 }

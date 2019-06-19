@@ -50,6 +50,10 @@ pre[class*='language-'] {
   line-height: 1.2;
 }
 
+#root {
+  display: flex;
+}
+
 .fa-hatena:before {
   content: 'B!';
   font-family: Verdana;
@@ -63,4 +67,12 @@ pre[class*='language-'] {
 /* overwrite prismjs */
 .token.operator {
   background: inherit;
+}
+
+#webslides {
+  flex: 1;
+}
+
+#webslides-zoomed {
+  position: absolute;
 }
