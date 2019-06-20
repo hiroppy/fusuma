@@ -39,10 +39,11 @@ class Twitter {
               tweets.push({
                 id: id_str,
                 name,
+                text,
                 platform: 'twitter',
                 screenName: screen_name,
                 avatar: profile_image_url_https,
-                text
+                createdAt: new Date(created_at).getTime()
               });
             });
           }

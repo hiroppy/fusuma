@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const { config } = require('dotenv');
 const router = require('./router');
 const Twitter = require('./Twitter');
+const logger = require('./logger');
 
 function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
   config();
@@ -26,7 +27,7 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
       !process.env.ACCESS_TOKEN_KEY ||
       !process.env.ACCESS_TOKEN_SECRET
     ) {
-      console.error("Must create .env file and set twitter's keys.");
+      logger.error("Must create .env file and set twitter's keys.");
     } else {
       twitter = new Twitter({
         keys: {
@@ -37,11 +38,11 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
         }
       });
 
-      console.info('Twitter mode is enabled.');
+      logger.info('Twitter mode is enabled.');
     }
   } else {
-    console.warn(
-      'Twitter mode is disabled. If you want to enable, you must specify an searched keyword'
+    logger.warn(
+      'Twitter mode is disabled. If you want to enable, you must specify an searched keyword.(-w)'
     );
   }
 
@@ -62,6 +63,7 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
 
     // start interval
     if (wss.clients.size === 1 && timer === null && twitter) {
+      logger.info(`Start processing fetching data from Twitter every ${interval}ms.`);
       startInterval();
     }
 
@@ -72,6 +74,7 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
     ws.on('close', () => {
       // stop interval
       if (wss.clients.size === 0) {
+        logger.info('Stop processing fetching data from Twitter.');
         stopInterval();
       }
     });
@@ -109,10 +112,10 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
         //   };
         // });
 
-        // e.g. [ { message: 'Rate limit exceeded', code: 88 } ]
+        // // e.g. [ { message: 'Rate limit exceeded', code: 88 } ]
         commentsEvent.emit('data', tweets);
       } catch (e) {
-        console.error(e);
+        logger.error(e);
         stopInterval();
       }
     }, interval);
@@ -129,7 +132,7 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
     const addr = server.address();
     const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
 
-    console.log(`Listening on ${bind}`);
+    logger.info(`Listening on ${bind}.`);
   });
 
   server.listen(port);

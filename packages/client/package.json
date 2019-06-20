@@ -19,6 +19,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "font-awesome": "4.7.0",
+    "intl-relativeformat": "^6.2.2",
     "prismjs": "1.16.0",
     "react": "16.8.6",
     "react-burger-menu": "^2.6.10",

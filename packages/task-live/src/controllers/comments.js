@@ -11,7 +11,8 @@ function post(req, res, ev) {
     {
       id: `${Math.random()}`,
       text,
-      platform: 'fusuma'
+      platform: 'fusuma',
+      createdAt: new Date().getTime()
     }
   ]);
 

@@ -13,14 +13,14 @@
   height: 40px;
   padding: 8px 18px;
   background: #555;
-  font-size: 24px;
+  font-size: 2.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .comments-list-total {
-  font-size: 16px;
+  font-size: 1.6rem;
 }
 
 .comments-list-ul {
@@ -45,14 +45,35 @@
   }
 }
 
-.comments-list-avatar {
+.comments-list-li-avatar {
   border-radius: 50%;
   margin: 0 8px 0 0;
   height: 42px;
   width: 42px;
 }
 
-.comments-list-comment {
-  font-size: 20px;
+.comments-list-li-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.comments-list-li-body-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #555;
+  font-size: 1.8rem;
+  height: 24px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.comments-list-li-time-ago {
+  font-size: 1.4rem;
+}
+
+.comments-list-li-comment {
+  font-size: 2rem;
   word-break: break-all;
 }
