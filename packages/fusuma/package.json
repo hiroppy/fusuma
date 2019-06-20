@@ -40,6 +40,6 @@
     "@fusuma/task-init": "^1.4.0",
     "@fusuma/task-start": "^1.4.2",
     "@fusuma/utils": "^1.4.0",
-    "deepmerge": "3.2.1"
+    "deepmerge": "3.3.0"
   }
 }
