@@ -267,7 +267,7 @@ Also, this mode can run with Presenter Mode.
 # create .env
 $ npx fusuma init -s live
 # edit .env and add .env to .gitignore
-$ npx fusuma live -w '#javascript' # npx fusuma live --help
+$ npx fusuma live -w '@nodejs' # npx fusuma live --help
 # Also, you can deploy to other servers
 $ open http://localhost:3000
 ```
