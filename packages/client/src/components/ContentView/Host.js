@@ -3,73 +3,24 @@
  */
 
 import React from 'react';
-import { FaTimes, FaPlay, FaStop, FaRegHourglass } from 'react-icons/fa';
+import Modal from 'react-modal';
+import {
+  FaTimes,
+  FaHistory,
+  FaCaretDown,
+  FaCaretRight,
+  FaCaretUp,
+  FaMicrophoneAlt,
+  FaMicrophoneAltSlash
+} from 'react-icons/fa';
 import { Controller as PresentationController } from '../presentationMode/Controller'; // common and host
+import { Timer } from '../Timer';
+import { Timeline } from '../Timeline';
+import { formatTime } from '../../utils/formatTime';
+import { WebRTC } from '../../utils/webrtc';
 import '../../../assets/style/host.css';
 
-class Timer extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isStop: true,
-      currentTimeStr: '00:00:00'
-    };
-
-    this.current = 0;
-    this.timerId = null;
-    this.presentationController = new PresentationController();
-  }
-
-  changeTimerState = (state) => {
-    this.setState({ isStop: state });
-  };
-
-  start = () => {
-    // it doesn't have to be accurate :)
-    this.timerId = setInterval(() => this.update(), 1000);
-    this.changeTimerState(false);
-  };
-
-  stop = () => {
-    clearInterval(this.timerId);
-    this.changeTimerState(true);
-  };
-
-  reset = () => {
-    this.stop();
-    this.current = 0;
-    this.setState({ currentTimeStr: '00:00:00' });
-  };
-
-  update = () => {
-    this.current += 1000;
-
-    // https://stackoverflow.com/questions/19700283/how-to-convert-time-milliseconds-to-hours-min-sec-format-in-javascript
-    const milliseconds = parseInt((this.current % 1000) / 100);
-    const seconds = Math.floor((this.current / 1000) % 60)
-      .toString()
-      .padStart(2, '0');
-    const minutes = Math.floor((this.current / (1000 * 60)) % 60)
-      .toString()
-      .padStart(2, '0');
-    const hours = Math.floor((this.current / (1000 * 60 * 60)) % 24)
-      .toString()
-      .padStart(2, '0');
-
-    this.setState({ currentTimeStr: `${hours}:${minutes}:${seconds}` });
-  };
-
-  render() {
-    return (
-      <div className="host-timer">
-        <FaRegHourglass onClick={this.reset} />
-        {this.state.isStop ? <FaPlay onClick={this.start} /> : <FaStop onClick={this.stop} />}
-        <span>{this.state.currentTimeStr}</span>
-      </div>
-    );
-  }
-}
+Modal.setAppElement('#root');
 
 export default class Host extends React.PureComponent {
   constructor(props) {
@@ -81,9 +32,16 @@ export default class Host extends React.PureComponent {
     this.slideUrl = `${origin}/${pathname}?sidebar=false&isLive=false#slide=`;
     this.presentationController = new PresentationController();
     this.presentationApiId = null;
+    this.recordedTimeline = [];
+    this.recordedStartedTime = 0;
+    this.audioUrl = null;
 
     this.state = {
-      currentSlide: 0
+      usedAudio: false,
+      currentSlide: 0,
+      isOpenTimeline: false,
+      status: 'prepare', // prepare, start, stop
+      isEmptyRecordedTimeline: true
     };
 
     document.onkeyup = (e) => {
@@ -109,6 +67,8 @@ export default class Host extends React.PureComponent {
     if (this.presentationController) {
       this.terminate();
     }
+
+    this.disposeRecording();
   }
 
   terminate = () => {
@@ -122,18 +82,128 @@ export default class Host extends React.PureComponent {
   };
 
   changeCurrentSlide = (num) => {
+    if (this.recordedStartedTime !== 0) {
+      const time = new Date().getTime() - this.recordedStartedTime;
+      const prevItem = this.recordedTimeline.slice(-1)[0];
+
+      this.recordedTimeline.push({
+        slideNum: num + 1,
+        time,
+        timeStr: `${formatTime(time)} (+${formatTime(time - prevItem.time)})`,
+        event: 'changed',
+        title: `Moved to the ${num + 1} slide from the ${this.state.currentSlide + 1} slide.`,
+        Slide: this.slides[num].slide,
+        color: '#3498db',
+        Icon: <FaCaretRight size="22" />
+      });
+    }
+
     this.setState({ currentSlide: num });
     this.presentationController.changePage(num);
   };
 
+  start = () => {
+    if (this.recordedTimeline.length === 0) {
+      this.recordedStartedTime = new Date().getTime();
+    }
+
+    const time =
+      this.recordedTimeline.length === 0 ? 0 : new Date().getTime() - this.recordedStartedTime;
+
+    this.recordedTimeline.push({
+      slideNum: this.state.currentSlide + 1,
+      time,
+      timeStr: formatTime(time),
+      event: 'started',
+      title: `Started from the ${this.state.currentSlide + 1} slide.`,
+      Slide: this.slides[this.state.currentSlide].slide,
+      color: '#6fba1c',
+      Icon: <FaCaretDown />
+    });
+
+    if (this.state.usedAudio) {
+      this.webrtc.start();
+      this.audioUrl = null;
+    }
+
+    this.setState({ status: 'start', isEmptyRecordedTimeline: false });
+  };
+
+  stop = async () => {
+    const time = new Date().getTime() - this.recordedStartedTime;
+
+    this.recordedTimeline.push({
+      slideNum: this.state.currentSlide + 1,
+      time,
+      timeStr: formatTime(time),
+      event: 'stopped',
+      title: `Stopped at the ${this.state.currentSlide + 1} slide.`,
+      color: '#e9546b',
+      Icon: <FaCaretUp />
+    });
+
+    if (this.state.usedAudio) {
+      this.audioUrl = await this.webrtc.stop();
+    }
+
+    this.setState({ status: 'stop' });
+  };
+
+  reset = () => {
+    this.audioUrl = null;
+    this.recordedTimeline = [];
+    this.recordedStartedTime = 0;
+    this.setState({ status: 'prepare', isEmptyRecordedTimeline: true });
+  };
+
+  openTimeline = () => {
+    this.setState({ isOpenTimeline: true });
+  };
+
+  closeTimeline = () => {
+    this.setState({ isOpenTimeline: false });
+  };
+
+  setupRecording = () => {
+    if (!this.webrtc) {
+      try {
+        this.webrtc = new WebRTC();
+        this.setState({ usedAudio: true });
+      } catch (e) {
+        alert(e);
+      }
+    }
+  };
+
+  disposeRecording = () => {
+    if (this.webrtc) {
+      this.webrtc.dispose();
+      this.webrtc = null;
+    }
+
+    this.setState({ usedAudio: false });
+  };
+
+  // prohibit below actions
+  //   usedAudio && status === 'start'
+  //     modal, reset
+  //   usedAudio && status === 'stop' && !isEmptyRecordedTimeline
+  //     stop or start
+  //   usedAudio && status === 'start'
+  //     mic
   render() {
     const index = this.state.currentSlide;
 
     return (
       <div className="host-container">
+        <Modal isOpen={this.state.isOpenTimeline} onRequestClose={this.closeTimeline}>
+          <Timeline items={this.recordedTimeline} url={this.audioUrl} />
+        </Modal>
         <div className="host-left-box">
           <div className="host-note">
-            {this.slides && <pre>{this.slides[index].fusumaProps.note}</pre>}
+            {this.slides && (
+              <pre dangerouslySetInnerHTML={{ __html: this.slides[index].fusumaProps.note }} />
+            )}
           </div>
         </div>
         <div className="host-right-box">
@@ -157,10 +227,58 @@ export default class Host extends React.PureComponent {
         <div className="host-bottom-box">
           <FaTimes onClick={this.terminate} className="terminate-button" />
           <div className="host-bottom-box-info">
-            <Timer />
+            <Timer
+              start={this.start}
+              stop={this.stop}
+              reset={this.reset}
+              disabledStart={
+                this.state.status === 'stop' &&
+                this.state.usedAudio &&
+                !this.start.isEmptyRecordedTimeline
+              }
+              disabledStop={
+                this.state.status === 'stop' &&
+                this.state.usedAudio &&
+                !this.start.isEmptyRecordedTimeline
+              }
+              disabledReset={this.state.status === 'start' && this.state.usedAudio}
+            />
             <span className="current-slide-num">
-              {index + 1} / {this.slides.length}
+              {/* TODO: fix */}
+              {`${index + 1}`.padStart(2, '0')} / {`${this.slides.length}`.padStart(2, '0')}
             </span>
+            <FaHistory
+              onClick={this.openTimeline}
+              size={18}
+              className={
+                (this.state.status === 'start' && this.state.usedAudio) ||
+                this.state.isEmptyRecordedTimeline
+                  ? 'disabled'
+                  : undefined
+              }
+            />
+            {this.state.usedAudio ? (
+              <FaMicrophoneAlt
+                onClick={this.disposeRecording}
+                className={
+                  this.state.status === 'start' || !this.state.isEmptyRecordedTimeline
+                    ? 'disabled'
+                    : undefined
+                }
+                size={20}
+                color="#6fba1c"
+              />
+            ) : (
+              <FaMicrophoneAltSlash
+                onClick={this.setupRecording}
+                className={
+                  this.state.status === 'start' || !this.state.isEmptyRecordedTimeline
+                    ? 'disabled'
+                    : undefined
+                }
+                size={20}
+              />
+            )}
           </div>
         </div>
       </div>
