@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <strong>📝 Make slides with Markdown easily.</strong>
+  <strong>📝 Makes slides with Markdown easily.</strong>
 </div>
 
 <br />
@@ -17,21 +17,35 @@ Just write Markdown and create cool slides.😎
 ## Features
 
 - supports [mdx](https://github.com/mdx-js/mdx)
-  - you can write JavaScript in Markdown
-- supports [WebSlides](https://webslides.tv)
+  - you can write JavaScript into Markdown
+- supports [WebSlides](https://webslides.tv) as Slide UI
 - supports [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API)
-  - also, it works even without Presentation API
-- supports various modes
-  - development
-  - production build
-  - exporting as PDF
-  - deploying to GitHub Pages
-  - live mode
-    - fusuma can stream comments such as Twitter during the presentation
-- supports SNS, OGP, FullScreen, and etc...
-- supports Presenter Mode
-  - you can give a speech while watching a presenter's notes and timer
+  - also, Fusuma works even without Presentation API
+- supports SNS, OGP
+- records your voice
 - customizes JavaScript and CSS freely
+
+## Modes
+
+### Development
+
+Develop with webpack-dev-server.
+
+### Production
+
+Build with webpack.
+
+### Presentation
+
+You can give a speech while watching a presenter's notes and timer
+
+### Live
+
+Fusuma can stream comments such as Twitter during the presentation.
+
+### Deploying to GitHub Pages
+
+### Exporting slides as PDF
 
 ## Demos
 
@@ -256,9 +270,16 @@ slide:
 
 ![](./media/presenter-host.png)
 
+### Practice Presentation
+
+Fusuma records the slide operation performed by the speaker.  
+And, by recording audio, you can also do time travel.
+
+![](./media/timeline.png)
+
 ## Live Mode
 
-fusuma can fetch tweets from Twitter. In addition, fusuma have an api endpoint.  
+Fusuma can fetch tweets from Twitter. In addition, fusuma have an api endpoint.  
 If you specify a `keyword` and `authentication keys`, fetching from twitter will be enabled.  
 Since comments can be sent to fusuma itself, you can use in the private case.  
 Also, this mode can run with Presenter Mode.

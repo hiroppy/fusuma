@@ -64,18 +64,18 @@
     &:first-child {
       margin-left: 32px;
     }
-  }
 
-  & > a {
-    color: #7bb7fa;
+    & > a {
+      color: #7bb7fa;
 
-    &:not(:first-child) {
-      margin-top: 4px;
-    }
+      &:not(:first-child) {
+        margin-top: 4px;
+      }
 
-    &:focus {
-      outline: none;
-      box-shadow: none !important;
+      &:focus {
+        outline: none;
+        box-shadow: none !important;
+      }
     }
   }
 }

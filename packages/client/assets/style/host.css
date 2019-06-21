@@ -1,5 +1,11 @@
 @import './variable';
 
+.disabled {
+  pointer-events: none;
+  color: #888;
+  cursor: not-allowed;
+}
+
 .host-container {
   background: var(--color-black);
   display: grid;
@@ -81,6 +87,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
 
     & > *:not(:first-child) {
       margin-left: 20px;
@@ -97,7 +104,7 @@
       font-size: 24px;
 
       & > *:not(:first-child) {
-        margin-left: 12px;
+        margin-left: 20px;
       }
 
       & > svg {
@@ -105,4 +112,29 @@
       }
     }
   }
+}
+
+.host-timeline-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.host-timeline-audio {
+  height: 60px;
+  width: 100%;
+
+  & > audio {
+    outline: none;
+    width: 100%;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.host-timeline-body {
+  height: calc(100% - 60px);
+  overflow: auto;
 }
