@@ -17,7 +17,7 @@ async function initProcess({ schema }) {
 async function startProcess(basePath) {
   const spinner = loader('Starting with webpack-dev-server...').start();
   const config = await fusuma.read(basePath);
-  const remoteOrigin = await getRemoteOriginUrl(basePath);
+  const remoteOrigin = await getRemoteOriginUrl();
 
   start(
     {
@@ -36,7 +36,7 @@ async function startProcess(basePath) {
 async function buildProcess(basePath, extendedConfig = {}, isOutput = true) {
   const spinner = loader('Building with webpack...').start();
   const config = merge(await fusuma.read(basePath), extendedConfig);
-  const remoteOrigin = await getRemoteOriginUrl(basePath);
+  const remoteOrigin = await getRemoteOriginUrl();
 
   await deleteDir(join(basePath, 'dist'));
   await build(

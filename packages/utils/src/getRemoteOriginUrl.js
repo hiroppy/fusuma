@@ -1,21 +1,20 @@
 'use strict';
 
-const remoteOriginUrl = require('remote-origin-url');
+const gitRemoteOriginUrl = require('git-remote-origin-url');
 
-function getRemoteOriginUrl(basePath) {
-  return new Promise((resolve) => {
-    remoteOriginUrl(`${basePath}/.git/config`, (err, url) => {
-      if (err) {
-        console.error('Could not find github url');
-        resolve('');
-      } else {
-        url = url || '';
+async function getRemoteOriginUrl() {
+  try {
+    let url = await gitRemoteOriginUrl();
 
-        if (url.includes('git@')) resolve(`https://github.com/${url.split(':')[1]}`);
-        else resolve(url);
-      }
-    });
-  });
+    if (url.includes('git@')) {
+      url = `https://github.com/${url.split(':')[1]}`;
+    }
+
+    return url;
+  } catch (e) {
+    console.error(e);
+    return '';
+  }
 }
 
 module.exports = getRemoteOriginUrl;

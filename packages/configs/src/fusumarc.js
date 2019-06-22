@@ -13,7 +13,6 @@ const config = {
   meta: {
     url: null,
     name: null,
-    author: null,
     thumbnail: null,
     description: null,
     sns: ['twitter'] // twitter, hatena

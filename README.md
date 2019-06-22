@@ -169,7 +169,6 @@ meta:
   description: Explain how specifications are determined and how it will be in the future.
   thumbnail: https://avatars1.githubusercontent.com/u/1725583?v=4&s=200
   siteName: slides.hiroppy.me
-  repositoryUrl: https://github.com/hiroppy/fusuma
   sns:
     - twitter
     - hatena
@@ -204,8 +203,7 @@ module.exports = {
     description: 'test',
     thumbnail: 'url',
     siteName: 'siteName',
-    sns: ['twitter', 'hatena'],
-    repositoryUrl: 'https://github.com/hiroppy/fusuma'
+    sns: ['twitter', 'hatena']
   },
   slide: {
     loop: true,

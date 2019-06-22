@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { babel: babelrc } = require('@fusuma/configs');
 const css = require('./css');
 
+// set paths in node_modules
 const configsEntryPoint = require.resolve('@fusuma/configs');
 const configsBasePath = configsEntryPoint.split('/src')[0];
 const clientEntryPoint = require.resolve('@fusuma/client');
@@ -20,7 +21,7 @@ module.exports = ({
   internal = {},
   server = {}
 }) => {
-  const { url, name, description, thumbnail, siteName, sns, repositoryUrl } = meta;
+  const { url, name, description, thumbnail, siteName, sns } = meta;
   const {
     sidebar,
     targetBlank = true,
@@ -105,7 +106,7 @@ module.exports = ({
         'process.env.SIDEBAR': JSON.stringify(sidebar === undefined ? true : sidebar),
         'process.env.TITLE': JSON.stringify(name),
         'process.env.BASE_PATH': JSON.stringify(basePath),
-        'process.env.REMOTE_ORIGIN_URL': JSON.stringify(repositoryUrl || remoteOrigin),
+        'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin),
         'process.env.TARGET_BLANK': JSON.stringify(targetBlank),
         'process.env.SHOW_INDEX': JSON.stringify(showIndex),
         'process.env.IS_VERTICAL': JSON.stringify(isVertical),
