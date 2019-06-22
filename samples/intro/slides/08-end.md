@@ -1,4 +1,4 @@
-<!-- classes: The ENd -->
+<!-- classes: end -->
 
 # The End
 
