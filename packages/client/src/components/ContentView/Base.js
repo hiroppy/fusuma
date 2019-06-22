@@ -62,11 +62,7 @@ export class Base extends React.Component {
               fusumaProps.sectionTitle ? 'section-title' : undefined
             )}
           >
-            {(this.state.currentIndex >= i - 5 && this.state.currentIndex <= i + 5) || !lazyload ? (
-              <Slide />
-            ) : (
-              <div />
-            )}
+            <Slide />
           </section>
         ))}
       </article>

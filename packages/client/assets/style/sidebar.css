@@ -66,13 +66,17 @@
     }
   }
 
-  & > a:not(:first-child) {
-    margin-top: 4px;
-  }
+  & > a {
+    color: #7bb7fa;
 
-  & a:focus {
-    outline: none;
-    box-shadow: none !important;
+    &:not(:first-child) {
+      margin-top: 4px;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none !important;
+    }
   }
 }
 
