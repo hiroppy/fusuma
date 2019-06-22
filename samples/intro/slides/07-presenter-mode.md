@@ -50,3 +50,19 @@ This is a speaker note!!
 This sentence can be seen when using Presenter Mode.
 -->
 ```
+
+---
+
+## Slide Timeline
+
+When you start the timer, the timeline will be recorded.
+
+<img src="../../../media/timeline.png" width="70%" />
+
+---
+
+## Recording your voice
+
+By recording audio, you can also do time travel.
+
+<img src="../../../media/recording.png" width="70%" />

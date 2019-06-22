@@ -42,7 +42,7 @@ Also, you can use HTML because MarkDown accepts HTML.
 
 ## Declare Section Title
 
-```markdown
+```md
 <!-- sectionTitle: this is the second slide! -->
 
 ## ✌️
@@ -65,7 +65,7 @@ In addition, it is also added to sidebar's list.
 
 ## Generate Agenda
 
-```markdown
+```md
 ## Contents
 
 <!-- contents -->
@@ -77,7 +77,7 @@ Converts the page number and title name specified by `sectionTitle` into a list 
 
 ## Add Speaker Note
 
-```markdown
+```md
 <!-- note
 This is a speaker note!!
 This sentence can be seen when using Presenter Mode.

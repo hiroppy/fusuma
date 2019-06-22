@@ -80,7 +80,7 @@ export const SidebarComponent = (props) => (
         className="sidebar-cursor"
       />
       {process.env.REMOTE_ORIGIN_URL ? (
-        <a href={process.env.REMOTE_ORIGIN_URL}>
+        <a href={process.env.REMOTE_ORIGIN_URL} target="_blank">
           <FaGithub style={{ width: 20, height: 20, marginTop: 3, color: '#f5f5f5' }} />
         </a>
       ) : null}

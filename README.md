@@ -263,7 +263,7 @@ slide:
 Fusuma records the slide operation performed by you when you start a timer.  
 And, by recording audio, you can also do time travel.
 
-When you start the timer, the timeline will be started.  
+When you start the timer, the timeline will be recorded.  
 When you reset the timer, the timeline will be reset.
 
 ![](./media/timeline.png)

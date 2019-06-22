@@ -13,11 +13,12 @@ USAGE
 
 COMMANDS
 
+  init                Create a configure file
   start               Start with webpack-dev-server
   build               Build with webpack
-  init                Create a configure file
   deploy              Deploy to GitHub pages
   pdf                 Export as PDF
+  live                Start live mode
   help <command>      Display help for a specific command
 ```
 
@@ -32,7 +33,7 @@ Fusuma supports `yaml` and `js`, and `npx fusuma init` creates the configuration
 
 meta:
   url:
-  name:
+  title:
   thumbnail:
   description:
   sns:
@@ -54,7 +55,7 @@ extends:
 
 ```txt
 .
-├── .fusumarc.yml  <-- required
+├── .fusumarc.yml  <-- optional
 ├── package.json
 ├── slides         <-- Required
 │   ├── 0-title.md
@@ -68,7 +69,7 @@ extends:
 └── style.css      <-- optional
 ```
 
-`.fusuma.yml` and `slides/` are required.
+`slides/` is required.
 
 ---
 
