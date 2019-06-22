@@ -24,7 +24,6 @@ describe('fusuma', () => {
       `meta:
   url:
   name: yml
-  author:
   description:
   thumbnail:
   siteName:
@@ -46,7 +45,6 @@ extends:
   meta: {
     url: '',
     name: 'js',
-    author: '',
     description: '',
     thumbnail: '',
     siteName: ''
