@@ -27,14 +27,16 @@
 
   & > * {
     outline: none;
-
-    &:focus {
-      box-shadow: none !important;
-    }
+    box-shadow: none !important;
 
     &:not(:first-child) {
       margin-top: 20px;
     }
+  }
+
+  & svg:focus {
+    outline: none;
+    box-shadow: none !important;
   }
 }
 
