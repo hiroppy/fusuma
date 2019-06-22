@@ -13,7 +13,7 @@ import {
   FaMicrophoneAlt,
   FaMicrophoneAltSlash
 } from 'react-icons/fa';
-import { Controller as PresentationController } from '../presentationMode/Controller'; // common and host
+import { Controller as PresentationController } from '../../presentationMode/Controller'; // common and host
 import { Timer } from '../Timer';
 import { Timeline } from '../Timeline';
 import { formatTime } from '../../utils/formatTime';

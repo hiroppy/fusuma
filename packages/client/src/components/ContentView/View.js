@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Base } from './Base';
-import { Receiver as PresentationReceiver } from '../presentationMode/Receiver';
+import { Receiver as PresentationReceiver } from '../../presentationMode/Receiver';
 
 export default class View extends React.PureComponent {
   constructor() {
