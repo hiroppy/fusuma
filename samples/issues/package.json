@@ -1,0 +1,18 @@
+{
+  "name": "issues",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ../../packages/fusuma/src/cli.js start",
+    "build": "node ../../packages/fusuma/src/cli.js build",
+    "pdf": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli.js pdf",
+    "live": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli.js live -w '@nodejs'",
+    "live:local": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli.js live"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
+  "license": "MIT",
+  "dependencies": {
+    "styled-components": "^4.3.1"
+  }
+}
