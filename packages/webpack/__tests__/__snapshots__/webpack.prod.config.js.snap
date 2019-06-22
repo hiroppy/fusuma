@@ -115,9 +115,6 @@ Object {
         "moduleFilename": [Function],
       },
     },
-    AggressiveMergingPlugin {
-      "options": Object {},
-    },
     GenerateSW {
       "config": Object {
         "chunks": Array [],
