@@ -33,7 +33,6 @@ Fusuma supports `yaml` and `js`, and `npx fusuma init` creates the configuration
 meta:
   url:
   name:
-  author:
   thumbnail:
   description:
   sns:
