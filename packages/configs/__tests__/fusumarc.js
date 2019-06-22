@@ -23,7 +23,7 @@ describe('fusuma', () => {
       path.join(__dirname, '.fusumarc.yml'),
       `meta:
   url:
-  name: yml
+  title: yml
   description:
   thumbnail:
   siteName:
@@ -44,7 +44,7 @@ extends:
       `module.exports = {
   meta: {
     url: '',
-    name: 'js',
+    title: 'js',
     description: '',
     thumbnail: '',
     siteName: ''

@@ -12,7 +12,7 @@ const writeFileAsync = promisify(writeFile);
 const config = {
   meta: {
     url: null,
-    name: null,
+    title: null,
     thumbnail: null,
     description: null,
     sns: ['twitter'] // twitter, hatena

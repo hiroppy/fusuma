@@ -21,7 +21,8 @@ module.exports = ({
   internal = {},
   server = {}
 }) => {
-  const { url, name, description, thumbnail, siteName, sns } = meta;
+  // name is deprecated TODO: delete
+  const { url, name, description, thumbnail, siteName, sns, title } = meta;
   const {
     sidebar,
     targetBlank = true,
@@ -104,7 +105,7 @@ module.exports = ({
         'process.env.URL': JSON.stringify(url),
         'process.env.SNS': JSON.stringify(sns),
         'process.env.SIDEBAR': JSON.stringify(sidebar === undefined ? true : sidebar),
-        'process.env.TITLE': JSON.stringify(name),
+        'process.env.TITLE': JSON.stringify(title || name || 'slide'),
         'process.env.BASE_PATH': JSON.stringify(basePath),
         'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin),
         'process.env.TARGET_BLANK': JSON.stringify(targetBlank),
@@ -118,7 +119,7 @@ module.exports = ({
       new HtmlWebpackPlugin({
         url,
         filename: 'index.html',
-        title: name || 'slide',
+        title: title || name || 'slide',
         template: path.join(__dirname, 'template.html'),
         image: thumbnail || '',
         siteName,

@@ -3,7 +3,7 @@
 exports[`fusuma init 1`] = `
 "meta:
   url:
-  name:
+  title:
   thumbnail:
   description:
   sns:
@@ -33,9 +33,9 @@ Object {
   },
   "meta": Object {
     "description": null,
-    "name": "yml",
     "siteName": null,
     "thumbnail": null,
+    "title": "yml",
     "url": null,
   },
   "slide": Object {
@@ -52,9 +52,9 @@ Object {
   },
   "meta": Object {
     "description": "",
-    "name": "js",
     "siteName": "",
     "thumbnail": "",
+    "title": "js",
     "url": "",
   },
   "slide": Object {
