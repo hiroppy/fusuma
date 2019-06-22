@@ -8,10 +8,44 @@ export class Timeline extends React.PureComponent {
     this.audioRef = null;
   }
 
-  componentDidMount() {
+  // Chrome bug: https://bugs.chromium.org/p/chromium/issues/detail?id=642012
+  async getBlobDuration() {
+    return new Promise((resolve) => {
+      this.audioRef.addEventListener('loadedmetadata', () => {
+        if (this.audioRef.duration === Infinity) {
+          this.audioRef.currentTime = Number.MAX_SAFE_INTEGER;
+
+          const listener = () => {
+            this.audioRef.currentTime = 0;
+            this.audioRef.removeEventListener('timeupdate', listener);
+            resolve();
+          };
+          this.audioRef.addEventListener('timeupdate', listener);
+        }
+      });
+    });
+  }
+
+  async componentDidMount() {
     if (this.audioRef) {
       // react-event-timeline cannot attach an id name
       const elems = document.querySelectorAll('.ReactModalPortal section > div');
+
+      await this.getBlobDuration();
+
+      {
+        // Audio will somehow jump to the end on the first run
+        // so, currentTime must be reset in the first playing.
+        // It doesn't seem good even if it initializes in getBlobDuration
+        let flag = false;
+
+        this.audioRef.addEventListener('playing', () => {
+          if (!flag) {
+            this.audioRef.currentTime = 0;
+            flag = true;
+          }
+        });
+      }
 
       this.audioRef.addEventListener('timeupdate', () => {
         const index = this.calcIndex(this.audioRef.currentTime * 1000);
