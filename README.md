@@ -84,7 +84,7 @@ $ npx fusuma --help
 $ npx fusuma live --help # see help for a specific command
 ```
 
-When `npx fusuma start` is executed, fusuma will create a slide as follows and serves `localhost:8080`.
+When `npx fusuma start` is executed, fusuma will create a slide as follows and serve `localhost:8080`.
 
 ![](./media/procedure-screenshot.png)
 
@@ -111,6 +111,10 @@ Please see [samples/intro](/samples/intro) or [issue-verifier/fusuma](https://gi
 2 directories, 7 files
 ```
 
+The slide display order is as follows.
+
+`0-title.md` -> `01-content.md` -> `0-title.md`(in `02-body`) -> `03-end.md`
+
 Or slides can be divided by `---` like below.
 
 ```markdown
@@ -125,7 +129,7 @@ This is the first slide.
 This is the second slide.
 ```
 
-Also, you can use `mdx`.
+Also, you can use react components if you change the extension from `.md` to `.mdx`.
 
 ```markdown
 <!-- 0-title.mdx -->
