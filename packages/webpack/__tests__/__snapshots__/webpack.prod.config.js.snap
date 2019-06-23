@@ -115,21 +115,6 @@ Object {
         "moduleFilename": [Function],
       },
     },
-    GenerateSW {
-      "config": Object {
-        "chunks": Array [],
-        "exclude": Array [
-          /\\\\\\.map\\$/,
-          /\\^manifest\\.\\*\\\\\\.js\\?\\$/,
-        ],
-        "excludeChunks": Array [],
-        "importScripts": Array [],
-        "importWorkboxFrom": "cdn",
-        "importsDirectory": "",
-        "precacheManifestFilename": "precache-manifest.[manifestHash].js",
-        "swDest": "service-worker.js",
-      },
-    },
   ],
 }
 `;
