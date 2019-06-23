@@ -1,3 +1,5 @@
+<!-- sectionTitle: many pages -->
+
 https://github.com/hiroppy/fusuma/issues/110
 
 # 1
