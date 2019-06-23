@@ -294,15 +294,24 @@ $ open http://localhost:3000
 $ curl -X POST -H "Content-Type: application/json" -d '{"text":"hello:)"}' localhost:3000/api/comments
 ```
 
-## API
+## Performance
 
-```js
-const start = require('@fusuma/task-start');
-const build = require('@fusuma/task-build');
-const pdf = require('@fusuma/task-pdf');
-const deploy = require('@fusuma/task-ghp');
-const init = require('@fusuma/task-init');
+[This slide](https://hiroppy.github.io/fusuma/issues/#slide=1) is very simple, so this is a measure of the maximum performance fusuma can deliver.
+
 ```
+* URL: https://hiroppy.github.io/fusuma/issues/#slide=1
+* Device: No emulation
+* Network throttling: 150 ms TCP RTT, 1,638.4 Kbps throughput (Simulated)
+* CPU throttling: 4x slowdown (Simulated)
+* User agent (host): Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+* User agent (network): Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36
+* CPU/Memory Power: 1052
+```
+
+<img src="./media/performance.png" />
+
+The values of `Accessibility` and `Best Practices` depend on the user because the user writes HTML(Markdown).
+If you want to make `SEO` score 100%, you can fill in the `.fusumarc.yml`.
 
 ## Development
 
@@ -322,3 +331,13 @@ $ npx lerna add @fusuma/xxx --scope=@fusuma/yyy
 ```
 
 see https://github.com/lerna/lerna/tree/master/commands/add
+
+## API
+
+```js
+const start = require('@fusuma/task-start');
+const build = require('@fusuma/task-build');
+const pdf = require('@fusuma/task-pdf');
+const deploy = require('@fusuma/task-ghp');
+const init = require('@fusuma/task-init');
+```
