@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ../../packages/fusuma/src/cli.js start",
-    "build": "node ../../packages/fusuma/src/cli.js build",
+    "start": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli.js start",
+    "build": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli.js build",
     "pdf": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli.js pdf",
     "live": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli.js live -w '@nodejs'",
     "live:local": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli.js live"

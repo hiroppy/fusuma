@@ -39,8 +39,8 @@ body {
 
 .end {
   color: var(--sub-color);
-  /* background-image: linear-gradient(var(--black-color), var(--black-color)),
-    url('https://media.giphy.com/media/ass2cYPZuBQ1q/giphy.gif'); */
+  background-image: linear-gradient(var(--black-color), var(--black-color)),
+    url('https://media.giphy.com/media/ass2cYPZuBQ1q/giphy.gif');
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;

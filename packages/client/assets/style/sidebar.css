@@ -1,5 +1,9 @@
 @import './variable';
 
+:root {
+  --color-cyan: #7bb7fa;
+}
+
 .btn-sidebar {
   bottom: 20px;
   color: var(--color-white);
@@ -24,6 +28,7 @@
 .bm-item-list {
   color: var(--color-white);
   font-size: 2rem;
+  height: auto !important;
 
   & > * {
     outline: none;
@@ -37,6 +42,12 @@
   & svg:focus {
     outline: none;
     box-shadow: none !important;
+  }
+}
+
+.sidebar-social {
+  & > a {
+    color: var(--color-cyan);
   }
 }
 
@@ -63,12 +74,13 @@
 
   & > li {
     list-style: inherit;
+
     &:first-child {
       margin-left: 32px;
     }
 
     & > a {
-      color: #7bb7fa;
+      color: var(--color-cyan);
 
       &:not(:first-child) {
         margin-top: 4px;

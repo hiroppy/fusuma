@@ -2,7 +2,7 @@
 
 function prod() {
   const webpack = require('webpack');
-  const workboxPlugin = require('workbox-webpack-plugin');
+  // const workboxPlugin = require('workbox-webpack-plugin');
   const TerserPlugin = require('terser-webpack-plugin');
   const MiniCssExtractPlugin = require('mini-css-extract-plugin');
   const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -21,9 +21,9 @@ function prod() {
       new MiniCssExtractPlugin({
         filename: '[name].[chunkhash].css',
         chunkFilename: '[name].[id].[chunkhash].css'
-      }),
+      })
       // new webpack.optimize.AggressiveMergingPlugin(),
-      new workboxPlugin.GenerateSW()
+      // new workboxPlugin.GenerateSW()
     ],
     optimization: {
       minimizer: [

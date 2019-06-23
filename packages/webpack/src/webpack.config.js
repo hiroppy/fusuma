@@ -1,14 +1,14 @@
 'use strict';
 
-// for rewire
+// use `let` for rewire
 let path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const { babel: babelrc } = require('@fusuma/configs');
 const css = require('./css');
 
-// set paths in node_modules
 const configsEntryPoint = require.resolve('@fusuma/configs');
 const configsBasePath = configsEntryPoint.split('/src')[0];
 const clientEntryPoint = require.resolve('@fusuma/client');
@@ -87,12 +87,22 @@ module.exports = ({
           ]
         },
         {
-          test: /\.(png|jpg|gif|svg?)$/,
-          use: ['file-loader', 'image-webpack-loader']
+          test: /\.(png|jpg|gif|svg)$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[hash].webp'
+            }
+          }
         },
         {
-          test: /\.(eot|ttf|woff2?)$/,
-          use: 'file-loader'
+          test: /\.(webp|eot|ttf|woff2?)$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[hash].[ext]'
+            }
+          }
         },
         css()
       ]
@@ -130,7 +140,8 @@ module.exports = ({
                 collapseWhitespace: true
               }
             : false
-      })
+      }),
+      new ImageminWebpWebpackPlugin({})
     ]
   };
 

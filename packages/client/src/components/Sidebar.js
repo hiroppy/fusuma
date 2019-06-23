@@ -36,7 +36,11 @@ export const SidebarComponent = (props) => (
         sns.map((s) => {
           if (s === 'twitter') {
             return (
-              <a key="twitter" href={`https://twitter.com/intent/tweet?text=${title} ${url}`}>
+              <a
+                key="twitter"
+                href={`https://twitter.com/intent/tweet`}
+                aria-label={`${title} ${url}`}
+              >
                 <FaTwitter />
               </a>
             );
@@ -80,7 +84,7 @@ export const SidebarComponent = (props) => (
         className="sidebar-cursor"
       />
       {process.env.REMOTE_ORIGIN_URL ? (
-        <a href={process.env.REMOTE_ORIGIN_URL} target="_blank">
+        <a href={process.env.REMOTE_ORIGIN_URL} target="_blank" rel="noopener" aria-label="github">
           <FaGithub style={{ width: 20, height: 20, marginTop: 3, color: '#f5f5f5' }} />
         </a>
       ) : null}
