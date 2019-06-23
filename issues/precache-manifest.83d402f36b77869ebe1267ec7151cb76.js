@@ -3,7 +3,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "Sidebar.1.e10b39c8336419439448.bundle.js"
   },
   {
-    "revision": "073356aea228e76f2cd1b28f5d27a0f5",
+    "revision": "6b506b3b88ca94270285ba060a2a6ed4",
     "url": "index.html"
   },
   {
