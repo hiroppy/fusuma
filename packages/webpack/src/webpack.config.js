@@ -120,10 +120,16 @@ module.exports = ({
         url,
         filename: 'index.html',
         title: title || name || 'slide',
-        template: path.join(__dirname, 'template.html'),
+        template: path.join(__dirname, 'template.ejs'),
         image: thumbnail || '',
         siteName,
-        description
+        description,
+        minify:
+          process.env.NODE_ENV === 'production'
+            ? {
+                collapseWhitespace: true
+              }
+            : false
       })
     ]
   };

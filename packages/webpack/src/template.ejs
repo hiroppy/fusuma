@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="theme-color" content="#3498db" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <% if (htmlWebpackPlugin.options.description) { %>
+      <meta name="description" content="<%= htmlWebpackPlugin.options.description %>" />
+    <% } %>
+    <% if (htmlWebpackPlugin.options.title) { %>
+      <title>
+        <%= htmlWebpackPlugin.options.title %>
+      </title>
+      <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
+      <meta property="og:type" content="article" />
+    <% } %>
+    <% if (htmlWebpackPlugin.options.url) { %>
+      <meta property="og:url" content="<%= htmlWebpackPlugin.options.url %>" />
+    <% } %>
+    <% if (htmlWebpackPlugin.options.image) { %>
+      <meta property="og:image" content="<%= htmlWebpackPlugin.options.image %>" />
+    <% } %>
+    <% if (htmlWebpackPlugin.options.siteName) { %>
+      <meta property="og:site_name" content="<%= htmlWebpackPlugin.options.siteName %>" />
+    <% } %>
+    <% if (htmlWebpackPlugin.options.description) { %>
+      <meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>" />
+    <% } %>
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
