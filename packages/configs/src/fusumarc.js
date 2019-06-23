@@ -61,8 +61,8 @@ async function init(baseDir) {
 async function read(baseDir) {
   const file = pSearch(baseDir, configFileNames);
 
-  if (file === null) {
-    throw new Error('Could not find a configure file. init command creates a configure file.');
+  if (!file) {
+    return config;
   }
 
   switch (extname(file)) {
@@ -70,6 +70,8 @@ async function read(baseDir) {
       return yaml.safeLoad(await readFileAsync(file, 'utf8'));
     case '.js':
       return require(file);
+    default:
+      return config;
   }
 }
 
