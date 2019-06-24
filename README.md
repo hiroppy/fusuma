@@ -294,7 +294,7 @@ $ open http://localhost:3000
 $ curl -X POST -H "Content-Type: application/json" -d '{"text":"hello:)"}' localhost:3000/api/comments
 ```
 
-## Performance
+## Audits
 
 [This slide](https://hiroppy.github.io/fusuma/issues/#slide=1) is very simple, so this is a measure of the maximum performance fusuma can deliver.
 
@@ -308,7 +308,7 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"text":"hello:)"}' local
 * CPU/Memory Power: 1052
 ```
 
-<img src="./media/performance.png" />
+<img src="./media/audits.png" />
 
 The values of `Accessibility` and `Best Practices` depend on the user because the user writes HTML(Markdown).  
 If you want to make `SEO` score 100%, you should fill in the `.fusumarc.yml`.
