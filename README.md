@@ -39,7 +39,7 @@ Just write Markdown and create cool slides.😎
 
 ## Demos
 
-- [introduction slide of Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
+- [Introducing Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
 - others [[repository](https://github.com/hiroppy/slides#my-slides)]
 
 You can also try Fusuma in Gitpod, a one-click online IDE for GitHub:
@@ -310,8 +310,8 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"text":"hello:)"}' local
 
 <img src="./media/performance.png" />
 
-The values of `Accessibility` and `Best Practices` depend on the user because the user writes HTML(Markdown).
-If you want to make `SEO` score 100%, you can fill in the `.fusumarc.yml`.
+The values of `Accessibility` and `Best Practices` depend on the user because the user writes HTML(Markdown).  
+If you want to make `SEO` score 100%, you should fill in the `.fusumarc.yml`.
 
 ## Development
 
