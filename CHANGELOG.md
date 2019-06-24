@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/hiroppy/fusuma/compare/v1.5.1...v1.6.0) (2019-06-24)
+
+### Bug Fixes
+
+- **client:** calculate blob's duration ([f953623](https://github.com/hiroppy/fusuma/commit/f953623))
+- **client:** modify sidebar css ([4505871](https://github.com/hiroppy/fusuma/commit/4505871))
+- **configs:** don't validate .fusumarc ([e76fe22](https://github.com/hiroppy/fusuma/commit/e76fe22))
+- **fusumarc:** decide repositoryUrl automatically ([175b966](https://github.com/hiroppy/fusuma/commit/175b966))
+- **fusumarc:** remove author key ([7e03faa](https://github.com/hiroppy/fusuma/commit/7e03faa))
+- **fusumarc:** rename from name to title ([bdcccd7](https://github.com/hiroppy/fusuma/commit/bdcccd7))
+- **webpack:** avoid using AggressiveMergingPlugin ([2411456](https://github.com/hiroppy/fusuma/commit/2411456))
+
+### Features
+
+- **client:** implement timeline and recording ([52264f5](https://github.com/hiroppy/fusuma/commit/52264f5))
+
+### Performance Improvements
+
+- optimize processing performance ([c33a19d](https://github.com/hiroppy/fusuma/commit/c33a19d))
+
 ## [1.5.1](https://github.com/hiroppy/fusuma/compare/v1.5.0...v1.5.1) (2019-06-22)
 
 ### Bug Fixes

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/hiroppy/fusuma/compare/v1.5.1...v1.6.0) (2019-06-24)
+
+### Bug Fixes
+
+- **configs:** don't validate .fusumarc ([e76fe22](https://github.com/hiroppy/fusuma/commit/e76fe22))
+- **fusumarc:** decide repositoryUrl automatically ([175b966](https://github.com/hiroppy/fusuma/commit/175b966))
+- **fusumarc:** rename from name to title ([bdcccd7](https://github.com/hiroppy/fusuma/commit/bdcccd7))
+
+### Performance Improvements
+
+- optimize processing performance ([c33a19d](https://github.com/hiroppy/fusuma/commit/c33a19d))
+
 # [1.5.0](https://github.com/hiroppy/fusuma/compare/v1.4.2...v1.5.0) (2019-06-20)
 
 **Note:** Version bump only for package @fusuma/configs
