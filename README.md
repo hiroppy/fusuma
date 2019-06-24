@@ -22,7 +22,7 @@ Just write Markdown and create cool slides.😎
 - supports [WebSlides](https://webslides.tv) as Slide UI
 - supports [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API)
   - also, Fusuma works even without Presentation API
-- supports SNS, OGP
+- 100% SEO
 - records your voice
 - customizes JavaScript and CSS freely
 
@@ -225,6 +225,18 @@ module.exports = {
 ```
 
 </details>
+
+## Extend JS and CSS
+
+You can extend JS and CSS when `extends.js` or `extends.css` in `.fusumarc` is specified by a file path.
+
+The following features are available by default:
+
+- JS
+  - uses Babel, so you can use ESM(`import`/`export`), and ES2018
+- CSS
+  - uses [postcss-preset-env](https://github.com/csstools/postcss-preset-env), so you can use the cssnext syntax up to level:1
+  - `@import`
 
 ## Slide Syntax
 
