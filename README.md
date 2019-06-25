@@ -20,12 +20,12 @@ Just write Markdown and create cool slides.😎
 - supports [mdx](https://github.com/mdx-js/mdx)
   - you can write React Components into Markdown
 - supports [WebSlides](https://webslides.tv) as Slide UI
-- supports [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API)
-  - also, Fusuma works even without Presentation API
-- supports [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture)
+- supports [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API) (Chrome, Firefox)
+  - also, Fusuma works even without Presentation API (uses localstorage)
+- supports [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) (Chrome, Firefox)
   - it will help live coding, etc
 - 100% SEO
-- records your voice
+- records your voice and does time travel on slides timeline (Chrome, Firefox)
 - customizes JavaScript and CSS freely
 
 ## Modes
