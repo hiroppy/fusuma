@@ -89,3 +89,33 @@ This sentence can be seen when using Presenter Mode.
 ```
 
 This is a note displayed on the host side in Presenter Mode.
+
+---
+
+## Capturing Screen Contents
+
+```md
+## Capturing Screen Contents
+
+<!-- screen -->
+```
+
+Your screen can capture on the slide, but this feature can run only in Presenter Mode.
+
+<br />
+
+You can choose **your local screen** or **application window** or **browser tab** as output.
+
+<br />
+
+This feature will help **live coding** etc. See [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) for detail.
+
+---
+
+## Output
+
+The following image is a screenshot of the output slide.👇
+
+<br />
+
+<img src="../../../media/capture-screen.png" class="capture-screen-image" />

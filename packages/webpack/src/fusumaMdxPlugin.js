@@ -15,6 +15,9 @@ function createFusumaProps(nodes) {
       if (v === 'contents') {
         property.contents = true;
       }
+      if (v === 'screen') {
+        property.screen = true;
+      }
       if (v.slice(0, 4) === 'note') {
         // sanitize
         const escapeMap = {
@@ -52,6 +55,7 @@ function fusumaMdxPlugin() {
   return (tree, file) => {
     const slides = [];
     let slide = [];
+    let videoId = 1;
     const res = {
       jsx: [],
       fusumaProps: []
@@ -61,6 +65,26 @@ function fusumaMdxPlugin() {
       if (n.type === 'thematicBreak') {
         slides.push(slide);
         slide = [];
+      } else if (n.type === 'comment' && n.value.trim() === 'screen') {
+        slide.push(
+          ...[
+            n,
+            {
+              ...n,
+              type: 'jsx',
+              value:
+                '<div className="fusuma-screen">' +
+                '<div>This view can capture the screen.<br />' +
+                'Click to get started.;)<br /><br />' +
+                'Note: This feature runs only in Presenter Mode.' +
+                '</div>' +
+                `<video id="fusuma-screen-${videoId}" />` +
+                '</div>'
+            }
+          ]
+        );
+
+        ++videoId;
       } else {
         slide.push(n);
 

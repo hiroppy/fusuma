@@ -9,19 +9,15 @@ export class Base extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      currentIndex: 0
-    };
-
     if (!window.slide) {
       setTimeout(() => {
         window.slide = setupWebSlides();
+
+        // for presenter:view
         window.slide.el.addEventListener('ws:slide-change', (e) => {
           if (this.props.onChangeSlideIndex) {
             this.props.onChangeSlideIndex(e.detail.currentSlide0);
           }
-
-          this.setState({ currentIndex: e.detail.currentSlide0 });
         });
       }, 0);
     }
@@ -45,9 +41,9 @@ export class Base extends React.Component {
 
   render() {
     const {
-      slides,
+      slides
       // showIndex(webSlides) checks all slides so lazyload can not be used together
-      lazyload = !process.env.SHOW_INDEX // TODO: fix
+      // lazyload = !process.env.SHOW_INDEX // TODO: fix
     } = this.props;
     const articleClass = process.env.IS_VERTICAL ? 'vertical' : undefined;
 

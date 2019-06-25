@@ -38,7 +38,6 @@ export default class Host extends React.PureComponent {
 
     this.state = {
       usedAudio: false,
-      currentSlide: 0,
       isOpenTimeline: false,
       status: 'prepare', // prepare, start, stop
       isEmptyRecordedTimeline: true
@@ -46,9 +45,9 @@ export default class Host extends React.PureComponent {
 
     document.onkeyup = (e) => {
       if (e.key === 'ArrowLeft') {
-        this.changeCurrentSlide(Math.max(0, this.state.currentSlide - 1));
+        this.changeCurrentSlide(Math.max(0, this.props.currentIndex - 1));
       } else if (e.key === 'ArrowRight') {
-        this.changeCurrentSlide(Math.min(this.slides.length - 1, this.state.currentSlide + 1));
+        this.changeCurrentSlide(Math.min(this.slides.length - 1, this.props.currentIndex + 1));
       }
     };
   }
@@ -74,7 +73,9 @@ export default class Host extends React.PureComponent {
   terminate = () => {
     try {
       this.props.terminate();
-      if (this.presentationController) this.presentationController.terminate();
+      if (this.presentationController) {
+        this.presentationController.terminate();
+      }
       this.presentationController = null;
     } catch (e) {
       console.error(e);
@@ -82,7 +83,7 @@ export default class Host extends React.PureComponent {
   };
 
   changeCurrentSlide = (num) => {
-    if (this.recordedStartedTime !== 0) {
+    if (this.state.status === 'start') {
       const time = new Date().getTime() - this.recordedStartedTime;
       const prevItem = this.recordedTimeline.slice(-1)[0];
 
@@ -91,14 +92,14 @@ export default class Host extends React.PureComponent {
         time,
         timeStr: `${formatTime(time)} (+${formatTime(time - prevItem.time)})`,
         event: 'changed',
-        title: `Moved to the ${num + 1} slide from the ${this.state.currentSlide + 1} slide.`,
+        title: `Moved to the ${num + 1} slide from the ${num} slide.`,
         Slide: this.slides[num].slide,
         color: '#3498db',
         Icon: <FaCaretRight size="22" />
       });
     }
 
-    this.setState({ currentSlide: num });
+    this.props.onChangeSlideIndex(num);
     this.presentationController.changePage(num);
   };
 
@@ -111,18 +112,18 @@ export default class Host extends React.PureComponent {
       this.recordedTimeline.length === 0 ? 0 : new Date().getTime() - this.recordedStartedTime;
 
     this.recordedTimeline.push({
-      slideNum: this.state.currentSlide + 1,
+      slideNum: this.props.currentIndex + 1,
       time,
       timeStr: formatTime(time),
       event: 'started',
-      title: `Started from the ${this.state.currentSlide + 1} slide.`,
-      Slide: this.slides[this.state.currentSlide].slide,
+      title: `Started from the ${this.props.currentIndex + 1} slide.`,
+      Slide: this.slides[this.props.currentIndex].slide,
       color: '#6fba1c',
       Icon: <FaCaretDown />
     });
 
     if (this.state.usedAudio) {
-      this.webrtc.start();
+      this.webrtc.startRecording();
       this.audioUrl = null;
     }
 
@@ -133,17 +134,17 @@ export default class Host extends React.PureComponent {
     const time = new Date().getTime() - this.recordedStartedTime;
 
     this.recordedTimeline.push({
-      slideNum: this.state.currentSlide + 1,
+      slideNum: this.props.currentIndex + 1,
       time,
       timeStr: formatTime(time),
       event: 'stopped',
-      title: `Stopped at the ${this.state.currentSlide + 1} slide.`,
+      title: `Stopped at the ${this.props.currentIndex + 1} slide.`,
       color: '#e9546b',
       Icon: <FaCaretUp />
     });
 
     if (this.state.usedAudio) {
-      this.audioUrl = await this.webrtc.stop();
+      this.audioUrl = await this.webrtc.stopRecording();
     }
 
     this.setState({ status: 'stop' });
@@ -168,6 +169,7 @@ export default class Host extends React.PureComponent {
     if (!this.webrtc) {
       try {
         this.webrtc = new WebRTC();
+        this.webrtc.setupRecording();
         this.setState({ usedAudio: true });
       } catch (e) {
         alert(e);
@@ -177,7 +179,7 @@ export default class Host extends React.PureComponent {
 
   disposeRecording = () => {
     if (this.webrtc) {
-      this.webrtc.dispose();
+      this.webrtc.disposeRecording();
       this.webrtc = null;
     }
 
@@ -192,7 +194,7 @@ export default class Host extends React.PureComponent {
   //   usedAudio && status === 'start'
   //     mic
   render() {
-    const index = this.state.currentSlide;
+    const { currentIndex } = this.props;
 
     return (
       <div className="host-container">
@@ -202,7 +204,9 @@ export default class Host extends React.PureComponent {
         <div className="host-left-box">
           <div className="host-note">
             {this.slides && (
-              <pre dangerouslySetInnerHTML={{ __html: this.slides[index].fusumaProps.note }} />
+              <pre
+                dangerouslySetInnerHTML={{ __html: this.slides[currentIndex].fusumaProps.note }}
+              />
             )}
           </div>
         </div>
@@ -210,7 +214,7 @@ export default class Host extends React.PureComponent {
           <div className="host-slide-layer">
             <h2>Current</h2>
             <iframe
-              src={`${this.slideUrl.replace(/slide=(\d?)/, `slide=${index + 1}`)}`}
+              src={`${this.slideUrl.replace(/slide=(\d?)/, `slide=${currentIndex + 1}`)}`}
               width="100%"
               height="100%"
             />
@@ -218,7 +222,7 @@ export default class Host extends React.PureComponent {
           <div className="host-slide-layer">
             <h2>Next</h2>
             <iframe
-              src={`${this.slideUrl.replace(/slide=(\d?)/, `slide=${index + 2}`)}`}
+              src={`${this.slideUrl.replace(/slide=(\d?)/, `slide=${currentIndex + 2}`)}`}
               width="100%"
               height="100%"
             />
@@ -245,7 +249,7 @@ export default class Host extends React.PureComponent {
             />
             <span className="current-slide-num">
               {/* TODO: fix */}
-              {`${index + 1}`.padStart(2, '0')} / {`${this.slides.length}`.padStart(2, '0')}
+              {`${currentIndex + 1}`.padStart(2, '0')} / {`${this.slides.length}`.padStart(2, '0')}
             </span>
             <FaHistory
               onClick={this.openTimeline}

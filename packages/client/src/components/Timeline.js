@@ -51,6 +51,7 @@ export class Timeline extends React.PureComponent {
         const index = this.calcIndex(this.audioRef.currentTime * 1000);
 
         // first index is unnecessary
+        // firefox doesn't work
         elems[index].scrollIntoView();
       });
     }

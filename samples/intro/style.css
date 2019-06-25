@@ -69,3 +69,8 @@ body {
 span.title {
   background: inherit;
 }
+
+.capture-screen-image {
+  border: 2px solid #333;
+  width: 70%;
+}

@@ -22,6 +22,8 @@ Just write Markdown and create cool slides.😎
 - supports [WebSlides](https://webslides.tv) as Slide UI
 - supports [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API)
   - also, Fusuma works even without Presentation API
+- supports [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture)
+  - it will help live coding, etc
 - 100% SEO
 - records your voice
 - customizes JavaScript and CSS freely

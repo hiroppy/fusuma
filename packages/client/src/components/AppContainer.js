@@ -138,9 +138,7 @@ export class AppContainer extends React.Component {
   };
 
   onChangeSlideIndex = (currentIndex) => {
-    if (this.state.isSidebar) {
-      this.setState({ currentIndex });
-    }
+    this.setState({ currentIndex });
   };
 
   onRunPresentationMode = () => {
@@ -180,6 +178,7 @@ export class AppContainer extends React.Component {
             hash={this.props.hash}
             slides={this.state.slides}
             terminate={this.terminate}
+            currentIndex={this.state.currentIndex}
             onChangeSlideIndex={this.onChangeSlideIndex}
           />
         )}
