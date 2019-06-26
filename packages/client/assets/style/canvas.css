@@ -1,0 +1,30 @@
+/* depends on a library, so use !important */
+
+.fusuma-canvas {
+  background: rgba(0, 0, 0, 0) !important;
+  z-index: 100;
+
+  & > canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.fusuma-canvas-toolbar {
+  color: #444;
+  display: flex;
+  align-items: center;
+  height: auto !important;
+  width: auto !important;
+  z-index: 120;
+
+  & > *:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  & > .fusuma-canvas-toolbar-color {
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+  }
+}

@@ -1,5 +1,24 @@
 @import './variable.css';
 
+.fusuma-presenter-view {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+
+  & > * {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  /* canvas */
+  & > div {
+    z-index: 1000;
+  }
+}
+
 /* cannot use before/after for video tags, so should wrap div tags */
 .fusuma-screen {
   background: #ddd;
@@ -24,7 +43,9 @@
     pointer-events: none;
     z-index: 10;
   }
+}
 
-  & > video {
-  }
+/* overwrite */
+.fusuma-canvas > canvas:first-child {
+  display: none !important;
 }

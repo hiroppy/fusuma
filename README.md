@@ -24,6 +24,7 @@ Just write Markdown and create cool slides.😎
   - also, Fusuma works even without Presentation API (uses localstorage)
 - supports [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) (Chrome, Firefox)
   - it will help live coding, etc
+- supports drawing like Power Pointer's pointer feature
 - 100% SEO
 - records your voice and does time travel on slides timeline (Chrome, Firefox)
 - customizes JavaScript and CSS freely
@@ -48,21 +49,14 @@ You can also try Fusuma in Gitpod, a one-click online IDE for GitHub:
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hiroppy/fusuma/blob/master/samples/intro/slides/0-title.md)
 
-## Install
+## Getting Started
 
 Node versions > v8
-
-```sh
-$ npm i fusuma --save-dev # or npm i fusuma -g
-$ yarn add fusuma --dev
-```
-
-## Procedure
 
 Just execute the following two lines for executing, generating and deploying slides!
 
 ```sh
-$ npm i fusuma -D
+$ npm i fusuma -D # yarn add fusuma --dev
 $ mkdir slides && echo '# Hello😄' > slides/title.md
 
 # --- Tree ---
@@ -265,6 +259,15 @@ slide:
 
 ## Presenter Mode
 
+### Features
+
+- show your slide note
+- set a timer
+- record your actions and voice, and do time-travel
+- draw lines on the slide
+
+### Start Up
+
 1. open Sidebar(click the bottom right button(三))
 2. click the PC monitor icon
 3. if you use Chrome, you can choose select cast device
@@ -283,6 +286,12 @@ When you reset the timer, the timeline will be reset.
 ![](./media/timeline.png)
 
 Recording Mode: See [the movie](https://twitter.com/about_hiroppy/status/1142378836639789056).
+
+### Drawing
+
+When you write characters on the host side, it will be reflected on the client side in real time.
+
+![](./media/drawing.png)
 
 ## Live Mode
 

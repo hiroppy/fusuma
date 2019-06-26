@@ -11,7 +11,7 @@ export class Base extends React.Component {
 
     if (!window.slide) {
       setTimeout(() => {
-        window.slide = setupWebSlides();
+        window.slide = setupWebSlides({ showIndex: this.props.showIndex });
 
         // for presenter:view
         window.slide.el.addEventListener('ws:slide-change', (e) => {

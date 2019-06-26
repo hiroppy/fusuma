@@ -1,9 +1,9 @@
 import 'webslides';
 
-export function setup() {
+export function setup({ showIndex = process.env.SHOW_INDEX }) {
   const ws = new window.WebSlides({
     loop: process.env.LOOP,
-    showIndex: process.env.SHOW_INDEX,
+    showIndex,
     navigateOnScroll: false
   });
 

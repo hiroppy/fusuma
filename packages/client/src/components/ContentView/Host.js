@@ -13,7 +13,9 @@ import {
   FaMicrophoneAlt,
   FaMicrophoneAltSlash
 } from 'react-icons/fa';
+import { MdZoomOutMap } from 'react-icons/md';
 import { Controller as PresentationController } from '../../presentationMode/Controller'; // common and host
+import { Canvas, emitCanvasEvent } from '../Canvas';
 import { Timer } from '../Timer';
 import { Timeline } from '../Timeline';
 import { formatTime } from '../../utils/formatTime';
@@ -21,6 +23,14 @@ import { WebRTC } from '../../utils/webrtc';
 import '../../../assets/style/host.css';
 
 Modal.setAppElement('#root');
+
+const Iframe = ({ slideUrl, slideIndex }) => (
+  <iframe
+    src={`${slideUrl.replace(/slide=(\d?)/, `slide=${slideIndex}`)}`}
+    width="100%"
+    height="100%"
+  />
+);
 
 export default class Host extends React.PureComponent {
   constructor(props) {
@@ -40,7 +50,8 @@ export default class Host extends React.PureComponent {
       usedAudio: false,
       isOpenTimeline: false,
       status: 'prepare', // prepare, start, stop
-      isEmptyRecordedTimeline: true
+      isEmptyRecordedTimeline: true,
+      isOpenZoomSlide: false
     };
 
     document.onkeyup = (e) => {
@@ -186,6 +197,16 @@ export default class Host extends React.PureComponent {
     this.setState({ usedAudio: false });
   };
 
+  openZoomSlide = () => {
+    this.setState({ isOpenZoomSlide: true });
+    emitCanvasEvent({ status: 'start' });
+  };
+
+  closeZoomSlide = () => {
+    this.setState({ isOpenZoomSlide: false });
+    emitCanvasEvent({ status: 'stop' });
+  };
+
   // prohibit below actions
   //   usedAudio && status === 'start'
   //     modal, reset
@@ -213,19 +234,20 @@ export default class Host extends React.PureComponent {
         <div className="host-right-box">
           <div className="host-slide-layer">
             <h2>Current</h2>
-            <iframe
-              src={`${this.slideUrl.replace(/slide=(\d?)/, `slide=${currentIndex + 1}`)}`}
-              width="100%"
-              height="100%"
-            />
+            <MdZoomOutMap size={28} onClick={this.openZoomSlide} />
+            <Iframe slideUrl={this.slideUrl} slideIndex={currentIndex + 1} />
           </div>
+          <Modal isOpen={this.state.isOpenZoomSlide} onRequestClose={this.closeZoomSlide}>
+            {this.state.isOpenZoomSlide && (
+              <div className="host-slide-canvas">
+                <Canvas toolbar hideGrid />
+                <Iframe slideUrl={this.slideUrl} slideIndex={currentIndex + 1} />
+              </div>
+            )}
+          </Modal>
           <div className="host-slide-layer">
             <h2>Next</h2>
-            <iframe
-              src={`${this.slideUrl.replace(/slide=(\d?)/, `slide=${currentIndex + 2}`)}`}
-              width="100%"
-              height="100%"
-            />
+            <Iframe slideUrl={this.slideUrl} slideIndex={currentIndex + 2} />
           </div>
         </div>
         <div className="host-bottom-box">

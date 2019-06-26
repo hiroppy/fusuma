@@ -5,6 +5,7 @@
 import React from 'react';
 import { Base } from './Base';
 import { Receiver as PresentationReceiver } from '../../presentationMode/Receiver';
+import { Canvas, listenCanvasEvent, getValue } from '../Canvas';
 import { WebRTC } from '../../utils/webrtc';
 import '../../../assets/style/view.css';
 
@@ -27,10 +28,16 @@ export default class View extends React.PureComponent {
         }
       }
     });
+
+    this.state = {
+      usedCanvas: false
+    };
   }
 
   componentDidMount() {
     this.listenVideoTags();
+    this.listenCanvas();
+    this.setState({ usedCanvas: getValue().status === 'start' });
   }
 
   async listenVideoTags(id) {
@@ -87,7 +94,18 @@ export default class View extends React.PureComponent {
     }
   };
 
+  listenCanvas = () => {
+    listenCanvasEvent((e) => {
+      this.setState({ usedCanvas: e.status === 'start' });
+    });
+  };
+
   render() {
-    return <Base slides={this.props.slides} hash={this.props.hash} />;
+    return (
+      <div className="fusuma-presenter-view">
+        {this.state.usedCanvas && <Canvas disabled hideGrid />}
+        <Base slides={this.props.slides} hash={this.props.hash} showIndex={false} />
+      </div>
+    );
   }
 }

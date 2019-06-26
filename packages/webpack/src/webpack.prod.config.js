@@ -22,7 +22,7 @@ function prod() {
         filename: '[name].[chunkhash].css',
         chunkFilename: '[name].[id].[chunkhash].css'
       })
-      // new webpack.optimize.AggressiveMergingPlugin(),
+      // new webpack.optimize.AggressiveMergingPlugin() // if use this, canvas will be broken
       // new workboxPlugin.GenerateSW()
     ],
     optimization: {
