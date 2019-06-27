@@ -10,6 +10,7 @@
     "precommit": "pretty-quick --staged",
     "build:samples": "node scripts/build-samples.js",
     "deploy:samples": "npm run build:samples && node scripts/deploy-samples.js",
+    "deploy:site": "node scripts/deploy-site.js",
     "setup": "npm run link && npm run bootstrap",
     "link": "lerna link",
     "bootstrap": "lerna bootstrap",
