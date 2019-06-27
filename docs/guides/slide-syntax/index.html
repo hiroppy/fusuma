@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Slide Syntax · Fusuma</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Fusuma has some own slide syntax like to create a table of contents automatically, etc. In addition, all syntaxes are written as a comment.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Slide Syntax · Fusuma"/><meta property="og:type" content="website"/><meta property="og:url" content="https://your-docusaurus-test-site.com/"/><meta property="og:description" content="&lt;p&gt;Fusuma has some own slide syntax like to create a table of contents automatically, etc. In addition, all syntaxes are written as a comment.&lt;/p&gt;
+"/><meta property="og:image" content="https://your-docusaurus-test-site.com/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://your-docusaurus-test-site.com/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo-black.svg" alt="Fusuma"/><h2 class="headerTitleWithLogo">Fusuma</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/getting-started/installation" target="_self">Docs</a></li><li class=""><a href="https://www.patreon.com/hiroppy" target="_self">Support</a></li><li class=""><a href="https://github.com/hiroppy/fusuma" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Guides</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/preparation">Preparation</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/creating-your-slide">Creating Your Slide</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/cli">CLI</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/guides/configuring-fusuma">Configuring Fusuma</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/guides/slide-syntax">Slide Syntax</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/slide-css">Slide CSS</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/sidebar">Sidebar</a></li><li class="navListItem"><a class="navItem" href="/docs/guides/audits">Audits</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Modes</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/modes/presenter">Presenter Mode</a></li><li class="navListItem"><a class="navItem" href="/docs/modes/live">Live Mode</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Slide Syntax</h1></header><article><div><span><p>Fusuma has some own slide syntax like to create a table of contents automatically, etc. In addition, all syntaxes are written as a comment.</p>
+<h2><a class="anchor" aria-hidden="true" id="adding-class-names"></a><a href="#adding-class-names" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding Class Names</h2>
+<p>Add class names to slide's root.</p>
+<pre><code class="hljs css language-md"><span class="xml"><span class="hljs-comment">&lt;!-- slide.md --&gt;</span></span>
+<span class="xml"><span class="hljs-comment">&lt;!-- classes: title --&gt;</span></span>
+
+<span class="hljs-section">## Hello</span>
+</code></pre>
+<pre><code class="hljs css language-css"><span class="hljs-comment">/* style.css */</span>
+
+<span class="hljs-selector-class">.title</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#3498db</span>;
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="declaring-section-title"></a><a href="#declaring-section-title" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Declaring Section Title</h2>
+<p>Makes explicit declarations to create a table of contents. and it is also added to sidebar's list. In addition, attaches <code>section-title</code> class to the slide automatically. This page is the title of each chapter, so you use this class to change CSS.</p>
+<pre><code class="hljs css language-md"><span class="xml"><span class="hljs-comment">&lt;!-- slide.md --&gt;</span></span>
+<span class="xml"><span class="hljs-comment">&lt;!-- sectionTitle: This is the first slide! --&gt;</span></span>
+
+<span class="hljs-section">## Hello</span>
+</code></pre>
+<pre><code class="hljs css language-css"><span class="hljs-comment">/* style.css */</span>
+
+<span class="hljs-selector-class">.section-title</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#3498db</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#ccc</span>;
+}
+</code></pre>
+<p><img src="/docs/assets/slide-syntax-section-title.png" alt=""></p>
+<h2><a class="anchor" aria-hidden="true" id="generating-table-of-contents"></a><a href="#generating-table-of-contents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Generating Table of Contents</h2>
+<p>Insert titles written as <code>sectionTitle</code> to ToC component automatically.</p>
+<pre><code class="hljs css language-md"><span class="xml"><span class="hljs-comment">&lt;!-- toc.md --&gt;</span></span>
+
+<span class="hljs-section">## Contents</span>
+
+<span class="xml"><span class="hljs-comment">&lt;!-- contents --&gt;</span></span>
+</code></pre>
+<p><img src="/docs/assets/slide-syntax-toc.png" alt=""></p>
+<h2><a class="anchor" aria-hidden="true" id="adding-speaker-note"></a><a href="#adding-speaker-note" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Adding Speaker Note</h2>
+<p>This is a note when you give a speech.</p>
+<pre><code class="hljs css language-md"><span class="xml"><span class="hljs-comment">&lt;!-- slide.md --&gt;</span></span>
+<span class="xml"><span class="hljs-comment">&lt;!-- note
+This is a speaker note!!
+This sentence can be seen when using Presenter Mode.
+
+😍
+--&gt;</span></span>
+
+<span class="hljs-section">## Hello!!</span>
+</code></pre>
+<p><img src="/docs/assets/slide-syntax-speaker-note.png" alt=""></p>
+<h2><a class="anchor" aria-hidden="true" id="capturing-screen-contents"></a><a href="#capturing-screen-contents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Capturing Screen Contents</h2>
+<blockquote>
+<p>You need to check the browser name and version because this feature uses WebRTC.</p>
+</blockquote>
+<p>Your screen can capture on the slide, but this feature can run only in Presenter Mode. And you can choose your local screen or application window or browser tab as output.</p>
+<p>This feature will help <strong>live coding</strong> etc. This feature uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture">Screen Capture API
+</a> so this syntax can run on Chorme, Edge, and Firefox.</p>
+<pre><code class="hljs css language-md"><span class="xml"><span class="hljs-comment">&lt;!-- slide.md --&gt;</span></span>
+
+<span class="hljs-section">## Capturing screen contents</span>
+
+<span class="xml"><span class="hljs-comment">&lt;!-- screen --&gt;</span></span>
+</code></pre>
+<p><img src="/docs/assets/slide-syntax-screen.png" alt=""></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/guides/configuring-fusuma"><span class="arrow-prev">← </span><span>Configuring Fusuma</span></a><a class="docs-next button" href="/docs/guides/slide-css"><span>Slide CSS</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#adding-class-names">Adding Class Names</a></li><li><a href="#declaring-section-title">Declaring Section Title</a></li><li><a href="#generating-table-of-contents">Generating Table of Contents</a></li><li><a href="#adding-speaker-note">Adding Speaker Note</a></li><li><a href="#capturing-screen-contents">Capturing Screen Contents</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Fusuma" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started/installation.html">Getting Started</a><a href="/docs/en/guides/configuring-fusuma.html">Guides</a><a href="/docs/en/modes/presenter.html">Modes</a></div><div><h5>Contact Us</h5><a href="https://github.com/hiroppy" target="_blank" rel="noreferrer noopener">GitHub</a><a href="https://twitter.com/about_hiroppy" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/hiroppy/fusuma">GitHub</a><a class="github-button" href="https://github.com/hiroppy/fusuma" data-icon="octicon-star" data-count-href="/hiroppy/fusuma/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Yuta Hiroto</section></footer></div></body></html>
