@@ -39,7 +39,6 @@
     "@fusuma/task-ghp": "^1.7.0",
     "@fusuma/task-init": "^1.7.0",
     "@fusuma/task-start": "^1.8.0",
-    "@fusuma/utils": "^1.7.0",
-    "deepmerge": "3.3.0"
+    "@fusuma/utils": "^1.7.0"
   }
 }
