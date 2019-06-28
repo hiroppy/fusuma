@@ -180,6 +180,7 @@ slide:
     plugins:
       - line-numbers
     theme: default
+  math: false
 extends:
   js: index.js
   css: style.css
@@ -211,7 +212,8 @@ module.exports = {
       languages: ['javascript'],
       plugins: ['line-numbers'],
       theme: 'default'
-    }
+    },
+    math: false
   },
   extends: {
     js: 'index.js',

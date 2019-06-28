@@ -28,6 +28,7 @@ slide:
     plugins:
       - line-numbers
     theme: default
+  math: false
 extends:
   js: index.js
   css: style.css
@@ -67,6 +68,12 @@ code:
 ```
 
 See these options for detail. [babel-plugin-prismjs#configuring-the-plugin](https://github.com/mAAdhaTTah/babel-plugin-prismjs#configuring-the-plugin), [Prism.js Playground](https://prismjs.com/test.html#language=markup)
+
+## MathJax
+
+Fusuma supports [MathJax.js](https://github.com/mathjax/MathJax) when `slide.math` is true. This value is `false` as a default.
+
+![](assets/mathjax.png)
 
 ## Extending JS and CSS
 
