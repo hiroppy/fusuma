@@ -128,7 +128,10 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
               }
             : false
       }),
-      new ImageminWebpWebpackPlugin({})
+      new ImageminWebpWebpackPlugin({
+        detailedLogs: false,
+        silent: true
+      })
     ]
   };
 
