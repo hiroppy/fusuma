@@ -20,6 +20,7 @@ slide:
     plugins: []
     theme: default
   chart: false
+  math: false
 extends:
   js:
   css:

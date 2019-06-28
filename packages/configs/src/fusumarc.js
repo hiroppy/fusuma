@@ -30,7 +30,8 @@ const config = {
       plugins: [],
       theme: 'default'
     },
-    chart: false
+    chart: false,
+    math: false
   },
   extends: {
     js: null,
