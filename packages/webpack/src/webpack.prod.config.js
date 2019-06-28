@@ -2,7 +2,6 @@
 
 function prod() {
   const webpack = require('webpack');
-  // const workboxPlugin = require('workbox-webpack-plugin');
   const TerserPlugin = require('terser-webpack-plugin');
   const MiniCssExtractPlugin = require('mini-css-extract-plugin');
   const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -23,7 +22,6 @@ function prod() {
         chunkFilename: '[name].[id].[chunkhash].css'
       })
       // new webpack.optimize.AggressiveMergingPlugin() // if use this, canvas will be broken
-      // new workboxPlugin.GenerateSW()
     ],
     optimization: {
       minimizer: [
