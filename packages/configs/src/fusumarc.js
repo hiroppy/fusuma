@@ -5,6 +5,7 @@ const { join, extname } = require('path');
 const { promisify } = require('util');
 const yaml = require('js-yaml');
 const pSearch = require('preferred-search');
+const { all: mergeAll } = require('deepmerge');
 
 const readFileAsync = promisify(readFile);
 const writeFileAsync = promisify(writeFile);
@@ -90,8 +91,15 @@ ACCESS_TOKEN_SECRET=
   }
 }
 
+function combine(userConfig, extendConfig = {}) {
+  const overwriteMerge = (destinationArray, sourceArray, options) => sourceArray;
+
+  return mergeAll([config, userConfig, extendConfig], { arrayMerge: overwriteMerge });
+}
+
 module.exports = {
   init,
   read,
-  live
+  live,
+  combine
 };

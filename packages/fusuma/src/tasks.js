@@ -8,7 +8,6 @@ const ghp = require('@fusuma/task-ghp');
 const init = require('@fusuma/task-init');
 const start = require('@fusuma/task-start');
 const build = require('@fusuma/task-build');
-const merge = require('deepmerge');
 
 async function initProcess({ schema }) {
   await init(process.cwd(), schema);
@@ -16,7 +15,7 @@ async function initProcess({ schema }) {
 
 async function startProcess(basePath) {
   const spinner = loader('Starting with webpack-dev-server...').start();
-  const config = await fusuma.read(basePath);
+  const config = fusuma.combine(await fusuma.read(basePath));
   const remoteOrigin = await getRemoteOriginUrl();
 
   start(
@@ -33,9 +32,9 @@ async function startProcess(basePath) {
   );
 }
 
-async function buildProcess(basePath, extendedConfig = {}, isOutput = true) {
+async function buildProcess(basePath, extendedConfig = {}, isConsoleOutput = true) {
   const spinner = loader('Building with webpack...').start();
-  const config = merge(await fusuma.read(basePath), extendedConfig);
+  const config = fusuma.combine(await fusuma.read(basePath), extendedConfig);
   const remoteOrigin = await getRemoteOriginUrl();
 
   await deleteDir(join(basePath, 'dist'));
@@ -47,7 +46,7 @@ async function buildProcess(basePath, extendedConfig = {}, isOutput = true) {
         remoteOrigin
       }
     },
-    isOutput
+    isConsoleOutput
   );
 
   spinner.stop();
