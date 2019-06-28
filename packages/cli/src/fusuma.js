@@ -24,10 +24,11 @@ async function cli() {
 
       .command('start', 'Start with webpack-dev-server')
       .option('-d <directory>', 'Directory to load')
+      .option('-p <port>', 'Server port', prog.INT, 8080)
       .action((args, options, logger) => {
         resolve({
           type: 'start',
-          options: { dir: options.d }
+          options: { dir: options.d, port: options.p }
         });
       })
 

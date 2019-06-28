@@ -36,7 +36,7 @@ module.exports = ({
 
   const config =
     process.env.NODE_ENV !== 'production'
-      ? require('./webpack.dev.config')()
+      ? require('./webpack.dev.config')(server)
       : require('./webpack.prod.config')();
 
   const common = {

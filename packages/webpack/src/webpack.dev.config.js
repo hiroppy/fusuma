@@ -1,6 +1,6 @@
 'use strict';
 
-function dev() {
+function dev(serverConfig) {
   const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
   return {
@@ -11,7 +11,7 @@ function dev() {
     },
     devServer: {
       hot: true,
-      port: 8080,
+      port: serverConfig.port,
       quiet: true,
       inline: true,
       contentBase: '.',
