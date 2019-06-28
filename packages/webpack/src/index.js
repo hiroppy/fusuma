@@ -8,7 +8,7 @@ function start(config, cb) {
   webpackDevServer(combineConfig(config), cb);
 }
 
-function build(config, isOutput = true) {
+function build(config, isConsoleOutput = true) {
   const webpack = require('webpack');
   const outputBuildInfo = require('./outputBuildInfo');
 
@@ -18,7 +18,7 @@ function build(config, isOutput = true) {
         return reject(err);
       }
 
-      if (isOutput) {
+      if (isConsoleOutput) {
         outputBuildInfo(res);
       }
 

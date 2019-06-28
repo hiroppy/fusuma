@@ -14,23 +14,10 @@ const configsBasePath = configsEntryPoint.split('/src')[0];
 const clientEntryPoint = require.resolve('@fusuma/client');
 const clientBasePath = clientEntryPoint.split('/src')[0];
 
-module.exports = ({
-  meta = {},
-  slide = {},
-  extends: fileExtends = {},
-  internal = {},
-  server = {}
-}) => {
+module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
   // name is deprecated TODO: delete
   const { url, name, description, thumbnail, siteName, sns, title } = meta;
-  const {
-    sidebar,
-    targetBlank = true,
-    showIndex = false,
-    isVertical = false,
-    loop = true,
-    code
-  } = slide;
+  const { sidebar, targetBlank, showIndex, isVertical, loop, code } = slide;
   const { js: jsPath, css: cssPath } = fileExtends;
   const { basePath, remoteOrigin } = internal;
 
