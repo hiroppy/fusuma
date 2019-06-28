@@ -3,6 +3,14 @@
 const mdx = require('@mdx-js/mdx');
 const loader = require('../src');
 
+jest.mock('loader-utils');
+const loaderUtils = require('loader-utils');
+loaderUtils.getOptions.mockImplementation(() => {
+  return {
+    math: true
+  };
+});
+
 async function transformToJS(src) {
   return new Promise((resolve, reject) => {
     loader.call(
@@ -79,6 +87,16 @@ graph TD;
 \`\`\`
 `;
 
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
+
+  test('should convert MathJax', async () => {
+    const src = `
+# MathJax
+$$
+a^2 + b^2 = c^2
+$$
+`;
     expect(await transformToJS(src)).toMatchSnapshot();
   });
 });

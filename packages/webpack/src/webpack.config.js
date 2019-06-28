@@ -19,7 +19,7 @@ const mdxLoaderBasePath = mdxLoaderEntryPoint.split('/src')[0];
 module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
   // name is deprecated TODO: delete
   const { url, name, description, thumbnail, siteName, sns, title } = meta;
-  const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart } = slide;
+  const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath } = fileExtends;
   const { basePath, remoteOrigin } = internal;
 
@@ -74,7 +74,12 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
                 cwd: configsBasePath
               }
             },
-            '@fusuma/mdx-loader'
+            {
+              loader: '@fusuma/mdx-loader',
+              options: {
+                math
+              }
+            }
           ]
         },
         {
@@ -126,6 +131,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
         image: thumbnail || '',
         siteName,
         description,
+        math,
         minify:
           process.env.NODE_ENV === 'production'
             ? {

@@ -26,6 +26,9 @@
     <% if (htmlWebpackPlugin.options.description) { %>
       <meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>" />
     <% } %>
+    <% if (htmlWebpackPlugin.options.math) { %>
+      <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+    <% } %>
   </head>
 
   <body>

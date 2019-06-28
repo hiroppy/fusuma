@@ -76,3 +76,7 @@ pre[class*='language-'] {
 #webslides-zoomed {
   position: absolute;
 }
+
+.katex-html {
+  display: none;
+}
