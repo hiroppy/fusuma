@@ -56,9 +56,14 @@ export class AppContainer extends React.Component {
   }
 
   static createProps(slides) {
-    const slidesArr = slides.map((s) => s.slides).flat();
-    const propsArr = slides.map((s) => s.fusumaProps).flat();
+    const slidesArr = [];
+    const propsArr = [];
     const res = {};
+
+    slides.forEach(({ slides, fusumaProps }) => {
+      slidesArr.push(...slides);
+      propsArr.push(...fusumaProps);
+    });
 
     propsArr.reduce((acc, { sectionTitle }, i) => {
       if (sectionTitle) {
