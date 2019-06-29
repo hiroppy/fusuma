@@ -1,6 +1,7 @@
 'use strict';
 
 function dev() {
+  const webpack = require('webpack');
   const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
   return {
@@ -9,15 +10,7 @@ function dev() {
     output: {
       filename: 'bundle.js'
     },
-    devServer: {
-      hot: true,
-      port: 8080,
-      quiet: true,
-      inline: true,
-      contentBase: '.',
-      disableHostCheck: true
-    },
-    plugins: [new FriendlyErrorsWebpackPlugin()]
+    plugins: [new webpack.HotModuleReplacementPlugin(), new FriendlyErrorsWebpackPlugin()]
   };
 }
 

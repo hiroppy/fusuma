@@ -14,22 +14,19 @@ async function initProcess({ schema }) {
 }
 
 async function startProcess(basePath) {
-  const spinner = loader('Starting with webpack-dev-server...').start();
+  const spinner = loader('Starting server...').start();
   const config = fusuma.combine(await fusuma.read(basePath));
   const remoteOrigin = await getRemoteOriginUrl();
 
-  start(
-    {
-      ...config,
-      internal: {
-        basePath,
-        remoteOrigin
-      }
-    },
-    () => {
-      spinner.stop();
+  await start({
+    ...config,
+    internal: {
+      basePath,
+      remoteOrigin
     }
-  );
+  });
+
+  spinner.stop();
 }
 
 async function buildProcess(basePath, extendedConfig = {}, isConsoleOutput = true) {

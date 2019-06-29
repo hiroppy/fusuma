@@ -2,10 +2,10 @@
 
 const combineConfig = require('./webpack.config');
 
-function start(config, cb) {
-  const webpackDevServer = require('./webpack-dev-server');
+async function start(config) {
+  const server = require('./server');
 
-  webpackDevServer(combineConfig(config), cb);
+  return await server(combineConfig(config), { port: 8080 });
 }
 
 function build(config, isConsoleOutput = true) {
