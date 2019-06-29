@@ -1,0 +1,5 @@
+slide:
+  chart: true
+  code:
+    languages:
+      - yaml
