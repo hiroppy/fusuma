@@ -65,4 +65,21 @@ This is Note!
 
     expect(await transformToJS(src)).toMatchSnapshot();
   });
+
+  test('should convert mermaid', async () => {
+    const src = `
+# FlowChart
+---
+
+\`\`\`flow
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+\`\`\`
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
 });

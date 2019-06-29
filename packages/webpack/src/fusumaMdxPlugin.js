@@ -56,6 +56,7 @@ function fusumaMdxPlugin() {
     const slides = [];
     let slide = [];
     let videoId = 1;
+    let mermaidId = 1;
     const res = {
       jsx: [],
       fusumaProps: []
@@ -85,6 +86,17 @@ function fusumaMdxPlugin() {
         );
 
         ++videoId;
+      } else if (n.type === 'code' && n.lang === 'chart') {
+        slide.push({
+          ...n,
+          type: 'jsx',
+          value: `<div className="mermaid" id="mermaid-${mermaidId}" data-value="${n.value.replace(
+            /    /g,
+            ''
+          )}" style={{ visibility: 'hidden'}}>${n.value.replace(/    /g, '')}</div>`
+        });
+
+        ++mermaidId;
       } else {
         slide.push(n);
 
