@@ -6,10 +6,10 @@ import classnames from 'classnames';
 import { setup as setupWebSlides } from '../../setup/webSlides';
 
 export class Base extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    if (!window.slide) {
+    if (!process.env.SSR && !window.slide) {
       setTimeout(() => {
         window.slide = setupWebSlides({ showIndex: this.props.showIndex });
 
@@ -41,6 +41,7 @@ export class Base extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    // for HMR
     if (process.env.NODE_ENV !== 'production') {
       this.reloadChart();
     }

@@ -32,6 +32,11 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <%= htmlWebpackPlugin.options.body %>
+      <% if (htmlWebpackPlugin.options.props) { %>
+        <script id="initial-data" type="text/plain" data-json="<%= htmlWebpackPlugin.options.props %>"></script>
+      <% } %>
+    </div>
   </body>
 </html>
