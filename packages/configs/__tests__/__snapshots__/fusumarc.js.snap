@@ -19,6 +19,7 @@ slide:
       - javascript
     plugins: []
     theme: default
+  chart: false
 extends:
   js:
   css:
