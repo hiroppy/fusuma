@@ -16,23 +16,29 @@ const clientBasePath = clientEntryPoint.split('/src')[0];
 const mdxLoaderEntryPoint = require.resolve('@fusuma/mdx-loader');
 const mdxLoaderBasePath = mdxLoaderEntryPoint.split('/src')[0];
 
-module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
+module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
   // name is deprecated TODO: delete
   const { url, name, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath } = fileExtends;
-  const { basePath, remoteOrigin } = internal;
+  const { basePath, remoteOrigin, htmlBody = '', htmlProps = '' } = internal;
+  const outputPath = path.resolve(basePath, 'dist');
 
   const config =
-    process.env.NODE_ENV !== 'production'
-      ? require('./webpack.dev.config')()
-      : require('./webpack.prod.config')();
+    type === 'production'
+      ? require('./webpack.prod.config')()
+      : type === 'ssr'
+      ? require('./webpack.ssr.config')({ clientBasePath })
+      : require('./webpack.dev.config')();
 
   const common = {
     name: name || 'slide',
-    entry: ['@babel/polyfill', clientEntryPoint],
+    entry: [
+      '@babel/polyfill',
+      type !== 'ssr' ? clientEntryPoint : path.join(clientBasePath, '/src/ServerApp.js')
+    ],
     output: {
-      path: path.resolve(basePath, 'dist')
+      path: outputPath
     },
     resolveLoader: {
       modules: [
@@ -44,6 +50,10 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
       ]
     },
     resolve: {
+      alias: {
+        // https://github.com/facebook/react/issues/13991
+        react: path.resolve(__dirname, '../node_modules/react')
+      },
       modules: [
         'node_modules',
         path.resolve(__dirname, '..', 'node_modules'),
@@ -121,7 +131,8 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
         'process.env.IS_LIVE': JSON.stringify(!!server.isLive),
         'process.env.SERVER_PORT': JSON.stringify(server.port),
         'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword),
-        'process.env.CHART': JSON.stringify(chart)
+        'process.env.CHART': JSON.stringify(chart),
+        'process.env.SSR': JSON.stringify(type === 'ssr')
       }),
       new HtmlWebpackPlugin({
         url,
@@ -132,6 +143,8 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
         siteName,
         description,
         math,
+        body: htmlBody,
+        props: htmlProps,
         minify:
           process.env.NODE_ENV === 'production'
             ? {
@@ -146,11 +159,13 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
     ]
   };
 
-  if (jsPath && jsPath.match(/\+*.js$/i)) {
-    common.entry.push(path.join(basePath, jsPath));
-  }
-  if (cssPath && path.extname(cssPath) === '.css') {
-    common.entry.push(path.join(clientBasePath, 'src', 'utils', 'customCss.js'));
+  if (type !== 'ssr') {
+    if (jsPath && jsPath.match(/\+*.js$/i)) {
+      common.entry.push(path.join(basePath, jsPath));
+    }
+    if (cssPath && path.extname(cssPath) === '.css') {
+      common.entry.push(path.join(clientBasePath, 'src', 'utils', 'customCss.js'));
+    }
   }
 
   return merge.smart(common, config);

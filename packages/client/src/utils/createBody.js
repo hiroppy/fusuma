@@ -1,7 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { render, hydrate } from 'react-dom';
 import { AppContainer } from '../components/AppContainer';
 
+const renderMethod = module.hot ? render : hydrate;
+
 export function createBody(slides = [], hash = 0) {
-  render(<AppContainer slides={slides} hash={hash} />, document.getElementById('root'));
+  renderMethod(<AppContainer slides={slides} hash={hash} />, document.getElementById('root'));
 }

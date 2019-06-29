@@ -32,11 +32,14 @@ export class AppContainer extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (module.hot) {
+    // for HMR
+    if (module.hot || process.env.SSR) {
       const slides = AppContainer.createProps(props.slides);
 
       return { ...slides };
     }
+
+    return null;
   }
 
   async componentDidMount() {

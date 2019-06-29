@@ -10,7 +10,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 
 async function server(config, options = {}) {
   return new Promise((resolve) => {
-    config.entry.unshift('webpack-hot-middleware/client');
+    config.entry.unshift('webpack-hot-middleware/client?reload=true');
 
     const app = express();
     const port = options.port || 8080;

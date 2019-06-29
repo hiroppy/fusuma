@@ -3,7 +3,22 @@ import { fetchSlides } from './utils/fetchSlides';
 import './setup/css';
 
 (async () => {
-  let slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
+  let slidesInfo;
+
+  // slides have already reloaded because slides are inserted in HTML
+  // if (process.env.NODE_ENV === 'production') {
+  //   // TODO: use local values
+  //   const initialData = JSON.parse(
+  //     document.getElementById('initial-data').getAttribute('data-json')
+  //   );
+  //   slidesInfo = {
+  //     slides: initialData
+  //   };
+  // } else {
+  //   slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
+  // }
+
+  slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
 
   if (module.hot) {
     module.hot.accept(slidesInfo.id, () => {
