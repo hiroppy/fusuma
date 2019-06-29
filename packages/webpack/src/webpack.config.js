@@ -17,7 +17,7 @@ const clientBasePath = clientEntryPoint.split('/src')[0];
 module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
   // name is deprecated TODO: delete
   const { url, name, description, thumbnail, siteName, sns, title } = meta;
-  const { sidebar, targetBlank, showIndex, isVertical, loop, code } = slide;
+  const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart } = slide;
   const { js: jsPath, css: cssPath } = fileExtends;
   const { basePath, remoteOrigin } = internal;
 
@@ -111,7 +111,8 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
         'process.env.LOOP': JSON.stringify(loop),
         'process.env.IS_LIVE': JSON.stringify(!!server.isLive),
         'process.env.SERVER_PORT': JSON.stringify(server.port),
-        'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword)
+        'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword),
+        'process.env.CHART': JSON.stringify(chart)
       }),
       new HtmlWebpackPlugin({
         url,
