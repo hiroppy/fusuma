@@ -38,7 +38,6 @@ export class Mermaid {
   }
 
   reload() {
-    console.log('aaa');
     const elms = this.getElms();
     const head = [];
 

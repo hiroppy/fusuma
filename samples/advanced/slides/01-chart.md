@@ -1,3 +1,5 @@
+<!-- sectionTitle: Charts -->
+
 ## Charts
 
 <br />
