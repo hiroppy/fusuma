@@ -13,6 +13,8 @@ const configsEntryPoint = require.resolve('@fusuma/configs');
 const configsBasePath = configsEntryPoint.split('/src')[0];
 const clientEntryPoint = require.resolve('@fusuma/client');
 const clientBasePath = clientEntryPoint.split('/src')[0];
+const mdxLoaderEntryPoint = require.resolve('@fusuma/mdx-loader');
+const mdxLoaderBasePath = mdxLoaderEntryPoint.split('/src')[0];
 
 module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
   // name is deprecated TODO: delete
@@ -37,7 +39,8 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
         'node_modules',
         path.resolve(__dirname, '..', 'node_modules'),
         path.join(clientBasePath, 'node_modules'),
-        path.join(configsBasePath, 'node_modules')
+        path.join(configsBasePath, 'node_modules'),
+        path.join(mdxLoaderBasePath, 'node_modules')
       ]
     },
     resolve: {
@@ -45,7 +48,8 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
         'node_modules',
         path.resolve(__dirname, '..', 'node_modules'),
         path.join(clientBasePath, 'node_modules'),
-        path.join(configsBasePath, 'node_modules')
+        path.join(configsBasePath, 'node_modules'),
+        path.join(mdxLoaderBasePath, 'node_modules')
       ]
     },
     module: {
@@ -70,7 +74,7 @@ module.exports = ({ meta, slide, extends: fileExtends, internal = {}, server = {
                 cwd: configsBasePath
               }
             },
-            path.join(__dirname, './fusuma-loader.js')
+            '@fusuma/mdx-loader'
           ]
         },
         {

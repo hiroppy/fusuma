@@ -3,7 +3,6 @@
 const visit = require('unist-util-visit');
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
-const { parse } = require('@babel/parser');
 
 function createFusumaProps(nodes) {
   const property = {};
@@ -51,7 +50,7 @@ function createFusumaProps(nodes) {
     .join(',')}}`;
 }
 
-function fusumaMdxPlugin() {
+function mdxPlugin() {
   return (tree, file) => {
     const slides = [];
     let slide = [];
@@ -147,4 +146,4 @@ function fusumaMdxPlugin() {
   };
 }
 
-module.exports = fusumaMdxPlugin;
+module.exports = mdxPlugin;

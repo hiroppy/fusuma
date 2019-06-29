@@ -2,14 +2,16 @@
 
 const mdx = require('@mdx-js/mdx');
 const emoji = require('remark-emoji');
-const fusumaMdxPlugin = require('./fusumaMdxPlugin');
+const mdxPlugin = require('./mdxPlugin');
 
-module.exports = function fusumaLoader(src) {
+function mdxLoader(src) {
   const cb = this.async();
 
   const result = mdx.sync(src, {
-    remarkPlugins: [emoji, fusumaMdxPlugin]
+    remarkPlugins: [emoji, mdxPlugin]
   });
 
   cb(null, result);
-};
+}
+
+module.exports = mdxLoader;

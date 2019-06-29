@@ -1,8 +1,7 @@
 'use strict';
 
 const mdx = require('@mdx-js/mdx');
-const plugin = require('../src/fusumaMdxPlugin');
-const loader = require('../src/fusuma-loader');
+const loader = require('../src');
 
 async function transformToJS(src) {
   return new Promise((resolve, reject) => {
