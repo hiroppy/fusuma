@@ -10,9 +10,7 @@ const mdxPlugin = require('./mdxPlugin');
 function mdxLoader(src) {
   const { math } = getOptions(this);
   const cb = this.async();
-  const remarkPlugins = math
-    ? [emoji, remarkMath, katex, fusumaMdxPlugin]
-    : [emoji, fusumaMdxPlugin];
+  const remarkPlugins = math ? [emoji, remarkMath, katex, mdxPlugin] : [emoji, mdxPlugin];
   const result = mdx.sync(src, {
     remarkPlugins
   });
