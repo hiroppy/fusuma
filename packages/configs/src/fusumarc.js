@@ -29,7 +29,8 @@ const config = {
       languages: ['javascript'],
       plugins: [],
       theme: 'default'
-    }
+    },
+    chart: false
   },
   extends: {
     js: null,
