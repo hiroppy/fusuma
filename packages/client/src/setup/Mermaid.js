@@ -20,8 +20,6 @@ export class Mermaid {
       background: `url(${encodedString})`,
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
-      width: '320px', // TODO: fix
-      height: '320px', // TODO: fix
       margin: '0 auto'
     });
   }
@@ -30,12 +28,17 @@ export class Mermaid {
     const elms = this.getElms();
 
     elms.forEach((elm) => {
+      Object.assign(elm.style, {
+        visibility: 'initial'
+      });
+
       mermaid.init();
-      this.encode(elm);
+      // this.encode(elm);
     });
   }
 
   reload() {
+    console.log('aaa');
     const elms = this.getElms();
     const head = [];
 
@@ -56,7 +59,11 @@ export class Mermaid {
       elm.removeAttribute('data-processed');
 
       mermaid.init();
-      this.encode(elm);
+      Object.assign(elm.style, {
+        visibility: 'initial'
+      });
+
+      // this.encode(elm);
     }
   }
 }
