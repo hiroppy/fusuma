@@ -134,6 +134,15 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
         'process.env.CHART': JSON.stringify(chart),
         'process.env.SSR': JSON.stringify(type === 'ssr')
       }),
+      new ImageminWebpWebpackPlugin({
+        detailedLogs: false,
+        silent: true
+      })
+    ]
+  };
+
+  if (type !== 'ssr') {
+    common.plugins.push(
       new HtmlWebpackPlugin({
         url,
         filename: 'index.html',
@@ -151,13 +160,9 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
                 collapseWhitespace: true
               }
             : false
-      }),
-      new ImageminWebpWebpackPlugin({
-        detailedLogs: false,
-        silent: true
       })
-    ]
-  };
+    );
+  }
 
   if (type !== 'ssr') {
     if (jsPath && jsPath.match(/\+*.js$/i)) {

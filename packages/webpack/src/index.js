@@ -8,10 +8,15 @@ async function start(config) {
   return await server(combineConfig('development', config), { port: 8080 });
 }
 
-async function build(config, isConsoleOutput = true) {
+async function build(config, isConsoleOutput = true, cb) {
   const buildTask = require('./build');
+  const stats = await buildTask(config, cb);
 
-  return await buildTask(config);
+  if (isConsoleOutput) {
+    const outputBuildInfo = require('./outputBuildInfo');
+
+    outputBuildInfo(stats);
+  }
 }
 
 module.exports = {

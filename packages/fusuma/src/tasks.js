@@ -30,7 +30,7 @@ async function startProcess(basePath) {
 }
 
 async function buildProcess(basePath, extendedConfig = {}, isConsoleOutput = true) {
-  const spinner = loader('Building with webpack...').start();
+  const spinner = loader('Rendering components to HTML...').start();
   const config = fusuma.combine(await fusuma.read(basePath), extendedConfig);
   const remoteOrigin = await getRemoteOriginUrl();
 
@@ -43,7 +43,13 @@ async function buildProcess(basePath, extendedConfig = {}, isConsoleOutput = tru
         remoteOrigin
       }
     },
-    isConsoleOutput
+    isConsoleOutput,
+    (type) => {
+      if (type == 'start-build') {
+        spinner.color = 'yellow';
+        spinner.text = 'Building with webpack...';
+      }
+    }
   );
 
   spinner.stop();
