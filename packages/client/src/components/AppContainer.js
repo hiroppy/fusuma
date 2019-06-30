@@ -14,16 +14,22 @@ export class AppContainer extends React.Component {
 
     index = index !== null ? index[1] - 1 : 0;
 
+    const { slides, contentsList } = AppContainer.createProps(props.slides, index);
+
     this.state = {
       isSidebar: true,
       isOpenSidebar: false,
-      slides: [],
-      contentsList: [],
+      slides,
+      contentsList,
       currentIndex: index,
       SidebarComponent: null, // for lazy load
       CommentsListComponent: null // for lazy load
     };
 
+    // [production] for Presentation Mode
+    // hack for Presentation Mode
+    // slides are rotated when NODE_ENV=production
+    this.indexDiff = process.env.NODE_ENV === 'production' ? index : 0;
     this.params = parsedUrl.searchParams;
     this.ContentComponent = null;
     this.isLive = this.params.get('isLive');
@@ -45,10 +51,6 @@ export class AppContainer extends React.Component {
   async componentDidMount() {
     this.changeSidebarState();
 
-    const slides = AppContainer.createProps(this.props.slides);
-
-    this.setState({ ...slides });
-
     if (this.state.isSidebar) {
       const { SidebarComponent } = await import(
         /* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar'
@@ -58,7 +60,7 @@ export class AppContainer extends React.Component {
     }
   }
 
-  static createProps(slides) {
+  static createProps(slides, currentIndex) {
     const slidesArr = [];
     const propsArr = [];
     const res = {};
@@ -86,6 +88,12 @@ export class AppContainer extends React.Component {
         fusumaProps: props
       };
     });
+
+    // if slides have already been existed, webSlides'll modify these DOMs
+    // so, these DOMs should be changed the order
+    if (process.env.NODE_ENV === 'production') {
+      res.slides = res.slides.concat(res.slides.splice(0, currentIndex));
+    }
 
     return res;
   }
@@ -127,7 +135,10 @@ export class AppContainer extends React.Component {
     }
 
     if (this.mode === 'host') {
-      this.setState({ isOpenSidebar: false, CommentsListComponent: null });
+      this.setState({
+        isOpenSidebar: false,
+        CommentsListComponent: null
+      });
     } else if (process.env.IS_LIVE && this.isLive !== 'false') {
       this.setupLive();
     }
@@ -184,6 +195,7 @@ export class AppContainer extends React.Component {
         {this.ContentComponent && (
           <this.ContentComponent
             hash={this.props.hash}
+            indexDiff={this.indexDiff}
             slides={this.state.slides}
             terminate={this.terminate}
             currentIndex={this.state.currentIndex}

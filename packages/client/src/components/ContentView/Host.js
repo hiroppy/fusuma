@@ -215,7 +215,14 @@ export default class Host extends React.PureComponent {
   //   usedAudio && status === 'start'
   //     mic
   render() {
-    const { currentIndex } = this.props;
+    const { currentIndex, indexDiff } = this.props;
+
+    const index =
+      process.env.NODE_ENV === 'production'
+        ? currentIndex - indexDiff < 0
+          ? this.slides.length - currentIndex - indexDiff
+          : currentIndex - indexDiff
+        : currentIndex;
 
     return (
       <div className="host-container">
@@ -226,7 +233,9 @@ export default class Host extends React.PureComponent {
           <div className="host-note">
             {this.slides && (
               <pre
-                dangerouslySetInnerHTML={{ __html: this.slides[currentIndex].fusumaProps.note }}
+                dangerouslySetInnerHTML={{
+                  __html: this.slides[index].fusumaProps.note
+                }}
               />
             )}
           </div>
