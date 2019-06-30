@@ -333,7 +333,7 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"text":"hello:)"}' local
 * CPU/Memory Power: 1052
 ```
 
-<img src="./media/audits.png" />
+<img src="./site/docs/assets/audits.png" />
 
 The values of `Accessibility` and `Best Practices` depend on the user because the user writes HTML(Markdown).  
 If you want to make `SEO` score 100%, you should fill in the `.fusumarc.yml`.
