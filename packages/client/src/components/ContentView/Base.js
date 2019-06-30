@@ -10,29 +10,40 @@ export class Base extends React.Component {
     super(props);
 
     if (!process.env.SSR && !window.slide) {
-      setTimeout(() => {
-        window.slide = setupWebSlides({ showIndex: this.props.showIndex });
+      const hasWebSlidesElm = !!document.getElementById('webslides');
 
-        // for presenter:view
-        window.slide.el.addEventListener('ws:slide-change', (e) => {
-          this.reloadChart();
-
-          if (this.props.onChangeSlideIndex) {
-            this.props.onChangeSlideIndex(e.detail.currentSlide0);
-          }
-        });
-      }, 0);
+      // [production] slides have already been inserted into HTML
+      if (hasWebSlidesElm) {
+        this.setup();
+      } else {
+        // [development] no ssr
+        // [production] common -> presenter-host(slides will be deleted) -> common
+        setTimeout(this.setup, 0);
+      }
     }
   }
 
+  setup = () => {
+    window.slide = setupWebSlides({});
+
+    // for presenter:view
+    window.slide.el.addEventListener('ws:slide-change', (e) => {
+      this.reloadChart();
+
+      if (this.props.onChangeSlideIndex) {
+        this.props.onChangeSlideIndex(e.detail.currentSlide0);
+      }
+    });
+  };
+
   async componentDidMount() {
+    Prism.highlightAll();
+
     if (process.env.CHART) {
       const { Mermaid } = await import(/* webpackChunkName: 'Mermaid' */ '../../setup/Mermaid');
       this.mermaid = new Mermaid();
       this.mermaid.init();
     }
-
-    Prism.highlightAll();
   }
 
   componentDidUpdate() {
