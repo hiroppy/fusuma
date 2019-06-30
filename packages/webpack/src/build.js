@@ -25,11 +25,10 @@ async function ssr(c) {
       }
 
       try {
-        const { ServerApp, render, getFusumaProps } = require(`${config.output.path}/entry.js`);
+        const { ServerApp, render } = require(`${config.output.path}/entry.js`);
         const body = render(React.createElement(ServerApp));
-        const fusumaProps = getFusumaProps();
 
-        resolve({ body, fusumaProps });
+        resolve({ body });
       } catch (e) {
         reject(e);
       } finally {
@@ -46,7 +45,6 @@ async function build(c, { body, fusumaProps }) {
       internal: {
         ...c.internal,
         htmlBody: body
-        // htmlProps: escape(JSON.stringify(fusumaProps))
       }
     });
 
