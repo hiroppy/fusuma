@@ -52,19 +52,26 @@ async function build(c, { body, fusumaProps }) {
 
     const compiler = webpack(config);
 
-    compiler.run((err) => {
+    compiler.run((err, stats) => {
       if (err) {
         return reject(err);
       }
-      resolve();
+      resolve(stats);
     });
   });
 }
 
-async function buildProcess(c) {
+async function buildProcess(c, cb) {
+  cb('start-ssr');
+
   const data = await ssr(c);
 
-  await build(c, data);
+  cb('finish-ssr');
+  cb('start-build');
+
+  return await build(c, data);
+
+  cb('finish-build');
 }
 
 module.exports = buildProcess;
