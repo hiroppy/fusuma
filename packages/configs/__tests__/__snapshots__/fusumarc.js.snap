@@ -12,7 +12,7 @@ slide:
   loop: true
   sidebar: true
   targetBlank: true
-  showIndex: false
+  showIndex: true
   isVertical: false
   code:
     languages:
