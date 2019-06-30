@@ -75,6 +75,7 @@ pre[class*='language-'] {
 
 #webslides-zoomed {
   position: absolute;
+  width: 100%;
 }
 
 .katex-html {

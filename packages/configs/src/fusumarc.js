@@ -22,7 +22,7 @@ const config = {
     loop: true,
     sidebar: true,
     targetBlank: true,
-    showIndex: false,
+    showIndex: true,
     isVertical: false,
     // https://github.com/mAAdhaTTah/babel-plugin-prismjs#configuring-the-plugin
     code: {
