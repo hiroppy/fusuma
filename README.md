@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./media/logo.svg">
+  <img src="./site/docs/assets/logo.svg">
 </div>
 
 <div align="center">
@@ -83,7 +83,7 @@ $ npx fusuma live --help # see help for a specific command
 
 When `npx fusuma start` is executed, fusuma will create a slide as follows and serve `localhost:8080`.
 
-![](./media/procedure-screenshot.png)
+![](./site/docs/assets/procedure-screenshot.png)
 
 And you can customize the slide using CSS and JS.
 
@@ -276,7 +276,7 @@ slide:
 3. if you use Chrome, you can choose select cast device
 4. if you use a browser that does not support Presentation API, a new window will be created
 
-![](./media/presenter-host.png)
+![](./site/docs/assets/presenter-host.png)
 
 ### Practice Presentation
 
@@ -286,7 +286,7 @@ And, by recording audio, you can also do time travel.
 When you start the timer, the timeline will be recorded.  
 When you reset the timer, the timeline will be reset.
 
-![](./media/timeline.png)
+![](./site/docs/assets/presenter-mode-timeline.png)
 
 Recording Mode: See [the movie](https://twitter.com/about_hiroppy/status/1142378836639789056).
 
@@ -294,7 +294,7 @@ Recording Mode: See [the movie](https://twitter.com/about_hiroppy/status/1142378
 
 When you write characters on the host side, it will be reflected on the client side in real time.
 
-![](./media/drawing.png)
+![](./site/docs/assets/drawing.png)
 
 ## Live Mode
 
@@ -312,7 +312,7 @@ $ npx fusuma live -w '@nodejs' # npx fusuma live --help
 $ open http://localhost:3000
 ```
 
-![](./media/live.png)
+![](./site/docs/assets/live-mode-comments.png)
 
 ### Post a comment
 
