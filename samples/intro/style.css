@@ -50,13 +50,6 @@ body {
   color: var(--sub-color);
 }
 
-.hand {
-  bottom: 20px;
-  font-size: 32px;
-  left: 80px;
-  position: fixed;
-}
-
 .presenter-host {
   width: 70%;
 }

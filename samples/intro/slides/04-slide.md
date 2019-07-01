@@ -59,8 +59,6 @@ Also, you can use HTML because MarkDown accepts HTML.
 Makes explicit declarations to create an agenda.  
 In addition, it is also added to sidebar's list.
 
-<span class="hand">👈</span>
-
 ---
 
 ## Generate Agenda

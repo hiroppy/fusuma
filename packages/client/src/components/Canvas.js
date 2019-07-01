@@ -1,99 +1,86 @@
-import React from 'react';
+import React, { memo, useState, useRef, useEffect } from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import { FaEraser, FaUndo } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import '../../assets/style/canvas.css';
 import { thisExpression } from '@babel/types';
 
-export class Canvas extends React.PureComponent {
-  constructor(props) {
-    super(props);
+let colors = ['#444', '#3498db', '#ff874d', '#67a2a0'];
+let beforeData = null;
+let timerId = null;
 
-    this.ref = null;
-    this.beforeData = null;
-    this.timerId = null;
-    this.colors = ['#444', '#3498db', '#ff874d', '#67a2a0'];
+export const Canvas = memo(({ toolbar, disabled, hideGrid }) => {
+  const canvasRef = useRef();
+  const [color, changeCurrentColor] = useState(colors[0]);
 
-    this.state = {
-      color: this.colors[0]
-    };
-  }
-
-  componentDidMount() {
-    if (this.props.toolbar) {
-      this.timerId = setInterval(() => {
-        this.setData();
-      }, 1000);
-    } else {
-      this.timerId = setInterval(() => {
-        this.getData();
-      }, 1000);
-    }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerId);
-  }
-
-  changeColor = () => {
+  const changeColor = () => {
     // rotate array
-    this.colors = this.colors.concat(this.colors.splice(0, 1));
-    this.setState({ color: this.colors[0] });
+    colors = colors.concat(colors.splice(0, 1));
+    changeCurrentColor(colors[0]);
   };
 
-  setData = () => {
-    window.localStorage.setItem('fusumaCanvasCoordinate', this.ref.getSaveData());
+  const setData = () => {
+    window.localStorage.setItem('fusumaCanvasCoordinate', canvasRef.current.getSaveData());
   };
 
-  getData = () => {
+  const getData = () => {
     const data = window.localStorage.getItem('fusumaCanvasCoordinate');
-
-    if (this.beforeData !== data) {
-      this.ref.loadSaveData(data, true);
-      this.beforeData = data;
+    if (beforeData !== data) {
+      canvasRef.current.loadSaveData(data, true);
+      beforeData = data;
     }
   };
 
-  undo = () => {
-    this.ref.undo();
+  const undo = () => {
+    canvasRef.current.undo();
   };
 
-  clear = () => {
-    this.ref.clear();
+  const clear = () => {
+    canvasRef.current.clear();
   };
 
-  render() {
-    const { disabled, hideGrid, toolbar } = this.props;
+  useEffect(() => {
+    if (toolbar) {
+      timerId = setInterval(setData, 1000);
+    } else {
+      timerId = setInterval(getData, 1000);
+    }
 
-    return (
-      <>
-        {toolbar && (
-          <div className="fusuma-canvas-toolbar">
-            <MdDelete onClick={this.clear} size="32" />
-            <FaUndo onClick={this.undo} />
-            <div
-              style={{ background: this.state.color }}
-              onClick={this.changeColor}
-              className="fusuma-canvas-toolbar-color"
-            />
-          </div>
-        )}
-        <CanvasDraw
-          ref={(ref) => (this.ref = ref)}
-          className="fusuma-canvas"
-          canvasWidth="100%"
-          canvasHeight="100%"
-          loadTimeOffset={0}
-          brushColor={this.state.color}
-          disabled={disabled}
-          hideGrid={hideGrid}
-          lazyRadius={0}
-          brushRadius={8 /* TODO: become an option */}
-        />
-      </>
-    );
-  }
-}
+    return () => {
+      if (timerId) {
+        clearInterval(timerId);
+      }
+    };
+  }, []);
+
+  return (
+    <>
+      {toolbar && (
+        <div className="fusuma-canvas-toolbar">
+          <MdDelete onClick={clear} size="32" />
+          <FaUndo onClick={undo} />
+          <div
+            style={{ background: color }}
+            onClick={changeColor}
+            className="fusuma-canvas-toolbar-color"
+          />
+        </div>
+      )}
+      <CanvasDraw
+        ref={canvasRef}
+        className="fusuma-canvas"
+        canvasWidth="100%"
+        canvasHeight="100%"
+        loadTimeOffset={0}
+        brushColor={color}
+        disabled={disabled}
+        hideGrid={hideGrid}
+        lazyRadius={0}
+        brushRadius={8 /* TODO: become an option */}
+      />
+    </>
+  );
+});
 
 export function getValue() {
   return JSON.parse(window.localStorage.getItem('fusumaCanvasEvent'));

@@ -1,73 +1,60 @@
-import React from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { FaPlay, FaStop, FaRegHourglass } from 'react-icons/fa';
 import { formatTime } from '../utils/formatTime';
 
-export class Timer extends React.PureComponent {
-  constructor(props) {
-    super(props);
+let current = 0;
+let timerId = null;
 
-    this.state = {
-      isStop: true,
-      currentTimeStr: '00:00:00'
-    };
-    this.current = 0;
-    this.timerId = null;
-  }
+export const Timer = memo(({ start, stop, reset, disabledStart, disabledStop, disabledReset }) => {
+  const [isStop, changeTimerState] = useState(true);
+  const [currentTimeStr, updateCurrentTimerStr] = useState('00:00:00');
 
-  changeTimerState = (state) => {
-    this.setState({ isStop: state });
+  const _update = () => {
+    current += 1000;
+    updateCurrentTimerStr(formatTime(current));
   };
 
-  start = () => {
+  const _start = () => {
     // it doesn't have to be accurate :)
-    this.timerId = setInterval(() => this.update(), 1000);
-    this.changeTimerState(false);
-    this.props.start();
+    timerId = setInterval(() => _update(), 1000);
+    changeTimerState(false);
+    start();
   };
 
-  stop = () => {
-    clearInterval(this.timerId);
-    this.changeTimerState(true);
-    this.timerId = null;
-    this.props.stop();
+  const _stop = () => {
+    clearInterval(timerId);
+    changeTimerState(true);
+    timerId = null;
+    stop();
   };
 
-  reset = () => {
-    if (this.timerId) {
-      this.stop();
+  const _reset = () => {
+    if (timerId) {
+      stop();
     }
 
-    this.current = 0;
-    this.setState({ currentTimeStr: '00:00:00' });
-    this.props.reset();
+    current = 0;
+    updateCurrentTimerStr('00:00:00');
+    reset();
   };
 
-  update = () => {
-    this.current += 1000;
+  useEffect(() => {
+    return () => {
+      if (timerId) {
+        clearInterval(timerId);
+      }
+    };
+  }, []);
 
-    this.setState({ currentTimeStr: formatTime(this.current) });
-  };
-
-  render() {
-    return (
-      <div className="host-timer">
-        <FaRegHourglass
-          onClick={this.reset}
-          className={this.props.disabledReset ? 'disabled' : undefined}
-        />
-        {this.state.isStop ? (
-          <FaPlay
-            onClick={this.start}
-            className={this.props.disabledStart ? 'disabled' : undefined}
-          />
-        ) : (
-          <FaStop
-            onClick={this.stop}
-            className={this.props.disabledStop ? 'disabled' : undefined}
-          />
-        )}
-        <span>{this.state.currentTimeStr}</span>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="host-timer">
+      <FaRegHourglass onClick={_reset} className={disabledReset ? 'disabled' : undefined} />
+      {isStop ? (
+        <FaPlay onClick={_start} className={disabledStart ? 'disabled' : undefined} />
+      ) : (
+        <FaStop onClick={_stop} className={disabledStop ? 'disabled' : undefined} />
+      )}
+      <span>{currentTimeStr}</span>
+    </div>
+  );
+});
