@@ -8,19 +8,6 @@ import { setup as setupWebSlides } from '../../setup/webSlides';
 export class Base extends React.Component {
   constructor(props) {
     super(props);
-
-    if (!process.env.SSR && !window.slide) {
-      const hasWebSlidesElm = !!document.getElementById('webslides');
-
-      // [production] slides have already been inserted into HTML
-      if (hasWebSlidesElm) {
-        this.setup();
-      } else {
-        // [development] no ssr
-        // [production] common -> presenter-host(slides will be deleted) -> common
-        setTimeout(this.setup, 0);
-      }
-    }
   }
 
   setup = () => {
@@ -37,6 +24,10 @@ export class Base extends React.Component {
   };
 
   async componentDidMount() {
+    if (!window.slide) {
+      this.setup();
+    }
+
     Prism.highlightAll();
 
     if (process.env.CHART) {

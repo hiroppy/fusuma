@@ -26,10 +26,6 @@ export class AppContainer extends React.Component {
       CommentsListComponent: null // for lazy load
     };
 
-    // [production] for Presentation Mode
-    // hack for Presentation Mode
-    // slides are rotated when NODE_ENV=production
-    this.indexDiff = process.env.NODE_ENV === 'production' ? index : 0;
     this.params = parsedUrl.searchParams;
     this.ContentComponent = null;
     this.isLive = this.params.get('isLive');
@@ -88,12 +84,6 @@ export class AppContainer extends React.Component {
         fusumaProps: props
       };
     });
-
-    // if slides have already been existed, webSlides'll modify these DOMs
-    // so, these DOMs should be changed the order
-    if (process.env.NODE_ENV === 'production') {
-      res.slides = res.slides.concat(res.slides.splice(0, currentIndex));
-    }
 
     return res;
   }
@@ -195,7 +185,6 @@ export class AppContainer extends React.Component {
         {this.ContentComponent && (
           <this.ContentComponent
             hash={this.props.hash}
-            indexDiff={this.indexDiff}
             slides={this.state.slides}
             terminate={this.terminate}
             currentIndex={this.state.currentIndex}
