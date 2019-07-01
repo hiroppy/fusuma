@@ -44,6 +44,8 @@ slide:
   targetBlank: true
   showIndex: false
   isVertical: false
+  math: false
+  chart: false
 extends:
   js:
   css:
