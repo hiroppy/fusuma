@@ -57,12 +57,12 @@ Object {
       OptimizeCssAssetsWebpackPlugin {
         "deleteAssetsMap": Object {},
         "options": Object {
-          "assetNameRegExp": /\\\\\\.css\\$/g,
+          "assetNameRegExp": /\\\\\\.css\\(\\\\\\?\\.\\*\\)\\?\\$/i,
           "assetProcessors": Array [
             Object {
               "phase": "compilation.optimize-chunk-assets",
               "processor": [Function],
-              "regExp": /\\\\\\.css\\$/g,
+              "regExp": /\\\\\\.css\\(\\\\\\?\\.\\*\\)\\?\\$/i,
             },
           ],
           "canPrint": undefined,
@@ -81,7 +81,7 @@ Object {
             Object {
               "phase": "compilation.optimize-chunk-assets",
               "processor": [Function],
-              "regExp": /\\\\\\.css\\$/g,
+              "regExp": /\\\\\\.css\\(\\\\\\?\\.\\*\\)\\?\\$/i,
             },
           ],
           "emit": Array [],
