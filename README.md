@@ -25,6 +25,7 @@ Just write Markdown and create cool slides.😎
 - supports [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) (Chrome, Firefox)
   - it will help live coding, etc
 - supports drawing like Power Pointer's pointer feature
+- supports MathJax, Diagrams and Flowcharts
 - 100% SEO
 - records your voice and does time travel on slides timeline (Chrome, Firefox)
 - customizes JavaScript and CSS freely

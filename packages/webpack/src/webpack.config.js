@@ -52,7 +52,10 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
     resolve: {
       alias: {
         // https://github.com/facebook/react/issues/13991
-        react: path.resolve(__dirname, '../node_modules/react')
+        // for dev
+        react: process.env.FUSUMA_DEBUG
+          ? path.resolve(__dirname, '../node_modules/react')
+          : require.resolve('react')
       },
       modules: [
         'node_modules',
