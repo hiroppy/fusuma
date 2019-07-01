@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/hiroppy/fusuma/compare/v1.8.0...v1.9.0) (2019-07-01)
+
+### Bug Fixes
+
+- **configs:** showIndex is now as a default ([bdffa06](https://github.com/hiroppy/fusuma/commit/bdffa06))
+
+### Features
+
+- **configs:** add chart option ([a60a466](https://github.com/hiroppy/fusuma/commit/a60a466))
+- **webpack:** support MathJax ([adeaf00](https://github.com/hiroppy/fusuma/commit/adeaf00))
+
 # [1.7.0](https://github.com/hiroppy/fusuma/compare/v1.6.0...v1.7.0) (2019-06-25)
 
 **Note:** Version bump only for package @fusuma/configs

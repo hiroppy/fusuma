@@ -1,6 +1,6 @@
 {
   "name": "fusuma",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "easily make slides with markdown",
   "bin": {
     "fusuma": "./src/cli.js"
@@ -33,12 +33,12 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "@fusuma/cli": "^1.7.0",
-    "@fusuma/configs": "^1.7.0",
-    "@fusuma/task-build": "^1.8.0",
-    "@fusuma/task-ghp": "^1.7.0",
-    "@fusuma/task-init": "^1.7.0",
-    "@fusuma/task-start": "^1.8.0",
-    "@fusuma/utils": "^1.7.0"
+    "@fusuma/cli": "^1.9.0",
+    "@fusuma/configs": "^1.9.0",
+    "@fusuma/task-build": "^1.9.0",
+    "@fusuma/task-ghp": "^1.9.0",
+    "@fusuma/task-init": "^1.9.0",
+    "@fusuma/task-start": "^1.9.0",
+    "@fusuma/utils": "^1.9.0"
   }
 }

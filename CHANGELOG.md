@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/hiroppy/fusuma/compare/v1.8.0...v1.9.0) (2019-07-01)
+
+### Bug Fixes
+
+- **configs:** showIndex is now as a default ([bdffa06](https://github.com/hiroppy/fusuma/commit/bdffa06))
+- **webpack:** add output log ([04a3521](https://github.com/hiroppy/fusuma/commit/04a3521))
+
+### Features
+
+- **client:** support HMR of mermaid ([abee659](https://github.com/hiroppy/fusuma/commit/abee659))
+- **configs:** add chart option ([a60a466](https://github.com/hiroppy/fusuma/commit/a60a466))
+- **webpack:** don't use webpack-dev-server ([dd4a3fb](https://github.com/hiroppy/fusuma/commit/dd4a3fb))
+- **webpack:** implement to generate mermaid nodes in MDXAST ([bfd73a5](https://github.com/hiroppy/fusuma/commit/bfd73a5))
+- **webpack:** run SSR when running build task ([b277517](https://github.com/hiroppy/fusuma/commit/b277517))
+- **webpack:** support MathJax ([adeaf00](https://github.com/hiroppy/fusuma/commit/adeaf00))
+
+### Performance Improvements
+
+- **client:** don't use setTimeout when NODE_ENV=production ([dd49411](https://github.com/hiroppy/fusuma/commit/dd49411))
+
 # [1.8.0](https://github.com/hiroppy/fusuma/compare/v1.7.0...v1.8.0) (2019-06-26)
 
 ### Features
