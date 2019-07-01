@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/utils",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "utils for fusuma",
   "main": "src/index.js",
   "publishConfig": {

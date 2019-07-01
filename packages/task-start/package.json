@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/task-start",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "start task for fusuma",
   "main": "src/index.js",
   "publishConfig": {
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "@fusuma/webpack": "^1.9.1"
+    "@fusuma/webpack": "^1.9.2"
   }
 }
