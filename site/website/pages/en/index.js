@@ -119,7 +119,7 @@ class Index extends React.Component {
         <Block background="dark" align="left">
           {[
             {
-              content: 'provide features that can stream comments stream when giving a speech. ',
+              content: 'Provide features that can stream comments stream when giving a speech. ',
               image: `${baseUrl}img/top-live.png`,
               imageAlign: 'left',
               title: 'Live Mode'
