@@ -13,7 +13,9 @@ async function ssr(c) {
     const compiler = webpack(config);
 
     const { JSDOM } = jsdom;
-    const dom = new JSDOM();
+    const dom = new JSDOM('', {
+      url: 'http://localhost'
+    });
 
     global.window = dom.window;
     global.document = dom.window.document;

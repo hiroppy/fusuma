@@ -23,13 +23,16 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
   const { js: jsPath, css: cssPath } = fileExtends;
   const { basePath, remoteOrigin, htmlBody = '' } = internal;
   const outputPath = path.resolve(basePath, 'dist');
-
-  const config =
-    type === 'production'
-      ? require('./webpack.prod.config')()
-      : type === 'ssr'
-      ? require('./webpack.ssr.config')({ clientBasePath })
-      : require('./webpack.dev.config')();
+  const config = (() => {
+    switch (type) {
+      case 'production':
+        return require('./webpack.prod.config')();
+      case 'ssr':
+        return require('./webpack.ssr.config')({ clientBasePath });
+      default:
+        return require('./webpack.dev.config')();
+    }
+  })();
 
   const common = {
     name: name || 'slide',
@@ -131,7 +134,7 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
         'process.env.SHOW_INDEX': JSON.stringify(showIndex),
         'process.env.IS_VERTICAL': JSON.stringify(isVertical),
         'process.env.LOOP': JSON.stringify(loop),
-        'process.env.IS_LIVE': JSON.stringify(!!server.isLive),
+        'process.env.IS_LIVE': JSON.stringify(server.isLive),
         'process.env.SERVER_PORT': JSON.stringify(server.port),
         'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword),
         'process.env.CHART': JSON.stringify(chart),
