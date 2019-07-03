@@ -46,8 +46,14 @@ code {
 
 code[class*='language-'],
 pre[class*='language-'] {
-  font-size: 20px;
+  font-size: 1.4rem;
   line-height: 1.2;
+}
+@media screen and (min-width: 768px) {
+  code[class*='language-'],
+  pre[class*='language-'] {
+    font-size: 2rem;
+  }
 }
 
 #root {
