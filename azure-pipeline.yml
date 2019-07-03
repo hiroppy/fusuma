@@ -39,6 +39,8 @@ jobs:
         displayName: 'Install codecov'
       - script: npm run test:ci
         displayName: 'Run tests with coverage'
+      - script: cd samples/intro && npm i && npm run build
+        displayName: 'Build'
 
   - job: macOS
     pool:
@@ -77,6 +79,8 @@ jobs:
         displayName: 'Install codecov'
       - script: npm run test:ci
         displayName: 'Run tests with coverage'
+      - script: cd samples/intro && npm i && npm run build
+        displayName: 'Build'
 
   - job: Windows
     pool:
@@ -119,3 +123,5 @@ jobs:
         displayName: 'Install codecov'
       - script: npm run test:ci
         displayName: 'Run tests with coverage'
+      # - script: cd samples/intro && npm i && npm run build
+      #   displayName: 'Build'
