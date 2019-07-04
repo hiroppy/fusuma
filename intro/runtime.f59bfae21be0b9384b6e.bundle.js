@@ -86,7 +86,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"0":"vendors~Sidebar~presenter.host~presenter.view","1":"vendors~presenter.host~presenter.view","2":"Mermaid","3":"Sidebar","4":"live","6":"presenter.host","7":"presenter.view","9":"target-blank","11":"vendors~Mermaid","12":"vendors~Sidebar","13":"vendors~live","14":"vendors~presenter.host"}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"0e683cef01ecd3bc6c42","1":"4309d45e6dd4eb1038f3","2":"df239b697743fa00158d","3":"d484fecc0f517fd6108d","4":"f0cf85e7a60a2ecfb614","6":"a9aff9a15c4066eed8b7","7":"4589751add47c97699ff","9":"607bf047682945972916","11":"8ce7b51a8bcee052b8ee","12":"25a6017715675a018a12","13":"47563a653c15632a058b","14":"e03730608ee9610327c0"}[chunkId] + ".bundle.js"
+/******/ 		return __webpack_require__.p + "" + ({"0":"vendors~Sidebar~presenter.host~presenter.view","1":"vendors~presenter.host~presenter.view","2":"Mermaid","3":"Sidebar","4":"live","6":"presenter.host","7":"presenter.view","9":"target-blank","11":"vendors~Mermaid","12":"vendors~Sidebar","13":"vendors~live","14":"vendors~presenter.host"}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"0e683cef01ecd3bc6c42","1":"4309d45e6dd4eb1038f3","2":"df239b697743fa00158d","3":"d484fecc0f517fd6108d","4":"f0cf85e7a60a2ecfb614","6":"b654dfe9ae98f6419aa6","7":"40ac2e850682a344cff2","9":"607bf047682945972916","11":"8ce7b51a8bcee052b8ee","12":"25a6017715675a018a12","13":"47563a653c15632a058b","14":"e03730608ee9610327c0"}[chunkId] + ".bundle.js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -124,7 +124,7 @@
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"0":"vendors~Sidebar~presenter.host~presenter.view","1":"vendors~presenter.host~presenter.view","2":"Mermaid","3":"Sidebar","4":"live","6":"presenter.host","7":"presenter.view","9":"target-blank","11":"vendors~Mermaid","12":"vendors~Sidebar","13":"vendors~live","14":"vendors~presenter.host"}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"0e683cef01ecd3bc6c42","1":"4309d45e6dd4eb1038f3","2":"df239b697743fa00158d","3":"d484fecc0f517fd6108d","4":"f0cf85e7a60a2ecfb614","6":"a9aff9a15c4066eed8b7","7":"4589751add47c97699ff","9":"607bf047682945972916","11":"8ce7b51a8bcee052b8ee","12":"25a6017715675a018a12","13":"47563a653c15632a058b","14":"e03730608ee9610327c0"}[chunkId] + ".css";
+/******/ 				var href = "" + ({"0":"vendors~Sidebar~presenter.host~presenter.view","1":"vendors~presenter.host~presenter.view","2":"Mermaid","3":"Sidebar","4":"live","6":"presenter.host","7":"presenter.view","9":"target-blank","11":"vendors~Mermaid","12":"vendors~Sidebar","13":"vendors~live","14":"vendors~presenter.host"}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"0e683cef01ecd3bc6c42","1":"4309d45e6dd4eb1038f3","2":"df239b697743fa00158d","3":"d484fecc0f517fd6108d","4":"f0cf85e7a60a2ecfb614","6":"b654dfe9ae98f6419aa6","7":"40ac2e850682a344cff2","9":"607bf047682945972916","11":"8ce7b51a8bcee052b8ee","12":"25a6017715675a018a12","13":"47563a653c15632a058b","14":"e03730608ee9610327c0"}[chunkId] + ".css";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
