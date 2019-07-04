@@ -1,198 +1,154 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdMenu } from 'react-icons/md';
+import { createSlidesProps } from '../utils/createSlidesProps';
 import { Base } from './ContentView/Base';
 import { router } from '../router';
-import { ToC } from './ToC';
 
-export class AppContainer extends React.Component {
-  constructor(props) {
-    super(props);
+export const AppContainer = ({ slides: originalSlides, hash }) => {
+  const parsedUrl = new URL(window.location.href);
+  const params = parsedUrl.searchParams;
+  const isLive = params.get('isLive');
+  let index = parsedUrl.hash.match(/^#slide=(.+?)$/);
+  index = index !== null ? index[1] - 1 : 0;
 
-    const parsedUrl = new URL(window.location.href);
+  const setCommentsListComponent = async () => {
+    const { CommentsList } = await import(/* webpackChunkName: 'live' */ './CommentsList');
 
-    let index = parsedUrl.hash.match(/^#slide=(.+?)$/);
-
-    index = index !== null ? index[1] - 1 : 0;
-
-    const { slides, contentsList } = AppContainer.createProps(props.slides, index);
-
-    this.state = {
-      isSidebar: true,
-      isOpenSidebar: false,
-      slides,
-      contentsList,
-      currentIndex: index,
-      SidebarComponent: null, // for lazy load
-      CommentsListComponent: null // for lazy load
-    };
-
-    this.params = parsedUrl.searchParams;
-    this.ContentComponent = null;
-    this.isLive = this.params.get('isLive');
-
-    this.routeMode();
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    // for HMR
-    if (module.hot || process.env.SSR) {
-      const slides = AppContainer.createProps(props.slides);
-
-      return { ...slides };
-    }
-
-    return null;
-  }
-
-  async componentDidMount() {
-    this.changeSidebarState();
-
-    if (this.state.isSidebar) {
-      const { SidebarComponent } = await import(
-        /* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar'
-      );
-
-      this.setState({ SidebarComponent });
-    }
-  }
-
-  static createProps(slides, currentIndex) {
-    const slidesArr = [];
-    const propsArr = [];
-    const res = {};
-
-    slides.forEach(({ slides, fusumaProps }) => {
-      slidesArr.push(...slides);
-      propsArr.push(...fusumaProps);
-    });
-
-    propsArr.reduce((acc, { sectionTitle }, i) => {
-      if (sectionTitle) {
-        acc.push({
-          title: sectionTitle,
-          index: i + 1
-        });
-      }
-      return acc;
-    }, (res.contentsList = []));
-
-    res.slides = slidesArr.map((slide, i) => {
-      const props = propsArr[i];
-
-      return {
-        slide: props.contents ? ToC({ list: res.contentsList }) : slide,
-        fusumaProps: props
-      };
-    });
-
-    return res;
-  }
-
-  changeSidebarState = () => {
-    const isSidebar =
-      this.params.get('sidebar') === 'false' || !process.env.SIDEBAR || this.mode !== 'common'
-        ? false
-        : true;
-
-    this.setState({ isSidebar });
+    AddCommentsListComponents(CommentsList);
   };
 
-  async setupLive() {
-    const { CommentsList: CommentsListComponent } = await import(
-      /* webpackChunkName: 'live' */ './CommentsList'
+  // TODO: fix
+  // don't use async/await
+  const setSidebarComponent = () => {
+    import(/* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar').then(
+      ({ Sidebar }) => {
+        AddSidebarComponent(Sidebar);
+      }
     );
+  };
 
-    this.setState({ CommentsListComponent });
-  }
+  const changeSidebarState = () => {
+    const isSidebar =
+      params.get('sidebar') === 'false' || !process.env.SIDEBAR || mode !== 'common' ? false : true;
 
-  async routeMode(mode) {
-    if (this.mode !== undefined) {
-      this.mode = mode || router();
-      this.changeSidebarState();
-    } else {
-      this.mode = mode || router();
-    }
+    updateOpenSidebarStatus(false);
+    updateSidebarStatus(isSidebar);
+  };
 
-    if (this.mode === 'common') {
-      this.ContentComponent = Base;
+  const setContentViewComponent = async () => {
+    if (mode === 'common') {
+      AddContentComponent(Base);
     } else {
       const { default: Comp } =
-        this.mode === 'view'
+        mode === 'view'
           ? await import(/* webpackChunkName: 'presenter.view' */ './ContentView/View')
           : await import(/* webpackChunkName: 'presenter.host' */ './ContentView/Host');
 
-      this.ContentComponent = Comp;
+      AddContentComponent(Comp);
     }
+  };
 
-    if (this.mode === 'host') {
-      this.setState({
-        isOpenSidebar: false,
-        CommentsListComponent: null
-      });
-    } else if (process.env.IS_LIVE && this.isLive !== 'false') {
-      this.setupLive();
-    }
-  }
-
-  goTo = (num) => {
+  const goTo = (num) => {
     if (window.slide) {
       window.slide.goToSlide(num);
     }
   };
 
-  onSetSidebarOpen = ({ isOpen }) => {
-    if (this.state.isOpenSidebar !== isOpen) {
-      this.setState({ isOpenSidebar: isOpen });
+  const onSetSidebarOpen = ({ isOpen }) => {
+    console.log('aaaa', isOpenSidebar);
+    if (isOpenSidebar !== isOpen) {
+      updateOpenSidebarStatus(isOpen);
     }
   };
 
-  onChangeSlideIndex = (currentIndex) => {
-    this.setState({ currentIndex });
+  const onChangeSlideIndex = (currentIndex) => {
+    updateCurrentIndex(currentIndex);
   };
 
-  onRunPresentationMode = () => {
+  const onRunPresentationMode = () => {
     window.slide = null;
-    this.routeMode('host');
+    AddContentComponent(null);
+    updateMode('host');
   };
 
-  terminate = () => {
+  const terminate = () => {
     window.slide = null;
-    this.routeMode('common');
+    AddContentComponent(null);
+    updateMode('common');
   };
 
-  render() {
-    return (
-      <>
-        {this.state.isSidebar && (
-          <>
-            {this.state.SidebarComponent && (
-              <this.state.SidebarComponent
-                goTo={this.goTo}
-                isOpen={this.state.isOpenSidebar}
-                terminate={this.terminate}
-                contents={this.state.contentsList}
-                onStateChange={this.onSetSidebarOpen}
-                currentIndex={this.state.currentIndex}
-                runPresentationMode={this.onRunPresentationMode}
-              />
-            )}
-            <MdMenu
-              className="btn-sidebar"
-              onClick={() => this.onSetSidebarOpen({ isOpen: true })}
-            />
-          </>
-        )}
-        {this.ContentComponent && (
-          <this.ContentComponent
-            hash={this.props.hash}
-            slides={this.state.slides}
-            terminate={this.terminate}
-            currentIndex={this.state.currentIndex}
-            onChangeSlideIndex={this.onChangeSlideIndex}
-          />
-        )}
-        {this.state.CommentsListComponent && <this.state.CommentsListComponent />}
-      </>
-    );
+  const initialMode = router();
+  const createdProps = createSlidesProps(originalSlides, index);
+
+  const [mode, updateMode] = useState(initialMode); // common, view, host
+  const [slides, updateSlides] = useState(createdProps.slides);
+  const [contentsList, updateContentsList] = useState(createdProps.contentsList);
+  const [isSidebar, updateSidebarStatus] = useState(true);
+  const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
+  const [currentIndex, updateCurrentIndex] = useState(index);
+  const [SidebarComponent, AddSidebarComponent] = useState(null); // for lazyload
+  const [ContentComponent, AddContentComponent] = useState(mode === 'common' ? Base : undefined);
+  const [CommentsListComponent, AddCommentsListComponents] = useState(null); // for lazyload
+
+  useEffect(() => {
+    changeSidebarState();
+
+    if (!SidebarComponent) {
+      setSidebarComponent();
+    }
+
+    if (mode === 'host') {
+      AddCommentsListComponents(null);
+    } else if (process.env.IS_LIVE && isLive !== 'false') {
+      setCommentsListComponent();
+    }
+
+    if (!ContentComponent) {
+      setContentViewComponent();
+    }
+  }, [mode]);
+
+  // for HMR
+  if (module.hot || process.env.SSR) {
+    const [prevHash, updatePrevHash] = useState(hash);
+
+    if (prevHash !== hash) {
+      const createdProps = createSlidesProps(originalSlides);
+
+      updateSlides(createdProps.slides);
+      updateContentsList(createdProps.contentsList);
+      updatePrevHash(hash);
+    }
   }
-}
+
+  return (
+    <>
+      {isSidebar && (
+        <>
+          {SidebarComponent && (
+            <SidebarComponent
+              goTo={goTo}
+              isOpen={isOpenSidebar}
+              terminate={terminate}
+              contents={contentsList}
+              onStateChange={onSetSidebarOpen}
+              currentIndex={currentIndex}
+              runPresentationMode={onRunPresentationMode}
+            />
+          )}
+          <MdMenu className="btn-sidebar" onClick={() => onSetSidebarOpen({ isOpen: true })} />
+        </>
+      )}
+      {ContentComponent && (
+        <ContentComponent
+          hash={hash}
+          slides={slides}
+          terminate={terminate}
+          currentIndex={currentIndex}
+          onChangeSlideIndex={onChangeSlideIndex}
+        />
+      )}
+      {CommentsListComponent && <CommentsListComponent />}
+    </>
+  );
+};

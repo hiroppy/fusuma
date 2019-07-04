@@ -2,7 +2,7 @@
  * Host for Presentation mode
  */
 
-import React from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import {
   FaTimes,
@@ -32,180 +32,190 @@ const Iframe = ({ slideUrl, slideIndex }) => (
   />
 );
 
-export default class Host extends React.PureComponent {
-  constructor(props) {
-    super(props);
+let webrtc = null;
+let slideUrl = null;
+let presentationController = null;
+let presentationApiId = null;
+let recordedTimeline = [];
+let recordedStartedTime = 0;
+let audioUrl = null;
 
+const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
+  if (!presentationController) {
     const { origin, pathname } = new URL(window.location);
 
-    this.slides = props.slides; // TODO: separate from current reference
-    this.slideUrl = `${origin}/${pathname}?sidebar=false&isLive=false#slide=`;
-    this.presentationController = new PresentationController();
-    this.presentationApiId = null;
-    this.recordedTimeline = [];
-    this.recordedStartedTime = 0;
-    this.audioUrl = null;
-
-    this.state = {
-      usedAudio: false,
-      isOpenTimeline: false,
-      status: 'prepare', // prepare, start, stop
-      isEmptyRecordedTimeline: true,
-      isOpenZoomSlide: false
-    };
-
-    document.onkeyup = (e) => {
-      if (e.key === 'ArrowLeft') {
-        this.changeCurrentSlide(Math.max(0, this.props.currentIndex - 1));
-      } else if (e.key === 'ArrowRight') {
-        this.changeCurrentSlide(Math.min(this.slides.length - 1, this.props.currentIndex + 1));
-      }
-    };
+    slideUrl = `${origin}/${pathname}?sidebar=false&isLive=false#slide=`;
+    presentationController = new PresentationController();
   }
 
-  async componentDidMount() {
+  const [status, updateStatus] = useState('prepare'); // prepare, start, stop
+  const [usedAudio, updateAudioStatus] = useState(false);
+  const [isOpenTimeline, updateOpenTimelineStatus] = useState(false);
+  const [isEmptyRecordedTimeline, updateEmptyRecordedTimelineStatus] = useState(true);
+  const [isOpenZoomSlide, updateOpenZoomSlideStatus] = useState(false);
+
+  const _terminate = () => {
     try {
-      this.presentationApiId = await this.presentationController.openView();
-    } catch (e) {
-      console.error(e);
-    }
-  }
+      terminate();
 
-  componentWillUnmount() {
-    document.onkeyup = null;
-
-    if (this.presentationController) {
-      this.terminate();
-    }
-
-    this.disposeRecording();
-  }
-
-  terminate = () => {
-    try {
-      this.props.terminate();
-      if (this.presentationController) {
-        this.presentationController.terminate();
+      if (presentationController) {
+        presentationController.terminate();
+        presentationController = null;
       }
-      this.presentationController = null;
     } catch (e) {
       console.error(e);
     }
   };
 
-  changeCurrentSlide = (num) => {
-    if (this.state.status === 'start') {
-      const time = new Date().getTime() - this.recordedStartedTime;
-      const prevItem = this.recordedTimeline.slice(-1)[0];
+  const changeCurrentSlide = (num) => {
+    if (status === 'start') {
+      const time = new Date().getTime() - recordedStartedTime;
+      const prevItem = recordedTimeline.slice(-1)[0];
 
-      this.recordedTimeline.push({
+      recordedTimeline.push({
         slideNum: num + 1,
         time,
         timeStr: `${formatTime(time)} (+${formatTime(time - prevItem.time)})`,
         event: 'changed',
         title: `Moved to the ${num + 1} slide from the ${num} slide.`,
-        Slide: this.slides[num].slide,
+        Slide: slides[num].slide,
         color: '#3498db',
         Icon: <FaCaretRight size="22" />
       });
     }
 
-    this.props.onChangeSlideIndex(num);
-    this.presentationController.changePage(num);
+    onChangeSlideIndex(num);
+    presentationController.changePage(num);
   };
 
-  start = () => {
-    if (this.recordedTimeline.length === 0) {
-      this.recordedStartedTime = new Date().getTime();
+  const start = () => {
+    if (recordedTimeline.length === 0) {
+      recordedStartedTime = new Date().getTime();
     }
 
-    const time =
-      this.recordedTimeline.length === 0 ? 0 : new Date().getTime() - this.recordedStartedTime;
+    const time = recordedTimeline.length === 0 ? 0 : new Date().getTime() - recordedStartedTime;
 
-    this.recordedTimeline.push({
-      slideNum: this.props.currentIndex + 1,
+    recordedTimeline.push({
+      slideNum: currentIndex + 1,
       time,
       timeStr: formatTime(time),
       event: 'started',
-      title: `Started from the ${this.props.currentIndex + 1} slide.`,
-      Slide: this.slides[this.props.currentIndex].slide,
+      title: `Started from the ${currentIndex + 1} slide.`,
+      Slide: slides[currentIndex].slide,
       color: '#6fba1c',
       Icon: <FaCaretDown />
     });
 
-    if (this.state.usedAudio) {
-      this.webrtc.startRecording();
-      this.audioUrl = null;
+    if (usedAudio) {
+      webrtc.startRecording();
+      audioUrl = null;
     }
 
-    this.setState({ status: 'start', isEmptyRecordedTimeline: false });
+    updateEmptyRecordedTimelineStatus(false);
+    updateStatus('start');
   };
 
-  stop = async () => {
-    const time = new Date().getTime() - this.recordedStartedTime;
+  const stop = async () => {
+    const time = new Date().getTime() - recordedStartedTime;
 
-    this.recordedTimeline.push({
-      slideNum: this.props.currentIndex + 1,
+    recordedTimeline.push({
+      slideNum: currentIndex + 1,
       time,
       timeStr: formatTime(time),
       event: 'stopped',
-      title: `Stopped at the ${this.props.currentIndex + 1} slide.`,
+      title: `Stopped at the ${currentIndex + 1} slide.`,
       color: '#e9546b',
       Icon: <FaCaretUp />
     });
 
-    if (this.state.usedAudio) {
-      this.audioUrl = await this.webrtc.stopRecording();
+    if (usedAudio) {
+      audioUrl = await webrtc.stopRecording();
     }
 
-    this.setState({ status: 'stop' });
+    updateStatus('stop');
   };
 
-  reset = () => {
-    this.audioUrl = null;
-    this.recordedTimeline = [];
-    this.recordedStartedTime = 0;
-    this.setState({ status: 'prepare', isEmptyRecordedTimeline: true });
+  const reset = () => {
+    audioUrl = null;
+    recordedTimeline = [];
+    recordedStartedTime = 0;
+    updateStatus('prepare');
+    updateEmptyRecordedTimelineStatus(true);
   };
 
-  openTimeline = () => {
-    this.setState({ isOpenTimeline: true });
+  const openTimeline = () => {
+    updateOpenTimelineStatus(true);
   };
 
-  closeTimeline = () => {
-    this.setState({ isOpenTimeline: false });
+  const closeTimeline = () => {
+    updateOpenTimelineStatus(false);
   };
 
-  setupRecording = () => {
-    if (!this.webrtc) {
+  const setupRecording = () => {
+    if (!webrtc) {
       try {
-        this.webrtc = new WebRTC();
-        this.webrtc.setupRecording();
-        this.setState({ usedAudio: true });
+        webrtc = new WebRTC();
+        webrtc.setupRecording();
+        updateAudioStatus(true);
       } catch (e) {
         alert(e);
       }
     }
   };
 
-  disposeRecording = () => {
-    if (this.webrtc) {
-      this.webrtc.disposeRecording();
-      this.webrtc = null;
+  const disposeRecording = () => {
+    if (webrtc) {
+      webrtc.disposeRecording();
+      webrtc = null;
     }
 
-    this.setState({ usedAudio: false });
+    updateAudioStatus(false);
   };
 
-  openZoomSlide = () => {
-    this.setState({ isOpenZoomSlide: true });
+  const openZoomSlide = () => {
+    updateOpenZoomSlideStatus(true);
     emitCanvasEvent({ status: 'start' });
   };
 
-  closeZoomSlide = () => {
-    this.setState({ isOpenZoomSlide: false });
+  const closeZoomSlide = () => {
+    updateOpenZoomSlideStatus(false);
     emitCanvasEvent({ status: 'stop' });
   };
+
+  useEffect(() => {
+    async function openView() {
+      try {
+        if (!presentationController) {
+          throw new Error('Not found PresenterController.');
+        }
+        presentationApiId = await presentationController.openView();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    openView();
+
+    return () => {
+      document.onkeyup = null;
+
+      if (presentationController) {
+        _terminate();
+      }
+
+      disposeRecording();
+    };
+  }, []);
+
+  useEffect(() => {
+    document.onkeyup = (e) => {
+      if (e.key === 'ArrowLeft') {
+        changeCurrentSlide(Math.max(0, currentIndex - 1));
+      } else if (e.key === 'ArrowRight') {
+        changeCurrentSlide(Math.min(slides.length - 1, currentIndex + 1));
+      }
+    };
+  });
 
   // prohibit below actions
   //   usedAudio && status === 'start'
@@ -214,102 +224,81 @@ export default class Host extends React.PureComponent {
   //     stop or start
   //   usedAudio && status === 'start'
   //     mic
-  render() {
-    const { currentIndex } = this.props;
-
-    return (
-      <div className="host-container">
-        <Modal isOpen={this.state.isOpenTimeline} onRequestClose={this.closeTimeline}>
-          <Timeline items={this.recordedTimeline} url={this.audioUrl} />
-        </Modal>
-        <div className="host-left-box">
-          <div className="host-note">
-            {this.slides && (
-              <pre
-                dangerouslySetInnerHTML={{
-                  __html: this.slides[currentIndex].fusumaProps.note
-                }}
-              />
-            )}
-          </div>
-        </div>
-        <div className="host-right-box">
-          <div className="host-slide-layer">
-            <h2>Current</h2>
-            <MdZoomOutMap size={28} onClick={this.openZoomSlide} />
-            <Iframe slideUrl={this.slideUrl} slideIndex={currentIndex + 1} />
-          </div>
-          <Modal isOpen={this.state.isOpenZoomSlide} onRequestClose={this.closeZoomSlide}>
-            {this.state.isOpenZoomSlide && (
-              <div className="host-slide-canvas">
-                <Canvas toolbar hideGrid />
-                <Iframe slideUrl={this.slideUrl} slideIndex={currentIndex + 1} />
-              </div>
-            )}
-          </Modal>
-          <div className="host-slide-layer">
-            <h2>Next</h2>
-            <Iframe slideUrl={this.slideUrl} slideIndex={currentIndex + 2} />
-          </div>
-        </div>
-        <div className="host-bottom-box">
-          <FaTimes onClick={this.terminate} className="terminate-button" />
-          <div className="host-bottom-box-info">
-            <Timer
-              start={this.start}
-              stop={this.stop}
-              reset={this.reset}
-              disabledStart={
-                this.state.status === 'stop' &&
-                this.state.usedAudio &&
-                !this.start.isEmptyRecordedTimeline
-              }
-              disabledStop={
-                this.state.status === 'stop' &&
-                this.state.usedAudio &&
-                !this.start.isEmptyRecordedTimeline
-              }
-              disabledReset={this.state.status === 'start' && this.state.usedAudio}
+  return (
+    <div className="host-container">
+      <Modal isOpen={isOpenTimeline} onRequestClose={closeTimeline}>
+        <Timeline items={recordedTimeline} url={audioUrl} />
+      </Modal>
+      <div className="host-left-box">
+        <div className="host-note">
+          {slides && (
+            <pre
+              dangerouslySetInnerHTML={{
+                __html: slides[currentIndex].fusumaProps.note
+              }}
             />
-            <span className="current-slide-num">
-              {/* TODO: fix */}
-              {`${currentIndex + 1}`.padStart(2, '0')} / {`${this.slides.length}`.padStart(2, '0')}
-            </span>
-            <FaHistory
-              onClick={this.openTimeline}
-              size={18}
-              className={
-                (this.state.status === 'start' && this.state.usedAudio) ||
-                this.state.isEmptyRecordedTimeline
-                  ? 'disabled'
-                  : undefined
-              }
-            />
-            {this.state.usedAudio ? (
-              <FaMicrophoneAlt
-                onClick={this.disposeRecording}
-                className={
-                  this.state.status === 'start' || !this.state.isEmptyRecordedTimeline
-                    ? 'disabled'
-                    : undefined
-                }
-                size={20}
-                color="#6fba1c"
-              />
-            ) : (
-              <FaMicrophoneAltSlash
-                onClick={this.setupRecording}
-                className={
-                  this.state.status === 'start' || !this.state.isEmptyRecordedTimeline
-                    ? 'disabled'
-                    : undefined
-                }
-                size={20}
-              />
-            )}
-          </div>
+          )}
         </div>
       </div>
-    );
-  }
-}
+      <div className="host-right-box">
+        <div className="host-slide-layer">
+          <h2>Current</h2>
+          <MdZoomOutMap size={28} onClick={openZoomSlide} />
+          <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />
+        </div>
+        <Modal isOpen={isOpenZoomSlide} onRequestClose={closeZoomSlide}>
+          {isOpenZoomSlide && (
+            <div className="host-slide-canvas">
+              <Canvas toolbar hideGrid />
+              <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />
+            </div>
+          )}
+        </Modal>
+        <div className="host-slide-layer">
+          <h2>Next</h2>
+          <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 2} />
+        </div>
+      </div>
+      <div className="host-bottom-box">
+        <FaTimes onClick={_terminate} className="terminate-button" />
+        <div className="host-bottom-box-info">
+          <Timer
+            start={start}
+            stop={stop}
+            reset={reset}
+            disabledStart={status === 'stop' && usedAudio && !start.isEmptyRecordedTimeline}
+            disabledStop={status === 'stop' && usedAudio && !start.isEmptyRecordedTimeline}
+            disabledReset={status === 'start' && usedAudio}
+          />
+          <span className="current-slide-num">
+            {/* TODO: fix */}
+            {`${currentIndex + 1}`.padStart(2, '0')} / {`${slides.length}`.padStart(2, '0')}
+          </span>
+          <FaHistory
+            onClick={openTimeline}
+            size={18}
+            className={
+              (status === 'start' && usedAudio) || isEmptyRecordedTimeline ? 'disabled' : undefined
+            }
+          />
+          {usedAudio ? (
+            <FaMicrophoneAlt
+              onClick={disposeRecording}
+              className={status === 'start' || !isEmptyRecordedTimeline ? 'disabled' : undefined}
+              size={20}
+              color="#6fba1c"
+            />
+          ) : (
+            <FaMicrophoneAltSlash
+              onClick={setupRecording}
+              className={status === 'start' || !isEmptyRecordedTimeline ? 'disabled' : undefined}
+              size={20}
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+});
+
+export default Host;
