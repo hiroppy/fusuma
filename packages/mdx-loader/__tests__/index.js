@@ -99,4 +99,17 @@ $$
 `;
     expect(await transformToJS(src)).toMatchSnapshot();
   });
+
+  test('should convert class to className', async () => {
+    const src = `
+# Class
+
+<div class="test">
+  <div class="test2">
+    <h2 class="test3">hello</h2>
+  </div>
+</div>
+`;
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
 });

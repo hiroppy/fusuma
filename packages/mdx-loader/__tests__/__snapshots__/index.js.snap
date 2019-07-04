@@ -407,6 +407,53 @@ export default function MDXContent({
 MDXContent.isMDXComponent = true;"
 `;
 
+exports[`fusuma-loader should convert class to className 1`] = `
+"/* @jsx mdx */
+
+
+        import React from 'react';
+        import { mdx } from '@mdx-js/react';
+        export const slides = [
+          (props) => (
+            <>
+              
+    <h1>{\`Class\`}</h1>
+    <div className=\\"test\\">
+  <div className=\\"test2\\">
+    <h2 className=\\"test3\\">hello</h2>
+  </div>
+    </div>
+    
+            </>
+          )];
+        export const fusumaProps = [{}];
+const makeShortcode = name => function MDXDefaultShortcode(props) {
+  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
+  return <div {...props}/>
+};
+
+const layoutProps = {
+  slides
+};
+const MDXLayout = \\"wrapper\\"
+export default function MDXContent({
+  components,
+  ...props
+}) {
+  return <MDXLayout {...layoutProps} {...props} components={components} mdxType=\\"MDXLayout\\">
+    <h1>{\`Class\`}</h1>
+    <div className=\\"test\\">
+  <div className=\\"test2\\">
+    <h2 className=\\"test3\\">hello</h2>
+  </div>
+    </div>
+
+    </MDXLayout>;
+}
+
+MDXContent.isMDXComponent = true;"
+`;
+
 exports[`fusuma-loader should convert emoji 1`] = `
 "/* @jsx mdx */
 

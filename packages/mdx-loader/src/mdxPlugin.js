@@ -100,7 +100,9 @@ function mdxPlugin() {
         slide.push(n);
 
         if (n.type === 'jsx') {
-          n.value = n.value.replace(/src="(.+?\.(png|jpg|gif|svg?))"/, 'src={require("$1")}');
+          n.value = n.value
+            .replace(/src="(.+?\.(png|jpg|gif|svg?))"/, 'src={require("$1")}')
+            .replace(/class=/g, 'className=');
         }
       }
     });
