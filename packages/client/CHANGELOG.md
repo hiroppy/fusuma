@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.3](https://github.com/hiroppy/fusuma/compare/v1.9.2...v1.9.3) (2019-07-04)
+
+### Bug Fixes
+
+- **client:** don't accept null ([84ff3aa](https://github.com/hiroppy/fusuma/commit/84ff3aa)), closes [#139](https://github.com/hiroppy/fusuma/issues/139)
+- **client:** modify code block font size ([#136](https://github.com/hiroppy/fusuma/issues/136)) ([2ef98fa](https://github.com/hiroppy/fusuma/commit/2ef98fa))
+
 ## [1.9.2](https://github.com/hiroppy/fusuma/compare/v1.9.1...v1.9.2) (2019-07-01)
 
 ### Bug Fixes
