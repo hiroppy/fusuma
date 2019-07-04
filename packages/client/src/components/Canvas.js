@@ -83,7 +83,9 @@ export const Canvas = memo(({ toolbar, disabled, hideGrid }) => {
 });
 
 export function getValue() {
-  return JSON.parse(window.localStorage.getItem('fusumaCanvasEvent'));
+  const value = window.localStorage.getItem('fusumaCanvasEvent');
+
+  return JSON.parse(value || { status: 'none' });
 }
 
 export function listenCanvasEvent(cb) {

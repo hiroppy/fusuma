@@ -55,7 +55,6 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   };
 
   const onSetSidebarOpen = ({ isOpen }) => {
-    console.log('aaaa', isOpenSidebar);
     if (isOpenSidebar !== isOpen) {
       updateOpenSidebarStatus(isOpen);
     }
