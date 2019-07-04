@@ -86,7 +86,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"0":"vendors~Sidebar~presenter.host~presenter.view","1":"vendors~presenter.host~presenter.view","2":"Mermaid","3":"Sidebar","4":"live","6":"presenter.host","7":"presenter.view","9":"target-blank","11":"vendors~Mermaid","12":"vendors~Sidebar","13":"vendors~live","14":"vendors~presenter.host"}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"4a01969ee2a23cb790a5","1":"c9a415cad41abc73ee3f","2":"6e2b4786747d2abb7b91","3":"06dee6548afba5a76e71","4":"a75742370f5f9b9545ca","6":"50f5e53628945776f55e","7":"ded90de8c044b7d7d5c9","9":"c20c16b3c908db033d4e","11":"f88c5a7b54eb54dd6af9","12":"88829ea0a3a7dddc3b29","13":"2b3e62e4e3a36e9d22a4","14":"54f99dd4e7d32a30a678"}[chunkId] + ".bundle.js"
+/******/ 		return __webpack_require__.p + "" + ({"0":"vendors~Sidebar~presenter.host~presenter.view","1":"vendors~presenter.host~presenter.view","2":"Mermaid","3":"Sidebar","4":"live","6":"presenter.host","7":"presenter.view","9":"target-blank","11":"vendors~Mermaid","12":"vendors~Sidebar","13":"vendors~live","14":"vendors~presenter.host"}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"4a01969ee2a23cb790a5","1":"c9a415cad41abc73ee3f","2":"6e2b4786747d2abb7b91","3":"06dee6548afba5a76e71","4":"a75742370f5f9b9545ca","6":"50f5e53628945776f55e","7":"4fd603080795c6e94f4b","9":"c20c16b3c908db033d4e","11":"f88c5a7b54eb54dd6af9","12":"88829ea0a3a7dddc3b29","13":"2b3e62e4e3a36e9d22a4","14":"54f99dd4e7d32a30a678"}[chunkId] + ".bundle.js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -124,7 +124,7 @@
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"0":"vendors~Sidebar~presenter.host~presenter.view","1":"vendors~presenter.host~presenter.view","2":"Mermaid","3":"Sidebar","4":"live","6":"presenter.host","7":"presenter.view","9":"target-blank","11":"vendors~Mermaid","12":"vendors~Sidebar","13":"vendors~live","14":"vendors~presenter.host"}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"4a01969ee2a23cb790a5","1":"c9a415cad41abc73ee3f","2":"6e2b4786747d2abb7b91","3":"06dee6548afba5a76e71","4":"a75742370f5f9b9545ca","6":"50f5e53628945776f55e","7":"ded90de8c044b7d7d5c9","9":"c20c16b3c908db033d4e","11":"f88c5a7b54eb54dd6af9","12":"88829ea0a3a7dddc3b29","13":"2b3e62e4e3a36e9d22a4","14":"54f99dd4e7d32a30a678"}[chunkId] + ".css";
+/******/ 				var href = "" + ({"0":"vendors~Sidebar~presenter.host~presenter.view","1":"vendors~presenter.host~presenter.view","2":"Mermaid","3":"Sidebar","4":"live","6":"presenter.host","7":"presenter.view","9":"target-blank","11":"vendors~Mermaid","12":"vendors~Sidebar","13":"vendors~live","14":"vendors~presenter.host"}[chunkId]||chunkId) + "." + chunkId + "." + {"0":"4a01969ee2a23cb790a5","1":"c9a415cad41abc73ee3f","2":"6e2b4786747d2abb7b91","3":"06dee6548afba5a76e71","4":"a75742370f5f9b9545ca","6":"50f5e53628945776f55e","7":"4fd603080795c6e94f4b","9":"c20c16b3c908db033d4e","11":"f88c5a7b54eb54dd6af9","12":"88829ea0a3a7dddc3b29","13":"2b3e62e4e3a36e9d22a4","14":"54f99dd4e7d32a30a678"}[chunkId] + ".css";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
