@@ -10,11 +10,11 @@ const { babel: babelrc } = require('@fusuma/configs');
 const css = require('./css');
 
 const configsEntryPoint = require.resolve('@fusuma/configs');
-const configsBasePath = configsEntryPoint.split('/src')[0];
+const configsBasePath = configsEntryPoint.split('/src').slice(0, -1).join('/src');
 const clientEntryPoint = require.resolve('@fusuma/client');
-const clientBasePath = clientEntryPoint.split('/src')[0];
+const clientBasePath = clientEntryPoint.split('/src').slice(0, -1).join('/src');
 const mdxLoaderEntryPoint = require.resolve('@fusuma/mdx-loader');
-const mdxLoaderBasePath = mdxLoaderEntryPoint.split('/src')[0];
+const mdxLoaderBasePath = mdxLoaderEntryPoint.split('/src').slice(0, -1).join('/src');
 
 module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
   // name is deprecated TODO: delete
