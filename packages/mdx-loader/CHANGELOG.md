@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.4](https://github.com/hiroppy/fusuma/compare/v1.9.3...v1.9.4) (2019-07-05)
+
+### Bug Fixes
+
+- **fusuma-loader:** replace class with className ([48d0f73](https://github.com/hiroppy/fusuma/commit/48d0f73))
+
 ## [1.9.3](https://github.com/hiroppy/fusuma/compare/v1.9.2...v1.9.3) (2019-07-04)
 
 ### Bug Fixes

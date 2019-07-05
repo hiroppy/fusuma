@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.4](https://github.com/hiroppy/fusuma/compare/v1.9.3...v1.9.4) (2019-07-05)
+
+### Bug Fixes
+
+- **client:** don't use localstorage when running presentation api ([269975a](https://github.com/hiroppy/fusuma/commit/269975a))
+
 ## [1.9.3](https://github.com/hiroppy/fusuma/compare/v1.9.2...v1.9.3) (2019-07-04)
 
 ### Bug Fixes
