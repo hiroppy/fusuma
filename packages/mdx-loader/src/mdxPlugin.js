@@ -46,9 +46,13 @@ function createFusumaProps(nodes) {
         const value = v.slice(11).trim();
 
         if (/^https?/.test(value)) {
-          property.backgroundImage = v.slice(11).trim();
+          property.background = {
+            'data-background-image': v.slice(11).trim()
+          };
         } else {
-          property.backgroundColor = v.slice(11).trim();
+          property.background = {
+            'data-background-color': v.slice(11).trim()
+          };
         }
       }
     }

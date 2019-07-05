@@ -38,7 +38,7 @@ exports[`fusuma-loader should add fusuma options 1`] = `
     
             </>
           )];
-        export const fusumaProps = [{note: 'This is Note!',classes: 'class!',sectionTitle: 'sectionTitle!',backgroundColor: 'red',backgroundImage: 'https://test.com',screen: 'true'}];
+        export const fusumaProps = [{note: 'This is Note!',classes: 'class!',sectionTitle: 'sectionTitle!',background: '[object Object]',screen: 'true'}];
 const makeShortcode = name => function MDXDefaultShortcode(props) {
   console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
   return <div {...props}/>
