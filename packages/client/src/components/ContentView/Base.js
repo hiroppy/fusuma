@@ -19,6 +19,23 @@ async function setupMermaid() {
   mermaid.init();
 }
 
+function setupSlides() {
+  if (!window.slide) {
+    window.slide = setupWebSlides({});
+
+    // for presenter:view
+    window.slide.el.addEventListener('ws:slide-change', (e) => {
+      if (process.env.CHART) {
+        reloadChart();
+      }
+
+      if (onChangeSlideIndex) {
+        onChangeSlideIndex(e.detail.currentSlide0);
+      }
+    });
+  }
+}
+
 export const Base = memo(
   ({ slides, onChangeSlideIndex, hash }) => {
     // for SSR
@@ -32,21 +49,16 @@ export const Base = memo(
       }, [hash]);
     }
 
-    // setup
+    // useEffect is called too late
+    // delay Event Loop one round
+    // but on Node.js this line is an error, so put it in useEffect
+    if (!process.env.SSR) {
+      setTimeout(setupSlides, 0);
+    }
+
     useEffect(() => {
-      if (!window.slide) {
-        window.slide = setupWebSlides({});
-
-        // for presenter:view
-        window.slide.el.addEventListener('ws:slide-change', (e) => {
-          if (process.env.CHART) {
-            reloadChart();
-          }
-
-          if (onChangeSlideIndex) {
-            onChangeSlideIndex(e.detail.currentSlide0);
-          }
-        });
+      if (process.env.SSR) {
+        setupSlides();
       }
 
       if (process.env.CHART && !mermaid) {

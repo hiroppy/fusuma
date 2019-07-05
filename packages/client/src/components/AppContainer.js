@@ -17,14 +17,12 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
     AddCommentsListComponents(CommentsList);
   };
 
-  // TODO: fix
-  // don't use async/await
-  const setSidebarComponent = () => {
-    import(/* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar').then(
-      ({ Sidebar }) => {
-        AddSidebarComponent(Sidebar);
-      }
+  const setSidebarComponent = async () => {
+    const { Sidebar } = await import(
+      /* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar'
     );
+
+    AddSidebarComponent(Sidebar);
   };
 
   const changeSidebarState = () => {
