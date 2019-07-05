@@ -3,7 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro'); /* for highlight.js */
 
 body {
+  color: rgba(51, 51, 51);
   font-size: 24px;
+  font-family: Roboto, San Francisco, helvetica, arial, sans-serif;
+  font-weight: 300;
 }
 
 a {
@@ -46,15 +49,15 @@ code {
 
 code[class*='language-'],
 pre[class*='language-'] {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 1.2;
 }
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   code[class*='language-'],
   pre[class*='language-'] {
     font-size: 2rem;
   }
-}
+} */
 
 #root {
   display: flex;
@@ -86,4 +89,9 @@ pre[class*='language-'] {
 
 .katex-html {
   display: none;
+}
+
+.reveal {
+  font-size: inherit;
+  height: 100vh;
 }

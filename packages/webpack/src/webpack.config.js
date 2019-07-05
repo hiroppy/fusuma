@@ -10,16 +10,25 @@ const { babel: babelrc } = require('@fusuma/configs');
 const css = require('./css');
 
 const configsEntryPoint = require.resolve('@fusuma/configs');
-const configsBasePath = configsEntryPoint.split('/src').slice(0, -1).join('/src');
+const configsBasePath = configsEntryPoint
+  .split('/src')
+  .slice(0, -1)
+  .join('/src');
 const clientEntryPoint = require.resolve('@fusuma/client');
-const clientBasePath = clientEntryPoint.split('/src').slice(0, -1).join('/src');
+const clientBasePath = clientEntryPoint
+  .split('/src')
+  .slice(0, -1)
+  .join('/src');
 const mdxLoaderEntryPoint = require.resolve('@fusuma/mdx-loader');
-const mdxLoaderBasePath = mdxLoaderEntryPoint.split('/src').slice(0, -1).join('/src');
+const mdxLoaderBasePath = mdxLoaderEntryPoint
+  .split('/src')
+  .slice(0, -1)
+  .join('/src');
 
 module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
   // name is deprecated TODO: delete
   const { url, name, description, thumbnail, siteName, sns, title } = meta;
-  const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
+  const { sidebar, targetBlank, loop, code, chart, math, controls, theme, slideNumber } = slide;
   const { js: jsPath, css: cssPath } = fileExtends;
   const { basePath, remoteOrigin, htmlBody = '' } = internal;
   const outputPath = path.resolve(basePath, 'dist');
@@ -121,7 +130,6 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
     },
     plugins: [
       new webpack.DefinePlugin({
-        'process.env.JS_PATH': JSON.stringify(path.join(basePath, jsPath || '')),
         'process.env.CSS_PATH': JSON.stringify(path.join(basePath, cssPath || '')),
         'process.env.SLIDE_PATH': JSON.stringify(path.join(basePath, 'slides')),
         'process.env.URL': JSON.stringify(url),
@@ -131,14 +139,15 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
         'process.env.BASE_PATH': JSON.stringify(basePath),
         'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin),
         'process.env.TARGET_BLANK': JSON.stringify(targetBlank),
-        'process.env.SHOW_INDEX': JSON.stringify(showIndex),
-        'process.env.IS_VERTICAL': JSON.stringify(isVertical),
         'process.env.LOOP': JSON.stringify(loop),
         'process.env.IS_LIVE': JSON.stringify(server.isLive),
         'process.env.SERVER_PORT': JSON.stringify(server.port),
         'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword),
         'process.env.CHART': JSON.stringify(chart),
-        'process.env.SSR': JSON.stringify(type === 'ssr')
+        'process.env.SSR': JSON.stringify(type === 'ssr'),
+        'process.env.THEME': JSON.stringify(theme),
+        'process.env.CONTROLS': JSON.stringify(controls),
+        'process.env.SLIDE_NUMBER': JSON.stringify(slideNumber)
       }),
       new ImageminWebpWebpackPlugin({
         detailedLogs: false,

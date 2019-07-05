@@ -3,6 +3,9 @@ import { MdMenu } from 'react-icons/md';
 import { createSlidesProps } from '../utils/createSlidesProps';
 import { Base } from './ContentView/Base';
 import { router } from '../router';
+import { setupReveal as initReveal } from '../setup/reveal';
+
+let reveal = null;
 
 export const AppContainer = ({ slides: originalSlides, hash }) => {
   const parsedUrl = new URL(window.location.href);
@@ -47,9 +50,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   };
 
   const goTo = (num) => {
-    if (window.slide) {
-      window.slide.goToSlide(num);
-    }
+    reveal.slide(num);
   };
 
   const onSetSidebarOpen = ({ isOpen }) => {
@@ -63,13 +64,13 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   };
 
   const onRunPresentationMode = () => {
-    window.slide = null;
+    reveal = null;
     AddContentComponent(null);
     updateMode('host');
   };
 
   const terminate = () => {
-    window.slide = null;
+    reveal = null;
     AddContentComponent(null);
     updateMode('common');
   };
@@ -84,8 +85,50 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
   const [currentIndex, updateCurrentIndex] = useState(index);
   const [SidebarComponent, AddSidebarComponent] = useState(null); // for lazyload
-  const [ContentComponent, AddContentComponent] = useState(mode === 'common' ? Base : undefined);
+  const [ContentComponent, AddContentComponent] = useState(mode === 'common' ? Base : null);
   const [CommentsListComponent, AddCommentsListComponents] = useState(null); // for lazyload
+
+  const setupReveal = () => {
+    if (!reveal) {
+      reveal = initReveal();
+
+      reveal.addEventListener('slidechanged', (e) => {
+        onChangeSlideIndex(e.indexh);
+        // if (process.env.CHART) {
+        //   reloadChart();
+        // }
+      });
+    } else {
+      return reveal;
+    }
+  };
+
+  if (!process.env.SSR) {
+    if (process.env.NODE_ENV === 'production') {
+      setupReveal();
+    } else {
+      if (mode !== 'view') {
+        setTimeout(setupReveal);
+      }
+    }
+  } else {
+    useEffect(() => {
+      if (!reveal) {
+        initReveal();
+      }
+    }, []);
+  }
+
+  // view component is dynamic import
+  useEffect(() => {
+    if (mode === 'view') {
+      if (process.env.NODE_ENV === 'production') {
+        setupReveal();
+      } else {
+        setTimeout(setupReveal, 500);
+      }
+    }
+  }, [ContentComponent]);
 
   useEffect(() => {
     changeSidebarState();
@@ -130,6 +173,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
               contents={contentsList}
               onStateChange={onSetSidebarOpen}
               currentIndex={currentIndex}
+              totalSlidesNum={slides.length}
               runPresentationMode={onRunPresentationMode}
             />
           )}
@@ -139,10 +183,11 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
       {ContentComponent && (
         <ContentComponent
           hash={hash}
+          goTo={goTo}
           slides={slides}
           terminate={terminate}
-          currentIndex={currentIndex}
           onChangeSlideIndex={onChangeSlideIndex}
+          currentIndex={currentIndex}
         />
       )}
       {CommentsListComponent && <CommentsListComponent />}

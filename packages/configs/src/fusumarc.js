@@ -19,11 +19,12 @@ const config = {
     sns: ['twitter'] // twitter, hatena
   },
   slide: {
-    loop: true,
+    theme: 'fusuma',
+    loop: false,
     sidebar: true,
+    controls: false,
+    slideNumber: false,
     targetBlank: true,
-    showIndex: true,
-    isVertical: false,
     // https://github.com/mAAdhaTTah/babel-plugin-prismjs#configuring-the-plugin
     code: {
       languages: ['javascript'],

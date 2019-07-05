@@ -20,6 +20,7 @@ async function ssr(c) {
     global.window = dom.window;
     global.document = dom.window.document;
     global.location = dom.window.location;
+    global.navigator = dom.window.navigator;
 
     compiler.run((err, stats) => {
       if (err) {

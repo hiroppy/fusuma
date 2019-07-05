@@ -14,19 +14,12 @@ let webrtc = null;
 let currentVideoTag = null;
 let currentLayer = null;
 
-const View = memo(({ slides, hash }) => {
+const View = memo(({ slides, hash, goTo }) => {
   // need to declare here
   if (!presentationReceiver) {
     presentationReceiver = new PresentationReceiver();
     presentationReceiver.onChangePage((pageNum) => {
-      if (window.slide) {
-        window.slide.goToSlide(pageNum);
-
-        // stop capturing
-        if (webrtc && currentVideoTag) {
-          stopCapturing(currentVideoTag);
-        }
-      }
+      goTo(pageNum);
     });
   }
 
@@ -102,7 +95,7 @@ const View = memo(({ slides, hash }) => {
   return (
     <div className="fusuma-presenter-view">
       {usedCanvas && <Canvas disabled hideGrid />}
-      <Base slides={slides} hash={hash} showIndex={false} />
+      <Base slides={slides} hash={hash} />
     </div>
   );
 });

@@ -25,11 +25,7 @@ import '../../../assets/style/host.css';
 Modal.setAppElement('#root');
 
 const Iframe = ({ slideUrl, slideIndex }) => (
-  <iframe
-    src={`${slideUrl.replace(/slide=(\d?)/, `slide=${slideIndex}`)}`}
-    width="100%"
-    height="100%"
-  />
+  <iframe src={`${slideUrl.replace(/#\/?(\d?)/, `#/${slideIndex}`)}`} width="100%" height="100%" />
 );
 
 let webrtc = null;
@@ -44,7 +40,8 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
   if (!presentationController) {
     const { origin, pathname } = new URL(window.location);
 
-    slideUrl = `${origin}/${pathname}?sidebar=false&isLive=false#slide=`;
+    slideUrl = `${origin}/${pathname}?sidebar=false&isLive=false#`;
+
     presentationController = new PresentationController();
   }
 
@@ -84,8 +81,8 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
       });
     }
 
-    onChangeSlideIndex(num);
     presentationController.changePage(num);
+    onChangeSlideIndex(num);
   };
 
   const start = () => {
@@ -244,19 +241,19 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
         <div className="host-slide-layer">
           <h2>Current</h2>
           <MdZoomOutMap size={28} onClick={openZoomSlide} />
-          <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />
+          <Iframe slideUrl={slideUrl} slideIndex={currentIndex} />
         </div>
         <Modal isOpen={isOpenZoomSlide} onRequestClose={closeZoomSlide}>
           {isOpenZoomSlide && (
             <div className="host-slide-canvas">
               <Canvas toolbar hideGrid />
-              <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />
+              <Iframe slideUrl={slideUrl} slideIndex={currentIndex} />
             </div>
           )}
         </Modal>
         <div className="host-slide-layer">
           <h2>Next</h2>
-          <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 2} />
+          <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />
         </div>
       </div>
       <div className="host-bottom-box">
