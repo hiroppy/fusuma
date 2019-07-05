@@ -42,6 +42,15 @@ function createFusumaProps(nodes) {
       if (v.slice(0, 13) === 'sectionTitle:') {
         property.sectionTitle = v.slice(13).trim();
       }
+      if (v.slice(0, 11) === 'background:') {
+        const value = v.slice(11).trim();
+
+        if (/^https?/.test(value)) {
+          property.backgroundImage = v.slice(11).trim();
+        } else {
+          property.backgroundColor = v.slice(11).trim();
+        }
+      }
     }
   });
 

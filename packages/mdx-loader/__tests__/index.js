@@ -55,6 +55,8 @@ This is Note!
 -->
 <!-- classes: class! -->
 <!-- sectionTitle: sectionTitle! -->
+<!-- background: red -->
+<!-- background: https://test.com -->
 # Hello
 <!-- content -->
 <!-- screen -->
