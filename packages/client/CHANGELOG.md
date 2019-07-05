@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.5](https://github.com/hiroppy/fusuma/compare/v1.9.4...v1.9.5) (2019-07-05)
+
+### Performance Improvements
+
+- **client:** don't include setupWebSlides in useEffect when on browsers ([2445045](https://github.com/hiroppy/fusuma/commit/2445045)), closes [#140](https://github.com/hiroppy/fusuma/issues/140)
+
 ## [1.9.4](https://github.com/hiroppy/fusuma/compare/v1.9.3...v1.9.4) (2019-07-05)
 
 ### Bug Fixes
