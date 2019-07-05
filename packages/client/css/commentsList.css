@@ -1,11 +1,12 @@
 @import './variable';
 
 .comments-list {
+  font-family: Roboto, San Francisco, helvetica, arial, sans-serif;
   background: #333;
   height: 100vh;
   top: 0;
   right: 0;
-  width: 25%;
+  width: 30%;
 }
 
 .comments-list-title {
@@ -13,20 +14,21 @@
   height: 40px;
   padding: 8px 18px;
   background: #555;
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .comments-list-total {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .comments-list-ul {
   display: flex;
   flex-direction: column-reverse;
   height: calc(100% - 40px - 8px * 2);
+  padding: 0;
   overflow-y: auto;
   list-style: none;
   margin: 8px 16px 0 16px;
@@ -63,17 +65,18 @@
   align-items: center;
   justify-content: space-between;
   color: #555;
-  font-size: 1.8rem;
+  font-size: 1.1rem;
   height: 24px;
   margin-bottom: 4px;
   font-weight: 500;
 }
 
 .comments-list-li-time-ago {
-  font-size: 1.4rem;
+  font-size: 0.9rem;
 }
 
 .comments-list-li-comment {
-  font-size: 2rem;
+  font-size: 1.3rem;
+  line-height: 1.3;
   word-break: break-all;
 }

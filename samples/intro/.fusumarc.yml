@@ -6,6 +6,7 @@ meta:
   siteName: hiroppy.me
   sns: ['twitter']
 slide:
+  theme: moon
   code:
     languages:
       - yaml

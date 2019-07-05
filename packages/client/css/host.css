@@ -7,6 +7,7 @@
 }
 
 .host-container {
+  font-family: Roboto, San Francisco, helvetica, arial, sans-serif;
   background: var(--color-black);
   display: grid;
   padding: 0 20px;
@@ -126,6 +127,8 @@
 }
 
 .host-timeline-container {
+  font-family: Roboto, San Francisco, helvetica, arial, sans-serif;
+  font-size: 1.4rem;
   display: flex;
   flex-direction: column;
   height: 100%;

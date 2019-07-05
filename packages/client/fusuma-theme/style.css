@@ -1,10 +1,9 @@
-@import './variable';
-@import './sidebar.css';
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro'); /* for highlight.js */
+@import '../css/variable';
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,400i,600&display=swap');
 
 body {
   color: rgba(51, 51, 51);
-  font-size: 24px;
+  font-size: 62.5%;
   font-family: Roboto, San Francisco, helvetica, arial, sans-serif;
   font-weight: 300;
 }
@@ -78,20 +77,6 @@ pre[class*='language-'] {
   background: inherit;
 }
 
-#webslides {
-  flex: 1;
-}
-
-#webslides-zoomed {
-  position: absolute;
-  width: 100%;
-}
-
 .katex-html {
   display: none;
-}
-
-.reveal {
-  font-size: inherit;
-  height: 100vh;
 }

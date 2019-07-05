@@ -3,6 +3,7 @@ import { slide as Menu } from 'react-burger-menu';
 import screenfull from 'screenfull';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay } from 'react-icons/md';
+import '../../css/sidebar.css';
 
 const styles = {
   sidebar: {
@@ -99,7 +100,7 @@ export const Sidebar = memo(
       <ul className="sidebar-contents">
         {contents.map((content, i) => (
           <li key={i}>
-            <a href={`#${content.index}`}>{content.title}</a>
+            <a href={`#/${content.index - 1}`}>{content.title}</a>
           </li>
         ))}
       </ul>

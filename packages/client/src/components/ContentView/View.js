@@ -7,14 +7,14 @@ import { Base } from './Base';
 import { Receiver as PresentationReceiver } from '../../presentationMode/Receiver';
 import { Canvas, listenCanvasEvent, getValue } from '../Canvas';
 import { WebRTC } from '../../utils/webrtc';
-import '../../../assets/style/view.css';
+import '../../../css/view.css';
 
 let presentationReceiver = null;
 let webrtc = null;
 let currentVideoTag = null;
 let currentLayer = null;
 
-const View = memo(({ slides, hash, goTo }) => {
+const View = memo(({ slides, hash, goTo, onMount }) => {
   // need to declare here
   if (!presentationReceiver) {
     presentationReceiver = new PresentationReceiver();
@@ -87,6 +87,7 @@ const View = memo(({ slides, hash, goTo }) => {
 
   useEffect(() => {
     listenVideoTags();
+    onMount();
     // https://github.com/hiroppy/fusuma/issues/139#issuecomment-508637780
     // listenCanvas();
     // changeCanvasState(getValue().status === 'start');

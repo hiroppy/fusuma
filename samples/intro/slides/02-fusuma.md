@@ -8,16 +8,12 @@
 
 #### _Fusuma is a helper which makes slides using Markdown easily._
 
-<br />
-
 - makes cool slides by [WebSlides](https://github.com/webslides/WebSlides)
 - supports development, production and deploy tasks
   - you don't have to write webpack, Babel, Postcss settings, and etc...
 - supports OGP, SNS, Fullscreen, and Presenter Mode
 - supports [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API)
 - exports as PDF
-
-<br />
 
 ### just write in Markdown and execute with CLI😍
 

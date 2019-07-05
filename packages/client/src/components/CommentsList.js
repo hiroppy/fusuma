@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from 'react';
 import posed, { PoseGroup } from 'react-pose';
 import IntlRelativeFormat from 'intl-relativeformat';
-import '../../assets/style/commentsList.css';
+import '../../css/commentsList.css';
 
 const Ul = posed.ul({});
 const Li = posed.li({

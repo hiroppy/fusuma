@@ -4,30 +4,19 @@
   --color-cyan: #7bb7fa;
 }
 
-.btn-sidebar {
-  bottom: 20px;
-  color: var(--color-white);
-  cursor: pointer;
-  fill: #abc;
-  font-size: 32px !important;
-  left: 30px;
-  position: fixed;
-  right: 30px;
-  z-index: 100;
-}
-
 .bm-burger-button {
   display: none;
 }
 
 .bm-menu {
   background: #373a47;
+  font-family: Roboto, San Francisco, helvetica, arial, sans-serif;
+  font-size: 1.4rem;
   padding: 16px;
 }
 
 .bm-item-list {
   color: var(--color-white);
-  font-size: 2rem;
   height: auto !important;
 
   & > * {
@@ -74,13 +63,12 @@
 
   & > li {
     list-style: inherit;
-
-    &:first-child {
-      margin-left: 32px;
-    }
+    line-height: 1.3;
+    width: 100%;
 
     & > a {
       color: var(--color-cyan);
+      text-decoration: none;
 
       &:not(:first-child) {
         margin-top: 4px;

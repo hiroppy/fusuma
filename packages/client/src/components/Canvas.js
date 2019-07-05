@@ -2,7 +2,7 @@ import React, { memo, useState, useRef, useEffect } from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import { FaEraser, FaUndo } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
-import '../../assets/style/canvas.css';
+import '../../css/canvas.css';
 import { thisExpression } from '@babel/types';
 
 let colors = ['#444', '#3498db', '#ff874d', '#67a2a0'];

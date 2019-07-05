@@ -20,7 +20,7 @@ import { Timer } from '../Timer';
 import { Timeline } from '../Timeline';
 import { formatTime } from '../../utils/formatTime';
 import { WebRTC } from '../../utils/webrtc';
-import '../../../assets/style/host.css';
+import '../../../css/host.css';
 
 Modal.setAppElement('#root');
 

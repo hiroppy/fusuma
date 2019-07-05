@@ -1,0 +1,22 @@
+@import './variable';
+
+#root {
+  display: flex;
+}
+
+.reveal {
+  font-size: inherit;
+  height: 100vh;
+}
+
+.btn-sidebar {
+  bottom: 20px;
+  color: var(--color-white);
+  cursor: pointer;
+  fill: #abc;
+  font-size: 32px !important;
+  left: 30px;
+  position: fixed;
+  right: 30px;
+  z-index: 100;
+}

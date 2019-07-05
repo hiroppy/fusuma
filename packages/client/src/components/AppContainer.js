@@ -119,16 +119,10 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
     }, []);
   }
 
-  // view component is dynamic import
-  useEffect(() => {
-    if (mode === 'view') {
-      if (process.env.NODE_ENV === 'production') {
-        setupReveal();
-      } else {
-        setTimeout(setupReveal, 500);
-      }
-    }
-  }, [ContentComponent]);
+  // for view
+  const onMount = () => {
+    setupReveal();
+  };
 
   useEffect(() => {
     changeSidebarState();
@@ -184,6 +178,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
         <ContentComponent
           hash={hash}
           goTo={goTo}
+          onMount={onMount}
           slides={slides}
           terminate={terminate}
           onChangeSlideIndex={onChangeSlideIndex}
