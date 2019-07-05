@@ -80,3 +80,7 @@ pre[class*='language-'] {
 .katex-html {
   display: none;
 }
+
+.reveal {
+  font-size: inherit;
+}
