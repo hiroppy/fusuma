@@ -94,8 +94,9 @@ const View = memo(({ slides, hash }) => {
 
   useEffect(() => {
     listenVideoTags();
-    listenCanvas();
-    changeCanvasState(getValue().status === 'start');
+    // https://github.com/hiroppy/fusuma/issues/139#issuecomment-508637780
+    // listenCanvas();
+    // changeCanvasState(getValue().status === 'start');
   }, []);
 
   return (
