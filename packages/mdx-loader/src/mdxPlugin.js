@@ -44,16 +44,19 @@ function createFusumaProps(nodes) {
       }
       if (v.slice(0, 11) === 'background:') {
         const value = v.slice(11).trim();
+        let res = {};
 
         if (/^https?/.test(value)) {
-          property.background = {
-            'data-background-image': v.slice(11).trim()
+          res = {
+            'data-background-image': value
           };
         } else {
-          property.background = {
-            'data-background-color': v.slice(11).trim()
+          res = {
+            'data-background-color': value
           };
         }
+
+        property.background = JSON.stringify(res);
       }
     }
   });
