@@ -1,0 +1,18 @@
+meta:
+  url: https://slide.hiroppy.me
+  title: What's Fusuma?
+  description: Introduce Fusuma
+  thumbnail: https://avatars0.githubusercontent.com/u/3367801?s=400&v=4
+  siteName: hiroppy.me
+  sns: ['twitter']
+slide:
+  code:
+    languages:
+      - yaml
+      - json
+      - markdown
+      - javascript
+      - css
+extends:
+  js: index.js
+  css: style.css
