@@ -27,7 +27,8 @@
 
 .bm-item-list {
   color: var(--color-white);
-  font-size: 2rem;
+  font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
+  font-size: 20px;
   height: auto !important;
 
   & > * {
