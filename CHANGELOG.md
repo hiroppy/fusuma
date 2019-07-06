@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/hiroppy/fusuma/compare/v1.9.6...v1.10.0) (2019-07-06)
+
+### Bug Fixes
+
+- **client:** modify css ([3409c27](https://github.com/hiroppy/fusuma/commit/3409c27))
+
+### Features
+
+- **configs:** add scaffolding into init command ([0d10187](https://github.com/hiroppy/fusuma/commit/0d10187))
+
 ## [1.9.6](https://github.com/hiroppy/fusuma/compare/v1.9.5...v1.9.6) (2019-07-06)
 
 ### Bug Fixes
