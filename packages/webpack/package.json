@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/webpack",
-  "version": "1.9.5",
+  "version": "1.9.6",
   "description": "webpack for fusuma",
   "main": "src/index.js",
   "publishConfig": {
@@ -18,7 +18,7 @@
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "@fusuma/client": "^1.9.5",
+    "@fusuma/client": "^1.9.6",
     "@fusuma/configs": "^1.9.3",
     "@fusuma/mdx-loader": "^1.9.4",
     "@fusuma/utils": "^1.9.3",
