@@ -1,12 +1,13 @@
 'use strict';
 
-const { readFile, writeFile } = require('fs');
+const { readFile, writeFile, mkdir } = require('fs');
 const { join, extname } = require('path');
 const { promisify } = require('util');
 const yaml = require('js-yaml');
 const pSearch = require('preferred-search');
 const { all: mergeAll } = require('deepmerge');
 
+const mkdirAsync = promisify(mkdir);
 const readFileAsync = promisify(readFile);
 const writeFileAsync = promisify(writeFile);
 
@@ -35,7 +36,7 @@ const config = {
   },
   extends: {
     js: null,
-    css: null
+    css: './style.css'
   }
 };
 
@@ -56,6 +57,25 @@ function getConfigYaml() {
 async function init(baseDir) {
   try {
     await writeFileAsync(join(baseDir, '.fusumarc.yml'), getConfigYaml());
+    console.info('Created .fusumarc.yml');
+
+    // scaffold
+    await mkdirAsync(join(baseDir, 'slides'));
+    console.info('Created slides directory');
+
+    {
+      const data = await readFileAsync(join(__dirname, 'templates', '0-title.md'), 'utf8');
+
+      await writeFileAsync(join(baseDir, 'slides', '0-title.md'), data);
+      console.info('Created slides/0-title.md');
+    }
+
+    {
+      const data = await readFileAsync(join(__dirname, 'templates', 'style.css'), 'utf8');
+
+      await writeFileAsync(join(baseDir, 'style.css'), data);
+      console.info('Created style.css');
+    }
   } catch (e) {
     throw e;
   }

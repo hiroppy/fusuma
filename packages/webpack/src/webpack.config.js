@@ -2,6 +2,7 @@
 
 // use `let` for rewire
 let path = require('path');
+const { existsSync } = require('fs');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,11 +11,20 @@ const { babel: babelrc } = require('@fusuma/configs');
 const css = require('./css');
 
 const configsEntryPoint = require.resolve('@fusuma/configs');
-const configsBasePath = configsEntryPoint.split('/src').slice(0, -1).join('/src');
+const configsBasePath = configsEntryPoint
+  .split('/src')
+  .slice(0, -1)
+  .join('/src');
 const clientEntryPoint = require.resolve('@fusuma/client');
-const clientBasePath = clientEntryPoint.split('/src').slice(0, -1).join('/src');
+const clientBasePath = clientEntryPoint
+  .split('/src')
+  .slice(0, -1)
+  .join('/src');
 const mdxLoaderEntryPoint = require.resolve('@fusuma/mdx-loader');
-const mdxLoaderBasePath = mdxLoaderEntryPoint.split('/src').slice(0, -1).join('/src');
+const mdxLoaderBasePath = mdxLoaderEntryPoint
+  .split('/src')
+  .slice(0, -1)
+  .join('/src');
 
 module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
   // name is deprecated TODO: delete
@@ -173,7 +183,8 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
     if (jsPath && jsPath.match(/\+*.js$/i)) {
       common.entry.push(path.join(basePath, jsPath));
     }
-    if (cssPath && path.extname(cssPath) === '.css') {
+
+    if (cssPath && path.extname(cssPath) === '.css' && existsSync(cssPath)) {
       common.entry.push(path.join(clientBasePath, 'src', 'utils', 'customCss.js'));
     }
   }

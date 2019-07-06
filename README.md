@@ -78,6 +78,20 @@ $ tree -a
 
 1 directory, 1 files
 
+# -------- init ---------
+# you can use `init` command
+
+$ npx fusuma init
+$ tree -a
+
+.
+├── .fusumarc.yml
+├── slides
+│   └── 0-title.md
+└── style.css
+
+1 directory, 3 files
+
 # --- executable tasks---
 $ npx fusuma init     # customize fusuma configuration
 $ npx fusuma start    # development

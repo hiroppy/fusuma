@@ -23,7 +23,7 @@ slide:
   math: false
 extends:
   js:
-  css:
+  css: ./style.css
 "
 `;
 
