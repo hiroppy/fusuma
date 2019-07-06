@@ -1,5 +1,5 @@
 <!-- classes: title -->
-<!-- background: #464646 -->
+<!-- backgroundColor: #464646 -->
 
 <!-- note
 Here is a speaker note.😎

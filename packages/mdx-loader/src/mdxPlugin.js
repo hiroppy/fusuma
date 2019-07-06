@@ -42,24 +42,30 @@ function createFusumaProps(nodes) {
       if (v.slice(0, 13) === 'sectionTitle:') {
         property.sectionTitle = v.slice(13).trim();
       }
-      if (v.slice(0, 11) === 'background:') {
-        const value = v.slice(11).trim();
+      if (/^background/.test(v)) {
         let res = {};
 
-        if (/^https?/.test(value)) {
-          res = {
-            'data-background-image': value
-          };
-        } else {
-          res = {
-            'data-background-color': value
-          };
+        if (v.slice(0, 16) === 'backgroundColor:') {
+          res = { 'data-background-color': v.slice(16).trim() };
+        }
+        if (v.slice(0, 16) === 'backgroundImage:') {
+          res = { 'data-background-image': v.slice(16).trim() };
+        }
+        if (v.slice(0, 18) === 'backgroundOpacity:') {
+          res = { 'data-background-opacity': v.slice(18).trim() };
         }
 
-        property.background = JSON.stringify(res);
+        if (!property.background) {
+          property.background = {};
+        }
+
+        property.background = { ...property.background, ...res };
       }
     }
   });
+
+  // stringify
+  property.background = JSON.stringify(property.background || {});
 
   return `{${Object.entries(property)
     .map(([key, value]) => `${key}: '${value}'`)

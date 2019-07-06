@@ -9,11 +9,12 @@ exports[`fusuma init 1`] = `
   sns:
     - twitter
 slide:
-  loop: true
+  theme: fusuma
+  loop: false
   sidebar: true
+  controls: false
+  slideNumber: false
   targetBlank: true
-  showIndex: true
-  isVertical: false
   code:
     languages:
       - javascript

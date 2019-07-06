@@ -1,32 +1,88 @@
 @import '../css/variable';
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,400i,600&display=swap');
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   color: rgba(51, 51, 51);
-  font-size: 62.5%;
   font-family: Roboto, San Francisco, helvetica, arial, sans-serif;
   font-weight: 300;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 5.6rem;
+  line-height: 7.2rem;
+}
+
+h2 {
+  font-size: 4.8rem;
+  line-height: 6.4rem;
+  margin: 0 0 30px 0;
+}
+
+h3 {
+  font-size: 4rem;
+  line-height: 5.6rem;
+}
+
+h4 {
+  font-size: 3.2rem;
+  line-height: 4.8rem;
+}
+
+h5 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 3.2rem;
+}
+
+h6 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 3.2rem;
+}
+
 a {
   padding-left: 0;
+  text-decoration: none;
 }
 
 p {
   margin: 0;
+  line-height: 3.2rem;
 }
 
 ul {
   margin: 0 auto;
+  list-style: square;
+  min-width: 50%;
+  width: min-content;
 }
 
 li {
   margin: 0;
+  line-height: 1.2;
   text-align: left;
+
+  & > ul {
+    width: auto;
+  }
 }
 
 img {
   margin: 0 auto;
+  width: 100%;
 }
 
 pre {
@@ -35,6 +91,10 @@ pre {
   min-width: 50%;
   max-width: 90%;
   width: auto;
+  border: 1px solid rgba(0, 20, 80, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 20, 80, 0.04), 0 4px 16px rgba(0, 0, 0, 0.08);
+  width: min-content;
+  margin: 0.5rem auto 0.5rem;
 }
 
 pre[class*='language-'] {
@@ -48,15 +108,13 @@ code {
 
 code[class*='language-'],
 pre[class*='language-'] {
-  font-size: 1.2rem;
+  font-size: 2rem;
   line-height: 1.2;
 }
-/* @media screen and (min-width: 768px) {
-  code[class*='language-'],
-  pre[class*='language-'] {
-    font-size: 2rem;
-  }
-} */
+
+pre + p {
+  margin-top: 3.2rem;
+}
 
 #root {
   display: flex;
@@ -82,5 +140,5 @@ pre[class*='language-'] {
 }
 
 .reveal {
-  font-size: inherit;
+  font-size: 2.4rem;
 }

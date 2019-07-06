@@ -55,8 +55,9 @@ This is Note!
 -->
 <!-- classes: class! -->
 <!-- sectionTitle: sectionTitle! -->
-<!-- background: red -->
-<!-- background: https://test.com -->
+<!-- backgroundColor: red -->
+<!-- backgroundImage: https://test.com -->
+<!-- backgroundOpacity: 1 -->
 # Hello
 <!-- content -->
 <!-- screen -->
