@@ -12,7 +12,7 @@ $ npx fusuma --help
 
 ## Init
 
-Create a configuration file.
+Create a configuration file and `style.css`.
 
 ```sh
 $ npx fusuma init

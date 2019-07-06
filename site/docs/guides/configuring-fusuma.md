@@ -86,6 +86,6 @@ Fusuma uses babel and webpack, so you can use ES2018 and ESM(ECMAScript Modules)
 
 ### CSS
 
-Fusuma uses postcss-preset-env and postcss-import, so you can use the cssnext syntax up to level:1 and `@import`.
+`style.css` will be generated automatically when `furuma init` runs. Fusuma uses postcss-preset-env and postcss-import, so you can use the cssnext syntax up to level:1 and `@import`.
 
 See [the example css](https://github.com/hiroppy/fusuma/blob/master/samples/intro/style.css).
