@@ -19,23 +19,6 @@ async function setupMermaid() {
   mermaid.init();
 }
 
-function setupSlides() {
-  if (!window.slide) {
-    window.slide = setupWebSlides({});
-
-    // for presenter:view
-    window.slide.el.addEventListener('ws:slide-change', (e) => {
-      if (process.env.CHART) {
-        reloadChart();
-      }
-
-      if (onChangeSlideIndex) {
-        onChangeSlideIndex(e.detail.currentSlide0);
-      }
-    });
-  }
-}
-
 export const Base = memo(
   ({ slides, onChangeSlideIndex, hash }) => {
     // for SSR
@@ -67,6 +50,23 @@ export const Base = memo(
 
       Prism.highlightAll();
     }, []);
+
+    function setupSlides() {
+      if (!window.slide) {
+        window.slide = setupWebSlides({});
+
+        // for presenter:view
+        window.slide.el.addEventListener('ws:slide-change', (e) => {
+          if (process.env.CHART) {
+            reloadChart();
+          }
+
+          if (onChangeSlideIndex) {
+            onChangeSlideIndex(e.detail.currentSlide0);
+          }
+        });
+      }
+    }
 
     return (
       <article className={articleClass} id="webslides">
