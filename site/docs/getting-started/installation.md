@@ -28,6 +28,20 @@ $ tree -a
     └── title.md
 
 1 directory, 1 files
+
+# -------- init ---------
+# also, you can use `init` command
+
+$ npx fusuma init
+$ tree -a
+
+.
+├── .fusumarc.yml
+├── slides
+│   └── 0-title.md
+└── style.css
+
+1 directory, 3 files
 ```
 
 <br />
