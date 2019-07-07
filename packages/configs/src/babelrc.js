@@ -14,8 +14,7 @@ function babelrc({ languages = [], plugins = [], theme = 'default' } = {}) {
           corejs: {
             version: 3,
             proposals: true
-          },
-          debug: true
+          }
         }
       ],
       '@babel/preset-react'
