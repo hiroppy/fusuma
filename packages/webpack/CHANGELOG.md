@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.1](https://github.com/hiroppy/fusuma/compare/v1.10.0...v1.10.1) (2019-07-07)
+
+### Performance Improvements
+
+- **webpack:** introduce cache-loader ([b009380](https://github.com/hiroppy/fusuma/commit/b009380))
+
 # [1.10.0](https://github.com/hiroppy/fusuma/compare/v1.9.6...v1.10.0) (2019-07-06)
 
 ### Features

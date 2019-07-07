@@ -1,6 +1,6 @@
 {
   "name": "fusuma",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "easily make slides with markdown",
   "bin": {
     "fusuma": "./src/cli.js"
@@ -35,10 +35,10 @@
   "dependencies": {
     "@fusuma/cli": "^1.9.3",
     "@fusuma/configs": "^1.10.0",
-    "@fusuma/task-build": "^1.10.0",
+    "@fusuma/task-build": "^1.10.1",
     "@fusuma/task-ghp": "^1.9.3",
     "@fusuma/task-init": "^1.10.0",
-    "@fusuma/task-start": "^1.10.0",
+    "@fusuma/task-start": "^1.10.1",
     "@fusuma/utils": "^1.9.3"
   }
 }
