@@ -20,7 +20,7 @@ async function setupMermaid() {
 }
 
 export const Base = memo(
-  ({ slides, onChangeSlideIndex, hash }) => {
+  ({ slides, onChangeSlideIndex, hash, isJumpPage }) => {
     // for SSR
     if (process.env.NODE_ENV !== 'production') {
       useEffect(() => {
@@ -36,7 +36,12 @@ export const Base = memo(
     // delay Event Loop one round
     // but on Node.js this line is an error, so put it in useEffect
     if (!process.env.SSR) {
-      setTimeout(setupSlides, 0);
+      // 0 page
+      if (process.env.NODE_ENV === 'production' && !isJumpPage) {
+        setupSlides();
+      } else {
+        setTimeout(setupSlides, 0);
+      }
     }
 
     useEffect(() => {
