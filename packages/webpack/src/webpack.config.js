@@ -190,8 +190,12 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
       common.entry.push(path.join(basePath, jsPath));
     }
 
-    if (cssPath && path.extname(cssPath) === '.css' && existsSync(cssPath)) {
-      common.entry.push(path.join(clientBasePath, 'src', 'utils', 'customCss.js'));
+    if (cssPath) {
+      const p = path.join(basePath, cssPath);
+
+      if (path.extname(p) === '.css' && existsSync(p)) {
+        common.entry.push(path.join(clientBasePath, 'src', 'utils', 'customCss.js'));
+      }
     }
   }
 
