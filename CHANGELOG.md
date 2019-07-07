@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/hiroppy/fusuma/compare/v1.10.1...v1.10.2) (2019-07-07)
+
+### Bug Fixes
+
+- **webpack:** set basePath ([1a1c71c](https://github.com/hiroppy/fusuma/commit/1a1c71c))
+
+### Performance Improvements
+
+- **client:** don't use setTimeout when the page number is 0 ([08e4ee2](https://github.com/hiroppy/fusuma/commit/08e4ee2))
+
 ## [1.10.1](https://github.com/hiroppy/fusuma/compare/v1.10.0...v1.10.1) (2019-07-07)
 
 ### Performance Improvements
