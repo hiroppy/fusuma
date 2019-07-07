@@ -21,7 +21,7 @@
     "@fusuma/configs": "^1.10.0",
     "@fusuma/mdx-loader": "^1.9.4",
     "@fusuma/utils": "^1.9.3",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.0.6",
     "cache-loader": "^4.0.1",
     "css-loader": "3.0.0",
     "express": "^4.17.1",
