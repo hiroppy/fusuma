@@ -4,6 +4,7 @@ exports[`babelrc should match settings 1`] = `
 Object {
   "compact": true,
   "plugins": Array [
+    "@babel/plugin-transform-runtime",
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-object-rest-spread",
@@ -21,9 +22,16 @@ Object {
     Array [
       "@babel/preset-env",
       Object {
+        "corejs": Object {
+          "proposals": true,
+          "version": 3,
+        },
+        "debug": true,
+        "modules": false,
         "targets": Object {
           "browsers": "last 1 version",
         },
+        "useBuiltIns": "usage",
       },
     ],
     "@babel/preset-react",
