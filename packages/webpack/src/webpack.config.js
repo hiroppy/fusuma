@@ -82,17 +82,21 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
       rules: [
         {
           test: /\.m?js$/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              ...babelrc(code),
-              cwd: configsBasePath
+          use: [
+            'cache-loader',
+            {
+              loader: 'babel-loader',
+              options: {
+                ...babelrc(code),
+                cwd: configsBasePath
+              }
             }
-          }
+          ]
         },
         {
           test: /\.mdx?$/,
           use: [
+            'cache-loader',
             {
               loader: 'babel-loader',
               options: {
@@ -110,12 +114,14 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
         },
         {
           test: /\.(png|jpg|gif|svg)$/,
-          use: {
-            loader: 'file-loader',
-            options: {
-              name: '[hash].webp'
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[hash].webp'
+              }
             }
-          }
+          ]
         },
         {
           test: /\.(webp|eot|ttf|woff2?)$/,
