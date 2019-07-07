@@ -9,18 +9,14 @@ function babelrc({ languages = [], plugins = [], theme = 'default' } = {}) {
           targets: {
             browsers: 'last 1 version'
           },
-          modules: false,
-          useBuiltIns: 'usage',
-          corejs: {
-            version: 3,
-            proposals: true
-          }
+          modules: false
+          // we cannot use useBuiltIns option
+          // https://github.com/webpack/webpack/issues/4039
         }
       ],
       '@babel/preset-react'
     ],
     plugins: [
-      '@babel/plugin-transform-runtime',
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-proposal-object-rest-spread',
