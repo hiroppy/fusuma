@@ -10,6 +10,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   const isLive = params.get('isLive');
   let index = parsedUrl.hash.match(/^#slide=(.+?)$/);
   index = index !== null ? index[1] - 1 : 0;
+  const isJumpPage = index !== 0;
 
   const setCommentsListComponent = async () => {
     const { CommentsList } = await import(/* webpackChunkName: 'live' */ './CommentsList');
@@ -140,6 +141,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
         <ContentComponent
           hash={hash}
           slides={slides}
+          isJumpPage={isJumpPage}
           terminate={terminate}
           currentIndex={currentIndex}
           onChangeSlideIndex={onChangeSlideIndex}
