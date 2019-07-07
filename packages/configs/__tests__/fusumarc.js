@@ -9,7 +9,7 @@ describe('fusuma', () => {
     fs.unlinkSync(p);
   });
 
-  test('init', async () => {
+  test.skip('init', async () => {
     await fusuma.init(__dirname);
 
     expect(fs.existsSync(p)).toBeTruthy();

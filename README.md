@@ -62,7 +62,7 @@ You can also try Fusuma in Gitpod, a one-click online IDE for GitHub:
 
 [Getting Started/Preparation](https://hiroppy.github.io/fusuma/docs/getting-started/preparation)
 
-Node versions > v8
+Node versions > v10
 
 Just execute the following two lines for executing, generating and deploying slides!
 

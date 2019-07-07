@@ -21,6 +21,7 @@ Object {
     Array [
       "@babel/preset-env",
       Object {
+        "modules": false,
         "targets": Object {
           "browsers": "last 1 version",
         },

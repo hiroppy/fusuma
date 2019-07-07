@@ -47,7 +47,7 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
   const common = {
     name: name || 'slide',
     entry: [
-      '@babel/polyfill',
+      'regenerator-runtime',
       type !== 'ssr' ? clientEntryPoint : path.join(clientBasePath, '/src/ServerApp.js')
     ],
     output: {

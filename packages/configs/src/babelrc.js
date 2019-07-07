@@ -8,7 +8,10 @@ function babelrc({ languages = [], plugins = [], theme = 'default' } = {}) {
         {
           targets: {
             browsers: 'last 1 version'
-          }
+          },
+          modules: false
+          // we cannot use useBuiltIns option
+          // https://github.com/webpack/webpack/issues/4039
         }
       ],
       '@babel/preset-react'
