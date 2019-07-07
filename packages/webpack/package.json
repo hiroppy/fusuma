@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
     "@fusuma/client": "^1.10.0",
     "@fusuma/configs": "^1.10.0",
     "@fusuma/mdx-loader": "^1.9.4",
@@ -36,6 +35,7 @@
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "postcss-loader": "3.0.0",
     "react": "^16.8.6",
+    "regenerator-runtime": "^0.13.2",
     "style-loader": "0.23.1",
     "table": "^5.2.3",
     "terser-webpack-plugin": "^1.2.3",
