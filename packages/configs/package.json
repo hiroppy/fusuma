@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/configs",
-  "version": "1.10.2",
+  "version": "1.11.0",
   "description": "configs for fusuma",
   "main": "src/index.js",
   "publishConfig": {
