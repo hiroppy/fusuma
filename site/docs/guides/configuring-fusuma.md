@@ -70,6 +70,32 @@ code:
 
 See these options for detail. [babel-plugin-prismjs#configuring-the-plugin](https://github.com/mAAdhaTTah/babel-plugin-prismjs#configuring-the-plugin), [Prism.js Playground](https://prismjs.com/test.html#language=markup)
 
+### Line Highlight
+
+You need to add `line-highlight` plugin. See [plugins/line-highlight/](https://prismjs.com/plugins/line-highlight/).
+
+```yml
+code:
+  plugins:
+    - line-highlight
+```
+
+```md
+<!-- code.md -->
+
+\`\`\`js line="2-6"
+const factorial = number => {
+let product = 1;
+for (let i = 2; i <= number; i++) {
+product \\\*= i;
+}
+return product;
+};
+\`\`\`
+```
+
+Add `line` property as a meta.
+
 ## Extending JS and CSS
 
 You can extend JS and CSS when `extends.js` or `extends.css` is specified by a file path.
