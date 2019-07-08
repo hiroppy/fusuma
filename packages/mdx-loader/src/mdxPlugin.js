@@ -1,6 +1,5 @@
 'use strict';
 
-const visit = require('unist-util-visit');
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
 
@@ -42,6 +41,9 @@ function createFusumaProps(nodes) {
       if (v.slice(0, 13) === 'sectionTitle:') {
         property.sectionTitle = v.slice(13).trim();
       }
+      // if (v.slice(0, 5) === 'line:') {
+      //   property.lines = v.slice(13).trim();
+      // }
     }
   });
 
@@ -96,6 +98,22 @@ function mdxPlugin() {
         });
 
         ++mermaidId;
+      } else if (n.type === 'code' && n.meta) {
+        const lines = n.meta.match(/line="(.+?)"/);
+
+        if (lines === null) {
+          slide.push(n);
+        } else {
+          const line = lines[1];
+          const hash = mdxAstToMdxHast()(n);
+          const value = toJSX(hash).replace('<pre>', `<pre data-line="${line}">`);
+
+          slide.push({
+            ...n,
+            type: 'jsx',
+            value
+          });
+        }
       } else {
         slide.push(n);
 

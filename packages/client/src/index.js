@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { fetchSlides } from './utils/fetchSlides';
+import { setTargetBlank } from './utils/targetBlank';
 import { AppContainer } from './components/AppContainer';
 import './setup/css';
 
@@ -23,10 +24,6 @@ function createBody(slides = [], hash = 0) {
   createBody(slidesInfo.slides);
 
   if (process.env.TARGET_BLANK) {
-    const { setTargetBlank } = await import(
-      /* webpackPreload: true, webpackChunkName: "target-blank" */ './utils/targetBlank'
-    );
-
     setTargetBlank();
   }
 })();

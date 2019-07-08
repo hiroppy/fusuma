@@ -78,7 +78,7 @@ This is Note!
 # FlowChart
 ---
 
-\`\`\`flow
+\`\`\`chart
 graph TD;
     A-->B;
     A-->C;
@@ -109,6 +109,19 @@ $$
     <h2 class="test3">hello</h2>
   </div>
 </div>
+`;
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
+
+  test('should add data-line to pre tag', async () => {
+    const src = `
+\`\`\`js line="5"
+first
+\`\`\`
+
+\`\`\`ts line="10-100"
+second
+\`\`\`
 `;
     expect(await transformToJS(src)).toMatchSnapshot();
   });
