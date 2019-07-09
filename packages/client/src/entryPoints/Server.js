@@ -1,11 +1,11 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { AppContainer } from './components/AppContainer';
-import { fetchSlides } from './utils/fetchSlides';
+import { AppContainer } from '../components/AppContainer';
+import { fetchSlides } from '../utils/fetchSlides';
 
 let fusumaProps = [];
 
-export const ServerApp = () => {
+export const Server = () => {
   const { slides } = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
 
   fusumaProps = slides.map((slide) => {

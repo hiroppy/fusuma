@@ -27,6 +27,13 @@ const mdxLoaderBasePath = mdxLoaderEntryPoint
   .join('/src');
 
 module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
+  const entry = [
+    'regenerator-runtime',
+    type !== 'ssr'
+      ? path.join(clientBasePath, '/src/entryPoints/Client.js')
+      : path.join(clientBasePath, 'src/entryPoints/Server.js')
+  ];
+
   // name is deprecated TODO: delete
   const { url, name, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
@@ -46,10 +53,7 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
 
   const common = {
     name: name || 'slide',
-    entry: [
-      'regenerator-runtime',
-      type !== 'ssr' ? clientEntryPoint : path.join(clientBasePath, '/src/ServerApp.js')
-    ],
+    entry,
     output: {
       path: outputPath
     },

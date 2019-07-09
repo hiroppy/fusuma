@@ -27,8 +27,8 @@ async function ssr(c) {
       }
 
       try {
-        const { ServerApp, render } = require(`${config.output.path}/entry.js`);
-        const body = render(React.createElement(ServerApp));
+        const { Server, render } = require(`${config.output.path}/entry.js`);
+        const body = render(React.createElement(Server));
 
         resolve({ body });
       } catch (e) {
