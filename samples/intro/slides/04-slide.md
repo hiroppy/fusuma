@@ -116,4 +116,4 @@ The following image is a screenshot of the output slide.👇
 
 <br />
 
-<img src="../../../site/docs/assets/slide-syntax-screen.png" class="capture-screen-image" />
+<img src="../../../site/docs/assets/slide-syntax-screen.png" className="capture-screen-image" />
