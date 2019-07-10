@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/hiroppy/fusuma/compare/v1.11.0...v1.12.0) (2019-07-10)
+
+### Bug Fixes
+
+- **configs:** add default link color ([d5a6275](https://github.com/hiroppy/fusuma/commit/d5a6275))
+
+### Features
+
+- **client:** implement some components for user-land ([d203381](https://github.com/hiroppy/fusuma/commit/d203381))
+
 # [1.11.0](https://github.com/hiroppy/fusuma/compare/v1.10.2...v1.11.0) (2019-07-08)
 
 ### Features
