@@ -60,4 +60,42 @@
 <iframe src="https://webslides.tv/demos/classes" style="width: 100%;height: 540px; max-width: 960px"></iframe>
 <p><br /></p>
 <p>These css are not customized on the Fusuma side.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/fusuma/docs/guides/slide-syntax"><span class="arrow-prev">← </span><span>Slide Syntax</span></a><a class="docs-next button" href="/fusuma/docs/guides/math-chart"><span>Math, Diagrams, and Flowcharts</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/fusuma/" class="nav-home"><img src="/fusuma/img/favicon.ico" alt="Fusuma" width="66" height="58"/></a><div><h5>Docs</h5><a href="/fusuma/docs/getting-started/installation.html">Getting Started</a><a href="/fusuma/docs/guides/configuring-fusuma.html">Guides</a><a href="/fusuma/docs/modes/presenter.html">Modes</a></div><div><h5>Contact Us</h5><a href="https://github.com/hiroppy" target="_blank" rel="noreferrer noopener">GitHub</a><a href="https://twitter.com/about_hiroppy" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/hiroppy/fusuma">GitHub</a><a class="github-button" href="https://github.com/hiroppy/fusuma" data-icon="octicon-star" data-count-href="/hiroppy/fusuma/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Yuta Hiroto</section></footer></div></body></html>
+<h2><a class="anchor" aria-hidden="true" id="components"></a><a href="#components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Components</h2>
+<p>Fusuma provides some components wrapping webSlides.</p>
+<h3><a class="anchor" aria-hidden="true" id="flexblock"></a><a href="#flexblock" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FlexBlock</h3>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">import</span> { Flex } <span class="hljs-keyword">from</span> <span class="hljs-string">'@fusuma/client'</span>;
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Flex</span>
+  <span class="hljs-attr">items</span>=<span class="hljs-string">{[</span>
+    &lt;<span class="hljs-attr">div</span>&gt;</span>Item 1 Multipurpose: services, features, specs...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>,
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Item 2 Multipurpose: services, features, specs...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>,
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Item 3 Multipurpose: services, features, specs...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>,
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Item 4 Multipurpose: services, features, specs...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  ]}
+/&gt;;
+</span></code></pre>
+<h3><a class="anchor" aria-hidden="true" id="card"></a><a href="#card" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Card</h3>
+<pre><code class="hljs css language-js"><span class="hljs-comment">// card.mdx</span>
+<span class="hljs-comment">// if you want to expand as fullscreen &lt;!-- classes: fullscreen --&gt;</span>
+
+<span class="hljs-keyword">import</span> { Card } <span class="hljs-keyword">from</span> <span class="hljs-string">'@fusuma/client'</span>;
+
+&lt;Card
+  left={&lt;img src="https://source.unsplash.com/8lODM_TYmkI/800x600" /&gt;}
+  right={
+    &lt;&gt;
+      &lt;h2&gt;Card&lt;/h2&gt;
+    &lt;/&gt;
+  }
+/&gt;;
+</code></pre>
+<p><img src="/fusuma/docs/assets/card-component.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="image"></a><a href="#image" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Image</h3>
+<pre><code class="hljs css language-js"><span class="hljs-keyword">import</span> { Img } <span class="hljs-keyword">from</span> <span class="hljs-string">'@fusuma/client'</span>;
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://source.unsplash.com/8lODM_TYmkI/800x600"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Yosemite National Park<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>😆<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Img</span>&gt;</span></span>;
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/fusuma/docs/guides/slide-syntax"><span class="arrow-prev">← </span><span>Slide Syntax</span></a><a class="docs-next button" href="/fusuma/docs/guides/math-chart"><span>Math, Diagrams, and Flowcharts</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#components">Components</a><ul class="toc-headings"><li><a href="#flexblock">FlexBlock</a></li><li><a href="#card">Card</a></li><li><a href="#image">Image</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/fusuma/" class="nav-home"><img src="/fusuma/img/favicon.ico" alt="Fusuma" width="66" height="58"/></a><div><h5>Docs</h5><a href="/fusuma/docs/getting-started/installation.html">Getting Started</a><a href="/fusuma/docs/guides/configuring-fusuma.html">Guides</a><a href="/fusuma/docs/modes/presenter.html">Modes</a></div><div><h5>Contact Us</h5><a href="https://github.com/hiroppy" target="_blank" rel="noreferrer noopener">GitHub</a><a href="https://twitter.com/about_hiroppy" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="https://github.com/hiroppy/fusuma">GitHub</a><a class="github-button" href="https://github.com/hiroppy/fusuma" data-icon="octicon-star" data-count-href="/hiroppy/fusuma/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 Yuta Hiroto</section></footer></div></body></html>
