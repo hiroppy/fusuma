@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.1](https://github.com/hiroppy/fusuma/compare/v1.12.0...v1.12.1) (2019-07-12)
+
+### Bug Fixes
+
+- **client:** call Prism.hightlightAll ([9850452](https://github.com/hiroppy/fusuma/commit/9850452))
+- **client:** fix Twitter lint in Sidebar and decide URL automatically ([b5ec52d](https://github.com/hiroppy/fusuma/commit/b5ec52d))
+
 # [1.12.0](https://github.com/hiroppy/fusuma/compare/v1.11.0...v1.12.0) (2019-07-10)
 
 ### Bug Fixes
