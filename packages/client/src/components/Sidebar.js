@@ -15,9 +15,9 @@ const styles = {
   }
 };
 
-const url = process.env.URL;
+const url = process.env.URL || window.location.href.split('#')[0];
 const sns = process.env.SNS;
-const title = process.env.TITLE;
+const title = process.env.TITLE || '';
 
 const formatStr = (num) => `${num}`.padStart(2, '0');
 
@@ -32,14 +32,14 @@ export const Sidebar = memo(
     >
       <div className="sidebar-social">
         {Array.isArray(sns) &&
-          url &&
-          title &&
           sns.map((s) => {
             if (s === 'twitter') {
               return (
                 <a
                   key="twitter"
-                  href={`https://twitter.com/intent/tweet`}
+                  rel="noopener"
+                  target="_blank"
+                  href={`https://twitter.com/intent/tweet?text=${title} ${url}`}
                   aria-label={`${title} ${url}`}
                 >
                   <FaTwitter />

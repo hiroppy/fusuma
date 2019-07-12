@@ -8,7 +8,6 @@ sidebar_label: Configuring Fusuma
 
 ```yml
 meta:
-  url: https://slides.hiroppy.me
   title: the present and future of JavaScript
   description: Explain how specifications are determined and how it will be in the future.
   thumbnail: https://avatars1.githubusercontent.com/u/1725583?v=4&s=200
@@ -37,7 +36,7 @@ extends:
 
 ## Making SEO and OGP to 100%
 
-`meta.url`, `meta.title`, `meta.description` and `meta.siteName` are required if you want to improve SEO. In addition, when you want to show as a card like Twitter, Slack, you should specify `meta.thumbnail` as OGP.
+`meta.title`, `meta.description` and `meta.siteName` are required if you want to improve SEO. In addition, when you want to show as a card like Twitter, Slack, you should specify `meta.thumbnail` as OGP.
 
 ![](assets/configuring-fusuma-ogp.png)
 

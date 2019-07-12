@@ -34,7 +34,7 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
       : path.join(clientBasePath, 'src/entryPoints/Server.js')
   ];
 
-  // name is deprecated TODO: delete
+  // name, url is deprecated TODO: delete
   const { url, name, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath } = fileExtends;
