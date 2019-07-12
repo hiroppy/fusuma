@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/hiroppy/fusuma/issues"
   },
+  "scripts": {
+    "storybook": "start-storybook"
+  },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
     "classnames": "^2.2.6",
@@ -32,5 +35,12 @@
     "react-pose": "^4.0.8",
     "screenfull": "^4.2.0",
     "webslides": "^1.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@storybook/addon-viewport": "^5.1.9",
+    "@storybook/cli": "^5.1.9",
+    "@storybook/react": "^5.1.9",
+    "babel-loader": "^8.0.6"
   }
 }
