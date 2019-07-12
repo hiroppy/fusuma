@@ -39,8 +39,12 @@ export const Base = memo(
       // 0 page
       if (process.env.NODE_ENV === 'production' && !isJumpPage) {
         setupSlides();
+        Prism.highlightAll();
       } else {
-        setTimeout(setupSlides, 0);
+        setTimeout(() => {
+          setupSlides();
+          Prism.highlightAll();
+        }, 0);
       }
     }
 
@@ -52,8 +56,6 @@ export const Base = memo(
       if (process.env.CHART && !mermaid) {
         setupMermaid();
       }
-
-      Prism.highlightAll();
     }, []);
 
     function setupSlides() {
