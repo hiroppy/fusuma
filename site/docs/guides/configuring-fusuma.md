@@ -32,6 +32,7 @@ slide:
 extends:
   js: index.js
   css: style.css
+  webpack: webpack.config.js
 ```
 
 ## Making SEO and OGP to 100%
@@ -95,7 +96,7 @@ return product;
 
 Add `line` property as a meta.
 
-## Extending JS and CSS
+## Extending JS, CSS and webpack
 
 You can extend JS and CSS when `extends.js` or `extends.css` is specified by a file path.
 
@@ -114,3 +115,7 @@ Fusuma uses babel and webpack, so you can use ES2018 and ESM(ECMAScript Modules)
 `style.css` will be generated automatically when `furuma init` runs. Fusuma uses postcss-preset-env and postcss-import, so you can use the cssnext syntax up to level:1 and `@import`.
 
 See [the example css](https://github.com/hiroppy/fusuma/blob/master/samples/intro/style.css).
+
+### webpack
+
+If you want to extend fusuma's webpack.config.js, you can use this option.
