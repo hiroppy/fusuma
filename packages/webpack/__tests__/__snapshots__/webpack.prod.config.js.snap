@@ -112,6 +112,7 @@ Object {
       "options": Object {
         "chunkFilename": "[name].[id].[chunkhash].css",
         "filename": "[name].[chunkhash].css",
+        "ignoreOrder": false,
         "moduleFilename": [Function],
       },
     },
