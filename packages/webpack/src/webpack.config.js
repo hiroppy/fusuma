@@ -37,7 +37,7 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
   // name, url is deprecated TODO: delete
   const { url, name, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
-  const { js: jsPath, css: cssPath } = fileExtends;
+  const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
   const { basePath, remoteOrigin, htmlBody = '' } = internal;
   const outputPath = path.resolve(basePath, 'dist');
   const config = (() => {
@@ -203,5 +203,5 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
     }
   }
 
-  return merge.smart(common, config);
+  return merge.smart(common, config, webpackPath ? require(path.join(basePath, webpackPath)) : {});
 };

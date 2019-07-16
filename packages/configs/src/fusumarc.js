@@ -35,7 +35,8 @@ const config = {
   },
   extends: {
     js: null,
-    css: './style.css'
+    css: './style.css',
+    webpack: null
   }
 };
 
