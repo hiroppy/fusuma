@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/hiroppy/fusuma/compare/v1.12.1...v1.13.0) (2019-07-16)
+
+### Features
+
+- **configs:** add webpack option ([e69fa31](https://github.com/hiroppy/fusuma/commit/e69fa31))
+
 ## [1.12.1](https://github.com/hiroppy/fusuma/compare/v1.12.0...v1.12.1) (2019-07-12)
 
 ### Bug Fixes
