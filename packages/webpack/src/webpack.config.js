@@ -117,7 +117,7 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
           ]
         },
         {
-          test: /\.(png|jpg|gif|svg)$/,
+          test: /\.(png|jpe?g|gif|svg)$/,
           use: [
             {
               loader: 'file-loader',
