@@ -33,6 +33,8 @@ extends:
   js: index.js
   css: style.css
   webpack: webpack.config.js
+build:
+  ssr: true
 ```
 
 ## Making SEO and OGP to 100%
@@ -119,3 +121,10 @@ See [the example css](https://github.com/hiroppy/fusuma/blob/master/samples/intr
 ### webpack
 
 If you want to extend fusuma's webpack.config.js, you can use this option.
+
+## Build
+
+### Server Side Rendering
+
+Improve SEO and loading speed by rendering content to HTML at build time.  
+The default is `true`.
