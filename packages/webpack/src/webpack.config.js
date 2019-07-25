@@ -26,7 +26,10 @@ const mdxLoaderBasePath = mdxLoaderEntryPoint
   .slice(0, -1)
   .join('/src');
 
-module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, server = {} }) => {
+module.exports = (
+  type,
+  { meta, slide, extends: fileExtends, internal = {}, server = {}, build }
+) => {
   const entry = [
     'regenerator-runtime',
     type !== 'ssr'
@@ -38,7 +41,8 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
   const { url, name, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
-  const { basePath, remoteOrigin, htmlBody = '' } = internal;
+  const { ssr } = build;
+  const { basePath, remoteOrigin, htmlBody = '', buildStage } = internal;
   const outputPath = path.resolve(basePath, 'dist');
   const config = (() => {
     switch (type) {
@@ -158,7 +162,8 @@ module.exports = (type, { meta, slide, extends: fileExtends, internal = {}, serv
         'process.env.SERVER_PORT': JSON.stringify(server.port),
         'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword),
         'process.env.CHART': JSON.stringify(chart),
-        'process.env.SSR': JSON.stringify(type === 'ssr')
+        'process.env.SSR': JSON.stringify(process.env.NODE_ENV === 'production' && ssr),
+        'process.env.BUILD_STAGE': JSON.stringify(buildStage)
       }),
       new ImageminWebpWebpackPlugin({
         detailedLogs: false,

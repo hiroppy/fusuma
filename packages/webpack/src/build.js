@@ -9,7 +9,13 @@ const combineWebpack = require('./webpack.config');
 
 async function ssr(c) {
   return new Promise((resolve, reject) => {
-    const config = combineWebpack('ssr', c);
+    const config = combineWebpack('ssr', {
+      ...c,
+      internal: {
+        ...c.internal,
+        buildStage: 'ssr'
+      }
+    });
     const compiler = webpack(config);
 
     const { JSDOM } = jsdom;
@@ -46,7 +52,8 @@ async function build(c, { body, fusumaProps }) {
       ...c,
       internal: {
         ...c.internal,
-        htmlBody: body
+        htmlBody: body,
+        buildStage: 'build'
       }
     });
 
@@ -62,16 +69,20 @@ async function build(c, { body, fusumaProps }) {
 }
 
 async function buildProcess(c, cb) {
-  cb('start-ssr');
+  const { ssr: isSSR } = c.build;
+  let data = {};
 
-  const data = await ssr(c);
+  if (isSSR) {
+    cb('start-ssr');
 
-  cb('finish-ssr');
+    data = await ssr(c);
+
+    cb('finish-ssr');
+  }
+
   cb('start-build');
 
   return await build(c, data);
-
-  cb('finish-build');
 }
 
 module.exports = buildProcess;

@@ -37,6 +37,9 @@ const config = {
     js: null,
     css: './style.css',
     webpack: null
+  },
+  build: {
+    ssr: true
   }
 };
 
