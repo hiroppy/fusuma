@@ -35,9 +35,9 @@ export const Base = memo(
     // useEffect is called too late
     // delay Event Loop one round
     // but on Node.js this line is an error, so put it in useEffect
-    if (!process.env.SSR) {
+    if (process.env.BUILD_STAGE !== 'ssr') {
       // 0 page
-      if (process.env.NODE_ENV === 'production' && !isJumpPage) {
+      if (process.env.SSR && !isJumpPage) {
         setupSlides();
         Prism.highlightAll();
       } else {
