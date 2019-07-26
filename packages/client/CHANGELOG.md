@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/hiroppy/fusuma/compare/v1.13.0...v1.14.0) (2019-07-26)
+
+### Features
+
+- add build.ssr option ([3e49dde](https://github.com/hiroppy/fusuma/commit/3e49dde))
+
 # [1.13.0](https://github.com/hiroppy/fusuma/compare/v1.12.1...v1.13.0) (2019-07-16)
 
 **Note:** Version bump only for package @fusuma/client
