@@ -10,21 +10,23 @@ const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const { babel: babelrc } = require('@fusuma/configs');
 const css = require('./css');
 
+const srcDirPath = `${path.sep}src`;
+
 const configsEntryPoint = require.resolve('@fusuma/configs');
 const configsBasePath = configsEntryPoint
-  .split('/src')
+  .split(srcDirPath)
   .slice(0, -1)
-  .join('/src');
+  .join(srcDirPath);
 const clientEntryPoint = require.resolve('@fusuma/client');
 const clientBasePath = clientEntryPoint
-  .split('/src')
+  .split(srcDirPath)
   .slice(0, -1)
-  .join('/src');
+  .join(srcDirPath);
 const mdxLoaderEntryPoint = require.resolve('@fusuma/mdx-loader');
 const mdxLoaderBasePath = mdxLoaderEntryPoint
-  .split('/src')
+  .split(srcDirPath)
   .slice(0, -1)
-  .join('/src');
+  .join(srcDirPath);
 
 module.exports = (
   type,
