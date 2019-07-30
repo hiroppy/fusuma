@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/hiroppy/fusuma/compare/v1.14.0...v1.14.1) (2019-07-30)
+
+### Bug Fixes
+
+- **webpack:** don't use a separator directly ([768c16d](https://github.com/hiroppy/fusuma/commit/768c16d)), closes [#170](https://github.com/hiroppy/fusuma/issues/170)
+
 # [1.14.0](https://github.com/hiroppy/fusuma/compare/v1.13.0...v1.14.0) (2019-07-26)
 
 ### Features

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/hiroppy/fusuma/compare/v1.14.0...v1.14.1) (2019-07-30)
+
+**Note:** Version bump only for package @fusuma/configs
+
 # [1.14.0](https://github.com/hiroppy/fusuma/compare/v1.13.0...v1.14.0) (2019-07-26)
 
 ### Features
