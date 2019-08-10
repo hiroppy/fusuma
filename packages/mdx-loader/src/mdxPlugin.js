@@ -119,7 +119,7 @@ function mdxPlugin() {
 
         if (n.type === 'jsx') {
           n.value = n.value
-            .replace(/src="(.+?\.(png|jpg|gif|svg?))"/, 'src={require("$1")}')
+            .replace(/src="(.+?\.(png|jpg|gif|svg?))"/g, 'src={require("$1")}')
             .replace(/class=/g, 'className=');
         }
       }

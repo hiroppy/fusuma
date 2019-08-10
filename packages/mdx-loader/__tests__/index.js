@@ -100,6 +100,19 @@ $$
     expect(await transformToJS(src)).toMatchSnapshot();
   });
 
+  test('should convert all img src', async () => {
+    const src = `
+# img src
+
+<div>
+  <img src="random.gif" alt="random"/>
+  <img src="random2.png" alt="random2"/>
+  <img src="random3.svg" alt="random3"/>
+</div>
+`;
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
+
   test('should convert class to className', async () => {
     const src = `
 # Class
