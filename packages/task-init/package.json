@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/task-init",
-  "version": "1.14.1",
+  "version": "1.14.2",
   "description": "init task for fusuma",
   "main": "src/index.js",
   "publishConfig": {
@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "@fusuma/configs": "^1.14.1"
+    "@fusuma/configs": "^1.14.2"
   }
 }
