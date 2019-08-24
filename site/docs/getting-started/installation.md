@@ -9,7 +9,7 @@ sidebar_label: Installation
 Fusuma requires Node >= 8.x.
 
 ```sh
-$ npm i fusuma -D # yarn fusuma --dev
+$ npm i fusuma -D # yarn add fusuma --dev
 ```
 
 ## Procedure
