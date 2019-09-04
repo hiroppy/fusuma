@@ -83,10 +83,10 @@ This sentence can be seen when using Presenter Mode.
 
 > You need to check the browser name and version because this feature uses WebRTC.
 
-Your screen can capture on the slide, but this feature can run only in Presenter Mode. And you can choose your local screen or application window or browser tab as output.
+Your screen can be captured on the slide, but this feature can run only in Presenter Mode. And you can choose your local screen or application window or browser tab as output.
 
 This feature will help **live coding** etc. This feature uses [Screen Capture API
-](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) so this syntax can run on Chorme, Edge, and Firefox.
+](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) so this syntax can run on Chrome, Edge, and Firefox.
 
 ```md
 <!-- slide.md -->
