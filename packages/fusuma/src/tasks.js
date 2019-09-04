@@ -13,13 +13,14 @@ async function initProcess({ schema }) {
   await init(process.cwd(), schema);
 }
 
-async function startProcess(basePath) {
+async function startProcess(basePath, { port }) {
   const spinner = loader('Starting server...').start();
   const config = fusuma.combine(await fusuma.read(basePath));
   const remoteOrigin = await getRemoteOriginUrl();
 
   await start({
     ...config,
+    port,
     internal: {
       basePath,
       remoteOrigin
@@ -146,7 +147,7 @@ function tasks({ type, options }) {
     case 'init':
       return initProcess(options);
     case 'start':
-      return startProcess(basePath);
+      return startProcess(basePath, options);
     case 'build':
       return buildProcess(basePath);
     case 'deploy':
