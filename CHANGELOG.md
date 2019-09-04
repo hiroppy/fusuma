@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0](https://github.com/hiroppy/fusuma/compare/v1.14.2...v1.15.0) (2019-09-04)
+
+### Features
+
+- **fusuma:** add option of port to the 'start-task'. ([3899e49](https://github.com/hiroppy/fusuma/commit/3899e49))
+
 ## [1.14.2](https://github.com/hiroppy/fusuma/compare/v1.14.1...v1.14.2) (2019-08-10)
 
 **Note:** Version bump only for package fusuma

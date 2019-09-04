@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/task-pdf",
-  "version": "1.14.2",
+  "version": "1.15.0",
   "description": "pdf task for fusuma",
   "main": "src/index.js",
   "publishConfig": {
