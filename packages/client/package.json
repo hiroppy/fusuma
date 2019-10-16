@@ -25,10 +25,10 @@
     "intl-relativeformat": "^6.2.2",
     "mermaid": "^8.1.0",
     "prismjs": "1.17.1",
-    "react": "16.9.0",
+    "react": "16.10.2",
     "react-burger-menu": "^2.6.10",
     "react-canvas-draw": "^1.0.2",
-    "react-dom": "16.9.0",
+    "react-dom": "16.10.2",
     "react-event-timeline": "^1.6.3",
     "react-icons": "^3.6.1",
     "react-modal": "^3.8.1",
@@ -37,10 +37,10 @@
     "webslides": "^1.4.2"
   },
   "devDependencies": {
-    "@babel/core": "7.5.5",
-    "@storybook/addon-viewport": "5.1.11",
-    "@storybook/cli": "5.1.11",
-    "@storybook/react": "5.1.11",
+    "@babel/core": "7.6.4",
+    "@storybook/addon-viewport": "5.2.4",
+    "@storybook/cli": "5.2.4",
+    "@storybook/react": "5.2.4",
     "babel-loader": "8.0.6"
   }
 }
