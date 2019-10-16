@@ -19,7 +19,7 @@
   "dependencies": {
     "child-process-promise": "2.2.1",
     "decktape": "^2.9.3",
-    "serve": "11.1.0",
+    "serve": "11.2.0",
     "serve-handler": "^6.0.1"
   }
 }
