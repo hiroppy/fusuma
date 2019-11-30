@@ -38,9 +38,9 @@
   },
   "devDependencies": {
     "@babel/core": "7.6.4",
-    "@storybook/addon-viewport": "5.2.6",
-    "@storybook/cli": "5.2.6",
-    "@storybook/react": "5.2.6",
+    "@storybook/addon-viewport": "5.2.7",
+    "@storybook/cli": "5.2.7",
+    "@storybook/react": "5.2.7",
     "babel-loader": "8.0.6"
   }
 }
