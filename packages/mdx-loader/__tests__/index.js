@@ -138,4 +138,12 @@ second
 `;
     expect(await transformToJS(src)).toMatchSnapshot();
   });
+
+  test('should convert markdown-syntax image to JSX', async () => {
+    const src = `
+![Alt](/tmp/withAlt.jpg)    
+![](/tmp/withoutAlt.jpg)
+`;
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
 });
