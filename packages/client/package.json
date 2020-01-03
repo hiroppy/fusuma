@@ -25,10 +25,10 @@
     "intl-relativeformat": "^6.2.2",
     "mermaid": "^8.1.0",
     "prismjs": "1.17.1",
-    "react": "16.10.2",
+    "react": "16.12.0",
     "react-burger-menu": "^2.6.10",
     "react-canvas-draw": "^1.0.2",
-    "react-dom": "16.10.2",
+    "react-dom": "16.12.0",
     "react-event-timeline": "^1.6.3",
     "react-icons": "^3.6.1",
     "react-modal": "^3.8.1",
@@ -37,7 +37,7 @@
     "webslides": "^1.4.2"
   },
   "devDependencies": {
-    "@babel/core": "7.6.4",
+    "@babel/core": "7.7.7",
     "@storybook/addon-viewport": "5.2.8",
     "@storybook/cli": "5.2.8",
     "@storybook/react": "5.2.8",
