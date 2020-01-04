@@ -137,7 +137,7 @@ function mdxPlugin() {
         }
       } else {
         visit(n, null, (node) => {
-          if (node.type === 'image' || node.type === 'img') {
+          if (node.type === 'image') {
             const { type, value } = transferMarkdownImageNodeToJSX(node);
             node.type = type;
             node.value = value;
