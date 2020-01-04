@@ -56,13 +56,14 @@ function createFusumaProps(nodes) {
 
 function transferMarkdownImageNodeToJSX(node) {
   const hash = mdxAstToMdxHast()(node);
-  const { src } = hash.properties;
+  const { src, alt } = hash.properties;
+  if (alt === null || alt === undefined) delete hash.properties.alt;
   let jsx;
 
   // Do not resolve remote url as a module
   if (src.indexOf('http') < 0) {
     delete hash.properties.src;
-    jsx = toJSX(hash).replace(/<img\s(.*)>/, `<img src={require('${src}')} $1>`);
+    jsx = toJSX(hash).replace(/<img(\s?.*)>/, `<img src={require('${src}')} $1>`);
   } else {
     jsx = toJSX(hash);
   }

@@ -621,9 +621,7 @@ exports[`fusuma-loader should convert markdown-syntax image to JSX 1`] = `
     <p><img src={require('/tmp/withAlt.jpg')} {...{
         \\"alt\\": \\"Alt\\"
       }}></img><br parentName=\\"p\\"></br>{\`
-\`}<img src={require('/tmp/withoutAlt.jpg')} {...{
-        \\"alt\\": null
-      }}></img></p>
+\`}<img src={require('/tmp/withoutAlt.jpg')}></img></p>
     
             </>
           )];
@@ -645,9 +643,7 @@ export default function MDXContent({
     <p><img src={require('/tmp/withAlt.jpg')} {...{
         \\"alt\\": \\"Alt\\"
       }}></img><br parentName=\\"p\\"></br>{\`
-\`}<img src={require('/tmp/withoutAlt.jpg')} {...{
-        \\"alt\\": null
-      }}></img></p>
+\`}<img src={require('/tmp/withoutAlt.jpg')}></img></p>
 
     </MDXLayout>;
 }
