@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/cli",
-  "version": "1.15.0",
+  "version": "1.15.1",
   "description": "CLI for fusuma",
   "main": "src/index.js",
   "publishConfig": {

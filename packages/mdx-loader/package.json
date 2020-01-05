@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/mdx-loader",
-  "version": "1.15.0",
+  "version": "1.15.1",
   "description": "mdx-loader for fusuma",
   "main": "src/index.js",
   "publishConfig": {

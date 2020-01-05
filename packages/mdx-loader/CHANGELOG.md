@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1](https://github.com/hiroppy/fusuma/compare/v1.15.0...v1.15.1) (2020-01-05)
+
+### Bug Fixes
+
+- the image wrttien in markdown-syntax `![]()` is not rendered ([e12e821](https://github.com/hiroppy/fusuma/commit/e12e82108ef90c193339708ae2fe4692e0eca336))
+
 # [1.15.0](https://github.com/hiroppy/fusuma/compare/v1.14.2...v1.15.0) (2019-09-04)
 
 **Note:** Version bump only for package @fusuma/mdx-loader
