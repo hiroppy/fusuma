@@ -5,7 +5,6 @@
   "description": "easily make slides with markdown",
   "scripts": {
     "test": "jest",
-    "test:ci": "npm run test && codecov",
     "fmt": "prettier --write **/*.{js,json,css,md}",
     "precommit": "pretty-quick --staged",
     "build:samples": "node scripts/build-samples.js",
