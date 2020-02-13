@@ -93,7 +93,7 @@ module.exports = (
         {
           test: /\.m?js$/,
           use: [
-            'cache-loader',
+            'cache-loader', // don't run when FUSUMA_DEBUG is true
             {
               loader: 'babel-loader',
               options: {

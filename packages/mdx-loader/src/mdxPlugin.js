@@ -1,5 +1,6 @@
 'use strict';
 
+const qr = require('qrcode-generator');
 const visit = require('unist-util-visit');
 
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
@@ -85,10 +86,37 @@ function mdxPlugin() {
       fusumaProps: []
     };
 
+    // TODO: refactor using visit
     tree.children.forEach((n) => {
       if (n.type === 'thematicBreak') {
         slides.push(slide);
         slide = [];
+      } else if (n.type === 'comment' && n.value.trim().includes('qr:')) {
+        // TODO: need to validate
+        const url = n.value
+          .trim()
+          .split('qr:')[1]
+          .trim();
+
+        const q = qr(0, 'L');
+        q.addData(url);
+        q.make();
+        const svg = q.createSvgTag();
+
+        slide.push(
+          ...[
+            n,
+            {
+              ...n,
+              type: 'jsx',
+              // TODO: specify variables and refactor
+              value: svg
+                .replace('width="58px"', '')
+                .replace('height="58px"', '')
+                .replace('<svg ', '<svg className="qr"')
+            }
+          ]
+        );
       } else if (n.type === 'comment' && n.value.trim() === 'screen') {
         slide.push(
           ...[
