@@ -23,7 +23,7 @@
     "@babel/plugin-transform-runtime": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
     "@babel/preset-react": "^7.0.0",
-    "babel-plugin-prismjs": "^1.0.2",
+    "babel-plugin-prismjs": "^2.0.1",
     "deepmerge": "^4.0.0",
     "js-yaml": "3.13.1",
     "postcss-import": "12.0.1",
@@ -32,6 +32,6 @@
     "postcss-reporter": "6.0.1",
     "postcss-url": "8.0.0",
     "preferred-search": "1.0.0",
-    "prismjs": "^1.16.0"
+    "prismjs": "^1.19.0"
   }
 }
