@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.2](https://github.com/hiroppy/fusuma/compare/v1.15.1...v1.15.2) (2020-02-13)
+
+### Bug Fixes
+
+- **babel:** update babel-plugin-prismjs and babel-loader ([bec5b41](https://github.com/hiroppy/fusuma/commit/bec5b4136314d83b44db17e24c73383a590ca50a))
+
 ## [1.15.1](https://github.com/hiroppy/fusuma/compare/v1.15.0...v1.15.1) (2020-01-05)
 
 **Note:** Version bump only for package @fusuma/client
