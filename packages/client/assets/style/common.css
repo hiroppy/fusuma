@@ -91,3 +91,9 @@ pre[class*='language-'] {
 .katex-html {
   display: none;
 }
+
+.qr {
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+}
