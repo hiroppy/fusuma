@@ -1,0 +1,21 @@
+__body {
+  background: #666;
+}
+
+@font-face {
+  font-family: Stratum;
+  src: url('./assets/StratumNo1.ttf');
+}
+
+.file-loader-font {
+  font-family: Stratum;
+  font-size: 2rem;
+}
+
+.file-loader-image {
+  background: url('./assets/js.jpg');
+  background-position: center;
+  background-size: contain;
+  height: 150px;
+  width: 150px;
+}

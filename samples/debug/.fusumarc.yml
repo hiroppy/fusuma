@@ -1,0 +1,21 @@
+meta:
+  url: https://slide.hiroppy.me
+  title: debug
+  description: A place which produces to resolve issues
+  thumbnail: https://avatars0.githubusercontent.com/u/3367801?s=400&v=4
+  siteName: hiroppy.me
+  sns: ['twitter']
+slide:
+  loop: true
+  sidebar: true
+  targetBlank: true
+  showIndex: true
+  isVertical: false
+  code:
+    languages:
+      - javascript
+      - cpp
+      - python
+extends:
+  js: main.js
+  css: style.css
