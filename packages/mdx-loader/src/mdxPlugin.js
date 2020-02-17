@@ -1,10 +1,9 @@
 'use strict';
 
-const qr = require('qrcode-generator');
-const visit = require('unist-util-visit');
-
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
+const visit = require('unist-util-visit');
+const transferMarkdownImageNodeToJSX = require('./transferMarkdownImageNodeToJSX');
 
 function createFusumaProps(nodes) {
   const property = {};
@@ -55,148 +54,132 @@ function createFusumaProps(nodes) {
     .join(',')}}`;
 }
 
-function transferMarkdownImageNodeToJSX(node) {
-  const hash = mdxAstToMdxHast()(node);
-  const { src, alt } = hash.properties;
-  if (alt === null || alt === undefined) delete hash.properties.alt;
-  let jsx;
-
-  // Do not resolve remote url as a module
-  if (src.indexOf('http') < 0) {
-    delete hash.properties.src;
-    jsx = toJSX(hash).replace(/<img(\s?.*)>/, `<img src={require('${src}')} $1>`);
-  } else {
-    jsx = toJSX(hash);
-  }
-
-  return {
-    type: 'jsx',
-    value: jsx
-  };
-}
-
 function mdxPlugin() {
   return (tree, file) => {
     const slides = [];
     let slide = [];
+    let fusumaProps = {};
     let videoId = 1;
     let mermaidId = 1;
+
+    for (const node of tree.children) {
+      const { type, lang, meta } = node;
+      const value = typeof node.value === 'string' ? node.value.trim() : node.value;
+      let establishedValue;
+
+      function addToSlide(v) {
+        // nested
+        visit(node, null, (n) => {
+          if (n.type === 'image') {
+            const { type, value } = transferMarkdownImageNodeToJSX(n);
+            n.type = type;
+            n.value = value;
+            delete n.alt;
+            delete n.title;
+            delete n.url;
+          }
+        });
+
+        if (v) {
+          slide.push({
+            node: {
+              ...node,
+              type: 'jsx',
+              value: v
+            },
+            fusumaProps
+          });
+        } else {
+          if (type === 'jsx') {
+            node.value = value
+              .replace(/src="(.+?\.(png|jpg|gif|svg?))"/g, 'src={require("$1")}')
+              .replace(/class=/g, 'className=');
+          }
+
+          slide.push({ node, fusumaProps });
+          fusumaProps = {};
+        }
+      }
+
+      if (type === 'thematicBreak' /* --- */) {
+        slides.push(slide);
+        slide = [];
+        continue;
+      }
+
+      if (type === 'comment') {
+        if (value.includes('qr:')) {
+          const qr = require('qrcode-generator');
+          // TODO: need to validate
+          const url = value.split('qr:')[1].trim();
+          const q = qr(0, 'L');
+
+          q.addData(url);
+          q.make();
+
+          // TODO: specify variables and refactor
+          establishedValue = q
+            .createSvgTag()
+            .replace('width="58px"', '')
+            .replace('height="58px"', '')
+            .replace('<svg ', '<svg className="qr"');
+        }
+        if (value === 'screen') {
+          establishedValue =
+            '<div className="fusuma-screen">' +
+            '<div>This view can capture the screen.<br />' +
+            'Click to get started.;)<br /><br />' +
+            'Note: This feature runs only in Presenter Mode.' +
+            '</div>' +
+            `<video id="fusuma-screen-${videoId}" />` +
+            '</div>';
+
+          fusumaProps.screen = true;
+          ++videoId;
+        }
+      }
+
+      if (type === 'code') {
+        if (lang === 'chart') {
+          establishedValue = `<div className="mermaid" id="mermaid-${mermaidId}" data-value="${value.replace(
+            /    /g,
+            ''
+          )}" style={{ visibility: 'hidden'}}>${value.replace(/    /g, '')}</div>`;
+
+          ++mermaidId;
+        }
+        if (meta) {
+          const lines = meta.match(/line="(.+?)"/);
+
+          if (lines) {
+            const line = lines[1];
+            const hash = mdxAstToMdxHast()(node);
+
+            establishedValue = toJSX(hash).replace('<pre>', `<pre data-line="${line}">`);
+          }
+        }
+      }
+
+      addToSlide(establishedValue);
+    }
+
+    // push last slide
+    slides.push(slide);
+
     const res = {
       jsx: [],
       fusumaProps: []
     };
 
-    // TODO: refactor using visit
-    tree.children.forEach((n) => {
-      if (n.type === 'thematicBreak') {
-        slides.push(slide);
-        slide = [];
-      } else if (n.type === 'comment' && n.value.trim().includes('qr:')) {
-        // TODO: need to validate
-        const url = n.value
-          .trim()
-          .split('qr:')[1]
-          .trim();
-
-        const q = qr(0, 'L');
-        q.addData(url);
-        q.make();
-        const svg = q.createSvgTag();
-
-        slide.push(
-          ...[
-            n,
-            {
-              ...n,
-              type: 'jsx',
-              // TODO: specify variables and refactor
-              value: svg
-                .replace('width="58px"', '')
-                .replace('height="58px"', '')
-                .replace('<svg ', '<svg className="qr"')
-            }
-          ]
-        );
-      } else if (n.type === 'comment' && n.value.trim() === 'screen') {
-        slide.push(
-          ...[
-            n,
-            {
-              ...n,
-              type: 'jsx',
-              value:
-                '<div className="fusuma-screen">' +
-                '<div>This view can capture the screen.<br />' +
-                'Click to get started.;)<br /><br />' +
-                'Note: This feature runs only in Presenter Mode.' +
-                '</div>' +
-                `<video id="fusuma-screen-${videoId}" />` +
-                '</div>'
-            }
-          ]
-        );
-
-        ++videoId;
-      } else if (n.type === 'code' && n.lang === 'chart') {
-        slide.push({
-          ...n,
-          type: 'jsx',
-          value: `<div className="mermaid" id="mermaid-${mermaidId}" data-value="${n.value.replace(
-            /    /g,
-            ''
-          )}" style={{ visibility: 'hidden'}}>${n.value.replace(/    /g, '')}</div>`
-        });
-
-        ++mermaidId;
-      } else if (n.type === 'code' && n.meta) {
-        const lines = n.meta.match(/line="(.+?)"/);
-
-        if (lines === null) {
-          slide.push(n);
-        } else {
-          const line = lines[1];
-          const hash = mdxAstToMdxHast()(n);
-          const value = toJSX(hash).replace('<pre>', `<pre data-line="${line}">`);
-
-          slide.push({
-            ...n,
-            type: 'jsx',
-            value
-          });
-        }
-      } else {
-        visit(n, null, (node) => {
-          if (node.type === 'image') {
-            const { type, value } = transferMarkdownImageNodeToJSX(node);
-            node.type = type;
-            node.value = value;
-            delete node.alt;
-            delete node.title;
-            delete node.url;
-          }
-        });
-
-        slide.push(n);
-
-        if (n.type === 'jsx') {
-          n.value = n.value
-            .replace(/src="(.+?\.(png|jpg|gif|svg?))"/g, 'src={require("$1")}')
-            .replace(/class=/g, 'className=');
-        }
-      }
-    });
-
-    // push last slide
-    slides.push(slide);
-
     slides.forEach((slide) => {
       const hash = mdxAstToMdxHast()({
         type: 'root',
-        children: slide
+        children: slide.map(({ node }) => node)
       });
       const mdxJSX = toJSX(hash);
       // jsx variable is established, so we don't use babel/parser
       const jsx = mdxJSX.match(/<MDXLayout.+?>([\s\S]*)<\/MDXLayout>/m);
+
       if (jsx) {
         const template = `
           (props) => (
@@ -204,10 +187,16 @@ function mdxPlugin() {
               ${jsx[1]}
             </>
           )`;
-        const fusumaProps = createFusumaProps(slide);
+        // const fusumaProps = createFusumaProps(slide);
 
-        res.jsx.push(template);
-        res.fusumaProps.push(fusumaProps);
+        for (const { fusumaProps } of slide) {
+          const props = `{${Object.entries(fusumaProps)
+            .map(([key, value]) => `${key}: '${value}'`)
+            .join(',')}}`;
+
+          res.jsx.push(template);
+          res.fusumaProps.push(props);
+        }
       }
     });
 
