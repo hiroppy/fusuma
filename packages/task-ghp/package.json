@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/task-ghp",
-  "version": "1.15.2",
+  "version": "1.16.0",
   "description": "github pages for fusuma",
   "main": "src/index.js",
   "publishConfig": {
