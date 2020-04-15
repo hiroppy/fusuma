@@ -23,7 +23,7 @@
     "@fusuma/utils": "^1.16.0",
     "babel-loader": "^8.0.6",
     "cache-loader": "^4.0.1",
-    "css-loader": "3.4.2",
+    "css-loader": "3.5.2",
     "express": "^4.17.1",
     "file-loader": "4.3.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
