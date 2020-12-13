@@ -22,8 +22,8 @@
     "loader-utils": "^1.2.3",
     "qrcode-generator": "^1.4.4",
     "remark-emoji": "^2.0.2",
-    "remark-html-katex": "^1.2.0",
-    "remark-math": "^1.0.6",
+    "remark-html-katex": "^3.0.0",
+    "remark-math": "^4.0.0",
     "unist-util-visit": "^2.0.0"
   }
 }
