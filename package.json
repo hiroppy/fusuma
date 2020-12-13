@@ -29,7 +29,7 @@
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "devDependencies": {
     "husky": "3.1.0",
-    "jest": "24.9.0",
+    "jest": "26.6.3",
     "lerna": "3.20.2",
     "prettier": "1.19.1",
     "pretty-quick": "1.11.1",
