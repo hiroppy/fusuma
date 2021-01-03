@@ -187,16 +187,16 @@ function mdxPlugin() {
               ${jsx[1]}
             </>
           )`;
-        // const fusumaProps = createFusumaProps(slide);
+        const fusumaProps = createFusumaProps(slide.map(({ node }) => node));
 
-        for (const { fusumaProps } of slide) {
-          const props = `{${Object.entries(fusumaProps)
-            .map(([key, value]) => `${key}: '${value}'`)
-            .join(',')}}`;
+        // for (const { fusumaProps } of slide) {
+        //   const props = `{${Object.entries(fusumaProps)
+        //     .map(([key, value]) => `${key}: '${value}'`)
+        //     .join(',')}}`;
+        // }
 
-          res.jsx.push(template);
-          res.fusumaProps.push(props);
-        }
+        res.jsx.push(template);
+        res.fusumaProps.push(fusumaProps);
       }
     });
 

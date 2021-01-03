@@ -58,6 +58,11 @@ This is Note!
 # Hello
 <!-- content -->
 <!-- screen -->
+
+---
+
+<!-- content -->
+<!-- screen -->
 `;
 
     expect(await transformToJS(src)).toMatchSnapshot();
