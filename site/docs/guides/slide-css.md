@@ -26,7 +26,7 @@ import { Flex } from '@fusuma/client';
     <div>Item 1 Multipurpose: services, features, specs...</div>,
     <div>Item 2 Multipurpose: services, features, specs...</div>,
     <div>Item 3 Multipurpose: services, features, specs...</div>,
-    <div>Item 4 Multipurpose: services, features, specs...</div>
+    <div>Item 4 Multipurpose: services, features, specs...</div>,
   ]}
 />;
 ```

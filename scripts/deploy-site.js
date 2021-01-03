@@ -9,14 +9,14 @@ const deploy = require('../packages/task-ghp/src');
 
   try {
     execSync('git checkout gh-pages && rm -rf docs css en img js && rm index.html sitemap.xml', {
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
 
     try {
       execSync(
         "git add docs css en img js index.html sitemap.xml && git commit -m 'delete site' && git push origin gh-pages",
         {
-          stdio: 'inherit'
+          stdio: 'inherit',
         }
       );
     } catch (e) {
@@ -24,7 +24,7 @@ const deploy = require('../packages/task-ghp/src');
     }
 
     execSync('git checkout -', {
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
   } catch (e) {
     console.error(e);
