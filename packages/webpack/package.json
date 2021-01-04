@@ -34,7 +34,7 @@
     "mini-css-extract-plugin": "0.9.0",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "postcss-loader": "3.0.0",
-    "react": "^16.14.0",
+    "react": "^17.0.0",
     "regenerator-runtime": "^0.13.7",
     "style-loader": "1.1.4",
     "table": "^5.4.6",
