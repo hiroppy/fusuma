@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "gh-pages": "2.2.0"
+    "gh-pages": "3.1.0"
   }
 }

@@ -26,14 +26,14 @@
     "mermaid": "^8.8.4",
     "prismjs": "^1.23.0",
     "react": "16.13.1",
-    "react-burger-menu": "^2.9.2",
+    "react-burger-menu": "^3.0.0",
     "react-canvas-draw": "^1.1.1",
     "react-dom": "16.13.1",
     "react-event-timeline": "^1.6.3",
-    "react-icons": "^3.11.0",
+    "react-icons": "^4.0.0",
     "react-modal": "^3.12.1",
     "react-pose": "^4.0.10",
-    "screenfull": "^4.2.1",
+    "screenfull": "^5.0.0",
     "webslides": "^1.4.2"
   },
   "devDependencies": {

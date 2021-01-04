@@ -18,7 +18,7 @@
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
     "child-process-promise": "2.2.1",
-    "decktape": "^2.9.3",
+    "decktape": "^3.0.0",
     "serve": "11.3.2",
     "serve-handler": "^6.0.1"
   }

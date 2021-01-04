@@ -25,12 +25,12 @@
     "@babel/preset-react": "^7.12.10",
     "babel-plugin-prismjs": "^2.0.1",
     "deepmerge": "^4.2.2",
-    "js-yaml": "3.13.1",
-    "postcss-import": "12.0.1",
-    "postcss-mixins": "6.2.3",
+    "js-yaml": "4.0.0",
+    "postcss-import": "14.0.0",
+    "postcss-mixins": "7.0.2",
     "postcss-preset-env": "6.7.0",
-    "postcss-reporter": "6.0.1",
-    "postcss-url": "8.0.0",
+    "postcss-reporter": "7.0.2",
+    "postcss-url": "10.1.1",
     "preferred-search": "1.0.0",
     "prismjs": "^1.23.0"
   }

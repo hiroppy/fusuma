@@ -19,7 +19,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.0.21",
     "@mdx-js/react": "^1.0.21",
-    "loader-utils": "^1.2.3",
+    "loader-utils": "^2.0.0",
     "qrcode-generator": "^1.4.4",
     "remark-emoji": "^2.0.2",
     "remark-html-katex": "^1.2.0",
