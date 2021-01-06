@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "caporal": "1.3.0",
+    "caporal": "1.4.0",
     "ora": "3.4.0"
   }
 }
