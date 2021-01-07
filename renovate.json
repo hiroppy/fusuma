@@ -1,14 +1,3 @@
 {
-  "extends": ["config:base", ":semanticCommitTypeAll(chore)"],
-  "labels": ["renovate"],
-  "major": {
-    "groupName": "all major dependencies"
-  },
-  "minor": {
-    "groupName": "all minor dependencies"
-  },
-  "patch": {
-    "automerge": true,
-    "groupName": "all patch dependencies"
-  }
+  "extends": ["@hiroppy"]
 }
