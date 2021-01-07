@@ -13,6 +13,7 @@ const writeFileAsync = promisify(writeFile);
 
 const config = {
   meta: {
+    url: null,
     title: null,
     thumbnail: null,
     description: null,

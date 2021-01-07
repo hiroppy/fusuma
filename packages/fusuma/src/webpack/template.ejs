@@ -16,8 +16,8 @@
     <% } %>
     <% if (htmlWebpackPlugin.options.url) { %>
       <meta property="og:url" content="<%= htmlWebpackPlugin.options.url %>" />
+      <meta property="og:image" content="<%= htmlWebpackPlugin.options.image %>" />
     <% } %>
-    <meta property="og:image" content="<%= htmlWebpackPlugin.options.image || 'replaced-automatically' %>" />
     <% if (htmlWebpackPlugin.options.siteName) { %>
       <meta property="og:site_name" content="<%= htmlWebpackPlugin.options.siteName %>" />
     <% } %>

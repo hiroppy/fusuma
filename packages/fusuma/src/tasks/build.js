@@ -56,8 +56,7 @@ async function build(basePath, extendedConfig = {}, isConsoleOutput = true) {
     }
   );
 
-  // TODO: fix
-  if (!config.meta.thumbnail) {
+  if (!config.meta.thumbnail && config.meta.url) {
     await createOgImage(basePath);
   }
 

@@ -27,8 +27,7 @@ module.exports = (
       : path.join(clientBasePath, 'src/entryPoints/Server.js'),
   ];
 
-  // name, url is deprecated TODO: delete
-  const { url, name, description, thumbnail, siteName, sns, title } = meta;
+  const { url, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
   const { ssr } = build;
@@ -46,7 +45,6 @@ module.exports = (
   })();
 
   const common = {
-    name: name || 'slide',
     entry,
     output: {
       path: outputPath,
@@ -137,7 +135,7 @@ module.exports = (
         'process.env.URL': JSON.stringify(url),
         'process.env.SNS': JSON.stringify(sns),
         'process.env.SIDEBAR': JSON.stringify(sidebar === undefined ? true : sidebar),
-        'process.env.TITLE': JSON.stringify(title || name || 'slide'),
+        'process.env.TITLE': JSON.stringify(title || 'slide'),
         'process.env.BASE_PATH': JSON.stringify(basePath),
         'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin),
         'process.env.TARGET_BLANK': JSON.stringify(targetBlank),
@@ -171,9 +169,9 @@ module.exports = (
       new HtmlWebpackPlugin({
         url,
         filename: 'index.html',
-        title: title || name || 'slide',
+        title: title || 'slide',
         template: path.join(__dirname, 'template.ejs'),
-        image: thumbnail || '',
+        image: thumbnail || `${url}/thumbnail.png`,
         siteName,
         description,
         math,

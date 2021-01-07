@@ -1,4 +1,5 @@
 meta:
+  url: 'http://localhost:8080'
   title: What's Fusuma?
   description: Introduce Fusuma
   siteName: hiroppy.me
