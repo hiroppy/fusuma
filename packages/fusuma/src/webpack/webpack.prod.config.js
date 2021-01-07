@@ -8,7 +8,8 @@ const css = require('./css');
 
 function prod() {
   return {
-    mode: 'production',
+    // mode: 'production',
+    mode: 'none', // if specify production, webpack won't generate dist directory(and mini-css-extract has errors)
     output: {
       filename: '[name].[chunkhash].bundle.js',
       chunkFilename: '[name].[id].[chunkhash].bundle.js',
@@ -24,6 +25,7 @@ function prod() {
       // new webpack.optimize.AggressiveMergingPlugin() // if use this, canvas will be broken
     ],
     optimization: {
+      minimize: true,
       minimizer: [
         new TerserPlugin({
           parallel: true,

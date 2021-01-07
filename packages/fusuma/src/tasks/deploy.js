@@ -4,7 +4,7 @@ const { join } = require('path');
 const loader = require('../cli/loader');
 const ghpages = require('gh-pages');
 
-async function deploy(basePath) {
+async function deploy(basePath, options) {
   return new Promise((resolve, reject) => {
     const spinner = loader('Publishing to gh-pages...').start();
 
@@ -16,6 +16,7 @@ async function deploy(basePath) {
       }
 
       spinner.stop();
+      console.info('Published!');
     });
   });
 }
