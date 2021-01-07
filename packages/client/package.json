@@ -39,7 +39,7 @@
   "devDependencies": {
     "@babel/core": "7.12.10",
     "@storybook/addon-viewport": "5.3.21",
-    "@storybook/cli": "5.3.21",
+    "@storybook/cli": "^6.1.11",
     "@storybook/react": "5.3.21",
     "babel-loader": "8.2.2"
   }
