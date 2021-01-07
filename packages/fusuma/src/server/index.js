@@ -20,13 +20,12 @@ async function server(config, options = {}) {
 
     app.use(
       webpackHotMiddleware(compiler, {
-        log: false
+        log: false,
       })
     );
     app.use(
       webpackDevMiddleware(compiler, {
         publicPath: config.output.publicPath,
-        logLevel: 'silent'
       })
     );
 

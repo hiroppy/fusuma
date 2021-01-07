@@ -13,7 +13,7 @@ function reloadChart() {
 }
 
 async function setupMermaid() {
-  const { Mermaid } = await import(/* webpackChunkName: 'Mermaid' */ '../../setup/Mermaid');
+  const { Mermaid } = await import('../../setup/Mermaid');
 
   mermaid = new Mermaid();
   mermaid.init();

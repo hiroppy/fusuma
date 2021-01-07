@@ -13,15 +13,13 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   const isJumpPage = index !== 0;
 
   const setCommentsListComponent = async () => {
-    const { CommentsList } = await import(/* webpackChunkName: 'live' */ './CommentsList');
+    const { CommentsList } = await import('./CommentsList');
 
     AddCommentsListComponents(CommentsList);
   };
 
   const setSidebarComponent = async () => {
-    const { Sidebar } = await import(
-      /* webpackChunkName: 'Sidebar', webpackPrefetch: true */ './Sidebar'
-    );
+    const { Sidebar } = await import(/* webpackPrefetch: true */ './Sidebar');
 
     AddSidebarComponent(Sidebar);
   };
@@ -39,9 +37,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
       AddContentComponent(Base);
     } else {
       const { default: Comp } =
-        mode === 'view'
-          ? await import(/* webpackChunkName: 'presenter.view' */ './ContentView/View')
-          : await import(/* webpackChunkName: 'presenter.host' */ './ContentView/Host');
+        mode === 'view' ? await import('./ContentView/View') : await import('./ContentView/Host');
 
       AddContentComponent(Comp);
     }
@@ -107,7 +103,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   }, [mode]);
 
   // for HMR
-  if (module.hot || process.env.SSR) {
+  if (import.meta.webpackHot || process.env.SSR) {
     const [prevHash, updatePrevHash] = useState(hash);
 
     if (prevHash !== hash) {

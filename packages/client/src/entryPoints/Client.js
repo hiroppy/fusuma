@@ -11,19 +11,15 @@ function createBody(slides = [], hash = 0) {
   renderMethod(<AppContainer slides={slides} hash={hash} />, document.getElementById('root'));
 }
 
-(async () => {
-  let slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
+let slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
 
-  if (module.hot) {
-    module.hot.accept(slidesInfo.id, () => {
-      slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
-      createBody(slidesInfo.slides, Math.random());
-    });
-  }
+import.meta.webpackHot?.accept(slidesInfo.id, () => {
+  slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
+  createBody(slidesInfo.slides, Math.random());
+});
 
-  createBody(slidesInfo.slides);
+createBody(slidesInfo.slides);
 
-  if (process.env.TARGET_BLANK) {
-    setTargetBlank();
-  }
-})();
+if (process.env.TARGET_BLANK) {
+  setTargetBlank();
+}
