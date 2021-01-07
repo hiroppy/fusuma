@@ -5,7 +5,6 @@ const { existsSync } = require('fs');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const babelrc = require('../configs/babelrc');
 const css = require('./css');
 
@@ -82,7 +81,6 @@ module.exports = (
         {
           test: /\.m?js$/,
           use: [
-            'cache-loader', // don't run when FUSUMA_DEBUG is true
             {
               loader: 'babel-loader',
               options: {
@@ -95,7 +93,6 @@ module.exports = (
         {
           test: /\.mdx?$/,
           use: [
-            'cache-loader',
             {
               loader: 'babel-loader',
               options: {
@@ -112,23 +109,21 @@ module.exports = (
           ],
         },
         {
-          test: /\.(png|jpe?g|gif|svg)$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[hash].webp',
-              },
-            },
-          ],
+          test: /\.(png|jpe?g|)$/,
+          type: 'asset/resource',
+          generator: {
+            filename: '[hash].webp',
+          },
+          loader: 'webp-loader',
+          options: {
+            quality: 50,
+          },
         },
         {
-          test: /\.(webp|eot|ttf|woff2?)$/,
-          use: {
-            loader: 'file-loader',
-            options: {
-              name: '[hash].[ext]',
-            },
+          test: /\.(gif|webp|eot|ttf|woff2?)$/,
+          type: 'asset/resource',
+          generator: {
+            filename: '[hash][ext]',
           },
         },
         css(),
@@ -156,11 +151,19 @@ module.exports = (
         'process.env.SSR': JSON.stringify(process.env.NODE_ENV === 'production' && ssr),
         'process.env.BUILD_STAGE': JSON.stringify(buildStage),
       }),
-      new ImageminWebpWebpackPlugin({
-        detailedLogs: false,
-        silent: true,
-      }),
     ],
+    infrastructureLogging: {
+      level: 'none',
+    },
+    cache: {
+      type: 'filesystem',
+      buildDependencies: {
+        config: [__filename],
+      },
+    },
+    experiments: {
+      topLevelAwait: true,
+    },
   };
 
   if (type !== 'ssr') {
