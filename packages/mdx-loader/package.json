@@ -24,6 +24,6 @@
     "remark-emoji": "^2.0.2",
     "remark-html-katex": "^1.2.0",
     "remark-math": "^1.0.6",
-    "unist-util-visit": "^2.0.0"
+    "unist-util-visit": "^2.0.3"
   }
 }
