@@ -20,6 +20,6 @@
     "child-process-promise": "2.2.1",
     "decktape": "^3.1.0",
     "serve": "11.3.2",
-    "serve-handler": "^6.0.1"
+    "serve-handler": "^6.1.3"
   }
 }
