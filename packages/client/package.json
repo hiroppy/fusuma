@@ -34,7 +34,7 @@
     "react-modal": "^3.12.1",
     "react-pose": "^4.0.10",
     "screenfull": "^5.1.0",
-    "webslides": "^1.4.2"
+    "webslides": "^1.5.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
