@@ -1,38 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`fusuma-loader should add data-line to pre tag 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     <pre data-line=\\"5\\"><code parentName=\\"pre\\" {...{
-        \\"className\\": \\"language-js\\",
-        \\"metastring\\": \\"line=\\\\\\"5\\\\\\"\\",
-        \\"line\\": \\"\\\\\\"5\\\\\\"\\"
-      }}>{\`first
+      \\"className\\": \\"language-js\\",
+      \\"metastring\\": \\"line=\\\\\\"5\\\\\\"\\",
+      \\"line\\": \\"\\\\\\"5\\\\\\"\\"
+    }}>{\`first
 \`}</code></pre>
     <pre data-line=\\"10-100\\"><code parentName=\\"pre\\" {...{
-        \\"className\\": \\"language-ts\\",
-        \\"metastring\\": \\"line=\\\\\\"10-100\\\\\\"\\",
-        \\"line\\": \\"\\\\\\"10-100\\\\\\"\\"
-      }}>{\`second
+      \\"className\\": \\"language-ts\\",
+      \\"metastring\\": \\"line=\\\\\\"10-100\\\\\\"\\",
+      \\"line\\": \\"\\\\\\"10-100\\\\\\"\\"
+    }}>{\`second
 \`}</code></pre>
     
-            </>
-          )];
-        export const fusumaProps = [{}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -56,49 +49,48 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should add fusuma options 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     {
-      /* note
-      This is Note!
-      */
-    }
+    /* note
+    This is Note!
+    */
+  }
     {
-      /* classes: class! */
-    }
+    /* classes: class! */
+  }
     {
-      /* sectionTitle: sectionTitle! */
-    }
+    /* sectionTitle: sectionTitle! */
+  }
     <h1>{\`Hello\`}</h1>
     {
-      /* content */
-    }
+    /* content */
+  }
     {
-      /* screen */
-    }
+    /* screen */
+  }
     <div className=\\"fusuma-screen\\"><div>This view can capture the screen.<br />Click to get started.;)<br /><br />Note: This feature runs only in Presenter Mode.</div><video id=\\"fusuma-screen-1\\" /></div>
     
-            </>
-          )];
-        export const fusumaProps = [{note: 'This is Note!',classes: 'class!',sectionTitle: 'sectionTitle!',screen: 'true'}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{
+  note: 'This is Note!',
+  classes: 'class!',
+  sectionTitle: 'sectionTitle!',
+  screen: 'true'
+}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -128,180 +120,177 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should convert MathJax 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     <h1>{\`MathJax\`}</h1>
     <div {...{
-      \\"className\\": \\"math\\"
-    }}><span parentName=\\"div\\" {...{
-        \\"className\\": \\"katex-display\\"
+    \\"className\\": \\"math math-display\\"
+  }}><span parentName=\\"div\\" {...{
+      \\"className\\": \\"katex-display\\"
+    }}><span parentName=\\"span\\" {...{
+        \\"className\\": \\"katex\\"
       }}><span parentName=\\"span\\" {...{
-          \\"className\\": \\"katex\\"
+          \\"className\\": \\"katex-mathml\\"
+        }}><math parentName=\\"span\\" {...{
+            \\"xmlns\\": \\"http://www.w3.org/1998/Math/MathML\\",
+            \\"display\\": \\"block\\"
+          }}><semantics parentName=\\"math\\"><mrow parentName=\\"semantics\\"><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`a\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup><mo parentName=\\"mrow\\">{\`+\`}</mo><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`b\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup><mo parentName=\\"mrow\\">{\`=\`}</mo><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`c\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup></mrow><annotation parentName=\\"semantics\\" {...{
+                \\"encoding\\": \\"application/x-tex\\"
+              }}>{\`a^2 + b^2 = c^2\`}</annotation></semantics></math></span><span parentName=\\"span\\" {...{
+          \\"className\\": \\"katex-html\\",
+          \\"aria-hidden\\": \\"true\\"
         }}><span parentName=\\"span\\" {...{
-            \\"className\\": \\"katex-mathml\\"
-          }}><math parentName=\\"span\\"><semantics parentName=\\"math\\"><mrow parentName=\\"semantics\\"><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`a\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup><mo parentName=\\"mrow\\">{\`+\`}</mo><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`b\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup><mo parentName=\\"mrow\\">{\`=\`}</mo><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`c\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup></mrow><annotation parentName=\\"semantics\\" {...{
-                  \\"encoding\\": \\"application/x-tex\\"
-                }}>{\`a^2 + b^2 = c^2\`}</annotation></semantics></math></span><span parentName=\\"span\\" {...{
-            \\"className\\": \\"katex-html\\",
-            \\"aria-hidden\\": \\"true\\"
+            \\"className\\": \\"base\\"
           }}><span parentName=\\"span\\" {...{
-              \\"className\\": \\"base\\"
+              \\"className\\": \\"strut\\",
+              \\"style\\": {
+                \\"height\\": \\"0.9474379999999999em\\",
+                \\"verticalAlign\\": \\"-0.08333em\\"
+              }
+            }}></span><span parentName=\\"span\\" {...{
+              \\"className\\": \\"mord\\"
             }}><span parentName=\\"span\\" {...{
-                \\"className\\": \\"strut\\",
-                \\"style\\": {
-                  \\"height\\": \\"0.9474379999999999em\\",
-                  \\"verticalAlign\\": \\"-0.08333em\\"
-                }
-              }}></span><span parentName=\\"span\\" {...{
-                \\"className\\": \\"mord\\"
+                \\"className\\": \\"mord mathnormal\\"
+              }}>{\`a\`}</span><span parentName=\\"span\\" {...{
+                \\"className\\": \\"msupsub\\"
               }}><span parentName=\\"span\\" {...{
-                  \\"className\\": \\"mord mathdefault\\"
-                }}>{\`a\`}</span><span parentName=\\"span\\" {...{
-                  \\"className\\": \\"msupsub\\"
+                  \\"className\\": \\"vlist-t\\"
                 }}><span parentName=\\"span\\" {...{
-                    \\"className\\": \\"vlist-t\\"
+                    \\"className\\": \\"vlist-r\\"
                   }}><span parentName=\\"span\\" {...{
-                      \\"className\\": \\"vlist-r\\"
+                      \\"className\\": \\"vlist\\",
+                      \\"style\\": {
+                        \\"height\\": \\"0.8641079999999999em\\"
+                      }
                     }}><span parentName=\\"span\\" {...{
-                        \\"className\\": \\"vlist\\",
                         \\"style\\": {
-                          \\"height\\": \\"0.8641079999999999em\\"
+                          \\"top\\": \\"-3.113em\\",
+                          \\"marginRight\\": \\"0.05em\\"
                         }
                       }}><span parentName=\\"span\\" {...{
+                          \\"className\\": \\"pstrut\\",
                           \\"style\\": {
-                            \\"top\\": \\"-3.113em\\",
-                            \\"marginRight\\": \\"0.05em\\"
+                            \\"height\\": \\"2.7em\\"
                           }
+                        }}></span><span parentName=\\"span\\" {...{
+                          \\"className\\": \\"sizing reset-size6 size3 mtight\\"
                         }}><span parentName=\\"span\\" {...{
-                            \\"className\\": \\"pstrut\\",
-                            \\"style\\": {
-                              \\"height\\": \\"2.7em\\"
-                            }
-                          }}></span><span parentName=\\"span\\" {...{
-                            \\"className\\": \\"sizing reset-size6 size3 mtight\\"
-                          }}><span parentName=\\"span\\" {...{
-                              \\"className\\": \\"mord mtight\\"
-                            }}>{\`2\`}</span></span></span></span></span></span></span></span><span parentName=\\"span\\" {...{
-                \\"className\\": \\"mspace\\",
-                \\"style\\": {
-                  \\"marginRight\\": \\"0.2222222222222222em\\"
-                }
-              }}></span><span parentName=\\"span\\" {...{
-                \\"className\\": \\"mbin\\"
-              }}>{\`+\`}</span><span parentName=\\"span\\" {...{
-                \\"className\\": \\"mspace\\",
-                \\"style\\": {
-                  \\"marginRight\\": \\"0.2222222222222222em\\"
-                }
-              }}></span></span><span parentName=\\"span\\" {...{
-              \\"className\\": \\"base\\"
+                            \\"className\\": \\"mord mtight\\"
+                          }}>{\`2\`}</span></span></span></span></span></span></span></span><span parentName=\\"span\\" {...{
+              \\"className\\": \\"mspace\\",
+              \\"style\\": {
+                \\"marginRight\\": \\"0.2222222222222222em\\"
+              }
+            }}></span><span parentName=\\"span\\" {...{
+              \\"className\\": \\"mbin\\"
+            }}>{\`+\`}</span><span parentName=\\"span\\" {...{
+              \\"className\\": \\"mspace\\",
+              \\"style\\": {
+                \\"marginRight\\": \\"0.2222222222222222em\\"
+              }
+            }}></span></span><span parentName=\\"span\\" {...{
+            \\"className\\": \\"base\\"
+          }}><span parentName=\\"span\\" {...{
+              \\"className\\": \\"strut\\",
+              \\"style\\": {
+                \\"height\\": \\"0.8641079999999999em\\",
+                \\"verticalAlign\\": \\"0em\\"
+              }
+            }}></span><span parentName=\\"span\\" {...{
+              \\"className\\": \\"mord\\"
             }}><span parentName=\\"span\\" {...{
-                \\"className\\": \\"strut\\",
-                \\"style\\": {
-                  \\"height\\": \\"0.8641079999999999em\\",
-                  \\"verticalAlign\\": \\"0em\\"
-                }
-              }}></span><span parentName=\\"span\\" {...{
-                \\"className\\": \\"mord\\"
+                \\"className\\": \\"mord mathnormal\\"
+              }}>{\`b\`}</span><span parentName=\\"span\\" {...{
+                \\"className\\": \\"msupsub\\"
               }}><span parentName=\\"span\\" {...{
-                  \\"className\\": \\"mord mathdefault\\"
-                }}>{\`b\`}</span><span parentName=\\"span\\" {...{
-                  \\"className\\": \\"msupsub\\"
+                  \\"className\\": \\"vlist-t\\"
                 }}><span parentName=\\"span\\" {...{
-                    \\"className\\": \\"vlist-t\\"
+                    \\"className\\": \\"vlist-r\\"
                   }}><span parentName=\\"span\\" {...{
-                      \\"className\\": \\"vlist-r\\"
+                      \\"className\\": \\"vlist\\",
+                      \\"style\\": {
+                        \\"height\\": \\"0.8641079999999999em\\"
+                      }
                     }}><span parentName=\\"span\\" {...{
-                        \\"className\\": \\"vlist\\",
                         \\"style\\": {
-                          \\"height\\": \\"0.8641079999999999em\\"
+                          \\"top\\": \\"-3.113em\\",
+                          \\"marginRight\\": \\"0.05em\\"
                         }
                       }}><span parentName=\\"span\\" {...{
+                          \\"className\\": \\"pstrut\\",
                           \\"style\\": {
-                            \\"top\\": \\"-3.113em\\",
-                            \\"marginRight\\": \\"0.05em\\"
+                            \\"height\\": \\"2.7em\\"
                           }
+                        }}></span><span parentName=\\"span\\" {...{
+                          \\"className\\": \\"sizing reset-size6 size3 mtight\\"
                         }}><span parentName=\\"span\\" {...{
-                            \\"className\\": \\"pstrut\\",
-                            \\"style\\": {
-                              \\"height\\": \\"2.7em\\"
-                            }
-                          }}></span><span parentName=\\"span\\" {...{
-                            \\"className\\": \\"sizing reset-size6 size3 mtight\\"
-                          }}><span parentName=\\"span\\" {...{
-                              \\"className\\": \\"mord mtight\\"
-                            }}>{\`2\`}</span></span></span></span></span></span></span></span><span parentName=\\"span\\" {...{
-                \\"className\\": \\"mspace\\",
-                \\"style\\": {
-                  \\"marginRight\\": \\"0.2777777777777778em\\"
-                }
-              }}></span><span parentName=\\"span\\" {...{
-                \\"className\\": \\"mrel\\"
-              }}>{\`=\`}</span><span parentName=\\"span\\" {...{
-                \\"className\\": \\"mspace\\",
-                \\"style\\": {
-                  \\"marginRight\\": \\"0.2777777777777778em\\"
-                }
-              }}></span></span><span parentName=\\"span\\" {...{
-              \\"className\\": \\"base\\"
+                            \\"className\\": \\"mord mtight\\"
+                          }}>{\`2\`}</span></span></span></span></span></span></span></span><span parentName=\\"span\\" {...{
+              \\"className\\": \\"mspace\\",
+              \\"style\\": {
+                \\"marginRight\\": \\"0.2777777777777778em\\"
+              }
+            }}></span><span parentName=\\"span\\" {...{
+              \\"className\\": \\"mrel\\"
+            }}>{\`=\`}</span><span parentName=\\"span\\" {...{
+              \\"className\\": \\"mspace\\",
+              \\"style\\": {
+                \\"marginRight\\": \\"0.2777777777777778em\\"
+              }
+            }}></span></span><span parentName=\\"span\\" {...{
+            \\"className\\": \\"base\\"
+          }}><span parentName=\\"span\\" {...{
+              \\"className\\": \\"strut\\",
+              \\"style\\": {
+                \\"height\\": \\"0.8641079999999999em\\",
+                \\"verticalAlign\\": \\"0em\\"
+              }
+            }}></span><span parentName=\\"span\\" {...{
+              \\"className\\": \\"mord\\"
             }}><span parentName=\\"span\\" {...{
-                \\"className\\": \\"strut\\",
-                \\"style\\": {
-                  \\"height\\": \\"0.8641079999999999em\\",
-                  \\"verticalAlign\\": \\"0em\\"
-                }
-              }}></span><span parentName=\\"span\\" {...{
-                \\"className\\": \\"mord\\"
+                \\"className\\": \\"mord mathnormal\\"
+              }}>{\`c\`}</span><span parentName=\\"span\\" {...{
+                \\"className\\": \\"msupsub\\"
               }}><span parentName=\\"span\\" {...{
-                  \\"className\\": \\"mord mathdefault\\"
-                }}>{\`c\`}</span><span parentName=\\"span\\" {...{
-                  \\"className\\": \\"msupsub\\"
+                  \\"className\\": \\"vlist-t\\"
                 }}><span parentName=\\"span\\" {...{
-                    \\"className\\": \\"vlist-t\\"
+                    \\"className\\": \\"vlist-r\\"
                   }}><span parentName=\\"span\\" {...{
-                      \\"className\\": \\"vlist-r\\"
+                      \\"className\\": \\"vlist\\",
+                      \\"style\\": {
+                        \\"height\\": \\"0.8641079999999999em\\"
+                      }
                     }}><span parentName=\\"span\\" {...{
-                        \\"className\\": \\"vlist\\",
                         \\"style\\": {
-                          \\"height\\": \\"0.8641079999999999em\\"
+                          \\"top\\": \\"-3.113em\\",
+                          \\"marginRight\\": \\"0.05em\\"
                         }
                       }}><span parentName=\\"span\\" {...{
+                          \\"className\\": \\"pstrut\\",
                           \\"style\\": {
-                            \\"top\\": \\"-3.113em\\",
-                            \\"marginRight\\": \\"0.05em\\"
+                            \\"height\\": \\"2.7em\\"
                           }
+                        }}></span><span parentName=\\"span\\" {...{
+                          \\"className\\": \\"sizing reset-size6 size3 mtight\\"
                         }}><span parentName=\\"span\\" {...{
-                            \\"className\\": \\"pstrut\\",
-                            \\"style\\": {
-                              \\"height\\": \\"2.7em\\"
-                            }
-                          }}></span><span parentName=\\"span\\" {...{
-                            \\"className\\": \\"sizing reset-size6 size3 mtight\\"
-                          }}><span parentName=\\"span\\" {...{
-                              \\"className\\": \\"mord mtight\\"
-                            }}>{\`2\`}</span></span></span></span></span></span></span></span></span></span></span></span></div>
+                            \\"className\\": \\"mord mtight\\"
+                          }}>{\`2\`}</span></span></span></span></span></span></span></span></span></span></span></span></div>
     
-            </>
-          )];
-        export const fusumaProps = [{}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -311,14 +300,17 @@ export default function MDXContent({
   return <MDXLayout {...layoutProps} {...props} components={components} mdxType=\\"MDXLayout\\">
     <h1>{\`MathJax\`}</h1>
     <div {...{
-      \\"className\\": \\"math\\"
+      \\"className\\": \\"math math-display\\"
     }}><span parentName=\\"div\\" {...{
         \\"className\\": \\"katex-display\\"
       }}><span parentName=\\"span\\" {...{
           \\"className\\": \\"katex\\"
         }}><span parentName=\\"span\\" {...{
             \\"className\\": \\"katex-mathml\\"
-          }}><math parentName=\\"span\\"><semantics parentName=\\"math\\"><mrow parentName=\\"semantics\\"><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`a\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup><mo parentName=\\"mrow\\">{\`+\`}</mo><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`b\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup><mo parentName=\\"mrow\\">{\`=\`}</mo><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`c\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup></mrow><annotation parentName=\\"semantics\\" {...{
+          }}><math parentName=\\"span\\" {...{
+              \\"xmlns\\": \\"http://www.w3.org/1998/Math/MathML\\",
+              \\"display\\": \\"block\\"
+            }}><semantics parentName=\\"math\\"><mrow parentName=\\"semantics\\"><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`a\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup><mo parentName=\\"mrow\\">{\`+\`}</mo><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`b\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup><mo parentName=\\"mrow\\">{\`=\`}</mo><msup parentName=\\"mrow\\"><mi parentName=\\"msup\\">{\`c\`}</mi><mn parentName=\\"msup\\">{\`2\`}</mn></msup></mrow><annotation parentName=\\"semantics\\" {...{
                   \\"encoding\\": \\"application/x-tex\\"
                 }}>{\`a^2 + b^2 = c^2\`}</annotation></semantics></math></span><span parentName=\\"span\\" {...{
             \\"className\\": \\"katex-html\\",
@@ -334,7 +326,7 @@ export default function MDXContent({
               }}></span><span parentName=\\"span\\" {...{
                 \\"className\\": \\"mord\\"
               }}><span parentName=\\"span\\" {...{
-                  \\"className\\": \\"mord mathdefault\\"
+                  \\"className\\": \\"mord mathnormal\\"
                 }}>{\`a\`}</span><span parentName=\\"span\\" {...{
                   \\"className\\": \\"msupsub\\"
                 }}><span parentName=\\"span\\" {...{
@@ -383,7 +375,7 @@ export default function MDXContent({
               }}></span><span parentName=\\"span\\" {...{
                 \\"className\\": \\"mord\\"
               }}><span parentName=\\"span\\" {...{
-                  \\"className\\": \\"mord mathdefault\\"
+                  \\"className\\": \\"mord mathnormal\\"
                 }}>{\`b\`}</span><span parentName=\\"span\\" {...{
                   \\"className\\": \\"msupsub\\"
                 }}><span parentName=\\"span\\" {...{
@@ -432,7 +424,7 @@ export default function MDXContent({
               }}></span><span parentName=\\"span\\" {...{
                 \\"className\\": \\"mord\\"
               }}><span parentName=\\"span\\" {...{
-                  \\"className\\": \\"mord mathdefault\\"
+                  \\"className\\": \\"mord mathnormal\\"
                 }}>{\`c\`}</span><span parentName=\\"span\\" {...{
                   \\"className\\": \\"msupsub\\"
                 }}><span parentName=\\"span\\" {...{
@@ -463,34 +455,28 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should convert QRCode 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     {
-      /* qr: https://google.com */
-    }
+    /* qr: https://google.com */
+  }
     <svg className=\\"qr\\" version=\\"1.1\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"66px\\" height=\\"66px\\" viewBox=\\"0 0 66 66\\" preserveAspectRatio=\\"xMinYMin meet\\"><rect width=\\"100%\\" height=\\"100%\\" fill=\\"white\\" cx=\\"0\\" cy=\\"0\\" /><path d=\\"M8,8l2,0 0,2 -2,0 0,-2z M10,8l2,0 0,2 -2,0 0,-2z M12,8l2,0 0,2 -2,0 0,-2z M14,8l2,0 0,2 -2,0 0,-2z M16,8l2,0 0,2 -2,0 0,-2z M18,8l2,0 0,2 -2,0 0,-2z M20,8l2,0 0,2 -2,0 0,-2z M24,8l2,0 0,2 -2,0 0,-2z M26,8l2,0 0,2 -2,0 0,-2z M28,8l2,0 0,2 -2,0 0,-2z M30,8l2,0 0,2 -2,0 0,-2z M36,8l2,0 0,2 -2,0 0,-2z M44,8l2,0 0,2 -2,0 0,-2z M46,8l2,0 0,2 -2,0 0,-2z M48,8l2,0 0,2 -2,0 0,-2z M50,8l2,0 0,2 -2,0 0,-2z M52,8l2,0 0,2 -2,0 0,-2z M54,8l2,0 0,2 -2,0 0,-2z M56,8l2,0 0,2 -2,0 0,-2z M8,10l2,0 0,2 -2,0 0,-2z M20,10l2,0 0,2 -2,0 0,-2z M30,10l2,0 0,2 -2,0 0,-2z M32,10l2,0 0,2 -2,0 0,-2z M34,10l2,0 0,2 -2,0 0,-2z M40,10l2,0 0,2 -2,0 0,-2z M44,10l2,0 0,2 -2,0 0,-2z M56,10l2,0 0,2 -2,0 0,-2z M8,12l2,0 0,2 -2,0 0,-2z M12,12l2,0 0,2 -2,0 0,-2z M14,12l2,0 0,2 -2,0 0,-2z M16,12l2,0 0,2 -2,0 0,-2z M20,12l2,0 0,2 -2,0 0,-2z M26,12l2,0 0,2 -2,0 0,-2z M30,12l2,0 0,2 -2,0 0,-2z M34,12l2,0 0,2 -2,0 0,-2z M36,12l2,0 0,2 -2,0 0,-2z M44,12l2,0 0,2 -2,0 0,-2z M48,12l2,0 0,2 -2,0 0,-2z M50,12l2,0 0,2 -2,0 0,-2z M52,12l2,0 0,2 -2,0 0,-2z M56,12l2,0 0,2 -2,0 0,-2z M8,14l2,0 0,2 -2,0 0,-2z M12,14l2,0 0,2 -2,0 0,-2z M14,14l2,0 0,2 -2,0 0,-2z M16,14l2,0 0,2 -2,0 0,-2z M20,14l2,0 0,2 -2,0 0,-2z M28,14l2,0 0,2 -2,0 0,-2z M30,14l2,0 0,2 -2,0 0,-2z M36,14l2,0 0,2 -2,0 0,-2z M38,14l2,0 0,2 -2,0 0,-2z M40,14l2,0 0,2 -2,0 0,-2z M44,14l2,0 0,2 -2,0 0,-2z M48,14l2,0 0,2 -2,0 0,-2z M50,14l2,0 0,2 -2,0 0,-2z M52,14l2,0 0,2 -2,0 0,-2z M56,14l2,0 0,2 -2,0 0,-2z M8,16l2,0 0,2 -2,0 0,-2z M12,16l2,0 0,2 -2,0 0,-2z M14,16l2,0 0,2 -2,0 0,-2z M16,16l2,0 0,2 -2,0 0,-2z M20,16l2,0 0,2 -2,0 0,-2z M28,16l2,0 0,2 -2,0 0,-2z M30,16l2,0 0,2 -2,0 0,-2z M32,16l2,0 0,2 -2,0 0,-2z M34,16l2,0 0,2 -2,0 0,-2z M36,16l2,0 0,2 -2,0 0,-2z M40,16l2,0 0,2 -2,0 0,-2z M44,16l2,0 0,2 -2,0 0,-2z M48,16l2,0 0,2 -2,0 0,-2z M50,16l2,0 0,2 -2,0 0,-2z M52,16l2,0 0,2 -2,0 0,-2z M56,16l2,0 0,2 -2,0 0,-2z M8,18l2,0 0,2 -2,0 0,-2z M20,18l2,0 0,2 -2,0 0,-2z M26,18l2,0 0,2 -2,0 0,-2z M30,18l2,0 0,2 -2,0 0,-2z M34,18l2,0 0,2 -2,0 0,-2z M36,18l2,0 0,2 -2,0 0,-2z M44,18l2,0 0,2 -2,0 0,-2z M56,18l2,0 0,2 -2,0 0,-2z M8,20l2,0 0,2 -2,0 0,-2z M10,20l2,0 0,2 -2,0 0,-2z M12,20l2,0 0,2 -2,0 0,-2z M14,20l2,0 0,2 -2,0 0,-2z M16,20l2,0 0,2 -2,0 0,-2z M18,20l2,0 0,2 -2,0 0,-2z M20,20l2,0 0,2 -2,0 0,-2z M24,20l2,0 0,2 -2,0 0,-2z M28,20l2,0 0,2 -2,0 0,-2z M32,20l2,0 0,2 -2,0 0,-2z M36,20l2,0 0,2 -2,0 0,-2z M40,20l2,0 0,2 -2,0 0,-2z M44,20l2,0 0,2 -2,0 0,-2z M46,20l2,0 0,2 -2,0 0,-2z M48,20l2,0 0,2 -2,0 0,-2z M50,20l2,0 0,2 -2,0 0,-2z M52,20l2,0 0,2 -2,0 0,-2z M54,20l2,0 0,2 -2,0 0,-2z M56,20l2,0 0,2 -2,0 0,-2z M24,22l2,0 0,2 -2,0 0,-2z M26,22l2,0 0,2 -2,0 0,-2z M32,22l2,0 0,2 -2,0 0,-2z M36,22l2,0 0,2 -2,0 0,-2z M38,22l2,0 0,2 -2,0 0,-2z M8,24l2,0 0,2 -2,0 0,-2z M10,24l2,0 0,2 -2,0 0,-2z M14,24l2,0 0,2 -2,0 0,-2z M16,24l2,0 0,2 -2,0 0,-2z M20,24l2,0 0,2 -2,0 0,-2z M26,24l2,0 0,2 -2,0 0,-2z M32,24l2,0 0,2 -2,0 0,-2z M34,24l2,0 0,2 -2,0 0,-2z M36,24l2,0 0,2 -2,0 0,-2z M38,24l2,0 0,2 -2,0 0,-2z M40,24l2,0 0,2 -2,0 0,-2z M44,24l2,0 0,2 -2,0 0,-2z M56,24l2,0 0,2 -2,0 0,-2z M10,26l2,0 0,2 -2,0 0,-2z M22,26l2,0 0,2 -2,0 0,-2z M24,26l2,0 0,2 -2,0 0,-2z M28,26l2,0 0,2 -2,0 0,-2z M36,26l2,0 0,2 -2,0 0,-2z M38,26l2,0 0,2 -2,0 0,-2z M46,26l2,0 0,2 -2,0 0,-2z M48,26l2,0 0,2 -2,0 0,-2z M50,26l2,0 0,2 -2,0 0,-2z M52,26l2,0 0,2 -2,0 0,-2z M54,26l2,0 0,2 -2,0 0,-2z M14,28l2,0 0,2 -2,0 0,-2z M20,28l2,0 0,2 -2,0 0,-2z M26,28l2,0 0,2 -2,0 0,-2z M32,28l2,0 0,2 -2,0 0,-2z M36,28l2,0 0,2 -2,0 0,-2z M38,28l2,0 0,2 -2,0 0,-2z M46,28l2,0 0,2 -2,0 0,-2z M50,28l2,0 0,2 -2,0 0,-2z M56,28l2,0 0,2 -2,0 0,-2z M12,30l2,0 0,2 -2,0 0,-2z M14,30l2,0 0,2 -2,0 0,-2z M16,30l2,0 0,2 -2,0 0,-2z M18,30l2,0 0,2 -2,0 0,-2z M22,30l2,0 0,2 -2,0 0,-2z M24,30l2,0 0,2 -2,0 0,-2z M36,30l2,0 0,2 -2,0 0,-2z M38,30l2,0 0,2 -2,0 0,-2z M46,30l2,0 0,2 -2,0 0,-2z M50,30l2,0 0,2 -2,0 0,-2z M52,30l2,0 0,2 -2,0 0,-2z M54,30l2,0 0,2 -2,0 0,-2z M56,30l2,0 0,2 -2,0 0,-2z M8,32l2,0 0,2 -2,0 0,-2z M10,32l2,0 0,2 -2,0 0,-2z M12,32l2,0 0,2 -2,0 0,-2z M18,32l2,0 0,2 -2,0 0,-2z M20,32l2,0 0,2 -2,0 0,-2z M22,32l2,0 0,2 -2,0 0,-2z M24,32l2,0 0,2 -2,0 0,-2z M26,32l2,0 0,2 -2,0 0,-2z M28,32l2,0 0,2 -2,0 0,-2z M34,32l2,0 0,2 -2,0 0,-2z M36,32l2,0 0,2 -2,0 0,-2z M40,32l2,0 0,2 -2,0 0,-2z M44,32l2,0 0,2 -2,0 0,-2z M46,32l2,0 0,2 -2,0 0,-2z M56,32l2,0 0,2 -2,0 0,-2z M8,34l2,0 0,2 -2,0 0,-2z M14,34l2,0 0,2 -2,0 0,-2z M18,34l2,0 0,2 -2,0 0,-2z M22,34l2,0 0,2 -2,0 0,-2z M24,34l2,0 0,2 -2,0 0,-2z M26,34l2,0 0,2 -2,0 0,-2z M28,34l2,0 0,2 -2,0 0,-2z M32,34l2,0 0,2 -2,0 0,-2z M38,34l2,0 0,2 -2,0 0,-2z M48,34l2,0 0,2 -2,0 0,-2z M54,34l2,0 0,2 -2,0 0,-2z M8,36l2,0 0,2 -2,0 0,-2z M10,36l2,0 0,2 -2,0 0,-2z M16,36l2,0 0,2 -2,0 0,-2z M18,36l2,0 0,2 -2,0 0,-2z M20,36l2,0 0,2 -2,0 0,-2z M22,36l2,0 0,2 -2,0 0,-2z M24,36l2,0 0,2 -2,0 0,-2z M26,36l2,0 0,2 -2,0 0,-2z M28,36l2,0 0,2 -2,0 0,-2z M36,36l2,0 0,2 -2,0 0,-2z M38,36l2,0 0,2 -2,0 0,-2z M42,36l2,0 0,2 -2,0 0,-2z M48,36l2,0 0,2 -2,0 0,-2z M50,36l2,0 0,2 -2,0 0,-2z M52,36l2,0 0,2 -2,0 0,-2z M54,36l2,0 0,2 -2,0 0,-2z M56,36l2,0 0,2 -2,0 0,-2z M8,38l2,0 0,2 -2,0 0,-2z M22,38l2,0 0,2 -2,0 0,-2z M28,38l2,0 0,2 -2,0 0,-2z M32,38l2,0 0,2 -2,0 0,-2z M34,38l2,0 0,2 -2,0 0,-2z M36,38l2,0 0,2 -2,0 0,-2z M42,38l2,0 0,2 -2,0 0,-2z M46,38l2,0 0,2 -2,0 0,-2z M50,38l2,0 0,2 -2,0 0,-2z M52,38l2,0 0,2 -2,0 0,-2z M56,38l2,0 0,2 -2,0 0,-2z M8,40l2,0 0,2 -2,0 0,-2z M14,40l2,0 0,2 -2,0 0,-2z M16,40l2,0 0,2 -2,0 0,-2z M18,40l2,0 0,2 -2,0 0,-2z M20,40l2,0 0,2 -2,0 0,-2z M24,40l2,0 0,2 -2,0 0,-2z M28,40l2,0 0,2 -2,0 0,-2z M30,40l2,0 0,2 -2,0 0,-2z M32,40l2,0 0,2 -2,0 0,-2z M38,40l2,0 0,2 -2,0 0,-2z M40,40l2,0 0,2 -2,0 0,-2z M42,40l2,0 0,2 -2,0 0,-2z M44,40l2,0 0,2 -2,0 0,-2z M46,40l2,0 0,2 -2,0 0,-2z M48,40l2,0 0,2 -2,0 0,-2z M52,40l2,0 0,2 -2,0 0,-2z M54,40l2,0 0,2 -2,0 0,-2z M24,42l2,0 0,2 -2,0 0,-2z M26,42l2,0 0,2 -2,0 0,-2z M28,42l2,0 0,2 -2,0 0,-2z M30,42l2,0 0,2 -2,0 0,-2z M40,42l2,0 0,2 -2,0 0,-2z M48,42l2,0 0,2 -2,0 0,-2z M52,42l2,0 0,2 -2,0 0,-2z M54,42l2,0 0,2 -2,0 0,-2z M8,44l2,0 0,2 -2,0 0,-2z M10,44l2,0 0,2 -2,0 0,-2z M12,44l2,0 0,2 -2,0 0,-2z M14,44l2,0 0,2 -2,0 0,-2z M16,44l2,0 0,2 -2,0 0,-2z M18,44l2,0 0,2 -2,0 0,-2z M20,44l2,0 0,2 -2,0 0,-2z M32,44l2,0 0,2 -2,0 0,-2z M34,44l2,0 0,2 -2,0 0,-2z M36,44l2,0 0,2 -2,0 0,-2z M40,44l2,0 0,2 -2,0 0,-2z M44,44l2,0 0,2 -2,0 0,-2z M48,44l2,0 0,2 -2,0 0,-2z M56,44l2,0 0,2 -2,0 0,-2z M8,46l2,0 0,2 -2,0 0,-2z M20,46l2,0 0,2 -2,0 0,-2z M30,46l2,0 0,2 -2,0 0,-2z M34,46l2,0 0,2 -2,0 0,-2z M38,46l2,0 0,2 -2,0 0,-2z M40,46l2,0 0,2 -2,0 0,-2z M48,46l2,0 0,2 -2,0 0,-2z M8,48l2,0 0,2 -2,0 0,-2z M12,48l2,0 0,2 -2,0 0,-2z M14,48l2,0 0,2 -2,0 0,-2z M16,48l2,0 0,2 -2,0 0,-2z M20,48l2,0 0,2 -2,0 0,-2z M24,48l2,0 0,2 -2,0 0,-2z M26,48l2,0 0,2 -2,0 0,-2z M28,48l2,0 0,2 -2,0 0,-2z M30,48l2,0 0,2 -2,0 0,-2z M34,48l2,0 0,2 -2,0 0,-2z M38,48l2,0 0,2 -2,0 0,-2z M40,48l2,0 0,2 -2,0 0,-2z M42,48l2,0 0,2 -2,0 0,-2z M44,48l2,0 0,2 -2,0 0,-2z M46,48l2,0 0,2 -2,0 0,-2z M48,48l2,0 0,2 -2,0 0,-2z M56,48l2,0 0,2 -2,0 0,-2z M8,50l2,0 0,2 -2,0 0,-2z M12,50l2,0 0,2 -2,0 0,-2z M14,50l2,0 0,2 -2,0 0,-2z M16,50l2,0 0,2 -2,0 0,-2z M20,50l2,0 0,2 -2,0 0,-2z M24,50l2,0 0,2 -2,0 0,-2z M32,50l2,0 0,2 -2,0 0,-2z M34,50l2,0 0,2 -2,0 0,-2z M40,50l2,0 0,2 -2,0 0,-2z M42,50l2,0 0,2 -2,0 0,-2z M44,50l2,0 0,2 -2,0 0,-2z M54,50l2,0 0,2 -2,0 0,-2z M56,50l2,0 0,2 -2,0 0,-2z M8,52l2,0 0,2 -2,0 0,-2z M12,52l2,0 0,2 -2,0 0,-2z M14,52l2,0 0,2 -2,0 0,-2z M16,52l2,0 0,2 -2,0 0,-2z M20,52l2,0 0,2 -2,0 0,-2z M28,52l2,0 0,2 -2,0 0,-2z M30,52l2,0 0,2 -2,0 0,-2z M34,52l2,0 0,2 -2,0 0,-2z M40,52l2,0 0,2 -2,0 0,-2z M42,52l2,0 0,2 -2,0 0,-2z M48,52l2,0 0,2 -2,0 0,-2z M50,52l2,0 0,2 -2,0 0,-2z M52,52l2,0 0,2 -2,0 0,-2z M54,52l2,0 0,2 -2,0 0,-2z M56,52l2,0 0,2 -2,0 0,-2z M8,54l2,0 0,2 -2,0 0,-2z M20,54l2,0 0,2 -2,0 0,-2z M24,54l2,0 0,2 -2,0 0,-2z M30,54l2,0 0,2 -2,0 0,-2z M32,54l2,0 0,2 -2,0 0,-2z M34,54l2,0 0,2 -2,0 0,-2z M44,54l2,0 0,2 -2,0 0,-2z M46,54l2,0 0,2 -2,0 0,-2z M48,54l2,0 0,2 -2,0 0,-2z M52,54l2,0 0,2 -2,0 0,-2z M54,54l2,0 0,2 -2,0 0,-2z M56,54l2,0 0,2 -2,0 0,-2z M8,56l2,0 0,2 -2,0 0,-2z M10,56l2,0 0,2 -2,0 0,-2z M12,56l2,0 0,2 -2,0 0,-2z M14,56l2,0 0,2 -2,0 0,-2z M16,56l2,0 0,2 -2,0 0,-2z M18,56l2,0 0,2 -2,0 0,-2z M20,56l2,0 0,2 -2,0 0,-2z M24,56l2,0 0,2 -2,0 0,-2z M26,56l2,0 0,2 -2,0 0,-2z M30,56l2,0 0,2 -2,0 0,-2z M32,56l2,0 0,2 -2,0 0,-2z M34,56l2,0 0,2 -2,0 0,-2z M40,56l2,0 0,2 -2,0 0,-2z M50,56l2,0 0,2 -2,0 0,-2z M56,56l2,0 0,2 -2,0 0,-2z \\" stroke=\\"transparent\\" fill=\\"black\\" /></svg>
     
-            </>
-          )];
-        export const fusumaProps = [{}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -505,18 +491,17 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should convert all img src 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     <h1>{\`img src\`}</h1>
     <div>
@@ -525,16 +510,11 @@ exports[`fusuma-loader should convert all img src 1`] = `
   <img src={require(\\"random3.svg\\")} alt=\\"random3\\" />
     </div>
     
-            </>
-          )];
-        export const fusumaProps = [{}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -552,18 +532,17 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should convert class to className 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     <h1>{\`Class\`}</h1>
     <div className=\\"test\\">
@@ -572,16 +551,11 @@ exports[`fusuma-loader should convert class to className 1`] = `
   </div>
     </div>
     
-            </>
-          )];
-        export const fusumaProps = [{}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -599,40 +573,29 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should convert emoji 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     <h1>{\`😄\`}</h1>
     
-            </>
-          ),
-
-          (props) => (
-            <>
+            </>, props => <>
               
     <h1>{\`😄\`}</h1>
     
-            </>
-          )];
-        export const fusumaProps = [{},
-{}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{}, {}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -647,34 +610,28 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should convert markdown-syntax image to JSX 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     <p><img src={require('/tmp/withAlt.jpg')} {...{
-        \\"alt\\": \\"Alt\\"
-      }}></img>{\`
+      \\"alt\\": \\"Alt\\"
+    }}></img>{\`
 \`}<img src={require('/tmp/withoutAlt.jpg')}></img></p>
     
-            </>
-          )];
-        export const fusumaProps = [{}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -690,50 +647,39 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should convert mermaid 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     <h1>{\`FlowChart\`}</h1>
     
-            </>
-          ),
-
-          (props) => (
-            <>
+            </>, props => <>
               
     <div className=\\"mermaid\\" id=\\"mermaid-1\\" data-value=\\"graph TD;
 A-->B;
 A-->C;
 B-->D;
 C-->D;\\" style={{
-      visibility: 'hidden'
-    }}>graph TD;
+    visibility: 'hidden'
+  }}>graph TD;
 A-->B;
 A-->C;
 B-->D;
 C-->D;</div>
     
-            </>
-          )];
-        export const fusumaProps = [{},
-{}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{}, {}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -755,40 +701,29 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should return normal md 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
     <h1>{\`1\`}</h1>
     
-            </>
-          ),
-
-          (props) => (
-            <>
+            </>, props => <>
               
     <h1>{\`2\`}</h1>
     
-            </>
-          )];
-        export const fusumaProps = [{},
-{}];
-const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+            </>];
+export const fusumaProps = [{}, {}];
 
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -803,33 +738,31 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;
 
 exports[`fusuma-loader should return normal mdx 1`] = `
-"/* @jsx mdx */
+"/* @jsxRuntime classic */
+/* @jsx mdx */
 import React from 'react';
-
-        import React from 'react';
-        import { mdx } from '@mdx-js/react';
-        export const slides = [
-          (props) => (
-            <>
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
               
 
     <p>{\`const Sample = () => \`}<div>{\`sample\`}</div>{\`;\`}</p>
-    <Sample mdxType=\\"Sample\\" />
+    <Sample mdxType=\\"Sample\\" mdxType=\\"Sample\\" />
     
-            </>
-          )];
-        export const fusumaProps = [{}];
+            </>];
+export const fusumaProps = [{}];
 const makeShortcode = name => function MDXDefaultShortcode(props) {
-  console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
-  return <div {...props}/>
-};
+      console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")
+      return <div {...props}/>
+    };
 const Sample = makeShortcode(\\"Sample\\");
 const layoutProps = {
-  slides
+  
 };
 const MDXLayout = \\"wrapper\\"
 export default function MDXContent({
@@ -844,5 +777,6 @@ export default function MDXContent({
     </MDXLayout>;
 }
 
+;
 MDXContent.isMDXComponent = true;"
 `;

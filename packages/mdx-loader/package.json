@@ -17,13 +17,13 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "@mdx-js/mdx": "^1.0.21",
-    "@mdx-js/react": "^1.0.21",
-    "loader-utils": "^1.2.3",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "loader-utils": "^2.0.0",
     "qrcode-generator": "^1.4.4",
-    "remark-emoji": "^2.0.2",
-    "remark-html-katex": "^1.2.0",
-    "remark-math": "^1.0.6",
+    "remark-emoji": "^2.1.0",
+    "remark-html-katex": "^3.0.0",
+    "remark-math": "^3.0.1",
     "unist-util-visit": "^2.0.3"
   }
 }

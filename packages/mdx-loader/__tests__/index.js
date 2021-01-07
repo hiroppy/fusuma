@@ -7,7 +7,7 @@ jest.mock('loader-utils');
 const loaderUtils = require('loader-utils');
 loaderUtils.getOptions.mockImplementation(() => {
   return {
-    math: true
+    math: true,
   };
 });
 
@@ -20,7 +20,7 @@ async function transformToJS(src) {
             return reject(err);
           }
           resolve(res);
-        }
+        },
       },
       src
     );
