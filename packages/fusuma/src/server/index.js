@@ -13,7 +13,7 @@ async function server(config, options = {}) {
     config.entry.unshift('webpack-hot-middleware/client?reload=true');
 
     const app = express();
-    const port = options.port || 8080;
+    const port = options.internal.port;
     const url = `http://localhost:${port}`;
     const compiler = webpack(config);
     let initialFlag = false;
@@ -38,7 +38,7 @@ async function server(config, options = {}) {
 
     compiler.hooks.done.tap('fusuma-server', () => {
       if (!initialFlag) {
-        console.log(`Listening on ${url}`);
+        console.info(`Listening on ${url}`);
         initialFlag = true;
       }
 

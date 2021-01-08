@@ -8,7 +8,6 @@ const deleteDir = require('../utils/deleteDir');
 
 async function createOgImage(outputDirPath) {
   const url = require('url');
-  const { join } = require('path');
   const puppeteer = require('puppeteer');
 
   const browser = await puppeteer.launch();
@@ -52,6 +51,7 @@ async function build(config, isConsoleOutput = true) {
   }
 
   spinner.stop();
+  console.info('completed!');
 }
 
 module.exports = build;

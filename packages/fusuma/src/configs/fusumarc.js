@@ -48,7 +48,7 @@ const config = {
 const configFileNames = ['.fusumarc.yml', '.fusumarc.js'];
 
 function getConfigYaml() {
-  const configYaml = yaml.safeDump(config).replace(/null/g, '');
+  const configYaml = yaml.dump(config).replace(/null/g, '');
 
   return configYaml
     .split('\n')
