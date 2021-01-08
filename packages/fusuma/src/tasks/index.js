@@ -1,6 +1,7 @@
 'use strict';
 
 const { join } = require('path');
+const fusuma = require('../configs/fusumarc');
 const init = require('./init');
 const start = require('./start');
 const build = require('./build');
@@ -9,20 +10,30 @@ const pdf = require('./pdf');
 
 async function tasks({ type, options }) {
   const basePath = join(process.cwd(), options.dir || '');
+  let config = {};
+
+  try {
+    config = await fusuma.read(basePath);
+  } catch (e) {
+  } finally {
+    config = fusuma.combine(config, {
+      internal: { ...options, basePath },
+    });
+  }
 
   switch (type) {
     case 'init':
-      return init(options);
+      return init(config);
     case 'start':
-      return start(basePath, options);
+      return start(config);
     case 'build':
-      return build(basePath);
+      return build(config);
     case 'deploy':
-      return deploy(basePath);
+      return deploy(config);
     case 'pdf':
-      return pdf(basePath, options);
+      return pdf(config);
     case 'live':
-      return live(basePath, options);
+      return live(config);
   }
 }
 

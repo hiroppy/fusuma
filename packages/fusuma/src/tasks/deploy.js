@@ -2,13 +2,16 @@
 
 const { join } = require('path');
 const loader = require('../cli/loader');
-const ghpages = require('gh-pages');
 
-async function deploy(basePath, options) {
+async function deploy(config) {
+  const ghpages = require('gh-pages');
+
   return new Promise((resolve, reject) => {
     const spinner = loader('Publishing to gh-pages...').start();
+    const { basePath, outputDir } = config.internal;
+    const outputDirPath = join(basePath, outputDir);
 
-    ghpages.publish(join(basePath, 'dist'), options, (err) => {
+    ghpages.publish(outputDirPath, options, (err) => {
       if (err) {
         reject(err);
       } else {

@@ -4,7 +4,9 @@ const { join } = require('path');
 const loader = require('../cli/loader');
 const lazyloadModule = require('../utils/lazyloadModule');
 
-async function live(basePath, { keyword, internal, port, dir }) {
+async function live(config) {
+  const { basePath, outputDir, keyword, port, dir } = config.internal;
+
   await buildProcess(
     basePath,
     {

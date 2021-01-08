@@ -5,21 +5,14 @@ const loader = require('../cli/loader');
 const lazyloadModule = require('../utils/lazyloadModule');
 const build = require('./build');
 
-async function pdf(basePath, { input: i, output: o }) {
+async function pdf(config) {
   const port = 3455;
-  const input = join(process.cwd(), i || 'dist');
-  const output = join(process.cwd(), o || 'slide.pdf');
+  const { basePath, inputDir, filename } = config.internal;
+  const inputDirPath = join(basePath, inputDir);
+  const output = join(basePath, filename);
 
-  await build(
-    basePath,
-    {
-      slide: {
-        loop: false,
-        sidebar: false,
-      },
-    },
-    false
-  );
+  // TODO: use config
+  await build(config, false);
 
   const spinner = loader('Exporting as PDF...').start();
 
@@ -34,7 +27,7 @@ async function pdf(basePath, { input: i, output: o }) {
       }
     });
 
-    await pdf(input, output, port);
+    await pdf(inputDirPath, output, port);
 
     spinner.stop();
   } catch (e) {

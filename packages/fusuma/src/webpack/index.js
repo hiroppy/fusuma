@@ -4,9 +4,8 @@ const combineConfig = require('./webpack.config');
 
 async function start(config) {
   const server = require('../server');
-  const port = config.port || 8080;
 
-  await server(combineConfig('development', config), { port });
+  await server(combineConfig('development', config));
 }
 
 async function build(config, isConsoleOutput = true, cb) {

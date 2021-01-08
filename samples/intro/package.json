@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "init": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli init",
     "start": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli start",
     "build": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli build",
     "pdf": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli pdf",
