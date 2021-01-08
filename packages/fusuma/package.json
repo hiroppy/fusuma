@@ -1,6 +1,6 @@
 {
   "name": "fusuma",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "easily make slides with markdown",
   "bin": {
     "fusuma": "./src/cli/index.js"
@@ -35,7 +35,7 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@fusuma/client": "^2.0.0-alpha.0",
-    "@fusuma/mdx-loader": "^2.0.0-alpha.0",
+    "@fusuma/mdx-loader": "^2.0.0-alpha.2",
     "@soda/friendly-errors-webpack-plugin": "^1.8.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-prismjs": "^2.0.1",
