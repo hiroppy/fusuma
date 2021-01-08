@@ -129,6 +129,7 @@ module.exports = (
     },
     plugins: [
       new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'process.env.JS_PATH': JSON.stringify(path.join(basePath, jsPath || '')),
         'process.env.CSS_PATH': JSON.stringify(path.join(basePath, cssPath || '')),
         'process.env.SLIDE_PATH': JSON.stringify(path.join(basePath, 'slides')),
