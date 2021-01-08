@@ -157,9 +157,13 @@ module.exports = (
     },
     cache: {
       type: useCache ? 'filesystem' : 'memory',
-      buildDependencies: {
-        config: [__filename],
-      },
+      ...(useCache
+        ? {
+            buildDependencies: {
+              config: [__filename],
+            },
+          }
+        : {}),
     },
     experiments: {
       topLevelAwait: true,

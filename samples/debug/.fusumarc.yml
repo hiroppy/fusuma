@@ -19,3 +19,5 @@ slide:
 extends:
   js: main.js
   css: style.css
+build:
+  useCache: false

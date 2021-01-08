@@ -5,6 +5,11 @@ const loader = require('../cli/loader');
 const lazyloadModule = require('../utils/lazyloadModule');
 
 async function pdf(config) {
+  if (config.slide.loop) {
+    console.error('You must disable slide.loop.');
+    process.exit(1);
+  }
+
   const port = 3455;
   const { basePath, inputDir, filename } = config.internal;
   const inputDirPath = join(basePath, inputDir);
