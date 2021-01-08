@@ -11,7 +11,7 @@ async function deploy(config) {
     const { basePath, outputDir } = config.internal;
     const outputDirPath = join(basePath, outputDir);
 
-    ghpages.publish(outputDirPath, options, (err) => {
+    ghpages.publish(outputDirPath, (err) => {
       if (err) {
         reject(err);
       } else {

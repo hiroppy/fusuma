@@ -59,7 +59,7 @@ async function cli() {
       })
 
       .command('pdf', 'Export as PDF')
-      .option('-i <directory>', 'A directory to load', prog.STRING, 'slides')
+      .option('-i <directory>', 'A directory to load', prog.STRING, 'dist')
       .option('-f <directory>', 'A filename of pdf', prog.STRING, 'slide.pdf')
       .action((args, options, logger) => {
         resolve({

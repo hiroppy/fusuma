@@ -48,6 +48,7 @@ module.exports = (
     entry,
     output: {
       path: outputPath,
+      publicPath: '/',
     },
     resolveLoader: {
       modules: [

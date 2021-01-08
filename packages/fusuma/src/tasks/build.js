@@ -47,6 +47,7 @@ async function build(config, isConsoleOutput = true) {
   });
 
   if (!config.meta.thumbnail && config.meta.url) {
+    spinner.text = 'Generating og:image...';
     await createOgImage(outputDirPath);
   }
 
