@@ -30,7 +30,7 @@ module.exports = (
   const { url, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
-  const { ssr } = build;
+  const { ssr, useCache } = build;
   const { basePath, remoteOrigin, htmlBody = '', buildStage, port, outputDir } = internal;
   const outputPath = path.resolve(basePath, outputDir || /* for start task */ 'dist');
   const config = (() => {
@@ -155,7 +155,7 @@ module.exports = (
       level: 'none',
     },
     cache: {
-      type: 'filesystem',
+      type: useCache ? 'filesystem' : 'memory',
       buildDependencies: {
         config: [__filename],
       },

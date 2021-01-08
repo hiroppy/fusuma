@@ -41,6 +41,7 @@ const config = {
   },
   build: {
     ssr: true,
+    useCache: true,
   },
 };
 
