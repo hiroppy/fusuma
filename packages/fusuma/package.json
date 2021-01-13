@@ -52,7 +52,7 @@
     "human-size": "^1.1.0",
     "js-yaml": "^4.0.0",
     "jsdom": "^16.4.0",
-    "mini-css-extract-plugin": "^1.3.3",
+    "mini-css-extract-plugin": "^1.3.4",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "ora": "^5.2.0",
     "postcss": "^8.2.4",
