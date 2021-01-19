@@ -41,7 +41,7 @@
     "babel-plugin-prismjs": "^2.0.1",
     "caporal": "^1.4.0",
     "child-process-promise": "^2.2.1",
-    "core-js": "^3.8.2",
+    "core-js": "^3.8.3",
     "css-loader": "^5.0.1",
     "deepmerge": "^4.2.2",
     "express": "^4.17.1",
