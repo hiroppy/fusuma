@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.4](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.3...v2.0.0-alpha.4) (2021-01-19)
+
+
+### Bug Fixes
+
+* **build:** modify screenshot logic ([735edfb](https://github.com/hiroppy/fusuma/commit/735edfb1bbb13bdbbda4ddab6e798fbc2a917663))
+* some bugs ([3191dcc](https://github.com/hiroppy/fusuma/commit/3191dcc2a8e9c8aab360071d0756ce7141163ee4))
+
+
+
+
+
 # [1.16.0](https://github.com/hiroppy/fusuma/compare/v1.15.2...v1.16.0) (2020-02-17)
 
 **Note:** Version bump only for package fusuma
