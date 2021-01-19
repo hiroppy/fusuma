@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.7](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2021-01-19)
+
+
+### Bug Fixes
+
+* **client:** fix sidebar param ([ffbca40](https://github.com/hiroppy/fusuma/commit/ffbca408a19fb82b99b7f4c53c7692546bb63bd2))
+* **client:** update screenfull ([74b6326](https://github.com/hiroppy/fusuma/commit/74b6326fad5232893d0a98ae85074af5b1755aa3))
+
+
+
+
+
 # [2.0.0-alpha.6](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2021-01-19)
 
 ### Bug Fixes
