@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.6](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2021-01-19)
+
+
+### Bug Fixes
+
+* **cli:** validate the base path ([4d81a42](https://github.com/hiroppy/fusuma/commit/4d81a42a89f58fe225daebe6be677bcc2be4604f))
+
+
+
+
+
 # [2.0.0-alpha.5](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2021-01-19)
 
 ### Features
