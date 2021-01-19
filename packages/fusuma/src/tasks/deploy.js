@@ -1,6 +1,5 @@
 'use strict';
 
-const { join } = require('path');
 const loader = require('../cli/loader');
 
 async function deploy(config) {
@@ -8,8 +7,7 @@ async function deploy(config) {
 
   return new Promise((resolve, reject) => {
     const spinner = loader('Publishing to gh-pages...').start();
-    const { basePath, outputDir } = config.internal;
-    const outputDirPath = join(basePath, outputDir);
+    const { basePath, outputDirPath } = config.internal;
 
     ghpages.publish(outputDirPath, (err) => {
       if (err) {

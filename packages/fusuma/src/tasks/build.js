@@ -5,33 +5,39 @@ const loader = require('../cli/loader');
 const getRemoteOriginUrl = require('../utils/getRemoteOriginUrl');
 const { build: webpackBuild } = require('../webpack');
 const deleteDir = require('../utils/deleteDir');
+const fileServer = require('../utils/fileServer');
 
 async function createOgImage(outputDirPath) {
-  const url = require('url');
   const puppeteer = require('puppeteer');
 
-  const browser = await puppeteer.launch();
+  const port = 5445;
+  const browser = await puppeteer.launch({
+    chromeWebSecurity: false,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
   const page = await browser.newPage();
-  const outputPath = join(outputDirPath, 'thumbnail.png');
+  const outputFilePath = join(outputDirPath, 'thumbnail.png');
 
   // https://www.kapwing.com/resources/what-is-an-og-image-make-and-format-og-images-for-your-blog-or-webpage/
   await page.setViewport({
     width: 1200,
     height: 630,
   });
-  await page.goto(url.pathToFileURL(join(outputDirPath, 'index.html')), {
-    waitUntil: 'networkidle2',
+  const app = await fileServer(outputDirPath, port);
+  await page.goto(`http://localhost:${port}`, {
+    waitUntil: ['load', 'networkidle2'],
   });
-  await page.screenshot({ path: outputPath });
+  await page.screenshot({ path: outputFilePath });
+  await page.close();
   await browser.close();
+  app.close();
 
-  return outputPath;
+  return outputFilePath;
 }
 
 async function build(config, isConsoleOutput = true) {
   const spinner = loader('Rendering components to HTML...').start();
-  const { basePath, outputDir } = config.internal;
-  const outputDirPath = join(basePath, outputDir);
+  const { outputDirPath } = config.internal;
   const remoteOrigin = await getRemoteOriginUrl();
 
   if (process.env.NODE_ENV === undefined) {

@@ -9,7 +9,9 @@ const deploy = require('./deploy');
 const pdf = require('./pdf');
 
 async function tasks({ type, options }) {
-  const basePath = join(process.cwd(), options.dir || '');
+  const basePath = process.cwd();
+  const inputDirPath = join(basePath, options.inputDir || 'slides');
+  const outputDirPath = join(basePath, options.outputDir || 'dist');
   let config = {};
 
   try {
@@ -17,7 +19,7 @@ async function tasks({ type, options }) {
   } catch (e) {
   } finally {
     config = fusuma.combine(config, {
-      internal: { ...options, basePath },
+      internal: { ...options, basePath, inputDirPath, outputDirPath },
     });
   }
 

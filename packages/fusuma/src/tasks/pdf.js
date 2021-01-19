@@ -11,8 +11,7 @@ async function pdf(config) {
   }
 
   const port = 3455;
-  const { basePath, inputDir, filename } = config.internal;
-  const inputDirPath = join(basePath, inputDir);
+  const { basePath, inputDirPath, filename } = config.internal;
   const output = join(basePath, filename);
   const spinner = loader('Exporting as PDF...').start();
 

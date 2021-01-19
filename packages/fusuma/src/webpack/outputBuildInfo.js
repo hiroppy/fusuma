@@ -6,7 +6,7 @@ const humanSize = require('human-size');
 function outputBuildInfo(res) {
   const output = [];
   const options = {
-    border: getBorderCharacters('void')
+    border: getBorderCharacters('void'),
   };
 
   Object.entries(res.compilation.assets).forEach(([name, asset]) => {

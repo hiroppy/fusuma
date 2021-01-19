@@ -9,8 +9,8 @@ function ssr({ clientBasePath }) {
     devtool: false,
     output: {
       filename: 'entry.js',
-      libraryTarget: 'commonjs'
-    }
+      libraryTarget: 'commonjs',
+    },
   };
 }
 

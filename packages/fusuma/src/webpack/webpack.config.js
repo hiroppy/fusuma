@@ -31,8 +31,7 @@ module.exports = (
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
   const { ssr, useCache } = build;
-  const { basePath, remoteOrigin, htmlBody = '', buildStage, port, outputDir } = internal;
-  const outputPath = path.resolve(basePath, outputDir || /* for start task */ 'dist');
+  const { basePath, remoteOrigin, htmlBody = '', buildStage, port, outputDirPath } = internal;
   const config = (() => {
     switch (type) {
       case 'production':
@@ -47,7 +46,7 @@ module.exports = (
   const common = {
     entry,
     output: {
-      path: outputPath,
+      path: outputDirPath,
       publicPath: '/',
     },
     resolveLoader: {
