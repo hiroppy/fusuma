@@ -9,9 +9,9 @@ const deploy = require('./deploy');
 const pdf = require('./pdf');
 
 async function tasks({ type, options }) {
-  const basePath = process.cwd();
-  const inputDirPath = join(basePath, options.inputDir || 'slides');
-  const outputDirPath = join(basePath, options.outputDir || 'dist');
+  const { basePath, inputDir, outputDir } = options;
+  const inputDirPath = join(basePath, inputDir || 'slides');
+  const outputDirPath = join(basePath, outputDir || 'dist');
   let config = {};
 
   try {
