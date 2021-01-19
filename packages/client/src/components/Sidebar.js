@@ -75,7 +75,7 @@ export const Sidebar = memo(
         <MdFullscreen
           style={{ width: 26, height: 26 }}
           onClick={() => {
-            screenfull.enabled ? screenfull.toggle() : undefined;
+            screenfull.isEnabled ? screenfull.toggle() : undefined;
           }}
           className="sidebar-cursor"
         />
