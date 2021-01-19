@@ -14,7 +14,7 @@ export function createSlidesProps(slides, currentIndex) {
     if (sectionTitle) {
       acc.push({
         title: sectionTitle,
-        index: i + 1
+        index: i + 1,
       });
     }
     return acc;
@@ -25,7 +25,7 @@ export function createSlidesProps(slides, currentIndex) {
 
     return {
       slide: props.contents ? ToC({ list: res.contentsList }) : slide,
-      fusumaProps: props
+      fusumaProps: props,
     };
   });
 

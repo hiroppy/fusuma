@@ -26,7 +26,7 @@ function createFusumaProps(nodes) {
           '<': '&lt;',
           '>': '&gt;',
           '"': '&quot;',
-          "'": '&#x27;'
+          "'": '&#x27;',
           // '/': '&#x2F;'
         };
 
@@ -71,7 +71,7 @@ function transferMarkdownImageNodeToJSX(node) {
 
   return {
     type: 'jsx',
-    value: jsx
+    value: jsx,
   };
 }
 
@@ -83,7 +83,7 @@ function mdxPlugin() {
     let mermaidId = 1;
     const res = {
       jsx: [],
-      fusumaProps: []
+      fusumaProps: [],
     };
 
     // TODO: refactor using visit
@@ -93,10 +93,7 @@ function mdxPlugin() {
         slide = [];
       } else if (n.type === 'comment' && n.value.trim().includes('qr:')) {
         // TODO: need to validate
-        const url = n.value
-          .trim()
-          .split('qr:')[1]
-          .trim();
+        const url = n.value.trim().split('qr:')[1].trim();
 
         const q = qr(0, 'L');
         q.addData(url);
@@ -113,8 +110,8 @@ function mdxPlugin() {
               value: svg
                 .replace('width="58px"', '')
                 .replace('height="58px"', '')
-                .replace('<svg ', '<svg className="qr"')
-            }
+                .replace('<svg ', '<svg className="qr"'),
+            },
           ]
         );
       } else if (n.type === 'comment' && n.value.trim() === 'screen') {
@@ -131,8 +128,8 @@ function mdxPlugin() {
                 'Note: This feature runs only in Presenter Mode.' +
                 '</div>' +
                 `<video id="fusuma-screen-${videoId}" />` +
-                '</div>'
-            }
+                '</div>',
+            },
           ]
         );
 
@@ -144,7 +141,7 @@ function mdxPlugin() {
           value: `<div className="mermaid" id="mermaid-${mermaidId}" data-value="${n.value.replace(
             /    /g,
             ''
-          )}" style={{ visibility: 'hidden'}}>${n.value.replace(/    /g, '')}</div>`
+          )}" style={{ visibility: 'hidden'}}>${n.value.replace(/    /g, '')}</div>`,
         });
 
         ++mermaidId;
@@ -161,7 +158,7 @@ function mdxPlugin() {
           slide.push({
             ...n,
             type: 'jsx',
-            value
+            value,
           });
         }
       } else {
@@ -192,7 +189,7 @@ function mdxPlugin() {
     slides.forEach((slide) => {
       const hash = mdxAstToMdxHast()({
         type: 'root',
-        children: slide
+        children: slide,
       });
       const mdxJSX = toJSX(hash);
       // jsx variable is established, so we don't use babel/parser
@@ -220,7 +217,7 @@ function mdxPlugin() {
         import React from 'react';
         import { mdx } from '@mdx-js/react';
         export const slides = [${res.jsx.join(',\n')}];
-        export const fusumaProps = [${res.fusumaProps.join(',\n')}];`
+        export const fusumaProps = [${res.fusumaProps.join(',\n')}];`,
     });
   };
 }

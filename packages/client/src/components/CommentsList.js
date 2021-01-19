@@ -6,7 +6,7 @@ import '../../assets/style/commentsList.css';
 const Ul = posed.ul({});
 const Li = posed.li({
   enter: { opacity: 1 },
-  exit: { opacity: 0 }
+  exit: { opacity: 0 },
 });
 const rf = new IntlRelativeFormat();
 let ws;
@@ -29,7 +29,7 @@ export const CommentsList = memo(() => {
             const convertedComments = fetchedComments.reverse().map((c) => {
               return {
                 ...c,
-                createdAt: rf.format(c.createdAt)
+                createdAt: rf.format(c.createdAt),
               };
             });
 

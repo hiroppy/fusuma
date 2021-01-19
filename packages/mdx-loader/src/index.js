@@ -12,7 +12,7 @@ function mdxLoader(src) {
     ? [emoji, require('remark-math'), require('remark-html-katex') /* avoid warnings */, mdxPlugin]
     : [emoji, mdxPlugin];
   const result = mdx.sync(src, {
-    remarkPlugins
+    remarkPlugins,
   });
 
   cb(null, result);

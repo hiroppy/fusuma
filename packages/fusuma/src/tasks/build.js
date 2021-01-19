@@ -24,7 +24,7 @@ async function createOgImage(outputDirPath) {
     height: 630,
   });
   const app = await fileServer(outputDirPath, port);
-  await page.goto(`http://localhost:${port}`, {
+  await page.goto(`http://localhost:${port}?sidebar=false`, {
     waitUntil: ['load', 'networkidle2'],
   });
   await page.screenshot({ path: outputFilePath });

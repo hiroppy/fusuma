@@ -11,7 +11,7 @@ import {
   FaCaretRight,
   FaCaretUp,
   FaMicrophoneAlt,
-  FaMicrophoneAltSlash
+  FaMicrophoneAltSlash,
 } from 'react-icons/fa';
 import { MdZoomOutMap } from 'react-icons/md';
 import { Controller as PresentationController } from '../../presentationMode/Controller'; // common and host
@@ -80,7 +80,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
         title: `Moved to the ${num + 1} slide from the ${num} slide.`,
         Slide: slides[num].slide,
         color: '#3498db',
-        Icon: <FaCaretRight size="22" />
+        Icon: <FaCaretRight size="22" />,
       });
     }
 
@@ -103,7 +103,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
       title: `Started from the ${currentIndex + 1} slide.`,
       Slide: slides[currentIndex].slide,
       color: '#6fba1c',
-      Icon: <FaCaretDown />
+      Icon: <FaCaretDown />,
     });
 
     if (usedAudio) {
@@ -125,7 +125,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
       event: 'stopped',
       title: `Stopped at the ${currentIndex + 1} slide.`,
       color: '#e9546b',
-      Icon: <FaCaretUp />
+      Icon: <FaCaretUp />,
     });
 
     if (usedAudio) {
@@ -234,7 +234,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
           {slides && (
             <pre
               dangerouslySetInnerHTML={{
-                __html: slides[currentIndex].fusumaProps.note
+                __html: slides[currentIndex].fusumaProps.note,
               }}
             />
           )}

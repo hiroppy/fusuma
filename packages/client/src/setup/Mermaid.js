@@ -3,7 +3,7 @@ import mermaid from 'mermaid';
 export class Mermaid {
   constructor() {
     mermaid.initialize({
-      startOnLoad: false
+      startOnLoad: false,
     });
   }
 
@@ -20,7 +20,7 @@ export class Mermaid {
       background: `url(${encodedString})`,
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
-      margin: '0 auto'
+      margin: '0 auto',
     });
   }
 
@@ -29,7 +29,7 @@ export class Mermaid {
 
     elms.forEach((elm) => {
       Object.assign(elm.style, {
-        visibility: 'initial'
+        visibility: 'initial',
       });
 
       mermaid.init();
@@ -59,7 +59,7 @@ export class Mermaid {
 
       mermaid.init();
       Object.assign(elm.style, {
-        visibility: 'initial'
+        visibility: 'initial',
       });
 
       // this.encode(elm);

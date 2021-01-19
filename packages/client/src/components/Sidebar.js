@@ -7,12 +7,12 @@ import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay } from 'react-icons/md
 const styles = {
   sidebar: {
     minWidth: 150,
-    zIndex: 1001
+    zIndex: 1001,
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, .5)',
-    zIndex: 1000
-  }
+    zIndex: 1000,
+  },
 };
 
 const url = process.env.URL || window.location.href.split('#')[0];

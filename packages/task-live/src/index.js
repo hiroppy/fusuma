@@ -34,8 +34,8 @@ function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
           consumerKey: process.env.CONSUMER_KEY,
           consumerSecret: process.env.CONSUMER_SECRET,
           accessTokenKey: process.env.ACCESS_TOKEN_KEY,
-          accessTokenSecret: process.env.ACCESS_TOKEN_SECRET
-        }
+          accessTokenSecret: process.env.ACCESS_TOKEN_SECRET,
+        },
       });
 
       logger.info('Twitter mode is enabled.');

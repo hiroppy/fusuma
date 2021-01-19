@@ -14,7 +14,7 @@ async function pdf(input, output = 'slide.pdf', port = 3455) {
   server.listen(port, async () => {
     try {
       await spawn('npx', ['decktape', 'automatic', `http://localhost:${port}`, output], {
-        stdio: 'inherit'
+        stdio: 'inherit',
       });
     } catch (e) {
       console.error(e);

@@ -3,10 +3,12 @@
   "version": "1.1.2",
   "private": true,
   "description": "easily make slides with markdown",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "test": "jest",
-    "fmt": "prettier --write **/*.{js,json,css,md}",
+    "fmt": "prettier --write packages/**/*.{js,json,css,md}",
     "precommit": "pretty-quick --staged",
     "build:samples": "node scripts/build-samples.js",
     "deploy:samples": "npm run build:samples && node scripts/deploy-samples.js",

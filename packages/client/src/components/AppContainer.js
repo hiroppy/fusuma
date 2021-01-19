@@ -24,14 +24,6 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
     AddSidebarComponent(Sidebar);
   };
 
-  const changeSidebarState = () => {
-    const isSidebar =
-      params.get('sidebar') === 'false' || !process.env.SIDEBAR || mode !== 'common' ? false : true;
-
-    updateOpenSidebarStatus(false);
-    updateSidebarStatus(isSidebar);
-  };
-
   const setContentViewComponent = async () => {
     if (mode === 'common') {
       AddContentComponent(Base);
@@ -77,7 +69,6 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   const [mode, updateMode] = useState(initialMode); // common, view, host
   const [slides, updateSlides] = useState(createdProps.slides);
   const [contentsList, updateContentsList] = useState(createdProps.contentsList);
-  const [isSidebar, updateSidebarStatus] = useState(true);
   const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
   const [currentIndex, updateCurrentIndex] = useState(index);
   const [SidebarComponent, AddSidebarComponent] = useState(null); // for lazyload
@@ -85,9 +76,10 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   const [CommentsListComponent, AddCommentsListComponents] = useState(null); // for lazyload
 
   useEffect(() => {
-    changeSidebarState();
+    const isSidebar =
+      params.get('sidebar') === 'false' || !process.env.SIDEBAR || mode !== 'common' ? false : true;
 
-    if (!SidebarComponent) {
+    if (isSidebar && !SidebarComponent) {
       setSidebarComponent();
     }
 
@@ -117,19 +109,17 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
 
   return (
     <>
-      {isSidebar && (
+      {SidebarComponent && (
         <>
-          {SidebarComponent && (
-            <SidebarComponent
-              goTo={goTo}
-              isOpen={isOpenSidebar}
-              terminate={terminate}
-              contents={contentsList}
-              onStateChange={onSetSidebarOpen}
-              currentIndex={currentIndex}
-              runPresentationMode={onRunPresentationMode}
-            />
-          )}
+          <SidebarComponent
+            goTo={goTo}
+            isOpen={isOpenSidebar}
+            terminate={terminate}
+            contents={contentsList}
+            onStateChange={onSetSidebarOpen}
+            currentIndex={currentIndex}
+            runPresentationMode={onRunPresentationMode}
+          />
           <MdMenu className="btn-sidebar" onClick={() => onSetSidebarOpen({ isOpen: true })} />
         </>
       )}

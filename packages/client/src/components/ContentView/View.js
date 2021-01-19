@@ -38,8 +38,8 @@ const View = memo(({ slides, hash }) => {
 
       return await webrtc.startCapturing({
         video: {
-          displaySurface: 'monitor'
-        }
+          displaySurface: 'monitor',
+        },
       });
     } else {
       throw new Error('Capturing has already run.');

@@ -28,7 +28,7 @@ export class WebRTC {
       this.finishedProcess = true;
       this.url = URL.createObjectURL(
         new Blob(recordedChunks, {
-          type: 'audio/webm'
+          type: 'audio/webm',
         })
       );
     });

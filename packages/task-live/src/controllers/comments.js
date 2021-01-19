@@ -12,13 +12,13 @@ function post(req, res, ev) {
       id: `${Math.random()}`,
       text,
       platform: 'fusuma',
-      createdAt: new Date().getTime()
-    }
+      createdAt: new Date().getTime(),
+    },
   ]);
 
   res.send('ok');
 }
 
 module.exports = {
-  post
+  post,
 };

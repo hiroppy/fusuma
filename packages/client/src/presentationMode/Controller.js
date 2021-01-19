@@ -29,7 +29,7 @@ export class Controller {
   changePage(pageNum) {
     const data = JSON.stringify({
       date: Date.now(),
-      page: pageNum
+      page: pageNum,
     });
 
     if (this.apiType === 'presentation' && this.presentationConnection) {

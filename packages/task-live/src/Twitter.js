@@ -10,7 +10,7 @@ class Twitter {
       consumer_key: consumerKey,
       consumer_secret: consumerSecret,
       access_token_key: accessTokenKey,
-      access_token_secret: accessTokenSecret
+      access_token_secret: accessTokenSecret,
     });
 
     this.sinceId = null;
@@ -43,7 +43,7 @@ class Twitter {
                 platform: 'twitter',
                 screenName: screen_name,
                 avatar: profile_image_url_https,
-                createdAt: new Date(created_at).getTime()
+                createdAt: new Date(created_at).getTime(),
               });
             });
           }
