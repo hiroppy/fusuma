@@ -62,7 +62,7 @@ async function cli() {
           type: 'deploy',
           options: {
             basePath: options.b,
-            outputDir: options.i
+            outputDir: options.i,
           },
         });
       })

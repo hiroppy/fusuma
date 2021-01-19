@@ -1,6 +1,6 @@
 'use strict';
 
-const { join } = require('path');
+const { join, isAbsolute } = require('path');
 const fusuma = require('../configs/fusumarc');
 const init = require('./init');
 const start = require('./start');
@@ -9,7 +9,10 @@ const deploy = require('./deploy');
 const pdf = require('./pdf');
 
 async function tasks({ type, options }) {
-  const { basePath, inputDir, outputDir } = options;
+  const { inputDir, outputDir } = options;
+  const basePath = isAbsolute(options.basePath)
+    ? options.basePath
+    : join(process.cwd(), options.basePath);
   const inputDirPath = join(basePath, inputDir || 'slides');
   const outputDirPath = join(basePath, outputDir || 'dist');
   let config = {};

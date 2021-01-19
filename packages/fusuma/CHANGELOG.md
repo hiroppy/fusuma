@@ -5,26 +5,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.0.0-alpha.5](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2021-01-19)
 
-
 ### Features
 
-* **cli:** add basePath option ([1bbee94](https://github.com/hiroppy/fusuma/commit/1bbee94ab9f014df26cf9f4ae0f7f0130a7a5ce9))
-
-
-
-
+- **cli:** add basePath option ([1bbee94](https://github.com/hiroppy/fusuma/commit/1bbee94ab9f014df26cf9f4ae0f7f0130a7a5ce9))
 
 # [2.0.0-alpha.4](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.3...v2.0.0-alpha.4) (2021-01-19)
 
-
 ### Bug Fixes
 
-* **build:** modify screenshot logic ([735edfb](https://github.com/hiroppy/fusuma/commit/735edfb1bbb13bdbbda4ddab6e798fbc2a917663))
-* some bugs ([3191dcc](https://github.com/hiroppy/fusuma/commit/3191dcc2a8e9c8aab360071d0756ce7141163ee4))
-
-
-
-
+- **build:** modify screenshot logic ([735edfb](https://github.com/hiroppy/fusuma/commit/735edfb1bbb13bdbbda4ddab6e798fbc2a917663))
+- some bugs ([3191dcc](https://github.com/hiroppy/fusuma/commit/3191dcc2a8e9c8aab360071d0756ce7141163ee4))
 
 # [1.16.0](https://github.com/hiroppy/fusuma/compare/v1.15.2...v1.16.0) (2020-02-17)
 
