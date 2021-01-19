@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.5](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.4...v2.0.0-alpha.5) (2021-01-19)
+
+
+### Features
+
+* **cli:** add basePath option ([1bbee94](https://github.com/hiroppy/fusuma/commit/1bbee94ab9f014df26cf9f4ae0f7f0130a7a5ce9))
+
+
+
+
+
 # [2.0.0-alpha.4](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.3...v2.0.0-alpha.4) (2021-01-19)
 
 

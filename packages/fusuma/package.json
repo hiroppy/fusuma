@@ -1,6 +1,6 @@
 {
   "name": "fusuma",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "easily make slides with markdown",
   "bin": {
     "fusuma": "./src/cli/index.js"
