@@ -24,7 +24,7 @@ Just write Markdown and create cool slides.😎
 - Slide UI is [WebSlides](https://webslides.tv)
 - Supports SEO and OGP
   - Generates ogp image automatically
-- customizes JavaScript and CSS freely
+- Customizes JavaScript and CSS freely
 
 ## Modes
 
