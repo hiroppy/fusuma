@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import screenfull from 'screenfull';
 import { FaTwitter, FaGithub } from 'react-icons/fa';

@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { FaPlay, FaStop, FaRegHourglass } from 'react-icons/fa';
 import { formatTime } from '../utils/formatTime';
 

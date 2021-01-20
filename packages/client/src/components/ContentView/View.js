@@ -2,7 +2,7 @@
  * View for Presentation mode
  */
 
-import React, { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Base } from './Base';
 import { Receiver as PresentationReceiver } from '../../presentationMode/Receiver';
 import { Canvas, listenCanvasEvent, getValue } from '../Canvas';

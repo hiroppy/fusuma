@@ -1,4 +1,3 @@
-import React from 'react';
 import cx from 'classnames';
 
 export const Flex = ({ items = [], className }) => (

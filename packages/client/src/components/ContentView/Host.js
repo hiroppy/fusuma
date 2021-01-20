@@ -2,7 +2,7 @@
  * Host for Presentation mode
  */
 
-import React, { memo, useState, useEffect } from 'react';
+import { memo, useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import {
   FaTimes,
