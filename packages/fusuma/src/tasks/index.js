@@ -2,7 +2,7 @@
 
 const { join, isAbsolute } = require('path');
 const fusuma = require('../configs/fusumarc');
-const { warn } = require('../cli/log');
+const { warn, error } = require('../cli/log');
 const init = require('./init');
 const start = require('./start');
 const build = require('./build');
@@ -23,6 +23,16 @@ async function tasks({ type, options }) {
   } catch (e) {
     warn('config', `it seems fusumarc doesn't exist, you can run "fusuma init" command`);
   } finally {
+    if (config.meta && config.meta.url && config.build && !config.build.publicPath) {
+      try {
+        const { pathname } = new URL(config.meta.url);
+
+        config.build.publicPath = pathname;
+      } catch (e) {
+        error('preparation', `meta.url specified isn't a URL`);
+      }
+    }
+
     config = fusuma.combine(config, {
       internal: { ...options, basePath, inputDirPath, outputDirPath },
     });

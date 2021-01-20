@@ -1,6 +1,10 @@
+meta:
+  url: https://hiroppy.github.io/fusuma/advanced
 slide:
   chart: true
   math: true
   code:
     languages:
       - yaml
+build:
+  useCache: false

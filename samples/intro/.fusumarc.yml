@@ -18,4 +18,3 @@ extends:
   css: style.css
 build:
   useCache: false
-  publicPath: /fusuma/intro/
