@@ -25,6 +25,9 @@ Just write Markdown and create cool slides.😎
 - Supports SEO and OGP
   - Generates ogp image automatically
 - Customizes JavaScript and CSS freely
+- Adds a Sidebar on Slides
+  - share buttons
+  - ToC
 
 ## Modes
 
@@ -96,6 +99,10 @@ $ npx fusuma build --help # see help for a specific command
 When `npx fusuma start` is executed, fusuma will create a slide as follows and serve `localhost:8080`.
 
 ![](./site/docs/assets/procedure-screenshot.png)
+
+And fusuma adds a Sidebar like below.
+
+![](./site/docs/assets/sidebar.png)
 
 ## Markdown and MDX
 

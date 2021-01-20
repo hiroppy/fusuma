@@ -1,5 +1,5 @@
 meta:
-  url: 'http://localhost:8080'
+  url: https://hiroppy.github.io/fusuma/intro
   title: What's Fusuma?
   description: Introduce Fusuma
   siteName: hiroppy.me
@@ -18,3 +18,4 @@ extends:
   css: style.css
 build:
   useCache: false
+  publicPath: /fusuma/intro/
