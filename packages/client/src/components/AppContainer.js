@@ -10,7 +10,20 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   const isLive = params.get('isLive');
   let index = parsedUrl.hash.match(/^#slide=(.+?)$/);
   index = index !== null ? index[1] - 1 : 0;
+
   const isJumpPage = index !== 0;
+  const initialMode = router();
+  const createdProps = createSlidesProps(originalSlides, index);
+  const [mode, updateMode] = useState(initialMode); // common, view, host
+  const [slides, updateSlides] = useState(createdProps.slides);
+  const [contentsList, updateContentsList] = useState(createdProps.contentsList);
+  const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
+  const [currentIndex, updateCurrentIndex] = useState(index);
+  const [ContentComponent, AddContentComponent] = useState(mode === 'common' ? Base : undefined);
+
+  // for lazyload components
+  const [SidebarComponent, AddSidebarComponent] = useState(null);
+  const [CommentsListComponent, AddCommentsListComponents] = useState(null);
 
   const setCommentsListComponent = async () => {
     const { CommentsList } = await import('./CommentsList');
@@ -41,16 +54,6 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
     }
   };
 
-  const onSetSidebarOpen = ({ isOpen }) => {
-    if (isOpenSidebar !== isOpen) {
-      updateOpenSidebarStatus(isOpen);
-    }
-  };
-
-  const onChangeSlideIndex = (currentIndex) => {
-    updateCurrentIndex(currentIndex);
-  };
-
   const onRunPresentationMode = () => {
     window.slide = null;
     AddContentComponent(null);
@@ -63,18 +66,6 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
     updateMode('common');
   };
 
-  const initialMode = router();
-  const createdProps = createSlidesProps(originalSlides, index);
-
-  const [mode, updateMode] = useState(initialMode); // common, view, host
-  const [slides, updateSlides] = useState(createdProps.slides);
-  const [contentsList, updateContentsList] = useState(createdProps.contentsList);
-  const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
-  const [currentIndex, updateCurrentIndex] = useState(index);
-  const [SidebarComponent, AddSidebarComponent] = useState(null); // for lazyload
-  const [ContentComponent, AddContentComponent] = useState(mode === 'common' ? Base : undefined);
-  const [CommentsListComponent, AddCommentsListComponents] = useState(null); // for lazyload
-
   useEffect(() => {
     const isSidebar =
       params.get('sidebar') === 'false' || !process.env.SIDEBAR || mode !== 'common' ? false : true;
@@ -83,14 +74,14 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
       setSidebarComponent();
     }
 
+    if (!ContentComponent) {
+      setContentViewComponent();
+    }
+
     if (mode === 'host') {
       AddCommentsListComponents(null);
     } else if (process.env.IS_LIVE && isLive !== 'false') {
       setCommentsListComponent();
-    }
-
-    if (!ContentComponent) {
-      setContentViewComponent();
     }
   }, [mode]);
 
@@ -116,11 +107,11 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
             isOpen={isOpenSidebar}
             terminate={terminate}
             contents={contentsList}
-            onStateChange={onSetSidebarOpen}
+            onStateChange={({ isOpen }) => updateOpenSidebarStatus(isOpen)}
             currentIndex={currentIndex}
             runPresentationMode={onRunPresentationMode}
           />
-          <MdMenu className="btn-sidebar" onClick={() => onSetSidebarOpen({ isOpen: true })} />
+          <MdMenu className="btn-sidebar" onClick={() => updateOpenSidebarStatus(true)} />
         </>
       )}
       {ContentComponent && (
@@ -130,7 +121,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
           isJumpPage={isJumpPage}
           terminate={terminate}
           currentIndex={currentIndex}
-          onChangeSlideIndex={onChangeSlideIndex}
+          onChangeSlideIndex={updateCurrentIndex}
         />
       )}
       {CommentsListComponent && <CommentsListComponent />}

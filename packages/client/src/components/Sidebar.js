@@ -15,10 +15,10 @@ const styles = {
   },
 };
 
+const remoteOriginUrl = process.env.REMOTE_ORIGIN_URL;
 const url = process.env.URL || window.location.href.split('#')[0];
 const sns = process.env.SNS;
 const title = process.env.TITLE || '';
-
 const formatStr = (num) => `${num}`.padStart(2, '0');
 
 export const Sidebar = memo(
@@ -84,9 +84,9 @@ export const Sidebar = memo(
           style={{ width: 19, height: 19, marginTop: 1 }}
           className="sidebar-cursor"
         />
-        {process.env.REMOTE_ORIGIN_URL && (
+        {remoteOriginUrl && (
           <a
-            href={process.env.REMOTE_ORIGIN_URL}
+            href={remoteOriginUrl}
             target="_blank"
             rel="noopener"
             aria-label="github"
@@ -95,13 +95,17 @@ export const Sidebar = memo(
           </a>
         )}
       </div>
+      {
+        contents.length !== 0 && (
       <ul className="sidebar-contents">
         {contents.map((content, i) => (
-          <li key={i}>
+          <li key={content.title}>
             <a href={`#slide=${content.index}`}>{content.title}</a>
           </li>
         ))}
       </ul>
+        )
+      }
     </Menu>
   )
 );
