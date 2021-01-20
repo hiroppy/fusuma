@@ -7,7 +7,7 @@ async function fileServer(basePath, publicPath, port = 5445) {
     const app = express();
 
     app.use(express.static(basePath));
-    app.use(`/${publicPath}`, express.static(basePath));
+    app.use(publicPath, express.static(basePath));
 
     const server = app.listen(port, (err) => {
       if (err) {

@@ -44,7 +44,7 @@ async function build(config, isConsoleOutput = true) {
     process.env.NODE_ENV = 'production';
   }
 
-  await deleteDir(outputDirPath, config.build.publicPath);
+  await deleteDir(outputDirPath);
   await webpackBuild(config, isConsoleOutput, (type) => {
     if (type == 'start-build') {
       spinner.color = 'yellow';
@@ -54,7 +54,7 @@ async function build(config, isConsoleOutput = true) {
 
   if (!config.meta.thumbnail && config.meta.url) {
     spinner.text = 'Generating og:image...';
-    await createOgImage(outputDirPath);
+    await createOgImage(outputDirPath, config.build.publicPath);
   }
 
   spinner.stop();
