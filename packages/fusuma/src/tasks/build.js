@@ -2,6 +2,7 @@
 
 const { join } = require('path');
 const loader = require('../cli/loader');
+const { info, warn } = require('../cli/log');
 const getRemoteOriginUrl = require('../utils/getRemoteOriginUrl');
 const { build: webpackBuild } = require('../webpack');
 const deleteDir = require('../utils/deleteDir');
@@ -36,8 +37,13 @@ async function createOgImage(outputDirPath, publicPath) {
 }
 
 async function build(config, isConsoleOutput = true) {
-  const spinner = loader('Rendering components to HTML...').start();
+  const spinner = loader();
   const { outputDirPath } = config.internal;
+
+  spinner.color = 'green';
+  spinner.text = 'Fetching the remote origin url';
+  spinner.start();
+
   const remoteOrigin = await getRemoteOriginUrl();
 
   if (process.env.NODE_ENV === undefined) {
@@ -46,19 +52,28 @@ async function build(config, isConsoleOutput = true) {
 
   await deleteDir(outputDirPath);
   await webpackBuild(config, isConsoleOutput, (type) => {
+    if (type === 'start-ssr') {
+      spinner.color = 'cyan';
+      spinner.text = 'Rendering components to HTML...';
+    }
     if (type == 'start-build') {
       spinner.color = 'yellow';
       spinner.text = 'Building with webpack...';
     }
   });
 
-  if (!config.meta.thumbnail && config.meta.url) {
-    spinner.text = 'Generating og:image...';
-    await createOgImage(outputDirPath, config.build.publicPath);
+  if (!config.meta.thumbnail) {
+    if (config.meta.url) {
+      spinner.color = 'cyan';
+      spinner.text = 'Generating og:image...';
+      await createOgImage(outputDirPath, config.build.publicPath);
+    } else {
+      warn('build', 'If you want to generate og:image, please set fusumarc.meta.url');
+    }
   }
 
   spinner.stop();
-  console.info('completed!');
+  info('build', 'Completed!');
 }
 
 module.exports = build;

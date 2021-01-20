@@ -1,7 +1,7 @@
 'use strict';
 
-const postcssConfig = require('../configs/postcss.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const postcssConfig = require('../configs/postcss.config');
 
 module.exports = (env = 'dev') => {
   return {

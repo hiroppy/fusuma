@@ -2,3 +2,4 @@ node_modules
 *.ejs
 coverage
 dist
+CHANGELOG.md

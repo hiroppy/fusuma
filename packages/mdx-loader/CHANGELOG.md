@@ -5,14 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.0.0-alpha.7](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2021-01-19)
 
-
 ### Bug Fixes
 
-* **client:** fix sidebar param ([ffbca40](https://github.com/hiroppy/fusuma/commit/ffbca408a19fb82b99b7f4c53c7692546bb63bd2))
-
-
-
-
+- **client:** fix sidebar param ([ffbca40](https://github.com/hiroppy/fusuma/commit/ffbca408a19fb82b99b7f4c53c7692546bb63bd2))
 
 # [1.16.0](https://github.com/hiroppy/fusuma/compare/v1.15.2...v1.16.0) (2020-02-17)
 

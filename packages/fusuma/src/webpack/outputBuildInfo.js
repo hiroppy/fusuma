@@ -13,6 +13,7 @@ function outputBuildInfo(res) {
     output.push([name, humanSize(asset.size())]);
   });
 
+  console.log();
   console.log(table([['name', 'size'], ...output], options));
 }
 

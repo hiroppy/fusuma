@@ -7,6 +7,7 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackDevMiddleware = require('webpack-dev-middleware');
+const { info, error } = require('../cli/log')
 
 async function server(config, options = {}) {
   return new Promise((resolve) => {
@@ -32,13 +33,13 @@ async function server(config, options = {}) {
     const server = createServer(app);
 
     server.on('error', (err) => {
-      console.error(err);
+      error('start', err.message);
       process.exit(1);
     });
 
     compiler.hooks.done.tap('fusuma-server', () => {
       if (!initialFlag) {
-        console.info(`Listening on ${url}`);
+        info('start', `Serving on ${url}`);
         initialFlag = true;
       }
 

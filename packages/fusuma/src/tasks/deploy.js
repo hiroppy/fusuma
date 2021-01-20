@@ -1,6 +1,7 @@
 'use strict';
 
 const loader = require('../cli/loader');
+const { info } = require('../cli/log');
 
 async function deploy(config) {
   const ghpages = require('gh-pages');
@@ -17,7 +18,7 @@ async function deploy(config) {
       }
 
       spinner.stop();
-      console.info('Published!');
+      info('deploy', 'Published!');
     });
   });
 }

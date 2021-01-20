@@ -5,36 +5,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.0.0-alpha.9](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.8...v2.0.0-alpha.9) (2021-01-20)
 
-
 ### Bug Fixes
 
-* **build:** add publicPath to fileServer ([b75d44d](https://github.com/hiroppy/fusuma/commit/b75d44d2013e0279fc65a154c5dc765e1f30841c))
-
-
-
-
+- **build:** add publicPath to fileServer ([b75d44d](https://github.com/hiroppy/fusuma/commit/b75d44d2013e0279fc65a154c5dc765e1f30841c))
 
 # [2.0.0-alpha.8](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.7...v2.0.0-alpha.8) (2021-01-20)
 
-
 ### Features
 
-* **config:** add publicPath field ([52a2ddd](https://github.com/hiroppy/fusuma/commit/52a2ddd141df880153fe3071ab756a102471a729))
-
-
-
-
+- **config:** add publicPath field ([52a2ddd](https://github.com/hiroppy/fusuma/commit/52a2ddd141df880153fe3071ab756a102471a729))
 
 # [2.0.0-alpha.7](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2021-01-19)
 
-
 ### Bug Fixes
 
-* **client:** fix sidebar param ([ffbca40](https://github.com/hiroppy/fusuma/commit/ffbca408a19fb82b99b7f4c53c7692546bb63bd2))
-
-
-
-
+- **client:** fix sidebar param ([ffbca40](https://github.com/hiroppy/fusuma/commit/ffbca408a19fb82b99b7f4c53c7692546bb63bd2))
 
 # [2.0.0-alpha.6](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.5...v2.0.0-alpha.6) (2021-01-19)
 
