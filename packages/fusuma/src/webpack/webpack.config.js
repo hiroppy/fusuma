@@ -30,7 +30,7 @@ module.exports = (
   const { url, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
-  const { ssr, useCache } = build;
+  const { ssr, useCache, publicPath } = build;
   const { basePath, remoteOrigin, htmlBody = '', buildStage, port, outputDirPath } = internal;
   const config = (() => {
     switch (type) {
@@ -47,7 +47,7 @@ module.exports = (
     entry,
     output: {
       path: outputDirPath,
-      publicPath: '/',
+      publicPath: process.env.NODE_ENV === 'production' ? publicPath : '/',
     },
     resolveLoader: {
       modules: [
