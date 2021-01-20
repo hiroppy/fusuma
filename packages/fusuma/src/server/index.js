@@ -7,7 +7,7 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackDevMiddleware = require('webpack-dev-middleware');
-const { info, error } = require('../cli/log')
+const { info, error } = require('../cli/log');
 
 async function server(config, options = {}) {
   return new Promise((resolve) => {

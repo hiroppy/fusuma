@@ -1,102 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { MdMenu } from 'react-icons/md';
 import { createSlidesProps } from '../utils/createSlidesProps';
+import { getSearchParams } from '../utils/getSearchParams';
 import { Base } from './ContentView/Base';
-import { router } from '../router';
+import { useCurrentIndex } from '../hooks/useCurrentIndex';
+import { useMode } from '../hooks/useMode';
+import { useContentComponent } from '../hooks/useContentComponent';
+import { useSidebarComponent } from '../hooks/useSidebarComponent';
+import { useCommentsListComponent } from '../hooks/useCommentsListComponent';
 
 export const AppContainer = ({ slides: originalSlides, hash }) => {
-  const parsedUrl = new URL(window.location.href);
-  const params = parsedUrl.searchParams;
-  const isLive = params.get('isLive');
-  let index = parsedUrl.hash.match(/^#slide=(.+?)$/);
-  index = index !== null ? index[1] - 1 : 0;
-
-  const isJumpPage = index !== 0;
-  const initialMode = router();
-  const createdProps = createSlidesProps(originalSlides, index);
-  const [mode, updateMode] = useState(initialMode); // common, view, host
-  const [slides, updateSlides] = useState(createdProps.slides);
-  const [contentsList, updateContentsList] = useState(createdProps.contentsList);
   const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
-  const [currentIndex, updateCurrentIndex] = useState(index);
-  const [ContentComponent, AddContentComponent] = useState(mode === 'common' ? Base : undefined);
-
-  // for lazyload components
-  const [SidebarComponent, AddSidebarComponent] = useState(null);
-  const [CommentsListComponent, AddCommentsListComponents] = useState(null);
-
-  const setCommentsListComponent = async () => {
-    const { CommentsList } = await import('./CommentsList');
-
-    AddCommentsListComponents(CommentsList);
-  };
-
-  const setSidebarComponent = async () => {
-    const { Sidebar } = await import(/* webpackPrefetch: true */ './Sidebar');
-
-    AddSidebarComponent(Sidebar);
-  };
-
-  const setContentViewComponent = async () => {
-    if (mode === 'common') {
-      AddContentComponent(Base);
-    } else {
-      const { default: Comp } =
-        mode === 'view' ? await import('./ContentView/View') : await import('./ContentView/Host');
-
-      AddContentComponent(Comp);
-    }
-  };
+  const [currentIndex, setCurrentIndex] = useCurrentIndex();
+  const createdProps = useMemo(() => createSlidesProps(originalSlides, currentIndex), [hash]);
+  const slides = useMemo(() => createdProps.slides, [hash]);
+  const contentsList = useMemo(() => createdProps.contentsList, [hash]);
+  const [mode, setMode] = useMode();
+  const ContentComponent = useContentComponent(mode);
+  const SidebarComponent = useSidebarComponent(mode);
+  const CommentsListComponent = useCommentsListComponent(mode);
 
   const goTo = (num) => {
     if (window.slide) {
       window.slide.goToSlide(num);
+      setCurrentIndex(num);
     }
   };
 
   const onRunPresentationMode = () => {
     window.slide = null;
-    AddContentComponent(null);
-    updateMode('host');
+    updateOpenSidebarStatus(false);
+    setMode('host');
   };
 
   const terminate = () => {
     window.slide = null;
-    AddContentComponent(null);
-    updateMode('common');
+    updateOpenSidebarStatus(false);
+    setMode('common');
   };
-
-  useEffect(() => {
-    const isSidebar =
-      params.get('sidebar') === 'false' || !process.env.SIDEBAR || mode !== 'common' ? false : true;
-
-    if (isSidebar && !SidebarComponent) {
-      setSidebarComponent();
-    }
-
-    if (!ContentComponent) {
-      setContentViewComponent();
-    }
-
-    if (mode === 'host') {
-      AddCommentsListComponents(null);
-    } else if (process.env.IS_LIVE && isLive !== 'false') {
-      setCommentsListComponent();
-    }
-  }, [mode]);
-
-  // for HMR
-  if (import.meta.webpackHot || process.env.SSR) {
-    const [prevHash, updatePrevHash] = useState(hash);
-
-    if (prevHash !== hash) {
-      const createdProps = createSlidesProps(originalSlides);
-
-      updateSlides(createdProps.slides);
-      updateContentsList(createdProps.contentsList);
-      updatePrevHash(hash);
-    }
-  }
 
   return (
     <>
@@ -118,10 +59,10 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
         <ContentComponent
           hash={hash}
           slides={slides}
-          isJumpPage={isJumpPage}
+          isJumpPage={currentIndex !== 0}
           terminate={terminate}
           currentIndex={currentIndex}
-          onChangeSlideIndex={updateCurrentIndex}
+          onChangeSlideIndex={setCurrentIndex}
         />
       )}
       {CommentsListComponent && <CommentsListComponent />}

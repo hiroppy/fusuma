@@ -16,7 +16,13 @@ function babelrc({ languages = [], plugins = [], theme = 'default' } = {}) {
           // https://github.com/webpack/webpack/issues/4039
         },
       ],
-      '@babel/preset-react',
+      [
+        '@babel/preset-react',
+        {
+          // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#manual-babel-setup
+          runtime: 'automatic',
+        },
+      ],
     ],
     plugins: [
       '@babel/plugin-syntax-dynamic-import',
