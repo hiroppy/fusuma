@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.10](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.9...v2.0.0-alpha.10) (2021-01-20)
+
+
+### Bug Fixes
+
+* **build:** fix publicPath ([0ac0aa1](https://github.com/hiroppy/fusuma/commit/0ac0aa13a71c9d8034f2da5b0c59f9c4c8307806))
+* **client:** fix view ([0afcae8](https://github.com/hiroppy/fusuma/commit/0afcae81bb5ed20c3ede46370d79d606e5431dd8))
+* **deploy:** add args for gh-pages ([2881587](https://github.com/hiroppy/fusuma/commit/28815875d3a861cebeec1630511175ab9e3f000b))
+
+
+### Features
+
+* **cli:** add chalk ([223c673](https://github.com/hiroppy/fusuma/commit/223c673f7647b44aade2c2d1a8dbf9e5b18c507c))
+* **preparation:** infer publicPath automatically ([de057ed](https://github.com/hiroppy/fusuma/commit/de057edcbd38ca8442d4e77fc278c216ea8add53))
+
+
+
+
+
 # [2.0.0-alpha.9](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.8...v2.0.0-alpha.9) (2021-01-20)
 
 

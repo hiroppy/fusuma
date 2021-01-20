@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.10](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.9...v2.0.0-alpha.10) (2021-01-20)
+
+
+### Features
+
+* **cli:** add chalk ([223c673](https://github.com/hiroppy/fusuma/commit/223c673f7647b44aade2c2d1a8dbf9e5b18c507c))
+
+
+
+
+
 # [2.0.0-alpha.7](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.6...v2.0.0-alpha.7) (2021-01-19)
 
 ### Bug Fixes
