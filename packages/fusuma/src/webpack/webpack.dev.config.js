@@ -11,7 +11,7 @@ function dev() {
       filename: 'bundle.js',
     },
     plugins: [new webpack.HotModuleReplacementPlugin(), new FriendlyErrorsWebpackPlugin()],
-    stats: 'none'
+    stats: 'none',
   };
 }
 

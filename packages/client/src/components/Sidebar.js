@@ -85,27 +85,20 @@ export const Sidebar = memo(
           className="sidebar-cursor"
         />
         {remoteOriginUrl && (
-          <a
-            href={remoteOriginUrl}
-            target="_blank"
-            rel="noopener"
-            aria-label="github"
-          >
+          <a href={remoteOriginUrl} target="_blank" rel="noopener" aria-label="github">
             <FaGithub style={{ width: 20, height: 20, marginTop: 3, color: '#f5f5f5' }} />
           </a>
         )}
       </div>
-      {
-        contents.length !== 0 && (
-      <ul className="sidebar-contents">
-        {contents.map((content, i) => (
-          <li key={content.title}>
-            <a href={`#slide=${content.index}`}>{content.title}</a>
-          </li>
-        ))}
-      </ul>
-        )
-      }
+      {contents.length !== 0 && (
+        <ul className="sidebar-contents">
+          {contents.map((content, i) => (
+            <li key={content.title}>
+              <a href={`#slide=${content.index}`}>{content.title}</a>
+            </li>
+          ))}
+        </ul>
+      )}
     </Menu>
   )
 );
