@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { fetchSlides } from '../utils/fetchSlides';
 import { setTargetBlank } from '../utils/targetBlank';
