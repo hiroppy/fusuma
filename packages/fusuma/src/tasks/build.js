@@ -7,7 +7,7 @@ const { build: webpackBuild } = require('../webpack');
 const deleteDir = require('../utils/deleteDir');
 const fileServer = require('../utils/fileServer');
 
-async function createOgImage(outputDirPath) {
+async function createOgImage(outputDirPath, publicPath) {
   const puppeteer = require('puppeteer');
 
   const port = 5445;
@@ -23,7 +23,7 @@ async function createOgImage(outputDirPath) {
     width: 1200,
     height: 630,
   });
-  const app = await fileServer(outputDirPath, port);
+  const app = await fileServer(outputDirPath, publicPath, port);
   await page.goto(`http://localhost:${port}?sidebar=false`, {
     waitUntil: ['load', 'networkidle2'],
   });
@@ -44,7 +44,7 @@ async function build(config, isConsoleOutput = true) {
     process.env.NODE_ENV = 'production';
   }
 
-  await deleteDir(outputDirPath);
+  await deleteDir(outputDirPath, config.build.publicPath);
   await webpackBuild(config, isConsoleOutput, (type) => {
     if (type == 'start-build') {
       spinner.color = 'yellow';
