@@ -41,7 +41,10 @@ export class Controller {
   }
 
   async reconnect(id) {
-    if (this.apiType === 'presentation') return this.presentationRequest.reconnect(id);
+    if (this.apiType === 'presentation') {
+      return this.presentationRequest.reconnect(id);
+    }
+
     return Promise.resolve();
   }
 

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Base } from '../components/ContentView/Base';
 
 export function useContentComponent(mode) {
-  const [ContentComponent, setContentComponent] = useState(Base);
+  // need to set the default value for SSR
+  const [ContentComponent, setContentComponent] = useState(mode === 'common' ? Base : null);
 
   useEffect(() => {
     (async () => {
@@ -16,6 +17,8 @@ export function useContentComponent(mode) {
         const { default: Comp } = await import('../components/ContentView/Host');
 
         setContentComponent(Comp);
+      } else {
+        setContentComponent(null);
       }
     })();
   }, [mode]);

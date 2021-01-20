@@ -20,7 +20,7 @@ async function setupMermaid() {
 }
 
 export const Base = memo(
-  ({ slides, onChangeSlideIndex, hash, isJumpPage }) => {
+  ({ slides, onChangeSlideIndex, hash, isJumpPage, showIndex }) => {
     // for SSR
     if (process.env.NODE_ENV !== 'production') {
       useEffect(() => {
@@ -60,7 +60,7 @@ export const Base = memo(
 
     function setupSlides() {
       if (!window.slide) {
-        window.slide = setupWebSlides({});
+        window.slide = setupWebSlides({ showIndex });
 
         // for presenter:view
         window.slide.el.addEventListener('ws:slide-change', (e) => {
