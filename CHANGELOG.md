@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.15](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.14...v2.0.0-alpha.15) (2021-01-21)
+
+
+### Bug Fixes
+
+* **client:** fix host logic ([fc7137a](https://github.com/hiroppy/fusuma/commit/fc7137a88ab8cea434816c8533fb014832989bf9))
+* **tasks:** respect config.build.publicPath ([0d172bc](https://github.com/hiroppy/fusuma/commit/0d172bc1f2b9adc5d038a03c54048b9bd48dcf5e))
+
+
+### Features
+
+* **start:** add -f option to serve dist directory ([e18508d](https://github.com/hiroppy/fusuma/commit/e18508d863f2db569f7172d5f2dea7dabebc5fa0))
+
+
+
+
+
 # [2.0.0-alpha.14](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.13...v2.0.0-alpha.14) (2021-01-21)
 
 

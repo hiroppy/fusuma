@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.15](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.14...v2.0.0-alpha.15) (2021-01-21)
+
+
+### Bug Fixes
+
+* **client:** fix host logic ([fc7137a](https://github.com/hiroppy/fusuma/commit/fc7137a88ab8cea434816c8533fb014832989bf9))
+
+
+
+
+
 # [2.0.0-alpha.14](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.13...v2.0.0-alpha.14) (2021-01-21)
 
 **Note:** Version bump only for package @fusuma/client
