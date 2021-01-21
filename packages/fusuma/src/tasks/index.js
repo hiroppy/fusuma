@@ -17,21 +17,27 @@ async function tasks({ type, options }) {
     config = await fusuma.read(basePath);
   } catch (e) {
     warn('config', `it seems fusumarc doesn't exist, you can run "fusuma init" command`);
-  } finally {
-    if (config.meta && config.meta.url && config.build && !config.build.publicPath) {
+  }
+
+  if (config.meta && config.meta.url) {
+    if (!config.build) {
+      config.build = {};
+    }
+
+    if (!config.build.publicPath) {
       try {
         const { pathname } = new URL(config.meta.url);
 
-        config.build.publicPath = pathname;
+        config.build.publicPath = `${pathname}/`;
       } catch (e) {
         error('preparation', `meta.url specified isn't a URL`);
       }
     }
-
-    config = fusuma.combine(config, {
-      internal: { ...options, basePath, inputDirPath, outputDirPath },
-    });
   }
+
+  config = fusuma.combine(config, {
+    internal: { ...options, basePath, inputDirPath, outputDirPath },
+  });
 
   switch (type) {
     case 'init':
