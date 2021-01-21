@@ -39,6 +39,10 @@ async function tasks({ type, options }) {
     internal: { ...options, basePath, inputDirPath, outputDirPath },
   });
 
+  if (options.isFileServer) {
+    return require('./serverFilesForProd')(config);
+  }
+
   switch (type) {
     case 'init':
       return require('./init')(config);
