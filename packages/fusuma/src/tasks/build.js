@@ -6,7 +6,7 @@ const { info, warn } = require('../cli/log');
 const getRemoteOriginUrl = require('../utils/getRemoteOriginUrl');
 const { build: webpackBuild } = require('../webpack');
 const deleteDir = require('../utils/deleteDir');
-const fileServer = require('../utils/fileServer');
+const fileServer = require('../server/fileServer');
 
 async function createOgImage(outputDirPath, publicPath) {
   const puppeteer = require('puppeteer');
