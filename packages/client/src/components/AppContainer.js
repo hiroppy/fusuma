@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { MdMenu } from 'react-icons/md';
 import { createSlidesProps } from '../utils/createSlidesProps';
 import { getSearchParams } from '../utils/getSearchParams';
