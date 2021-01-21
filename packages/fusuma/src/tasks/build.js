@@ -50,6 +50,9 @@ async function build(config, isConsoleOutput = true) {
     process.env.NODE_ENV = 'production';
   }
 
+  // TODO: investigate webslide error
+  config.build.useCache = false;
+
   await deleteDir(outputDirPath);
   await webpackBuild(config, isConsoleOutput, (type) => {
     if (type === 'start-ssr') {

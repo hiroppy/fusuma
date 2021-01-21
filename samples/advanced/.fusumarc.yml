@@ -6,5 +6,3 @@ slide:
   code:
     languages:
       - yaml
-build:
-  useCache: false
