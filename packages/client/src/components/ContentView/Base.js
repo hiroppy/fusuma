@@ -1,4 +1,4 @@
-import { useEffect, memo } from 'react';
+import React, { useEffect, memo } from 'react';
 import Prism from 'prismjs';
 import classnames from 'classnames';
 import { setup as setupWebSlides } from '../../setup/webSlides';

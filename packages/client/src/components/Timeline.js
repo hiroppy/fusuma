@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Timeline as T, TimelineEvent } from 'react-event-timeline';
 
 export const Timeline = ({ items, url }) => {

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const ToC = ({ list }) => () => (
   <div className="toc size-70 aligncenter">
     <ol>
