@@ -8,7 +8,6 @@
   ],
   "scripts": {
     "test": "jest",
-    "fmt": "prettier --write /**/*.{js,json,css,md}",
     "build:samples": "node scripts/build-samples.js",
     "deploy:samples": "npm run build:samples && node scripts/deploy-samples.js",
     "deploy:site": "node scripts/deploy-site.js",
@@ -17,7 +16,9 @@
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
     "version": "lerna version --conventional-commits",
-    "release": "lerna publish from-package"
+    "release": "lerna publish from-package",
+    "fmt": "prettier --write /**/*.{js,json,css,md}",
+    "lint": "eslint . --cache --ext .js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,9 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.8",
     "jest": "^26.6.3",
     "lerna": "^3.22.1",
