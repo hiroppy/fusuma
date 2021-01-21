@@ -1,3 +1,4 @@
+import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { AppContainer } from '../components/AppContainer';
 import { fetchSlides } from '../utils/fetchSlides';
