@@ -20,6 +20,7 @@ jobs:
         run: |
           npm ci
           npm run setup
+          npm run lint
           npm test
           cd samples/intro
           npm i
