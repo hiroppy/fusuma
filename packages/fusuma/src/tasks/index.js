@@ -3,12 +3,6 @@
 const { join, isAbsolute } = require('path');
 const fusuma = require('../configs/fusumarc');
 const { warn, error } = require('../cli/log');
-const init = require('./init');
-const start = require('./start');
-const build = require('./build');
-const deploy = require('./deploy');
-const pdf = require('./pdf');
-const live = require('./live');
 
 async function tasks({ type, options }) {
   const { inputDir, outputDir } = options;
@@ -41,17 +35,17 @@ async function tasks({ type, options }) {
 
   switch (type) {
     case 'init':
-      return init(config);
+      return require('./init')(config);
     case 'start':
-      return start(config);
+      return require('./start')(config);
     case 'build':
-      return build(config);
+      return require('./build')(config);
     case 'deploy':
-      return deploy(config);
+      return require('./deploy')(config);
     case 'pdf':
-      return pdf(config);
+      return require('./pdf')(config);
     case 'live':
-      return live(config);
+      return require('./live')(config);
   }
 }
 

@@ -6,6 +6,10 @@ const { start: webpackStart } = require('../webpack');
 const { warn } = require('../cli/log');
 
 async function start(config) {
+  if (process.env.NODE_ENV === undefined) {
+    process.env.NODE_ENV = 'development';
+  }
+
   const spinner = new Spinner();
 
   try {
