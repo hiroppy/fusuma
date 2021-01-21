@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.13](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.12...v2.0.0-alpha.13) (2021-01-21)
+
+
+### Bug Fixes
+
+* **client:** revert react ([4511603](https://github.com/hiroppy/fusuma/commit/4511603a91315afe0f0f077c6bfb1a83df75ebd2))
+
+
+
+
+
 # [2.0.0-alpha.12](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.11...v2.0.0-alpha.12) (2021-01-21)
 
 
