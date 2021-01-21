@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.11](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.10...v2.0.0-alpha.11) (2021-01-21)
+
+
+### Reverts
+
+* Revert "refactor(client): remove react" ([2c54775](https://github.com/hiroppy/fusuma/commit/2c54775d244d41e7b8a90ca3d1fce9da561beefe))
+
+
+
+
+
 # [2.0.0-alpha.10](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.9...v2.0.0-alpha.10) (2021-01-20)
 
 
