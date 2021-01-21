@@ -3,6 +3,7 @@ import { MdMenu } from 'react-icons/md';
 import { createSlidesProps } from '../utils/createSlidesProps';
 import { useCurrentIndex } from '../hooks/useCurrentIndex';
 import { useMode } from '../hooks/useMode';
+import { useSlidesProps } from '../hooks/useSlides';
 import { useContentComponent } from '../hooks/useContentComponent';
 import { useSidebarComponent } from '../hooks/useSidebarComponent';
 import { useCommentsListComponent } from '../hooks/useCommentsListComponent';
@@ -10,9 +11,7 @@ import { useCommentsListComponent } from '../hooks/useCommentsListComponent';
 export const AppContainer = ({ slides: originalSlides, hash }) => {
   const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
   const [currentIndex, setCurrentIndex] = useCurrentIndex();
-  const createdProps = useMemo(() => createSlidesProps(originalSlides, currentIndex), [hash]);
-  const slides = useMemo(() => createdProps.slides, [hash]);
-  const contentsList = useMemo(() => createdProps.contentsList, [hash]);
+  const { slides, contentsList } = useSlidesProps({ originalSlides, hash, currentIndex });
   const [mode, setMode] = useMode();
   const ContentComponent = useContentComponent(mode);
   const SidebarComponent = useSidebarComponent(mode);

@@ -188,7 +188,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
         if (!presentationController) {
           throw new Error('Not found PresenterController.');
         }
-        // presentationApiId = await presentationController.openView();
+        await presentationController.openView();
       } catch (e) {
         console.error(e);
       }
