@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.14](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.13...v2.0.0-alpha.14) (2021-01-21)
+
+
+### Bug Fixes
+
+* **build:** don't use persistent cache ([f62be21](https://github.com/hiroppy/fusuma/commit/f62be21c8e0ac4dd9d4f26990d0886b342f9f50a))
+
+
+### Performance Improvements
+
+* **tasks:** use lazyload ([82266fd](https://github.com/hiroppy/fusuma/commit/82266fda73b47cbbb728acb19a8eb34b7a47914b))
+
+
+
+
+
 # [2.0.0-alpha.13](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.12...v2.0.0-alpha.13) (2021-01-21)
 
 
