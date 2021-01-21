@@ -31,7 +31,7 @@ module.exports = (
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
   const { ssr, useCache, publicPath } = build;
-  const { basePath, remoteOrigin, htmlBody = '', buildStage, port, outputDirPath } = internal;
+  const { basePath, remoteOrigin, htmlBody = '', buildStage, outputDirPath } = internal;
   const config = (() => {
     switch (type) {
       case 'production':

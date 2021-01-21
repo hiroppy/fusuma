@@ -21,7 +21,7 @@ class Twitter {
       this.client.get(
         'search/tweets',
         { q, count: 30, since_id: this.sinceId },
-        (err, { statuses, search_metadata }, res) => {
+        (err, { statuses }) => {
           if (err) {
             return reject(err);
           }

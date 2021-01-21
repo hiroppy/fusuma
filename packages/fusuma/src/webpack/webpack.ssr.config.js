@@ -1,8 +1,6 @@
 'use strict';
 
-const { join, resolve } = require('path');
-
-function ssr({ clientBasePath }) {
+function ssr() {
   return {
     mode: 'none',
     target: 'node',

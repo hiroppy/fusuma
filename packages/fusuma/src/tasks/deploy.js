@@ -1,14 +1,17 @@
 'use strict';
 
-const loader = require('../cli/loader');
+const Spinner = require('../cli/Spinner');
 const { info } = require('../cli/log');
 
 async function deploy(config, options = {}) {
   const ghpages = require('gh-pages');
 
   return new Promise((resolve, reject) => {
-    const spinner = loader('Publishing to gh-pages...').start();
-    const { basePath, outputDirPath } = config.internal;
+    const spinner = new Spinner();
+    const { outputDirPath } = config.internal;
+
+    spinner.setContent({ color: 'yellow', text: 'Publishing to gh-pages...' });
+    spinner.start();
 
     ghpages.publish(outputDirPath, options, (err) => {
       if (err) {

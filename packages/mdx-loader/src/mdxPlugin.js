@@ -76,7 +76,7 @@ function transferMarkdownImageNodeToJSX(node) {
 }
 
 function mdxPlugin() {
-  return (tree, file) => {
+  return (tree) => {
     const slides = [];
     let slide = [];
     let videoId = 1;
@@ -139,9 +139,9 @@ function mdxPlugin() {
           ...n,
           type: 'jsx',
           value: `<div className="mermaid" id="mermaid-${mermaidId}" data-value="${n.value.replace(
-            /    /g,
+            / {4}/g,
             ''
-          )}" style={{ visibility: 'hidden'}}>${n.value.replace(/    /g, '')}</div>`,
+          )}" style={{ visibility: 'hidden'}}>${n.value.replace(/ {4}/g, '')}</div>`,
         });
 
         ++mermaidId;

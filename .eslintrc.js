@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     node: true,
     es2020: true,
+    jest: true,
   },
   parserOptions: {
     sourceType: 'module',
@@ -13,5 +14,8 @@ module.exports = {
   },
   extends: ['eslint:recommended', 'plugin:react/recommended'],
   plugins: ['react', 'react-hooks'],
-  rules: {},
+  rules: {
+    'react/prop-types': 0,
+    'react/display-name': 0,
+  },
 };

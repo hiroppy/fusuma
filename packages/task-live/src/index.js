@@ -13,7 +13,6 @@ const logger = require('./logger');
 function setupServer({ port = 3000, keyword, interval = 6000, dir = 'dist' }) {
   config();
 
-  let key = null;
   let timer = null;
   let twitter = null;
   const comments = [];

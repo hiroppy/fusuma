@@ -1,7 +1,7 @@
 'use strict';
 
 const { join } = require('path');
-const loader = require('../cli/loader');
+const Spinner = require('../cli/Spinner');
 const { info, warn } = require('../cli/log');
 const getRemoteOriginUrl = require('../utils/getRemoteOriginUrl');
 const { build: webpackBuild } = require('../webpack');
@@ -37,17 +37,21 @@ async function createOgImage(outputDirPath, publicPath) {
 }
 
 async function build(config, isConsoleOutput = true) {
-  const spinner = loader();
-  const { outputDirPath } = config.internal;
-
-  spinner.color = 'green';
-  spinner.text = 'Fetching the remote origin url';
-  spinner.start();
-
-  const remoteOrigin = await getRemoteOriginUrl();
-
   if (process.env.NODE_ENV === undefined) {
     process.env.NODE_ENV = 'production';
+  }
+
+  const spinner = new Spinner();
+  const { outputDirPath } = config.internal;
+
+  try {
+    spinner.setContent({ color: 'green', text: 'Fetching the remote origin url...' });
+    spinner.start();
+    const remoteOrigin = await getRemoteOriginUrl();
+
+    config.internal.remoteOrigin = remoteOrigin;
+  } catch (e) {
+    warn('build', `The remote origin url of this repo isn't found.`);
   }
 
   // TODO: investigate webslide error
@@ -56,19 +60,16 @@ async function build(config, isConsoleOutput = true) {
   await deleteDir(outputDirPath);
   await webpackBuild(config, isConsoleOutput, (type) => {
     if (type === 'start-ssr') {
-      spinner.color = 'cyan';
-      spinner.text = 'Rendering components to HTML...';
+      spinner.setContent({ color: 'cyan', text: 'Rendering components to HTML...' });
     }
     if (type == 'start-build') {
-      spinner.color = 'yellow';
-      spinner.text = 'Building with webpack...';
+      spinner.setContent({ color: 'yellow', text: 'Building with webpack...' });
     }
   });
 
   if (!config.meta.thumbnail) {
     if (config.meta.url) {
-      spinner.color = 'cyan';
-      spinner.text = 'Generating og:image...';
+      spinner.setContent({ color: 'green', text: 'Generating og:image...' });
       await createOgImage(outputDirPath, config.build.publicPath);
     } else {
       warn('build', 'If you want to generate og:image, please set fusumarc.meta.url');

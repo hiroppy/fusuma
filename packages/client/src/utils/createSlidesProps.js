@@ -1,6 +1,6 @@
 import { ToC } from '../components/ToC';
 
-export function createSlidesProps(slides, currentIndex) {
+export function createSlidesProps(slides) {
   const slidesArr = [];
   const propsArr = [];
   const res = {};

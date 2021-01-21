@@ -61,29 +61,25 @@ function getConfigYaml() {
 }
 
 async function init(baseDir) {
-  try {
-    await writeFileAsync(join(baseDir, '.fusumarc.yml'), getConfigYaml());
-    console.info('Created .fusumarc.yml');
+  await writeFileAsync(join(baseDir, '.fusumarc.yml'), getConfigYaml());
+  console.info('Created .fusumarc.yml');
 
-    // scaffold
-    await mkdirAsync(join(baseDir, 'slides'));
-    console.info('Created slides directory');
+  // scaffold
+  await mkdirAsync(join(baseDir, 'slides'));
+  console.info('Created slides directory');
 
-    {
-      const data = await readFileAsync(join(__dirname, 'templates', '0-title.md'), 'utf8');
+  {
+    const data = await readFileAsync(join(__dirname, 'templates', '0-title.md'), 'utf8');
 
-      await writeFileAsync(join(baseDir, 'slides', '0-title.md'), data);
-      console.info('Created slides/0-title.md');
-    }
+    await writeFileAsync(join(baseDir, 'slides', '0-title.md'), data);
+    console.info('Created slides/0-title.md');
+  }
 
-    {
-      const data = await readFileAsync(join(__dirname, 'templates', 'style.css'), 'utf8');
+  {
+    const data = await readFileAsync(join(__dirname, 'templates', 'style.css'), 'utf8');
 
-      await writeFileAsync(join(baseDir, 'style.css'), data);
-      console.info('Created style.css');
-    }
-  } catch (e) {
-    throw e;
+    await writeFileAsync(join(baseDir, 'style.css'), data);
+    console.info('Created style.css');
   }
 }
 
@@ -112,15 +108,11 @@ ACCESS_TOKEN_KEY=
 ACCESS_TOKEN_SECRET=
 `;
 
-  try {
-    await writeFileAsync(join(baseDir, '.env'), schema);
-  } catch (e) {
-    throw e;
-  }
+  await writeFileAsync(join(baseDir, '.env'), schema);
 }
 
 function combine(userConfig, extendConfig = {}) {
-  const overwriteMerge = (destinationArray, sourceArray, options) => sourceArray;
+  const overwriteMerge = (destinationArray, sourceArray) => sourceArray;
 
   return mergeAll([config, userConfig, extendConfig], { arrayMerge: overwriteMerge });
 }

@@ -1,6 +1,5 @@
 'use strict';
 
-const { resolve } = require('path');
 const webpack = require('webpack');
 const React = require('react');
 const jsdom = require('jsdom');
@@ -27,7 +26,7 @@ async function ssr(c) {
     global.document = dom.window.document;
     global.location = dom.window.location;
 
-    compiler.run((err, stats) => {
+    compiler.run((err) => {
       if (err) {
         return reject(err);
       }
@@ -46,7 +45,7 @@ async function ssr(c) {
   });
 }
 
-async function build(c, { body, fusumaProps }) {
+async function build(c, { body }) {
   return new Promise((resolve, reject) => {
     const config = combineWebpack('production', {
       ...c,

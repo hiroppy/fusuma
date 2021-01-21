@@ -8,11 +8,11 @@ export class WebRTC {
     this.finishedProcess = false;
   }
 
-  setupRecording = () => {
+  setupRecording() {
     navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(this.handlerRecording);
-  };
+  }
 
-  handlerRecording = (stream) => {
+  handlerRecording(stream) {
     const recordedChunks = [];
 
     this.stream = stream;
@@ -32,15 +32,15 @@ export class WebRTC {
         })
       );
     });
-  };
+  }
 
-  startRecording = () => {
+  startRecording() {
     this.mediaRecorder.start();
     this.finishedProcess = false;
     this.url = null;
-  };
+  }
 
-  stopRecording = () => {
+  stopRecording() {
     return new Promise((resolve) => {
       this.mediaRecorder.stop();
       const interval = setInterval(() => {
@@ -50,13 +50,13 @@ export class WebRTC {
         }
       }, 100);
     });
-  };
+  }
 
-  disposeRecording = () => {
+  disposeRecording() {
     this.mediaRecorder.stream.getTracks().forEach((track) => track.stop());
     this.finishedProcess = false;
     this.url = null;
-  };
+  }
 
   async startCapturing(displayMediaOptions) {
     let captureStream = null;

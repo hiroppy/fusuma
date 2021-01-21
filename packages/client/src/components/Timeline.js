@@ -78,7 +78,7 @@ export const Timeline = ({ items, url }) => {
       )}
       <div className="host-timeline-body">
         <T>
-          {items.map(({ title, time, timeStr, Slide, color, Icon }, i) => (
+          {items.map(({ title, time, timeStr, Slide, color, Icon }) => (
             <TimelineEvent
               key={time}
               title={title}

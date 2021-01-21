@@ -2,10 +2,10 @@
  * View for Presentation mode
  */
 
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { Base } from './Base';
 import { Receiver as PresentationReceiver } from '../../presentationMode/Receiver';
-import { Canvas, listenCanvasEvent, getValue } from '../Canvas';
+// import { Canvas } from '../Canvas';
 import { WebRTC } from '../../utils/webrtc';
 import '../../../assets/style/view.css';
 
@@ -30,7 +30,7 @@ const View = memo(({ slides, hash }) => {
     });
   }
 
-  const [usedCanvas, changeCanvasState] = useState(false);
+  // const [usedCanvas, changeCanvasState] = useState(false);
 
   const startCapturing = async () => {
     if (!webrtc) {
@@ -57,7 +57,7 @@ const View = memo(({ slides, hash }) => {
     }
   };
 
-  const listenVideoTags = async (id) => {
+  const listenVideoTags = async () => {
     const videoContainers = document.querySelectorAll('#webslides .fusuma-screen');
 
     if (videoContainers === null) return;
@@ -86,11 +86,11 @@ const View = memo(({ slides, hash }) => {
     });
   };
 
-  const listenCanvas = () => {
-    listenCanvasEvent((e) => {
-      changeCanvasState(e.status === 'start');
-    });
-  };
+  // const listenCanvas = () => {
+  //   listenCanvasEvent((e) => {
+  //     changeCanvasState(e.status === 'start');
+  //   });
+  // };
 
   useEffect(() => {
     listenVideoTags();
@@ -101,7 +101,7 @@ const View = memo(({ slides, hash }) => {
 
   return (
     <div className="fusuma-presenter-view">
-      {usedCanvas && <Canvas disabled hideGrid />}
+      {/* {usedCanvas && <Canvas disabled hideGrid />} */}
       <Base slides={slides} hash={hash} showIndex={false} />
     </div>
   );

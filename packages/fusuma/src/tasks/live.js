@@ -1,25 +1,27 @@
 'use strict';
 
 const { join } = require('path');
-const loader = require('../cli/loader');
+const Spinner = require('../cli/Spinner');
 const lazyloadModule = require('../utils/lazyloadModule');
 
 async function live(config) {
-  const { basePath, outputDir, keyword, port, dir } = config.internal;
+  const { keyword, port, dir } = config.internal;
+  const spinner = new Spinner();
 
-  await buildProcess(
-    basePath,
-    {
-      server: {
-        port,
-        isLive: true,
-        keyword,
-      },
-    },
-    false
-  );
+  // await buildProcess(
+  //   basePath,
+  //   {
+  //     server: {
+  //       port,
+  //       isLive: true,
+  //       keyword,
+  //     },
+  //   },
+  //   false
+  // );
 
-  const spinner = loader('Setup live mode...').start();
+  spinner.setContent({ color: 'green', text: 'Setup live mode...' });
+  spinner.start();
 
   try {
     const pack = process.env.FUSUMA_DEBUG
@@ -37,7 +39,7 @@ async function live(config) {
     liveServer({
       dir,
       port,
-      internal,
+      // internal,
       keyword,
     });
   } catch (e) {

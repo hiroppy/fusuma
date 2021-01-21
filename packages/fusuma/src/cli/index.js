@@ -14,7 +14,7 @@ async function cli() {
       .command('init', 'Create a configure file')
       .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
       .option('-t [type]', 'Schema type', prog.STRING)
-      .action((args, options, logger) => {
+      .action((args, options) => {
         resolve({
           type: 'init',
           options: {
@@ -28,7 +28,7 @@ async function cli() {
       .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
       .option('-i <directory>', 'A directory to load', prog.STRING, 'slides')
       .option('-p <port>', 'Dev server port', prog.INT, '8080')
-      .action((args, options, logger) => {
+      .action((args, options) => {
         resolve({
           type: 'start',
           options: {
@@ -43,7 +43,7 @@ async function cli() {
       .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
       .option('-i <directory>', 'A directory to load', prog.STRING, 'slides')
       .option('-o <directory>', 'A directory to output', prog.STRING, 'dist')
-      .action((args, options, logger) => {
+      .action((args, options) => {
         resolve({
           type: 'build',
           options: {
@@ -57,7 +57,7 @@ async function cli() {
       .command('deploy', 'Deploy to GitHub pages')
       .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
       .option('-i <directory>', 'A directory to load', prog.STRING, 'dist')
-      .action((args, options, logger) => {
+      .action((args, options) => {
         resolve({
           type: 'deploy',
           options: {
@@ -71,7 +71,7 @@ async function cli() {
       .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
       .option('-i <directory>', 'A directory to load', prog.STRING, 'dist')
       .option('-f <directory>', 'A filename of pdf', prog.STRING, 'slide.pdf')
-      .action((args, options, logger) => {
+      .action((args, options) => {
         resolve({
           type: 'pdf',
           options: {

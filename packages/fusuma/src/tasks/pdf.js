@@ -1,7 +1,7 @@
 'use strict';
 
 const { join } = require('path');
-const loader = require('../cli/loader');
+const Spinner = require('../cli/Spinner');
 const lazyloadModule = require('../utils/lazyloadModule');
 
 async function pdf(config) {
@@ -13,7 +13,10 @@ async function pdf(config) {
   const port = 3455;
   const { basePath, inputDirPath, filename } = config.internal;
   const output = join(basePath, filename);
-  const spinner = loader('Exporting as PDF...').start();
+  const spinner = new Spinner();
+
+  spinner.setContent({ text: 'Exporting as PDF...' });
+  spinner.start();
 
   try {
     const pack = process.env.FUSUMA_DEBUG
@@ -21,8 +24,7 @@ async function pdf(config) {
       : '@fusuma/task-pdf';
     const pdf = await lazyloadModule(pack, (type) => {
       if (type === 'fallback') {
-        spinner.color = 'yellow';
-        spinner.text = `Installing ${pack}`;
+        spinner.setContent({ color: 'yellow', text: `Installing ${pack}...` });
       }
     });
 

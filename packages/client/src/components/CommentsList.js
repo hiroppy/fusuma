@@ -1,5 +1,5 @@
 import React, { memo, useState, useEffect } from 'react';
-import posed, { PoseGroup } from 'react-pose';
+import posed from 'react-pose';
 import IntlRelativeFormat from 'intl-relativeformat';
 import '../../assets/style/commentsList.css';
 

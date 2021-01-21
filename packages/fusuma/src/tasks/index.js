@@ -8,6 +8,7 @@ const start = require('./start');
 const build = require('./build');
 const deploy = require('./deploy');
 const pdf = require('./pdf');
+const live = require('./live');
 
 async function tasks({ type, options }) {
   const { inputDir, outputDir } = options;

@@ -1,6 +1,5 @@
 'use strict';
 
-const mdx = require('@mdx-js/mdx');
 const loader = require('../src');
 
 jest.mock('loader-utils');

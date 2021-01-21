@@ -35,7 +35,7 @@ const Iframe = ({ slideUrl, slideIndex }) => (
 let webrtc = null;
 let slideUrl = null;
 let presentationController = null;
-let presentationApiId = null;
+// let presentationApiId = null;
 let recordedTimeline = [];
 let recordedStartedTime = 0;
 let audioUrl = null;
@@ -188,7 +188,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
         if (!presentationController) {
           throw new Error('Not found PresenterController.');
         }
-        presentationApiId = await presentationController.openView();
+        // presentationApiId = await presentationController.openView();
       } catch (e) {
         console.error(e);
       }

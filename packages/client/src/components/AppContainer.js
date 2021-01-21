@@ -1,8 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { MdMenu } from 'react-icons/md';
 import { createSlidesProps } from '../utils/createSlidesProps';
-import { getSearchParams } from '../utils/getSearchParams';
-import { Base } from './ContentView/Base';
 import { useCurrentIndex } from '../hooks/useCurrentIndex';
 import { useMode } from '../hooks/useMode';
 import { useContentComponent } from '../hooks/useContentComponent';

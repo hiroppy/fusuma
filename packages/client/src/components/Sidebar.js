@@ -4,17 +4,6 @@ import screenfull from 'screenfull';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay } from 'react-icons/md';
 
-const styles = {
-  sidebar: {
-    minWidth: 150,
-    zIndex: 1001,
-  },
-  overlay: {
-    backgroundColor: 'rgba(0, 0, 0, .5)',
-    zIndex: 1000,
-  },
-};
-
 const remoteOriginUrl = process.env.REMOTE_ORIGIN_URL;
 const url = process.env.URL || window.location.href.split('#')[0];
 const sns = process.env.SNS;
@@ -37,7 +26,7 @@ export const Sidebar = memo(
               return (
                 <a
                   key="twitter"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   target="_blank"
                   href={`https://twitter.com/intent/tweet?text=${title} ${url}`}
                   aria-label={`${title} ${url}`}
@@ -85,14 +74,14 @@ export const Sidebar = memo(
           className="sidebar-cursor"
         />
         {remoteOriginUrl && (
-          <a href={remoteOriginUrl} target="_blank" rel="noopener" aria-label="github">
+          <a href={remoteOriginUrl} target="_blank" rel="noopener noreferrer" aria-label="github">
             <FaGithub style={{ width: 20, height: 20, marginTop: 3, color: '#f5f5f5' }} />
           </a>
         )}
       </div>
       {contents.length !== 0 && (
         <ul className="sidebar-contents">
-          {contents.map((content, i) => (
+          {contents.map((content) => (
             <li key={content.title}>
               <a href={`#slide=${content.index}`}>{content.title}</a>
             </li>
