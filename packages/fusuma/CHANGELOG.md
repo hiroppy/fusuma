@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.16](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.15...v2.0.0-alpha.16) (2021-01-23)
+
+
+### Bug Fixes
+
+* **webpack:** use production mode on production ([e010c97](https://github.com/hiroppy/fusuma/commit/e010c97c8cd1f25a48ed4de45a3d23fbd226109b))
+
+
+
+
+
 # [2.0.0-alpha.15](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.14...v2.0.0-alpha.15) (2021-01-21)
 
 
