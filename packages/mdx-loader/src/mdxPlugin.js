@@ -2,7 +2,6 @@
 
 const qr = require('qrcode-generator');
 const visit = require('unist-util-visit');
-
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
 const createFusumaProps = require('./createFusumaProps');
@@ -21,98 +20,120 @@ function mdxPlugin() {
 
     // TODO: refactor using visit
     tree.children.forEach((n) => {
-      if (n.type === 'thematicBreak') {
+      const { type, value, lang, meta } = n;
+
+      // move to a new slide
+      if (type === 'thematicBreak') {
         slides.push(slide);
         slide = [];
-      } else if (n.type === 'comment' && n.value.trim().includes('qr:')) {
-        // TODO: need to validate
-        const url = n.value.trim().split('qr:')[1].trim();
+        return;
+      }
 
-        const q = qr(0, 'L');
-        q.addData(url);
-        q.make();
-        const svg = q.createSvgTag();
+      if (type === 'comment') {
+        const [prefix, ...rest] = value.trim().split(':');
+        const attr = rest.map((r) => r.trim());
 
-        slide.push(
-          ...[
-            n,
-            {
-              ...n,
-              type: 'jsx',
-              // TODO: specify variables and refactor
-              value: svg
-                .replace('width="58px"', '')
-                .replace('height="58px"', '')
-                .replace('<svg ', '<svg className="qr"'),
-            },
-          ]
-        );
-      } else if (n.type === 'comment' && n.value.trim() === 'screen') {
-        slide.push(
-          ...[
-            n,
-            {
-              ...n,
-              type: 'jsx',
-              value:
-                '<div className="fusuma-screen">' +
-                '<div>This view can capture the screen.<br />' +
-                'Click to get started.;)<br /><br />' +
-                'Note: This feature runs only in Presenter Mode.' +
-                '</div>' +
-                `<video id="fusuma-screen-${videoId}" />` +
-                '</div>',
-            },
-          ]
-        );
+        if (prefix === 'qr') {
+          if (['http', 'https'].includes(attr[0])) {
+            const url = `${attr[0]}:${attr[1]}`;
+            const q = qr(0, 'L');
+            q.addData(url);
+            q.make();
+            const svg = q.createSvgTag();
 
-        ++videoId;
-      } else if (n.type === 'code' && n.lang === 'chart') {
-        slide.push({
-          ...n,
-          type: 'jsx',
-          value: `<div className="mermaid" id="mermaid-${mermaidId}" data-value="${n.value.replace(
-            / {4}/g,
-            ''
-          )}" style={{ visibility: 'hidden'}}>${n.value.replace(/ {4}/g, '')}</div>`,
-        });
+            slide.push(
+              ...[
+                n,
+                {
+                  ...n,
+                  type: 'jsx',
+                  value: svg
+                    .replace('width="58px"', '')
+                    .replace('height="58px"', '')
+                    .replace('<svg ', '<svg className="qr"'),
+                },
+              ]
+            );
 
-        ++mermaidId;
-      } else if (n.type === 'code' && n.meta) {
-        const lines = n.meta.match(/line="(.+?)"/);
+            return;
+          }
+        }
 
-        if (lines === null) {
-          slide.push(n);
-        } else {
-          const line = lines[1];
-          const hash = mdxAstToMdxHast()(n);
-          const value = toJSX(hash).replace('<pre>', `<pre data-line="${line}">`);
+        if (prefix === 'screen') {
+          slide.push(
+            ...[
+              n,
+              {
+                ...n,
+                type: 'jsx',
+                value:
+                  '<div className="fusuma-screen">' +
+                  '<div>This view can capture the screen.<br />' +
+                  'Click to get started.;)<br /><br />' +
+                  'Note: This feature runs only in Presenter Mode.' +
+                  '</div>' +
+                  `<video id="fusuma-screen-${videoId}" />` +
+                  '</div>',
+              },
+            ]
+          );
 
+          ++videoId;
+          return;
+        }
+      }
+
+      if (type === 'code') {
+        if (lang === 'chart') {
           slide.push({
             ...n,
             type: 'jsx',
-            value,
+            value: `<div className="mermaid" id="mermaid-${mermaidId}" data-value="${n.value.replace(
+              / {4}/g,
+              ''
+            )}" style={{ visibility: 'hidden'}}>${n.value.replace(/ {4}/g, '')}</div>`,
           });
+
+          ++mermaidId;
+          return;
         }
-      } else {
-        visit(n, null, (node) => {
-          if (node.type === 'image') {
-            const { type, value } = transferMarkdownImageNodeToJSX(node);
-            node.type = type;
-            node.value = value;
-            delete node.alt;
-            delete node.title;
-            delete node.url;
+        if (meta) {
+          const lines = n.meta.match(/line="(.+?)"/);
+
+          if (lines === null) {
+            slide.push(n);
+          } else {
+            const line = lines[1];
+            const hash = mdxAstToMdxHast()(n);
+            const value = toJSX(hash).replace('<pre>', `<pre data-line="${line}">`);
+
+            slide.push({
+              ...n,
+              type: 'jsx',
+              value,
+            });
           }
-        });
-
-        slide.push(n);
-
-        if (n.type === 'jsx') {
-          n.value = n.value
-            .replace(/src="(.+?\.(png|jpg|gif|svg?))"/g, 'src={require("$1")}')
-            .replace(/class=/g, 'className=');
+          return;
         }
+      }
+
+      visit(n, null, (node) => {
+        if (node.type === 'image') {
+          const { type, value } = transferMarkdownImageNodeToJSX(node);
+          node.type = type;
+          node.value = value;
+          delete node.alt;
+          delete node.title;
+          delete node.url;
+        }
+      });
+
+      slide.push(n);
+
+      if (type === 'jsx') {
+        n.value = value
+          .replace(/src="(.+?\.(png|jpg|gif|svg?))"/g, 'src={require("$1")}')
+          .replace(/class=/g, 'className=');
       }
     });
 
