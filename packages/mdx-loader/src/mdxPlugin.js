@@ -5,6 +5,7 @@ const visit = require('unist-util-visit');
 
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
+const transferMarkdownImageNodeToJSX = require('./transferMarkdownImageNodeToJSX');
 
 function createFusumaProps(nodes) {
   const property = {};
@@ -53,26 +54,6 @@ function createFusumaProps(nodes) {
   return `{${Object.entries(property)
     .map(([key, value]) => `${key}: '${value}'`)
     .join(',')}}`;
-}
-
-function transferMarkdownImageNodeToJSX(node) {
-  const hash = mdxAstToMdxHast()(node);
-  const { src, alt } = hash.properties;
-  if (alt === null || alt === undefined) delete hash.properties.alt;
-  let jsx;
-
-  // Do not resolve remote url as a module
-  if (src.indexOf('http') < 0) {
-    delete hash.properties.src;
-    jsx = toJSX(hash).replace(/<img(\s?.*)>/, `<img src={require('${src}')} $1>`);
-  } else {
-    jsx = toJSX(hash);
-  }
-
-  return {
-    type: 'jsx',
-    value: jsx,
-  };
 }
 
 function mdxPlugin() {
