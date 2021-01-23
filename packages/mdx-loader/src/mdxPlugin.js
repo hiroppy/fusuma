@@ -1,11 +1,13 @@
 'use strict';
 
-const qr = require('qrcode-generator');
 const visit = require('unist-util-visit');
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
 const createFusumaProps = require('./createFusumaProps');
-const transferMarkdownImageNodeToJSX = require('./transferMarkdownImageNodeToJSX');
+const transformQrToJSX = require('./transformers/transformQrToJSX');
+const transformScreenToJSX = require('./transformers/transformScreenToJSX');
+const transformChartToJSX = require('./transformers/transformChartToJSX');
+const transformMarkdownImageNodeToJSX = require('./transformers/transformMarkdownImageNodeToJSX');
 
 function mdxPlugin() {
   return (tree) => {
@@ -34,29 +36,17 @@ function mdxPlugin() {
         const attr = rest.map((r) => r.trim());
 
         if (prefix === 'qr') {
-          if (['http', 'https'].includes(attr[0])) {
-            const url = `${attr[0]}:${attr[1]}`;
-            const q = qr(0, 'L');
-            q.addData(url);
-            q.make();
-            const svg = q.createSvgTag();
+          slide.push(
+            ...[
+              n,
+              {
+                ...n,
+                ...transformQrToJSX(attr),
+              },
+            ]
+          );
 
-            slide.push(
-              ...[
-                n,
-                {
-                  ...n,
-                  type: 'jsx',
-                  value: svg
-                    .replace('width="58px"', '')
-                    .replace('height="58px"', '')
-                    .replace('<svg ', '<svg className="qr"'),
-                },
-              ]
-            );
-
-            return;
-          }
+          return;
         }
 
         if (prefix === 'screen') {
@@ -65,19 +55,10 @@ function mdxPlugin() {
               n,
               {
                 ...n,
-                type: 'jsx',
-                value:
-                  '<div className="fusuma-screen">' +
-                  '<div>This view can capture the screen.<br />' +
-                  'Click to get started.;)<br /><br />' +
-                  'Note: This feature runs only in Presenter Mode.' +
-                  '</div>' +
-                  `<video id="fusuma-screen-${videoId}" />` +
-                  '</div>',
+                ...transformScreenToJSX(videoId),
               },
             ]
           );
-
           ++videoId;
           return;
         }
@@ -87,11 +68,7 @@ function mdxPlugin() {
         if (lang === 'chart') {
           slide.push({
             ...n,
-            type: 'jsx',
-            value: `<div className="mermaid" id="mermaid-${mermaidId}" data-value="${n.value.replace(
-              / {4}/g,
-              ''
-            )}" style={{ visibility: 'hidden'}}>${n.value.replace(/ {4}/g, '')}</div>`,
+            ...transformChartToJSX(mermaidId, value),
           });
 
           ++mermaidId;
@@ -119,7 +96,8 @@ function mdxPlugin() {
 
       visit(n, null, (node) => {
         if (node.type === 'image') {
-          const { type, value } = transferMarkdownImageNodeToJSX(node);
+          const { type, value } = transformMarkdownImageNodeToJSX(node);
+
           node.type = type;
           node.value = value;
           delete node.alt;
@@ -145,9 +123,21 @@ function mdxPlugin() {
         type: 'root',
         children: slide,
       });
-      const mdxJSX = toJSX(hash);
+      let mdxJSX = toJSX(hash)
+        // TODO: refactor
+        .replace(/{\s.+\/\* block-end \*\/\s.+}/gm, '</div>');
+
+      const matches = mdxJSX.matchAll(/{\s.+\/\* block-start:?(.*?) \*\/\s.+}/gm);
+
+      for (const pos of matches) {
+        const [, className] = pos;
+        const div = className ? `<div className="${className.trim()}">` : '<div>';
+        mdxJSX = mdxJSX.replace(/{\s.+\/\* block-start:?(.*?) \*\/\s.+}/m, div);
+      }
+
       // jsx variable is established, so we don't use babel/parser
       const jsx = mdxJSX.match(/<MDXLayout.+?>([\s\S]*)<\/MDXLayout>/m);
+
       if (jsx) {
         const template = `
           (props) => (
