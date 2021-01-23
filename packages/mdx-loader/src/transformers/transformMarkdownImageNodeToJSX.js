@@ -3,7 +3,7 @@
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 
-function transferMarkdownImageNodeToJSX(node) {
+function transformMarkdownImageNodeToJSX(node) {
   const hash = mdxAstToMdxHast()(node);
   const { src, alt } = hash.properties;
   let jsx;
@@ -26,4 +26,4 @@ function transferMarkdownImageNodeToJSX(node) {
   };
 }
 
-module.exports = transferMarkdownImageNodeToJSX;
+module.exports = transformMarkdownImageNodeToJSX;

@@ -152,4 +152,19 @@ second
 `;
     expect(await transformToJS(src)).toMatchSnapshot();
   });
+
+  test('should append div tag by block comment', async () => {
+    const src = `
+<!-- block-start -->
+out
+<!-- block-start: foo -->
+in
+in
+<!-- block-end -->
+out
+<!-- block-end -->
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
 });

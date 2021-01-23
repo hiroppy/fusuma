@@ -19,3 +19,15 @@ __body {
   height: 150px;
   width: 150px;
 }
+
+.outer {
+  color: red;
+}
+
+.middle {
+  color: blue;
+}
+
+.inner {
+  color: green;
+}
