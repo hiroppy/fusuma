@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.17](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2021-01-23)
+
+
+### Features
+
+* **build:** introduce compression-webpack-plugin ([c82d97a](https://github.com/hiroppy/fusuma/commit/c82d97ab0082e95e2ecd86acfd019c4828a601b8))
+
+
+
+
+
 # [2.0.0-alpha.16](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.15...v2.0.0-alpha.16) (2021-01-23)
 
 
