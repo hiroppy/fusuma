@@ -59,7 +59,7 @@
     "ora": "^5.3.0",
     "postcss": "^8.2.4",
     "postcss-import": "^14.0.0",
-    "postcss-loader": "^4.1.0",
+    "postcss-loader": "^4.2.0",
     "postcss-mixins": "^7.0.2",
     "postcss-preset-env": "^6.7.0",
     "postcss-reporter": "^7.0.2",
@@ -74,7 +74,7 @@
     "table": "^6.0.7",
     "terser-webpack-plugin": "^5.1.1",
     "webp-loader": "^0.6.0",
-    "webpack": "^5.16.0",
+    "webpack": "^5.17.0",
     "webpack-dev-middleware": "^4.1.0",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^5.7.3"
