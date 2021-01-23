@@ -7,8 +7,7 @@ const css = require('./css');
 
 function prod() {
   return {
-    // mode: 'production',
-    mode: 'none', // if specify production, webpack won't generate dist directory(and mini-css-extract has errors)
+    mode: 'production',
     output: {
       filename: '[name].[chunkhash].bundle.js',
       chunkFilename: '[name].[id].[chunkhash].bundle.js',

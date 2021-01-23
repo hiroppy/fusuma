@@ -59,6 +59,7 @@ module.exports = (
       ],
     },
     resolve: {
+      mainFields: ['module', 'main'],
       alias: {
         // https://github.com/facebook/react/issues/13991
         // for dev
