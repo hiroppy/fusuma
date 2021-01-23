@@ -3,6 +3,7 @@
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const css = require('./css');
 
 function prod() {
@@ -19,6 +20,12 @@ function prod() {
       new MiniCssExtractPlugin({
         filename: '[name].[chunkhash].css',
         chunkFilename: '[name].[id].[chunkhash].css',
+      }),
+      // github pages doesn't support brotli
+      new CompressionPlugin({
+        test: /\.(js|css|html|svg)$/,
+        threshold: 10240,
+        minRatio: 0.8,
       }),
       // new webpack.optimize.AggressiveMergingPlugin() // if use this, canvas will be broken
     ],

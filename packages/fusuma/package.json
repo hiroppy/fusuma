@@ -42,6 +42,7 @@
     "caporal": "^1.4.0",
     "chalk": "^4.1.0",
     "child-process-promise": "^2.2.1",
+    "compression-webpack-plugin": "^7.1.2",
     "core-js": "^3.8.3",
     "css-loader": "^5.0.1",
     "deepmerge": "^4.2.2",
