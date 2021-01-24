@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.19](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.18...v2.0.0-alpha.19) (2021-01-24)
+
+
+### Bug Fixes
+
+* **webpack:** remove threshold ([4e03274](https://github.com/hiroppy/fusuma/commit/4e03274f523e8d80b6ee2aecc59ac3b89b22ec93))
+
+
+### Features
+
+* **mdx:** add executable-code syntax ([d87f3b9](https://github.com/hiroppy/fusuma/commit/d87f3b9cb53b18ff3feac8e8ac117341598a19d6))
+
+
+
+
+
 # [2.0.0-alpha.18](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.17...v2.0.0-alpha.18) (2021-01-24)
 
 
