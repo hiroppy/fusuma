@@ -40,6 +40,60 @@ Also, you can use HTML because MarkDown accepts HTML.
 
 ---
 
+## Create blocks with class name
+
+This example uses webslides's classes(`.grid`, `.column`).
+
+```md
+<!-- block-start: grid -->
+
+  <!-- block-start: column -->
+
+left
+
+  <!-- block-end -->
+
+  <!-- block-start: column -->
+
+right
+
+  <!-- block-end -->
+
+<!-- block-end -->
+
+<!-- block-start -->
+
+also, the class name isn't mandatory
+
+<!-- block-end -->
+```
+
+👇
+
+<!-- block-start: grid -->
+
+<!-- block-start: column -->
+
+left
+
+<!-- block-end -->
+
+<!-- block-start: column -->
+
+right
+
+<!-- block-end -->
+
+<!-- block-end -->
+
+<!-- block-start -->
+
+also, the class name isn't mandatory
+
+<!-- block-end -->
+
+---
+
 ## Declare Section Title
 
 ```md
