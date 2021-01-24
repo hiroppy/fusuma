@@ -24,7 +24,6 @@ function prod() {
       // github pages doesn't support brotli
       new CompressionPlugin({
         test: /\.(js|css|html|svg)$/,
-        threshold: 10240,
         minRatio: 0.8,
       }),
       // new webpack.optimize.AggressiveMergingPlugin() // if use this, canvas will be broken
