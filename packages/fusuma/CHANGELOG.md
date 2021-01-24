@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.18](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.17...v2.0.0-alpha.18) (2021-01-24)
+
+**Note:** Version bump only for package fusuma
+
+
+
+
+
 # [2.0.0-alpha.17](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2021-01-23)
 
 

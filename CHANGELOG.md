@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.18](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.17...v2.0.0-alpha.18) (2021-01-24)
+
+
+### Features
+
+* **mdx:** add block-start/end feature ([53b747a](https://github.com/hiroppy/fusuma/commit/53b747a34fbac25f607b456e574019b6987e497d))
+
+
+
+
+
 # [2.0.0-alpha.17](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2021-01-23)
 
 
