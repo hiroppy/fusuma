@@ -23,16 +23,10 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
     }
   };
 
-  const onRunPresentationMode = () => {
+  const runPresentationMode = (type) => {
     window.slide = null;
     updateOpenSidebarStatus(false);
-    setMode('host');
-  };
-
-  const terminate = () => {
-    window.slide = null;
-    updateOpenSidebarStatus(false);
-    setMode('common');
+    setMode(type === 'start' ? 'host' : 'common');
   };
 
   return (
@@ -42,11 +36,11 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
           <SidebarComponent
             goTo={goTo}
             isOpen={isOpenSidebar}
-            terminate={terminate}
+            terminate={() => runPresentationMode('terminate')}
             contents={contentsList}
             onStateChange={({ isOpen }) => updateOpenSidebarStatus(isOpen)}
             currentIndex={currentIndex}
-            runPresentationMode={onRunPresentationMode}
+            runPresentationMode={() => runPresentationMode('start')}
           />
           <MdMenu className="btn-sidebar" onClick={() => updateOpenSidebarStatus(true)} />
         </>
@@ -56,7 +50,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
           hash={hash}
           slides={slides}
           isJumpPage={currentIndex !== 0}
-          terminate={terminate}
+          terminate={() => runPresentationMode('terminate')}
           currentIndex={currentIndex}
           onChangeSlideIndex={setCurrentIndex}
         />
