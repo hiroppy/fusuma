@@ -17,6 +17,10 @@ function createFusumaProps(nodes) {
     if (type === 'comment') {
       const v = value.trim();
 
+      if (v === 'executable-code') {
+        property.hasExecutableCode = true;
+      }
+
       if (v === 'contents') {
         property.contents = true;
       }

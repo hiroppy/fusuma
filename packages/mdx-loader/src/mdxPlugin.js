@@ -8,6 +8,7 @@ const transformQrToJSX = require('./transformers/transformQrToJSX');
 const transformScreenToJSX = require('./transformers/transformScreenToJSX');
 const transformChartToJSX = require('./transformers/transformChartToJSX');
 const transformMarkdownImageNodeToJSX = require('./transformers/transformMarkdownImageNodeToJSX');
+const transformExecJSCodeButtonToJSX = require('./transformers/transformExecJSCodeButtonToJSX');
 
 function mdxPlugin() {
   return (tree) => {
@@ -21,7 +22,7 @@ function mdxPlugin() {
     };
 
     // TODO: refactor using visit
-    tree.children.forEach((n) => {
+    tree.children.forEach((n, i) => {
       const { type, value, lang, meta } = n;
 
       // move to a new slide
@@ -60,6 +61,24 @@ function mdxPlugin() {
             ]
           );
           ++videoId;
+          return;
+        }
+
+        if (prefix === 'executable-code') {
+          const nextNode = tree.children[i + 1];
+
+          if (nextNode.type === 'code' && ['js', 'javascript'].includes(nextNode.lang)) {
+            slide.push(
+              ...[
+                n,
+                {
+                  ...n,
+                  ...transformExecJSCodeButtonToJSX(nextNode.value),
+                },
+              ]
+            );
+          }
+
           return;
         }
       }

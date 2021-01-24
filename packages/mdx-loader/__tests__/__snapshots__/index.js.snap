@@ -177,6 +177,63 @@ in\`}</p>
 MDXContent.isMDXComponent = true;"
 `;
 
+exports[`fusuma-loader should append executable code components 1`] = `
+"/* @jsxRuntime classic */
+/* @jsx mdx */
+
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+export const slides = [props => <>
+              
+    {
+    /* executable-code */
+  }
+    <div className=\\"executable-code-container\\">
+      <a data-value=\\"const a = 1;
+const b = 2;
+console.log(a + b);\\" className=\\"executable-code-button\\">execute</a>
+      <div className=\\"executable-code-result\\" style={{
+      display: 'none'
+    }}></div>
+    </div>
+    <pre><code parentName=\\"pre\\" {...{
+      \\"className\\": \\"language-javascript\\"
+    }}>{\`const a = 1;
+const b = 2;
+console.log(a + b);
+\`}</code></pre>
+    
+            </>];
+export const fusumaProps = [{
+  hasExecutableCode: 'true'
+}];
+
+const layoutProps = {
+  
+};
+const MDXLayout = \\"wrapper\\"
+export default function MDXContent({
+  components,
+  ...props
+}) {
+  return <MDXLayout {...layoutProps} {...props} components={components} mdxType=\\"MDXLayout\\">
+    {
+      /* executable-code */
+    }
+    <pre><code parentName=\\"pre\\" {...{
+        \\"className\\": \\"language-javascript\\"
+      }}>{\`const a = 1;
+const b = 2;
+console.log(a + b);
+\`}</code></pre>
+
+    </MDXLayout>;
+}
+
+;
+MDXContent.isMDXComponent = true;"
+`;
+
 exports[`fusuma-loader should convert MathJax 1`] = `
 "/* @jsxRuntime classic */
 /* @jsx mdx */

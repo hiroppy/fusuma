@@ -167,4 +167,17 @@ out
 
     expect(await transformToJS(src)).toMatchSnapshot();
   });
+
+  test('should append executable code components', async () => {
+    const src = `
+<!-- executable-code -->
+\`\`\`javascript
+const a = 1;
+const b = 2;
+console.log(a + b);
+\`\`\`
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
 });

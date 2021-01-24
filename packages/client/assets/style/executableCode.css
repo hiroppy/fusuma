@@ -1,0 +1,35 @@
+.executable-code-container {
+  display: flex;
+  order: 1; /* TODO: fix */
+  flex-direction: column;
+  margin: 0 auto;
+  min-width: 50%;
+  max-width: 90%;
+}
+
+.executable-code-button {
+  border: 1px solid rgba(0, 20, 80, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 20, 80, 0.04), 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  color: var(--color-black);
+  cursor: pointer;
+  font-size: 1.8rem;
+  padding: 0.5rem;
+  width: 100px;
+}
+
+.executable-code-result {
+  max-height: 200px;
+  overflow-x: auto;
+  text-align: left;
+  padding: 1.2rem 0.2rem;
+  border: 1px solid rgba(0, 20, 80, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 20, 80, 0.04), 0 4px 16px rgba(0, 0, 0, 0.08);
+  margin-top: 0.4rem;
+
+  & > p {
+    margin-left: 12px;
+    font-size: 2rem;
+    white-space: nowrap;
+  }
+}

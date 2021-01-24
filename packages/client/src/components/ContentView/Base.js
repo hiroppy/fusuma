@@ -2,6 +2,7 @@ import React, { useEffect, memo } from 'react';
 import Prism from 'prismjs';
 import classnames from 'classnames';
 import { setup as setupWebSlides } from '../../setup/webSlides';
+import { createVMEnv } from '../../utils/createVMEnv';
 
 const articleClass = process.env.IS_VERTICAL ? 'vertical' : undefined;
 let mermaid = null;
@@ -46,6 +47,14 @@ export const Base = memo(
           Prism.highlightAll();
         }, 0);
       }
+
+      const hasExecutableCode = slides.some(
+        ({ fusumaProps }) => fusumaProps.hasExecutableCode === 'true'
+      );
+
+      if (hasExecutableCode) {
+        createVMEnv();
+      }
     }
 
     useEffect(() => {
@@ -79,7 +88,7 @@ export const Base = memo(
       <article className={articleClass} id="webslides">
         {slides.map(({ slide: Slide, fusumaProps }, i) => (
           <section
-            key={i}
+            key={i /* mdx-loaderでhash作成 */}
             className={classnames(
               'aligncenter',
               fusumaProps.classes,

@@ -39,5 +39,8 @@
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "vm-browserify": "^1.1.2"
   }
 }
