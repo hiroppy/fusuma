@@ -12,10 +12,10 @@ export async function createVMEnv() {
       }
       const context = createContext({
         console: {
-          log: (res) => {
+          log: (...res) => {
             const p = document.createElement('p');
 
-            p.innerText = `- ${res}`;
+            p.innerText = `- ${res.join(' ')}`;
             list.appendChild(p);
           },
         },
