@@ -28,8 +28,8 @@ async function build(config, isConsoleOutput = true) {
 
   await deleteDir(outputDirPath);
 
-  // spinner.setContent({ color: 'cyan', text: 'Rendering components to HTML...' });
-  // spinner.setContent({ color: 'yellow', text: 'Building with webpack...' });
+  spinner.setContent({ color: 'cyan', text: 'Building with webpack...' });
+
   const stats = await webpackBuild(config);
 
   let neededThumbnail = false;
@@ -42,7 +42,7 @@ async function build(config, isConsoleOutput = true) {
     }
   }
 
-  await dynamicRenderingServer(outputDirPath, config.build.publicPath, neededThumbnail);
+  await dynamicRenderingServer(outputDirPath, config.build.publicPath, spinner, neededThumbnail);
 
   spinner.stop();
 
