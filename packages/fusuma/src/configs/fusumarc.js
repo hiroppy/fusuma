@@ -41,7 +41,7 @@ const config = {
   },
   build: {
     useCache: true,
-    publicPath: '/',
+    publicPath: '',
   },
 };
 

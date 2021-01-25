@@ -28,7 +28,7 @@ async function tasks({ type, options }) {
       try {
         const { pathname } = new URL(config.meta.url);
 
-        config.build.publicPath = `${pathname}/`;
+        config.build.publicPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
       } catch (e) {
         error('preparation', `meta.url specified isn't a URL`);
       }

@@ -9,9 +9,7 @@ const outputBuildInfo = require('../webpack/outputBuildInfo');
 const dynamicRenderingServer = require('../server/dynamicRenderingServer');
 
 async function build(config, isConsoleOutput = true) {
-  if (process.env.NODE_ENV === undefined) {
-    process.env.NODE_ENV = 'production';
-  }
+  process.env.NODE_ENV = 'production';
 
   const spinner = new Spinner();
   const { outputDirPath } = config.internal;
