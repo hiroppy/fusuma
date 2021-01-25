@@ -6,7 +6,7 @@ import { AppContainer } from '../components/AppContainer';
 import '../setup/css';
 
 function createBody(slides = [], hash = 0) {
-  const renderMethod = module.hot ? render : hydrate;
+  const renderMethod = import.meta.webpackHot ? render : hydrate;
 
   renderMethod(<AppContainer slides={slides} hash={hash} />, document.getElementById('root'));
 }

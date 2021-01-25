@@ -20,24 +20,16 @@ module.exports = (
   type,
   { meta, slide, extends: fileExtends, internal = {}, server = {}, build }
 ) => {
-  const entry = [
-    'regenerator-runtime',
-    type !== 'ssr'
-      ? path.join(clientBasePath, '/src/entryPoints/Client.js')
-      : path.join(clientBasePath, 'src/entryPoints/Server.js'),
-  ];
-
+  const entry = ['regenerator-runtime', path.join(clientBasePath, '/src/entryPoints/Client.js')];
   const { url, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
-  const { ssr, useCache, publicPath } = build;
+  const { useCache, publicPath } = build;
   const { basePath, remoteOrigin, htmlBody = '', buildStage, outputDirPath } = internal;
   const config = (() => {
     switch (type) {
       case 'production':
         return require('./webpack.prod.config')();
-      case 'ssr':
-        return require('./webpack.ssr.config')({ clientBasePath });
       default:
         return require('./webpack.dev.config')();
     }
@@ -148,8 +140,24 @@ module.exports = (
         'process.env.SERVER_PORT': JSON.stringify(server.port),
         'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword),
         'process.env.CHART': JSON.stringify(chart),
-        'process.env.SSR': JSON.stringify(process.env.NODE_ENV === 'production' && ssr),
         'process.env.BUILD_STAGE': JSON.stringify(buildStage),
+      }),
+      new HtmlWebpackPlugin({
+        url,
+        filename: 'index.html',
+        title: title || 'slide',
+        template: path.join(__dirname, 'template.ejs'),
+        image: thumbnail || `${url}/thumbnail.png`,
+        siteName,
+        description,
+        math,
+        body: htmlBody,
+        minify:
+          process.env.NODE_ENV === 'production'
+            ? {
+                collapseWhitespace: true,
+              }
+            : false,
       }),
     ],
     infrastructureLogging: {
@@ -170,39 +178,15 @@ module.exports = (
     },
   };
 
-  if (type !== 'ssr') {
-    common.plugins.push(
-      new HtmlWebpackPlugin({
-        url,
-        filename: 'index.html',
-        title: title || 'slide',
-        template: path.join(__dirname, 'template.ejs'),
-        image: thumbnail || `${url}/thumbnail.png`,
-        siteName,
-        description,
-        math,
-        body: htmlBody,
-        minify:
-          process.env.NODE_ENV === 'production'
-            ? {
-                collapseWhitespace: true,
-              }
-            : false,
-      })
-    );
+  if (jsPath && jsPath.match(/\+*.js$/i)) {
+    common.entry.push(path.join(basePath, jsPath));
   }
 
-  if (type !== 'ssr') {
-    if (jsPath && jsPath.match(/\+*.js$/i)) {
-      common.entry.push(path.join(basePath, jsPath));
-    }
+  if (cssPath) {
+    const p = path.join(basePath, cssPath);
 
-    if (cssPath) {
-      const p = path.join(basePath, cssPath);
-
-      if (path.extname(p) === '.css' && existsSync(p)) {
-        common.entry.push(path.join(clientBasePath, 'src', 'utils', 'customCss.js'));
-      }
+    if (path.extname(p) === '.css' && existsSync(p)) {
+      common.entry.push(path.join(clientBasePath, 'src', 'utils', 'customCss.js'));
     }
   }
 

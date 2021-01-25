@@ -1,6 +1,5 @@
 @import './variable';
 @import './sidebar.css';
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro'); /* for highlight.js */
 
 html {
   font-size: 62.5%;
@@ -31,39 +30,6 @@ img {
   margin: 0 auto;
 }
 
-pre {
-  background: var(--color-white);
-  border-radius: 10px;
-  min-width: 50%;
-  max-width: 90%;
-  width: auto;
-}
-
-pre[class*='language-'] {
-  margin: 0.5em auto;
-}
-
-code {
-  font-family: 'Source Code Pro', monospace !important;
-  padding: 0 3px;
-}
-
-code[class*='language-'],
-pre[class*='language-'] {
-  font-size: 1.4rem;
-  line-height: 1.2;
-}
-@media screen and (min-width: 768px) {
-  code[class*='language-'],
-  pre[class*='language-'] {
-    font-size: 2rem;
-  }
-}
-
-#root {
-  display: flex;
-}
-
 .fa-hatena:before {
   content: 'B!';
   font-family: Verdana;
@@ -74,9 +40,8 @@ pre[class*='language-'] {
   background: transparent;
 }
 
-/* overwrite prismjs */
-.token.operator {
-  background: inherit;
+#root {
+  display: flex;
 }
 
 #webslides {

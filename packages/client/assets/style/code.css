@@ -1,0 +1,39 @@
+@import './variable';
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+pre {
+  background: var(--color-white);
+  border-radius: 10px;
+  min-width: 50%;
+  max-width: 90%;
+  width: auto;
+}
+
+code {
+  font-family: 'Source Code Pro', monospace;
+}
+
+section {
+  & > pre[class*='language-'] {
+    margin: 0.5em auto;
+
+    & > code[class*='language-'] {
+      & .token.operator {
+        background: inherit;
+      }
+    }
+  }
+}
+
+section > pre > code[class*='language-'],
+section > pre[class*='language-'] {
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 768px) {
+  section > pre > code[class*='language-'],
+  section > pre[class*='language-'] {
+    font-size: 2rem;
+  }
+}

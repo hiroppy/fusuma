@@ -34,7 +34,8 @@ extends:
   css: style.css
   webpack: webpack.config.js
 build:
-  ssr: true
+  useCache: true
+  publicPath: /
 ```
 
 ## Making SEO and OGP to 100%

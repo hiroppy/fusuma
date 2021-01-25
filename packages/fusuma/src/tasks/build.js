@@ -1,41 +1,12 @@
 'use strict';
 
-const { join } = require('path');
 const Spinner = require('../cli/Spinner');
 const { info, warn } = require('../cli/log');
+const deleteDir = require('../utils/deleteDir');
 const getRemoteOriginUrl = require('../utils/getRemoteOriginUrl');
 const { build: webpackBuild } = require('../webpack');
-const deleteDir = require('../utils/deleteDir');
-const fileServer = require('../server/fileServer');
 const outputBuildInfo = require('../webpack/outputBuildInfo');
-
-async function createOgImage(outputDirPath, publicPath) {
-  const puppeteer = require('puppeteer');
-
-  const port = 5445;
-  const browser = await puppeteer.launch({
-    chromeWebSecurity: false,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
-  const page = await browser.newPage();
-  const outputFilePath = join(outputDirPath, 'thumbnail.png');
-
-  // https://www.kapwing.com/resources/what-is-an-og-image-make-and-format-og-images-for-your-blog-or-webpage/
-  await page.setViewport({
-    width: 1200,
-    height: 630,
-  });
-  const app = await fileServer(outputDirPath, publicPath, port);
-  await page.goto(`http://localhost:${port}?sidebar=false`, {
-    waitUntil: ['load', 'networkidle2'],
-  });
-  await page.screenshot({ path: outputFilePath });
-  await page.close();
-  await browser.close();
-  app.close();
-
-  return outputFilePath;
-}
+const dynamicRenderingServer = require('../server/dynamicRenderingServer');
 
 async function build(config, isConsoleOutput = true) {
   if (process.env.NODE_ENV === undefined) {
@@ -55,28 +26,23 @@ async function build(config, isConsoleOutput = true) {
     warn('build', `The remote origin url of this repo isn't found.`);
   }
 
-  // TODO: investigate webslide error
-  config.build.useCache = false;
-
   await deleteDir(outputDirPath);
 
-  const stats = await webpackBuild(config, (type) => {
-    if (type === 'start-ssr') {
-      spinner.setContent({ color: 'cyan', text: 'Rendering components to HTML...' });
-    }
-    if (type == 'start-build') {
-      spinner.setContent({ color: 'yellow', text: 'Building with webpack...' });
-    }
-  });
+  // spinner.setContent({ color: 'cyan', text: 'Rendering components to HTML...' });
+  // spinner.setContent({ color: 'yellow', text: 'Building with webpack...' });
+  const stats = await webpackBuild(config);
+
+  let neededThumbnail = false;
 
   if (!config.meta.thumbnail) {
     if (config.meta.url) {
-      spinner.setContent({ color: 'green', text: 'Generating og:image...' });
-      await createOgImage(outputDirPath, config.build.publicPath);
+      neededThumbnail = true;
     } else {
       warn('build', 'If you want to generate og:image, please set fusumarc.meta.url');
     }
   }
+
+  await dynamicRenderingServer(outputDirPath, config.build.publicPath, neededThumbnail);
 
   spinner.stop();
 

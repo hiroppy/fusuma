@@ -40,7 +40,6 @@ const config = {
     webpack: null,
   },
   build: {
-    ssr: true,
     useCache: true,
     publicPath: '/',
   },
