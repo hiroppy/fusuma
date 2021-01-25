@@ -144,10 +144,32 @@ This is a note displayed on the host side in Presenter Mode.
 
 ---
 
-## Capturing Screen Contents
+## Execute JavaScript Code
+
+Executes JavaScript code when the button is clicked. If you use `console.log`, the text will be outputted.
+
+<!-- executable-code -->
+
+```javascript
+alert('hi!!');
+console.log('hi!');
+```
 
 ```md
-## Capturing Screen Contents
+<!-- executable-code -->
+
+\`\`\`javascript
+alert('hi!!');
+console.log('hi!');
+\`\`\`
+```
+
+---
+
+## Capture Screen Contents
+
+```md
+## Capture Screen Contents
 
 <!-- screen -->
 ```
