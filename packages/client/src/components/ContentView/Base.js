@@ -3,32 +3,21 @@ import classnames from 'classnames';
 import { setup as setupWebSlides } from '../../setup/webSlides';
 import { createVMEnv } from '../../utils/createVMEnv';
 import { getSearchParams } from '../../utils/getSearchParams';
+import { useMermaid } from '../../hooks/useMermaid';
 
 const articleClass = process.env.IS_VERTICAL ? 'vertical' : undefined;
-let mermaid = null;
-
-function reloadChart() {
-  if (mermaid) {
-    mermaid.reload();
-  }
-}
-
-async function setupMermaid() {
-  const { Mermaid } = await import('../../setup/Mermaid');
-
-  mermaid = new Mermaid();
-  mermaid.init();
-}
 
 export const Base = memo(
   ({ slides, onChangeSlideIndex, hash, showIndex }) => {
+    const [mermaid] = useMermaid();
+
     if (import.meta.webpackHot) {
       useEffect(() => {
         (async () => {
-          const { Prism } = await import(/* webpackPreload: true */ '../../setup/prism');
+          const { Prism } = await import('../../setup/prism');
 
           if (process.env.CHART) {
-            reloadChart();
+            mermaid?.reload();
           }
           Prism.highlightAll();
         })();
@@ -45,9 +34,6 @@ export const Base = memo(
       if (slides.some(({ fusumaProps }) => !!fusumaProps.hasExecutableCode)) {
         createVMEnv();
       }
-      if (process.env.CHART && !mermaid) {
-        setupMermaid();
-      }
     }, []);
 
     function setupSlides() {
@@ -57,7 +43,7 @@ export const Base = memo(
         // for presenter:view
         window.slide.el.addEventListener('ws:slide-change', (e) => {
           if (process.env.CHART) {
-            reloadChart();
+            mermaid?.reload();
           }
           if (onChangeSlideIndex) {
             onChangeSlideIndex(e.detail.currentSlide0);
