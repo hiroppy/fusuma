@@ -11,7 +11,7 @@ function prod() {
     mode: 'production',
     output: {
       filename: '[name].[chunkhash].bundle.js',
-      chunkFilename: '[name].[id].[chunkhash].bundle.js',
+      chunkFilename: '[name].[chunkhash].bundle.js',
     },
     module: {
       rules: [css('prod')],
@@ -19,7 +19,7 @@ function prod() {
     plugins: [
       new MiniCssExtractPlugin({
         filename: '[name].[chunkhash].css',
-        chunkFilename: '[name].[id].[chunkhash].css',
+        chunkFilename: '[name].[chunkhash].css',
       }),
       // github pages doesn't support brotli
       new CompressionPlugin({

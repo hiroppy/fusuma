@@ -1,8 +1,9 @@
 'use strict';
 
-async function lazyload(pack, cb) {
-  const { spawn } = require('child-process-promise');
+const util = require('util');
+const spawn = util.promisify(require('child_process').spawn);
 
+async function lazyload(pack, cb) {
   try {
     return require(pack);
   } catch (e) {

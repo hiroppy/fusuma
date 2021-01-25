@@ -1,11 +1,10 @@
 'use strict';
 
+const ghpages = require('gh-pages');
 const Spinner = require('../cli/Spinner');
 const { info } = require('../cli/log');
 
 async function deploy(config, options = {}) {
-  const ghpages = require('gh-pages');
-
   return new Promise((resolve, reject) => {
     const spinner = new Spinner();
     const { outputDirPath } = config.internal;

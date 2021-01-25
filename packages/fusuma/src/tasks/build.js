@@ -7,6 +7,7 @@ const getRemoteOriginUrl = require('../utils/getRemoteOriginUrl');
 const { build: webpackBuild } = require('../webpack');
 const deleteDir = require('../utils/deleteDir');
 const fileServer = require('../server/fileServer');
+const outputBuildInfo = require('../webpack/outputBuildInfo');
 
 async function createOgImage(outputDirPath, publicPath) {
   const puppeteer = require('puppeteer');
@@ -58,7 +59,8 @@ async function build(config, isConsoleOutput = true) {
   config.build.useCache = false;
 
   await deleteDir(outputDirPath);
-  await webpackBuild(config, isConsoleOutput, (type) => {
+
+  const stats = await webpackBuild(config, (type) => {
     if (type === 'start-ssr') {
       spinner.setContent({ color: 'cyan', text: 'Rendering components to HTML...' });
     }
@@ -77,6 +79,11 @@ async function build(config, isConsoleOutput = true) {
   }
 
   spinner.stop();
+
+  if (isConsoleOutput) {
+    outputBuildInfo(stats);
+  }
+
   info('build', 'Completed!');
 }
 
