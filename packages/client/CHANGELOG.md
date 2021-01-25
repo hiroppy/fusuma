@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.20](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.19...v2.0.0-alpha.20) (2021-01-25)
+
+
+### Bug Fixes
+
+* **mdx:** remove comment from source ([52900e9](https://github.com/hiroppy/fusuma/commit/52900e95d71de50a1b382657aca1706384533a8c))
+
+
+
+
+
 # [2.0.0-alpha.19](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.18...v2.0.0-alpha.19) (2021-01-24)
 
 
