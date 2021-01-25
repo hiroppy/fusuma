@@ -3,9 +3,12 @@
 const { unlink, writeFile } = require('fs').promises;
 const { join } = require('path');
 const puppeteer = require('puppeteer');
+const { error } = require('../cli/log');
 const fileServer = require('./fileServer');
 
-async function dynamicRenderingServer(outputDirPath, publicPath, isThumbnail = true) {
+async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThumbnail = true) {
+  spinner.setContent({ color: 'cyan', text: 'Rendering components to HTML...' });
+
   const port = 5445;
   const browser = await puppeteer.launch({
     chromeWebSecurity: false,
@@ -25,10 +28,16 @@ async function dynamicRenderingServer(outputDirPath, publicPath, isThumbnail = t
 
   const htmlPath = join(outputDirPath, 'index.html');
 
-  await unlink(htmlPath);
-  await writeFile(htmlPath, await page.content());
+  try {
+    await unlink(htmlPath);
+    await writeFile(htmlPath, await page.content());
+  } catch (e) {
+    error('build', 'dist/index.html not found');
+  }
 
   if (isThumbnail) {
+    spinner.setContent({ color: 'yellow', text: 'Generating og image...' });
+
     const outputFilePath = join(outputDirPath, 'thumbnail.png');
 
     await page.screenshot({ path: outputFilePath });
