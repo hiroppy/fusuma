@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.22](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.21...v2.0.0-alpha.22) (2021-01-25)
+
+
+### Bug Fixes
+
+* **build:** add spinner ([267f9ef](https://github.com/hiroppy/fusuma/commit/267f9ef2a385694f74c53b851e9162b11f8fb017))
+
+
+### Features
+
+* **build:** use dynamic rendering and remove ssr ([f9f872a](https://github.com/hiroppy/fusuma/commit/f9f872afc4c7f0c9ddec29810e7b1045f99e7ff3))
+
+
+
+
+
 # [2.0.0-alpha.21](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.20...v2.0.0-alpha.21) (2021-01-25)
 
 
