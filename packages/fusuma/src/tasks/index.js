@@ -1,5 +1,6 @@
 'use strict';
 
+const { existsSync } = require('fs');
 const { join, isAbsolute } = require('path');
 const fusuma = require('../configs/fusumarc');
 const { warn, error } = require('../cli/log');
@@ -38,6 +39,17 @@ async function tasks({ type, options }) {
   config = fusuma.combine(config, {
     internal: { ...options, basePath, inputDirPath, outputDirPath },
   });
+
+  if (config.slide.chart) {
+    try {
+      if (!existsSync(join(process.cwd(), 'node_modules', 'mermaid'))) {
+        throw new Error('mermaid not found, please run "npm i mermaid"');
+      }
+    } catch (e) {
+      error('preparation', e.message);
+      process.exit(1);
+    }
+  }
 
   if (options.isFileServer) {
     return require('./serverFilesForProd')(config);

@@ -12,5 +12,8 @@
     "live:local": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli live"
   },
   "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mermaid": "^8.9.0"
+  }
 }

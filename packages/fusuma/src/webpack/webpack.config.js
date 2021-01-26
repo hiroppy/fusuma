@@ -1,6 +1,6 @@
 'use strict';
 
-const path = require('path');
+const { join, resolve, extname, sep } = require('path');
 const { existsSync } = require('fs');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const babelrc = require('../configs/babelrc');
 const css = require('./css');
 
-const srcDirPath = `${path.sep}src`;
+const srcDirPath = `${sep}src`;
 const configsEntryPoint = require.resolve('../configs');
 const configsBasePath = configsEntryPoint.split(srcDirPath).slice(0, -1).join(srcDirPath);
 const clientEntryPoint = require.resolve('@fusuma/client');
@@ -20,7 +20,7 @@ module.exports = (
   type,
   { meta, slide, extends: fileExtends, internal = {}, server = {}, build }
 ) => {
-  const entry = ['regenerator-runtime', path.join(clientBasePath, '/src/entryPoints/Client.js')];
+  const entry = ['regenerator-runtime', join(clientBasePath, '/src/entryPoints/Client.js')];
   const { url, description, thumbnail, siteName, sns, title } = meta;
   const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
@@ -44,10 +44,10 @@ module.exports = (
     resolveLoader: {
       modules: [
         'node_modules',
-        path.resolve(__dirname, '../../node_modules'),
-        path.join(clientBasePath, 'node_modules'),
-        path.join(configsBasePath, 'node_modules'),
-        path.join(mdxLoaderBasePath, 'node_modules'),
+        resolve(__dirname, '../../node_modules'),
+        join(clientBasePath, 'node_modules'),
+        join(configsBasePath, 'node_modules'),
+        join(mdxLoaderBasePath, 'node_modules'),
       ],
     },
     resolve: {
@@ -56,15 +56,16 @@ module.exports = (
         // https://github.com/facebook/react/issues/13991
         // for dev
         react: process.env.FUSUMA_DEBUG
-          ? path.resolve(__dirname, '../../node_modules/react')
+          ? resolve(__dirname, '../../node_modules/react')
           : require.resolve('react'),
       },
       modules: [
         'node_modules',
-        path.resolve(__dirname, '..', 'node_modules'),
-        path.join(clientBasePath, 'node_modules'),
-        path.join(configsBasePath, 'node_modules'),
-        path.join(mdxLoaderBasePath, 'node_modules'),
+        resolve(__dirname, '..', 'node_modules'),
+        join(process.cwd(), 'node_modules'),
+        join(clientBasePath, 'node_modules'),
+        join(configsBasePath, 'node_modules'),
+        join(mdxLoaderBasePath, 'node_modules'),
       ],
     },
     module: {
@@ -123,9 +124,9 @@ module.exports = (
     plugins: [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-        'process.env.JS_PATH': JSON.stringify(path.join(basePath, jsPath || '')),
-        'process.env.CSS_PATH': JSON.stringify(path.join(basePath, cssPath || '')),
-        'process.env.SLIDE_PATH': JSON.stringify(path.join(basePath, 'slides')),
+        'process.env.JS_PATH': JSON.stringify(join(basePath, jsPath || '')),
+        'process.env.CSS_PATH': JSON.stringify(join(basePath, cssPath || '')),
+        'process.env.SLIDE_PATH': JSON.stringify(join(basePath, 'slides')),
         'process.env.URL': JSON.stringify(url),
         'process.env.SNS': JSON.stringify(sns),
         'process.env.SIDEBAR': JSON.stringify(sidebar === undefined ? true : sidebar),
@@ -146,7 +147,7 @@ module.exports = (
         url,
         filename: 'index.html',
         title: title || 'slide',
-        template: path.join(__dirname, 'template.ejs'),
+        template: join(__dirname, 'template.ejs'),
         image: thumbnail || `${url.endsWith('/') ? url : `${url}/`}thumbnail.png`,
         siteName,
         description,
@@ -179,16 +180,16 @@ module.exports = (
   };
 
   if (jsPath && jsPath.match(/\+*.js$/i)) {
-    common.entry.push(path.join(basePath, jsPath));
+    common.entry.push(join(basePath, jsPath));
   }
 
   if (cssPath) {
-    const p = path.join(basePath, cssPath);
+    const p = join(basePath, cssPath);
 
-    if (path.extname(p) === '.css' && existsSync(p)) {
-      common.entry.push(path.join(clientBasePath, 'src', 'utils', 'customCss.js'));
+    if (extname(p) === '.css' && existsSync(p)) {
+      common.entry.push(join(clientBasePath, 'src', 'utils', 'customCss.js'));
     }
   }
 
-  return merge(common, config, webpackPath ? require(path.join(basePath, webpackPath)) : {});
+  return merge(common, config, webpackPath ? require(join(basePath, webpackPath)) : {});
 };
