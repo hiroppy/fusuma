@@ -32,5 +32,8 @@
     "screenfull": "^5.1.0",
     "vm-browserify": "^1.1.2",
     "webslides": "^1.5.0"
+  },
+  "devDependencies": {
+    "react-accessible-accordion": "^3.3.3"
   }
 }

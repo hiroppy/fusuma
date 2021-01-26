@@ -13,27 +13,23 @@ code {
   font-family: 'Source Code Pro', monospace;
 }
 
-section {
-  & > pre[class*='language-'] {
-    margin: 0.5em auto;
-
-    & > code[class*='language-'] {
-      & .token.operator {
-        background: inherit;
-      }
-    }
-  }
+pre[class*='language-'] {
+  margin: 0.5em auto !important;
 }
 
-section > pre > code[class*='language-'],
-section > pre[class*='language-'] {
-  font-size: 1.4rem;
+.token.operator {
+  background: inherit;
+}
+
+pre > code[class*='language-'],
+pre[class*='language-'] {
+  font-size: 1.4rem !important;
   line-height: 1.2;
 }
 
 @media screen and (min-width: 768px) {
-  section > pre > code[class*='language-'],
-  section > pre[class*='language-'] {
-    font-size: 2rem;
+  pre > code[class*='language-'],
+  pre[class*='language-'] {
+    font-size: 2rem !important;
   }
 }

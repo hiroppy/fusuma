@@ -23,3 +23,19 @@ createBody(slidesInfo.slides);
 if (process.env.TARGET_BLANK) {
   setTargetBlank();
 }
+
+if (process.env.NODE_ENV !== 'production') {
+  (async () => {
+    // for tree shaking
+    const { Assistant } = await import('../components/Assistant');
+    const el = document.createElement('div');
+
+    el.style.position = 'absolute';
+    el.style.top = 0;
+    el.style.width = '100%';
+    el.setAttribute('id', 'reference');
+    document.body.appendChild(el);
+
+    render(<Assistant />, document.getElementById('reference'));
+  })();
+}
