@@ -46,7 +46,7 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "gh-pages": "^3.1.0",
     "git-remote-origin-url": "^3.1.0",
-    "html-webpack-plugin": "^4.5.1",
+    "html-webpack-plugin": "^5.0.0-beta.6",
     "human-size": "^1.1.0",
     "js-yaml": "^4.0.0",
     "mini-css-extract-plugin": "^1.3.4",
