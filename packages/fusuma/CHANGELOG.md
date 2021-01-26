@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.23](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.22...v2.0.0-alpha.23) (2021-01-26)
+
+
+### Bug Fixes
+
+* use endsWith for publicPath ([b443dfa](https://github.com/hiroppy/fusuma/commit/b443dfa16f1ae3ee9bb56ac8f44732792c5b0168))
+
+
+
+
+
 # [2.0.0-alpha.22](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.21...v2.0.0-alpha.22) (2021-01-25)
 
 
