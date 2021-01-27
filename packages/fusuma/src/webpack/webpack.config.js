@@ -153,12 +153,6 @@ module.exports = (
         description,
         math,
         body: htmlBody,
-        minify:
-          process.env.NODE_ENV === 'production'
-            ? {
-                collapseWhitespace: true,
-              }
-            : false,
       }),
     ],
     infrastructureLogging: {
