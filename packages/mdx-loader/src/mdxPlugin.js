@@ -3,23 +3,20 @@
 const visit = require('unist-util-visit');
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
-const createFusumaProps = require('./createFusumaProps');
 const transformQrToJSX = require('./transformers/transformQrToJSX');
 const transformScreenToJSX = require('./transformers/transformScreenToJSX');
 const transformChartToJSX = require('./transformers/transformChartToJSX');
 const transformMarkdownImageNodeToJSX = require('./transformers/transformMarkdownImageNodeToJSX');
 const transformExecJSCodeButtonToJSX = require('./transformers/transformExecJSCodeButtonToJSX');
+const escapeMap = require('./escapeMap');
 
 function mdxPlugin() {
   return (tree) => {
     const slides = [];
     let slide = [];
+    let props = {};
     let videoId = 1;
     let mermaidId = 1;
-    const res = {
-      jsx: [],
-      fusumaProps: [],
-    };
 
     // TODO: refactor using visit
     tree.children.forEach((n, i) => {
@@ -27,39 +24,53 @@ function mdxPlugin() {
 
       // move to a new slide
       if (type === 'thematicBreak') {
-        slides.push(slide);
+        slides.push({ slide, props });
         slide = [];
+        props = {};
         return;
       }
 
       if (type === 'comment') {
-        const [prefix, ...rest] = value.trim().split(':');
+        const [p, ...rest] = value.trim().split(':');
+        const prefix = p.split('\n')[0];
         const attr = rest.map((r) => r.trim());
 
-        if (prefix === 'qr') {
-          slide.push(
-            ...[
-              n,
-              {
-                ...n,
-                ...transformQrToJSX(attr),
-              },
-            ]
-          );
+        if (prefix === 'sectionTitle') {
+          props.sectionTitle = attr.join('');
+          return;
+        }
+        if (prefix === 'classes') {
+          props.classes = attr.join(' ');
+          return;
+        }
+        if (prefix === 'contents') {
+          props.contents = true;
+          return;
+        }
+        if (prefix === 'note') {
+          const [, ...note] = p.split('\n');
 
+          props.note = note
+            .join('')
+            .replace(/[&<>"']/gim, (m) => escapeMap[m])
+            .replace(/\n/g, '\\n');
+
+          return;
+        }
+        if (prefix === 'qr') {
+          slide.push({
+            ...n,
+            ...transformQrToJSX(attr),
+          });
           return;
         }
 
         if (prefix === 'screen') {
-          slide.push(
-            ...[
-              n,
-              {
-                ...n,
-                ...transformScreenToJSX(videoId),
-              },
-            ]
-          );
+          props.screen = true;
+          slide.push({
+            ...n,
+            ...transformScreenToJSX(videoId),
+          });
           ++videoId;
           return;
         }
@@ -68,15 +79,11 @@ function mdxPlugin() {
           const nextNode = tree.children[i + 1];
 
           if (nextNode.type === 'code' && ['js', 'javascript'].includes(nextNode.lang)) {
-            slide.push(
-              ...[
-                n,
-                {
-                  ...n,
-                  ...transformExecJSCodeButtonToJSX(nextNode.value),
-                },
-              ]
-            );
+            props.hasExecutableCode = true;
+            slide.push({
+              ...n,
+              ...transformExecJSCodeButtonToJSX(nextNode.value),
+            });
           }
 
           return;
@@ -133,11 +140,15 @@ function mdxPlugin() {
           .replace(/class=/g, 'className=');
       }
     });
+    const res = {
+      jsx: [],
+      fusumaProps: [],
+    };
 
     // push last slide
-    slides.push(slide);
+    slides.push({ slide, props });
 
-    slides.forEach((slide) => {
+    slides.forEach(({ slide, props }) => {
       const hash = mdxAstToMdxHast()({
         type: 'root',
         children: slide,
@@ -164,7 +175,9 @@ function mdxPlugin() {
               ${jsx[1]}
             </>
           )`;
-        const fusumaProps = createFusumaProps(slide);
+        const fusumaProps = `{${Object.entries(props)
+          .map(([key, value]) => `${key}: '${value}'`)
+          .join(',')}}`;
 
         res.jsx.push(template);
         res.fusumaProps.push(fusumaProps);
