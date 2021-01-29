@@ -2,7 +2,6 @@ meta:
   url: https://hiroppy.github.io/fusuma/debug
   title: debug
   description: A place which produces to resolve issues
-  # thumbnail: https://avatars0.githubusercontent.com/u/3367801?s=400&v=4
   siteName: hiroppy.me
   sns: ['twitter']
 slide:
@@ -18,4 +17,5 @@ slide:
       - python
 extends:
   js: main.js
-  css: style.css
+build:
+  useCache: false

@@ -1,0 +1,19 @@
+meta:
+  url:
+  title:
+  description:
+  siteName:
+  sns: ['twitter']
+slide:
+  loop: true
+  sidebar: true
+  targetBlank: true
+  showIndex: true
+  code:
+    languages:
+      - json
+      - markdown
+      - javascript
+      - css
+    plugins: []
+    theme: default

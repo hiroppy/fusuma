@@ -15,4 +15,3 @@ slide:
       - css
 extends:
   js: index.js
-  css: style.css

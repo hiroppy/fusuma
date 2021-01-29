@@ -25,9 +25,6 @@ function babelrc({ languages = [], plugins = [], theme = 'default' } = {}) {
       ],
     ],
     plugins: [
-      '@babel/plugin-syntax-dynamic-import',
-      '@babel/plugin-proposal-class-properties',
-      '@babel/plugin-proposal-object-rest-spread',
       [
         'prismjs',
         {

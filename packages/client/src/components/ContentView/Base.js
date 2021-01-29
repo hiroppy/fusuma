@@ -7,6 +7,12 @@ import { useMermaid } from '../../hooks/useMermaid';
 
 const articleClass = process.env.IS_VERTICAL ? 'vertical' : undefined;
 
+// don't move to useEffect
+if (!getSearchParams().get('ssr')) {
+  // don't run when creating html
+  import(/* webpackPreload: true  */ '../../setup/prism');
+}
+
 export const Base = memo(
   ({ slides, onChangeSlideIndex, hash, showIndex }) => {
     const [mermaid] = useMermaid();
@@ -27,10 +33,6 @@ export const Base = memo(
     useEffect(() => {
       setupSlides();
 
-      if (!getSearchParams().get('ssr')) {
-        // don't run when creating html
-        import(/* webpackPreload: true */ '../../setup/prism');
-      }
       if (slides.some(({ fusumaProps }) => !!fusumaProps.hasExecutableCode)) {
         createVMEnv();
       }
