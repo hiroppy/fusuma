@@ -1,7 +1,7 @@
 'use strict';
 
 const chalk = require('chalk');
-const humanSize = require('human-size');
+const prettyBytes = require('pretty-bytes');
 
 function outputBuildInfo(res) {
   let totalSize = 0;
@@ -23,7 +23,7 @@ function outputBuildInfo(res) {
 
   assets.forEach(({ name, size }) => {
     let filename = name;
-    const fileSize = chalk.greenBright(humanSize(size));
+    const fileSize = chalk.greenBright(prettyBytes(size));
 
     if (name.includes('.js')) {
       if (assets.some(({ name }) => name === `${filename}.gz`) || name.includes('.LICENSE')) {
@@ -47,7 +47,7 @@ function outputBuildInfo(res) {
   });
 
   console.log();
-  console.log('Total:', chalk.greenBright(humanSize(totalSize)));
+  console.log('Total:', chalk.greenBright(prettyBytes(totalSize)));
 }
 
 module.exports = outputBuildInfo;
