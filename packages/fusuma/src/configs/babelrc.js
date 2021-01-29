@@ -28,7 +28,7 @@ function babelrc({ languages, plugins = [], theme = 'default' } = {}) {
       [
         'prismjs',
         {
-          languages,
+          languages: [],
           plugins,
           theme,
           css: true,
