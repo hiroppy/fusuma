@@ -1,6 +1,6 @@
 'use strict';
 
-function babelrc({ plugins = [], theme = 'default' } = {}) {
+function babelrc({ languages, plugins = [], theme = 'default' } = {}) {
   return {
     presets: [
       [
@@ -28,7 +28,7 @@ function babelrc({ plugins = [], theme = 'default' } = {}) {
       [
         'prismjs',
         {
-          languages: [],
+          languages,
           plugins,
           theme,
           css: true,
