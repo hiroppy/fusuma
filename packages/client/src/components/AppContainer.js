@@ -7,6 +7,8 @@ import { useContentComponent } from '../hooks/useContentComponent';
 import { useSidebarComponent } from '../hooks/useSidebarComponent';
 import { useCommentsListComponent } from '../hooks/useCommentsListComponent';
 
+const slideWrapperClassName = '.swiper-container';
+
 export const AppContainer = ({ slides: originalSlides, hash }) => {
   const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
   const [currentIndex, setCurrentIndex] = useCurrentIndex();
@@ -17,14 +19,11 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   const CommentsListComponent = useCommentsListComponent(mode);
 
   const goTo = (num) => {
-    if (window.slide) {
-      window.slide.goToSlide(num);
-      setCurrentIndex(num);
-    }
+    document.querySelector(slideWrapperClassName)?.swiper?.slideTo(num);
+    setCurrentIndex(num);
   };
 
   const runPresentationMode = (type) => {
-    window.slide = null;
     updateOpenSidebarStatus(false);
     setMode(type === 'start' ? 'host' : 'common');
   };
@@ -36,6 +35,7 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
           <SidebarComponent
             goTo={goTo}
             isOpen={isOpenSidebar}
+            totalSlides={slides.length}
             terminate={() => runPresentationMode('terminate')}
             contents={contentsList}
             onStateChange={({ isOpen }) => updateOpenSidebarStatus(isOpen)}

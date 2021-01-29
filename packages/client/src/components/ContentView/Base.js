@@ -1,6 +1,7 @@
 import React, { useEffect, memo } from 'react';
 import classnames from 'classnames';
-import { setup as setupWebSlides } from '../../setup/webSlides';
+import SwiperCore, { A11y, Navigation, Pagination, Keyboard, HashNavigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { createVMEnv } from '../../utils/createVMEnv';
 import { getSearchParams } from '../../utils/getSearchParams';
 import { useMermaid } from '../../hooks/useMermaid';
@@ -12,6 +13,8 @@ if (!getSearchParams().get('ssr')) {
   // don't run when creating html
   import(/* webpackPreload: true  */ '../../setup/prism');
 }
+
+SwiperCore.use([Pagination, A11y, Keyboard, HashNavigation]);
 
 export const Base = memo(
   ({ slides, onChangeSlideIndex, hash, showIndex }) => {
@@ -31,44 +34,43 @@ export const Base = memo(
     }
 
     useEffect(() => {
-      setupSlides();
-
       if (slides.some(({ fusumaProps }) => !!fusumaProps.hasExecutableCode)) {
         createVMEnv();
       }
+      if (process.env.CHART) {
+        mermaid?.reload();
+      }
     }, []);
 
-    function setupSlides() {
-      if (!window.slide) {
-        window.slide = setupWebSlides({ showIndex });
-
-        // for presenter:view
-        window.slide.el.addEventListener('ws:slide-change', (e) => {
-          if (process.env.CHART) {
-            mermaid?.reload();
-          }
-          if (onChangeSlideIndex) {
-            onChangeSlideIndex(e.detail.currentSlide0);
-          }
-        });
-      }
-    }
-
     return (
-      <article className={articleClass} id="webslides">
+      <Swiper
+        loop={false}
+        speed={350}
+        allowTouchMove={/* TODO: only for mobile */ false}
+        spaceBetween={50}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        keyboard={{ enabled: true }}
+        hashNavigation={{
+          watchState: true,
+        }}
+        onSlideChange={({ realIndex }) => onChangeSlideIndex(realIndex)}
+      >
         {slides.map(({ slide: Slide, fusumaProps }, i) => (
-          <section
+          <SwiperSlide
             key={i /* mdx-loaderでhash作成 */}
             className={classnames(
-              'aligncenter',
               fusumaProps.classes,
               fusumaProps.sectionTitle ? 'section-title' : undefined
             )}
+            data-hash={`slide-${i}`}
           >
-            <Slide />
-          </section>
+            <div className="slide-box">
+              <Slide />
+            </div>
+          </SwiperSlide>
         ))}
-      </article>
+      </Swiper>
     );
   },
   (prevProps, nextProps) => prevProps.hash === nextProps.hash

@@ -1,0 +1,53 @@
+table {
+  margin-bottom: 3.2rem;
+  margin-top: 3.2rem;
+}
+
+td,
+th,
+thead {
+  border-spacing: 0;
+  padding: 0.7rem 2.4rem;
+}
+
+thead th,
+th {
+  cursor: default;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+thead,
+td.goals {
+  font-weight: 600;
+  text-shadow: none;
+}
+
+tr > td {
+  font-weight: 400;
+}
+
+table td,
+th,
+thead {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+thead {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+tr:nth-child(even) > td {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+tr > td {
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+td:hover,
+tr:nth-child(even) > td:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}

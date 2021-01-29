@@ -1,0 +1,38 @@
+#root {
+  display: flex;
+}
+
+.katex-html {
+  display: none;
+}
+
+.fa-hatena:before {
+  content: 'B!';
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+.qr {
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+}
+
+.swiper-container {
+  height: 100vh;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.slide-box {
+  padding: 16px 0;
+  text-align: center;
+  max-width: 100%;
+  margin: auto;
+  min-width: 320px;
+}
