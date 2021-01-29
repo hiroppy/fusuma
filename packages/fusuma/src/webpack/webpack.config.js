@@ -16,23 +16,6 @@ const clientBasePath = clientEntryPoint.split(srcDirPath).slice(0, -1).join(srcD
 const mdxLoaderEntryPoint = require.resolve('@fusuma/mdx-loader');
 const mdxLoaderBasePath = mdxLoaderEntryPoint.split(srcDirPath).slice(0, -1).join(srcDirPath);
 
-class A {
-  apply(compiler) {
-    compiler.hooks.compilation.tap('A', (compilation) => {
-      console.log('aaaa');
-
-      if (!compilation.hooks) {
-        compilation.plugin('babel-loader', (c) => {
-          console.log(c);
-        });
-      }
-      // compilation.hooks.normalModuleLoader.tap('A', (bb) => {
-      //   console.log(bb);
-      // });
-    });
-  }
-}
-
 module.exports = (
   type,
   { meta, slide, extends: fileExtends, internal = {}, server = {}, build }
@@ -171,7 +154,6 @@ module.exports = (
         math,
         body: htmlBody,
       }),
-      new A(),
     ],
     infrastructureLogging: {
       level: 'none',
