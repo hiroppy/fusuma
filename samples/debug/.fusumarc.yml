@@ -10,11 +10,6 @@ slide:
   targetBlank: true
   showIndex: true
   isVertical: false
-  code:
-    languages:
-      - javascript
-      - cpp
-      - python
 extends:
   js: main.js
 build:

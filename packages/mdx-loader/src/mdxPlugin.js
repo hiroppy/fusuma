@@ -64,7 +64,6 @@ function mdxPlugin() {
           });
           return;
         }
-
         if (prefix === 'screen') {
           props.screen = true;
           slide.push({
@@ -74,7 +73,6 @@ function mdxPlugin() {
           ++videoId;
           return;
         }
-
         if (prefix === 'executable-code') {
           const nextNode = tree.children[i + 1];
 

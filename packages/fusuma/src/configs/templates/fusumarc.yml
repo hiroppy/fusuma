@@ -10,10 +10,5 @@ slide:
   targetBlank: true
   showIndex: true
   code:
-    languages:
-      - json
-      - markdown
-      - javascript
-      - css
     plugins: []
     theme: default
