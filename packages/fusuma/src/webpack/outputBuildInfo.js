@@ -5,11 +5,16 @@ const prettyBytes = require('pretty-bytes');
 
 function outputBuildInfo(res) {
   let totalSize = 0;
+  let maxStringSize = 0;
 
   const assets = Object.entries(res.compilation.assets).map(([name, asset]) => {
     const size = asset.size();
 
     totalSize += size;
+
+    if (maxStringSize < name.length) {
+      maxStringSize = name.length;
+    }
 
     return {
       name,
@@ -43,7 +48,7 @@ function outputBuildInfo(res) {
       filename = chalk.magenta(name);
     }
 
-    console.log(filename, fileSize);
+    console.log(`${filename} ${' '.repeat(maxStringSize - name.length)}${fileSize}`);
   });
 
   console.log();
