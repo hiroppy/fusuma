@@ -5,7 +5,7 @@ export const ToC = ({ list }) => () => (
     <ol>
       {list.map(({ index, title }) => (
         <li key={title}>
-          <a href={`#slide=${index}`} title={title}>
+          <a href={`#slide-${index}`} title={title}>
             <span className="chapter">{title}</span>
             <span className="toc-page">{index}</span>
           </a>

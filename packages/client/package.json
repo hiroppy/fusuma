@@ -19,6 +19,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "intl-relativeformat": "^6.4.3",
+    "modern-normalize": "^1.0.0",
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-burger-menu": "^3.0.3",
@@ -29,8 +30,8 @@
     "react-modal": "^3.12.1",
     "react-pose": "^4.0.10",
     "screenfull": "^5.1.0",
-    "vm-browserify": "^1.1.2",
-    "webslides": "^1.5.0"
+    "swiper": "^6.4.10",
+    "vm-browserify": "^1.1.2"
   },
   "devDependencies": {
     "react-accessible-accordion": "^3.3.3"

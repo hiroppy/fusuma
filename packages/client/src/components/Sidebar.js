@@ -11,7 +11,7 @@ const title = process.env.TITLE || '';
 const formatStr = (num) => `${num}`.padStart(2, '0');
 
 export const Sidebar = memo(
-  ({ isOpen, onStateChange, goTo, currentIndex, runPresentationMode, contents }) => (
+  ({ isOpen, onStateChange, goTo, currentIndex, runPresentationMode, contents, totalSlides }) => (
     <Menu
       isOpen={isOpen}
       disableAutoFocus
@@ -47,18 +47,9 @@ export const Sidebar = memo(
           })}
       </div>
       <div className="sidebar-control">
-        {window.slide && (
-          <>
-            <MdFirstPage onClick={() => goTo(0)} className="sidebar-cursor" />
-            <span>{`${formatStr(currentIndex + 1)} / ${formatStr(
-              window.slide.slides.length
-            )}`}</span>
-            <MdLastPage
-              onClick={() => goTo(window.slide.slides.length - 1)}
-              className="sidebar-cursor"
-            />
-          </>
-        )}
+        <MdFirstPage onClick={() => goTo(0)} className="sidebar-cursor" />
+        <span>{`${formatStr(currentIndex + 1)} / ${formatStr(totalSlides)}`}</span>
+        <MdLastPage onClick={() => goTo(totalSlides - 1)} className="sidebar-cursor" />
       </div>
       <div className="sidebar-tools">
         <MdFullscreen
@@ -83,7 +74,9 @@ export const Sidebar = memo(
         <ul className="sidebar-contents">
           {contents.map((content) => (
             <li key={content.title}>
-              <a href={`#slide=${content.index}`}>{content.title}</a>
+              <a style={{ cursor: 'pointer' }} onClick={() => goTo(content.index)}>
+                {content.title}
+              </a>
             </li>
           ))}
         </ul>

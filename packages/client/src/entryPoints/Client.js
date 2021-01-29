@@ -33,6 +33,7 @@ if (process.env.NODE_ENV !== 'production') {
     el.style.position = 'absolute';
     el.style.top = 0;
     el.style.width = '100%';
+    el.style.zIndex = 10000;
     el.setAttribute('id', 'reference');
     document.body.appendChild(el);
 

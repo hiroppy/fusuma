@@ -13,5 +13,6 @@ slide:
       - markdown
       - javascript
       - css
+      - jsx
 extends:
   js: index.js
