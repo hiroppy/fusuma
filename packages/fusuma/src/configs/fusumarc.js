@@ -48,18 +48,6 @@ const config = {
 
 const configFileNames = ['.fusumarc.yml', '.fusumarc.js'];
 
-function getConfigYaml() {
-  const configYaml = yaml.dump(config).replace(/null/g, '');
-
-  return configYaml
-    .split('\n')
-    .map((s) => {
-      if (s.substr(-1) === ' ') return s.slice(0, -1);
-      else return s;
-    })
-    .join('\n');
-}
-
 async function init(baseDir) {
   {
     const data = await readFileAsync(join(__dirname, 'templates', 'fusumarc.yml'), 'utf8');
