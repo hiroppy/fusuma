@@ -160,7 +160,7 @@ module.exports = (
         filename: 'index.html',
         title: title || 'slide',
         template: join(__dirname, 'template.ejs'),
-        image: thumbnail || `${url.endsWith('/') ? url : `${url}/`}thumbnail.png`,
+        image: thumbnail || `${url && url.endsWith('/') ? url : `${url}/`}thumbnail.png`,
         siteName,
         description,
         math,
