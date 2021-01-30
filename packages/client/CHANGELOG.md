@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.25](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.24...v2.0.0-alpha.25) (2021-01-30)
+
+
+### Bug Fixes
+
+* rename sectionTitle to section-title ([4dedd06](https://github.com/hiroppy/fusuma/commit/4dedd065a04d1b06433ae757325ae3ac2a4b7216))
+* **client:** move react-accessible-accordin to deps ([4263f8c](https://github.com/hiroppy/fusuma/commit/4263f8c06c2133c89e2e698ddecbe0ea612d69fe))
+
+
+
+
+
 # [2.0.0-alpha.24](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.23...v2.0.0-alpha.24) (2021-01-30)
 
 
