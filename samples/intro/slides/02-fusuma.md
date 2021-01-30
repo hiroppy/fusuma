@@ -27,12 +27,6 @@
 
 ```shell
 $ npm i fusuma -D
-$ mkdir slides && echo '# Hello😄' > slides/title.md # 🎉🎉🎉
-$ tree -a
-.
-└── slides
-    └── title.md
-
 $ npx fusuma init # generate some files
 $ tree -a
 .
@@ -41,13 +35,14 @@ $ tree -a
 │   └── 0-title.md
 └── style.css
 
-# --- executable tasks ---
-$ npx fusuma init     # customize fusuma configuration
-$ npx fusuma start    # serve as NODE_ENV=development
-$ npx fusuma build    # build as NODE_ENV=production
-$ npx fusuma live     # start live mode
-$ npx fusuma deploy   # deploy to github pages
-$ npx fusuma pdf      # export as PDF from HTML
+# --- executable tasks---
+$ npx fusuma init          # create scaffold
+$ npx fusuma start         # run server for development
+$ npx fusuma start-prod    # run server for bundle directory
+$ npx fusuma build         # build slides for production
+$ npx fusuma deploy        # deploy to github pages
+$ npx fusuma pdf           # export as PDF
+$ npx fusuma live          # start live mode
 ```
 
 ---
@@ -60,10 +55,10 @@ $ npx fusuma pdf      # export as PDF from HTML
 {
   "scripts": {
     "start": "fusuma start",
-    "start:prod": "npm run build && npm run start -- -f true",
+    "start:prod": "npm run build && fusuma start-prod",
     "build": "fusuma build",
     "deploy": "npm run build && fusuma deploy",
-    "pdf": "fusuma pdf"
+    "pdf": "npm run build && fusuma pdf"
   }
 }
 ```

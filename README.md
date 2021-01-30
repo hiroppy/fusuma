@@ -39,9 +39,11 @@
   - Using a Fluorescent Marker on the slides
 - [Live Mode](#live-mode)
   - Streaming tweets and comments
-- Deploying to GitHub Pages
-- Exporting slides as PDF
-- Live
+- Deploy Mode
+  - Deploying to GitHub Pages
+- PDF Mode
+  - Exporting slides as PDF
+- Live Mode
   - Can make a speech while streaming a comment on Twitter
 
 ## Demos
@@ -72,12 +74,13 @@ $ tree -a
 $ npx fusuma start # let's start writing slides!
 
 # --- executable tasks---
-$ npx fusuma init     # create scaffold
-$ npx fusuma start    # run server for development
-$ npx fusuma build    # build slides for production
-$ npx fusuma deploy   # deploy to github pages
-$ npx fusuma pdf      # export as PDF
-$ npx fusuma live     # start live mode
+$ npx fusuma init          # create scaffold
+$ npx fusuma start         # run server for development
+$ npx fusuma start-prod    # run server for bundle directory
+$ npx fusuma build         # build slides for production
+$ npx fusuma deploy        # deploy to github pages
+$ npx fusuma pdf           # export as PDF
+$ npx fusuma live          # start live mode
 ```
 
 When `npx fusuma start` is executed, fusuma will create a slide as follows and serve `http://localhost:8080` and then you can write slides with HMR.
