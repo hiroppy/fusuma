@@ -1,0 +1,14 @@
+{
+  "name": "plain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli start",
+    "start:prod": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli start -f true",
+    "build": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli build",
+    "pdf": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli pdf"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
+  "license": "MIT"
+}
