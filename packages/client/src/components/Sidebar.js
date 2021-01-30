@@ -74,7 +74,7 @@ export const Sidebar = memo(
         <ul className="sidebar-contents">
           {contents.map((content) => (
             <li key={content.title}>
-              <a style={{ cursor: 'pointer' }} onClick={() => goTo(content.index)}>
+              <a style={{ cursor: 'pointer' }} onClick={() => goTo(content.index - 1)}>
                 {content.title}
               </a>
             </li>
