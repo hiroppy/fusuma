@@ -18,9 +18,16 @@ a {
   color: var(--color);
 }
 
-body {
-  /* common background color */
-  background: var(--white-color);
+.slide-background {
+  /* background: var(--white-color); */
+}
+
+.slide-box {
+  text-align: center;
+
+  & > * {
+    /* width: 100px; */
+  }
 }
 
 .title {

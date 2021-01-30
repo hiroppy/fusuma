@@ -115,12 +115,6 @@ h1 {
   }
 }
 
-@media (min-width: 850px) {
-  .slide-box {
-    margin: auto 24px;
-  }
-}
-
 h1 span {
   font-style: italic;
 }

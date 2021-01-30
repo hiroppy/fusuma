@@ -31,6 +31,5 @@ pre[class*='language-'] {
   pre > code[class*='language-'],
   pre[class*='language-'] {
     font-size: 1.8rem !important;
-    width: min-content;
   }
 }
