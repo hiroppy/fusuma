@@ -20,8 +20,8 @@ Just write Markdown and create cool slides.😎
 
 - Zero Config
 - Slide syntax are Markdown and [MDX](https://github.com/mdx-js/mdx)
+- Supports themes
 - Supports Code syntax Highlight, MathJax, Diagrams, and Flowcharts
-- Slide UI is [WebSlides](https://webslides.tv)
 - Supports SEO and OGP
   - Generates ogp image automatically
 - Customizes JavaScript and CSS freely
