@@ -2,17 +2,13 @@
 
 const { join } = require('path');
 const Spinner = require('../cli/Spinner');
+const { info } = require('../cli/log');
 const lazyloadModule = require('../utils/lazyloadModule');
 
 async function pdf(config) {
-  if (config.slide.loop) {
-    console.error('You must disable slide.loop.');
-    process.exit(1);
-  }
-
   const port = 3455;
   const { basePath, inputDirPath, filename } = config.internal;
-  const output = join(basePath, filename);
+  const { publicPath } = config.build;
   const spinner = new Spinner();
 
   spinner.setContent({ text: 'Exporting as PDF...' });
@@ -28,9 +24,10 @@ async function pdf(config) {
       }
     });
 
-    await pdf(inputDirPath, output, port);
+    await pdf(inputDirPath, publicPath, basePath, filename, port);
 
     spinner.stop();
+    info('pdf', `Generated ${filename}`);
   } catch (e) {
     console.error(e);
     process.exit(1);

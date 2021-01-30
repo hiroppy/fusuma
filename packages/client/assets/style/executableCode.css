@@ -1,3 +1,8 @@
+:root {
+  --color-white: #fff;
+  --color-black: #333;
+}
+
 .executable-code-container {
   display: flex;
   order: 1; /* TODO: fix */
@@ -11,6 +16,7 @@
   border: 1px solid rgba(0, 20, 80, 0.1);
   box-shadow: 0 8px 16px rgba(0, 20, 80, 0.04), 0 4px 16px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
+  background: var(--color-white);
   color: var(--color-black);
   cursor: pointer;
   font-size: 1.8rem;
@@ -19,6 +25,8 @@
 }
 
 .executable-code-result {
+  background: var(--color-white);
+  color: var(--color-black);
   max-height: 200px;
   overflow-x: auto;
   text-align: left;

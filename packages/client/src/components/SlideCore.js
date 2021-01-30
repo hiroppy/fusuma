@@ -10,13 +10,20 @@ import SwiperCore, {
   EffectFade,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { getSearchParams } from '../utils/getSearchParams';
 
 const swiperComponents = [A11y, Keyboard, HashNavigation];
 
-// TODO: check if the url has a param like pagination=true for thumbnail
 if (process.env.UI.PAGINATION) {
-  swiperComponents.push(Pagination);
-  import('swiper/components/pagination/pagination.min.css');
+  if (getSearchParams().has('pagination')) {
+    if (getSearchParams().get('pagination') !== 'false') {
+      swiperComponents.push(Pagination);
+      import('swiper/components/pagination/pagination.min.css');
+    }
+  } else {
+    swiperComponents.push(Pagination);
+    import('swiper/components/pagination/pagination.min.css');
+  }
 }
 
 if (process.env.UI.EFFECT === 'fade') {

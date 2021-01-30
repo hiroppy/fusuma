@@ -8,6 +8,7 @@
 html {
   color: #333;
   font-size: 62.5%;
+  -webkit-print-color-adjust: exact;
 }
 
 body {
