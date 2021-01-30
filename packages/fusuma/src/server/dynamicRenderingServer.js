@@ -22,7 +22,7 @@ async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThum
     width: 1200,
     height: 630,
   });
-  await page.goto(`http://localhost:${port}?sidebar=false&ssr=true`, {
+  await page.goto(`http://localhost:${port}?sidebar=false&pagination=false&ssr=true`, {
     waitUntil: ['load', 'networkidle2'],
   });
 
