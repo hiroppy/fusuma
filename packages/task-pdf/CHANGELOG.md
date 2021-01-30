@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.24](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.23...v2.0.0-alpha.24) (2021-01-30)
+
+
+### Features
+
+* **pdf:** refactor pdf process ([0e7525f](https://github.com/hiroppy/fusuma/commit/0e7525f244f011de31b20ea728136035d5df4936))
+
+
+
+
+
 # [2.0.0-alpha.10](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.9...v2.0.0-alpha.10) (2021-01-20)
 
 

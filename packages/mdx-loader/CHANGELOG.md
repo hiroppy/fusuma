@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.24](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.23...v2.0.0-alpha.24) (2021-01-30)
+
+**Note:** Version bump only for package @fusuma/mdx-loader
+
+
+
+
+
 # [2.0.0-alpha.20](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.19...v2.0.0-alpha.20) (2021-01-25)
 
 

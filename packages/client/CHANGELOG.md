@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.24](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.23...v2.0.0-alpha.24) (2021-01-30)
+
+
+### Bug Fixes
+
+* **client:** add background as default ([0e75025](https://github.com/hiroppy/fusuma/commit/0e750258061a4bf89f22cebb8d0793cc232765e5))
+* **client:** modify presenter mode ([f801f6c](https://github.com/hiroppy/fusuma/commit/f801f6c62cee9da33710b25bb5b6ddc547b8ae2f))
+
+
+### Features
+
+* **client:** add custom css ([c79cfb8](https://github.com/hiroppy/fusuma/commit/c79cfb82728d1f3b8d36d9ba8da7ab6f6da233b8))
+* **client:** add many options ([cb8bcdb](https://github.com/hiroppy/fusuma/commit/cb8bcdb2ed2b820a3acb8b3f53ab8f0e43d90f0c))
+* **client:** add node theme ([cee71e3](https://github.com/hiroppy/fusuma/commit/cee71e3ef390b1c361b25921772886c6dcb9efba))
+* **client:** add webpack and babel themes ([da3b7b2](https://github.com/hiroppy/fusuma/commit/da3b7b289afbec4aafcc4661db49efc7c88fa1c0))
+* **client:** get rid of webslides ([de5ec67](https://github.com/hiroppy/fusuma/commit/de5ec67964efbc5e8b2764ceae96b7f84bbe01a3))
+* **client:** reload each css ([848acbb](https://github.com/hiroppy/fusuma/commit/848acbbfbd8dcc9226bc0c4eabebae88f712b67f))
+* **init:** create fusumarc.yml ([161281a](https://github.com/hiroppy/fusuma/commit/161281aa7cbc483cc5616e17d4867931849a820d))
+* **pdf:** refactor pdf process ([0e7525f](https://github.com/hiroppy/fusuma/commit/0e7525f244f011de31b20ea728136035d5df4936))
+
+
+
+
+
 # [2.0.0-alpha.23](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.22...v2.0.0-alpha.23) (2021-01-26)
 
 
