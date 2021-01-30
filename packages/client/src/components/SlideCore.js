@@ -61,6 +61,7 @@ export const SlideCore = ({ slides, onChangeSlideIndex }) => (
         : {}),
     }}
     onSlideChange={({ realIndex }) => onChangeSlideIndex(realIndex)}
+    className="slide-background"
   >
     {slides.map(({ slide: Slide, fusumaProps }, i) => (
       <SwiperSlide

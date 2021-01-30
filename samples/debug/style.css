@@ -2,13 +2,13 @@
 @import '../../packages/client/assets/style/themes/webpack.css';
 /* @import '../../packages/client/assets/style/themes/babel.css'; */
 /* @import '../../packages/client/assets/style/themes/node.css'; */
+/* @import '../../packages/client/assets/style/themes/pop.css'; */
 
 @font-face {
   font-family: Stratum;
   src: url('./assets/StratumNo1.ttf');
 }
 
-/* background: #f5f5f5; */
 .slide-background {
   background: var(--background-color);
   color: var(--base-color);
@@ -16,10 +16,6 @@
 
 .slide-box {
   text-align: center;
-
-  & > * {
-    /* width: 100px; */
-  }
 }
 
 h1,

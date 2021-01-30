@@ -33,11 +33,6 @@ a {
 .slide-box {
   /* set the default align */
   text-align: center;
-
-  & > * {
-    /* set the slide width: the default is 80% */
-    /* width: 100px; */
-  }
 }
 
 /* https://hiroppy.github.io/fusuma/docs/guides/slide-syntax#declaring-section-title */
