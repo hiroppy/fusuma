@@ -1,5 +1,8 @@
-@import './variable';
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+:root {
+  --color-white: #f5f5f5;
+}
 
 pre {
   background: var(--color-white);

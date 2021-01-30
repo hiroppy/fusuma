@@ -1,7 +1,7 @@
-@import './variable';
-
 :root {
   --color-cyan: #7bb7fa;
+  --color-white: #f5f5f5;
+  --color-black: #373a47;
 }
 
 .btn-sidebar {
@@ -21,7 +21,7 @@
 }
 
 .bm-menu {
-  background: #373a47;
+  background: var(--color-black);
   padding: 16px;
 }
 

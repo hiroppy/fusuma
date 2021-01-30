@@ -1,0 +1,8 @@
+/* https://babeljs.io/ */
+
+:root {
+  --title-color: #f5da55;
+  --base-color: hsla(0, 0%, 100%, 0.8);
+  --background-color: #3b3c38;
+  --link-color: rgba(245, 218, 85, 0.15);
+}
