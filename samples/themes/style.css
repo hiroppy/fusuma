@@ -1,0 +1,110 @@
+/* themes */
+@import '../../packages/client/assets/style/themes/default.css';
+/* @import '../../packages/client/assets/style/themes/webpack.css'; */
+/* @import '../../packages/client/assets/style/themes/babel.css'; */
+/* @import '../../packages/client/assets/style/themes/node.css'; */
+
+/* set custom colors */
+/* :root {
+} */
+
+html {
+  /* set the base font-size */
+  font-size: 62.5%;
+}
+
+h1,
+h2 {
+  color: var(--title-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+.slide-background {
+  /* set the default background */
+  background: var(--background-color);
+
+  /* set the default font-color */
+  color: var(--base-color);
+}
+
+.slide-box {
+  /* set the default align */
+  text-align: center;
+}
+
+/* --------- */
+/* @import '../../packages/client/assets/style/themes/webpack.css'; */
+.webpack {
+  --title-color: #8dd6f9;
+  --base-color: #fff;
+  --background-color: #2b3a42;
+  --link-color: #86a5ba;
+
+  & h1 {
+    color: var(--title-color);
+  }
+  & h2 {
+    color: var(--title-color);
+  }
+
+  & a {
+    color: var(--link-color);
+  }
+}
+
+.babel {
+  --title-color: #f5da55;
+  --base-color: #f1f1f1;
+  --background-color: #3b3c38;
+  --link-color: hsla(0, 0%, 100%, 0.8);
+
+  & h1 {
+    color: var(--title-color);
+  }
+  & h2 {
+    color: var(--title-color);
+  }
+
+  & a {
+    color: var(--link-color);
+  }
+}
+
+.node {
+  --title-color: #43853d;
+  --base-color: #f2f2f2;
+  --background-color: #2c3437;
+  --link-color: #026e00;
+
+  & h1 {
+    color: var(--title-color);
+  }
+  & h2 {
+    color: var(--title-color);
+  }
+
+  & a {
+    color: var(--link-color);
+  }
+}
+
+.pop {
+  --title-color: #3498db;
+  --base-color: #f5f5f5;
+  --background-color: #545454;
+  --link-color: #60d7a9;
+
+  & h1 {
+    color: var(--title-color);
+  }
+  & h2 {
+    color: var(--title-color);
+  }
+
+  & a {
+    color: var(--link-color);
+  }
+}

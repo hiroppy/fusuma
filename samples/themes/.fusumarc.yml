@@ -1,0 +1,17 @@
+meta:
+  url: https://hiroppy.github.io/fusuma/themes
+  title: introducing themes
+  description: fusuma provides some themes
+  siteName: hiroppy.me
+  sns: ['twitter']
+slide:
+  loop: false
+  ui:
+    sidebar: true
+    pagination: bullets # bullets | progressbar | fraction
+    effect: # fade | cube | flip
+  code:
+    languages:
+      - javascript
+    plugins: []
+    theme: default
