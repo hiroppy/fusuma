@@ -57,13 +57,14 @@ export const SlideCore = ({ slides, onChangeSlideIndex }) => (
       <SwiperSlide
         key={i /* mdx-loaderでhash作成 */}
         className={classnames(
+          'slide-box',
           'slide-background',
           fusumaProps.classes,
           fusumaProps.sectionTitle ? 'section-title' : undefined
         )}
         data-hash={`slide-${i + 1}`}
       >
-        <div className="slide-box slide-background">
+        <div className="slide-internal-box slide-background">
           <Slide />
         </div>
       </SwiperSlide>

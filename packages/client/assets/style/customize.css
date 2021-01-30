@@ -25,14 +25,22 @@
 .swiper-slide {
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: center;
   overflow-y: auto;
 }
 
-.slide-box {
+.slide-internal-box {
   padding: 16px 0;
-  text-align: center;
+  text-align: inherit;
   max-width: 100%;
   margin: auto;
   min-width: 320px;
+  width: 80%;
+}
+
+@media (min-width: 850px) {
+  .slide-internal-box {
+    margin: auto 24px;
+  }
 }

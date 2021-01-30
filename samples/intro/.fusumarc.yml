@@ -5,7 +5,8 @@ meta:
   siteName: hiroppy.me
   sns: ['twitter']
 slide:
-  showIndex: true
+  ui:
+    pagination:
   code:
     languages:
       - yaml
@@ -16,3 +17,5 @@ slide:
       - jsx
 extends:
   js: index.js
+build:
+  useCache: false

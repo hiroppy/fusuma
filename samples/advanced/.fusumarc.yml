@@ -6,3 +6,5 @@ slide:
   code:
     languages:
       - yaml
+build:
+  useCashe: false
