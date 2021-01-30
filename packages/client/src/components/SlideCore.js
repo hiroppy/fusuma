@@ -27,6 +27,7 @@ if (process.env.UI.PAGINATION) {
 }
 
 if (process.env.UI.EFFECT === 'fade') {
+  console.log('zzzz');
   swiperComponents.push(EffectFade);
   import('swiper/components/effect-fade/effect-fade.min.css');
 } else if (process.env.UI.EFFECT === 'cube') {

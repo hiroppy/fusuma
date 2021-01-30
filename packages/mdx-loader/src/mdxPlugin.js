@@ -35,7 +35,7 @@ function mdxPlugin() {
         const prefix = p.split('\n')[0];
         const attr = rest.map((r) => r.trim());
 
-        if (prefix === 'sectionTitle') {
+        if (prefix === 'section-title') {
           props.sectionTitle = attr.join('');
           return;
         }

@@ -53,7 +53,7 @@ const Sample = () => <div>sample</div>;
 This is Note!
 -->
 <!-- classes: class! -->
-<!-- sectionTitle: sectionTitle! -->
+<!-- section-title: section-title! -->
 # Hello
 <!-- content -->
 <!-- screen -->

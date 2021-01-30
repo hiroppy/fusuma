@@ -1,4 +1,4 @@
-<!-- sectionTitle: What is fusuma? -->
+<!-- section-title: What is fusuma? -->
 
 ## What is Fusuma?
 

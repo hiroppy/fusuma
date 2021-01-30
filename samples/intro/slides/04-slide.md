@@ -1,4 +1,4 @@
-<!-- sectionTitle: Syntax Provided by Fusuma -->
+<!-- section-title: Syntax Provided by Fusuma -->
 
 ## Syntaxes Provided by Fusuma
 
@@ -101,7 +101,7 @@ The class name of `<!-- block-start -->` isn't mandatory.
 ## Declare Section Title
 
 ```md
-<!-- sectionTitle: this is the second slide! -->
+<!-- section-title: this is the second slide! -->
 
 ## ✌️
 ```
@@ -131,7 +131,7 @@ In addition, it is also added to sidebar's list.
 
 <br />
 
-Converts the page number and title name specified by `sectionTitle` into a list component.
+Converts the page number and title name specified by `section-title` into a list component.
 
 ---
 

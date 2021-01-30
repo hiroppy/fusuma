@@ -31,7 +31,7 @@ Makes explicit declarations to create a table of contents. and it is also added 
 
 ```md
 <!-- slide.md -->
-<!-- sectionTitle: This is the first slide! -->
+<!-- section-title: This is the first slide! -->
 
 ## Hello
 ```
@@ -49,7 +49,7 @@ Makes explicit declarations to create a table of contents. and it is also added 
 
 ## Generating Table of Contents
 
-Insert titles written as `sectionTitle` to ToC component automatically.
+Insert titles written as `section-title` to ToC component automatically.
 
 ```md
 <!-- toc.md -->

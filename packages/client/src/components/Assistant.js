@@ -104,7 +104,7 @@ export const Assistant = () => (
             <A url="https://webslides.tv/demos/components#slide=2">Others</A>
             <hr style={hrCss} />
             <SmallTitle>Fusuma</SmallTitle>
-            <code>{`<!-- sectionTitle -->`}</code>:
+            <code>{`<!-- section-title -->`}</code>:
             <A url="https://hiroppy.github.io/fusuma/intro/#slide=16">
               <code>.section-title</code>
             </A>
@@ -148,11 +148,11 @@ export const Assistant = () => (
                 },
                 {
                   title: 'Adding Title to Sidebar',
-                  content: <code>{`sectionTitle: title`}</code>,
+                  content: <code>{`section-title: title`}</code>,
                   url: 'https://hiroppy.github.io/fusuma/intro/#slide=16',
                 },
                 {
-                  title: 'Adding Agenda UI via SectionTitle',
+                  title: 'Adding Agenda UI via section-title',
                   content: <code>contents</code>,
                   url: 'https://hiroppy.github.io/fusuma/intro/#slide=17',
                 },

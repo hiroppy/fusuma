@@ -1,4 +1,4 @@
-<!-- sectionTitle: Charts -->
+<!-- section-title: Charts -->
 
 ## Charts
 

@@ -1,4 +1,4 @@
-<!-- sectionTitle: Math -->
+<!-- section-title: Math -->
 
 ## Math
 

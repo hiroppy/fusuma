@@ -71,7 +71,7 @@ export const slides = [props => <>
 export const fusumaProps = [{
   note: 'This is Note!',
   classes: 'class!',
-  sectionTitle: 'sectionTitle!',
+  sectionTitle: 'section-title!',
   screen: 'true'
 }];
 
@@ -93,7 +93,7 @@ export default function MDXContent({
       /* classes: class! */
     }
     {
-      /* sectionTitle: sectionTitle! */
+      /* section-title: section-title! */
     }
     <h1>{\`Hello\`}</h1>
     {

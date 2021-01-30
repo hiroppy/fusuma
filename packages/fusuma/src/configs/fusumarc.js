@@ -61,7 +61,7 @@ async function init(baseDir) {
 
   // scaffold
   await mkdirAsync(join(baseDir, 'slides'));
-  info('init', 'Created slides directory');
+  info('init', 'Created /slides');
 
   {
     const data = await readFileAsync(join(__dirname, 'templates', '0-title.md'), 'utf8');
