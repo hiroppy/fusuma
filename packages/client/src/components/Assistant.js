@@ -72,7 +72,6 @@ export const Assistant = () => (
         </AccordionItemHeading>
         <AccordionItemPanel style={itemCss}>
           <Item title="CSS Classes">
-            <SmallTitle>WebSlides</SmallTitle>
             <Lines
               items={[
                 {
@@ -83,12 +82,12 @@ export const Assistant = () => (
                 {
                   title: 'Sidebar + Main',
                   content: <code>{`.gird.sm > .column`}</code>,
-                  url: 'https://webslides.tv/demos/components#slide=11',
+                  url: null,
                 },
                 {
                   title: 'Main + Sidebar',
                   content: <code>{`.gird.ms > .column`}</code>,
-                  url: 'https://webslides.tv/demos/components#slide=12',
+                  url: null,
                 },
                 {
                   title: 'Position',
@@ -96,18 +95,8 @@ export const Assistant = () => (
                   url: 'https://webslides.tv/demos/components#slide=14',
                 },
                 {
-                  title: 'Animation',
-                  content: <code>.fadeIn, .zoomIn</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=33',
-                },
-                {
                   title: 'Fullscreen',
                   content: <code>.fullscreen</code>,
-                  url: 'https://webslides.tv/demos/components#slide=76',
-                },
-                {
-                  title: 'Card',
-                  content: <code>.card-50</code>,
                   url: 'https://webslides.tv/demos/components#slide=76',
                 },
               ]}

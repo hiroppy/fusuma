@@ -1,6 +1,6 @@
 <!-- sectionTitle: Syntax Provided by Fusuma -->
 
-## Syntax Provided by Fusuma
+## Syntaxes Provided by Fusuma
 
 ---
 
@@ -17,6 +17,8 @@ This is the first slide.
 
 This is the second slide.
 ```
+
+<br />
 
 You can split slides within the same file by using `---` syntax.
 
@@ -36,13 +38,15 @@ You can split slides within the same file by using `---` syntax.
 }
 ```
 
-Also, you can use HTML because MarkDown accepts HTML.
+<br />
+
+These classes attach to the top level of a slide container.
 
 ---
 
 ## Create blocks with class name
 
-This example uses webslides's classes(`.grid`, `.column`).
+This example uses grid classes(`.grid`, `.column`).
 
 ```md
 <!-- block-start: grid -->
@@ -63,7 +67,7 @@ right
 
 <!-- block-start -->
 
-also, the class name isn't mandatory
+The class name of `<!-- block-start -->` isn't mandatory.
 
 <!-- block-end -->
 ```
@@ -88,7 +92,7 @@ right
 
 <!-- block-start -->
 
-also, the class name isn't mandatory
+The class name of `<!-- block-start -->` isn't mandatory.
 
 <!-- block-end -->
 
@@ -110,6 +114,8 @@ also, the class name isn't mandatory
 }
 ```
 
+<br />
+
 Makes explicit declarations to create an agenda.  
 In addition, it is also added to sidebar's list.
 
@@ -123,7 +129,9 @@ In addition, it is also added to sidebar's list.
 <!-- contents -->
 ```
 
-Converts the page number and title name specified by `sectionTitle` into a list of `list(ul/li)`.
+<br />
+
+Converts the page number and title name specified by `sectionTitle` into a list component.
 
 ---
 
@@ -139,6 +147,8 @@ This sentence can be seen when using Presenter Mode.
 
 ## Hello!!
 ```
+
+<br />
 
 This is a note displayed on the host side in Presenter Mode.
 
@@ -174,14 +184,10 @@ console.log('hi!');
 <!-- screen -->
 ```
 
+<br />
+
 Your screen can capture on the slide, but this feature can run only in Presenter Mode.
-
-<br />
-
 You can choose **your local screen** or **application window** or **browser tab** as output.
-
-<br />
-
 This feature will help **live coding** etc. See [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) for detail.
 
 ---

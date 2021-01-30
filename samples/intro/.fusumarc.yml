@@ -15,6 +15,7 @@ slide:
       - javascript
       - css
       - jsx
+      - shell
 extends:
   js: index.js
 build:
