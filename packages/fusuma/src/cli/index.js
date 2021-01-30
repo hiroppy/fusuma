@@ -28,7 +28,6 @@ async function cli() {
       .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
       .option('-i <directory>', 'A directory to load', prog.STRING, 'slides')
       .option('-p <port>', 'Dev server port', prog.INT, '8080')
-      .option('-f <fileMode>', 'A serve for a bundled directory', prog.BOOLEAN, false)
       .action((args, options) => {
         resolve({
           type: 'start',
@@ -36,7 +35,21 @@ async function cli() {
             basePath: options.b,
             inputDir: options.i,
             port: options.p,
-            isFileServer: options.f,
+          },
+        });
+      })
+
+      .command('start-prod', 'Serve bundle directory')
+      .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
+      .option('-i <directory>', 'A directory to load', prog.STRING, 'dist')
+      .option('-p <port>', 'Dev server port', prog.INT, '8080')
+      .action((args, options) => {
+        resolve({
+          type: 'startProd',
+          options: {
+            basePath: options.b,
+            inputDir: options.i,
+            port: options.p,
           },
         });
       })

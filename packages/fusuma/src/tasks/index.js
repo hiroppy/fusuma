@@ -51,15 +51,13 @@ async function tasks({ type, options }) {
     }
   }
 
-  if (options.isFileServer) {
-    return require('./serverFilesForProd')(config);
-  }
-
   switch (type) {
     case 'init':
       return require('./init')(config);
     case 'start':
       return require('./start')(config);
+    case 'startProd':
+      return require('./startProd')(config);
     case 'build':
       return require('./build')(config);
     case 'deploy':
@@ -68,6 +66,8 @@ async function tasks({ type, options }) {
       return require('./pdf')(config);
     case 'live':
       return require('./live')(config);
+    default:
+      error('cli', `the command not found, please see "--help"`);
   }
 }
 

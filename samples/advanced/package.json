@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli start",
-    "start:prod": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli start -f true",
+    "start:prod": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli start-prod",
     "build": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli build",
     "pdf": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli pdf",
     "live": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli live -w '@nodejs'",
