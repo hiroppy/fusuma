@@ -15,14 +15,18 @@ const swiperComponents = [A11y, Keyboard, HashNavigation];
 
 if (process.env.UI.PAGINATION) {
   swiperComponents.push(Pagination);
+  import('swiper/components/pagination/pagination.min.css');
 }
 
 if (process.env.UI.EFFECT === 'fade') {
   swiperComponents.push(EffectFade);
+  import('swiper/components/effect-fade/effect-fade.min.css');
 } else if (process.env.UI.EFFECT === 'cube') {
   swiperComponents.push(EffectCube);
+  import('swiper/components/effect-cube/effect-cube.min.css');
 } else if (process.env.UI.EFFECT === 'flip') {
   swiperComponents.push(EffectFlip);
+  import('swiper/components/effect-flip/effect-flip.min.css');
 }
 
 SwiperCore.use(swiperComponents);
