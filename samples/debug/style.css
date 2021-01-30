@@ -1,10 +1,15 @@
+/* @import '../../packages/client/assets/style/themes/default.css'; */
+@import '../../packages/client/assets/style/themes/webpack.css';
+
 @font-face {
   font-family: Stratum;
   src: url('./assets/StratumNo1.ttf');
 }
 
+/* background: #f5f5f5; */
 .slide-background {
-  background: #f5f5f5;
+  background: var(--background-color);
+  color: var(--base-color);
 }
 
 .slide-box {
@@ -13,6 +18,15 @@
   & > * {
     /* width: 100px; */
   }
+}
+
+h1,
+h2 {
+  color: var(--title-color);
+}
+
+a {
+  color: var(--link-color);
 }
 
 .file-loader-font {

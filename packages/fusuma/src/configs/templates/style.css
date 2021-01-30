@@ -1,25 +1,42 @@
-:root {
-  --color-white: #f5f5f5;
-  --color-black: #333;
-  --color-cyan: #7bb7fa;
-}
+/* themes */
+@import '@fusuma/client/assets/style/themes/default.css';
+/* @import '@fusuma/client/assets/style/themes/babel.css'; */
+/* @import '@fusuma/client/assets/style/themes/webpack.css'; */
+
+/* set custom colors */
+/* :root {
+} */
 
 html {
   /* set the base font-size */
   font-size: 62.5%;
 }
 
-.slide-background {
-  /* set the default background */
-  background: var(--color-white);
-
-  /* set the default font-color */
-  color: var(--color-black);
+h1,
+h2 {
+  color: var(--title-color);
 }
 
 a {
-  /* set the default link color */
-  color: var(--color-cyan);
+  color: var(--link-color);
+}
+
+.slide-background {
+  /* set the default background */
+  background: var(--background-color);
+
+  /* set the default font-color */
+  color: var(--base-color);
+}
+
+.slide-box {
+  /* set the default align */
+  text-align: center;
+
+  & > * {
+    /* set the slide width: the default is 80% */
+    /* width: 100px; */
+  }
 }
 
 /* https://hiroppy.github.io/fusuma/docs/guides/slide-syntax#declaring-section-title */

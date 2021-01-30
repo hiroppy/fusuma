@@ -1,13 +1,12 @@
 @import 'modern-normalize/modern-normalize.css';
 @import 'swiper/swiper.min.css';
 @import 'swiper/components/a11y/a11y.min.css';
-@import './variable.css';
 @import './customize.css';
 @import './sidebar.css';
 @import './grid.css';
 
 html {
-  color: var(--color-black);
+  color: #333;
   font-size: 62.5%;
 }
 
