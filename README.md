@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <strong>📝 Makes slides with Markdown easily.</strong>
+  <strong>A tool to create slides easily for you ✍ ️</strong>
 </div>
 
 <br />
@@ -12,27 +12,26 @@
 [![Azure](https://img.shields.io/azure-devops/build/hiroppy/11c2bed9-94f9-46ea-a0f9-908f1763e0c4/1.svg?style=flat-square)](https://dev.azure.com/hiroppy/fusuma)
 [![Codecov](https://img.shields.io/codecov/c/github/hiroppy/fusuma.svg?style=flat-square)](https://codecov.io/gh/hiroppy/fusuma)
 
-Just write Markdown and create cool slides.😎
-
 ## **Please see [Website](https://hiroppy.github.io/fusuma/) for more details!**
 
 ## Features
 
 - Zero Config
-- Slide syntax are Markdown and [MDX](https://github.com/mdx-js/mdx)
-- Supports themes
-- Supports Code syntax Highlight, MathJax, Diagrams, and Flowcharts
-- Supports SEO and OGP
-  - Generates ogp image automatically
-- Customizes JavaScript and CSS freely
-- Adds a Sidebar on Slides
-  - share buttons
-  - ToC
+- Markdown and [MDX](https://github.com/mdx-js/mdx)
+- Themes
+- Supporting Code syntax Highlight, MathJax, Diagrams, and Flowcharts
+- Full supporting for SEO and OGP
+- Customizable JavaScript and CSS
+- Sidebar having agenda and some features
 
 ## Modes
 
 - Development Mode
+  - Running with HMR
+  - Just write Markdown and CSS
 - Build Mode
+  - Rendering to html and optimize js,css,md
+  - Generating an image of slides as `og:image` automatically
 - [Presentation Mode](#presenter-mode)
   - Speaker Note
   - Timer
@@ -42,13 +41,12 @@ Just write Markdown and create cool slides.😎
   - Streaming tweets and comments
 - Deploying to GitHub Pages
 - Exporting slides as PDF
+- Live
+  - Can make a speech while streaming a comment on Twitter
 
 ## Demos
 
-- [Introducing Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
-- Others [[repository](https://github.com/hiroppy/slides#my-slides)]
-
-You can also try Fusuma in Gitpod, a one-click online IDE for GitHub:
+[Introducing Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hiroppy/fusuma/blob/master/samples/intro/slides/0-title.md)
 
@@ -62,49 +60,41 @@ Just execute the following two lines for executing, generating and deploying sli
 
 ```sh
 $ npm i fusuma -D
-$ mkdir slides && echo '# Hello😄' > slides/title.md
-
-# --- Tree ---
-$ tree -a
-.
-└── slides
-    └── title.md
-
-# -------- init ---------
-# [not mandatory] you can use `init` command to create .fusumarc.yml, slides dir, and style.css
-
+# not mandatory but it's one easy method
 $ npx fusuma init
 $ tree -a
-
-# --- Tree ---
 .
 ├── .fusumarc.yml
 ├── slides
 │   └── 0-title.md
 └── style.css
 
+$ npx fusuma start # let's start writing slides!
+
 # --- executable tasks---
 $ npx fusuma init     # create scaffold
 $ npx fusuma start    # run server for development
-$ npx fusuma build    # build slides as NODE_ENV=production
-$ npx fusuma live     # start live mode
+$ npx fusuma build    # build slides for production
 $ npx fusuma deploy   # deploy to github pages
-$ npx fusuma pdf      # export as PDF from HTML
-
-# --- help
-$ npx fusuma --help
-$ npx fusuma build --help # see help for a specific command
+$ npx fusuma pdf      # export as PDF
+$ npx fusuma live     # start live mode
 ```
 
-When `npx fusuma start` is executed, fusuma will create a slide as follows and serve `localhost:8080`.
+When `npx fusuma start` is executed, fusuma will create a slide as follows and serve `http://localhost:8080` and then you can write slides with HMR.
 
 ![](./site/docs/assets/procedure-screenshot.png)
 
-And fusuma adds a Sidebar like below.
+Fusuma adds a Sidebar like below. When you set section titles, fusuma shows them on here.
 
 ![](./site/docs/assets/sidebar.png)
 
+When you set the URL of the deployment destination at the production stage, fusuma generate og:image using a first slide automatically.
+
+![](./site/docs/assets/og-image.png)
+
 ## Markdown and MDX
+
+Fusuma uses [remark](https://github.com/remarkjs/remark).
 
 ```markdown
 ## Hello
@@ -121,7 +111,7 @@ This is the second slide.
 Also, you can use React components!
 
 ```markdown
-<!-- 0-title.mdx -->
+<!-- title.mdx -->
 
 import { Sample } from './scripts/Sample';
 
@@ -136,9 +126,6 @@ This is the second slide.
 
 ```js
 // Sample.js
-
-import React from 'react';
-
 export const Sample = () => <p>Hello from jsx!!</p>;
 ```
 
@@ -194,21 +181,7 @@ Also, this mode can run with Presenter Mode.
 The values of `Accessibility` and `Best Practices` depend on the user because the user writes HTML(Markdown).  
 If you want to make `SEO` score 100%, you should fill in the `.fusumarc.yml`.
 
-## Development
+## Examples
 
-### Setup
-
-```sh
-$ git clone git@github.com:hiroppy/fusuma.git
-$ cd fusuma
-$ npm i
-$ npm run setup
-```
-
-### Link local packages
-
-```sh
-$ npx lerna add @fusuma/xxx --scope=@fusuma/yyy
-```
-
-see https://github.com/lerna/lerna/tree/master/commands/add
+- [hiroppy/fusuma/intro](/samples/intro)
+- [hiroppy/slides](https://github.com/hiroppy/slides)
