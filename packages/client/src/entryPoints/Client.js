@@ -3,6 +3,7 @@ import { render, hydrate } from 'react-dom';
 import { fetchSlides } from '../utils/fetchSlides';
 import { setTargetBlank } from '../utils/targetBlank';
 import { AppContainer } from '../components/AppContainer';
+import { getSearchParams } from '../utils/getSearchParams';
 import '../setup/css';
 
 function createBody(slides = [], hash = 0) {
@@ -25,18 +26,22 @@ if (process.env.TARGET_BLANK) {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  (async () => {
-    // for tree shaking
-    const { Assistant } = await import('../components/Assistant');
-    const el = document.createElement('div');
+  const params = getSearchParams();
 
-    el.style.position = 'absolute';
-    el.style.top = 0;
-    el.style.width = '100%';
-    el.style.zIndex = 10000;
-    el.setAttribute('id', 'reference');
-    document.body.appendChild(el);
+  if (params.get('reference') !== 'false') {
+    (async () => {
+      // for tree shaking
+      const { Assistant } = await import('../components/Assistant');
+      const el = document.createElement('div');
 
-    render(<Assistant />, document.getElementById('reference'));
-  })();
+      el.style.position = 'absolute';
+      el.style.top = 0;
+      el.style.width = '100%';
+      el.style.zIndex = 10000;
+      el.setAttribute('id', 'reference');
+      document.body.appendChild(el);
+
+      render(<Assistant />, document.getElementById('reference'));
+    })();
+  }
 }
