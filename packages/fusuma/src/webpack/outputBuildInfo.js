@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const prettyBytes = require('pretty-bytes');
 
 function outputBuildInfo(res) {
+  let gzFilesNum = 0;
   let totalSize = 0;
   let maxStringSize = 0;
 
@@ -30,6 +31,10 @@ function outputBuildInfo(res) {
     let filename = name;
     const fileSize = chalk.greenBright(prettyBytes(size));
 
+    if (name.includes('.gz')) {
+      gzFilesNum++;
+    }
+
     if (name.includes('.js')) {
       if (assets.some(({ name }) => name === `${filename}.gz`) || name.includes('.LICENSE')) {
         filename = chalk.gray(name);
@@ -52,7 +57,10 @@ function outputBuildInfo(res) {
   });
 
   console.log();
-  console.log('Total:', chalk.greenBright(prettyBytes(totalSize)));
+  console.log(
+    `Total ${assets.length} files (gzip: ${gzFilesNum}) -`,
+    chalk.greenBright(prettyBytes(totalSize))
+  );
 }
 
 module.exports = outputBuildInfo;
