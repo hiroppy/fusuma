@@ -7,7 +7,7 @@ import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay } from 'react-icons/md
 const remoteOriginUrl = process.env.REMOTE_ORIGIN_URL;
 const url = process.env.URL || window.location.href.split('#')[0];
 const sns = process.env.SNS;
-const title = process.env.TITLE || '';
+const title = process.env.TITLE;
 const formatStr = (num) => `${num}`.padStart(2, '0');
 
 export const Sidebar = memo(

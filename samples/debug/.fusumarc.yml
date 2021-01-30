@@ -5,11 +5,10 @@ meta:
   siteName: hiroppy.me
   sns: ['twitter']
 slide:
-  loop: false
-  sidebar: true
   targetBlank: true
-  showIndex: true
-  isVertical: false
+  ui:
+    sidebar: true
+    pagination: bullets
   code:
     languages:
       - javascript
