@@ -22,10 +22,18 @@ module.exports = (
 ) => {
   const entry = ['regenerator-runtime', join(clientBasePath, '/src/entryPoints/Client.js')];
   const { url, description, thumbnail, siteName, sns, title } = meta;
-  const { sidebar, targetBlank, showIndex, isVertical, loop, code, chart, math } = slide;
+  const {
+    targetBlank,
+    ui: { sidebar, pagination, effect },
+    loop,
+    vertical,
+    code,
+    chart,
+    math,
+  } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
   const { useCache, publicPath } = build;
-  const { basePath, remoteOrigin, htmlBody = '', buildStage, outputDirPath } = internal;
+  const { basePath, remoteOrigin, htmlBody = '', outputDirPath } = internal;
   const config = (() => {
     switch (type) {
       case 'production':
@@ -123,25 +131,29 @@ module.exports = (
     },
     plugins: [
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-        'process.env.JS_PATH': JSON.stringify(join(basePath, jsPath || '')),
-        'process.env.CSS_PATH': JSON.stringify(join(basePath, cssPath || '')),
-        'process.env.SLIDE_PATH': JSON.stringify(join(basePath, 'slides')),
-        'process.env.URL': JSON.stringify(url),
-        'process.env.SNS': JSON.stringify(sns),
-        'process.env.SIDEBAR': JSON.stringify(sidebar === undefined ? true : sidebar),
-        'process.env.TITLE': JSON.stringify(title || 'slide'),
-        'process.env.BASE_PATH': JSON.stringify(basePath),
-        'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin),
-        'process.env.TARGET_BLANK': JSON.stringify(targetBlank),
-        'process.env.SHOW_INDEX': JSON.stringify(showIndex),
-        'process.env.IS_VERTICAL': JSON.stringify(isVertical),
-        'process.env.LOOP': JSON.stringify(loop),
-        'process.env.IS_LIVE': JSON.stringify(server.isLive),
-        'process.env.SERVER_PORT': JSON.stringify(server.port),
-        'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword),
-        'process.env.CHART': JSON.stringify(chart),
-        'process.env.BUILD_STAGE': JSON.stringify(buildStage),
+        'process.env': {
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+          JS_PATH: JSON.stringify(join(basePath, jsPath || '')),
+          CSS_PATH: JSON.stringify(join(basePath, cssPath || '')),
+          SLIDE_PATH: JSON.stringify(join(basePath, 'slides')),
+          URL: JSON.stringify(url),
+          SNS: JSON.stringify(sns),
+          TITLE: JSON.stringify(title || 'slide'),
+          BASE_PATH: JSON.stringify(basePath),
+          REMOTE_ORIGIN_URL: JSON.stringify(remoteOrigin),
+          TARGET_BLANK: JSON.stringify(targetBlank),
+          LOOP: JSON.stringify(loop),
+          VERTICAL: JSON.stringify(vertical),
+          IS_LIVE: JSON.stringify(server.isLive),
+          SERVER_PORT: JSON.stringify(server.port),
+          SEARCH_KEYWORD: JSON.stringify(server.keyword),
+          CHART: JSON.stringify(chart),
+          UI: {
+            SIDEBAR: JSON.stringify(sidebar),
+            PAGINATION: JSON.stringify(pagination),
+            EFFECT: JSON.stringify(effect),
+          },
+        },
       }),
       new HtmlWebpackPlugin({
         url,

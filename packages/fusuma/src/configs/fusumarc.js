@@ -18,14 +18,17 @@ const config = {
     title: null,
     thumbnail: null,
     description: null,
-    sns: ['twitter'], // twitter, hatena
+    sns: ['twitter'], // twitter | hatena
   },
   slide: {
-    loop: true,
-    sidebar: true,
+    loop: false,
+    vertical: false,
     targetBlank: true,
-    showIndex: true,
-    isVertical: false,
+    ui: {
+      sidebar: true,
+      pagination: null, // bullets | progressbar | fraction
+      effect: null, // fade | cube | flip
+    },
     // https://github.com/mAAdhaTTah/babel-plugin-prismjs#configuring-the-plugin
     code: {
       languages: ['javascript'],

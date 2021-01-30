@@ -3,6 +3,10 @@
   src: url('./assets/StratumNo1.ttf');
 }
 
+.slide-background {
+  background: #f5f5f5;
+}
+
 .file-loader-font {
   font-family: Stratum;
   font-size: 2rem;

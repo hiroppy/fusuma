@@ -9,18 +9,12 @@ html {
   font-size: 62.5%;
 }
 
-body {
+.slide-background {
   /* set the default background */
   background: var(--color-white);
 
   /* set the default font-color */
   color: var(--color-black);
-}
-
-/* code blocks */
-code[class*='language-'],
-pre[class*='language-'] {
-  font-size: 2rem;
 }
 
 a {

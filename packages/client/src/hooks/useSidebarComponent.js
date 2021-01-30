@@ -8,7 +8,7 @@ export function useSidebarComponent(mode) {
     (async () => {
       if (mode === 'common') {
         const params = getSearchParams();
-        const isSidebar = params.get('sidebar') !== 'false' || process.env.SIDEBAR === 'true';
+        const isSidebar = params.get('sidebar') !== 'false' || process.env.UI.SIDEBAR === 'true';
 
         if (isSidebar) {
           const { Sidebar: SidebarComponent } = await import(

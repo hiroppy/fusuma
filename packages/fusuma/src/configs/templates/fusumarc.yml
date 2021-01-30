@@ -5,10 +5,11 @@ meta:
   siteName:
   sns: ['twitter']
 slide:
-  loop: true
-  sidebar: true
-  targetBlank: true
-  showIndex: true
+  loop: false
+  ui:
+    sidebar: true
+    pagination: # bullets | progressbar | fraction
+    effect: # fade | cube | flip
   code:
     plugins: []
     theme: default
