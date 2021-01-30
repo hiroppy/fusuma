@@ -9,6 +9,7 @@ import { Receiver as PresentationReceiver } from '../../presentationMode/Receive
 import { WebRTC } from '../../utils/webrtc';
 import '../../../assets/style/view.css';
 
+const slideWrapperClassName = '.swiper-container';
 let presentationReceiver = null;
 let webrtc = null;
 let currentVideoTag = null;
@@ -17,17 +18,18 @@ let currentLayer = null;
 const View = memo(({ slides, hash }) => {
   // need to declare here
   if (!presentationReceiver) {
-    presentationReceiver = new PresentationReceiver();
-    presentationReceiver.onChangePage((pageNum) => {
-      if (window.slide) {
-        window.slide.goToSlide(pageNum);
+    window.onload = () => {
+      const tag = document.querySelector(slideWrapperClassName);
+      presentationReceiver = new PresentationReceiver();
 
+      presentationReceiver.onChangePage((pageNum) => {
+        tag?.swiper?.slideTo(pageNum);
         // stop capturing
         if (webrtc && currentVideoTag) {
           stopCapturing(currentVideoTag);
         }
-      }
-    });
+      });
+    };
   }
 
   // const [usedCanvas, changeCanvasState] = useState(false);
