@@ -4,15 +4,6 @@
 /* @import '../../packages/client/assets/style/themes/babel.css'; */
 /* @import '../../packages/client/assets/style/themes/node.css'; */
 
-/* set custom colors */
-/* :root {
-} */
-
-html {
-  /* set the base font-size */
-  font-size: 62.5%;
-}
-
 h1,
 h2 {
   color: var(--title-color);

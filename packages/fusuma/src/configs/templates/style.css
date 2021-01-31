@@ -4,14 +4,13 @@
 /* @import '@fusuma/client/assets/style/themes/webpack.css'; */
 /* @import '@fusuma/client/assets/style/themes/node.css'; */
 
-/* set custom colors */
-/* :root {
-} */
-
-html {
-  /* set the base font-size */
-  font-size: 62.5%;
-}
+/* the default variables */
+/* :root { */
+/* --base-font-size: 62.5%; */
+/* --base-font-weight: 300; */
+/* --code-align: auto; */
+/* --code-font-size: 1.8rem; */
+/* } */
 
 h1,
 h2 {

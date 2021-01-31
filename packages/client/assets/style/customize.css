@@ -7,13 +7,12 @@
 }
 
 .qr {
-  width: 320px;
-  height: 320px;
+  width: var(--qr-code-image-size);
+  height: var(--qr-code-image-size);
   margin: 0 auto;
 }
 
 .swiper-container {
-  background: #f5f5f5;
   height: 100vh;
   width: 100%;
 }
@@ -26,10 +25,17 @@
   overflow-y: auto;
 }
 
+.slide-box {
+  color: var(--base-color);
+  text-align: var(--base-align);
+  background: var(--background-color);
+}
+
 .slide-internal-box {
+  background: inherit;
   padding: 16px 0;
   text-align: inherit;
-  max-width: 1280px;
+  max-width: var(--base-max-slide-size);
   margin: auto;
   min-width: 320px;
   width: 90%;

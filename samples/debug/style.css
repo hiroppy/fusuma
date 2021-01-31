@@ -9,24 +9,6 @@
   src: url('./assets/StratumNo1.ttf');
 }
 
-.slide-background {
-  background: var(--background-color);
-  color: var(--base-color);
-}
-
-.slide-box {
-  text-align: center;
-}
-
-h1,
-h2 {
-  color: var(--title-color);
-}
-
-a {
-  color: var(--link-color);
-}
-
 .file-loader-font {
   font-family: Stratum;
   font-size: 2rem;

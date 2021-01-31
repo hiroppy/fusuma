@@ -18,18 +18,6 @@ a {
   color: var(--color);
 }
 
-.slide-background {
-  /* background: var(--white-color); */
-}
-
-.slide-box {
-  text-align: center;
-
-  & > * {
-    /* width: 100px; */
-  }
-}
-
 .title {
   background: var(--black-color);
   color: var(--main-color);
@@ -51,6 +39,10 @@ a {
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
+
+  & > * {
+    background: none;
+  }
 }
 
 .link {
@@ -59,11 +51,6 @@ a {
 
 .presenter-host {
   width: 70%;
-}
-
-/* overwrite */
-.grid {
-  width: 100%;
 }
 
 span.title {
