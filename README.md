@@ -53,12 +53,6 @@
 
 ## Getting Started
 
-[Getting Started/Preparation](https://hiroppy.github.io/fusuma/docs/getting-started/preparation)
-
-Node versions > v12
-
-Just execute the following two lines for executing, generating and deploying slides!
-
 ```shell
 $ npm i fusuma -D
 # not mandatory but it's one easy method
@@ -88,6 +82,8 @@ When `npx fusuma start` is executed, fusuma will create a slide as follows then 
 | :----------------------------------------------: | :---------------------------------: |
 | ![](./site/docs/assets/procedure-screenshot.png) | ![](./site/docs/assets/sidebar.png) |
 
+[Getting Started/Preparation](https://hiroppy.github.io/fusuma/docs/getting-started/preparation)
+
 ## Themes
 
 Fusuma offers the following themes also users can customize them because this is just CSS.
@@ -113,8 +109,6 @@ Fusuma offers the following themes also users can customize them because this is
 ```
 
 ## Markdown and MDX
-
-Fusuma uses [remark](https://github.com/remarkjs/remark) and supports Markdown and MDX.
 
 ```markdown
 ## Hello
