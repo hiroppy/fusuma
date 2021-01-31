@@ -12,23 +12,21 @@
 [![Azure](https://img.shields.io/azure-devops/build/hiroppy/11c2bed9-94f9-46ea-a0f9-908f1763e0c4/1.svg?style=flat-square)](https://dev.azure.com/hiroppy/fusuma)
 [![Codecov](https://img.shields.io/codecov/c/github/hiroppy/fusuma.svg?style=flat-square)](https://codecov.io/gh/hiroppy/fusuma)
 
-## **Please see [Website](https://hiroppy.github.io/fusuma/) for more details!**
-
 ## Features
 
 - Zero Config
 - Markdown and [MDX](https://github.com/mdx-js/mdx)
 - Themes
-- Supporting Code syntax Highlight, MathJax, Diagrams, and Flowcharts
+- Code syntax Highlight, MathJax, Diagrams, and Flowcharts
 - Full supporting for SEO and OGP
 - Customizable JavaScript and CSS
-- Sidebar having agenda and some features
+- A sidebar having agenda and some features
 
 ## Modes
 
 - Development Mode
   - Running with HMR
-  - Just write Markdown and CSS
+  - Just code Markdown and CSS
 - Build Mode
   - Rendering to html and optimize js,css,md
   - Generating an image of slides as `og:image` automatically
@@ -48,7 +46,8 @@
 
 ## Demos
 
-[Introducing Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
+- [Introducing Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
+- [hiroppy/slides](https://github.com/hiroppy/slides)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hiroppy/fusuma/blob/master/samples/intro/slides/0-title.md)
 
@@ -60,7 +59,7 @@ Node versions > v12
 
 Just execute the following two lines for executing, generating and deploying slides!
 
-```sh
+```shell
 $ npm i fusuma -D
 # not mandatory but it's one easy method
 $ npx fusuma init
@@ -186,11 +185,6 @@ Since comments can be sent to fusuma itself, you can use in the private case.
 Also, this mode can run with Presenter Mode.
 
 ![](./site/docs/assets/live-mode-comments.png)
-
-## Examples
-
-- [hiroppy/fusuma/intro](/samples/intro)
-- [hiroppy/slides](https://github.com/hiroppy/slides)
 
 ## Special Thanks to
 
