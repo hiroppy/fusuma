@@ -33,10 +33,9 @@
 
 .slide-internal-box {
   background: inherit;
-  padding: 16px 0;
+  padding: 16px;
   text-align: inherit;
   max-width: var(--base-max-slide-size);
   margin: auto;
   min-width: 320px;
-  width: 90%;
 }

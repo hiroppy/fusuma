@@ -7,10 +7,11 @@
   --gray-color: #545454;
   --skin-color: #ffcc99;
   --color: #7bb7fa;
+
+  --title-color: #3498db;
 }
 
 h2 {
-  color: var(--main-color);
   margin-bottom: 30px;
 }
 
