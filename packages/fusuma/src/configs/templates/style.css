@@ -1,38 +1,18 @@
 /* themes */
-@import '@fusuma/client/assets/style/themes/default.css';
+/* If nothing is loaded, the default theme will be applied. */
+/* @import '@fusuma/client/assets/style/themes/pop.css'; */
 /* @import '@fusuma/client/assets/style/themes/babel.css'; */
 /* @import '@fusuma/client/assets/style/themes/webpack.css'; */
 /* @import '@fusuma/client/assets/style/themes/node.css'; */
 
 /* the default variables */
+/* TODO: add the url */
 /* :root { */
 /* --base-font-size: 62.5%; */
 /* --base-font-weight: 300; */
 /* --code-align: auto; */
 /* --code-font-size: 1.8rem; */
 /* } */
-
-h1,
-h2 {
-  color: var(--title-color);
-}
-
-a {
-  color: var(--link-color);
-}
-
-.slide-background {
-  /* set the default background */
-  background: var(--background-color);
-}
-
-.slide-box {
-  /* set the default align */
-  text-align: center;
-
-  /* set the default font-color */
-  color: var(--base-color);
-}
 
 .title {
 }

@@ -14,7 +14,6 @@ pre[class*='language-'] {
   max-width: 100%;
   width: fit-content;
   margin: var(--code-align, auto);
-  margin-bottom: 4px;
 }
 
 code {
