@@ -1,7 +1,7 @@
 'use strict';
 
 const util = require('util');
-const spawn = util.promisify(require('child_process').spawn);
+const exec = util.promisify(require('child_process').exec);
 
 async function lazyload(pack, cb) {
   try {
@@ -10,8 +10,7 @@ async function lazyload(pack, cb) {
     if (cb) {
       cb('fallback');
     }
-
-    await spawn('npm', ['install', pack, '--no-save']);
+    await exec(`npm install ${pack} --no-save`);
 
     return require(pack);
   }

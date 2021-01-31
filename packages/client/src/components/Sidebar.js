@@ -12,13 +12,7 @@ const formatStr = (num) => `${num}`.padStart(2, '0');
 
 export const Sidebar = memo(
   ({ isOpen, onStateChange, goTo, currentIndex, runPresentationMode, contents, totalSlides }) => (
-    <Menu
-      isOpen={isOpen}
-      disableAutoFocus
-      onStateChange={onStateChange}
-      outerContainerId="root"
-      pageWrapId="webslides"
-    >
+    <Menu isOpen={isOpen} disableAutoFocus onStateChange={onStateChange} outerContainerId="root">
       <div className="sidebar-social">
         {Array.isArray(sns) &&
           sns.map((s) => {
