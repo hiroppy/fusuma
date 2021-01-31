@@ -93,7 +93,19 @@ Fusuma adds a Sidebar like below. When you set section titles, fusuma shows them
 
 When you set the URL of the deployment destination at the production stage, fusuma generate og:image using a first slide automatically.
 
-![](./site/docs/assets/og-image.png)
+<img src="./site/docs/assets/og-image.png" width="300"/>
+
+## Themes
+
+Fusuma offers the following themes also users can customize them because this is just CSS.
+
+|                  default                   |                  pop                   |
+| :----------------------------------------: | :------------------------------------: |
+| ![](./site/docs/assets/themes/default.png) | ![](./site/docs/assets/themes/pop.png) |
+
+|                  webpack                   |                  babel                   |                  node                   |
+| :----------------------------------------: | :--------------------------------------: | :-------------------------------------: |
+| ![](./site/docs/assets/themes/webpack.png) | ![](./site/docs/assets/themes/babel.png) | ![](./site/docs/assets/themes/node.png) |
 
 ## Markdown and MDX
 
@@ -175,16 +187,17 @@ Also, this mode can run with Presenter Mode.
 
 ![](./site/docs/assets/live-mode-comments.png)
 
-## Audits
-
-[This slide](https://hiroppy.github.io/fusuma/issues/#slide=1) is very simple, so this is a measure of the maximum performance fusuma can deliver.
-
-<img src="./site/docs/assets/audits.png" />
-
-The values of `Accessibility` and `Best Practices` depend on the user because the user writes HTML(Markdown).  
-If you want to make `SEO` score 100%, you should fill in the `.fusumarc.yml`.
-
 ## Examples
 
 - [hiroppy/fusuma/intro](/samples/intro)
 - [hiroppy/slides](https://github.com/hiroppy/slides)
+
+## Special Thanks to
+
+### Themes
+
+I respect your UI and I really love it. I usually talk about you in Japan so I added your colors to Fusuma. If you have issues, feel free to mention me! Thank you.
+
+- Node.js
+- webpack
+- Babel
