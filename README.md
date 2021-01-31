@@ -28,7 +28,7 @@
   - Running with HMR
   - Just code Markdown and CSS
 - Build Mode
-  - Rendering to html and optimize js,css,md
+  - Rendering to html and optimizing js,css,md
   - Generating an image of slides as `og:image` automatically
 - [Presentation Mode](#presenter-mode)
   - Speaker Note
@@ -100,7 +100,17 @@ Fusuma offers the following themes also users can customize them because this is
 | :----------------------------------------: | :--------------------------------------: | :-------------------------------------: |
 | ![](./site/docs/assets/themes/webpack.png) | ![](./site/docs/assets/themes/babel.png) | ![](./site/docs/assets/themes/node.png) |
 
-[the sample slides for these themes](https://hiroppy.github.io/fusuma/themes/)
+↑ [the sample slides for these themes](https://hiroppy.github.io/fusuma/themes/)
+
+```css
+/* the default theme */
+:root {
+  --title-color: #464646;
+  --base-color: #545454;
+  --background-color: #f5f5f5;
+  --link-color: #3498db;
+}
+```
 
 ## Markdown and MDX
 
