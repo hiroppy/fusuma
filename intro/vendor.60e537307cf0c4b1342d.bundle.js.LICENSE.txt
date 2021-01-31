@@ -10,6 +10,15 @@ object-assign
   http://jedwatson.github.io/classnames
 */
 
+/**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ *
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author Lea Verou <https://lea.verou.me>
+ * @namespace
+ * @public
+ */
+
 /** @license React v0.20.1
  * scheduler.production.min.js
  *
