@@ -50,7 +50,7 @@ h6 {
   }
 
   h3 {
-    font-size: 4rem;
+    font-size: var(--h3-font-size);
     line-height: 5.6rem;
   }
 }

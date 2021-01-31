@@ -5,13 +5,18 @@
 /* @import '@fusuma/client/assets/style/themes/webpack.css'; */
 /* @import '@fusuma/client/assets/style/themes/node.css'; */
 
-/* the default variables */
+/* global config */
+/* If you want to change the default values, please uncomment. */
+/* ↑ the current values are the default */
 /* TODO: add the url */
 /* :root { */
-/* --base-font-size: 62.5%; */
+/* --base-font-size: 2.4rem; */
 /* --base-font-weight: 300; */
-/* --code-align: auto; */
+/* --base-align: center; */
+/* --base-max-slide-size: 1280px; */
 /* --code-font-size: 1.8rem; */
+/* --h1-font-size: 5.6rem; */
+/* --h2-font-size: 5.6rem; */
 /* } */
 
 .title {
