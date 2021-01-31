@@ -4,6 +4,7 @@ const Spinner = require('../cli/Spinner');
 const getRemoteOriginUrl = require('../utils/getRemoteOriginUrl');
 const { start: webpackStart } = require('../webpack');
 const { warn } = require('../cli/log');
+const openBrowser = require('../utils/openBrowser');
 
 async function start(config) {
   process.env.NODE_ENV = 'development';
@@ -25,6 +26,7 @@ async function start(config) {
   await webpackStart(config);
 
   spinner.stop();
+  await openBrowser(`http://localhost:${config.internal.port}`);
 }
 
 module.exports = start;
