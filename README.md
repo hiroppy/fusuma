@@ -106,6 +106,8 @@ Fusuma offers the following themes also users can customize them because this is
 | :----------------------------------------: | :--------------------------------------: | :-------------------------------------: |
 | ![](./site/docs/assets/themes/webpack.png) | ![](./site/docs/assets/themes/babel.png) | ![](./site/docs/assets/themes/node.png) |
 
+[the sample slides for these themes](https://hiroppy.github.io/fusuma/themes/)
+
 ## Markdown and MDX
 
 Fusuma uses [remark](https://github.com/remarkjs/remark).
