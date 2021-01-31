@@ -17,6 +17,15 @@ const dirs = getDirs(base);
       console.log('=================', name, '=================');
 
       execSync(`cd ${join(base, name)} && npm run build`, { stdio: 'inherit' });
+    } else {
+      const basePath = join(base, name);
+      const items = getDirs(basePath);
+
+      for (const item of items) {
+        console.log('=================', item, '=================');
+
+        execSync(`cd ${join(basePath, item)} && npm run build`, { stdio: 'inherit' });
+      }
     }
   }
 })();

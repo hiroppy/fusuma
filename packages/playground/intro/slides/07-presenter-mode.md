@@ -55,4 +55,4 @@ Timeline and the recording voice are optional but these features will help you t
 
 The timeline can be time travel.
 
-![timeline](../../../../site/docs/assets/presenter-mode-timeline.png?w=60%)
+![timeline](../../../website/public/static/presenter-mode-timeline.png?w=60%)

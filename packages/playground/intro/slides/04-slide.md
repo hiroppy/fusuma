@@ -9,16 +9,19 @@ Fusuma provides some features using HTML comments.
 
 ## Splitting Slides
 
-```markdown
-## Hello
+<!-- description:
+Besides splitting by file, you can split slides using ---.
+-->
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/0?sidebar=false
+ -->
 
-This is the first slide.
+```md
+## Hello😃
 
 ---
 
-## ✌️
-
-This is the second slide.
+## Bye👋
 ```
 
 <br />
@@ -27,9 +30,17 @@ You can split slides within the same file by using `---` syntax.
 
 ---
 
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/1?sidebar=false
+ -->
+
+<!-- description:
+Add classes to the top level of a slide container.
+ -->
+
 ## Adding Classes
 
-```markdown
+```md
 <!-- classes: title, main -->
 
 ## Hello
@@ -51,24 +62,32 @@ These classes attach to the top level of a slide container.
 
 ---
 
-## Creating `div` tag with class name
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/2?sidebar=false
+ -->
+
+<!-- description:
+Create a div tag to cover Markdown and also it's possible to attach classes.
+ -->
+
+## Creating a div tag with class names
 
 This example uses grid classes(`.grid`, `.column`).
 
 ```md
 <!-- block-start: grid -->
 
-  <!-- block-start: column -->
+<!-- block-start: column -->
 
 left
 
-  <!-- block-end -->
+<!-- block-end -->
 
-  <!-- block-start: column -->
+<!-- block-start: column -->
 
 right
 
-  <!-- block-end -->
+<!-- block-end -->
 
 <!-- block-end -->
 ```
@@ -92,6 +111,14 @@ right
 <!-- block-end -->
 
 ---
+
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/3?sidebar=false
+ -->
+
+<!-- description:
+Fragments are used to reveal individual elements incrementally on a slide.
+-->
 
 ## Fragments
 
@@ -120,6 +147,12 @@ right
 ---
 
 <!-- classes: setting-background -->
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/4?sidebar=false
+ -->
+<!-- description:
+Set a background image(color) to a slide easily.
+-->
 
 ## Setting Background
 
@@ -136,10 +169,17 @@ Also, you can specify hexadecimal and names.
 
 ---
 
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/5
+ -->
+<!-- description:
+Makes explicit declarations to create a table of contents and it is also added to the sidebar's list. In addition, attaches section-title class to the slide automatically.
+-->
+
 ## Declaring Section Title
 
 ```md
-<!-- section-title: this is the second slide! -->
+<!-- section-title: introducing section-title -->
 
 This slide has the title of a section!  
 👈 see the sidebar!
@@ -160,6 +200,13 @@ In addition, it is also added to sidebar's list.
 
 ---
 
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/6
+ -->
+<!-- description:
+Insert titles written as section-title to ToC component automatically. This class name is .toc.
+-->
+
 ## Generating Agenda
 
 ```md
@@ -173,6 +220,13 @@ In addition, it is also added to sidebar's list.
 Converts the page number and title name specified by `section-title` into a ToC component.
 
 ---
+
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/7
+ -->
+<!-- description:
+Show notes during making your speech on the host of Presenter mode. You can change the mode to Presenter on the sidebar.
+ -->
 
 ## Adding Speaker Note
 
@@ -223,6 +277,13 @@ Displays notes for each slide in presenter mode.
 
 ---
 
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/8?sidebar=false
+ -->
+<!-- description:
+Execute JavaScript code when the button is clicked. If you use console.log, the context will be outputted.
+-->
+
 ## Executing JavaScript Code
 
 Executes JavaScript code when the button is clicked. If you use `console.log`, the context will be outputted.
@@ -245,10 +306,23 @@ console.log('hi!');
 
 ---
 
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/9?sidebar=false
+ -->
+<!-- description:
+Expand QR Code to a slide.
+-->
+
 ## Generating QR Code
 
 ```md
 <!-- qr: https://github.com/hiroppy/fusuma -->
+```
+
+```css
+:root {
+  --qr-code-image-size: 320px; /* the default size */
+}
 ```
 
 <!-- qr: https://github.com/hiroppy/fusuma -->
