@@ -4,11 +4,11 @@ title: Slide Syntax
 sidebar_label: Slide Syntax
 ---
 
-Fusuma has some own slide syntax like to create a table of contents automatically, etc. In addition, all syntaxes are written as a comment.
+Fusuma has some own slide syntax like to create a table of contents automatically, etc. In addition, all syntaxes are written as a comment. You can check [here](https://hiroppy.github.io/fusuma/intro/#slide-8).
 
 ## Adding Class Names
 
-Add class names to slide's root.
+Add class names to the root of the slide.
 
 ```md
 <!-- slide.md -->

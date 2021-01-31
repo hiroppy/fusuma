@@ -44,7 +44,7 @@ export const Sample = () => <p>Hello from jsx!!</p>;
 
 ## Dividing Slides
 
-The order of the slides is determined by the file name, but also you can split using `---` in the file.
+[The order of the slides is determined by the file name](/fusuma/docs/getting-started/preparation#slide-loading-order), but also you can split using `---` in the file.
 
 ```md
 <!-- 0-title.md -->

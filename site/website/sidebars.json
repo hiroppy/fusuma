@@ -1,17 +1,10 @@
 {
   "docs": {
-    "Getting Started": [
-      "getting-started/installation",
-      "getting-started/preparation",
-      "getting-started/creating-your-slide",
-      "getting-started/cli"
-    ],
+    "Getting Started": ["getting-started/preparation", "getting-started/creating-your-slide"],
     "Guides": [
       "guides/configuring-fusuma",
       "guides/slide-syntax",
-      "guides/slide-css",
       "guides/math-chart",
-      "guides/sidebar",
       "guides/audits"
     ],
     "Modes": ["modes/presenter", "modes/live"],

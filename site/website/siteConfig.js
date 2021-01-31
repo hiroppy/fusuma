@@ -35,9 +35,9 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'getting-started/installation', label: 'Docs' },
-    { href: 'https://www.patreon.com/hiroppy', label: 'Support' },
-    { href: 'https://github.com/hiroppy/fusuma', label: 'GitHub' }
+    { doc: 'getting-started/preparation', label: 'Docs' },
+    { href: 'https://github.com/sponsors/hiroppy', label: 'Sponsors' },
+    { href: 'https://github.com/hiroppy/fusuma', label: 'GitHub' },
   ],
 
   // If you have users set above, you add it here:
@@ -51,7 +51,7 @@ const siteConfig = {
   /* Colors for website */
   colors: {
     primaryColor: '#3498db',
-    secondaryColor: '#004887'
+    secondaryColor: '#004887',
   },
 
   /* Custom fonts for website */
@@ -69,11 +69,11 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Yuta Hiroto`,
+  copyright: `Copyright © ${new Date().getFullYear()} hiroppy`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
-    theme: 'default'
+    theme: 'default',
   },
 
   // Add custom scripts here that would be placed in <script> tags.
@@ -96,7 +96,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  repoUrl: 'https://github.com/hiroppy/fusuma'
+  repoUrl: 'https://github.com/hiroppy/fusuma',
 };
 
 module.exports = siteConfig;

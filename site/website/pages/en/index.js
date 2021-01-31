@@ -23,7 +23,9 @@ class HomeSplash extends React.Component {
     const SplashContainer = (props) => (
       <div className="homeContainer" style={{ background: heroBackgroundColor }}>
         <div className="homeSplashFade">
-          <div className="wrapper homeWrapper">{props.children}</div>
+          <div className="wrapper homeWrapper" style={{ height: '100vh' }}>
+            {props.children}
+          </div>
         </div>
       </div>
     );
@@ -48,10 +50,10 @@ class HomeSplash extends React.Component {
     );
 
     const ProjectTitle = () => (
-      <h2 className="projectTitle">
-        {siteConfig.title} a helper for creating slides.
-        <small>{siteConfig.tagline}</small>
-      </h2>
+      <React.Fragment>
+        <h2 className="projectTitle">A tool to create slides easily for you ✍</h2>
+        <br />
+      </React.Fragment>
     );
 
     const PromoSection = (props) => (
@@ -64,7 +66,7 @@ class HomeSplash extends React.Component {
 
     const Button = (props) => (
       <div className="pluginWrapper buttonWrapper">
-        <a className="button" href={props.href} target={props.target}>
+        <a className="button" href={props.href} target={props.target} style={{ width: '160px' }}>
           {props.children}
         </a>
       </div>
@@ -77,7 +79,7 @@ class HomeSplash extends React.Component {
           <ProjectTitle siteConfig={siteConfig} />
           <Demo />
           <PromoSection>
-            <Button href={docUrl('getting-started/installation.html')}>Getting Started</Button>
+            <Button href={docUrl('getting-started/preparation.html')}>Get Started</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -88,7 +90,10 @@ class HomeSplash extends React.Component {
 class Index extends React.Component {
   render() {
     const { config: siteConfig, language = '' } = this.props;
-    const { baseUrl } = siteConfig;
+    const { baseUrl, docsUrl } = siteConfig;
+    const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
+    const langPart = `${language ? `${language}/` : ''}`;
+    const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`;
 
     const Block = (props) => (
       <Container padding={['bottom', 'top']} id={props.id} background={props.background}>
@@ -105,40 +110,24 @@ class Index extends React.Component {
         {[
           {
             content:
-              'Create `slides` directory and create Markdown files into the directory, and your slides are generated.',
+              'Just run `npm i fusuma -D && npx fusuma init` and then some files created. After that run `npx fusuma start` to create slides.',
             image: `${baseUrl}img/top-intro.png`,
             imageAlign: 'right',
-            title: 'Quick Setup'
-          }
+            title: 'Quick Setup',
+          },
         ]}
       </Block>
     );
 
-    const Modes = () => (
-      <React.Fragment>
-        <Block background="dark" align="left">
-          {[
-            {
-              content: 'Provide features that can stream comments stream when giving a speech. ',
-              image: `${baseUrl}img/top-live.png`,
-              imageAlign: 'left',
-              title: 'Live Mode'
-            }
-          ]}
-        </Block>
-        <Block background="light" align="left">
-          {[
-            {
-              content:
-                'Provide Presenter Mode for giving a speech which is similar to Keynote and PowerPoint. ' +
-                'This mode has features that `Timer`, `Note`, `Actions Timeline` and `Recording voice`.',
-              image: `${baseUrl}img/top-presenter-host.png`,
-              imageAlign: 'right',
-              title: 'Presenter Mode'
-            }
-          ]}
-        </Block>
-      </React.Fragment>
+    const Button = (props) => (
+      <div
+        className="pluginWrapper buttonWrapper"
+        style={{ textAlign: 'center', marginTop: '32px' }}
+      >
+        <a className="button" href={props.href} target={props.target} style={{ width: '160px' }}>
+          {props.children}
+        </a>
+      </div>
     );
 
     const Features = () => (
@@ -146,55 +135,50 @@ class Index extends React.Component {
         <Block layout="fourColumn">
           {[
             {
-              content: 'No need to prepare anything.',
+              content: 'No need to prepare something.',
               image: `${baseUrl}img/top-zero-config.png`,
               imageAlign: 'top',
-              title: 'Zero Config'
+              title: 'Zero Config',
             },
             {
               content:
-                'Support development, build, exporting as PDF, deploying to GitHub Pages, Presenter Mode and Live Mode.',
+                'Development, Build, Exporting as PDF, Deploying to GitHub Pages, Presenter Mode, and Live Mode',
               image: `${baseUrl}img/top-cli.png`,
               imageAlign: 'top',
-              title: 'Powerful CLI'
+              title: 'Powerful CLI',
             },
             {
-              content: 'Create beautiful slides just by writing markdown or MDX.',
+              content: 'Creating beautiful slides just by coding markdown or MDX.',
               image: `${baseUrl}img/top-markdown.png`,
               imageAlign: 'top',
-              title: 'Powered by Markdown and MDX'
-            }
+              title: 'Powered by Markdown and MDX',
+            },
           ]}
         </Block>
         <Block layout="fourColumn">
           {[
             {
-              content: 'Support to practice your speech.',
+              content:
+                'Recording slides timeline and your voice to support practice for your speech.',
               image: `${baseUrl}img/top-recording.png`,
               imageAlign: 'top',
-              title: 'Recording your voice'
+              title: 'Recording your voice and actions',
             },
             {
               content: 'Drawing lines on the slides at real-time when giving a speech.',
               image: `${baseUrl}img/top-marker.png`,
               imageAlign: 'top',
-              title: 'Support Fluorescent Marker'
+              title: 'Supporting Fluorescent Marker',
             },
             {
-              content: 'Make SEO and OGP to 100%.',
+              content: 'Making SEO and OGP to 100%.',
               image: `${baseUrl}img/top-seo.png`,
               imageAlign: 'top',
-              title: 'SEO/OGP'
-            }
+              title: 'SEO/OGP',
+            },
           ]}
         </Block>
       </React.Fragment>
-    );
-
-    const FeatureCallout = () => (
-      <div className="productShowcaseSection paddingBottom" style={{ textAlign: 'center' }}>
-        <h2>Let's get started!</h2>
-      </div>
     );
 
     return (
@@ -203,8 +187,7 @@ class Index extends React.Component {
         <div className="mainContainer">
           <Features />
           <LearnHow />
-          <Modes />
-          <FeatureCallout />
+          <Button href={docUrl('getting-started/preparation.html')}>Get Started</Button>
         </div>
       </div>
     );
