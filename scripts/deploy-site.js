@@ -2,7 +2,7 @@
 
 const { execSync } = require('child_process');
 const { join } = require('path');
-const deploy = require('../packages/task-ghp/src');
+const deploy = require('../packages/fusuma/src/tasks/deploy');
 
 (async () => {
   execSync('cd site/website && yarn build', { stdio: 'inherit' });
@@ -30,5 +30,15 @@ const deploy = require('../packages/task-ghp/src');
     console.error(e);
   }
 
-  await deploy(join(process.cwd(), 'site/website/build/fusuma'), { add: true });
+  await deploy(
+    {
+      internal: {
+        basePath: join(process.cwd(), 'site/website/build/fusuma'),
+        outputDirPath: join(process.cwd(), 'site/website/build/fusuma'),
+      },
+    },
+    {
+      add: true,
+    }
+  );
 })();
