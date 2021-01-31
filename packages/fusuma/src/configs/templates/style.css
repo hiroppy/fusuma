@@ -25,19 +25,19 @@ a {
 .slide-background {
   /* set the default background */
   background: var(--background-color);
-
-  /* set the default font-color */
-  color: var(--base-color);
 }
 
 .slide-box {
   /* set the default align */
   text-align: center;
+
+  /* set the default font-color */
+  color: var(--base-color);
+}
+
+.title {
 }
 
 /* https://hiroppy.github.io/fusuma/docs/guides/slide-syntax#declaring-section-title */
 .section-title {
-}
-
-.title {
 }

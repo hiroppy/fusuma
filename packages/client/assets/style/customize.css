@@ -29,14 +29,8 @@
 .slide-internal-box {
   padding: 16px 0;
   text-align: inherit;
-  max-width: 100%;
+  max-width: 1280px;
   margin: auto;
   min-width: 320px;
-  width: 80%;
-}
-
-@media (min-width: 850px) {
-  .slide-internal-box {
-    margin: auto 24px;
-  }
+  width: 90%;
 }

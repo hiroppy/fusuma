@@ -25,18 +25,39 @@ a {
 .slide-background {
   /* set the default background */
   background: var(--background-color);
-
-  /* set the default font-color */
-  color: var(--base-color);
 }
 
 .slide-box {
   /* set the default align */
   text-align: center;
+
+  /* set the default font-color */
+  color: var(--base-color);
+}
+
+.column:last-child {
+  text-align: left;
 }
 
 /* --------- */
-/* @import '../../packages/client/assets/style/themes/webpack.css'; */
+.pop {
+  --title-color: #e53498;
+  --base-color: #1c1235;
+  --background-color: #e5e5e5;
+  --link-color: #6f4dca;
+
+  & h1 {
+    color: var(--title-color);
+  }
+  & h2 {
+    color: var(--title-color);
+  }
+
+  & a {
+    color: var(--link-color);
+  }
+}
+
 .webpack {
   --title-color: #8dd6f9;
   --base-color: #fff;
@@ -78,24 +99,6 @@ a {
   --base-color: #f2f2f2;
   --background-color: #2c3437;
   --link-color: #84ba64;
-
-  & h1 {
-    color: var(--title-color);
-  }
-  & h2 {
-    color: var(--title-color);
-  }
-
-  & a {
-    color: var(--link-color);
-  }
-}
-
-.pop {
-  --title-color: #3498db;
-  --base-color: #f5f5f5;
-  --background-color: #545454;
-  --link-color: #60d7a9;
 
   & h1 {
     color: var(--title-color);

@@ -12,6 +12,9 @@ slide:
     effect: # fade | cube | flip
   code:
     languages:
+      - yaml
       - javascript
     plugins: []
     theme: default
+build:
+  useCache: false
