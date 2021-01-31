@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.26](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.25...v2.0.0-alpha.26) (2021-01-31)
+
+
+### Bug Fixes
+
+* **build:** remove pagination for og-image ([ad171f8](https://github.com/hiroppy/fusuma/commit/ad171f8f48e4d7a0948aaf2f0b3c8431d59f9226))
+* **cli:** remove -f from start and add start-prod command ([8c1f016](https://github.com/hiroppy/fusuma/commit/8c1f01671e452732e8a7866b8018aedc90a8bc29))
+* **client:** add slide-background class to container ([e704af0](https://github.com/hiroppy/fusuma/commit/e704af0c3021a68510d0af2b5d63979176fac93e))
+
+
+### Features
+
+* **client:** remove hatena ([4f1a67f](https://github.com/hiroppy/fusuma/commit/4f1a67fd6b5220ba21da5163aab5473809c0ebc1))
+* **fusuma:** add open module ([06fd5d8](https://github.com/hiroppy/fusuma/commit/06fd5d84eb1b6b618f2903398bb2cddc747ee9b1))
+
+
+
+
+
 # [2.0.0-alpha.25](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.24...v2.0.0-alpha.25) (2021-01-30)
 
 

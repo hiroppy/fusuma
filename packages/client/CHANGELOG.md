@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.26](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.25...v2.0.0-alpha.26) (2021-01-31)
+
+
+### Bug Fixes
+
+* **client:** add slide-background class to container ([e704af0](https://github.com/hiroppy/fusuma/commit/e704af0c3021a68510d0af2b5d63979176fac93e))
+
+
+### Features
+
+* **client:** remove hatena ([4f1a67f](https://github.com/hiroppy/fusuma/commit/4f1a67fd6b5220ba21da5163aab5473809c0ebc1))
+
+
+
+
+
 # [2.0.0-alpha.25](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.24...v2.0.0-alpha.25) (2021-01-30)
 
 
