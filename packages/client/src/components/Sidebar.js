@@ -35,15 +35,6 @@ export const Sidebar = memo(
                 </a>
               );
             }
-            if (s === 'hatena') {
-              return (
-                <a
-                  key="hatena"
-                  href={`http://b.hatena.ne.jp/entry/${url}`}
-                  className="fa fa-hatena"
-                />
-              );
-            }
           })}
       </div>
       <div className="sidebar-control">

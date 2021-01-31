@@ -178,13 +178,6 @@ hr:after {
   color: #333;
 }
 
-pre {
-  background: #fff;
-  border: 1px solid rgba(0, 20, 80, 0.1);
-  -webkit-box-shadow: 0 8px 16px rgba(0, 20, 80, 0.04), 0 4px 16px rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 16px rgba(0, 20, 80, 0.04), 0 4px 16px rgba(0, 0, 0, 0.08);
-}
-
 nav ul {
   display: -webkit-box;
   display: -ms-flexbox;

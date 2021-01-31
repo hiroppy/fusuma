@@ -14,7 +14,6 @@ meta:
   siteName: slides.hiroppy.me
   sns:
     - twitter
-    - hatena
 slide:
   loop: true
   sidebar: true

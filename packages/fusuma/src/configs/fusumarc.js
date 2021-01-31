@@ -18,7 +18,7 @@ const config = {
     title: null,
     thumbnail: null,
     description: null,
-    sns: ['twitter'], // twitter | hatena
+    sns: ['twitter'], // twitter
   },
   slide: {
     loop: false,

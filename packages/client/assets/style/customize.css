@@ -6,12 +6,6 @@
   display: none;
 }
 
-.fa-hatena:before {
-  content: 'B!';
-  font-family: Verdana;
-  font-weight: bold;
-}
-
 .qr {
   width: 320px;
   height: 320px;
