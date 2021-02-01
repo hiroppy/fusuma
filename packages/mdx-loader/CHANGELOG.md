@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.27](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.26...v2.0.0-alpha.27) (2021-02-01)
+
+
+### Features
+
+* **mdx:** add background syntax ([535f2eb](https://github.com/hiroppy/fusuma/commit/535f2ebe43bb4eb14dab281ab992c6c251438438))
+
+
+
+
+
 # [2.0.0-alpha.25](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.24...v2.0.0-alpha.25) (2021-01-30)
 
 

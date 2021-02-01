@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.27](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.26...v2.0.0-alpha.27) (2021-02-01)
+
+
+### Bug Fixes
+
+* **fusuma:** use exec, not spawn ([483bba6](https://github.com/hiroppy/fusuma/commit/483bba69bc7428338d09c409b2fd9af5ba0ef483))
+
+
+### Features
+
+* **client:** add some options ([e21d70f](https://github.com/hiroppy/fusuma/commit/e21d70f67f8b9de02a80286ee7602759624a57da))
+* **client:** improve css system ([a9665f6](https://github.com/hiroppy/fusuma/commit/a9665f6deec1abb25ee554d279c82356c79e0004))
+* **fusuma:** update template ([9fd4f62](https://github.com/hiroppy/fusuma/commit/9fd4f621ee009c9cc5f564e80357fab2ec543514))
+
+
+
+
+
 # [2.0.0-alpha.26](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.25...v2.0.0-alpha.26) (2021-01-31)
 
 
