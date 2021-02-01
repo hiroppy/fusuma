@@ -155,13 +155,10 @@ The following properties are provided, but you can change the css directly if yo
   --h6-font-size: 2rem;
   --h6-font-weight: 600;
 
-  --code-align: auto;
   --code-font-size: 1.8rem;
 
   --qr-code-image-size: 320px;
 }
-
-@custom-media --viewport-pc (width <= 768px);
 ```
 
 </details>

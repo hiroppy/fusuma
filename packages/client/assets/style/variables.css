@@ -21,10 +21,9 @@
   --h6-font-size: 2rem;
   --h6-font-weight: 600;
 
-  --code-align: auto;
   --code-font-size: 1.8rem;
 
   --qr-code-image-size: 320px;
 }
 
-@custom-media --viewport-pc (width <= 768px);
+@custom-media --viewport-not-pc (width <= 768px);

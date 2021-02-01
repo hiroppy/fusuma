@@ -38,7 +38,7 @@ h6 {
   line-height: 3.2rem;
 }
 
-@media (--viewport-pc) {
+@media (--viewport-not-pc) {
   h1 {
     font-size: calc(var(--h1-font-size) - var(--typography-media-difference));
     font-weight: var(--h1-font-weight);
