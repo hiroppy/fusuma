@@ -159,6 +159,8 @@ The following properties are provided, but you can change the css directly if yo
 
   --qr-code-image-size: 320px;
 }
+
+@custom-media --viewport-pc (width <= 768px);
 ```
 
 </details>

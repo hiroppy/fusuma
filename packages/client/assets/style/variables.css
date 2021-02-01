@@ -25,3 +25,5 @@
 
   --qr-code-image-size: 320px;
 }
+
+@custom-media --viewport-pc (width <= 768px);
