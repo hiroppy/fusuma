@@ -1,6 +1,7 @@
 html {
   font-size: 62.5%;
   -webkit-print-color-adjust: exact;
+  background: var(--color-background);
 }
 
 body {

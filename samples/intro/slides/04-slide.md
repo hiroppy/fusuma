@@ -98,6 +98,21 @@ The class name of `<!-- block-start -->` isn't mandatory.
 
 ---
 
+## Set Background
+
+<!-- background: '../assets/background.jpeg' -->
+
+```md
+<!-- background: '../assets/background.jpeg' -->
+
+Also, you can specify `#` and names.
+
+<!-- background: #f5f5f5 -->
+<!-- background: green -->
+```
+
+---
+
 ## Declare Section Title
 
 ```md

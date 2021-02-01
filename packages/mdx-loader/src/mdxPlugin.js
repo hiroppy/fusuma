@@ -15,6 +15,7 @@ function mdxPlugin() {
     const slides = [];
     let slide = [];
     let props = {};
+    let background = 0; // TODO: hmm... combine into fusumaProps but need to transform to `require`
     let videoId = 1;
     let mermaidId = 1;
 
@@ -24,9 +25,10 @@ function mdxPlugin() {
 
       // move to a new slide
       if (type === 'thematicBreak') {
-        slides.push({ slide, props });
+        slides.push({ slide, props, background });
         slide = [];
         props = {};
+        background = 0; // why 0? null, undefined, '' are omitted at client side
         return;
       }
 
@@ -35,6 +37,10 @@ function mdxPlugin() {
         const prefix = p.split('\n')[0];
         const attr = rest.map((r) => r.trim());
 
+        if (prefix === 'background') {
+          background = attr[0].includes('/') ? `require(${attr[0]})` : `'${attr[0]}'`;
+          return;
+        }
         if (prefix === 'section-title') {
           props.sectionTitle = attr.join('');
           return;
@@ -138,15 +144,17 @@ function mdxPlugin() {
           .replace(/class=/g, 'className=');
       }
     });
+
+    // push last slide
+    slides.push({ slide, props, background });
+
     const res = {
       jsx: [],
       fusumaProps: [],
+      background: [],
     };
 
-    // push last slide
-    slides.push({ slide, props });
-
-    slides.forEach(({ slide, props }) => {
+    slides.forEach(({ slide, props, background }) => {
       const hash = mdxAstToMdxHast()({
         type: 'root',
         children: slide,
@@ -160,6 +168,7 @@ function mdxPlugin() {
       for (const pos of matches) {
         const [, className] = pos;
         const div = className ? `<div className="${className.trim()}">` : '<div>';
+
         mdxJSX = mdxJSX.replace(/{\s.+\/\* block-start:?(.*?) \*\/\s.+}/m, div);
       }
 
@@ -179,6 +188,7 @@ function mdxPlugin() {
 
         res.jsx.push(template);
         res.fusumaProps.push(fusumaProps);
+        res.background.push(background);
       }
     });
 
@@ -191,6 +201,7 @@ function mdxPlugin() {
         import React from 'react';
         import { mdx } from '@mdx-js/react';
         export const slides = [${res.jsx.join(',\n')}];
+        export const backgrounds = [${res.background.join(',\n')}];
         export const fusumaProps = [${res.fusumaProps.join(',\n')}];`,
     });
   };

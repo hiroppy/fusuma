@@ -180,4 +180,20 @@ console.log(a + b);
 
     expect(await transformToJS(src)).toMatchSnapshot();
   });
+
+  test('should add background to props', async () => {
+    const src = `
+<!-- background: red -->
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
+
+  test('should add background(url) to props', async () => {
+    const src = `
+<!-- background: '../../img.jpeg' -->
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
 });
