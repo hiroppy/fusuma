@@ -17,6 +17,7 @@
 }
 
 .grid > .column {
+  align-items: var(--base-align);
   display: flex;
   flex: auto;
   flex-direction: column;

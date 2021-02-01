@@ -3,20 +3,6 @@
 /* @import '../../packages/client/assets/style/themes/babel.css'; */
 /* @import '../../packages/client/assets/style/themes/node.css'; */
 
-h1,
-h2 {
-  color: var(--color-title);
-}
-
-a {
-  color: var(--color-link);
-}
-
-.slide-background {
-  /* set the default background */
-  background: var(--color-background);
-}
-
 .column:last-child {
   text-align: left;
 }
