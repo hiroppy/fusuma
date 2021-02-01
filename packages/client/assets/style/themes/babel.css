@@ -1,8 +1,8 @@
 /* https://babeljs.io/ */
 
 :root {
-  --title-color: #f5da55;
-  --base-color: #f1f1f1;
-  --background-color: #3b3c38;
-  --link-color: hsla(0, 0%, 100%, 0.8);
+  --color-title: #f5da55;
+  --color-base: #f1f1f1;
+  --color-background: #3b3c38;
+  --color-link: hsla(0, 0%, 100%, 0.8);
 }

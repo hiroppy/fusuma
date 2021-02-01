@@ -1,8 +1,8 @@
 /* https://webpack.js.org/ */
 
 :root {
-  --title-color: #8dd6f9;
-  --base-color: #fff;
-  --background-color: #2b3a42;
-  --link-color: #86a5ba;
+  --color-title: #8dd6f9;
+  --color-base: #fff;
+  --color-background: #2b3a42;
+  --color-link: #86a5ba;
 }

@@ -1,12 +1,12 @@
 :root {
-  --color-cyan: #7bb7fa;
-  --color-white: #f5f5f5;
-  --color-black: #373a47;
+  --sidebar-color-cyan: #7bb7fa;
+  --sidebar-color-white: #f5f5f5;
+  --sidebar-color-black: #373a47;
 }
 
 .btn-sidebar {
   bottom: 20px;
-  color: var(--color-white);
+  color: var(--sidebar-color-white);
   cursor: pointer;
   fill: #abc;
   font-size: 32px !important;
@@ -21,7 +21,7 @@
 }
 
 .bm-menu {
-  background: var(--color-black);
+  background: var(--sidebar-color-black);
   padding: 16px;
 }
 
@@ -48,7 +48,7 @@
 
 .sidebar-social {
   & > a {
-    color: var(--color-cyan);
+    color: var(--sidebar-color-cyan);
   }
 }
 
@@ -81,7 +81,7 @@
     }
 
     & > a {
-      color: var(--color-cyan);
+      color: var(--sidebar-color-cyan);
 
       &:not(:first-child) {
         margin-top: 4px;

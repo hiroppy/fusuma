@@ -1,8 +1,8 @@
 /* https://nodejs.org/ */
 
 :root {
-  --title-color: #99cc7d;
-  --base-color: #f2f2f2;
-  --background-color: #2c3437;
-  --link-color: #84ba64;
+  --color-title: #99cc7d;
+  --color-base: #f2f2f2;
+  --color-background: #2c3437;
+  --color-link: #84ba64;
 }

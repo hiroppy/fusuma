@@ -79,7 +79,7 @@ When `npx fusuma start` is executed, fusuma will create slides as follows then s
 | :----------------------------------------------: | :---------------------------------: |
 | ![](./site/docs/assets/procedure-screenshot.png) | ![](./site/docs/assets/sidebar.png) |
 
-👉 https://hiroppy.github.io/fusuma/plain/
+👉 [the demo](https://hiroppy.github.io/fusuma/plain/)
 
 [Getting Started/Preparation](https://hiroppy.github.io/fusuma/docs/getting-started/preparation)
 
@@ -95,17 +95,7 @@ Fusuma offers the following themes also users can customize them because this is
 | :----------------------------------------: | :--------------------------------------: | :-------------------------------------: |
 | ![](./site/docs/assets/themes/webpack.png) | ![](./site/docs/assets/themes/babel.png) | ![](./site/docs/assets/themes/node.png) |
 
-↑ [the sample slides for these themes](https://hiroppy.github.io/fusuma/themes/)
-
-```css
-/* the default theme */
-:root {
-  --title-color: #464646;
-  --base-color: #545454;
-  --background-color: #f5f5f5;
-  --link-color: #3498db;
-}
-```
+👉 [the demo](https://hiroppy.github.io/fusuma/themes/)
 
 ## Markdown and MDX
 
@@ -131,6 +121,47 @@ export const Sample = () => <p>Hello from jsx!!</p>;
 ```
 
 [Getting Started/Creating Your Slide](https://hiroppy.github.io/fusuma/docs/getting-started/creating-your-slide)
+
+## Customize styles
+
+The following properties are provided, but you can change the css directly if you want.
+
+<details>
+
+```css
+:root {
+  --base-font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
+  --base-font-size: 2.4rem;
+  --base-font-weight: 300;
+  --base-align: center;
+  --base-max-slide-size: 1280px;
+
+  --color-title: #464646;
+  --color-base: #545454;
+  --color-background: #f5f5f5;
+  --color-link: #3498db;
+
+  --h1-font-size: 5.6rem;
+  --h1-font-weight: 300;
+  --h2-font-size: 4rem;
+  --h2-font-weight: 300;
+  --h3-font-size: 3.6rem;
+  --h3-font-weight: 300;
+  --h4-font-size: 3rem;
+  --h4-font-weight: 300;
+  --h5-font-size: 2.4rem;
+  --h5-font-weight: 600;
+  --h6-font-size: 2rem;
+  --h6-font-weight: 600;
+
+  --code-align: auto;
+  --code-font-size: 1.8rem;
+
+  --qr-code-image-size: 320px;
+}
+```
+
+</details>
 
 ## Presenter Mode
 
