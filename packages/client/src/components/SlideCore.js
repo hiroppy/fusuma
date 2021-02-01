@@ -66,7 +66,7 @@ export const SlideCore = ({ slides, onChangeSlideIndex }) => (
     {slides.map(({ slide: Slide, fusumaProps: { classes, sectionTitle, background } }, i) => (
       <SwiperSlide
         key={i /* mdx-loaderでhash作成 */}
-        className={classnames('slide-box', classes, sectionTitle ? 'section-title' : undefined)}
+        className={classnames(classes, sectionTitle ? 'section-title' : undefined)}
         data-hash={`slide-${i + 1}`}
       >
         {background && <div className="slide-background-div" style={{ background }} />}

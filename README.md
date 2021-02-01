@@ -134,7 +134,8 @@ The following properties are provided, but you can change the css directly if yo
   --base-font-size: 2.4rem;
   --base-font-weight: 300;
   --base-align: center;
-  --base-max-slide-size: 1280px;
+  --base-max-width: 1280px;
+  --base-outer-margin: 24px;
 
   --color-title: #464646;
   --color-base: #545454;
