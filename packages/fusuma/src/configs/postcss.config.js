@@ -5,7 +5,6 @@ const common = {
     plugins: [
       require('postcss-import'),
       require('postcss-url'),
-      require('postcss-mixins'),
       require('postcss-preset-env')({
         stage: 0,
       }),
