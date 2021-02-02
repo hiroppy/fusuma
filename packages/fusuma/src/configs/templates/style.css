@@ -1,23 +1,27 @@
 /* themes */
-/* If nothing is loaded, the default theme will be applied. */
+/* When nothing is loaded, the default theme will be applied. */
+/* see https://github.com/hiroppy/fusuma#themes */
 /* @import '@fusuma/client/assets/style/themes/pop.css'; */
 /* @import '@fusuma/client/assets/style/themes/babel.css'; */
 /* @import '@fusuma/client/assets/style/themes/webpack.css'; */
 /* @import '@fusuma/client/assets/style/themes/node.css'; */
 
 /* global config */
-/* If you want to change the default values, please uncomment. */
-/* ↑ the current values are the default */
-/* TODO: add the url */
+/* When you want to change the default values, please uncomment. */
+/* see https://github.com/hiroppy/fusuma/blob/master/packages/client/assets/style/variables.css */
 /* :root { */
+/* --base-font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif; */
 /* --base-font-size: 2.4rem; */
 /* --base-font-weight: 300; */
 /* --base-align: center; */
 /* --base-max-width: 1280px; */
 /* --base-outer-margin: 24px; */
-/* --code-font-size: 1.8rem; */
+/* --base-image-width: 100%; */
+/* --base-image-border-radius: 0; */
 /* --h1-font-size: 5.6rem; */
-/* --h2-font-size: 5.6rem; */
+/* --h2-font-size: 4rem; */
+/* --h3-font-size: 3.6rem; */
+/* --code-font-size: 1.8rem; */
 /* } */
 
 .title {
