@@ -4,16 +4,16 @@
 
 <!-- block-start: column -->
 
-### from markdown
+### markdown
 
 ![js](../assets/js.jpg)
 
 <!-- block-end -->
 <!-- block-start: column -->
 
-### from html
+### html
 
-<img src="../assets/js.jpg" />
+<p><img src="../assets/js.jpg" /></p>
 
 <!-- block-end -->
 <!-- block-end -->

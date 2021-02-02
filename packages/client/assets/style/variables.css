@@ -7,6 +7,10 @@
   --base-align: center;
   --base-max-width: 1280px;
   --base-outer-margin: 24px;
+  --base-image-height: auto;
+  --base-image-width: 100%;
+  --base-image-border: none;
+  --base-image-border-radius: 0;
 
   --h1-font-size: 5.6rem;
   --h1-font-weight: 300;

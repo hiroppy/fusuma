@@ -67,6 +67,10 @@ li {
 
 img {
   margin: 0 auto;
+  border: var(--base-image-border);
+  border-radius: var(--base-image-border-radius);
+  height: var(--base-image-height);
+  width: var(--base-image-width);
 }
 
 ol {

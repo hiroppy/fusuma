@@ -136,6 +136,10 @@ The following properties are provided, but you can change the css directly if yo
   --base-align: center;
   --base-max-width: 1280px;
   --base-outer-margin: 24px;
+  --base-image-height: auto;
+  --base-image-width: 100%;
+  --base-image-border: none;
+  --base-image-border-radius: 0;
 
   --color-title: #464646;
   --color-base: #545454;

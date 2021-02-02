@@ -26,10 +26,6 @@ const itemCss = {
   color: '#3d3738',
 };
 
-const hrCss = {
-  margin: '4px 0',
-};
-
 const smallTitleCss = {
   borderBottom: '1px solid #ccc',
   marginBottom: '4px',
