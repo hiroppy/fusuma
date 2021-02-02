@@ -30,4 +30,5 @@
   --qr-code-image-size: 320px;
 }
 
+/* ths value will be refactored so don't use it */
 @custom-media --viewport-not-pc (width <= 768px);

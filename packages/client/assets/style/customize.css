@@ -51,3 +51,9 @@
   height: 100%;
   pointer-events: none;
 }
+
+/* @media (--viewport-not-pc) {
+  .slide-internal-box {
+    align-self: flex-start;
+  }
+} */
