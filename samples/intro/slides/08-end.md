@@ -8,6 +8,6 @@ Enjoy :smile:
 
 <br />
 
-- CLI: https://github.com/hiroppy/fusuma
-- Slides: https://github.com/hiroppy/slides
+- The official site: https://hiroppy.github.io/fusuma
+- The repository: https://github.com/hiroppy/fusuma
 - Twitter: https://twitter.com/about_hiroppy

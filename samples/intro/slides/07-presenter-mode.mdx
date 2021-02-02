@@ -8,22 +8,16 @@ Recommend using this feature if you give a speech.
 
 Fusuma is compatible with [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API),
 
-but you can also use this mode if you use browsers which don't have Presentation API
-
-because Fusuma can fallback to using localstorage.
-
-<br />
-
-**Since iframes are used internally, recommend that you use this feature in your localhost.**
+but you can also use this mode if you use browsers which don't have Presentation API because Fusuma can fallback to using localstorage. **Since iframes are used internally, recommend that you use this feature in your localhost.**
 
 ---
 
-## Setup
+## Procedure
 
-- 1. open Sidebar(click the bottom right button(三))
-- 2. click the PC monitor icon
-- 3. if you use Chrome, you can choose select cast device
-- 4. if you use a browser that does not support Presentation API, a new window will be created
+- 1. Open Sidebar(click the bottom right button(三))
+- 2. Click the PC monitor icon
+- 3. If you use Chrome/Firefox, you will be able to choose select a cast device
+- 4. If you use browser that don't support Presentation API, a new window will be created
 
 ---
 
@@ -36,34 +30,38 @@ import { HostScreen } from '../scripts/Presenter';
 ---
 
 <!-- note
-This is a speaker note!!
-This sentence can be seen when using Presenter Mode.
+Hi, this is a speaker note!!
 -->
 
 ## Speaker Note
 
 This page is written with the following Markdown.
+Let's try to run the presenter mode and check the note.
 
 ```md
 <!-- note
-This is a speaker note!!
-This sentence can be seen when using Presenter Mode.
+Hi, this is a speaker note!!
 -->
+
+## Speaker Note
+
+This page is written with the following Markdown.
+Let's try to run the presenter mode and check the note.
 ```
 
 ---
 
-## Slide Timeline
+## Slide Timeline and Recording Your Voice
 
-When you start the timer, the timeline will be recorded.
+Timeline and the recording voice are optional but these features will help you to practice making a speech.
+
+The timeline can be time travel.
 
 <img src="../../../site/docs/assets/presenter-mode-timeline.png" width="70%" alt="timeline" />
 
-By recording audio, you can also do time travel.
-
 ---
 
-## Drawing
+## Drawing (experimental)
 
 When you write characters on the host side, it will be reflected on the client side in real time.
 

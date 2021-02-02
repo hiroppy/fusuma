@@ -29,9 +29,9 @@ export function createSlidesProps(slides) {
         return null;
       }
       if (backgroundsArr[i].includes('/')) {
-        return `url('${backgroundsArr[i]}')`;
+        return { backgroundImage: `url('${backgroundsArr[i]}')` };
       }
-      return backgroundsArr[i];
+      return { backgroundColor: backgroundsArr[i] };
     })();
 
     return {

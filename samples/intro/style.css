@@ -26,7 +26,7 @@ a {
 
 .section-title {
   background: var(--gray-color);
-  color: var(--skin-color);
+  color: var(--white-color);
 
   & > h2 {
     color: var(--green-color);

@@ -2,9 +2,12 @@
 
 ## Syntaxes Provided by Fusuma
 
+Basically, you don't have to code js and css so you can focus on coding Markdown to create your slide.  
+Fusuma provides some features using HTML comments.
+
 ---
 
-## Split Slides
+## Splitting Slides
 
 ```markdown
 ## Hello
@@ -24,7 +27,7 @@ You can split slides within the same file by using `---` syntax.
 
 ---
 
-## Add Classes
+## Adding Classes
 
 ```markdown
 <!-- classes: title -->
@@ -44,7 +47,7 @@ These classes attach to the top level of a slide container.
 
 ---
 
-## Create blocks with class name
+## Creating `div` tag with class name
 
 This example uses grid classes(`.grid`, `.column`).
 
@@ -65,11 +68,7 @@ right
 
 <!-- block-end -->
 
-<!-- block-start -->
-
 The class name of `<!-- block-start -->` isn't mandatory.
-
-<!-- block-end -->
 ```
 
 👇
@@ -90,22 +89,18 @@ right
 
 <!-- block-end -->
 
-<!-- block-start -->
-
 The class name of `<!-- block-start -->` isn't mandatory.
-
-<!-- block-end -->
 
 ---
 
-## Set Background
+## Setting Background
 
 <!-- background: '../assets/background.jpeg' -->
 
 ```md
 <!-- background: '../assets/background.jpeg' -->
 
-Also, you can specify `#` and names.
+Also, you can specify hexadecimal and names.
 
 <!-- background: #f5f5f5 -->
 <!-- background: green -->
@@ -113,7 +108,7 @@ Also, you can specify `#` and names.
 
 ---
 
-## Declare Section Title
+## Declaring Section Title
 
 ```md
 <!-- section-title: this is the second slide! -->
@@ -136,7 +131,7 @@ In addition, it is also added to sidebar's list.
 
 ---
 
-## Generate Agenda
+## Generating Agenda
 
 ```md
 ## Contents
@@ -146,11 +141,11 @@ In addition, it is also added to sidebar's list.
 
 <br />
 
-Converts the page number and title name specified by `section-title` into a list component.
+Converts the page number and title name specified by `section-title` into a ToC component.
 
 ---
 
-## Add Speaker Note
+## Adding Speaker Note
 
 ```md
 <!-- note
@@ -165,13 +160,13 @@ This sentence can be seen when using Presenter Mode.
 
 <br />
 
-This is a note displayed on the host side in Presenter Mode.
+Displays notes for each slide in presenter mode.
 
 ---
 
-## Execute JavaScript Code
+## Executing JavaScript Code
 
-Executes JavaScript code when the button is clicked. If you use `console.log`, the text will be outputted.
+Executes JavaScript code when the button is clicked. If you use `console.log`, the context will be outputted.
 
 <!-- executable-code -->
 
@@ -191,7 +186,11 @@ console.log('hi!');
 
 ---
 
-## Capture Screen Contents
+## Capturing Screen Contents
+
+<!-- block-start: grid -->
+
+<!-- block-start: column -->
 
 ```md
 ## Capture Screen Contents
@@ -199,18 +198,13 @@ console.log('hi!');
 <!-- screen -->
 ```
 
-<br />
-
-Your screen can capture on the slide, but this feature can run only in Presenter Mode.
-You can choose **your local screen** or **application window** or **browser tab** as output.
-This feature will help **live coding** etc. See [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) for detail.
-
----
-
-## Output
-
-The following image is a screenshot of the output slide.👇
-
-<br />
-
 <img src="../../../site/docs/assets/slide-syntax-screen.png" className="capture-screen-image" />
+
+<!-- block-end -->
+
+<!-- block-start: column -->
+
+Your screen captures on the slide, but this feature can run only in Presenter Mode so this feature will help **live coding** etc. You can choose **your local screen** or **application window** or **browser tab** as output. See [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) for more details.
+
+<!-- block-end -->
+<!-- block-end -->

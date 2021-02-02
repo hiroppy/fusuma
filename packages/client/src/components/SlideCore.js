@@ -69,7 +69,7 @@ export const SlideCore = ({ slides, onChangeSlideIndex }) => (
         className={classnames(classes, sectionTitle ? 'section-title' : undefined)}
         data-hash={`slide-${i + 1}`}
       >
-        {background && <div className="slide-background-div" style={{ background }} />}
+        {background && <div className="slide-background-div" style={background} />}
         <div className="slide-internal-box">
           <Slide />
         </div>

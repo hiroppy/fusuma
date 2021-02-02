@@ -137,3 +137,10 @@ h2 {
 a {
   color: var(--color-link);
 }
+
+blockquote {
+  font-style: italic;
+  border-left: 3px solid var(--color-title);
+  padding-left: 12px;
+  text-align: left;
+}

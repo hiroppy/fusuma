@@ -1,7 +1,3 @@
 ## Contents
 
-<div>
-
 <!-- contents -->
-
-</div>

@@ -1,33 +1,32 @@
-<!-- section-title: What is fusuma? -->
+<!-- section-title: What is Fusuma? -->
 
-## What is Fusuma?
+## What's Fusuma?
 
----
-
-## Features
-
-#### _Fusuma is a helper which makes slides using Markdown easily._
+#### _Fusuma is a tool to create slides easily for you.✍ ️_
 
 <br />
 
-- supports development, production and deploy tasks
-  - you don't have to write webpack, Babel, Postcss settings, and etc...
-- supports OGP, SNS, FullScreen, and Presenter Mode
-- supports [Presentation API](https://developer.mozilla.org/en-US/docs/Web/API/Presentation_API)
-- supports custom themes
-- exports as PDF
+- Powerful CLI
+- Providing mdx and custom themes
+- Presenter mode
+- Exporting as PDF
+- Improving SEO/OGP
 
 <br />
 
-### just write in Markdown and execute with CLI😍
+### just code only Markdown and execute with CLI😍
 
 ---
 
 ## Procedure
 
+<!-- block-start: grid -->
+
+<!-- block-start: column -->
+
 ```shell
 $ npm i fusuma -D
-$ npx fusuma init # generate some files
+$ npx fusuma init
 $ tree -a
 .
 ├── .fusumarc.yml
@@ -45,9 +44,9 @@ $ npx fusuma pdf           # export as PDF
 $ npx fusuma live          # start live mode
 ```
 
----
+<!-- block-end -->
 
-## Tasks
+<!-- block-start: column -->
 
 ```json
 // package.json
@@ -63,24 +62,5 @@ $ npx fusuma live          # start live mode
 }
 ```
 
----
-
-## Syntax Highlighting
-
-Fusuma uses [prismjs](https://prismjs.com/).
-
-Please set languages to `.fusumarc.yml` or `.fusumarc.js` if you want to use these.
-
-<br />
-
-```yml
-# .fusumarc.yml
-
-slide:
-  code:
-    languages:
-      - javascript
-    plugins:
-      - line-numbers
-    theme: twilight
-```
+<!-- block-end -->
+<!-- block-end -->
