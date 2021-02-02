@@ -22,10 +22,10 @@ const config = {
   },
   slide: {
     loop: false,
-    vertical: false,
     targetBlank: true,
     ui: {
       sidebar: true,
+      vertical: false,
       pagination: null, // bullets | progressbar | fraction
       effect: null, // fade | cube | flip
     },

@@ -24,9 +24,8 @@ module.exports = (
   const { url, description, thumbnail, siteName, sns, title } = meta;
   const {
     targetBlank,
-    ui: { sidebar, pagination, effect },
+    ui: { sidebar, pagination, effect, vertical },
     loop,
-    vertical,
     code,
     chart,
     math,
@@ -143,13 +142,13 @@ module.exports = (
           REMOTE_ORIGIN_URL: JSON.stringify(remoteOrigin),
           TARGET_BLANK: JSON.stringify(targetBlank),
           LOOP: JSON.stringify(loop),
-          VERTICAL: JSON.stringify(vertical),
           IS_LIVE: JSON.stringify(server.isLive),
           SERVER_PORT: JSON.stringify(server.port),
           SEARCH_KEYWORD: JSON.stringify(server.keyword),
           CHART: JSON.stringify(chart),
           UI: {
             SIDEBAR: JSON.stringify(sidebar),
+            VERTICAL: JSON.stringify(vertical),
             PAGINATION: JSON.stringify(pagination),
             EFFECT: JSON.stringify(effect),
           },

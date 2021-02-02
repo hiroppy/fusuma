@@ -42,7 +42,7 @@ SwiperCore.use(swiperComponents);
 export const SlideCore = ({ slides, onChangeSlideIndex }) => (
   <Swiper
     effect={process.env.UI.EFFECT}
-    direction={process.env.VERTICAL === 'true' ? 'vertical' : 'horizontal'}
+    direction={process.env.UI.VERTICAL === 'true' ? 'vertical' : 'horizontal'}
     loop={/*TODO: respect to params to generate pdf */ process.env.LOOP}
     speed={350}
     allowTouchMove={/* TODO: only for mobile */ false}
