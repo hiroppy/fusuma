@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.28](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.27...v2.0.0-alpha.28) (2021-02-02)
+
+
+### Bug Fixes
+
+* **config:** move vertical into ui ([3ce167a](https://github.com/hiroppy/fusuma/commit/3ce167ad782a555c47a218c7b0aa8299e0394b4a))
+
+
+### Features
+
+* **client:** add custom css for images ([30d615c](https://github.com/hiroppy/fusuma/commit/30d615c781a34f488e010596d900fcaa08e5e937))
+* **client:** improve assistant ([8da3771](https://github.com/hiroppy/fusuma/commit/8da37718b28b5b7f3cd059055f1316c6083c4691))
+
+
+
+
+
 # [2.0.0-alpha.27](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.26...v2.0.0-alpha.27) (2021-02-01)
 
 

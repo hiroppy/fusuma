@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.28](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.27...v2.0.0-alpha.28) (2021-02-02)
+
+
+### Features
+
+* **mdx:** add parser and modify classes ([89205f2](https://github.com/hiroppy/fusuma/commit/89205f2c5c6bde1307f395f713fbb1e0c3d5420c))
+
+
+
+
+
 # [2.0.0-alpha.27](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.26...v2.0.0-alpha.27) (2021-02-01)
 
 
