@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fusuma-loader: commentParser should return aaa 1`] = `
+Object {
+  "prefix": "zzzzz",
+  "valueArr": Array [
+    "test1",
+    "test2",
+  ],
+  "valueStr": "test1
+test2",
+}
+`;
+
+exports[`fusuma-loader: commentParser should return key case 1`] = `
+Object {
+  "prefix": "key",
+  "valueArr": Array [],
+  "valueStr": "",
+}
+`;
+
+exports[`fusuma-loader: commentParser should return key case 2`] = `
+Object {
+  "prefix": "key",
+  "valueArr": Array [],
+  "valueStr": "",
+}
+`;
+
+exports[`fusuma-loader: commentParser should return key: foo,bar,baz case 1`] = `
+Object {
+  "prefix": "key",
+  "valueArr": Array [
+    "foo",
+    "bar",
+    "baz",
+  ],
+  "valueStr": "foo,bar,baz",
+}
+`;
+
+exports[`fusuma-loader: commentParser should return key: foo,bar,baz case 2`] = `
+Object {
+  "prefix": "key",
+  "valueArr": Array [
+    "foo",
+    "bar",
+    "baz",
+  ],
+  "valueStr": "foo,bar,baz",
+}
+`;
+
+exports[`fusuma-loader: commentParser should return key: value case 1`] = `
+Object {
+  "prefix": "key",
+  "valueArr": Array [
+    "value",
+  ],
+  "valueStr": "value",
+}
+`;
+
+exports[`fusuma-loader: commentParser should return key: value case 2`] = `
+Object {
+  "prefix": "key",
+  "valueArr": Array [
+    "value",
+  ],
+  "valueStr": "value",
+}
+`;

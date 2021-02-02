@@ -9,6 +9,7 @@ const transformChartToJSX = require('./transformers/transformChartToJSX');
 const transformMarkdownImageNodeToJSX = require('./transformers/transformMarkdownImageNodeToJSX');
 const transformExecJSCodeButtonToJSX = require('./transformers/transformExecJSCodeButtonToJSX');
 const escapeMap = require('./escapeMap');
+const commentParser = require('./commentParser');
 
 function mdxPlugin() {
   return (tree) => {
@@ -33,20 +34,18 @@ function mdxPlugin() {
       }
 
       if (type === 'comment') {
-        const [p, ...rest] = value.trim().split(':');
-        const prefix = p.split('\n')[0];
-        const attr = rest.map((r) => r.trim());
+        const { prefix, valueStr, valueArr } = commentParser(value);
 
         if (prefix === 'background') {
-          background = attr[0].includes('/') ? `require(${attr[0]})` : `'${attr[0]}'`;
+          background = valueStr.includes('/') ? `require(${valueStr})` : `'${valueStr}'`;
           return;
         }
         if (prefix === 'section-title') {
-          props.sectionTitle = attr.join('');
+          props.sectionTitle = valueStr;
           return;
         }
         if (prefix === 'classes') {
-          props.classes = attr.join(' ');
+          props.classes = valueArr;
           return;
         }
         if (prefix === 'contents') {
@@ -54,19 +53,13 @@ function mdxPlugin() {
           return;
         }
         if (prefix === 'note') {
-          const [, ...note] = p.split('\n');
-
-          props.note = note
-            .join('')
-            .replace(/[&<>"']/gim, (m) => escapeMap[m])
-            .replace(/\n/g, '\\n');
-
+          props.note = valueStr.replace(/[&<>"']/gim, (m) => escapeMap[m]).replace(/\n/g, '\\n');
           return;
         }
         if (prefix === 'qr') {
           slide.push({
             ...n,
-            ...transformQrToJSX(attr),
+            ...transformQrToJSX(valueArr),
           });
           return;
         }
