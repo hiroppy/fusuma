@@ -10,12 +10,13 @@ export const Base = memo(
 
     if (import.meta.webpackHot) {
       useEffect(() => {
+        if (process.env.CHART) {
+          mermaid?.reload();
+        }
+
         (async () => {
           const { Prism } = await import('../../setup/prism');
 
-          if (process.env.CHART) {
-            mermaid?.reload();
-          }
           Prism.highlightAll();
         })();
       }, [hash]);

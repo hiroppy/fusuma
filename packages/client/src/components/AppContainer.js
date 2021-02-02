@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdMenu } from 'react-icons/md';
 import { useCurrentIndex } from '../hooks/useCurrentIndex';
 import { useMode } from '../hooks/useMode';
@@ -6,6 +6,7 @@ import { useSlidesProps } from '../hooks/useSlides';
 import { useContentComponent } from '../hooks/useContentComponent';
 import { useSidebarComponent } from '../hooks/useSidebarComponent';
 import { useCommentsListComponent } from '../hooks/useCommentsListComponent';
+import { swipeEvent } from '../utils/swipeEvent';
 
 const slideWrapperClassName = '.swiper-container';
 
@@ -19,14 +20,31 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   const CommentsListComponent = useCommentsListComponent(mode);
 
   const goTo = (num) => {
-    document.querySelector(slideWrapperClassName)?.swiper?.slideTo(num);
-    setCurrentIndex(num);
+    let nextIndex = num;
+    const { swiper } = document.querySelector(slideWrapperClassName);
+    const { realIndex } = swiper;
+
+    if (num === '+') {
+      nextIndex = Math.min(realIndex + 1, slides.length);
+    } else if (num === '-') {
+      nextIndex = Math.max(realIndex - 1, 0);
+    }
+
+    swiper?.slideTo(nextIndex);
+    setCurrentIndex(nextIndex);
   };
 
   const runPresentationMode = (type) => {
     updateOpenSidebarStatus(false);
     setMode(type === 'start' ? 'host' : 'common');
   };
+
+  useEffect(() => {
+    // for mobiles and tablets
+    if (window.innerWidth <= 768) {
+      swipeEvent(goTo);
+    }
+  }, []);
 
   return (
     <>
