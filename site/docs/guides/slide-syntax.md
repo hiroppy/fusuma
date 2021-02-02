@@ -4,7 +4,7 @@ title: Slide Syntax
 sidebar_label: Slide Syntax
 ---
 
-Fusuma has some own slide syntax like to create a table of contents automatically, etc. In addition, all syntaxes are written as a comment. You can check [here](https://hiroppy.github.io/fusuma/intro/#slide-8).
+Fusuma has some own slide syntax like to create a table of contents automatically, etc. In addition, all syntaxes are written as a comment. You can check [here](https://hiroppy.github.io/fusuma/intro/#slide-5).
 
 ## Adding Class Names
 
@@ -12,7 +12,7 @@ Add class names to the root of the slide.
 
 ```md
 <!-- slide.md -->
-<!-- classes: title -->
+<!-- classes: title, main -->
 
 ## Hello
 ```
@@ -22,6 +22,9 @@ Add class names to the root of the slide.
 
 .title {
   color: #3498db;
+}
+.main {
+  background: #f5f5f5;
 }
 ```
 

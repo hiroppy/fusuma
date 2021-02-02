@@ -18,11 +18,11 @@ meta:
 slide:
   loop: true
   targetBlank: true
-  vertical: false
   ui:
     sidebar: true
-    pagination: bullets | progressbar | fraction
-    effect: fade | cube | flip
+    vertical: false
+    pagination: # bullets | progressbar | fraction
+    effect: #     fade | cube | flip
   code:
     languages:
       - javascript
