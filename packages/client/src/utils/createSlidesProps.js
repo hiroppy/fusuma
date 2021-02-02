@@ -34,6 +34,12 @@ export function createSlidesProps(slides) {
       return { backgroundColor: backgroundsArr[i] };
     })();
 
+    if (props.classes) {
+      props.classes = Array.isArray(props.classes)
+        ? props.classes[0].split(',') // for HMR
+        : props.classes.split(',');
+    }
+
     return {
       slide: props.contents ? ToC({ list: res.contentsList }) : slide,
       fusumaProps: {

@@ -23,6 +23,7 @@ const buttonCss = {
 
 const itemCss = {
   padding: '4px 8px',
+  color: '#3d3738',
 };
 
 const hrCss = {
@@ -35,7 +36,12 @@ const smallTitleCss = {
 };
 
 const A = ({ url, children }) => (
-  <a href={url} target="_blank" rel="noreferrer" style={{ color: '#7bb7fa' }}>
+  <a
+    href={url}
+    target="_blank"
+    rel="noreferrer"
+    style={{ color: '#2954a1', marginLeft: '16px', marginTop: '4px', display: 'block' }}
+  >
     {children}
   </a>
 );
@@ -54,8 +60,10 @@ const SmallTitle = ({ children }) => <p style={smallTitleCss}>{children}</p>;
 const Lines = ({ items }) => (
   <>
     {items.map(({ title, content, url }) => (
-      <div key={title} style={{ marginBottom: '6px' }}>
-        {title}:<A url={url}>{content}</A>
+      <div key={title} style={{ marginBottom: '8px' }}>
+        <span style={{ fontWeight: 500 }}>- {title}</span>
+        <br />
+        {content && <A url={url}>{content}</A>}
       </div>
     ))}
   </>
@@ -77,7 +85,7 @@ export const Assistant = () => (
                 {
                   title: 'Grid System',
                   content: <code>{`.gird > .column`}</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=15',
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-8',
                 },
                 {
                   title: 'Sidebar + Main',
@@ -90,42 +98,23 @@ export const Assistant = () => (
                   url: null,
                 },
                 {
-                  title: 'Position',
-                  content: <code>.content-left|right|top|bottom</code>,
-                  url: 'https://webslides.tv/demos/components#slide=14',
+                  title: 'Section Title',
+                  content: <code>{`.section-title`}</code>,
+                  url: null,
                 },
                 {
-                  title: 'Fullscreen',
-                  content: <code>.fullscreen</code>,
-                  url: 'https://webslides.tv/demos/components#slide=76',
+                  title: 'Slide Container',
+                  content: <code>{`.swiper-slide`}</code>,
+                  url: null,
+                },
+                {
+                  title: 'Slide Background',
+                  content: <code>{`.slide-background`}</code>,
                 },
               ]}
             />
-            <A url="https://webslides.tv/demos/components#slide=2">Others</A>
-            <hr style={hrCss} />
-            <SmallTitle>Fusuma</SmallTitle>
-            <code>{`<!-- section-title -->`}</code>:
-            <A url="https://hiroppy.github.io/fusuma/intro/#slide=16">
-              <code>.section-title</code>
-            </A>
-            <br />
-            Code:
-            <A url="https://hiroppy.github.io/fusuma/intro/#slide=15">
-              <code>{`pre > code[class*='language-']`}</code>
-            </A>
-            <br />
           </Item>
           <Item title="Slide Syntaxes">
-            <Lines
-              items={[
-                {
-                  title: 'Splitting Slides',
-                  content: <code>{`---`}</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=13',
-                },
-              ]}
-            />
-            <hr style={hrCss} />
             <SmallTitle>
               HTML Comments<code>{`<!-- -->`}</code>
             </SmallTitle>
@@ -133,51 +122,62 @@ export const Assistant = () => (
               items={[
                 {
                   title: 'Adding Classes',
-                  content: <code>{`classes: title`}</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=14',
+                  content: <code>{`classes: title, main`}</code>,
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-7',
+                },
+                {
+                  title: 'Changing Background',
+                  content: <code>{`background: '../assets/bg.png'`}</code>,
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-9',
                 },
                 {
                   title: 'Creating div Tag',
                   content: <code>{`block-start: ?className`}</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=15',
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-8',
                 },
                 {
                   title: 'Closing div Tag',
                   content: <code>block-end</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=15',
                 },
                 {
                   title: 'Adding Title to Sidebar',
-                  content: <code>{`section-title: title`}</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=16',
+                  content: <code>{`section-title: hey!`}</code>,
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-10',
                 },
                 {
                   title: 'Adding Agenda UI via section-title',
                   content: <code>contents</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=17',
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-11',
                 },
                 {
                   title: 'Adding Speaker Note',
                   content: <code>note hello~~~~</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=18',
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-12',
                 },
                 {
                   title: 'Executing JavaScript Code',
                   content: <code>executable-code</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=19',
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-13',
                 },
                 {
                   title: 'Capturing Screen Contents',
                   content: <code>screen</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=20',
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-14',
                 },
                 {
                   title: 'Generating QR Code',
                   content: <code>{`qr: https://~~~`}</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide=20', // TODO: fix
+                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-15',
                 },
               ]}
             />
+          </Item>
+          <Item title="Links">
+            <A url="https://github.com/hiroppy/fusuma/blob/master/packages/client/assets/style/variables.css">
+              - CSS Variables
+            </A>
+            <A url="https://hiroppy.github.io/fusuma">- Official Site</A>
+            <A url="https://github.com/hiroppy/fusuma">- Repository</A>
           </Item>
         </AccordionItemPanel>
       </AccordionItem>

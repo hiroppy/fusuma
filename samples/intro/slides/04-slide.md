@@ -30,7 +30,7 @@ You can split slides within the same file by using `---` syntax.
 ## Adding Classes
 
 ```markdown
-<!-- classes: title -->
+<!-- classes: title, main -->
 
 ## Hello
 ```
@@ -38,6 +38,10 @@ You can split slides within the same file by using `---` syntax.
 ```css
 .title {
   color: #3498db;
+}
+
+.main {
+  background: #f5f5f5;
 }
 ```
 
@@ -208,3 +212,13 @@ Your screen captures on the slide, but this feature can run only in Presenter Mo
 
 <!-- block-end -->
 <!-- block-end -->
+
+---
+
+## Generating QR Code
+
+```md
+<!-- qr: https://github.com/hiroppy/fusuma -->
+```
+
+<!-- qr: https://github.com/hiroppy/fusuma -->

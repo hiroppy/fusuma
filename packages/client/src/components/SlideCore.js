@@ -15,19 +15,18 @@ import { getSearchParams } from '../utils/getSearchParams';
 const swiperComponents = [A11y, Keyboard, HashNavigation];
 
 if (process.env.UI.PAGINATION) {
-  if (getSearchParams().has('pagination')) {
+  if (!getSearchParams().has('pagination')) {
+    swiperComponents.push(Pagination);
+    import('swiper/components/pagination/pagination.min.css');
+  } else {
     if (getSearchParams().get('pagination') !== 'false') {
       swiperComponents.push(Pagination);
       import('swiper/components/pagination/pagination.min.css');
     }
-  } else {
-    swiperComponents.push(Pagination);
-    import('swiper/components/pagination/pagination.min.css');
   }
 }
 
 if (process.env.UI.EFFECT === 'fade') {
-  console.log('zzzz');
   swiperComponents.push(EffectFade);
   import('swiper/components/effect-fade/effect-fade.min.css');
 } else if (process.env.UI.EFFECT === 'cube') {
@@ -61,7 +60,6 @@ export const SlideCore = ({ slides, onChangeSlideIndex }) => (
         : {}),
     }}
     onSlideChange={({ realIndex }) => onChangeSlideIndex(realIndex)}
-    className="slide-background"
   >
     {slides.map(({ slide: Slide, fusumaProps: { classes, sectionTitle, background } }, i) => (
       <SwiperSlide
@@ -69,7 +67,7 @@ export const SlideCore = ({ slides, onChangeSlideIndex }) => (
         className={classnames(classes, sectionTitle ? 'section-title' : undefined)}
         data-hash={`slide-${i + 1}`}
       >
-        {background && <div className="slide-background-div" style={background} />}
+        {background && <div className="slide-background" style={background} />}
         <div className="slide-internal-box">
           <Slide />
         </div>
