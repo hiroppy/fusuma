@@ -107,6 +107,14 @@ export const Assistant = () => (
                   title: 'Slide Background',
                   content: <code>{`.slide-background`}</code>,
                 },
+                {
+                  title: 'Align Left',
+                  content: <code>{`.left`}</code>,
+                },
+                {
+                  title: 'Align Right',
+                  content: <code>{`.right`}</code>,
+                },
               ]}
             />
           </Item>

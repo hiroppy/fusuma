@@ -3,10 +3,6 @@
 /* @import '../../packages/client/assets/style/themes/babel.css'; */
 /* @import '../../packages/client/assets/style/themes/node.css'; */
 
-.column:last-child {
-  text-align: left;
-}
-
 /* --------- */
 .pop {
   --color-title: #e53498;

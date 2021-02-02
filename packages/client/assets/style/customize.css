@@ -2,14 +2,12 @@
   display: flex;
 }
 
-.katex-html {
-  display: none;
+.left {
+  text-align: left;
 }
 
-.qr {
-  width: var(--qr-code-image-size);
-  height: var(--qr-code-image-size);
-  margin: 0 auto;
+.right {
+  text-align: right;
 }
 
 .swiper-container {
@@ -57,3 +55,13 @@
     align-self: flex-start;
   }
 } */
+
+.katex-html {
+  display: none;
+}
+
+.qr {
+  width: var(--qr-code-image-size);
+  height: var(--qr-code-image-size);
+  margin: 0 auto;
+}
