@@ -160,7 +160,8 @@ function mdxPlugin() {
 
       for (const pos of matches) {
         const [, className] = pos;
-        const div = className ? `<div className="${className.trim()}">` : '<div>';
+        const formattedClassName = commentParser(`0:${className}`).valueStr.replace(/,/g, ' ');
+        const div = className ? `<div className="${formattedClassName}">` : '<div>';
 
         mdxJSX = mdxJSX.replace(/{\s.+\/\* block-start:?(.*?) \*\/\s.+}/m, div);
       }

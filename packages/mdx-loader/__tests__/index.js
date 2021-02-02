@@ -159,6 +159,9 @@ second
 out
 <!-- block-start: foo -->
 in
+<!-- block-start:foo,bar, baz -->
+core
+<!-- block-end -->
 in
 <!-- block-end -->
 out

@@ -191,8 +191,11 @@ export const slides = [props => <>
     <div>
     <p>{\`out\`}</p>
     <div className=\\"foo\\">
-    <p>{\`in
-in\`}</p>
+    <p>{\`in\`}</p>
+    <div className=\\"foo bar baz\\">
+    <p>{\`core\`}</p>
+    </div>
+    <p>{\`in\`}</p>
     </div>
     <p>{\`out\`}</p>
     </div>
@@ -217,8 +220,15 @@ export default function MDXContent({
     {
       /* block-start: foo */
     }
-    <p>{\`in
-in\`}</p>
+    <p>{\`in\`}</p>
+    {
+      /* block-start:foo,bar, baz */
+    }
+    <p>{\`core\`}</p>
+    {
+      /* block-end */
+    }
+    <p>{\`in\`}</p>
     {
       /* block-end */
     }
