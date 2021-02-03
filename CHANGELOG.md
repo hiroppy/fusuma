@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.29](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.28...v2.0.0-alpha.29) (2021-02-03)
+
+
+### Bug Fixes
+
+* **client:** add flex-wrap for mobile ([5807da8](https://github.com/hiroppy/fusuma/commit/5807da80b9a988055be1eb121f33daec6f612fb2))
+* **client:** add swipe event for mobile ([c7386fb](https://github.com/hiroppy/fusuma/commit/c7386fbe7b53af419d6cd9dd6326c09318c603c5))
+
+
+### Features
+
+* **client:** add left and right classes ([3c58d47](https://github.com/hiroppy/fusuma/commit/3c58d472e216179838571e4bf705b5494cae7ca0))
+* **client:** update Assistant ([dc2dfc9](https://github.com/hiroppy/fusuma/commit/dc2dfc91e783b6456753a81e0547d35174346437))
+* **config:** update style.css ([75962f5](https://github.com/hiroppy/fusuma/commit/75962f5c0fbbe2b9b6f3e19b90b6478b29a8cf43))
+* **fusuma:** add a11y ([09ce8cd](https://github.com/hiroppy/fusuma/commit/09ce8cd40d3d797fa3501bf01a5996e502d45b36))
+* **mdx-loader:** add classes to block-start ([dcdb3bd](https://github.com/hiroppy/fusuma/commit/dcdb3bd30c7d8e53ec9afeed68555bb82723d15b))
+
+
+
+
+
 # [2.0.0-alpha.28](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.27...v2.0.0-alpha.28) (2021-02-02)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.29](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.28...v2.0.0-alpha.29) (2021-02-03)
+
+
+### Features
+
+* **config:** update style.css ([75962f5](https://github.com/hiroppy/fusuma/commit/75962f5c0fbbe2b9b6f3e19b90b6478b29a8cf43))
+* **fusuma:** add a11y ([09ce8cd](https://github.com/hiroppy/fusuma/commit/09ce8cd40d3d797fa3501bf01a5996e502d45b36))
+
+
+
+
+
 # [2.0.0-alpha.28](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.27...v2.0.0-alpha.28) (2021-02-02)
 
 

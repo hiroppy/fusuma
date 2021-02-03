@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.29](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.28...v2.0.0-alpha.29) (2021-02-03)
+
+
+### Features
+
+* **mdx-loader:** add classes to block-start ([dcdb3bd](https://github.com/hiroppy/fusuma/commit/dcdb3bd30c7d8e53ec9afeed68555bb82723d15b))
+
+
+
+
+
 # [2.0.0-alpha.28](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.27...v2.0.0-alpha.28) (2021-02-02)
 
 
