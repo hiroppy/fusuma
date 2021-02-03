@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10",
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
     "@fusuma/client": "^2.0.0-alpha.28",
     "@fusuma/mdx-loader": "^2.0.0-alpha.28",
     "@soda/friendly-errors-webpack-plugin": "^1.8.0",
