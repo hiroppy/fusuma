@@ -2,7 +2,7 @@
 
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const css = require('./css');
 
@@ -30,19 +30,7 @@ function prod() {
     ],
     optimization: {
       minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          parallel: true,
-        }),
-        new OptimizeCSSAssetsPlugin({
-          cssProcessorOptions: {
-            safe: true,
-            discardComments: {
-              removeAll: true,
-            },
-          },
-        }),
-      ],
+      minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
       splitChunks: {
         cacheGroups: {
           vendor: {
