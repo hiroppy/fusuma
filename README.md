@@ -20,6 +20,7 @@
 - Themes
 - Code syntax Highlight, MathJax, Diagrams, and Flowcharts
 - Full supporting for SEO and OGP
+- Checking a11y automatically
 - Customizable JavaScript and CSS
 - A sidebar having agenda and some features
 
@@ -31,6 +32,7 @@
 - Build Mode
   - Rendering to html and optimizing js,css,md
   - Generating an image of slides as `og:image` automatically
+  - Checking a11y
 - [Presentation Mode](#presenter-mode)
   - Speaker Note
   - Timer

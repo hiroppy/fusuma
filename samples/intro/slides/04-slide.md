@@ -202,7 +202,7 @@ console.log('hi!');
 <!-- screen -->
 ```
 
-<img src="../../../site/docs/assets/slide-syntax-screen.png" className="capture-screen-image" />
+<img src="../../../site/docs/assets/slide-syntax-screen.png" className="capture-screen-image" alt="capture" />
 
 <!-- block-end -->
 

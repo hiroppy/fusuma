@@ -23,13 +23,13 @@
 }
 
 .outer {
-  color: red;
+  color: #ccc;
 }
 
 .middle {
-  color: blue;
+  color: #25bace;
 }
 
 .inner {
-  color: green;
+  color: #3498db;
 }

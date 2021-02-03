@@ -13,7 +13,7 @@
 
 ### html
 
-<p><img src="../assets/js.jpg" /></p>
+<p><img src="../assets/js.jpg" alt="js" /></p>
 
 <!-- block-end -->
 <!-- block-end -->

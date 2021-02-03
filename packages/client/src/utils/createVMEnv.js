@@ -1,5 +1,5 @@
 export async function createVMEnv() {
-  await import('../../assets/style/executableCode.css');
+  import('../../assets/style/executableCode.css');
 
   const { createContext, runInNewContext } = await import('vm-browserify');
 
