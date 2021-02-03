@@ -28,11 +28,10 @@
 
 - Development Mode
   - Running with HMR
-  - Just code Markdown and CSS
+  - Just coding Markdown and sometimes CSS
 - Build Mode
   - Rendering to html and optimizing js,css,md
-  - Generating an image of slides as `og:image` automatically
-  - Checking a11y
+  - Generating an image of slides as `og:image` and checking a11y automatically
 - [Presentation Mode](#presenter-mode)
   - Speaker Note
   - Timer
