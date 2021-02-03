@@ -8,9 +8,6 @@ This repository uses a monorepo.
 Please see https://github.com/hiroppy/fusuma.
 
 ```sh
-$ npm i -D fusuma
-$ mkdir slides && echo '# Hello😄' > slides/title.md
-
 # --- executable tasks---
 $ npx fusuma init     # customize fusuma configuration
 $ npx fusuma start    # development
