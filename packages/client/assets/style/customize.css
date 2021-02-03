@@ -24,6 +24,7 @@
   text-align: var(--base-align);
   background: var(--color-background);
   position: relative;
+  flex-wrap: wrap;
 }
 
 .slide-internal-box {
