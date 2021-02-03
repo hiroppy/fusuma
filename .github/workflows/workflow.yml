@@ -25,6 +25,7 @@ jobs:
           cd samples/intro
           npm i
           npm run build
+          npm run pdf
         env:
           test: true
           CI: true
