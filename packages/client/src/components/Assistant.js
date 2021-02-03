@@ -115,6 +115,10 @@ export const Assistant = () => (
                   title: 'Align Right',
                   content: <code>{`.right`}</code>,
                 },
+                {
+                  title: 'Table of Contents',
+                  content: <code>{`.toc`}</code>,
+                },
               ]}
             />
           </Item>
@@ -149,12 +153,12 @@ export const Assistant = () => (
                   url: 'https://hiroppy.github.io/fusuma/intro/#slide-10',
                 },
                 {
-                  title: 'Adding Agenda UI via section-title',
+                  title: 'Adding ToC UI via section-title',
                   content: <code>contents</code>,
                   url: 'https://hiroppy.github.io/fusuma/intro/#slide-11',
                 },
                 {
-                  title: 'Adding Speaker Note',
+                  title: 'Adding Speaker Notes',
                   content: <code>note hello~~~~</code>,
                   url: 'https://hiroppy.github.io/fusuma/intro/#slide-12',
                 },
@@ -178,7 +182,7 @@ export const Assistant = () => (
           </Item>
           <Item title="Links">
             <A url="https://github.com/hiroppy/fusuma/blob/master/packages/client/assets/style/variables.css">
-              - CSS Variables
+              - List of CSS Variables
             </A>
             <A url="https://hiroppy.github.io/fusuma">- Official Site</A>
             <A url="https://github.com/hiroppy/fusuma">- Repository</A>
