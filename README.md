@@ -20,7 +20,7 @@
 - Themes
 - Code syntax Highlight, MathJax, Diagrams, and Flowcharts
 - Full supporting for SEO and OGP
-- Checking a11y automatically
+- Checking [a11y(Accessibility)](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility)
 - Customizable JavaScript and CSS
 - A sidebar having agenda and some features
 
