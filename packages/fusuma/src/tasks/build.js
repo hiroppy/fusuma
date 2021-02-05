@@ -45,10 +45,12 @@ async function build(config, isConsoleOutput = true) {
   spinner.stop();
 
   if (isConsoleOutput) {
-    outputBuildInfo(stats);
-  }
+    const logs = outputBuildInfo(stats);
+    const last = logs.splice(-1);
 
-  info('build', 'Completed!');
+    console.info(logs.join('\n'));
+    info('build', last);
+  }
 }
 
 module.exports = build;
