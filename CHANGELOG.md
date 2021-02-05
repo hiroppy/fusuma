@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/hiroppy/fusuma/compare/v2.0.0...v2.1.0) (2021-02-05)
+
+
+### Features
+
+* **fusuma:** improve build output logs ([cff37e7](https://github.com/hiroppy/fusuma/commit/cff37e78bfcdf62f5a0d883151e95527c6295636))
+
+
+
+
+
 # [2.0.0](https://github.com/hiroppy/fusuma/compare/v2.0.0-alpha.28...v2.0.0) (2021-02-03)
 
 
