@@ -19,8 +19,10 @@
 - Markdown and [MDX](https://github.com/mdx-js/mdx)
 - Themes
 - Code syntax Highlight, MathJax, Diagrams, and Flowcharts
-- Full supporting for SEO and OGP
-- Checking [a11y(Accessibility)](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility)
+- [Browser-friendly slides](#lighthouse)
+  - All results for lighthouses are perfect
+  - Full supporting for SEO and OGP
+  - Checking [a11y(Accessibility)](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility)
 - Customizable JavaScript and CSS
 - A sidebar having agenda and some features
 
@@ -200,6 +202,14 @@ Also, this mode can run with Presenter Mode.
 <img src="./site/docs/assets/live-mode-comments.png" width="600px">
 
 👉 [Modes/Live](https://hiroppy.github.io/fusuma/docs/modes/live)
+
+## Lighthouse
+
+> [Lighthouse](https://developers.google.com/web/tools/lighthouse) is an open-source, automated tool for improving the quality of web pages. You can run it against any web page, public or requiring authentication. It has audits for performance, accessibility, progressive web apps, SEO and more.
+
+Fusuma supports improving performance, SEO, and so on as default.
+
+<img src="./site/docs/assets/lighthouse.png" width="600px">
 
 ---
 
