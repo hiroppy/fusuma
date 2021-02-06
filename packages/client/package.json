@@ -31,7 +31,7 @@
     "react-modal": "^3.12.1",
     "react-pose": "^4.0.10",
     "screenfull": "^5.1.0",
-    "swiper": "^6.4.10",
+    "swiper": "^6.4.11",
     "vm-browserify": "^1.1.2"
   }
 }
