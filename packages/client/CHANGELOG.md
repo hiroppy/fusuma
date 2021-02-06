@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/hiroppy/fusuma/compare/v2.1.0...v2.2.0) (2021-02-06)
+
+
+### Bug Fixes
+
+* **client:** change twitter icon color ([7b2696c](https://github.com/hiroppy/fusuma/commit/7b2696ca751feeb2154b79f30c275127bdc03d12))
+
+
+### Features
+
+* **client:** add embed feature ([5071c0d](https://github.com/hiroppy/fusuma/commit/5071c0d78396dd720bf0a495a67d1ed62b7857c6))
+
+
+
+
+
 # [2.1.0](https://github.com/hiroppy/fusuma/compare/v2.0.0...v2.1.0) (2021-02-05)
 
 **Note:** Version bump only for package @fusuma/client
