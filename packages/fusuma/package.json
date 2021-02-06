@@ -62,7 +62,7 @@
     "preferred-search": "^1.0.0",
     "pretty-bytes": "^5.5.0",
     "prismjs": "^1.23.0",
-    "puppeteer": "^6.0.0",
+    "puppeteer": "^7.0.1",
     "react": "^17.0.1",
     "regenerator-runtime": "^0.13.7",
     "rmfr": "^2.0.0",
