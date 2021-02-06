@@ -3,33 +3,31 @@ import { slide as Menu } from 'react-burger-menu';
 import screenfull from 'screenfull';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay } from 'react-icons/md';
+import '../../assets/style/sidebar.css';
 
 const remoteOriginUrl = process.env.REMOTE_ORIGIN_URL;
 const url = process.env.URL || window.location.href.split('#')[0];
-const sns = process.env.SNS;
 const title = process.env.TITLE;
 const formatStr = (num) => `${num}`.padStart(2, '0');
+
+const A = ({ href, areaLabel, children }) => (
+  <a key="twitter" rel="noopener noreferrer" target="_blank" href={href} aria-label={areaLabel}>
+    {children}
+  </a>
+);
 
 export const Sidebar = memo(
   ({ isOpen, onStateChange, goTo, currentIndex, runPresentationMode, contents, totalSlides }) => (
     <Menu isOpen={isOpen} disableAutoFocus onStateChange={onStateChange} outerContainerId="root">
       <div className="sidebar-social">
-        {Array.isArray(sns) &&
-          sns.map((s) => {
-            if (s === 'twitter') {
-              return (
-                <a
-                  key="twitter"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href={`https://twitter.com/intent/tweet?text=${title} ${url}`}
-                  aria-label={`${title} ${url}`}
-                >
-                  <FaTwitter />
-                </a>
-              );
-            }
-          })}
+        {process.env.HAS_TWITTER && (
+          <A
+            href={`https://twitter.com/intent/tweet?text=${title} ${url}`}
+            areaLabel={`${title} ${url}`}
+          >
+            <FaTwitter style={{ color: '#f5f5f5' }} />
+          </A>
+        )}
       </div>
       <div className="sidebar-control">
         <MdFirstPage onClick={() => goTo(0)} className="sidebar-cursor" />
@@ -50,9 +48,9 @@ export const Sidebar = memo(
           className="sidebar-cursor"
         />
         {remoteOriginUrl && (
-          <a href={remoteOriginUrl} target="_blank" rel="noopener noreferrer" aria-label="github">
+          <A href={remoteOriginUrl} areaLabel="github">
             <FaGithub style={{ width: 20, height: 20, marginTop: 3, color: '#f5f5f5' }} />
-          </a>
+          </A>
         )}
       </div>
       {contents.length !== 0 && (

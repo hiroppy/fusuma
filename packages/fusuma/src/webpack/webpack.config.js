@@ -136,7 +136,7 @@ module.exports = (
           CSS_PATH: JSON.stringify(join(basePath, cssPath || '')),
           SLIDE_PATH: JSON.stringify(join(basePath, 'slides')),
           URL: JSON.stringify(url),
-          SNS: JSON.stringify(sns),
+          HAS_TWITTER: JSON.stringify(sns.includes('twitter')),
           TITLE: JSON.stringify(title || 'slide'),
           BASE_PATH: JSON.stringify(basePath),
           REMOTE_ORIGIN_URL: JSON.stringify(remoteOrigin),
