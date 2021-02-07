@@ -9,11 +9,6 @@ slide:
   ui:
     sidebar: true
     pagination: bullets
-  code:
-    languages:
-      - javascript
-      - cpp
-      - python
 extends:
   js: main.js
 build:

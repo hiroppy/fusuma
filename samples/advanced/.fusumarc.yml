@@ -3,8 +3,5 @@ meta:
 slide:
   chart: true
   math: true
-  code:
-    languages:
-      - yaml
 build:
   useCashe: false
