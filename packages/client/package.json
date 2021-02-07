@@ -27,7 +27,7 @@
     "react-canvas-draw": "^1.1.1",
     "react-dom": "^17.0.1",
     "react-event-timeline": "^1.6.3",
-    "react-icons": "^4.1.0",
+    "react-icons": "^4.2.0",
     "react-modal": "^3.12.1",
     "react-pose": "^4.0.10",
     "screenfull": "^5.1.0",
