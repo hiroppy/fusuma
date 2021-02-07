@@ -1,6 +1,6 @@
 'use strict';
 
-function babelrc({ languages, plugins = [], theme = 'default' } = {}) {
+function babelrc() {
   return {
     presets: [
       [
@@ -21,17 +21,6 @@ function babelrc({ languages, plugins = [], theme = 'default' } = {}) {
         {
           // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#manual-babel-setup
           // runtime: 'automatic',
-        },
-      ],
-    ],
-    plugins: [
-      [
-        'prismjs',
-        {
-          languages,
-          plugins,
-          theme,
-          css: true,
         },
       ],
     ],

@@ -29,9 +29,7 @@ const config = {
       pagination: null, // bullets | progressbar | fraction
       effect: null, // fade | cube | flip
     },
-    // https://github.com/mAAdhaTTah/babel-plugin-prismjs#configuring-the-plugin
     code: {
-      languages: ['javascript'],
       plugins: [],
       theme: 'default',
     },

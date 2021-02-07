@@ -1,0 +1,27 @@
+{
+  "name": "@fusuma/prism-loader",
+  "version": "1.0.0",
+  "description": "prism-loader for fusuma",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me/)",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/generator": "^7.12.15",
+    "@babel/parser": "^7.12.15",
+    "@babel/traverse": "^7.12.13",
+    "@babel/types": "^7.12.13",
+    "@mdx-js/mdx": "^1.6.22",
+    "globby": "^11.0.2",
+    "loader-utils": "^2.0.0",
+    "prismjs": "^1.23.0"
+  }
+}

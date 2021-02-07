@@ -79,12 +79,26 @@ module.exports = (
       rules: [
         {
           test: /\.m?js$/,
+          exclude: /setup\/prism.js/,
           use: [
             {
               loader: 'babel-loader',
               options: {
                 ...babelrc(code),
                 cwd: configsBasePath,
+              },
+            },
+          ],
+        },
+        {
+          test: /setup\/prism.js/,
+          use: [
+            {
+              loader: '@fusuma/prism-loader',
+              options: {
+                dirPath: join(basePath, 'slides'),
+                theme: code.theme,
+                plugins: code.plugins,
               },
             },
           ],

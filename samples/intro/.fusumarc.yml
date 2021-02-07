@@ -7,15 +7,6 @@ meta:
 slide:
   ui:
     pagination:
-  code:
-    languages:
-      - yaml
-      - json
-      - markdown
-      - javascript
-      - css
-      - jsx
-      - shell
 extends:
   js: index.js
 build:

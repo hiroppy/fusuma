@@ -11,9 +11,6 @@ slide:
     pagination: bullets # bullets | progressbar | fraction
     effect: # fade | cube | flip
   code:
-    languages:
-      - yaml
-      - javascript
     plugins: []
     theme: default
 build:

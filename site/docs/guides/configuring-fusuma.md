@@ -24,9 +24,6 @@ slide:
     pagination: # bullets | progressbar | fraction
     effect: #     fade | cube | flip
   code:
-    languages:
-      - javascript
-      - html
     plugins:
       - line-numbers
     theme: default
