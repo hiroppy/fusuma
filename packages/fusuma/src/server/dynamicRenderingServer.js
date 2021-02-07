@@ -52,11 +52,8 @@ async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThum
   if (issues.length) {
     spinner.stop();
 
-    // only filter code 'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Fail'
-    const filteredIssues = issues.filter(({ code, context }) => {
-      return !(
-        code === 'WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Fail' && context.includes('language-')
-      );
+    const filteredIssues = issues.filter(({ selector }) => {
+      return !selector.includes('> code');
     });
 
     if (filteredIssues.length) {

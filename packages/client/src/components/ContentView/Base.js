@@ -1,7 +1,7 @@
 import React, { useEffect, memo } from 'react';
 import { SlideCore } from '../SlideCore';
+import { Prism } from '../../setup/prism';
 import { createVMEnv } from '../../utils/createVMEnv';
-import { getSearchParams } from '../../utils/getSearchParams';
 import { useMermaid } from '../../hooks/useMermaid';
 
 export const Base = memo(
@@ -14,19 +14,11 @@ export const Base = memo(
           mermaid?.reload();
         }
 
-        (async () => {
-          const { Prism } = await import('../../setup/prism');
-
-          Prism.highlightAll();
-        })();
+        Prism.highlightAll();
       }, [hash]);
     }
 
     useEffect(() => {
-      // don't run when creating html
-      if (!getSearchParams().get('ssr')) {
-        import(/* webpackMode: "eager"  */ '../../setup/prism');
-      }
       if (slides.some(({ fusumaProps }) => !!fusumaProps.hasExecutableCode)) {
         createVMEnv();
       }
