@@ -68,7 +68,7 @@
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
     "webp-loader": "^0.6.0",
-    "webpack": "^5.21.1",
+    "webpack": "^5.21.2",
     "webpack-dev-middleware": "^4.1.0",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^5.7.3"
