@@ -5,8 +5,9 @@ const { existsSync } = require('fs');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const postcssConfig = require('../configs/postcss.config');
 const babelrc = require('../configs/babelrc');
-const css = require('./css');
 
 const srcDirPath = `${sep}src`;
 const configsEntryPoint = require.resolve('../configs');
@@ -63,7 +64,7 @@ module.exports = (
         // https://github.com/facebook/react/issues/13991
         // for dev
         react: process.env.FUSUMA_DEBUG
-          ? resolve(__dirname, '../../node_modules/react')
+          ? resolve(__dirname, '../../../client/node_modules/react')
           : require.resolve('react'),
       },
       modules: [
@@ -139,7 +140,23 @@ module.exports = (
             filename: '[hash][ext]',
           },
         },
-        css(),
+        {
+          test: /\.css$/,
+          use: [
+            type === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: false,
+                importLoaders: 2,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: postcssConfig(),
+            },
+          ],
+        },
       ],
     },
     plugins: [

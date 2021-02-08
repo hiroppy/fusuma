@@ -4,7 +4,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const css = require('./css');
 
 function prod() {
   return {
@@ -12,9 +11,6 @@ function prod() {
     output: {
       filename: '[name].[chunkhash].bundle.js',
       chunkFilename: '[name].[chunkhash].bundle.js',
-    },
-    module: {
-      rules: [css('prod')],
     },
     plugins: [
       new MiniCssExtractPlugin({
