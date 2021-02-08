@@ -63,7 +63,7 @@ module.exports = (
         // https://github.com/facebook/react/issues/13991
         // for dev
         react: process.env.FUSUMA_DEBUG
-          ? resolve(__dirname, '../../node_modules/react')
+          ? resolve(__dirname, '../../../client/node_modules/react')
           : require.resolve('react'),
       },
       modules: [

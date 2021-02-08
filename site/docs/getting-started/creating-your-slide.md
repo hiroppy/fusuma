@@ -37,8 +37,6 @@ import { Sample } from './scripts/Sample';
 ```js
 // Sample.js
 
-import React from 'react';
-
 export const Sample = () => <p>Hello from jsx!!</p>;
 ```
 

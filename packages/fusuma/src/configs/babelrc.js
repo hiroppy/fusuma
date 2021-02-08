@@ -18,7 +18,8 @@ function babelrc() {
         '@babel/preset-react',
         {
           // https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#manual-babel-setup
-          // runtime: 'automatic',
+          runtime: 'automatic',
+          // development: true,
         },
       ],
     ],

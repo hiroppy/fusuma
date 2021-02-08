@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { MdMenu } from 'react-icons/md';
 import { useCurrentIndex } from '../hooks/useCurrentIndex';
 import { useMode } from '../hooks/useMode';

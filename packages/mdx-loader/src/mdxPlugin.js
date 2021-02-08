@@ -192,7 +192,6 @@ function mdxPlugin() {
       type: 'export',
       default: false,
       value: `
-        import React from 'react';
         import { mdx } from '@mdx-js/react';
         export const slides = [${res.jsx.join(',\n')}];
         export const backgrounds = [${res.background.join(',\n')}];

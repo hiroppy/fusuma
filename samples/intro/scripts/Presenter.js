@@ -1,4 +1,3 @@
-import React from 'react';
 import hostScreenImage from '../../../site/docs/assets/presenter-host.png';
 
 export const HostScreen = () => (

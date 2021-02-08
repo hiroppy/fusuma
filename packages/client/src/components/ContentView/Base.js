@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from 'react';
+import { useEffect, memo } from 'react';
 import { SlideCore } from '../SlideCore';
 import { Prism } from '../../setup/prism';
 import { createVMEnv } from '../../utils/createVMEnv';

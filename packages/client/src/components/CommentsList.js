@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react';
+import { memo, useState, useEffect } from 'react';
 import posed from 'react-pose';
 import IntlRelativeFormat from 'intl-relativeformat';
 import '../../assets/style/commentsList.css';
