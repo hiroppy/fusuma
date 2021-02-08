@@ -6,10 +6,8 @@ function babelrc() {
       [
         '@babel/preset-env',
         {
-          // useBuiltIns: 'usage',
-          // corejs: 3,
           targets: {
-            browsers: 'last 1 version',
+            browsers: ['> 2%'],
           },
           modules: false,
           // we cannot use useBuiltIns option

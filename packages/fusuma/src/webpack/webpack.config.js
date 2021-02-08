@@ -84,7 +84,7 @@ module.exports = (
             {
               loader: 'babel-loader',
               options: {
-                ...babelrc(code),
+                ...babelrc(),
                 cwd: configsBasePath,
               },
             },
