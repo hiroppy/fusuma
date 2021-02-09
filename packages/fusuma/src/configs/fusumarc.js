@@ -16,6 +16,7 @@ const config = {
   meta: {
     url: null,
     title: null,
+    siteName: null,
     thumbnail: null,
     description: null,
     sns: ['twitter'], // twitter

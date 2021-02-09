@@ -8,8 +8,10 @@ slide:
   loop: false
   ui:
     sidebar: true
+    vertical: false
     pagination: # bullets | progressbar | fraction
     effect: # fade | cube | flip
   code:
+    # https://prismjs.com/
     plugins: []
-    theme: default
+    theme: default # coy | dark | funky | okaidia | solarizedlight | tomorrow | twilight
