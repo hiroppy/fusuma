@@ -43,8 +43,6 @@
   - Deploying to GitHub Pages
 - PDF Mode
   - Exporting slides as PDF
-- [Live Mode](#live-mode)
-  - Available to make a speech while streaming a comment on Twitter
 
 ## Demos
 
@@ -72,7 +70,6 @@ $ npx fusuma start-prod    # run server for bundle directory
 $ npx fusuma build         # build slides for production
 $ npx fusuma deploy        # deploy to github pages
 $ npx fusuma pdf           # export as PDF
-$ npx fusuma live          # start live mode
 ```
 
 When `npx fusuma start` is executed, fusuma will create slides like follows on `http://localhost:8080`. In addition, Fusuma adds a sidebar and when you set section titles, fusuma shows them on the sidebar.
@@ -191,17 +188,6 @@ You can see your Note for each slide and the next slide on the Host screen.
 |               recording Your Actions                |            drawing Lines            |
 | :-------------------------------------------------: | :---------------------------------: |
 | ![](./site/docs/assets/presenter-mode-timeline.png) | ![](./site/docs/assets/drawing.png) |
-
-## Live Mode
-
-Fusuma can fetch tweets from Twitter. In addition, fusuma have an api endpoint.  
-If you specify a `keyword` and `authentication keys`, fetching from twitter will be enabled.  
-Since comments can be sent to fusuma itself, you can use in the private case.  
-Also, this mode can run with Presenter Mode.
-
-<img src="./site/docs/assets/live-mode-comments.png" width="600px">
-
-👉 [Modes/Live](https://hiroppy.github.io/fusuma/docs/modes/live)
 
 ## Lighthouse
 

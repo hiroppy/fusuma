@@ -44,7 +44,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
   if (!presentationController) {
     const { origin, pathname } = new URL(window.location);
 
-    slideUrl = `${origin}${pathname}?sidebar=false&reference=false&isLive=false#slide-`;
+    slideUrl = `${origin}${pathname}?sidebar=false&reference=false#slide-`;
     presentationController = new PresentationController();
   }
 

@@ -7,7 +7,7 @@
       "guides/math-chart",
       "guides/audits"
     ],
-    "Modes": ["modes/presenter", "modes/live"],
+    "Modes": ["modes/presenter"],
     "Development": []
   }
 }

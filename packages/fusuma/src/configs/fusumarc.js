@@ -93,17 +93,6 @@ async function read(baseDir) {
   }
 }
 
-async function live(baseDir) {
-  const schema = `# need to create keys, see https://developer.twitter.com/
-CONSUMER_KEY=
-CONSUMER_SECRET=
-ACCESS_TOKEN_KEY=
-ACCESS_TOKEN_SECRET=
-`;
-
-  await writeFileAsync(join(baseDir, '.env'), schema);
-}
-
 function combine(userConfig, extendConfig = {}) {
   const overwriteMerge = (destinationArray, sourceArray) => sourceArray;
 
@@ -113,6 +102,5 @@ function combine(userConfig, extendConfig = {}) {
 module.exports = {
   init,
   read,
-  live,
   combine,
 };

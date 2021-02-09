@@ -2,6 +2,5 @@ node_modules
 dist
 coverage
 lerna-debug.log
-.env
 *.pdf
 .eslintcache
