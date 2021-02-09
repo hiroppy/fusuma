@@ -41,7 +41,6 @@ $ npx fusuma start-prod    # run server for bundle directory
 $ npx fusuma build         # build slides for production
 $ npx fusuma deploy        # deploy to github pages
 $ npx fusuma pdf           # export as PDF
-$ npx fusuma live          # start live mode
 ```
 
 <!-- block-end -->

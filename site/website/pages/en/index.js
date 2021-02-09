@@ -142,7 +142,7 @@ class Index extends React.Component {
             },
             {
               content:
-                'Development, Build, Exporting as PDF, Deploying to GitHub Pages, Presenter Mode, and Live Mode.',
+                'Development, Build, Exporting as PDF, Deploying to GitHub Pages, and Presenter Mode.',
               image: `${baseUrl}img/top-cli.png`,
               imageAlign: 'top',
               title: 'Powerful CLI',

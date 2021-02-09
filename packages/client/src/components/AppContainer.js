@@ -5,7 +5,6 @@ import { useMode } from '../hooks/useMode';
 import { useSlidesProps } from '../hooks/useSlides';
 import { useContentComponent } from '../hooks/useContentComponent';
 import { useSidebarComponent } from '../hooks/useSidebarComponent';
-import { useCommentsListComponent } from '../hooks/useCommentsListComponent';
 import { swipeEvent } from '../utils/swipeEvent';
 
 const slideWrapperClassName = '.swiper-container';
@@ -17,7 +16,6 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
   const [mode, setMode] = useMode();
   const ContentComponent = useContentComponent(mode);
   const SidebarComponent = useSidebarComponent(mode);
-  const CommentsListComponent = useCommentsListComponent(mode);
 
   const goTo = (num) => {
     let nextIndex = num;
@@ -73,7 +71,6 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
           onChangeSlideIndex={setCurrentIndex}
         />
       )}
-      {CommentsListComponent && <CommentsListComponent />}
     </>
   );
 };

@@ -173,7 +173,6 @@ module.exports = (
           REMOTE_ORIGIN_URL: JSON.stringify(remoteOrigin),
           TARGET_BLANK: JSON.stringify(targetBlank),
           LOOP: JSON.stringify(loop),
-          IS_LIVE: JSON.stringify(server.isLive),
           SERVER_PORT: JSON.stringify(server.port),
           SEARCH_KEYWORD: JSON.stringify(server.keyword),
           CHART: JSON.stringify(chart),

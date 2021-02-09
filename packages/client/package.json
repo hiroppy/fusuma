@@ -18,7 +18,6 @@
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
     "classnames": "^2.2.6",
-    "intl-relativeformat": "^6.4.3",
     "modern-normalize": "^1.0.0",
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
@@ -29,7 +28,6 @@
     "react-event-timeline": "^1.6.3",
     "react-icons": "^4.2.0",
     "react-modal": "^3.12.1",
-    "react-pose": "^4.0.10",
     "screenfull": "^5.1.0",
     "swiper": "^6.4.11",
     "vm-browserify": "^1.1.2"

@@ -13,13 +13,11 @@ async function cli() {
       .description('CLI for easily make slides with Markdown')
       .command('init', 'Create a configure file')
       .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
-      .option('-t [type]', 'Schema type', prog.STRING)
       .action((args, options) => {
         resolve({
           type: 'init',
           options: {
             basePath: options.b,
-            schema: options.t,
           },
         });
       })
@@ -96,23 +94,6 @@ async function cli() {
           },
         });
       });
-
-    // TODO: refactor
-    // .command('live', 'Start live mode')
-    // .option('-i <interval>', 'Set interval time(ms)', prog.INT, 6000)
-    // .option('-w <keyword>', 'Specified searched keyword')
-    // .option('-p <port>', 'Server port', prog.INT, 3000)
-    // .action((args, options, logger) => {
-    //   resolve({
-    //     type: 'live',
-    //     options: {
-    //       outputDir: options.d,
-    //       port: options.p,
-    //       keyword: options.w,
-    //       interval: options.i,
-    //     },
-    //   });
-    // });
 
     prog.parse(process.argv);
   });
