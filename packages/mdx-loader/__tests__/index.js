@@ -142,6 +142,8 @@ second
     const src = `
 ![Alt](/tmp/withAlt.jpg)
 ![](/tmp/withoutAlt.jpg)
+![](/tmp/style.jpg?h=100%)
+![](/tmp/style.jpg?dont=delete&h=100px&w=100%)
 `;
     expect(await transformToJS(src)).toMatchSnapshot();
   });

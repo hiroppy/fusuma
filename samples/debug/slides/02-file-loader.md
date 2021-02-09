@@ -6,14 +6,14 @@
 
 ### markdown
 
-![js](../assets/js.jpg)
+![js](../assets/js.jpg?w=150px&h=150px)
 
 <!-- block-end -->
 <!-- block-start: column -->
 
 ### html
 
-<p><img src="../assets/js.jpg" alt="js" /></p>
+<p><img src="../assets/js.jpg" alt="js" style={{width:150, height:150}} /></p>
 
 <!-- block-end -->
 <!-- block-end -->

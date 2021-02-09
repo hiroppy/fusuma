@@ -802,7 +802,14 @@ export const slides = [props => <>
     <p><img src={require('/tmp/withAlt.jpg')} {...{
       \\"alt\\": \\"Alt\\"
     }}></img>{\`
-\`}<img src={require('/tmp/withoutAlt.jpg')}></img></p>
+\`}<img src={require('/tmp/withoutAlt.jpg')}></img>{\`
+\`}<img src={require('/tmp/style.jpg')} style={{
+      \\"height\\": \\"100%\\"
+    }}></img>{\`
+\`}<img src={require('/tmp/style.jpg?dont=delete')} style={{
+      \\"height\\": \\"100px\\",
+      \\"width\\": \\"100%\\"
+    }}></img></p>
     
             </>];
 export const backgrounds = [0];
@@ -820,7 +827,14 @@ export default function MDXContent({
     <p><img src={require('/tmp/withAlt.jpg')} {...{
         \\"alt\\": \\"Alt\\"
       }}></img>{\`
-\`}<img src={require('/tmp/withoutAlt.jpg')}></img></p>
+\`}<img src={require('/tmp/withoutAlt.jpg')}></img>{\`
+\`}<img src={require('/tmp/style.jpg')} style={{
+        \\"height\\": \\"100%\\"
+      }}></img>{\`
+\`}<img src={require('/tmp/style.jpg?dont=delete')} style={{
+        \\"height\\": \\"100px\\",
+        \\"width\\": \\"100%\\"
+      }}></img></p>
 
     </MDXLayout>;
 }
