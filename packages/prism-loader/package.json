@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/prism-loader",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "prism-loader for fusuma",
   "main": "src/index.js",
   "files": [

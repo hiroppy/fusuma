@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/hiroppy/fusuma/compare/v2.3.1...v2.4.0) (2021-02-09)
+
+
+### Bug Fixes
+
+* **client:** enable prism when ssr ([fc72e09](https://github.com/hiroppy/fusuma/commit/fc72e09f70be83ac0fec68da56ab937dd7d549f2))
+* **client:** remove pre background ([975ec45](https://github.com/hiroppy/fusuma/commit/975ec457b82e8b28f1e3bba899d1bb74ecca4d06))
+* **fusuma:** change target browser versions ([db9e254](https://github.com/hiroppy/fusuma/commit/db9e25474f55462d65d333f86f4ea5f4a059122e))
+
+
+### Features
+
+* **init:** add github actions ([6a21405](https://github.com/hiroppy/fusuma/commit/6a2140568dfa46f33bdaed4b1bc732c05ecf0246))
+* **live:** remove live mode ([86574f7](https://github.com/hiroppy/fusuma/commit/86574f7cad33ca34687e143ad2876b1750162653))
+
+
+
+
+
 ## [2.3.1](https://github.com/hiroppy/fusuma/compare/v2.3.0...v2.3.1) (2021-02-07)
 
 **Note:** Version bump only for package fusuma
