@@ -61,7 +61,7 @@
     "postcss-url": "^10.1.1",
     "preferred-search": "^1.0.0",
     "pretty-bytes": "^5.5.0",
-    "puppeteer": "^7.0.3",
+    "puppeteer": "^7.0.4",
     "regenerator-runtime": "^0.13.7",
     "rmfr": "^2.0.0",
     "style-loader": "^2.0.0",
