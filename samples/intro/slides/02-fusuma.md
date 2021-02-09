@@ -30,6 +30,9 @@ $ npx fusuma init
 $ tree -a
 .
 ├── .fusumarc.yml
+├── .github
+│   └── workflows
+│       └── fusuma.yml
 ├── slides
 │   └── 0-title.md
 └── style.css

@@ -1,16 +1,11 @@
 'use strict';
 
-const { readFile, writeFile, mkdir } = require('fs');
+const { readFile, writeFile, mkdir } = require('fs').promises;
 const { join, extname } = require('path');
-const { promisify } = require('util');
 const yaml = require('js-yaml');
 const pSearch = require('preferred-search');
 const { all: mergeAll } = require('deepmerge');
 const { info } = require('../cli/log');
-
-const mkdirAsync = promisify(mkdir);
-const readFileAsync = promisify(readFile);
-const writeFileAsync = promisify(writeFile);
 
 const config = {
   meta: {
@@ -51,30 +46,27 @@ const config = {
 const configFileNames = ['.fusumarc.yml', '.fusumarc.js'];
 
 async function init(baseDir) {
-  {
-    const data = await readFileAsync(join(__dirname, 'templates', 'fusumarc.yml'), 'utf8');
+  const templatePath = join(__dirname, 'templates');
 
-    await writeFileAsync(join(baseDir, '.fusumarc.yml'), data);
-    info('init', 'Created .fusumarc.yml');
-  }
+  await Promise.all([
+    mkdir(join(baseDir, 'slides'), { recursive: true }),
+    mkdir(join(baseDir, '.github', 'workflows'), { recursive: true }),
+  ]);
 
-  // scaffold
-  await mkdirAsync(join(baseDir, 'slides'));
-  info('init', 'Created /slides');
+  await Promise.all([
+    writeFile(join(baseDir, '.fusumarc.yml'), await readFile(join(templatePath, 'fusumarc.yml'))),
+    writeFile(join(baseDir, 'style.css'), await readFile(join(templatePath, 'style.css'))),
+    writeFile(
+      join(baseDir, 'slides', '0-title.md'),
+      await readFile(join(templatePath, '0-title.md'))
+    ),
+    writeFile(
+      join(baseDir, '.github', 'workflows', 'fusuma.yml'),
+      await readFile(join(templatePath, 'fusuma.yml'))
+    ),
+  ]);
 
-  {
-    const data = await readFileAsync(join(__dirname, 'templates', '0-title.md'), 'utf8');
-
-    await writeFileAsync(join(baseDir, 'slides', '0-title.md'), data);
-    info('init', 'Created slides/0-title.md');
-  }
-
-  {
-    const data = await readFileAsync(join(__dirname, 'templates', 'style.css'), 'utf8');
-
-    await writeFileAsync(join(baseDir, 'style.css'), data);
-    info('init', 'Created style.css');
-  }
+  info('init', 'Added slides, style.css, fusumarc, and github actions');
 }
 
 async function read(baseDir) {
@@ -86,7 +78,7 @@ async function read(baseDir) {
 
   switch (extname(file)) {
     case '.yml':
-      return yaml.load(await readFileAsync(file, 'utf8'));
+      return yaml.load(await readFile(file, 'utf8'));
     case '.js':
       return require(file);
     default:

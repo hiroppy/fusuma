@@ -28,6 +28,9 @@
 
 ## Modes
 
+- Init Mode
+  - Creating a slide, style, configuration file
+  - Creating GitHub actions that deploy slides to gh-pages automatically
 - Development Mode
   - Running with HMR
   - Just coding Markdown and sometimes CSS
@@ -59,6 +62,9 @@ $ npx fusuma init
 $ tree -a
 .
 ├── .fusumarc.yml
+├── .github
+│   └── workflows
+│       └── fusuma.yml
 ├── slides
 │   └── 0-title.md
 └── style.css

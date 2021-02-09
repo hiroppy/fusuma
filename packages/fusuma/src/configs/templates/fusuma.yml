@@ -1,6 +1,4 @@
-name: 'Fusuma action'
-description: 'Deploy slides to github pages'
-author: 'hiroppy'
+name: 'Deploy slides to github pages'
 
 on:
   push:
@@ -15,7 +13,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
-      - run: npm ci && npx fusuma build
+      - run: npm ci
+      - run: npx fusuma build
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
