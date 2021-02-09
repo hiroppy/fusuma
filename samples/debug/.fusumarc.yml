@@ -9,6 +9,8 @@ slide:
   ui:
     sidebar: true
     pagination: bullets
+  code:
+    plugins: [line-highlight]
 extends:
   js: main.js
 build:
