@@ -19,3 +19,17 @@ middle
 outer
 
 <!-- block-end -->
+
+---
+
+<!-- fragments-start -->
+
+1
+
+2
+
+3
+
+4
+
+<!-- fragments-end -->
