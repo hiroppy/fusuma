@@ -5,7 +5,6 @@ import { useMode } from '../hooks/useMode';
 import { useSlidesProps } from '../hooks/useSlides';
 import { useContentComponent } from '../hooks/useContentComponent';
 import { useSidebarComponent } from '../hooks/useSidebarComponent';
-import { swipeEvent } from '../utils/swipeEvent';
 
 const slideWrapperClassName = '.swiper-container';
 
@@ -36,13 +35,6 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
     updateOpenSidebarStatus(false);
     setMode(type === 'start' ? 'host' : 'common');
   };
-
-  useEffect(() => {
-    // for mobiles and tablets
-    if (window.innerWidth <= 768) {
-      swipeEvent(goTo);
-    }
-  }, []);
 
   return (
     <>
