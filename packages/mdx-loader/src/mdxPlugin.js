@@ -29,7 +29,7 @@ function mdxPlugin() {
         slides.push({ slide, props, background });
         slide = [];
         props = {};
-        background = 0; // why 0? null, undefined, '' are omitted at client side
+        background = 0; // why 0? because null, undefined, '' are omitted at client side
         return;
       }
 
@@ -66,6 +66,22 @@ function mdxPlugin() {
         }
         if (prefix === 'contents') {
           props.contents = true;
+          return;
+        }
+        if (prefix === 'fragments-start') {
+          slide.push({
+            ...n,
+            type: 'jsx',
+            value: '<Client.Fragments>',
+          });
+          return;
+        }
+        if (prefix === 'fragments-end') {
+          slide.push({
+            ...n,
+            type: 'jsx',
+            value: '</ Client.Fragments>',
+          });
           return;
         }
         if (prefix === 'note') {
@@ -196,6 +212,9 @@ function mdxPlugin() {
       value: `
         import React from 'react';
         import { mdx } from '@mdx-js/react';
+        // don't import as named to avoid using makeShortcode by mdx
+        import * as Client from '@fusuma/client';
+
         export const slides = [${res.jsx.join(',\n')}];
         export const backgrounds = [${res.background.join(',\n')}];
         export const fusumaProps = [${res.fusumaProps.join(',\n')}];`,
