@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
-    "@babel/core": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
+    "@babel/core": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
     "@babel/preset-react": "^7.12.13",
     "@fusuma/client": "^2.4.0",
     "@fusuma/mdx-loader": "^2.4.0",
