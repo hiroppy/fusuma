@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdMenu } from 'react-icons/md';
 import { useCurrentIndex } from '../hooks/useCurrentIndex';
 import { useMode } from '../hooks/useMode';
@@ -35,6 +35,19 @@ export const AppContainer = ({ slides: originalSlides, hash }) => {
     updateOpenSidebarStatus(false);
     setMode(type === 'start' ? 'host' : 'common');
   };
+
+  useEffect(() => {
+    // TODO: add params for presentation iframe
+    if (mode === 'common') {
+      document.addEventListener('keydown', ({ key }) => {
+        if (key === 'ArrowRight') {
+          goTo('+');
+        } else if (key === 'ArrowLeft') {
+          goTo('-');
+        }
+      });
+    }
+  }, []);
 
   return (
     <>

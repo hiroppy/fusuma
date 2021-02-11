@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import SwiperCore, {
   A11y,
   Pagination,
-  Keyboard,
   HashNavigation,
   EffectCube,
   EffectFlip,
@@ -12,7 +11,7 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { getSearchParams } from '../utils/getSearchParams';
 
-const swiperComponents = [A11y, Keyboard, HashNavigation];
+const swiperComponents = [A11y, HashNavigation];
 
 if (process.env.UI.PAGINATION) {
   if (!getSearchParams().has('pagination')) {
@@ -47,7 +46,6 @@ export const SlideCore = ({ slides, onChangeSlideIndex }) => (
     speed={350}
     allowTouchMove={window.innerWidth <= 768}
     slidesPerView={1}
-    keyboard={{ enabled: true }}
     hashNavigation={{
       watchState: true,
     }}
