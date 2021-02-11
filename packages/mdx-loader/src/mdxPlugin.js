@@ -48,6 +48,22 @@ function mdxPlugin() {
           props.classes = valueArr;
           return;
         }
+        if (prefix === 'block-start') {
+          slide.push({
+            ...n,
+            type: 'jsx',
+            value: valueArr.length === 0 ? '<div>' : `<div className="${valueArr.join(' ')}">`,
+          });
+          return;
+        }
+        if (prefix === 'block-end') {
+          slide.push({
+            ...n,
+            type: 'jsx',
+            value: '</div>',
+          });
+          return;
+        }
         if (prefix === 'contents') {
           props.contents = true;
           return;
@@ -105,12 +121,11 @@ function mdxPlugin() {
           } else {
             const line = lines[1];
             const hash = mdxAstToMdxHast()(n);
-            const value = toJSX(hash).replace('<pre>', `<pre data-line="${line}">`);
 
             slide.push({
               ...n,
               type: 'jsx',
-              value,
+              value: toJSX(hash).replace('<pre>', `<pre data-line="${line}">`),
             });
           }
           return;
@@ -152,20 +167,7 @@ function mdxPlugin() {
         type: 'root',
         children: slide,
       });
-      let mdxJSX = toJSX(hash)
-        // TODO: refactor
-        .replace(/{\s.+\/\* block-end \*\/\s.+}/gm, '</div>');
-
-      const matches = mdxJSX.matchAll(/{\s.+\/\* block-start:?(.*?) \*\/\s.+}/gm);
-
-      for (const pos of matches) {
-        const [, className] = pos;
-        const formattedClassName = commentParser(`0:${className}`).valueStr.replace(/,/g, ' ');
-        const div = className ? `<div className="${formattedClassName}">` : '<div>';
-
-        mdxJSX = mdxJSX.replace(/{\s.+\/\* block-start:?(.*?) \*\/\s.+}/m, div);
-      }
-
+      const mdxJSX = toJSX(hash);
       // jsx variable is established, so we don't use babel/parser
       const jsx = mdxJSX.match(/<MDXLayout.+?>([\s\S]*)<\/MDXLayout>/m);
 

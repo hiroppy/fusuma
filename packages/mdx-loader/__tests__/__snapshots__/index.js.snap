@@ -189,15 +189,15 @@ import { mdx } from '@mdx-js/react';
 export const slides = [props => <>
               
     <div>
-    <p>{\`out\`}</p>
-    <div className=\\"foo\\">
-    <p>{\`in\`}</p>
-    <div className=\\"foo bar baz\\">
-    <p>{\`core\`}</p>
-    </div>
-    <p>{\`in\`}</p>
-    </div>
-    <p>{\`out\`}</p>
+      <p>{\`out\`}</p>
+      <div className=\\"foo\\">
+        <p>{\`in\`}</p>
+        <div className=\\"foo bar baz\\">
+          <p>{\`core\`}</p>
+        </div>
+        <p>{\`in\`}</p>
+      </div>
+      <p>{\`out\`}</p>
     </div>
     
             </>];
