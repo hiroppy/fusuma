@@ -3,27 +3,31 @@
  */
 
 import React, { memo, useEffect } from 'react';
-import { Base } from './Base';
 import { Receiver as PresentationReceiver } from '../../presentationMode/Receiver';
+import { SlideCore } from '../SlideCore';
 // import { Canvas } from '../Canvas';
 import { WebRTC } from '../../utils/webrtc';
+import { useSlides, updateCurrentIndex } from '../../context/slides';
 import '../../../assets/style/view.css';
 
-const slideWrapperClassName = '.swiper-container';
 let presentationReceiver = null;
 let webrtc = null;
 let currentVideoTag = null;
 let currentLayer = null;
 
-const View = memo(({ slides, hash }) => {
+const View = memo(() => {
+  const {
+    state: { currentIndex },
+    dispatch,
+  } = useSlides();
+
   // need to declare here
   if (!presentationReceiver) {
     window.onload = () => {
-      const tag = document.querySelector(slideWrapperClassName);
       presentationReceiver = new PresentationReceiver();
 
       presentationReceiver.onChangePage((pageNum) => {
-        tag?.swiper?.slideTo(pageNum);
+        dispatch(updateCurrentIndex(pageNum));
         // stop capturing
         if (webrtc && currentVideoTag) {
           stopCapturing(currentVideoTag);
@@ -101,10 +105,16 @@ const View = memo(({ slides, hash }) => {
     // changeCanvasState(getValue().status === 'start');
   }, []);
 
+  useEffect(() => {
+    // TODO: swiper should be gone to context
+    const { swiper } = document.querySelector('.swiper-container');
+    swiper?.slideTo(currentIndex);
+  }, [currentIndex]);
+
   return (
     <div className="fusuma-presenter-view">
       {/* {usedCanvas && <Canvas disabled hideGrid />} */}
-      <Base slides={slides} hash={hash} showIndex={false} />
+      <SlideCore />
     </div>
   );
 });

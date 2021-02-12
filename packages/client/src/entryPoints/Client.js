@@ -1,22 +1,29 @@
 import React from 'react';
 import { render, hydrate } from 'react-dom';
+import { SlidesProvider } from '../context/slides';
 import { fetchSlides } from '../utils/fetchSlides';
 import { setTargetBlank } from '../utils/targetBlank';
 import { AppContainer } from '../components/AppContainer';
 import { getSearchParams } from '../utils/getSearchParams';
+import { createSlidesProps } from '../utils/createSlidesProps';
 import '../setup/css';
 
-function createBody(slides = [], hash = 0) {
+function createBody(slides = []) {
   const renderMethod = import.meta.webpackHot ? render : hydrate;
 
-  renderMethod(<AppContainer slides={slides} hash={hash} />, document.getElementById('root'));
+  renderMethod(
+    <SlidesProvider>
+      <AppContainer slidesProps={createSlidesProps(slides)} />
+    </SlidesProvider>,
+    document.getElementById('root')
+  );
 }
 
 let slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
 
 import.meta.webpackHot?.accept(slidesInfo.id, () => {
   slidesInfo = fetchSlides(require.context(process.env.SLIDE_PATH, true, /\.mdx?$/));
-  createBody(slidesInfo.slides, Math.random());
+  createBody(slidesInfo.slides);
 });
 
 createBody(slidesInfo.slides);
