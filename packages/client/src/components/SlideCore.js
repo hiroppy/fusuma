@@ -72,7 +72,7 @@ export const SlideCore = () => {
       direction={process.env.UI.VERTICAL === 'true' ? 'vertical' : 'horizontal'}
       loop={/*TODO: respect to params to generate pdf */ process.env.LOOP}
       speed={350}
-      allowTouchMove={window.innerWidth <= 768}
+      allowTouchMove={false}
       slidesPerView={1}
       hashNavigation={{
         watchState: true,

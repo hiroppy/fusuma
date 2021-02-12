@@ -12,7 +12,8 @@ export function createSlidesProps(slides) {
     slidesArr.push(...slides);
     propsArr.push(...fusumaProps);
     backgroundsArr.push(...backgrounds);
-    fragmentStepsArr.push(...fragmentSteps);
+    fragmentStepsArr.push(fragmentSteps);
+    slidesTimeline.push(...fragmentSteps);
   });
 
   propsArr.reduce((acc, { sectionTitle }, i) => {
@@ -42,11 +43,6 @@ export function createSlidesProps(slides) {
         ? props.classes[0].split(',') // for HMR
         : props.classes.split(',');
     }
-    if (fragmentStepsArr[i] === 0) {
-      slidesTimeline.push(0);
-    } else {
-      slidesTimeline.push(Array.from({ length: fragmentStepsArr[i] }, (_, i) => i + 1));
-    }
 
     return {
       slide: props.contents ? ToC({ list: res.contentsList }) : slide,
@@ -54,11 +50,10 @@ export function createSlidesProps(slides) {
         ...props,
         background,
       },
-      fragmentSteps: fragmentStepsArr[i],
     };
   });
 
-  res.slidesTimeline = slidesTimeline;
+  res.timeline = slidesTimeline;
 
   return res;
 }

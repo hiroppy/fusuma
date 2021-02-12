@@ -8,6 +8,7 @@ const initialState = {
   currentIndex: getCurrentIndexFromUrl(),
   slides: [],
   contentsList: [],
+  timeline: [],
 };
 
 const SlidesContext = createContext(initialState);
