@@ -21,6 +21,17 @@ function mdxPlugin() {
     let mermaidId = 1;
     let isFragmentArea = false;
     let fragmentSteps = 0;
+    let fragmentId = 0;
+    let hasFragments = false;
+
+    function formatSlidesTimeline(fragmentSteps, fragmentId) {
+      if (fragmentSteps === 0) {
+        return [0];
+      } else {
+        hasFragments = true;
+        return [[...Array(fragmentSteps)].fill(fragmentId)];
+      }
+    }
 
     // TODO: refactor using visit
     tree.children.forEach((n, i) => {
@@ -28,11 +39,17 @@ function mdxPlugin() {
 
       // move to a new slide
       if (type === 'thematicBreak') {
-        slides.push({ slide, props, background, fragmentSteps });
+        slides.push({
+          slide,
+          props,
+          background,
+          fragmentSteps: formatSlidesTimeline(fragmentSteps, fragmentId),
+        });
         slide = [];
         props = {};
         background = 0; // why 0? because null, undefined, '' are omitted at client side
         fragmentSteps = 0;
+        fragmentId = 0;
         isFragmentArea = false;
         return;
       }
@@ -69,10 +86,11 @@ function mdxPlugin() {
           return;
         }
         if (prefix === 'fragments-start') {
+          fragmentId = Math.random();
           slide.push({
             ...n,
             type: 'jsx',
-            value: '<Client.Fragments>',
+            value: `<Client.Fragments id={${fragmentId}}>`,
           });
           isFragmentArea = true;
           return;
@@ -180,7 +198,12 @@ function mdxPlugin() {
     });
 
     // push last slide
-    slides.push({ slide, props, background, fragmentSteps });
+    slides.push({
+      slide,
+      props,
+      background,
+      fragmentSteps: formatSlidesTimeline(fragmentSteps, fragmentId),
+    });
 
     const res = {
       jsx: [],
@@ -212,7 +235,7 @@ function mdxPlugin() {
         res.jsx.push(template);
         res.fusumaProps.push(fusumaProps);
         res.background.push(background);
-        res.fragmentSteps.push(fragmentSteps);
+        res.fragmentSteps.push(...fragmentSteps);
       }
     });
 
@@ -224,12 +247,17 @@ function mdxPlugin() {
       value: `
         import React from 'react';
         import { mdx } from '@mdx-js/react';
+        ${
+          hasFragments &&
+          `
         // don't import as named to avoid using makeShortcode by mdx
         import * as Client from '@fusuma/client';
+        `
+        }
 
         export const slides = [${res.jsx.join(',\n')}];
         export const backgrounds = [${res.background.join(',\n')}];
-        export const fragmentSteps = [${res.fragmentSteps.join(',\n')}];
+        export const fragmentSteps = ${JSON.stringify(res.fragmentSteps)};
         export const fusumaProps = [${res.fusumaProps.join(',\n')}];`,
     });
   };

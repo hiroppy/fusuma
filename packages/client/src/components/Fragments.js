@@ -1,35 +1,57 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useSlides } from '../context/slides';
+import { useSlides, updateCurrentIndex } from '../context/slides';
 
-export const Fragments = ({ children }) => {
+export const Fragments = ({ children, id }) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const ref = useRef(currentStep);
+  const [steps, setSteps] = useState(0);
+  const currentStepRef = useRef(currentStep);
+  const stepsRef = useRef(steps);
   const {
-    state: { currentIndex },
+    state: { currentIndex, timeline },
+    dispatch,
   } = useSlides();
 
   const listener = (e) => {
     e.stopPropagation();
-    e.preventDefault();
-    console.log('aaaa');
+
     if (e.key === 'ArrowRight') {
-      setCurrentStep(ref.current + 1);
+      const next = currentStepRef.current + 1;
+
+      if (next > stepsRef.current) {
+        dispatch(updateCurrentIndex('+'));
+        document.removeEventListener('keydown', listener);
+      } else {
+        setCurrentStep(next);
+      }
+    } else if (e.key === 'ArrowLeft') {
+      const next = currentStepRef.current - 1;
+
+      if (next < 0) {
+        dispatch(updateCurrentIndex('-'));
+        document.removeEventListener('keydown', listener);
+      } else {
+        setCurrentStep(next);
+      }
     }
   };
 
   useEffect(() => {
-    ref.current = currentStep;
-  }, [currentStep]);
+    currentStepRef.current = currentStep;
+    stepsRef.current = steps;
+  }, [currentStep, steps]);
 
   useEffect(() => {
-    // document.addEventListener('keydown', listener, {
-    //   capture: false,
-    //   passive: false,
-    // });
-    // return () => {
-    //   document.removeEventListener('keydown', listener);
-    // };
-  }, []);
+    const current = timeline[currentIndex];
+
+    if (Array.isArray(current) && current[0] === id) {
+      setSteps(current.length);
+
+      document.addEventListener('keydown', listener, {
+        capture: false,
+        passive: false,
+      });
+    }
+  }, [currentIndex]);
 
   return React.Children.map(children, (child, i) =>
     React.cloneElement(child, { style: { visibility: i >= currentStep ? 'hidden' : 'initial' } })
