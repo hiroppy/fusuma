@@ -19,6 +19,8 @@ function mdxPlugin() {
     let background = 0; // TODO: hmm... combine into fusumaProps but need to transform to `require`
     let videoId = 1;
     let mermaidId = 1;
+    let isFragmentArea = false;
+    let fragmentSteps = 0;
 
     // TODO: refactor using visit
     tree.children.forEach((n, i) => {
@@ -26,10 +28,12 @@ function mdxPlugin() {
 
       // move to a new slide
       if (type === 'thematicBreak') {
-        slides.push({ slide, props, background });
+        slides.push({ slide, props, background, fragmentSteps });
         slide = [];
         props = {};
         background = 0; // why 0? because null, undefined, '' are omitted at client side
+        fragmentSteps = 0;
+        isFragmentArea = false;
         return;
       }
 
@@ -64,16 +68,13 @@ function mdxPlugin() {
           });
           return;
         }
-        if (prefix === 'contents') {
-          props.contents = true;
-          return;
-        }
         if (prefix === 'fragments-start') {
           slide.push({
             ...n,
             type: 'jsx',
             value: '<Client.Fragments>',
           });
+          isFragmentArea = true;
           return;
         }
         if (prefix === 'fragments-end') {
@@ -82,6 +83,11 @@ function mdxPlugin() {
             type: 'jsx',
             value: '</ Client.Fragments>',
           });
+          isFragmentArea = false;
+          return;
+        }
+        if (prefix === 'contents') {
+          props.contents = true;
           return;
         }
         if (prefix === 'note') {
@@ -117,6 +123,10 @@ function mdxPlugin() {
 
           return;
         }
+      }
+
+      if (isFragmentArea) {
+        fragmentSteps++;
       }
 
       if (type === 'code') {
@@ -170,15 +180,16 @@ function mdxPlugin() {
     });
 
     // push last slide
-    slides.push({ slide, props, background });
+    slides.push({ slide, props, background, fragmentSteps });
 
     const res = {
       jsx: [],
       fusumaProps: [],
       background: [],
+      fragmentSteps: [],
     };
 
-    slides.forEach(({ slide, props, background }) => {
+    slides.forEach(({ slide, props, background, fragmentSteps }) => {
       const hash = mdxAstToMdxHast()({
         type: 'root',
         children: slide,
@@ -201,6 +212,7 @@ function mdxPlugin() {
         res.jsx.push(template);
         res.fusumaProps.push(fusumaProps);
         res.background.push(background);
+        res.fragmentSteps.push(fragmentSteps);
       }
     });
 
@@ -217,6 +229,7 @@ function mdxPlugin() {
 
         export const slides = [${res.jsx.join(',\n')}];
         export const backgrounds = [${res.background.join(',\n')}];
+        export const fragmentSteps = [${res.fragmentSteps.join(',\n')}];
         export const fusumaProps = [${res.fusumaProps.join(',\n')}];`,
     });
   };

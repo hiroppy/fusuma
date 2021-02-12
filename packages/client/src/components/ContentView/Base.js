@@ -1,33 +1,34 @@
-import React, { useEffect, memo } from 'react';
+import React, { memo, useEffect } from 'react';
+import { useSlides, updateCurrentIndex } from '../../context/slides';
 import { SlideCore } from '../SlideCore';
-import { Prism } from '../../setup/prism';
-import { createVMEnv } from '../../utils/createVMEnv';
-import { useMermaid } from '../../hooks/useMermaid';
 
-export const Base = memo(
-  ({ slides, onChangeSlideIndex, hash }) => {
-    const [mermaid] = useMermaid();
+export const Base = memo(() => {
+  const {
+    state: { currentIndex },
+    dispatch,
+  } = useSlides();
 
-    if (import.meta.webpackHot) {
-      useEffect(() => {
-        if (process.env.CHART) {
-          mermaid?.reload();
-        }
+  useEffect(() => {
+    // TODO: swiper should be gone to context
+    const { swiper } = document.querySelector('.swiper-container');
+    swiper?.slideTo(currentIndex);
+  }, [currentIndex]);
 
-        Prism.highlightAll();
-      }, [hash]);
-    }
-
-    useEffect(() => {
-      if (slides.some(({ fusumaProps }) => !!fusumaProps.hasExecutableCode)) {
-        createVMEnv();
+  useEffect(() => {
+    const keyboardListener = ({ key }) => {
+      if (key === 'ArrowRight') {
+        dispatch(updateCurrentIndex('+'));
+      } else if (key === 'ArrowLeft') {
+        dispatch(updateCurrentIndex('-'));
       }
-      if (process.env.CHART) {
-        mermaid?.reload();
-      }
-    }, []);
+    };
 
-    return <SlideCore slides={slides} onChangeSlideIndex={onChangeSlideIndex} />;
-  },
-  (prevProps, nextProps) => prevProps.hash === nextProps.hash
-);
+    document.addEventListener('keydown', keyboardListener);
+
+    return () => {
+      document.removeEventListener('keydown', keyboardListener);
+    };
+  }, []);
+
+  return <SlideCore />;
+});

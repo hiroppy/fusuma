@@ -1,16 +1,18 @@
-import { useMemo } from 'react';
 import { ToC } from '../components/ToC';
 
-function createSlidesProps(slides) {
+export function createSlidesProps(slides) {
   const slidesArr = [];
   const propsArr = [];
   const backgroundsArr = [];
+  const fragmentStepsArr = [];
+  const slidesTimeline = [];
   const res = {};
 
-  slides.forEach(({ slides, fusumaProps, backgrounds }) => {
+  slides.forEach(({ slides, fusumaProps, backgrounds, fragmentSteps }) => {
     slidesArr.push(...slides);
     propsArr.push(...fusumaProps);
     backgroundsArr.push(...backgrounds);
+    fragmentStepsArr.push(...fragmentSteps);
   });
 
   propsArr.reduce((acc, { sectionTitle }, i) => {
@@ -40,6 +42,11 @@ function createSlidesProps(slides) {
         ? props.classes[0].split(',') // for HMR
         : props.classes.split(',');
     }
+    if (fragmentStepsArr[i] === 0) {
+      slidesTimeline.push(0);
+    } else {
+      slidesTimeline.push(Array.from({ length: fragmentStepsArr[i] }, (_, i) => i + 1));
+    }
 
     return {
       slide: props.contents ? ToC({ list: res.contentsList }) : slide,
@@ -47,12 +54,11 @@ function createSlidesProps(slides) {
         ...props,
         background,
       },
+      fragmentSteps: fragmentStepsArr[i],
     };
   });
 
-  return res;
-}
+  res.slidesTimeline = slidesTimeline;
 
-export function useSlidesProps({ originalSlides, hash, currentIndex }) {
-  return useMemo(() => createSlidesProps(originalSlides, currentIndex), [hash]);
+  return res;
 }

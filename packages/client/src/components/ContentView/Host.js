@@ -1,19 +1,17 @@
-/**
- * Host for Presentation mode
- */
-
 import React, { memo, useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import {
   FaTimes,
   FaHistory,
   FaCaretDown,
-  FaCaretRight,
+  // FaCaretRight,
   FaCaretUp,
   FaMicrophoneAlt,
   FaMicrophoneAltSlash,
 } from 'react-icons/fa';
 import { MdZoomOutMap } from 'react-icons/md';
+import { useSlides, setMode } from '../../context/slides';
+import { PresenterProvider, usePresenter, updateCurrentIndex } from '../../context/presenter';
 import { Controller as PresentationController } from '../../presentationMode/Controller'; // common and host
 import { Canvas, emitCanvasEvent } from '../Canvas';
 import { Timer } from '../Timer';
@@ -40,11 +38,21 @@ let recordedTimeline = [];
 let recordedStartedTime = 0;
 let audioUrl = null;
 
-const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
+const Host = () => {
+  const {
+    state: { slides },
+    dispatch: dispatchSlides,
+  } = useSlides();
+  const {
+    state: { currentIndex },
+    dispatch: dispatchPresenter,
+  } = usePresenter();
+
   if (!presentationController) {
     const { origin, pathname } = new URL(window.location);
 
     slideUrl = `${origin}${pathname}?sidebar=false&reference=false#slide-`;
+
     presentationController = new PresentationController();
   }
 
@@ -54,39 +62,38 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
   const [isEmptyRecordedTimeline, updateEmptyRecordedTimelineStatus] = useState(true);
   const [isOpenZoomSlide, updateOpenZoomSlideStatus] = useState(false);
 
-  const _terminate = () => {
+  const terminate = () => {
     try {
-      terminate();
-
       if (presentationController) {
         presentationController.terminate();
         presentationController = null;
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      dispatchSlides(setMode('common'));
     }
   };
 
-  const changeCurrentSlide = (num) => {
-    if (status === 'start') {
-      const time = new Date().getTime() - recordedStartedTime;
-      const prevItem = recordedTimeline.slice(-1)[0];
+  // const changeCurrentSlide = (num) => {
+  //   if (status === 'start') {
+  //     const time = new Date().getTime() - recordedStartedTime;
+  //     const prevItem = recordedTimeline.slice(-1)[0];
 
-      recordedTimeline.push({
-        slideNum: num + 1,
-        time,
-        timeStr: `${formatTime(time)} (+${formatTime(time - prevItem.time)})`,
-        event: 'changed',
-        title: `Moved to the ${num + 1} slide from the ${num} slide.`,
-        Slide: slides[num].slide,
-        color: '#3498db',
-        Icon: <FaCaretRight size="22" />,
-      });
-    }
+  //     recordedTimeline.push({
+  //       slideNum: num + 1,
+  //       time,
+  //       timeStr: `${formatTime(time)} (+${formatTime(time - prevItem.time)})`,
+  //       event: 'changed',
+  //       title: `Moved to the ${num + 1} slide from the ${num} slide.`,
+  //       Slide: slides[num].slide,
+  //       color: '#3498db',
+  //       Icon: <FaCaretRight size="22" />,
+  //     });
+  //   }
 
-    onChangeSlideIndex(num);
-    presentationController.changePage(num);
-  };
+  //   presentationController.changePage(num);
+  // };
 
   const start = () => {
     if (recordedTimeline.length === 0) {
@@ -143,14 +150,6 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
     updateEmptyRecordedTimelineStatus(true);
   };
 
-  const openTimeline = () => {
-    updateOpenTimelineStatus(true);
-  };
-
-  const closeTimeline = () => {
-    updateOpenTimelineStatus(false);
-  };
-
   const setupRecording = () => {
     if (!webrtc) {
       try {
@@ -183,7 +182,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
   };
 
   useEffect(() => {
-    async function openView() {
+    (async () => {
       try {
         if (!presentationController) {
           throw new Error('Not found PresenterController.');
@@ -192,30 +191,32 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
       } catch (e) {
         console.error(e);
       }
-    }
+    })();
 
-    openView();
+    const keyboardListener = ({ key }) => {
+      const slideLength = slides.length;
+
+      if (key === 'ArrowLeft') {
+        dispatchPresenter(updateCurrentIndex({ index: '-', slideLength }));
+      } else if (key === 'ArrowRight') {
+        dispatchPresenter(updateCurrentIndex({ index: '+', slideLength }));
+
+        // TODO: fix here
+        // presentationController.changePage(3);
+      }
+    };
+    document.addEventListener('keydown', keyboardListener, false);
 
     return () => {
-      document.onkeyup = null;
-
       if (presentationController) {
-        _terminate();
+        terminate();
       }
 
       disposeRecording();
+
+      document.removeEventListener('keydown', keyboardListener);
     };
   }, []);
-
-  useEffect(() => {
-    document.onkeyup = (e) => {
-      if (e.key === 'ArrowLeft') {
-        changeCurrentSlide(Math.max(0, currentIndex - 1));
-      } else if (e.key === 'ArrowRight') {
-        changeCurrentSlide(Math.min(slides.length - 1, currentIndex + 1));
-      }
-    };
-  });
 
   // prohibit below actions
   //   usedAudio && status === 'start'
@@ -226,7 +227,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
   //     mic
   return (
     <div className="host-container">
-      <Modal isOpen={isOpenTimeline} onRequestClose={closeTimeline}>
+      <Modal isOpen={isOpenTimeline} onRequestClose={() => updateOpenTimelineStatus(false)}>
         <Timeline items={recordedTimeline} url={audioUrl} />
       </Modal>
       <div className="host-left-box">
@@ -260,7 +261,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
         </div>
       </div>
       <div className="host-bottom-box">
-        <FaTimes onClick={_terminate} className="terminate-button" />
+        <FaTimes onClick={terminate} className="terminate-button" />
         <div className="host-bottom-box-info">
           <Timer
             start={start}
@@ -275,7 +276,7 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
             {`${currentIndex + 1}`.padStart(2, '0')} / {`${slides.length}`.padStart(2, '0')}
           </span>
           <FaHistory
-            onClick={openTimeline}
+            onClick={() => updateOpenTimelineStatus(true)}
             size={18}
             className={
               (status === 'start' && usedAudio) || isEmptyRecordedTimeline ? 'disabled' : undefined
@@ -299,6 +300,12 @@ const Host = memo(({ slides, currentIndex, terminate, onChangeSlideIndex }) => {
       </div>
     </div>
   );
-});
+};
 
-export default Host;
+const Presenter = memo(() => (
+  <PresenterProvider>
+    <Host />
+  </PresenterProvider>
+));
+
+export default Presenter;

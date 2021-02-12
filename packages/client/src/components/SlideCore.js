@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import SwiperCore, {
   A11y,
@@ -9,7 +9,11 @@ import SwiperCore, {
   EffectFade,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Prism } from '../setup/prism';
 import { getSearchParams } from '../utils/getSearchParams';
+import { createVMEnv } from '../utils/createVMEnv';
+import { useSlides } from '../context/slides';
+import { useMermaid } from '../hooks/useMermaid';
 
 const swiperComponents = [A11y, HashNavigation];
 
@@ -38,38 +42,62 @@ if (process.env.UI.EFFECT === 'fade') {
 
 SwiperCore.use(swiperComponents);
 
-export const SlideCore = ({ slides, onChangeSlideIndex }) => (
-  <Swiper
-    effect={process.env.UI.EFFECT}
-    direction={process.env.UI.VERTICAL === 'true' ? 'vertical' : 'horizontal'}
-    loop={/*TODO: respect to params to generate pdf */ process.env.LOOP}
-    speed={350}
-    allowTouchMove={window.innerWidth <= 768}
-    slidesPerView={1}
-    hashNavigation={{
-      watchState: true,
-    }}
-    pagination={{
-      ...(process.env.UI.PAGINATION
-        ? {
-            type: process.env.UI.PAGINATION,
-            clickable: true,
-          }
-        : {}),
-    }}
-    onSlideChange={({ realIndex }) => onChangeSlideIndex(realIndex)}
-  >
-    {slides.map(({ slide: Slide, fusumaProps: { classes, sectionTitle, background } }, i) => (
-      <SwiperSlide
-        key={i /* mdx-loaderでhash作成 */}
-        className={classnames(classes, sectionTitle ? 'section-title' : undefined)}
-        data-hash={`slide-${i + 1}`}
-      >
-        {background && <div className="slide-background" style={background} />}
-        <div className="slide-internal-box">
-          <Slide />
-        </div>
-      </SwiperSlide>
-    ))}
-  </Swiper>
-);
+export const SlideCore = () => {
+  const {
+    state: { slides },
+  } = useSlides();
+  const [mermaid] = useMermaid();
+
+  if (import.meta.webpackHot) {
+    setTimeout(() => {
+      if (process.env.CHART) {
+        mermaid?.reload();
+      }
+      Prism.highlightAll();
+    }, 0);
+  }
+
+  useEffect(() => {
+    if (slides.some(({ fusumaProps }) => !!fusumaProps.hasExecutableCode)) {
+      createVMEnv();
+    }
+    if (process.env.CHART) {
+      mermaid?.reload();
+    }
+  }, []);
+
+  return (
+    <Swiper
+      effect={process.env.UI.EFFECT}
+      direction={process.env.UI.VERTICAL === 'true' ? 'vertical' : 'horizontal'}
+      loop={/*TODO: respect to params to generate pdf */ process.env.LOOP}
+      speed={350}
+      allowTouchMove={window.innerWidth <= 768}
+      slidesPerView={1}
+      hashNavigation={{
+        watchState: true,
+      }}
+      pagination={{
+        ...(process.env.UI.PAGINATION
+          ? {
+              type: process.env.UI.PAGINATION,
+              clickable: true,
+            }
+          : {}),
+      }}
+    >
+      {slides.map(({ slide: Slide, fusumaProps: { classes, sectionTitle, background } }, i) => (
+        <SwiperSlide
+          key={i /* mdx-loaderでhash作成 */}
+          className={classnames(classes, sectionTitle ? 'section-title' : undefined)}
+          data-hash={`slide-${i + 1}`}
+        >
+          {background && <div className="slide-background" style={background} />}
+          <div className="slide-internal-box">
+            <Slide />
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+};

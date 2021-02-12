@@ -1,11 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useSlides } from '../context/slides';
 
 export const Fragments = ({ children }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const ref = useRef(currentStep);
+  const {
+    state: { currentIndex },
+  } = useSlides();
 
   const listener = (e) => {
-    e.stopImmediatePropagation();
+    e.stopPropagation();
+    e.preventDefault();
+    console.log('aaaa');
     if (e.key === 'ArrowRight') {
       setCurrentStep(ref.current + 1);
     }
@@ -16,13 +22,13 @@ export const Fragments = ({ children }) => {
   }, [currentStep]);
 
   useEffect(() => {
-    document.addEventListener('keydown', listener, {
-      capture: false,
-      passive: false,
-    });
-    return () => {
-      document.removeEventListener('keydown', listener);
-    };
+    // document.addEventListener('keydown', listener, {
+    //   capture: false,
+    //   passive: false,
+    // });
+    // return () => {
+    //   document.removeEventListener('keydown', listener);
+    // };
   }, []);
 
   return React.Children.map(children, (child, i) =>
