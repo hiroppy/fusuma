@@ -13,7 +13,7 @@ export function createSlidesProps(slides) {
     propsArr.push(...fusumaProps);
     backgroundsArr.push(...backgrounds);
     fragmentStepsArr.push(fragmentSteps);
-    slidesTimeline.push(...fragmentSteps);
+    fragmentSteps && slidesTimeline.push(...fragmentSteps);
   });
 
   propsArr.reduce((acc, { sectionTitle }, i) => {
