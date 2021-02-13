@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { getSlideIndex } from '../utils/getSlideIndex';
 
 const initialState = {
   currentIndex: 0,
