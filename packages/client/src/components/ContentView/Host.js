@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa';
 import { MdZoomOutMap } from 'react-icons/md';
 import { useSlides, setMode, updateCurrentIndex, resetState } from '../../context/slides';
-import { PresenterProvider, usePresenter } from '../../context/presenter';
+import { PresenterProvider } from '../../context/presenter';
 import { Controller as PresentationController } from '../../presentationMode/Controller'; // common and host
 import { Canvas, emitCanvasEvent } from '../Canvas';
 import { Timer } from '../Timer';
@@ -42,7 +42,6 @@ const Host = () => {
     state: { slides, currentIndex },
     dispatch: dispatchSlides,
   } = useSlides();
-  const { dispatch: dispatchPresenter } = usePresenter();
   const currentIndexRef = useRef(currentIndex);
 
   if (!presentationController) {

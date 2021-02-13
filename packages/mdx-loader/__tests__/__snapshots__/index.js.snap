@@ -12,6 +12,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = ['red'];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 
 const layoutProps = {
@@ -46,6 +47,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [require('../../img.jpeg')];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 
 const layoutProps = {
@@ -91,6 +93,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 
 const layoutProps = {
@@ -138,6 +141,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{
   note: 'This is Note!',
   classes: 'class!',
@@ -202,6 +206,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 
 const layoutProps = {
@@ -269,6 +274,7 @@ console.log(a + b);
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{
   hasExecutableCode: 'true'
 }];
@@ -463,6 +469,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 
 const layoutProps = {
@@ -647,6 +654,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 
 const layoutProps = {
@@ -686,6 +694,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 
 const layoutProps = {
@@ -728,6 +737,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 
 const layoutProps = {
@@ -769,6 +779,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0, 0];
+export const fragmentSteps = [0, 0];
 export const fusumaProps = [{}, {}];
 
 const layoutProps = {
@@ -813,6 +824,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 
 const layoutProps = {
@@ -869,6 +881,7 @@ C-->D;</div>
     
             </>];
 export const backgrounds = [0, 0];
+export const fragmentSteps = [0, 0];
 export const fusumaProps = [{}, {}];
 
 const layoutProps = {
@@ -914,6 +927,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0, 0];
+export const fragmentSteps = [0, 0];
 export const fusumaProps = [{}, {}];
 
 const layoutProps = {
@@ -950,6 +964,7 @@ export const slides = [props => <>
     
             </>];
 export const backgrounds = [0];
+export const fragmentSteps = [0];
 export const fusumaProps = [{}];
 const makeShortcode = name => function MDXDefaultShortcode(props) {
       console.warn(\\"Component \\" + name + \\" was not imported, exported, or provided by MDXProvider as global scope\\")

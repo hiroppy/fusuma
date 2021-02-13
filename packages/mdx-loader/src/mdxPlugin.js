@@ -248,13 +248,13 @@ function mdxPlugin() {
         import React from 'react';
         import { mdx } from '@mdx-js/react';
         ${
-          hasFragments &&
-          `
+          hasFragments
+            ? `
         // don't import as named to avoid using makeShortcode by mdx
         import * as Client from '@fusuma/client';
         `
+            : ''
         }
-
         export const slides = [${res.jsx.join(',\n')}];
         export const backgrounds = [${res.background.join(',\n')}];
         export const fragmentSteps = ${JSON.stringify(res.fragmentSteps)};
