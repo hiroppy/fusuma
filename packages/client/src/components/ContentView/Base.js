@@ -4,7 +4,7 @@ import { SlideCore } from '../SlideCore';
 
 export const Base = memo(() => {
   const {
-    state: { currentIndex, timeline },
+    state: { currentIndex },
     dispatch,
   } = useSlides();
   const currentIndexRef = useRef(currentIndex);
@@ -16,10 +16,6 @@ export const Base = memo(() => {
   }, [currentIndex]);
 
   const keyboardListener = ({ key }) => {
-    if (Array.isArray(timeline[currentIndexRef.current])) {
-      return;
-    }
-
     if (key === 'ArrowRight') {
       dispatch(updateCurrentIndex('+'));
     } else if (key === 'ArrowLeft') {
@@ -28,6 +24,13 @@ export const Base = memo(() => {
   };
 
   useEffect(() => {
+    if (window.innerWidth <= 768) {
+      (async () => {
+        // const { swipeEvent } = await import('../../utils/swipeEvent');
+        // swipeEvent();
+      })();
+    }
+
     document.addEventListener('keydown', keyboardListener);
 
     return () => {

@@ -9,6 +9,7 @@ const initialState = {
   slides: [],
   contentsList: [],
   timeline: [],
+  currentFragmentSteps: 0,
 };
 
 const SlidesContext = createContext(initialState);
@@ -22,7 +23,16 @@ const reducer = (state, action) => {
     case 'UPDATE_CURRENT_INDEX':
       return {
         ...state,
-        currentIndex: getSlideIndex(action.payload, state.slides.length - 1, state.currentIndex),
+        ...getSlideIndex({
+          next: action.payload,
+          ...state,
+        }),
+      };
+    case 'UPDATE_CURRENT_FRAGMENT_STEPS':
+      return {
+        ...state,
+        currentFragmentSteps:
+          action.payload === '+' ? state.currentFragmentSteps + 1 : state.currentFragmentSteps - 1,
       };
     default:
       return state;
@@ -41,6 +51,11 @@ export const addSlides = (payload) => ({
 
 export const updateCurrentIndex = (payload) => ({
   type: 'UPDATE_CURRENT_INDEX',
+  payload,
+});
+
+export const updateCurrentFragmentSteps = (payload) => ({
+  type: 'UPDATE_CURRENT_FRAGMENT_STEPS',
   payload,
 });
 

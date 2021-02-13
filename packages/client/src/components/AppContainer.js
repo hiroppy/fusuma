@@ -7,7 +7,7 @@ import { useSlides, addSlides } from '../context/slides';
 export const AppContainer = ({ slidesProps }) => {
   const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
   const {
-    state: { mode, slides },
+    state: { mode },
     dispatch,
   } = useSlides();
   const ContentComponent = useContentComponent(mode);
@@ -34,7 +34,7 @@ export const AppContainer = ({ slidesProps }) => {
           <MdMenu className="btn-sidebar" onClick={() => updateOpenSidebarStatus(true)} />
         </>
       )}
-      {ContentComponent && <ContentComponent slides={slides} />}
+      {ContentComponent && <ContentComponent />}
     </>
   );
 };
