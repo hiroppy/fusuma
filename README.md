@@ -66,7 +66,7 @@ $ tree -a
 │   └── workflows
 │       └── fusuma.yml
 ├── slides
-│   └── 0-title.md
+│   └── 0-slide.md
 └── style.css
 
 # --- executable tasks---

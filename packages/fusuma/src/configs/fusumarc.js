@@ -57,8 +57,8 @@ async function init(baseDir) {
     writeFile(join(baseDir, '.fusumarc.yml'), await readFile(join(templatePath, 'fusumarc.yml'))),
     writeFile(join(baseDir, 'style.css'), await readFile(join(templatePath, 'style.css'))),
     writeFile(
-      join(baseDir, 'slides', '0-title.md'),
-      await readFile(join(templatePath, '0-title.md'))
+      join(baseDir, 'slides', '0-slide.md'),
+      await readFile(join(templatePath, '0-slide.md'))
     ),
     writeFile(
       join(baseDir, '.github', 'workflows', 'fusuma.yml'),
