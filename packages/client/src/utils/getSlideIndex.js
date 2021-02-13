@@ -1,6 +1,6 @@
 export function getSlideIndex({ next, slides, currentIndex, timeline, currentFragmentSteps }) {
   let nextIndex = next;
-  let nextCurrentFragmentSteps;
+  let nextCurrentFragmentSteps = 0;
 
   if (next === '+') {
     nextIndex = Math.min(currentIndex + 1, slides.length - 1);

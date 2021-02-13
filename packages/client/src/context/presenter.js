@@ -9,24 +9,10 @@ const PresenterContext = createContext(initialState);
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'UPDATE_CURRENT_INDEX':
-      return {
-        ...state,
-        currentIndex: getSlideIndex(
-          action.payload.index,
-          action.payload.slideLength - 1,
-          state.currentIndex
-        ),
-      };
     default:
       return state;
   }
 };
-
-export const updateCurrentIndex = (payload) => ({
-  type: 'UPDATE_CURRENT_INDEX',
-  payload,
-});
 
 export const usePresenter = () => useContext(PresenterContext);
 
