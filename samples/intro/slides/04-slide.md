@@ -97,6 +97,32 @@ The class name of `<!-- block-start -->` isn't mandatory.
 
 ---
 
+## Fragments
+
+```md
+<!-- fragments-start -->
+
+✍
+
+🤟
+
+👍
+
+<!-- fragments-end -->
+```
+
+<!-- fragments-start -->
+
+✍️
+
+🤟
+
+👍
+
+<!-- fragments-end -->
+
+---
+
 ## Setting Background
 
 <!-- background: '../assets/background.jpeg' -->
