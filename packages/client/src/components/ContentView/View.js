@@ -1,8 +1,4 @@
-/*
- * View for Presentation mode
- */
-
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { Receiver as PresentationReceiver } from '../../presentationMode/Receiver';
 import { SlideCore } from '../SlideCore';
 // import { Canvas } from '../Canvas';
@@ -10,7 +6,6 @@ import { WebRTC } from '../../utils/webrtc';
 import { useSlides, updateCurrentIndex } from '../../context/slides';
 import '../../../assets/style/view.css';
 
-let presentationReceiver = null;
 let webrtc = null;
 let currentVideoTag = null;
 let currentLayer = null;
@@ -20,22 +15,7 @@ const View = memo(() => {
     state: { currentIndex },
     dispatch,
   } = useSlides();
-
-  // need to declare here
-  if (!presentationReceiver) {
-    window.onload = () => {
-      presentationReceiver = new PresentationReceiver();
-
-      presentationReceiver.onChangePage((operation) => {
-        dispatch(updateCurrentIndex(operation));
-        // stop capturing
-        if (webrtc && currentVideoTag) {
-          stopCapturing(currentVideoTag);
-        }
-      });
-    };
-  }
-
+  const [presentationReceiver, setPresentationReceiver] = useState(null);
   // const [usedCanvas, changeCanvasState] = useState(false);
 
   const startCapturing = async () => {
@@ -99,6 +79,20 @@ const View = memo(() => {
   // };
 
   useEffect(() => {
+    presentationReceiver?.onChangePage((operation) => {
+      dispatch(updateCurrentIndex(operation));
+      // stop capturing
+      if (webrtc && currentVideoTag) {
+        stopCapturing(currentVideoTag);
+      }
+    });
+  }, [presentationReceiver]);
+
+  useEffect(() => {
+    window.onload = () => {
+      setPresentationReceiver(new PresentationReceiver());
+    };
+
     listenVideoTags();
     // https://github.com/hiroppy/fusuma/issues/139#issuecomment-508637780
     // listenCanvas();

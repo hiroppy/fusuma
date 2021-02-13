@@ -1,15 +1,18 @@
 export class WebRTC {
   constructor() {
     if (!navigator.mediaDevices.getUserMedia) {
-      throw new Error('Not supported');
+      console.warn('Not supported');
     }
 
     this.url = null;
     this.finishedProcess = false;
   }
 
-  setupRecording() {
-    navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(this.handlerRecording);
+  async setupRecording() {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+
+    this.handlerRecording(stream);
+    return stream;
   }
 
   handlerRecording(stream) {

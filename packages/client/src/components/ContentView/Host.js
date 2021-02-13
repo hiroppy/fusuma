@@ -4,7 +4,7 @@ import {
   FaTimes,
   FaHistory,
   FaCaretDown,
-  // FaCaretRight,
+  FaCaretRight,
   FaCaretUp,
   FaMicrophoneAlt,
   FaMicrophoneAltSlash,
@@ -20,8 +20,6 @@ import { formatTime } from '../../utils/formatTime';
 import { WebRTC } from '../../utils/webrtc';
 import '../../../assets/style/host.css';
 
-Modal.setAppElement('#root');
-
 const Iframe = ({ slideUrl, slideIndex }) => (
   <iframe
     src={`${slideUrl.replace(/slide-(\d?)/, `slide-${slideIndex}`)}`}
@@ -30,39 +28,30 @@ const Iframe = ({ slideUrl, slideIndex }) => (
   />
 );
 
-let webrtc = null;
-let slideUrl = null;
-let presentationController = null;
 let recordedTimeline = [];
 let recordedStartedTime = 0;
-let audioUrl = null;
 
 const Host = () => {
   const {
     state: { slides, currentIndex },
     dispatch: dispatchSlides,
   } = useSlides();
-  const currentIndexRef = useRef(currentIndex);
-
-  if (!presentationController) {
-    const { origin, pathname } = new URL(window.location);
-
-    slideUrl = `${origin}${pathname}?sidebar=false&reference=false#slide-`;
-
-    presentationController = new PresentationController();
-  }
-
-  const [status, updateStatus] = useState('prepare'); // prepare, start, stop
-  const [usedAudio, updateAudioStatus] = useState(false);
-  const [isOpenTimeline, updateOpenTimelineStatus] = useState(false);
-  const [isEmptyRecordedTimeline, updateEmptyRecordedTimelineStatus] = useState(true);
-  const [isOpenZoomSlide, updateOpenZoomSlideStatus] = useState(false);
+  const [slideUrl, setSlideUrl] = useState(null);
+  const [status, setStatus] = useState('prepare'); // prepare, start, stop
+  const [presentationController, setPresentationController] = useState(null);
+  const [audioUrl, setAudioUrl] = useState(null);
+  const [usedAudio, setUsedAudio] = useState(false);
+  const [webrtc, setWebrtc] = useState(null);
+  const [isOpenTimeline, setOpenTimelineStatus] = useState(false);
+  const [isEmptyRecordedTimeline, setEmptyRecordedTimelineStatus] = useState(true);
+  const [isOpenZoomSlide, setOpenZoomSlideStatus] = useState(false);
+  const presentationControllerRef = useRef(presentationController);
 
   const terminate = () => {
     try {
       if (presentationController) {
         presentationController.terminate();
-        presentationController = null;
+        setPresentationController(null);
       }
     } catch (e) {
       console.error(e);
@@ -70,26 +59,6 @@ const Host = () => {
       dispatchSlides(setMode('common'));
     }
   };
-
-  // const changeCurrentSlide = (num) => {
-  //   if (status === 'start') {
-  //     const time = new Date().getTime() - recordedStartedTime;
-  //     const prevItem = recordedTimeline.slice(-1)[0];
-
-  //     recordedTimeline.push({
-  //       slideNum: num + 1,
-  //       time,
-  //       timeStr: `${formatTime(time)} (+${formatTime(time - prevItem.time)})`,
-  //       event: 'changed',
-  //       title: `Moved to the ${num + 1} slide from the ${num} slide.`,
-  //       Slide: slides[num].slide,
-  //       color: '#3498db',
-  //       Icon: <FaCaretRight size="22" />,
-  //     });
-  //   }
-
-  //   presentationController.changePage(num);
-  // };
 
   const start = () => {
     if (recordedTimeline.length === 0) {
@@ -111,11 +80,11 @@ const Host = () => {
 
     if (usedAudio) {
       webrtc.startRecording();
-      audioUrl = null;
+      setAudioUrl(null);
     }
 
-    updateEmptyRecordedTimelineStatus(false);
-    updateStatus('start');
+    setEmptyRecordedTimelineStatus(false);
+    setStatus('start');
   };
 
   const stop = async () => {
@@ -132,79 +101,86 @@ const Host = () => {
     });
 
     if (usedAudio) {
-      audioUrl = await webrtc.stopRecording();
+      setAudioUrl(await webrtc.stopRecording());
     }
 
-    updateStatus('stop');
+    setStatus('stop');
   };
 
   const reset = () => {
-    audioUrl = null;
+    setAudioUrl(null);
     recordedTimeline = [];
     recordedStartedTime = 0;
-    updateStatus('prepare');
-    updateEmptyRecordedTimelineStatus(true);
+    setStatus('prepare');
+    setEmptyRecordedTimelineStatus(true);
   };
+
+  useEffect(() => {
+    webrtc?.setupRecording();
+  }, [webrtc]);
 
   const setupRecording = () => {
     if (!webrtc) {
-      try {
-        webrtc = new WebRTC();
-        webrtc.setupRecording();
-        updateAudioStatus(true);
-      } catch (e) {
-        alert(e);
-      }
+      setWebrtc(new WebRTC());
+      setUsedAudio(true);
     }
   };
 
   const disposeRecording = () => {
     if (webrtc) {
       webrtc.disposeRecording();
-      webrtc = null;
+      setWebrtc(null);
     }
-
-    updateAudioStatus(false);
+    setUsedAudio(false);
   };
 
   const openZoomSlide = () => {
-    updateOpenZoomSlideStatus(true);
+    setOpenZoomSlideStatus(true);
     emitCanvasEvent({ status: 'start' });
   };
 
   const closeZoomSlide = () => {
-    updateOpenZoomSlideStatus(false);
+    setOpenZoomSlideStatus(false);
     emitCanvasEvent({ status: 'stop' });
   };
 
   useEffect(() => {
-    dispatchSlides(resetState());
+    presentationControllerRef.current = presentationController;
 
-    (async () => {
-      try {
-        if (!presentationController) {
-          throw new Error('Not found PresenterController.');
+    if (!presentationController) {
+      const { origin, pathname } = new URL(window.location);
+
+      setSlideUrl(`${origin}${pathname}?sidebar=false&reference=false#slide-`);
+      setPresentationController(new PresentationController());
+    } else {
+      (async () => {
+        try {
+          await presentationController?.openView();
+        } catch (e) {
+          console.error(e);
         }
-        await presentationController.openView();
-      } catch (e) {
-        console.error(e);
-      }
-    })();
+      })();
+    }
+  }, [presentationController]);
+
+  useEffect(() => {
+    dispatchSlides(resetState());
+    Modal.setAppElement('#root');
 
     const keyboardListener = ({ key }) => {
       if (key === 'ArrowLeft') {
         dispatchSlides(updateCurrentIndex('-'));
-        presentationController.changePage('-');
+        presentationControllerRef.current.changePage('-');
       } else if (key === 'ArrowRight') {
         dispatchSlides(updateCurrentIndex('+'));
-        presentationController.changePage('+');
+        presentationControllerRef.current.changePage('+');
       }
     };
 
     document.addEventListener('keydown', keyboardListener, false);
 
     return () => {
-      if (presentationController) {
+      if (presentationControllerRef.current) {
         terminate();
       }
 
@@ -215,8 +191,25 @@ const Host = () => {
   }, []);
 
   useEffect(() => {
-    currentIndexRef.current = currentIndex;
-    presentationController.changePage(currentIndex);
+    if (presentationController) {
+      presentationController.changePage(currentIndex);
+    }
+
+    if (status === 'start') {
+      const time = new Date().getTime() - recordedStartedTime;
+      const prevItem = recordedTimeline.slice(-1)[0];
+
+      recordedTimeline.push({
+        slideNum: currentIndex + 1,
+        time,
+        timeStr: `${formatTime(time)} (+${formatTime(time - prevItem.time)})`,
+        event: 'changed',
+        title: `Moved to the ${currentIndex + 1} slide from the ${currentIndex} slide.`,
+        Slide: slides[currentIndex].slide,
+        color: '#3498db',
+        Icon: <FaCaretRight size="22" />,
+      });
+    }
   }, [currentIndex]);
 
   // prohibit below actions
@@ -228,7 +221,7 @@ const Host = () => {
   //     mic
   return (
     <div className="host-container">
-      <Modal isOpen={isOpenTimeline} onRequestClose={() => updateOpenTimelineStatus(false)}>
+      <Modal isOpen={isOpenTimeline} onRequestClose={() => setOpenTimelineStatus(false)}>
         <Timeline items={recordedTimeline} url={audioUrl} />
       </Modal>
       <div className="host-left-box">
@@ -246,19 +239,19 @@ const Host = () => {
         <div className="host-slide-layer">
           <h2>Current</h2>
           <MdZoomOutMap size={28} onClick={openZoomSlide} />
-          <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />
+          {slideUrl && <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />}
         </div>
         <Modal isOpen={isOpenZoomSlide} onRequestClose={closeZoomSlide}>
           {isOpenZoomSlide && (
             <div className="host-slide-canvas">
               <Canvas toolbar hideGrid />
-              <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />
+              {slideUrl && <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />}
             </div>
           )}
         </Modal>
         <div className="host-slide-layer">
           <h2>Next</h2>
-          <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 2} />
+          {slideUrl && <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 2} />}
         </div>
       </div>
       <div className="host-bottom-box">
@@ -277,7 +270,7 @@ const Host = () => {
             {`${currentIndex + 1}`.padStart(2, '0')} / {`${slides.length}`.padStart(2, '0')}
           </span>
           <FaHistory
-            onClick={() => updateOpenTimelineStatus(true)}
+            onClick={() => setOpenTimelineStatus(true)}
             size={18}
             className={
               (status === 'start' && usedAudio) || isEmptyRecordedTimeline ? 'disabled' : undefined
