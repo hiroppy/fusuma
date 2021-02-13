@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useSlides, updateCurrentIndex } from '../../context/slides';
 import { SlideCore } from '../SlideCore';
 
@@ -7,7 +7,6 @@ export const Base = memo(() => {
     state: { currentIndex },
     dispatch,
   } = useSlides();
-  const currentIndexRef = useRef(currentIndex);
 
   useEffect(() => {
     // TODO: swiper should be gone to context
@@ -26,8 +25,10 @@ export const Base = memo(() => {
   useEffect(() => {
     if (window.innerWidth <= 768) {
       (async () => {
-        // const { swipeEvent } = await import('../../utils/swipeEvent');
-        // swipeEvent();
+        const { swipeEvent } = await import('../../utils/swipeEvent');
+        swipeEvent((operation) => {
+          dispatch(updateCurrentIndex(operation));
+        });
       })();
     }
 
@@ -37,10 +38,6 @@ export const Base = memo(() => {
       document.removeEventListener('keydown', keyboardListener);
     };
   }, []);
-
-  useEffect(() => {
-    currentIndexRef.current = currentIndex;
-  }, [currentIndex]);
 
   return <SlideCore />;
 });

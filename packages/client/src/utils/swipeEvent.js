@@ -1,6 +1,6 @@
 // https://stackoverflow.com/questions/2264072/detect-a-finger-swipe-through-javascript-on-the-iphone-and-android
 
-export function swipeEvent(goTo) {
+export function swipeEvent(cb) {
   let xDown = null;
   let yDown = null;
 
@@ -28,10 +28,10 @@ export function swipeEvent(goTo) {
       if (Math.abs(xDiff) > Math.abs(yDiff)) {
         if (xDiff > 0) {
           // right
-          goTo('+');
+          cb('+');
         } else {
           // left
-          goTo('-');
+          cb('-');
         }
       }
       xDown = null;

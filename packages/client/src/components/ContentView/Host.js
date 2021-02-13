@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo, useState, useEffect, useRef } from 'react';
 import Modal from 'react-modal';
 import {
   FaTimes,
@@ -10,8 +10,8 @@ import {
   FaMicrophoneAltSlash,
 } from 'react-icons/fa';
 import { MdZoomOutMap } from 'react-icons/md';
-import { useSlides, setMode } from '../../context/slides';
-import { PresenterProvider, usePresenter, updateCurrentIndex } from '../../context/presenter';
+import { useSlides, setMode, updateCurrentIndex, resetState } from '../../context/slides';
+import { PresenterProvider, usePresenter } from '../../context/presenter';
 import { Controller as PresentationController } from '../../presentationMode/Controller'; // common and host
 import { Canvas, emitCanvasEvent } from '../Canvas';
 import { Timer } from '../Timer';
@@ -33,20 +33,17 @@ const Iframe = ({ slideUrl, slideIndex }) => (
 let webrtc = null;
 let slideUrl = null;
 let presentationController = null;
-// let presentationApiId = null;
 let recordedTimeline = [];
 let recordedStartedTime = 0;
 let audioUrl = null;
 
 const Host = () => {
   const {
-    state: { slides },
+    state: { slides, currentIndex },
     dispatch: dispatchSlides,
   } = useSlides();
-  const {
-    state: { currentIndex },
-    dispatch: dispatchPresenter,
-  } = usePresenter();
+  const { dispatch: dispatchPresenter } = usePresenter();
+  const currentIndexRef = useRef(currentIndex);
 
   if (!presentationController) {
     const { origin, pathname } = new URL(window.location);
@@ -182,6 +179,8 @@ const Host = () => {
   };
 
   useEffect(() => {
+    dispatchSlides(resetState());
+
     (async () => {
       try {
         if (!presentationController) {
@@ -194,17 +193,15 @@ const Host = () => {
     })();
 
     const keyboardListener = ({ key }) => {
-      const slideLength = slides.length;
-
       if (key === 'ArrowLeft') {
-        dispatchPresenter(updateCurrentIndex({ index: '-', slideLength }));
+        dispatchSlides(updateCurrentIndex('-'));
+        presentationController.changePage('-');
       } else if (key === 'ArrowRight') {
-        dispatchPresenter(updateCurrentIndex({ index: '+', slideLength }));
-
-        // TODO: fix here
-        // presentationController.changePage(3);
+        dispatchSlides(updateCurrentIndex('+'));
+        presentationController.changePage('+');
       }
     };
+
     document.addEventListener('keydown', keyboardListener, false);
 
     return () => {
@@ -217,6 +214,11 @@ const Host = () => {
       document.removeEventListener('keydown', keyboardListener);
     };
   }, []);
+
+  useEffect(() => {
+    currentIndexRef.current = currentIndex;
+    presentationController.changePage(currentIndex);
+  }, [currentIndex]);
 
   // prohibit below actions
   //   usedAudio && status === 'start'

@@ -26,8 +26,8 @@ const View = memo(() => {
     window.onload = () => {
       presentationReceiver = new PresentationReceiver();
 
-      presentationReceiver.onChangePage((pageNum) => {
-        dispatch(updateCurrentIndex(pageNum));
+      presentationReceiver.onChangePage((operation) => {
+        dispatch(updateCurrentIndex(operation));
         // stop capturing
         if (webrtc && currentVideoTag) {
           stopCapturing(currentVideoTag);

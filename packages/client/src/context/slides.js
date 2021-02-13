@@ -28,6 +28,12 @@ const reducer = (state, action) => {
           ...state,
         }),
       };
+    case 'RESET_STATE':
+      return {
+        ...state,
+        currentIndex: 0,
+        currentFragmentSteps: 0,
+      };
     case 'UPDATE_CURRENT_FRAGMENT_STEPS':
       return {
         ...state,
@@ -57,6 +63,10 @@ export const updateCurrentIndex = (payload) => ({
 export const updateCurrentFragmentSteps = (payload) => ({
   type: 'UPDATE_CURRENT_FRAGMENT_STEPS',
   payload,
+});
+
+export const resetState = () => ({
+  type: 'RESET_STATE',
 });
 
 export const useSlides = () => useContext(SlidesContext);

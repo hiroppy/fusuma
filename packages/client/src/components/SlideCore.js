@@ -58,6 +58,8 @@ export const SlideCore = () => {
   }
 
   useEffect(() => {
+    Prism.highlightAll();
+
     if (slides.some(({ fusumaProps }) => !!fusumaProps.hasExecutableCode)) {
       createVMEnv();
     }
