@@ -27,6 +27,10 @@ async function transformToJS(src) {
 }
 
 describe('fusuma-loader', () => {
+  beforeAll(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.05072298324733815);
+  });
+
   test('should return normal md', async () => {
     const src = `
 # 1
@@ -197,6 +201,22 @@ console.log(a + b);
   test('should add background(url) to props', async () => {
     const src = `
 <!-- background: '../../img.jpeg' -->
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
+
+  test('should add fragments', async () => {
+    const src = `
+<!-- fragments-start -->
+1
+
+2
+
+3
+
+4
+<!-- fragments-end -->
 `;
 
     expect(await transformToJS(src)).toMatchSnapshot();

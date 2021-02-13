@@ -125,6 +125,55 @@ export default function MDXContent({
 MDXContent.isMDXComponent = true;"
 `;
 
+exports[`fusuma-loader should add fragments 1`] = `
+"/* @jsxRuntime classic */
+/* @jsx mdx */
+
+import React from 'react';
+import { mdx } from '@mdx-js/react'; // don't import as named to avoid using makeShortcode by mdx
+
+import * as Client from '@fusuma/client';
+export const slides = [props => <>
+              
+    <Client.Fragments id={0.05072298324733815}>
+      <p>{\`1\`}</p>
+      <p>{\`2\`}</p>
+      <p>{\`3\`}</p>
+      <p>{\`4\`}</p>
+    </Client.Fragments>
+    
+            </>];
+export const backgrounds = [0];
+export const fragmentSteps = [[0.05072298324733815, 0.05072298324733815, 0.05072298324733815, 0.05072298324733815]];
+export const fusumaProps = [{}];
+
+const layoutProps = {
+  
+};
+const MDXLayout = \\"wrapper\\"
+export default function MDXContent({
+  components,
+  ...props
+}) {
+  return <MDXLayout {...layoutProps} {...props} components={components} mdxType=\\"MDXLayout\\">
+    {
+      /* fragments-start */
+    }
+    <p>{\`1\`}</p>
+    <p>{\`2\`}</p>
+    <p>{\`3\`}</p>
+    <p>{\`4\`}</p>
+    {
+      /* fragments-end */
+    }
+
+    </MDXLayout>;
+}
+
+;
+MDXContent.isMDXComponent = true;"
+`;
+
 exports[`fusuma-loader should add fusuma options 1`] = `
 "/* @jsxRuntime classic */
 /* @jsx mdx */
