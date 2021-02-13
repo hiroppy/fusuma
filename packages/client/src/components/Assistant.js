@@ -8,6 +8,8 @@ import {
 } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
 
+// TODO: add image's width/height description
+
 const outerCss = {
   background: '#f5f5f5',
   fontSize: '16px',
@@ -146,6 +148,10 @@ export const Assistant = () => (
                 {
                   title: 'Closing div Tag',
                   content: <code>block-end</code>,
+                },
+                {
+                  title: 'displaying items as steps(fragments)',
+                  content: <code>fragments-start / fragments-end</code>,
                 },
                 {
                   title: 'Adding Title to Sidebar',
