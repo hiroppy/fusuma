@@ -1,11 +1,47 @@
-export function getSlideIndex(num, slidesLength, currentIndex) {
-  let nextIndex = num;
+export function getSlideIndex({ next, slides, currentIndex, timeline, currentFragmentSteps }) {
+  let nextIndex = next;
+  let nextCurrentFragmentSteps;
 
-  if (num === '+') {
-    nextIndex = Math.min(currentIndex + 1, slidesLength);
-  } else if (num === '-') {
+  if (next === '+') {
+    nextIndex = Math.min(currentIndex + 1, slides.length - 1);
+
+    if (Array.isArray(timeline[nextIndex])) {
+      nextCurrentFragmentSteps = 0;
+    } else {
+      nextCurrentFragmentSteps = currentFragmentSteps + 1;
+    }
+  } else if (next === '-') {
     nextIndex = Math.max(currentIndex - 1, 0);
+
+    // restore fragments
+    if (Array.isArray(timeline[nextIndex])) {
+      nextCurrentFragmentSteps = timeline[nextIndex].length;
+    } else {
+      nextCurrentFragmentSteps = currentFragmentSteps - 1;
+    }
   }
 
-  return nextIndex;
+  if (Array.isArray(timeline[currentIndex])) {
+    if (nextCurrentFragmentSteps < 0) {
+      return {
+        currentIndex: nextIndex,
+        currentFragmentSteps: 0,
+      };
+    } else if (timeline[currentIndex].length >= nextCurrentFragmentSteps) {
+      return {
+        currentIndex,
+        currentFragmentSteps: nextCurrentFragmentSteps,
+      };
+    } else {
+      return {
+        currentIndex: nextIndex,
+        currentFragmentSteps: 0,
+      };
+    }
+  }
+
+  return {
+    currentIndex: nextIndex,
+    currentFragmentSteps: nextCurrentFragmentSteps,
+  };
 }
