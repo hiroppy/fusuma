@@ -9,7 +9,5 @@ slide:
     pagination:
   code:
     theme: tomorrow
-extends:
-  js: index.js
 build:
   useCache: false

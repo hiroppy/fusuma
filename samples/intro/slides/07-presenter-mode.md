@@ -23,9 +23,7 @@ but you can also use this mode if you use browsers which don't have Presentation
 
 ## Host Screen
 
-import { HostScreen } from '../scripts/Presenter';
-
-<HostScreen />
+![presenter-host](../../../site/docs/assets/presenter-host.png?w=70%)
 
 ---
 

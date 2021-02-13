@@ -1,4 +1,4 @@
-<!-- classes: title -->
+<!-- classes: slide-title -->
 
 <!-- note
 Here is a speaker note.😎
