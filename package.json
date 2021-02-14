@@ -18,7 +18,8 @@
     "version": "lerna version --conventional-commits",
     "release": "lerna publish from-package",
     "fmt": "prettier --write **/*.{js,json,css,md}",
-    "lint": "eslint . --cache --ext .js"
+    "lint": "eslint . --cache --ext .js",
+    "pre-commit": "lint-staged"
   },
   "repository": {
     "type": "git",
