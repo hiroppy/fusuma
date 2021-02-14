@@ -41,7 +41,6 @@
   - Speaker Note
   - Timer
   - Recording your page actions and voice
-  - Using a Fluorescent Marker on the slides
 - Deploy Mode
   - Deploying to GitHub Pages
 - PDF Mode
@@ -50,7 +49,7 @@
 ## Demos
 
 - [Introducing Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
-- [hiroppy/slides](https://github.com/hiroppy/slides)
+- [Themes](https://hiroppy.github.io/fusuma/themes/) [[repository](/samples/themes)]
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hiroppy/fusuma/blob/master/samples/intro/slides/0-title.md)
 
