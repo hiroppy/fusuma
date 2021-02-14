@@ -56,11 +56,3 @@ Timeline and the recording voice are optional but these features will help you t
 The timeline can be time travel.
 
 ![timeline](../../../site/docs/assets/presenter-mode-timeline.png?w=60%)
-
----
-
-## Drawing (experimental)
-
-When you write characters on the host side, it will be reflected on the client side in real time.
-
-![drawing](../../../site/docs/assets/drawing.png?w=70%)

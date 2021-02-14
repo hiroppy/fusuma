@@ -60,23 +60,4 @@ export class WebRTC {
     this.finishedProcess = false;
     this.url = null;
   }
-
-  async startCapturing(displayMediaOptions) {
-    let captureStream = null;
-
-    try {
-      captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
-    } catch (err) {
-      console.error(err);
-    }
-
-    return captureStream;
-  }
-
-  stopCapturing(elem) {
-    const tracks = elem.srcObject.getTracks();
-
-    tracks.forEach((track) => track.stop());
-    elem.srcObject = null;
-  }
 }

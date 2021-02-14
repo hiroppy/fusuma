@@ -10,11 +10,6 @@
     top: 0;
     left: 0;
   }
-
-  /* canvas */
-  & > div {
-    z-index: 1000;
-  }
 }
 
 /* cannot use before/after for video tags, so should wrap div tags */
@@ -41,9 +36,4 @@
     pointer-events: none;
     z-index: 10;
   }
-}
-
-/* overwrite */
-.fusuma-canvas > canvas:first-child {
-  display: none !important;
 }

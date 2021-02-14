@@ -22,7 +22,6 @@ function prod() {
         test: /\.(js|css|html|svg)$/,
         minRatio: 0.8,
       }),
-      // new webpack.optimize.AggressiveMergingPlugin() // if use this, canvas will be broken
     ],
     optimization: {
       minimize: true,

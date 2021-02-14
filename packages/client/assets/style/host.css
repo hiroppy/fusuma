@@ -153,17 +153,3 @@
   height: calc(100% - 60px);
   overflow: auto;
 }
-
-.host-slide-canvas {
-  width: 100%;
-  height: 100%;
-  position: relative;
-
-  & > * {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
-}

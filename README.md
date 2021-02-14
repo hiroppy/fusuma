@@ -187,13 +187,10 @@ You can see your Note for each slide and the next slide on the Host screen.
 
 - Showing your slide notes
 - Setting a timer
-- Recording your actions and voice, and do time-travel
+- Recording your actions and voice, and doing time-travel
   - video: [Recording Your Voice](https://hiroppy.github.io/fusuma/docs/modes/presenter#recording-your-voice)
-- (experimental) Drawing lines on the slide during making a speech
 
-|               recording Your Actions                |            drawing Lines            |
-| :-------------------------------------------------: | :---------------------------------: |
-| ![](./site/docs/assets/presenter-mode-timeline.png) | ![](./site/docs/assets/drawing.png) |
+<img src="./site/docs/assets/presenter-mode-timeline.png" width="600px">
 
 ## Lighthouse
 

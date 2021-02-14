@@ -9,11 +9,9 @@ import {
   FaMicrophoneAlt,
   FaMicrophoneAltSlash,
 } from 'react-icons/fa';
-import { MdZoomOutMap } from 'react-icons/md';
 import { useSlides, setMode, updateCurrentIndex, resetState } from '../../context/slides';
 import { PresenterProvider } from '../../context/presenter';
 import { Controller as PresentationController } from '../../presentationMode/Controller'; // common and host
-import { Canvas, emitCanvasEvent } from '../Canvas';
 import { Timer } from '../Timer';
 import { Timeline } from '../Timeline';
 import { formatTime } from '../../utils/formatTime';
@@ -44,7 +42,6 @@ const Host = () => {
   const [webrtc, setWebrtc] = useState(null);
   const [isOpenTimeline, setOpenTimelineStatus] = useState(false);
   const [isEmptyRecordedTimeline, setEmptyRecordedTimelineStatus] = useState(true);
-  const [isOpenZoomSlide, setOpenZoomSlideStatus] = useState(false);
   const presentationControllerRef = useRef(presentationController);
 
   const terminate = () => {
@@ -134,16 +131,6 @@ const Host = () => {
     setUsedAudio(false);
   };
 
-  const openZoomSlide = () => {
-    setOpenZoomSlideStatus(true);
-    emitCanvasEvent({ status: 'start' });
-  };
-
-  const closeZoomSlide = () => {
-    setOpenZoomSlideStatus(false);
-    emitCanvasEvent({ status: 'stop' });
-  };
-
   useEffect(() => {
     presentationControllerRef.current = presentationController;
 
@@ -165,7 +152,6 @@ const Host = () => {
 
   useEffect(() => {
     dispatchSlides(resetState());
-    Modal.setAppElement('#root');
 
     const keyboardListener = ({ key }) => {
       if (key === 'ArrowLeft') {
@@ -238,17 +224,8 @@ const Host = () => {
       <div className="host-right-box">
         <div className="host-slide-layer">
           <h2>Current</h2>
-          <MdZoomOutMap size={28} onClick={openZoomSlide} />
           {slideUrl && <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />}
         </div>
-        <Modal isOpen={isOpenZoomSlide} onRequestClose={closeZoomSlide}>
-          {isOpenZoomSlide && (
-            <div className="host-slide-canvas">
-              <Canvas toolbar hideGrid />
-              {slideUrl && <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />}
-            </div>
-          )}
-        </Modal>
         <div className="host-slide-layer">
           <h2>Next</h2>
           {slideUrl && <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 2} />}
