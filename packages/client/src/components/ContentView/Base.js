@@ -14,15 +14,15 @@ export const Base = memo(() => {
     swiper?.slideTo(currentIndex);
   }, [currentIndex]);
 
-  const keyboardListener = ({ key }) => {
-    if (key === 'ArrowRight') {
-      dispatch(updateCurrentIndex('+'));
-    } else if (key === 'ArrowLeft') {
-      dispatch(updateCurrentIndex('-'));
-    }
-  };
-
   useEffect(() => {
+    const keyboardListener = ({ key }) => {
+      if (key === 'ArrowRight') {
+        dispatch(updateCurrentIndex('+'));
+      } else if (key === 'ArrowLeft') {
+        dispatch(updateCurrentIndex('-'));
+      }
+    };
+
     if (window.innerWidth <= 768) {
       (async () => {
         const { swipeEvent } = await import('../../utils/swipeEvent');

@@ -18,7 +18,7 @@ import { formatTime } from '../../utils/formatTime';
 import { WebRTC } from '../../utils/webrtc';
 import '../../../assets/style/host.css';
 
-const Iframe = ({ slideUrl, slideIndex }) => (
+const Iframe = ({ slideUrl, slideIndex, fragment }) => (
   <iframe
     src={`${slideUrl.replace(/slide-(\d?)/, `slide-${slideIndex}`)}`}
     width="100%"
@@ -31,7 +31,7 @@ let recordedStartedTime = 0;
 
 const Host = () => {
   const {
-    state: { slides, currentIndex },
+    state: { slides, currentIndex, currentFragmentSteps },
     dispatch: dispatchSlides,
   } = useSlides();
   const [slideUrl, setSlideUrl] = useState(null);
@@ -112,10 +112,6 @@ const Host = () => {
     setEmptyRecordedTimelineStatus(true);
   };
 
-  useEffect(() => {
-    webrtc?.setupRecording();
-  }, [webrtc]);
-
   const setupRecording = () => {
     if (!webrtc) {
       setWebrtc(new WebRTC());
@@ -130,6 +126,10 @@ const Host = () => {
     }
     setUsedAudio(false);
   };
+
+  useEffect(() => {
+    webrtc?.setupRecording();
+  }, [webrtc]);
 
   useEffect(() => {
     presentationControllerRef.current = presentationController;
@@ -224,11 +224,23 @@ const Host = () => {
       <div className="host-right-box">
         <div className="host-slide-layer">
           <h2>Current</h2>
-          {slideUrl && <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 1} />}
+          {slideUrl && (
+            <Iframe
+              slideUrl={slideUrl}
+              slideIndex={currentIndex + 1}
+              fragment={currentFragmentSteps}
+            />
+          )}
         </div>
         <div className="host-slide-layer">
           <h2>Next</h2>
-          {slideUrl && <Iframe slideUrl={slideUrl} slideIndex={currentIndex + 2} />}
+          {slideUrl && (
+            <Iframe
+              slideUrl={slideUrl}
+              slideIndex={currentIndex + 2}
+              fragment={currentFragmentSteps}
+            />
+          )}
         </div>
       </div>
       <div className="host-bottom-box">

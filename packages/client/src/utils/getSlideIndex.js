@@ -7,8 +7,10 @@ export function getSlideIndex({ next, slides, currentIndex, timeline, currentFra
 
     if (Array.isArray(timeline[nextIndex])) {
       nextCurrentFragmentSteps = 0;
-    } else {
+    } else if (Array.isArray(timeline[currentIndex])) {
       nextCurrentFragmentSteps = currentFragmentSteps + 1;
+    } else {
+      nextCurrentFragmentSteps = 0;
     }
   } else if (next === '-') {
     nextIndex = Math.max(currentIndex - 1, 0);
@@ -16,8 +18,10 @@ export function getSlideIndex({ next, slides, currentIndex, timeline, currentFra
     // restore fragments
     if (Array.isArray(timeline[nextIndex])) {
       nextCurrentFragmentSteps = timeline[nextIndex].length;
-    } else {
+    } else if (Array.isArray(timeline[currentIndex])) {
       nextCurrentFragmentSteps = currentFragmentSteps - 1;
+    } else {
+      nextCurrentFragmentSteps = 0;
     }
   }
 
