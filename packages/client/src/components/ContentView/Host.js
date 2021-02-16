@@ -18,7 +18,7 @@ import { formatTime } from '../../utils/formatTime';
 import { WebRTC } from '../../utils/webrtc';
 import '../../../assets/style/host.css';
 
-const Iframe = ({ slideUrl, slideIndex, fragment }) => (
+const Iframe = ({ slideUrl, slideIndex }) => (
   <iframe
     src={`${slideUrl.replace(/slide-(\d?)/, `slide-${slideIndex}`)}`}
     width="100%"
