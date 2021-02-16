@@ -4,4 +4,3 @@ coverage
 lerna-debug.log
 *.pdf
 .eslintcache
-.husky
