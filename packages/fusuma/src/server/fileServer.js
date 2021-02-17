@@ -2,7 +2,7 @@
 
 const express = require('express');
 
-async function fileServer(basePath, publicPath, port = 5445) {
+async function fileServer(basePath, publicPath = '/', port = 5445) {
   return new Promise((resolve, reject) => {
     const app = express();
 

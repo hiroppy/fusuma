@@ -36,12 +36,12 @@ You can split slides within the same file by using `---` syntax.
 ```
 
 ```css
-.title {
-  color: #3498db;
+.title h2 {
+  color: #161d6f;
 }
 
 .main {
-  background: #f5f5f5;
+  background: #eae3c8;
 }
 ```
 
@@ -143,14 +143,15 @@ Also, you can specify hexadecimal and names.
 ```md
 <!-- section-title: this is the second slide! -->
 
-## ✌️
+This slide has the title of a section!  
+👈 see the sidebar!
 ```
 
 ```css
 /* output with this class name */
 .section-title {
-  color: #ff0;
-  background: #ccc;
+  color: #0a043c;
+  background: #a3ddcb;
 }
 ```
 
@@ -213,31 +214,6 @@ alert('hi!!');
 console.log('hi!');
 \`\`\`
 ```
-
----
-
-## Capturing Screen Contents
-
-<!-- block-start: grid -->
-
-<!-- block-start: column -->
-
-```md
-## Capture Screen Contents
-
-<!-- screen -->
-```
-
-<img src="../../../site/docs/assets/slide-syntax-screen.png" className="capture-screen-image" alt="capture" />
-
-<!-- block-end -->
-
-<!-- block-start: column -->
-
-Your screen captures on the slide, but this feature can run only in Presenter Mode so this feature will help **live coding** etc. You can choose **your local screen** or **application window** or **browser tab** as output. See [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) for more details.
-
-<!-- block-end -->
-<!-- block-end -->
 
 ---
 

@@ -11,16 +11,36 @@ const getDirs = (p) => readdirSync(p).filter((f) => statSync(join(p, f)).isDirec
   const dirs = getDirs(base);
 
   for (let i = 0; i < dirs.length; i++) {
-    await deploy(
-      {
-        internal: {
-          basePath: base,
-          outputDirPath: join(join(base, dirs[i]), 'dist'),
+    const name = dirs[i];
+
+    if (!['syntaxes'].includes(name)) {
+      await deploy(
+        {
+          internal: {
+            basePath: base,
+            outputDirPath: join(join(base, name), 'dist'),
+          },
         },
-      },
-      {
-        dest: dirs[i],
-      }
-    );
+        {
+          dest: name,
+        }
+      );
+    } else {
+      //   const basePath = join(base, name);
+      //   const items = getDirs(basePath);
+      //   for (const item of items) {
+      //     await deploy(
+      //       {
+      //         internal: {
+      //           basePath,
+      //           outputDirPath: join(join(basePath, item), 'dist'),
+      //         },
+      //       },
+      //       {
+      //         dest: join(name, item),
+      //       }
+      //     );
+      //   }
+    }
   }
 })();

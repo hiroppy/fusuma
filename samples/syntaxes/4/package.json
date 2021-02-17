@@ -1,0 +1,12 @@
+{
+  "name": "4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:prod": "FUSUMA_DEBUG=true node ../../../packages/fusuma/src/cli start-prod",
+    "build": "FUSUMA_DEBUG=true node ../../../packages/fusuma/src/cli build"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me/)",
+  "license": "MIT"
+}
