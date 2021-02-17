@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/hiroppy/fusuma/compare/v2.4.0...v2.5.0) (2021-02-17)
+
+
+### Features
+
+* **client:** introduce fragments ([6a3d56e](https://github.com/hiroppy/fusuma/commit/6a3d56e636e407e739043f8be33df6cd921cf443))
+* **client:** use context ([586d2b9](https://github.com/hiroppy/fusuma/commit/586d2b992fd3332606061b5b74c5bd5d11d00269))
+* **mdx:** add fragments syntax ([291082f](https://github.com/hiroppy/fusuma/commit/291082f5bdaf6385442a5ee25a90dd5ca546e51f))
+* **mdx:** add image props(w, h) ([b2a7002](https://github.com/hiroppy/fusuma/commit/b2a7002fd147c6deb8dd97176184948572330a68))
+
+
+
+
+
 # [2.4.0](https://github.com/hiroppy/fusuma/compare/v2.3.1...v2.4.0) (2021-02-09)
 
 **Note:** Version bump only for package @fusuma/mdx-loader

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/hiroppy/fusuma/compare/v2.4.0...v2.5.0) (2021-02-17)
+
+
+### Features
+
+* **client:** remove canvas feature ([5cee7c7](https://github.com/hiroppy/fusuma/commit/5cee7c7e16b7e1c94076339eff19cdd31a3827e9))
+
+
+
+
+
 # [2.4.0](https://github.com/hiroppy/fusuma/compare/v2.3.1...v2.4.0) (2021-02-09)
 
 

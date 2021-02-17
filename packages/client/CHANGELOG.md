@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/hiroppy/fusuma/compare/v2.4.0...v2.5.0) (2021-02-17)
+
+
+### Bug Fixes
+
+* **client:** check undefined or not for plain slide ([9946de3](https://github.com/hiroppy/fusuma/commit/9946de30a12f861cbfbabc132974a8f9fa17ec63))
+* **client:** modify fragment ([661792f](https://github.com/hiroppy/fusuma/commit/661792f6f66324dd317962894bac1cb3d2747b42))
+* **client:** turn off animation ([31aac6a](https://github.com/hiroppy/fusuma/commit/31aac6a21b76dcf21a9a180545f410668c6cdff4))
+
+
+### Features
+
+* **client:** add fragments description to assistant ([33a29a1](https://github.com/hiroppy/fusuma/commit/33a29a1769ec4770aec720fd3d63f76084060a75))
+* **client:** apply fragments ([dd775a4](https://github.com/hiroppy/fusuma/commit/dd775a44dbea1a38edf0260ef99d8574653ef71b))
+* **client:** introduce fragments ([6a3d56e](https://github.com/hiroppy/fusuma/commit/6a3d56e636e407e739043f8be33df6cd921cf443))
+* **client:** remove canvas feature ([5cee7c7](https://github.com/hiroppy/fusuma/commit/5cee7c7e16b7e1c94076339eff19cdd31a3827e9))
+* **client:** use context ([586d2b9](https://github.com/hiroppy/fusuma/commit/586d2b992fd3332606061b5b74c5bd5d11d00269))
+* **mdx:** add fragments syntax ([291082f](https://github.com/hiroppy/fusuma/commit/291082f5bdaf6385442a5ee25a90dd5ca546e51f))
+
+
+
+
+
 # [2.4.0](https://github.com/hiroppy/fusuma/compare/v2.3.1...v2.4.0) (2021-02-09)
 
 
