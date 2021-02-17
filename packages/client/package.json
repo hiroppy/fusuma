@@ -28,7 +28,7 @@
     "react-icons": "^4.2.0",
     "react-modal": "^3.12.1",
     "screenfull": "^5.1.0",
-    "swiper": "^6.4.12",
+    "swiper": "^6.4.14",
     "vm-browserify": "^1.1.2"
   }
 }
