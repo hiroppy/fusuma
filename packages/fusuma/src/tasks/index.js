@@ -2,7 +2,9 @@
 
 const { existsSync } = require('fs');
 const { join, isAbsolute } = require('path');
-const fusuma = require('../configs/fusumarc');
+const fusumarc = require('../configs/fusumarc');
+const combineObject = require('../utils/combineObject');
+const searchFusumarc = require('../utils/searchFusumarc');
 const { warn, error } = require('../cli/log');
 
 async function tasks({ type, options }) {
@@ -15,7 +17,7 @@ async function tasks({ type, options }) {
   let config = {};
 
   try {
-    config = await fusuma.read(basePath);
+    config = await searchFusumarc(basePath, fusumarc);
   } catch (e) {
     warn('config', `it seems fusumarc doesn't exist, you can run "fusuma init" command`);
   }
@@ -36,7 +38,7 @@ async function tasks({ type, options }) {
     }
   }
 
-  config = fusuma.combine(config, {
+  config = combineObject(fusumarc, config, {
     internal: { ...options, basePath, inputDirPath, outputDirPath },
   });
 
