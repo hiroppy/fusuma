@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/hiroppy/fusuma/compare/v2.5.0...v2.6.0) (2021-02-18)
+
+
+### Bug Fixes
+
+* **client:** fix mermaid ([fa63b01](https://github.com/hiroppy/fusuma/commit/fa63b0139d7b7bd244a2b1e02524457ad2b235a2))
+* **mdx-loader:** update snapshot ([a7988ea](https://github.com/hiroppy/fusuma/commit/a7988ea2de5739e08edfd1b2a86cad5c51e83969))
+* **mermaid:** fix styles and escape html ([0adf1f9](https://github.com/hiroppy/fusuma/commit/0adf1f9041419f4190cc4187380749e0af72620c)), closes [#389](https://github.com/hiroppy/fusuma/issues/389) [#391](https://github.com/hiroppy/fusuma/issues/391)
+
+
+### Features
+
+* **mdx-loader:** add mermaid attr ([dd4a940](https://github.com/hiroppy/fusuma/commit/dd4a940be47febbd020ecc7b0b928f519def7872))
+
+
+
+
+
 # [2.5.0](https://github.com/hiroppy/fusuma/compare/v2.4.0...v2.5.0) (2021-02-17)
 
 
