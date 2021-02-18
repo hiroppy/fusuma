@@ -38,6 +38,7 @@
   max-width: var(--base-max-width);
   min-width: 320px;
   z-index: 2;
+  width: 100vw; /* for mermaid */
 }
 
 .slide-background {
@@ -66,4 +67,8 @@
   width: var(--qr-code-image-size);
   height: var(--qr-code-image-size);
   margin: 0 auto;
+}
+
+.mermaid {
+  width: 100%;
 }

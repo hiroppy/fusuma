@@ -3,12 +3,12 @@
 const visit = require('unist-util-visit');
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
+const { htmlEscape } = require('escape-goat');
 const transformQrToJSX = require('./transformers/transformQrToJSX');
 const transformScreenToJSX = require('./transformers/transformScreenToJSX');
 const transformChartToJSX = require('./transformers/transformChartToJSX');
 const transformMarkdownImageNodeToJSX = require('./transformers/transformMarkdownImageNodeToJSX');
 const transformExecJSCodeButtonToJSX = require('./transformers/transformExecJSCodeButtonToJSX');
-const escapeMap = require('./escapeMap');
 const commentParser = require('./commentParser');
 
 function mdxPlugin() {
@@ -109,7 +109,7 @@ function mdxPlugin() {
           return;
         }
         if (prefix === 'note') {
-          props.note = valueStr.replace(/[&<>"']/gim, (m) => escapeMap[m]).replace(/\n/g, '\\n');
+          props.note = htmlEscape(valueStr).replace(/\n/g, '\\n');
           return;
         }
         if (prefix === 'qr') {
