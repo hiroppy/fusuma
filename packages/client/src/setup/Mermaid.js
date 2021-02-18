@@ -24,15 +24,7 @@ export class Mermaid {
   }
 
   init() {
-    const elms = this.getElms();
-
-    elms.forEach((elm) => {
-      Object.assign(elm.style, {
-        visibility: 'initial',
-      });
-
-      mermaid.init();
-    });
+    this.reload();
   }
 
   reload() {
