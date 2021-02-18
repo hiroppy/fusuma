@@ -917,16 +917,12 @@ export const slides = [props => <>
             </>, props => <>
               
     <div className=\\"mermaid\\" id=\\"mermaid-1\\" data-value=\\"graph TD;
-A-->B;
-A-->C;
-B-->D;
-C-->D;\\" style={{
+A--&gt;B;
+A--&gt;C;
+B--&gt;D;
+C--&gt;D;\\" style={{
     visibility: 'hidden'
-  }}>graph TD;
-A-->B;
-A-->C;
-B-->D;
-C-->D;</div>
+  }} />
     
             </>];
 export const backgrounds = [0, 0];
@@ -973,16 +969,12 @@ export const slides = [props => <>
             </>, props => <>
               
     <div className=\\"mermaid\\" id=\\"mermaid-1\\" data-value=\\"graph TD;
-A-->B;
-A-->C;
-B-->D;
-C-->D;\\" style={{
+A--&gt;B;
+A--&gt;C;
+B--&gt;D;
+C--&gt;D;\\" style={{
     visibility: 'hidden'
-  }}>graph TD;
-A-->B;
-A-->C;
-B-->D;
-C-->D;</div>
+  }} />
     
             </>];
 export const backgrounds = [0, 0];

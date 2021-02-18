@@ -50,6 +50,7 @@
 
 - [Introducing Fusuma](https://hiroppy.github.io/fusuma/intro) [[repository](/samples/intro)]
 - [Themes](https://hiroppy.github.io/fusuma/themes/) [[repository](/samples/themes)]
+- [Math, Diagrams, and Flowcharts](https://hiroppy.github.io/fusuma/advanced/) [[repository](/samples/advanced)]
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/hiroppy/fusuma/blob/master/samples/intro/slides/0-title.md)
 
