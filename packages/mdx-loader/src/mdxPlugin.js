@@ -148,7 +148,7 @@ function mdxPlugin() {
       }
 
       if (type === 'code') {
-        if (lang === 'chart') {
+        if (lang === 'chart' || lang === 'mermaid') {
           slide.push({
             ...n,
             ...transformChartToJSX(mermaidId, value),

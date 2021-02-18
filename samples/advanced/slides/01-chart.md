@@ -4,7 +4,7 @@
 
 <br />
 
-```chart
+```mermaid
 graph TD;
     A-->B;
     A-->C;
@@ -21,7 +21,7 @@ https://github.com/knsv/mermaid
 <br />
 
 ```txt
-\`\`\`chart
+\`\`\`mermaid
 graph TD;
     A-->B;
     A-->C;

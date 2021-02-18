@@ -93,6 +93,23 @@ graph TD;
     expect(await transformToJS(src)).toMatchSnapshot();
   });
 
+  test('should convert mermaid using mermaid attr', async () => {
+    const src = `
+# FlowChart
+---
+
+\`\`\`mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+\`\`\`
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
+
   test('should convert MathJax', async () => {
     const src = `
 # MathJax
