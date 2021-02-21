@@ -123,6 +123,8 @@ The class name of `<!-- block-start -->` isn't mandatory.
 
 ---
 
+<!-- classes: setting-background -->
+
 ## Setting Background
 
 <!-- background: '../assets/background.jpeg' -->

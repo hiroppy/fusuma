@@ -6,24 +6,32 @@
   --black-color: #464646;
   --gray-color: #545454;
   --skin-color: #ffcc99;
-  --color-title: #3498db;
+}
+
+h1 {
+  color: #1687a7;
 }
 
 h2 {
+  color: #4a47a3;
   margin-bottom: 30px;
 }
 
-.slide-title {
-  background: var(--black-color);
-  color: var(--main-color);
+.section-title {
+  background: #faf3e0;
 }
 
-.section-title {
-  background: var(--gray-color);
-  color: var(--white-color);
+.setting-background {
+  & h2 {
+    color: #e7e6e1;
+  }
 }
 
 .end {
+  & h1 {
+    color: #faf3e0;
+  }
+
   color: var(--sub-color);
   background-image: linear-gradient(var(--black-color), var(--black-color)),
     url('https://media.giphy.com/media/ass2cYPZuBQ1q/giphy.gif');
@@ -34,9 +42,4 @@ h2 {
 
 .link {
   color: var(--sub-color);
-}
-
-.capture-screen-image {
-  border: 2px solid #333;
-  width: 70%;
 }

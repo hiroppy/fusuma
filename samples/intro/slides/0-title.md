@@ -1,4 +1,5 @@
-<!-- classes: slide-title -->
+<!-- classes: title -->
+<!-- background: #f8f1f1 -->
 
 <!-- note
 Here is a speaker note.😎
@@ -17,4 +18,4 @@ Node.js values backward compatibility. However, Node.js already has a module sys
 It's very difficult to implement ESM so as not to break the existing code.
 -->
 
-# Introducing Fusuma 😎
+# Introducing Fusuma
