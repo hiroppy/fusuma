@@ -4,15 +4,19 @@
 
 <br />
 
+```yml
+# .fusumarc.yml
+
+slide:
+  math: true
+```
+
+```md
 $$
 \textrm{padSize} = \lceil \log_{10}(\mathbf{arraySize} + 1) \rceil
 $$
-
----
-
-### fusumarc
-
-```yml
-slide
-  math: true
 ```
+
+$$
+\textrm{padSize} = \lceil \log_{10}(\mathbf{arraySize} + 1) \rceil
+$$
