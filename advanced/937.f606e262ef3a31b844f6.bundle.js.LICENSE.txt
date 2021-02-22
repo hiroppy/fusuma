@@ -261,7 +261,7 @@
 
 /*! entity-decode/browser */
 
-/*! exports provided: LEVELS, logger, setLogLevel */
+/*! exports provided: LEVELS, log, setLogLevel */
 
 /*! exports provided: addClasses, addRelations, setConf, drawOld, draw, default */
 
@@ -277,7 +277,7 @@
 
 /*! exports provided: default */
 
-/*! exports provided: defaultConfig, updateCurrentConfig, setSiteConfig, setSiteConfigDelta, updateSiteConfig, getSiteConfig, setConfig, getConfig, sanitize, addDirective, reset */
+/*! exports provided: defaultConfig, updateCurrentConfig, setSiteConfig, saveConfigFromInitilize, updateSiteConfig, getSiteConfig, setConfig, getConfig, sanitize, addDirective, reset */
 
 /*! exports provided: detectInit, detectDirective, detectType, isSubstringInArray, interpolateToCurve, formatUrl, runFunc, getStylesFromArray, generateId, random, assignWithDepth, getTextObj, drawSimpleText, wrapLabel, calculateTextHeight, calculateTextWidth, calculateTextDimensions, calculateSvgSizeAttrs, configureSvgSize, initIdGeneratior, default */
 
