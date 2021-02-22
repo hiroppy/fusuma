@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/hiroppy/fusuma/compare/v2.6.0...v2.7.0) (2021-02-22)
+
+
+### Features
+
+* **mdx-loader:** implement account syntax ([9f13ce8](https://github.com/hiroppy/fusuma/commit/9f13ce8a32ba639b8a66438fdcfa2a2455adfd36))
+
+
+
+
+
 # [2.6.0](https://github.com/hiroppy/fusuma/compare/v2.5.0...v2.6.0) (2021-02-18)
 
 
