@@ -53,12 +53,6 @@
   pointer-events: none;
 }
 
-/* @media (--viewport-not-pc) {
-  .slide-internal-box {
-    align-self: flex-start;
-  }
-} */
-
 .katex-html {
   display: none;
 }
@@ -71,4 +65,11 @@
 
 .mermaid {
   width: 100%;
+}
+
+.account {
+  color: var(--account-icon-color);
+  font-size: var(--account-icon-size);
+  display: flex;
+  align-items: center;
 }

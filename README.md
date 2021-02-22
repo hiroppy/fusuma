@@ -162,8 +162,9 @@ The following properties are provided, but you can change the css directly if yo
   --h6-font-size: 2rem;
   --h6-font-weight: 600;
 
+  --account-icon-size: 3rem;
+  --account-icon-color: #545454;
   --code-font-size: 1.8rem;
-
   --qr-code-image-size: 320px;
 }
 ```

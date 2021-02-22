@@ -1,8 +1,4 @@
-/* @import '../../packages/client/assets/style/themes/default.css'; */
 @import '../../packages/client/assets/style/themes/webpack.css';
-/* @import '../../packages/client/assets/style/themes/babel.css'; */
-/* @import '../../packages/client/assets/style/themes/node.css'; */
-/* @import '../../packages/client/assets/style/themes/pop.css'; */
 
 @font-face {
   font-family: Stratum;
@@ -32,4 +28,12 @@
 
 .inner {
   color: #3498db;
+}
+
+.sns-box {
+  margin: 16px 0;
+
+  & > :not(:first-child) {
+    margin-left: 16px;
+  }
 }

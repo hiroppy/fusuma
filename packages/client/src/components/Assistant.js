@@ -174,9 +174,8 @@ export const Assistant = () => (
                   url: 'https://hiroppy.github.io/fusuma/intro/#slide-13',
                 },
                 {
-                  title: 'Capturing Screen Contents',
-                  content: <code>screen</code>,
-                  url: 'https://hiroppy.github.io/fusuma/intro/#slide-14',
+                  title: 'Generating SNS icon',
+                  content: <code>{`account: serviceName, yourName, text`}</code>,
                 },
                 {
                   title: 'Generating QR Code',

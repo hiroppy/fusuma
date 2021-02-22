@@ -71,8 +71,6 @@ right
   <!-- block-end -->
 
 <!-- block-end -->
-
-The class name of `<!-- block-start -->` isn't mandatory.
 ```
 
 👇
@@ -92,8 +90,6 @@ right
 <!-- block-end -->
 
 <!-- block-end -->
-
-The class name of `<!-- block-start -->` isn't mandatory.
 
 ---
 
@@ -194,6 +190,36 @@ This sentence can be seen when using Presenter Mode.
 <br />
 
 Displays notes for each slide in presenter mode.
+
+---
+
+## Generating Links for SNS
+
+```md
+<!-- account: twitter, about_hiroppy -->
+<!-- account: github, hiroppy -->
+<!-- account: facebook, yuta.hiroto0429 -->
+<!-- account: linkedin, hiroppy -->
+```
+
+```css
+:root {
+  --account-icon-size: 3rem;
+  --account-icon-color: #545454;
+}
+
+/* these classes are attached */
+.account-twitter,
+.account-github,
+.account-facebook,
+.account-linkedin {
+}
+```
+
+<!-- account: twitter, about_hiroppy -->
+<!-- account: github, hiroppy -->
+<!-- account: facebook, yuta.hiroto0429 -->
+<!-- account: linkedin, hiroppy -->
 
 ---
 

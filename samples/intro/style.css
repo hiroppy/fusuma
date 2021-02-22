@@ -17,6 +17,18 @@ h2 {
   margin-bottom: 30px;
 }
 
+.sns-box {
+  margin: 20px;
+
+  & > * {
+    color: var(--gray-color);
+
+    &:not(:first-child) {
+      margin-left: 20px;
+    }
+  }
+}
+
 .section-title {
   background: #faf3e0;
 }

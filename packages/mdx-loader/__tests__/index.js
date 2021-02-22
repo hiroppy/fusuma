@@ -238,4 +238,15 @@ console.log(a + b);
 
     expect(await transformToJS(src)).toMatchSnapshot();
   });
+
+  test('should add sns accounts', async () => {
+    const src = `
+<!-- account: twitter, name, hello -->
+<!-- account: github, name, bye -->
+<!-- account: facebook, name, hello -->
+<!-- account: linkedin, name, bye -->
+ `;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
 });

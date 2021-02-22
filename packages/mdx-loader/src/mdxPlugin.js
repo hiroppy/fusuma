@@ -9,6 +9,7 @@ const transformScreenToJSX = require('./transformers/transformScreenToJSX');
 const transformChartToJSX = require('./transformers/transformChartToJSX');
 const transformMarkdownImageNodeToJSX = require('./transformers/transformMarkdownImageNodeToJSX');
 const transformExecJSCodeButtonToJSX = require('./transformers/transformExecJSCodeButtonToJSX');
+const transformAccountToJSX = require('./transformers/transformAccountToJSX');
 const commentParser = require('./commentParser');
 
 function mdxPlugin() {
@@ -22,13 +23,11 @@ function mdxPlugin() {
     let isFragmentArea = false;
     let fragmentSteps = 0;
     let fragmentId = 0;
-    let hasFragments = false;
 
     function formatSlidesTimeline(fragmentSteps, fragmentId) {
       if (fragmentSteps === 0) {
         return [0];
       } else {
-        hasFragments = true;
         return [[...Array(fragmentSteps)].fill(fragmentId)];
       }
     }
@@ -110,6 +109,13 @@ function mdxPlugin() {
         }
         if (prefix === 'note') {
           props.note = htmlEscape(valueStr).replace(/\n/g, '\\n');
+          return;
+        }
+        if (prefix === 'account') {
+          slide.push({
+            ...n,
+            ...transformAccountToJSX(valueArr),
+          });
           return;
         }
         if (prefix === 'qr') {
@@ -239,6 +245,8 @@ function mdxPlugin() {
       }
     });
 
+    // don't import as named to avoid using makeShortcode by mdx
+
     // we have to transform one src to an array because we separate slides using ---
     // Identifier 'slides' has already been declared
     tree.children.push({
@@ -247,14 +255,9 @@ function mdxPlugin() {
       value: `
         import React from 'react';
         import { mdx } from '@mdx-js/react';
-        ${
-          hasFragments
-            ? `
-        // don't import as named to avoid using makeShortcode by mdx
         import * as Client from '@fusuma/client';
-        `
-            : ''
-        }
+        import * as Icons from 'react-icons/fa';
+
         export const slides = [${res.jsx.join(',\n')}];
         export const backgrounds = [${res.background.join(',\n')}];
         export const fragmentSteps = ${JSON.stringify(res.fragmentSteps)};
