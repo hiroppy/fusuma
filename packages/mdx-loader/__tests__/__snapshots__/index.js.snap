@@ -251,10 +251,10 @@ import * as Client from '@fusuma/client';
 import * as Icons from 'react-icons/fa';
 export const slides = [props => <>
               
-    <a href=\\"https://twitter.com/name\\" className=\\"account account-twitter\\"><Icons.FaTwitter />hello</a>
-    <a href=\\"https://github.com/name\\" className=\\"account account-github\\"><Icons.FaGithub />bye</a>
-    <a href=\\"https://www.facebook.com/name\\" className=\\"account account-facebook\\"><Icons.FaFacebook />hello</a>
-    <a href=\\"https://www.linkedin.com/in/name\\" className=\\"account account-linkedin\\"><Icons.FaLinkedin />bye</a>
+    <a href=\\"https://twitter.com/name\\" className=\\"account account-twitter\\" aria-label=\\"account-twitter\\"><Icons.FaTwitter />hello</a>
+    <a href=\\"https://github.com/name\\" className=\\"account account-github\\" aria-label=\\"account-github\\"><Icons.FaGithub />bye</a>
+    <a href=\\"https://www.facebook.com/name\\" className=\\"account account-facebook\\" aria-label=\\"account-facebook\\"><Icons.FaFacebook />hello</a>
+    <a href=\\"https://www.linkedin.com/in/name\\" className=\\"account account-linkedin\\" aria-label=\\"account-linkedin\\"><Icons.FaLinkedin />bye</a>
     
             </>];
 export const backgrounds = [0];
