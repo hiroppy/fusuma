@@ -247,6 +247,13 @@ Displays notes for each slide in presenter mode.
 
 ---
 
+<!-- url:
+https://hiroppy.github.io/fusuma/syntaxes/account?sidebar=false
+ -->
+<!-- description:
+Create a link with an icon for SNS. If you want to add a label, you can specify the third argument.
+-->
+
 ## Generating Links for SNS
 
 ```md
