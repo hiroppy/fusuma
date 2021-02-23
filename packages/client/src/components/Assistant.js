@@ -17,6 +17,7 @@ const outerCss = {
   margin: 12,
   position: 'absolute',
   width: 400,
+  userSelect: 'none',
 };
 
 const buttonCss = {
