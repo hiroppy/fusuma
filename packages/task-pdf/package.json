@@ -19,6 +19,6 @@
   "dependencies": {
     "easy-pdf-merge": "^0.2.6",
     "fusuma": "^2.7.0",
-    "puppeteer": "^7.1.0"
+    "puppeteer": "^8.0.0"
   }
 }
