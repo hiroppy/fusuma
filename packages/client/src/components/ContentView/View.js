@@ -25,7 +25,7 @@ const View = memo(() => {
 
   useEffect(() => {
     // TODO: swiper should be gone to context
-    const { swiper } = document.querySelector('.swiper-container');
+    const { swiper } = document.querySelector('#main-slides');
     swiper?.slideTo(currentIndex);
   }, [currentIndex]);
 

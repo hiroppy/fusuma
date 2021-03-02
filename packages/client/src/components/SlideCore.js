@@ -42,7 +42,7 @@ if (process.env.UI.EFFECT === 'fade') {
 
 SwiperCore.use(swiperComponents);
 
-export const SlideCore = () => {
+export const SlideCore = (props) => {
   const {
     state: { slides },
   } = useSlides();
@@ -87,6 +87,7 @@ export const SlideCore = () => {
             }
           : {}),
       }}
+      {...props}
     >
       {slides.map(({ slide: Slide, fusumaProps: { classes, sectionTitle, background } }, i) => (
         <SwiperSlide

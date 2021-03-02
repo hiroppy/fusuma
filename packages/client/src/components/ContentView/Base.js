@@ -1,6 +1,7 @@
 import React, { memo, useEffect } from 'react';
 import { useSlides, updateCurrentIndex } from '../../context/slides';
 import { SlideCore } from '../SlideCore';
+import { SlideList } from '../SlideList';
 
 export const Base = memo(() => {
   const {
@@ -10,7 +11,7 @@ export const Base = memo(() => {
 
   useEffect(() => {
     // TODO: swiper should be gone to context
-    const { swiper } = document.querySelector('.swiper-container');
+    const { swiper } = document.querySelector('#main-slides');
     swiper?.slideTo(currentIndex);
   }, [currentIndex]);
 
@@ -39,5 +40,10 @@ export const Base = memo(() => {
     };
   }, []);
 
-  return <SlideCore />;
+  return (
+    <>
+      {process.env.NODE_ENV === 'development' && <SlideList />}
+      <SlideCore id="main-slides" />
+    </>
+  );
 });
