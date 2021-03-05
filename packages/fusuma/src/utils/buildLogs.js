@@ -155,7 +155,7 @@ function buildLogs(logs) {
           isAsync ? asyncChunk : syncChunk
         } ${name}`,
         chalk.blue(prettyBytes(size)),
-        gzSize !== 0 ? chalk.blue(prettyBytes(gzSize)) : '',
+        gzSize ? chalk.blue(prettyBytes(gzSize)) : '',
       ]);
     });
 
