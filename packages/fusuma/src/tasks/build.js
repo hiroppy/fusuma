@@ -1,11 +1,12 @@
 'use strict';
 
 const Spinner = require('../cli/Spinner');
-const { info, warn } = require('../cli/log');
+const { warn } = require('../cli/log');
 const deleteDir = require('../utils/deleteDir');
 const getRemoteOriginUrl = require('../utils/getRemoteOriginUrl');
+const buildLogs = require('../utils/buildLogs');
 const { build: webpackBuild } = require('../webpack');
-const outputBuildInfo = require('../webpack/outputBuildInfo');
+const outputBuildInfo = require('../webpack/getChunks');
 const dynamicRenderingServer = require('../server/dynamicRenderingServer');
 
 async function build(config, isConsoleOutput = true) {
@@ -40,16 +41,19 @@ async function build(config, isConsoleOutput = true) {
     }
   }
 
-  await dynamicRenderingServer(outputDirPath, config.build.publicPath, spinner, neededThumbnail);
+  const logs = await dynamicRenderingServer(
+    outputDirPath,
+    config.build.publicPath,
+    spinner,
+    neededThumbnail
+  );
 
   spinner.stop();
 
   if (isConsoleOutput) {
-    const logs = outputBuildInfo(stats);
-    const last = logs.splice(-1);
+    const chunks = outputBuildInfo(stats);
 
-    console.info(logs.join('\n'));
-    info('build', last);
+    buildLogs({ ...logs, ...chunks });
   }
 }
 

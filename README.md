@@ -199,7 +199,11 @@ You can see your Note for each slide and the next slide on the Host screen.
 
 Fusuma supports improving performance, SEO, and so on as default.
 
-<img src="./site/docs/assets/lighthouse.png" width="600px">
+<img src="./site/docs/assets/lighthouse.png" width="500px">
+
+Fusuma analyzes the slide's performance, and outputs like below.
+
+<img src="./output-logs.png" width="500px">
 
 ---
 

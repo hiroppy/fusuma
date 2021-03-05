@@ -11,6 +11,10 @@ const fileServer = require('./fileServer');
 async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThumbnail = true) {
   spinner.setContent({ color: 'cyan', text: 'Rendering components to HTML...' });
 
+  const logs = {
+    network: [],
+    performance: {},
+  };
   const port = 5445;
   const browser = await puppeteer.launch({
     chromeWebSecurity: false,
@@ -26,9 +30,26 @@ async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThum
     width: 1200,
     height: 630,
   });
+
+  page.on('request', (request) => {
+    const url = request.url();
+
+    if (url.includes(`http://localhost:${port}${publicPath}`)) {
+      logs.network.push(url.split(`http://localhost:${port}${publicPath}`).pop());
+    } else {
+      logs.network.push(url);
+    }
+  });
+
   await page.goto(url, {
     waitUntil: ['load', 'networkidle2'],
   });
+
+  const performanceTimingJson = await page.evaluate(() =>
+    JSON.stringify(window.performance.timing)
+  );
+
+  logs.performance = JSON.parse(performanceTimingJson);
 
   try {
     await unlink(htmlPath);
@@ -67,9 +88,9 @@ async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThum
     }
   }
 
-  await page.close();
-  await browser.close();
-  app.close();
+  await Promise.all([page.close(), browser.close(), new Promise((r) => app.close(r))]);
+
+  return logs;
 }
 
 module.exports = dynamicRenderingServer;
