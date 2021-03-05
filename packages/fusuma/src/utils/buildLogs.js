@@ -3,7 +3,6 @@
 const { table, getBorderCharacters } = require('table');
 const chalk = require('chalk');
 const prettyBytes = require('pretty-bytes');
-const { javascript } = require('webpack');
 
 const tableConfig = {
   border: getBorderCharacters('void'),
