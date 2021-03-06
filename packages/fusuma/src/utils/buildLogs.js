@@ -19,7 +19,7 @@ const tableConfig = {
   drawHorizontalLine: () => false,
 };
 
-function buildLogs(logs) {
+function buildLogs(logs, publicPath) {
   const outputStack = [];
   const syncChunk = chalk.yellow('○');
   const asyncChunk = chalk.cyan('○');
@@ -39,7 +39,7 @@ function buildLogs(logs) {
   outputStack.push(['', '', 'size', 'gzip']);
   outputStack.push([
     `  ┌─`,
-    `${syncChunk} /`,
+    `${syncChunk} ${publicPath}`,
     chalk.green(prettyBytes(logs.assets['index.html'].size)),
     '',
   ]);

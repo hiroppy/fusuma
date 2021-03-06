@@ -53,7 +53,7 @@ async function build(config, isConsoleOutput = true) {
   if (isConsoleOutput) {
     const chunks = outputBuildInfo(stats);
 
-    buildLogs({ ...logs, ...chunks });
+    buildLogs({ ...logs, ...chunks }, config.build.publicPath);
   }
 }
 
