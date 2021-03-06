@@ -19,7 +19,8 @@
     "release": "lerna publish from-package",
     "fmt": "prettier --write **/*.{js,json,css,md}",
     "lint": "eslint . --cache --ext .js",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
