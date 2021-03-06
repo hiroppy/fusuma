@@ -1,0 +1,17 @@
+{
+  "name": "@fusuma/generate-meta-webpack-plugin",
+  "version": "1.0.0",
+  "description": "webpack plugin for fusuma",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me/)",
+  "license": "MIT",
+  "dependencies": {
+    "schema-utils": "^3.0.0"
+  }
+}

@@ -37,7 +37,7 @@ module.exports = (
   const config = (() => {
     switch (type) {
       case 'production':
-        return require('./webpack.prod.config')();
+        return require('./webpack.prod.config')({ meta });
       default:
         return require('./webpack.dev.config')();
     }

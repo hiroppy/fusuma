@@ -32,6 +32,7 @@
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
     "@fusuma/client": "^2.7.0",
+    "@fusuma/generate-meta-webpack-plugin": "^1.0.0",
     "@fusuma/mdx-loader": "^2.7.0",
     "@fusuma/prism-loader": "^2.7.0",
     "@soda/friendly-errors-webpack-plugin": "^1.8.0",
