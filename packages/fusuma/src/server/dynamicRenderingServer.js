@@ -88,7 +88,9 @@ async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThum
     }
   }
 
-  await Promise.all([page.close(), browser.close(), new Promise((r) => app.close(r))]);
+  await page.close();
+  await browser.close();
+  await new Promise((r) => app.close(r));
 
   return logs;
 }
