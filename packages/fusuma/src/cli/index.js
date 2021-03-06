@@ -2,108 +2,111 @@
 
 'use strict';
 
-const prog = require('caporal');
+const { Command } = require('commander');
 const { version } = require('../../package.json');
 const tasks = require('../tasks');
 
-async function cli() {
-  return new Promise((resolve) => {
-    prog
-      .version(version)
-      .description('CLI for easily make slides with Markdown')
-      .command('init', 'Create a configure file')
-      .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
-      .action((args, options) => {
-        resolve({
-          type: 'init',
-          options: {
-            basePath: options.b,
-          },
-        });
-      })
+const program = new Command();
 
-      .command('start', 'Start with webpack-dev-server')
-      .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
-      .option('-i <directory>', 'A directory to load', prog.STRING, 'slides')
-      .option('-p <port>', 'Dev server port', prog.INT, '8080')
-      .action((args, options) => {
-        resolve({
-          type: 'start',
-          options: {
-            basePath: options.b,
-            inputDir: options.i,
-            port: options.p,
-          },
-        });
-      })
+program.version(version);
 
-      .command('start-prod', 'Serve bundle directory')
-      .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
-      .option('-i <directory>', 'A directory to load', prog.STRING, 'dist')
-      .option('-p <port>', 'Dev server port', prog.INT, '8080')
-      .action((args, options) => {
-        resolve({
-          type: 'startProd',
-          options: {
-            basePath: options.b,
-            inputDir: options.i,
-            port: options.p,
-          },
-        });
-      })
-
-      .command('build', 'Build with webpack')
-      .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
-      .option('-i <directory>', 'A directory to load', prog.STRING, 'slides')
-      .option('-o <directory>', 'A directory to output', prog.STRING, 'dist')
-      .action((args, options) => {
-        resolve({
-          type: 'build',
-          options: {
-            basePath: options.b,
-            inputDir: options.i,
-            outputDir: options.o,
-          },
-        });
-      })
-
-      .command('deploy', 'Deploy to GitHub pages')
-      .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
-      .option('-i <directory>', 'A directory to load', prog.STRING, 'dist')
-      .action((args, options) => {
-        resolve({
-          type: 'deploy',
-          options: {
-            basePath: options.b,
-            outputDir: options.i,
-          },
-        });
-      })
-
-      .command('pdf', 'Export as PDF')
-      .option('-b <directory>', 'A base path', prog.STRING, process.cwd())
-      .option('-i <directory>', 'A directory to load', prog.STRING, 'dist')
-      .option('-f <directory>', 'A filename of pdf', prog.STRING, 'slide.pdf')
-      .action((args, options) => {
-        resolve({
-          type: 'pdf',
-          options: {
-            basePath: options.b,
-            inputDir: options.i,
-            filename: options.f,
-          },
-        });
-      });
-
-    prog.parse(process.argv);
+program
+  .command('init')
+  .description('Create a configure file')
+  .option('-b <directory>', 'A base path', process.cwd())
+  .action((options) => {
+    tasks({
+      type: 'init',
+      options: {
+        basePath: options.b,
+      },
+    });
   });
-}
 
-(async () => {
-  const res = await cli();
+program
+  .command('start')
+  .description('Serve dev server')
+  .option('-b <directory>', 'A base path', process.cwd())
+  .option('-i <directory>', 'A directory to load', 'slides')
+  .option('-p <port>', 'Dev server port', 8080)
+  .action((options) => {
+    tasks({
+      type: 'start',
+      options: {
+        basePath: options.b,
+        inputDir: options.i,
+        port: options.p,
+      },
+    });
+  });
 
-  tasks(res);
-})();
+program
+  .command('start-prod')
+  .description('Serve bundle directory')
+  .option('-b <directory>', 'A base path', process.cwd())
+  .option('-i <directory>', 'A directory to load', 'dist')
+  .option('-p <port>', 'Dev server port', '8080')
+  .action((options) => {
+    tasks({
+      type: 'startProd',
+      options: {
+        basePath: options.b,
+        inputDir: options.i,
+        port: options.p,
+      },
+    });
+  });
+
+program
+  .command('build')
+  .description('Build with webpack')
+  .option('-b <directory>', 'A base path', process.cwd())
+  .option('-i <directory>', 'A directory to load', 'slides')
+  .option('-o <directory>', 'A directory to output', 'dist')
+  .action((options) => {
+    tasks({
+      type: 'build',
+      options: {
+        basePath: options.b,
+        inputDir: options.i,
+        outputDir: options.o,
+      },
+    });
+  });
+
+program
+  .command('deploy')
+  .description('Deploy to GitHub pages')
+  .option('-b <directory>', 'A base path', process.cwd())
+  .option('-i <directory>', 'A directory to load', 'dist')
+  .action((options) => {
+    tasks({
+      type: 'deploy',
+      options: {
+        basePath: options.b,
+        outputDir: options.i,
+      },
+    });
+  });
+
+program
+  .command('pdf')
+  .description('Export as PDF')
+  .option('-b <directory>', 'A base path', process.cwd())
+  .option('-i <directory>', 'A directory to load', 'dist')
+  .option('-f <directory>', 'A filename of pdf', 'slide.pdf')
+  .action((options) => {
+    tasks({
+      type: 'pdf',
+      options: {
+        basePath: options.b,
+        inputDir: options.i,
+        filename: options.f,
+      },
+    });
+  });
+
+program.parse(process.argv);
 
 process.on('unhandledRejection', (err) => {
   console.error(err);
