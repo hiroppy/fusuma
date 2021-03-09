@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "engines": {
-    "npm": ">=7.6.1",
+    "npm": ">=7.6.2",
     "node": ">=v14.16.0"
   },
   "devDependencies": {
