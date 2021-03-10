@@ -106,6 +106,23 @@ program
     });
   });
 
+program
+  .command('portal <task>')
+  .description('Create a portal page')
+  .option('-b <directory>', 'A base path', process.cwd())
+  .option('-i <directory>', 'A directory to load', 'slides')
+  .option('-o <directory>', 'A directory to output', 'dist')
+  .action((task, options) => {
+    tasks({
+      type: 'portal',
+      options: {
+        basePath: options.b,
+        inputDir: options.i,
+        outputDir: options.o,
+      },
+    });
+  });
+
 program.parse(process.argv);
 
 process.on('unhandledRejection', (err) => {

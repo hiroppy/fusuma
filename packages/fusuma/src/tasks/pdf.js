@@ -1,8 +1,11 @@
 'use strict';
 
+const { version } = require('../../package.json');
 const Spinner = require('../cli/Spinner');
 const { info } = require('../cli/log');
 const lazyloadModule = require('../utils/lazyloadModule');
+
+console.log(version);
 
 async function pdf(config) {
   const port = 3455;

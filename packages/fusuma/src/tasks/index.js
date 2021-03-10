@@ -66,6 +66,8 @@ async function tasks({ type, options }) {
       return require('./deploy')(config);
     case 'pdf':
       return require('./pdf')(config);
+    case 'portal':
+      return require('./portal')(config);
     default:
       error('cli', `the command not found, please see "--help"`);
   }

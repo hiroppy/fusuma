@@ -1,0 +1,4 @@
+meta:
+  url: https://hiroppy.github.io/fusuma/syntaxes/6
+build:
+  - useCache: false

@@ -30,10 +30,10 @@ class GenerateMetaPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.done.tapPromise(this.name, async () => {
+    compiler.hooks.done.tapPromise(this.name, async ({ hash }) => {
       await writeFile(
         join(compiler.outputPath, this.options.filename),
-        JSON.stringify(this.options.data)
+        JSON.stringify({ hash, ...this.options.data })
       );
     });
   }

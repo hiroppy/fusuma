@@ -1,0 +1,11 @@
+{
+  "name": "syntaxes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "FUSUMA_DEBUG=true node ../../packages/fusuma/src/cli portal build"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me/)",
+  "license": "MIT"
+}
