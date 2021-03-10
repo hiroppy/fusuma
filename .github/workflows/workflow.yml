@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: use latest npm
+      - name: Use latest npm
         run: npm i npm -g
       - name: Install deps
         run: npm ci
@@ -27,6 +27,7 @@ jobs:
       - name: Build samples
         run: |
           cd packages/playground/intro
+          npm i
           npm run build
           npm run pdf
         env:
