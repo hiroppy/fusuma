@@ -1,4 +1,4 @@
-@import '../../packages/client/assets/style/themes/webpack.css';
+@import '@fusuma/client/assets/style/themes/webpack.css';
 
 @font-face {
   font-family: Stratum;

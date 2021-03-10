@@ -23,7 +23,7 @@ but you can also use this mode if you use browsers which don't have Presentation
 
 ## Host Screen
 
-![presenter-host](../../../site/docs/assets/presenter-host.png?w=70%)
+![presenter-host](../../../../site/docs/assets/presenter-host.png?w=70%)
 
 ---
 
@@ -55,4 +55,4 @@ Timeline and the recording voice are optional but these features will help you t
 
 The timeline can be time travel.
 
-![timeline](../../../site/docs/assets/presenter-mode-timeline.png?w=60%)
+![timeline](../../../../site/docs/assets/presenter-mode-timeline.png?w=60%)

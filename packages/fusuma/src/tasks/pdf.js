@@ -1,6 +1,5 @@
 'use strict';
 
-const { join } = require('path');
 const Spinner = require('../cli/Spinner');
 const { info } = require('../cli/log');
 const lazyloadModule = require('../utils/lazyloadModule');

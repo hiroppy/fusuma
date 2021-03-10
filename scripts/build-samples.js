@@ -4,7 +4,7 @@ const { readdirSync, statSync } = require('fs');
 const { join } = require('path');
 const { execSync } = require('child_process');
 
-const base = join(process.cwd(), 'samples');
+const base = join(__dirname, '../packages/playground');
 const getDirs = (p) => readdirSync(p).filter((f) => statSync(join(p, f)).isDirectory());
 
 const dirs = getDirs(base);

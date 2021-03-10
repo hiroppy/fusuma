@@ -7,7 +7,7 @@ const deploy = require('../packages/fusuma/src/tasks/deploy');
 const getDirs = (p) => readdirSync(p).filter((f) => statSync(join(p, f)).isDirectory());
 
 (async () => {
-  const base = join(process.cwd(), 'samples');
+  const base = join(__dirname, '../packages/playground');
   const dirs = getDirs(base);
 
   for (let i = 0; i < dirs.length; i++) {
