@@ -18,14 +18,15 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: use latest npm
         run: npm i npm -g
-      - name: npm install, build, and test
+      - name: Install deps
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm test
+      - name: Build samples
         run: |
-          npm ci
-          npm run setup
-          npm run lint
-          npm test
-          cd samples/intro
-          npm i
+          cd packages/playground/intro
           npm run build
           npm run pdf
         env:
