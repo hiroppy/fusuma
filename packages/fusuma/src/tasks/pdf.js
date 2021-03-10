@@ -15,9 +15,7 @@ async function pdf(config) {
   spinner.start();
 
   try {
-    const pack = process.env.FUSUMA_DEBUG
-      ? join(__dirname, '../../../task-pdf')
-      : '@fusuma/task-pdf';
+    const pack = '@fusuma/task-pdf';
     const pdf = await lazyloadModule(pack, (type) => {
       if (type === 'fallback') {
         spinner.setContent({ color: 'yellow', text: `Installing ${pack}...` });

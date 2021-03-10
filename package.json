@@ -4,7 +4,8 @@
   "private": true,
   "description": "easily make slides with markdown",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/playground"
   ],
   "scripts": {
     "test": "jest",

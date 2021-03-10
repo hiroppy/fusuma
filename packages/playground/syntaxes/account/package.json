@@ -1,0 +1,12 @@
+{
+  "name": "6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:prod": "fusuma start-prod",
+    "build": "fusuma build"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me/)",
+  "license": "MIT"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "fusuma init",
+    "start": "fusuma start",
+    "start:prod": "fusuma start-prod",
+    "build": "fusuma build",
+    "pdf": "fusuma pdf"
+  },
+  "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^17.0.1",
+    "styled-components": "^5.2.1"
+  }
+}
