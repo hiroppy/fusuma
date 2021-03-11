@@ -198,7 +198,7 @@ function mdxPlugin() {
 
       if (type === 'jsx') {
         n.value = value
-          .replace(/src="(.+?\.(png|jpg|gif|svg?))"/g, 'src={require("$1")}')
+          .replace(/src="(.+?\.(png|jpg|gif|svg|mp4|webm?))"/g, 'src={require("$1")}')
           .replace(/class=/g, 'className=');
       }
     });

@@ -131,7 +131,7 @@ module.exports = (
           },
         },
         {
-          test: /\.(svg|gif|webp|eot|ttf|woff2?)$/,
+          test: /\.(svg|gif|webp|mp4|webm|eot|ttf|woff2?)$/,
           type: 'asset/resource',
           generator: {
             filename: '[hash][ext]',
