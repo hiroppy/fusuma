@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/hiroppy/fusuma/compare/v2.7.0...v2.8.0) (2021-03-14)
+
+
+### Bug Fixes
+
+* **client:** add --account-icon-color to themes ([79f1ccc](https://github.com/hiroppy/fusuma/commit/79f1cccac26a52b90f1fb97167340d1aed564bfe))
+* **client:** add userSelect ([49f8580](https://github.com/hiroppy/fusuma/commit/49f8580b6725a82cf07ff3a2acf4c731393da268))
+* **client:** fix fragments for a last page ([0d866fe](https://github.com/hiroppy/fusuma/commit/0d866fe3629a1e3eb87d7e60ba75ad3610b78a4e))
+* **client:** fix table css ([b7daa03](https://github.com/hiroppy/fusuma/commit/b7daa0325f5123c152f51559f7c9c74706f36d4c))
+* **client:** modify some color ([c399224](https://github.com/hiroppy/fusuma/commit/c399224fdb268d49d023490d814ff7dcf15f3c09))
+* **client:** stop video when slides are changed ([b17172f](https://github.com/hiroppy/fusuma/commit/b17172f8b876f5fac5f1ccb7d11ff3248216fde6))
+* **fusuma:** allow undefined for gzSize ([80386cd](https://github.com/hiroppy/fusuma/commit/80386cdbbe85f66269713135e66c76c67a5dcedb))
+* **fusuma:** don't use Promise.all to close connections ([0f9e713](https://github.com/hiroppy/fusuma/commit/0f9e713b32cbec4b8e95dc2d4a4100c02b38964f))
+* **fusuma:** use publicPath instrad of / ([ce1734d](https://github.com/hiroppy/fusuma/commit/ce1734de36aa1790004adc93a63e710c6b4ed3ec))
+* **mdx:** allow mp4 and webm ([cfe8d88](https://github.com/hiroppy/fusuma/commit/cfe8d88ba48d8cbe3f9e3386b2150523cbe6cc31))
+
+
+### Features
+
+* **client:** add fit-font class ([24b79e4](https://github.com/hiroppy/fusuma/commit/24b79e4219f89f0293d9fb2679038579681e36e6))
+* **fusuma:** improve output logs ([f07666b](https://github.com/hiroppy/fusuma/commit/f07666ba9da80770aad3ef5fe97f396f319ace03))
+* **generate-meta-webpack-plugin:** introduce new plugin ([8e7e54e](https://github.com/hiroppy/fusuma/commit/8e7e54ef7d41bec7eb52d7cef1e84a9836e049c6))
+
+
+
+
+
 # [2.7.0](https://github.com/hiroppy/fusuma/compare/v2.6.0...v2.7.0) (2021-02-22)
 
 
