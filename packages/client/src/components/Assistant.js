@@ -122,6 +122,10 @@ export const Assistant = () => (
                   title: 'Table of Contents',
                   content: <code>{`.toc`}</code>,
                 },
+                {
+                  title: 'Fitting to Fill Text',
+                  content: <code>{`.fit-font`}</code>,
+                },
               ]}
             />
           </Item>

@@ -73,3 +73,7 @@
   display: flex;
   align-items: center;
 }
+
+.fit-font {
+  font-size: 25.5vw;
+}
