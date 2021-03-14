@@ -67,7 +67,10 @@ async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThum
 
   const { issues } = await pa11y(url, {
     browser,
-    ignore: [/* anchor in ToC*/ 'WCAG2AA.Principle2.Guideline2_4.2_4_1.G1,G123,G124.NoSuchID'],
+    ignore: [
+      /* anchor in ToC*/ 'WCAG2AA.Principle2.Guideline2_4.2_4_1.G1,G123,G124.NoSuchID',
+      /* table */ 'WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.AlignAttr',
+    ],
   });
 
   if (issues.length) {

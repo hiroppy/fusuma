@@ -148,3 +148,35 @@ blockquote {
   padding-left: 12px;
   text-align: left;
 }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+thead {
+  border-bottom: 1px var(--color-base) solid;
+
+  & th {
+    font-weight: 500;
+    padding: 0 4px 12px 4px;
+
+    &:not(:first-child) {
+      padding-left: 12px;
+    }
+  }
+}
+
+tbody {
+  & tr:not(:last-child) {
+    border-bottom: 1px var(--color-base) solid;
+  }
+
+  & td {
+    padding: 12px 4px 0 4px;
+
+    &:not(:first-child) {
+      padding-left: 12px;
+    }
+  }
+}
