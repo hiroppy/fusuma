@@ -5,7 +5,10 @@ export function getSlideIndex({ next, slides, currentIndex, timeline, currentFra
   if (next === '+') {
     nextIndex = Math.min(currentIndex + 1, slides.length - 1);
 
-    if (Array.isArray(timeline[nextIndex])) {
+    // the last page and not first time
+    if (slides.length - 1 === currentIndex && Array.isArray(timeline[nextIndex])) {
+      nextCurrentFragmentSteps = Math.min(currentFragmentSteps + 1, timeline[nextIndex].length);
+    } else if (Array.isArray(timeline[nextIndex])) {
       nextCurrentFragmentSteps = 0;
     } else if (Array.isArray(timeline[currentIndex])) {
       nextCurrentFragmentSteps = currentFragmentSteps + 1;
