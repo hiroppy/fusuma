@@ -180,3 +180,7 @@ tbody {
     }
   }
 }
+
+video {
+  outline: none;
+}

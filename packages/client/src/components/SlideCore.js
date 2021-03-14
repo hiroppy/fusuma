@@ -87,6 +87,13 @@ export const SlideCore = (props) => {
             }
           : {}),
       }}
+      onSlideChange={(e) => {
+        const videos = e.slides[e.previousIndex].querySelectorAll('video');
+
+        if (videos.length) {
+          videos.forEach((el) => el.pause());
+        }
+      }}
       {...props}
     >
       {slides.map(({ slide: Slide, fusumaProps: { classes, sectionTitle, background } }, i) => (
