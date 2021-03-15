@@ -22,7 +22,7 @@ async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThum
   });
   const page = await browser.newPage();
   const app = await fileServer(outputDirPath, publicPath, port);
-  const url = `http://localhost:${port}?sidebar=false&pagination=false&ssr=true`;
+  const url = `http://localhost:${port}/?sidebar=false&pagination=false&ssr=true`;
   const htmlPath = join(outputDirPath, 'index.html');
 
   // https://www.kapwing.com/resources/what-is-an-og-image-make-and-format-og-images-for-your-blog-or-webpage/
@@ -32,12 +32,15 @@ async function dynamicRenderingServer(outputDirPath, publicPath, spinner, isThum
   });
 
   page.on('request', (request) => {
-    const url = request.url();
+    const requestedUrl = request.url();
 
-    if (url.includes(`http://localhost:${port}${publicPath}`)) {
-      logs.network.push(url.split(`http://localhost:${port}${publicPath}`).pop());
+    if (requestedUrl === url) {
+      return;
+    }
+    if (requestedUrl.includes(`http://localhost:${port}${publicPath}`)) {
+      logs.network.push(requestedUrl.split(`http://localhost:${port}${publicPath}`).pop());
     } else {
-      logs.network.push(url);
+      logs.network.push(requestedUrl);
     }
   });
 

@@ -13,7 +13,7 @@ const getDirs = (p) => readdirSync(p).filter((f) => statSync(join(p, f)).isDirec
   for (let i = 0; i < dirs.length; i++) {
     const name = dirs[i];
 
-    if (!['syntaxes'].includes(name)) {
+    if (!['syntaxes', 'issues'].includes(name)) {
       await deploy(
         {
           internal: {

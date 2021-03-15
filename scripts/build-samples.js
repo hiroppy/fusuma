@@ -13,7 +13,7 @@ const dirs = getDirs(base);
   for (let i = 0; i < dirs.length; i++) {
     const name = dirs[i];
 
-    if (!['syntaxes'].includes(name)) {
+    if (!['syntaxes', 'issues'].includes(name)) {
       console.log('=================', name, '=================');
 
       execSync(`cd ${join(base, name)} && npm run build`, { stdio: 'inherit' });
