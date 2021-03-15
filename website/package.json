@@ -10,14 +10,14 @@
   "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
   "license": "MIT",
   "dependencies": {
-    "@chakra-ui/react": "^1.2.1",
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
+    "@chakra-ui/react": "^1.3.4",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "@mdx-js/mdx": "^1.6.22",
     "dotenv": "^8.2.0",
-    "framer-motion": "^3.2.2-rc.1",
-    "loader-utils": "^1.2.3",
-    "next": "^10.0.6",
+    "framer-motion": "^3.10.3",
+    "loader-utils": "^2.0.0",
+    "next": "^10.0.8",
     "next-compose-plugins": "^2.2.1",
     "next-images": "^1.7.0",
     "react": "^17.0.1",
@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.12.13",
-    "@types/react": "^17.0.0",
+    "@types/react": "^17.0.3",
     "babel-loader": "^8.2.2",
-    "typescript": "^4.1.3"
+    "typescript": "^4.2.3"
   }
 }
