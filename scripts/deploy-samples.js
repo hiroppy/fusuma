@@ -26,21 +26,21 @@ const getDirs = (p) => readdirSync(p).filter((f) => statSync(join(p, f)).isDirec
         }
       );
     } else {
-      //   const basePath = join(base, name);
-      //   const items = getDirs(basePath);
-      //   for (const item of items) {
-      //     await deploy(
-      //       {
-      //         internal: {
-      //           basePath,
-      //           outputDirPath: join(join(basePath, item), 'dist'),
-      //         },
-      //       },
-      //       {
-      //         dest: join(name, item),
-      //       }
-      //     );
-      //   }
+      const basePath = join(base, name);
+      const items = getDirs(basePath);
+      for (const item of items) {
+        await deploy(
+          {
+            internal: {
+              basePath,
+              outputDirPath: join(join(basePath, item), 'dist'),
+            },
+          },
+          {
+            dest: join(name, item),
+          }
+        );
+      }
     }
   }
 })();

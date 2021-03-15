@@ -4,3 +4,6 @@ coverage
 lerna-debug.log
 *.pdf
 .eslintcache
+out
+.next
+.env
