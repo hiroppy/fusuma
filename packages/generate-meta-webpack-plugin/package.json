@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/generate-meta-webpack-plugin",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "description": "webpack plugin for fusuma",
   "main": "src/index.js",
   "files": [

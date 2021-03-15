@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.1](https://github.com/hiroppy/fusuma/compare/v2.8.0...v2.8.1) (2021-03-15)
+
+
+### Bug Fixes
+
+* **fusuma:** fix publicPath for / ([d7ec214](https://github.com/hiroppy/fusuma/commit/d7ec214b95ac07d5daf5c2ad75348bc395281e9f))
+
+
+
+
+
 # [2.8.0](https://github.com/hiroppy/fusuma/compare/v2.7.0...v2.8.0) (2021-03-14)
 
 
