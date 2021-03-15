@@ -3,7 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { DocsLayout } from '../../components/DocsLayout';
 import { Link } from '../../components/Link';
-import { slides } from '../../../../samples/intro/slides/04-slide.md';
+import { slides } from '../../../../packages/playground/intro/slides/04-slide.md';
 
 const Section = ({ title, content, description, url }) => (
   <Box display={{ md: 'flex' }} gridGap={4} mt={10}>
