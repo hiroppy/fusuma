@@ -16,6 +16,11 @@ async function tasks({ type, options }) {
   const outputDirPath = join(basePath, outputDir || 'dist');
   let config = {};
 
+  if (type !== 'init' && !existsSync(inputDirPath)) {
+    error('preparation', '"slides" directory not found');
+    process.exit(1);
+  }
+
   try {
     config = await searchFusumarc(basePath, fusumarc);
   } catch (e) {
