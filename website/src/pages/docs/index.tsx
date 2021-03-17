@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Text, Box, Heading, Code, UnorderedList, ListItem, Image } from '@chakra-ui/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
@@ -16,12 +17,23 @@ const Intro = () => (
       <UnorderedList>
         <ListItem fontSize="lg">
           <Link href="/docs/fusumarc">A Configuration File of Fusuma</Link>
+          <ChevronRightIcon color="blue.400" />
+        </ListItem>
+        <ListItem fontSize="lg">
+          <Link href="/docs/modes">Modes</Link>
+          <ChevronRightIcon color="blue.400" />
         </ListItem>
         <ListItem fontSize="lg">
           <Link href="/docs/slide-syntax">Slide Syntax</Link>
+          <ChevronRightIcon color="blue.400" />
         </ListItem>
         <ListItem fontSize="lg">
           <Link href="/docs/css">Custom Styles and Themes</Link>
+          <ChevronRightIcon color="blue.400" />
+        </ListItem>
+        <ListItem fontSize="lg">
+          <Link href="/docs/chart-and-math">Math, Diagrams, and Flowcharts</Link>
+          <ChevronRightIcon color="blue.400" />
         </ListItem>
       </UnorderedList>
     </Section>

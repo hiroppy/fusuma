@@ -5,7 +5,6 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { DocsLayout } from '../../components/DocsLayout';
 import { Section } from '../../components/Section';
-import { Link } from '../../components/Link';
 
 const Fusumarc = ({ code }) => (
   <DocsLayout
@@ -18,12 +17,13 @@ const Fusumarc = ({ code }) => (
     ]}
   >
     <Text>
-      Fusuma uses the configuration file(<Code>.fusumarc</Code>) as optional and support `.js` and
-      `.yml` extensions.
+      Fusuma uses the configuration file(<Code>.fusumarc</Code>) as optional and support{' '}
+      <Code>.js</Code> and
+      <Code>.yml</Code> extensions.
     </Text>
     <Section title="Introducing rc file">
       <Text>Fusuma has the following properties and default values.</Text>
-      <SyntaxHighlighter language="css" style={tomorrow}>
+      <SyntaxHighlighter language="javascript" style={tomorrow}>
         {code}
       </SyntaxHighlighter>
     </Section>

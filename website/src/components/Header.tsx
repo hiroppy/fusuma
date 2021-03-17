@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { chakra, Flex, Image } from '@chakra-ui/react';
+import { FaHeart } from 'react-icons/fa';
 import { TopContainer } from './TopContainer';
 import logo from '../../public/static/logo-black.svg';
 
@@ -12,7 +13,7 @@ export const Header = () => (
             <Image src={logo} alt="fusuma" height="32px" />
           </Link>
         </Flex>
-        <Flex w="100%" h="100%" align="center" justify="flex-end">
+        <Flex w="100%" h="100%" alignItems="center" justify="flex-end">
           <a
             className="github-button"
             href="https://github.com/hiroppy/fusuma"
@@ -22,6 +23,15 @@ export const Header = () => (
           >
             Star
           </a>
+          <chakra.a
+            fontSize="20px"
+            color="gray.300"
+            mx={2}
+            mt={-1}
+            href="https://github.com/sponsors/hiroppy"
+          >
+            <FaHeart />
+          </chakra.a>
         </Flex>
       </Flex>
     </TopContainer>

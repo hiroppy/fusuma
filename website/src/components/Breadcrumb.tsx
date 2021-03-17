@@ -12,7 +12,7 @@ export type Props = {
 export const Breadcrumb: FC<Props> = ({ items }) => (
   <BreadcrumbComponent color="blackAlpha.600" mt={4}>
     {items.map(({ name, path }) => (
-      <BreadcrumbItem>
+      <BreadcrumbItem key={name}>
         <Link href={path}>{name}</Link>
       </BreadcrumbItem>
     ))}
