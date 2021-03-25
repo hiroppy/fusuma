@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.2](https://github.com/hiroppy/fusuma/compare/v2.8.1...v2.8.2) (2021-03-25)
+
+
+### Bug Fixes
+
+* **client:** fix sidebar condition ([643987c](https://github.com/hiroppy/fusuma/commit/643987c9a9e19a28be0085fc96c7bb2cb10fe99e))
+* **fusuma:** check slides dir ([f0b42c4](https://github.com/hiroppy/fusuma/commit/f0b42c46b7ca12e1f0db25700095113476797399))
+
+
+
+
+
 ## [2.8.1](https://github.com/hiroppy/fusuma/compare/v2.8.0...v2.8.1) (2021-03-15)
 
 
