@@ -21,7 +21,8 @@ module.exports = (
   type,
   { meta, slide, extends: fileExtends, internal = {}, server = {}, build }
 ) => {
-  const entry = ['regenerator-runtime', join(clientBasePath, '/src/entryPoints/Client.js')];
+  // const entry = ['regenerator-runtime', join(clientBasePath, '/src/entryPoints/Client.js')];
+  const entry = ['regenerator-runtime', join(require.resolve('@fusuma/client-editor'))];
   const { url, description, thumbnail, siteName, sns, title } = meta;
   const {
     targetBlank,
