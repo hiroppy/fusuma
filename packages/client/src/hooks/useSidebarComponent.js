@@ -6,11 +6,10 @@ export function useSidebarComponent(mode) {
 
   useEffect(() => {
     (async () => {
-      if (mode === 'common') {
-        const params = getSearchParams();
-        const isSidebar = params.get('sidebar') !== 'false' || process.env.UI.SIDEBAR === 'true';
+      const params = getSearchParams();
 
-        if (isSidebar) {
+      if (mode === 'common' && params.get('sidebar') !== 'false') {
+        if (process.env.UI.SIDEBAR === true) {
           const { Sidebar: SidebarComponent } = await import(
             /* webpackPrefetch: true */ '../components/Sidebar'
           );
