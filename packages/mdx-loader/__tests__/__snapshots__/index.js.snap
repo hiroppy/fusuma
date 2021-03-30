@@ -82,6 +82,9 @@ import React from 'react';
 import { mdx } from '@mdx-js/react';
 import * as Client from '@fusuma/client';
 import * as Icons from 'react-icons/fa';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-typescript';
 export const slides = [props => <>
               
     <pre data-line=\\"5\\"><code parentName=\\"pre\\" {...{
@@ -365,6 +368,8 @@ import React from 'react';
 import { mdx } from '@mdx-js/react';
 import * as Client from '@fusuma/client';
 import * as Icons from 'react-icons/fa';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
 export const slides = [props => <>
               
     <div className=\\"executable-code-container\\">

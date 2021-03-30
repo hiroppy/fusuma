@@ -3,23 +3,6 @@
 exports[`prism-loader should add a theme 1`] = `
 "import Prism from \\"prismjs/components/prism-core.js\\";
 import \\"prismjs/themes/prism-dark.css\\";
-import \\"prismjs/components/prism-clike\\";
-import \\"prismjs/components/prism-markup\\";
-import \\"prismjs/components/prism-javascript\\";
-import \\"prismjs/components/prism-css\\";
-import \\"prismjs/components/prism-jsx\\";
-Prism.highlightAll();
-export { Prism };"
-`;
-
-exports[`prism-loader should add multiple languages 1`] = `
-"import Prism from \\"prismjs/components/prism-core.js\\";
-import \\"prismjs/themes/prism.css\\";
-import \\"prismjs/components/prism-clike\\";
-import \\"prismjs/components/prism-markup\\";
-import \\"prismjs/components/prism-javascript\\";
-import \\"prismjs/components/prism-css\\";
-import \\"prismjs/components/prism-jsx\\";
 Prism.highlightAll();
 export { Prism };"
 `;
@@ -27,11 +10,6 @@ export { Prism };"
 exports[`prism-loader should add multiple plugins 1`] = `
 "import Prism from \\"prismjs/components/prism-core.js\\";
 import \\"prismjs/themes/prism.css\\";
-import \\"prismjs/components/prism-clike\\";
-import \\"prismjs/components/prism-markup\\";
-import \\"prismjs/components/prism-javascript\\";
-import \\"prismjs/components/prism-css\\";
-import \\"prismjs/components/prism-jsx\\";
 import \\"prismjs/plugins/line-highlight/prism-line-highlight.css\\";
 import \\"prismjs/plugins/line-highlight/prism-line-highlight\\";
 import \\"prismjs/plugins/line-numbers/prism-line-numbers.css\\";

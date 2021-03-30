@@ -1,10 +1,6 @@
 'use strict';
 
-const { readFile } = require('fs').promises;
-const { join } = require('path');
-const globby = require('globby');
 const { getOptions } = require('loader-utils');
-const mdx = require('@mdx-js/mdx');
 const config = require('prismjs/components');
 const getLoader = require('prismjs/dependencies');
 const t = require('@babel/types');

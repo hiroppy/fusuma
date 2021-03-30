@@ -14,25 +14,6 @@ export { Prism };
 const dirPath = join(__dirname, './fixtures');
 
 describe('prism-loader', () => {
-  it('should add multiple languages', async () => {
-    loaderUtils.getOptions.mockImplementation(() => {
-      return {
-        dirPath,
-        plugins: [],
-        theme: 'default',
-      };
-    });
-
-    await loader.call(
-      {
-        async: () => (_, res) => {
-          expect(res).toMatchSnapshot();
-        },
-      },
-      prism
-    );
-  });
-
   it('should add multiple plugins', async () => {
     loaderUtils.getOptions.mockImplementation(() => {
       return {
