@@ -1,6 +1,6 @@
 {
   "name": "@fusuma/task-pdf",
-  "version": "2.8.2",
+  "version": "2.8.3",
   "description": "pdf task for fusuma",
   "main": "src/index.js",
   "publishConfig": {
@@ -18,7 +18,7 @@
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
     "easy-pdf-merge": "^0.2.6",
-    "fusuma": "^2.8.2",
+    "fusuma": "^2.8.3",
     "puppeteer": "^8.0.0"
   }
 }
