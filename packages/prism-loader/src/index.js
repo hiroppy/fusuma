@@ -13,28 +13,12 @@ const { default: traverse } = require('@babel/traverse');
 const { default: generate } = require('@babel/generator');
 
 async function prismLoader(src) {
-  const { dirPath, theme, plugins } = getOptions(this);
+  const { theme, plugins } = getOptions(this);
   const cb = this.async();
   const langs = new Set();
   const importedFiles = new Set();
   const normalizeImportPath = (type) => (name) =>
     `prismjs/${config[type].meta.path.replace(/\{id\}/g, name)}`;
-
-  for await (const path of globby.stream(join(dirPath, '**', '*.{md,mdx}'))) {
-    mdx(await readFile(path), {
-      remarkPlugins: [
-        () => (tree) => {
-          // TODO: use visit of unist-util-visit
-          for (const { type, lang } of tree.children) {
-            if (type === 'code') {
-              langs.add(lang);
-            }
-          }
-        },
-      ],
-    });
-  }
-
   const prismModules = getLoader(config, [...Array.from(langs), ...plugins]).getIds();
 
   // add theme
@@ -50,8 +34,6 @@ async function prismLoader(src) {
         importedFiles.add(`${basePath}.css`);
       }
       importedFiles.add(basePath);
-    } else if (config.languages[name]) {
-      importedFiles.add(normalizeImportPath('languages')(name));
     }
   }
 

@@ -94,7 +94,6 @@ module.exports = (
             {
               loader: '@fusuma/prism-loader',
               options: {
-                dirPath: join(basePath, 'slides'),
                 theme: code.theme,
                 plugins: code.plugins,
               },

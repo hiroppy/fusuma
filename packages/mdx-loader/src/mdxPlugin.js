@@ -11,10 +11,12 @@ const transformMarkdownImageNodeToJSX = require('./transformers/transformMarkdow
 const transformExecJSCodeButtonToJSX = require('./transformers/transformExecJSCodeButtonToJSX');
 const transformAccountToJSX = require('./transformers/transformAccountToJSX');
 const commentParser = require('./commentParser');
+const getLangsFile = require('@fusuma/prism-loader/src/getLangFiles');
 
 function mdxPlugin() {
   return (tree) => {
     const slides = [];
+    const langs = new Set();
     let slide = [];
     let props = {};
     let background = 0; // TODO: hmm... combine into fusumaProps but need to transform to `require`
@@ -162,7 +164,10 @@ function mdxPlugin() {
 
           ++mermaidId;
           return;
+        } else if (lang) {
+          langs.add(lang);
         }
+
         if (meta) {
           const lines = n.meta.match(/line="(.+?)"/);
 
@@ -257,6 +262,9 @@ function mdxPlugin() {
         import { mdx } from '@mdx-js/react';
         import * as Client from '@fusuma/client';
         import * as Icons from 'react-icons/fa';
+        ${Array.from(getLangsFile(Array.from(langs)))
+          .map((lang) => `import '${lang}';`)
+          .join('\n')}
 
         export const slides = [${res.jsx.join(',\n')}];
         export const backgrounds = [${res.background.join(',\n')}];

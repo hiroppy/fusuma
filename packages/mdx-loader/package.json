@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
+    "@fusuma/prism-loader": "^2.8.2",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "escape-goat": "^3.0.0",
