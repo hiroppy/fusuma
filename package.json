@@ -34,11 +34,11 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "engines": {
-    "npm": ">=7.9.0",
+    "npm": ">=7.12.0",
     "node": ">=v14.16.1"
   },
   "devDependencies": {
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0",
