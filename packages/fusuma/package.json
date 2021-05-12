@@ -67,7 +67,7 @@
     "rmfr": "^2.0.0",
     "style-loader": "^2.0.0",
     "table": "^6.7.0",
-    "terser-webpack-plugin": "^5.1.1",
+    "terser-webpack-plugin": "^5.1.2",
     "webp-loader": "^0.6.0",
     "webpack": "^5.36.2",
     "webpack-dev-middleware": "^4.1.0",
