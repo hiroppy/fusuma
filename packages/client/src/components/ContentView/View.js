@@ -31,7 +31,7 @@ const View = memo(() => {
 
   return (
     <div className="fusuma-presenter-view">
-      <SlideCore />
+      <SlideCore id="main-slides" />
     </div>
   );
 });
