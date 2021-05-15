@@ -277,6 +277,7 @@ function mdxPlugin() {
       value: `
         import React from 'react';
         import { mdx } from '@mdx-js/react';
+        import { motion } from 'framer-motion';
         import * as Client from '@fusuma/client';
         import * as Icons from 'react-icons/fa';
         ${Array.from(getLangsFile(Array.from(langs)))
