@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.4](https://github.com/hiroppy/fusuma/compare/v2.8.3...v2.8.4) (2021-05-15)
+
+
+### Bug Fixes
+
+* **client:** add id ([1b82d64](https://github.com/hiroppy/fusuma/commit/1b82d649af432df2a84b8d9144ce9a35325ecc9a)), closes [#514](https://github.com/hiroppy/fusuma/issues/514)
+
+
+
+
+
 ## [2.8.3](https://github.com/hiroppy/fusuma/compare/v2.8.2...v2.8.3) (2021-03-30)
 
 
