@@ -37,6 +37,40 @@ export default function MDXContent({
 MDXContent.isMDXComponent = true;"
 `;
 
+exports[`fusuma-loader should add background to props via frontmatter 1`] = `
+"/* @jsxRuntime classic */
+/* @jsx mdx */
+
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+import * as Client from '@fusuma/client';
+import * as Icons from 'react-icons/fa';
+export const slides = [props => <>
+              
+
+    
+            </>];
+export const backgrounds = ['red'];
+export const fragmentSteps = [0];
+export const fusumaProps = [{}];
+
+const layoutProps = {
+  
+};
+const MDXLayout = \\"wrapper\\"
+export default function MDXContent({
+  components,
+  ...props
+}) {
+  return <MDXLayout {...layoutProps} {...props} components={components} mdxType=\\"MDXLayout\\">
+
+    </MDXLayout>;
+}
+
+;
+MDXContent.isMDXComponent = true;"
+`;
+
 exports[`fusuma-loader should add background(url) to props 1`] = `
 "/* @jsxRuntime classic */
 /* @jsx mdx */
@@ -66,6 +100,40 @@ export default function MDXContent({
     {
       /* background: '../../img.jpeg' */
     }
+
+    </MDXLayout>;
+}
+
+;
+MDXContent.isMDXComponent = true;"
+`;
+
+exports[`fusuma-loader should add background(url) to props via frontmatter 1`] = `
+"/* @jsxRuntime classic */
+/* @jsx mdx */
+
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+import * as Client from '@fusuma/client';
+import * as Icons from 'react-icons/fa';
+export const slides = [props => <>
+              
+
+    
+            </>];
+export const backgrounds = [require(\\"../../img.jpeg\\")];
+export const fragmentSteps = [0];
+export const fusumaProps = [{}];
+
+const layoutProps = {
+  
+};
+const MDXLayout = \\"wrapper\\"
+export default function MDXContent({
+  components,
+  ...props
+}) {
+  return <MDXLayout {...layoutProps} {...props} components={components} mdxType=\\"MDXLayout\\">
 
     </MDXLayout>;
 }
@@ -236,6 +304,44 @@ export default function MDXContent({
     {
       /* screen */
     }
+
+    </MDXLayout>;
+}
+
+;
+MDXContent.isMDXComponent = true;"
+`;
+
+exports[`fusuma-loader should add props via frontmatter 1`] = `
+"/* @jsxRuntime classic */
+/* @jsx mdx */
+
+import React from 'react';
+import { mdx } from '@mdx-js/react';
+import * as Client from '@fusuma/client';
+import * as Icons from 'react-icons/fa';
+export const slides = [props => <>
+              
+    <h1>{\`Hello\`}</h1>
+    
+            </>];
+export const backgrounds = [0];
+export const fragmentSteps = [0];
+export const fusumaProps = [{
+  sectionTitle: 'title!',
+  classes: 'foo,bar'
+}];
+
+const layoutProps = {
+  
+};
+const MDXLayout = \\"wrapper\\"
+export default function MDXContent({
+  components,
+  ...props
+}) {
+  return <MDXLayout {...layoutProps} {...props} components={components} mdxType=\\"MDXLayout\\">
+    <h1>{\`Hello\`}</h1>
 
     </MDXLayout>;
 }

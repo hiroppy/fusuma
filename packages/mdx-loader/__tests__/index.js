@@ -66,6 +66,19 @@ This is Note!
     expect(await transformToJS(src)).toMatchSnapshot();
   });
 
+  test('should add props via frontmatter', async () => {
+    const src = `
++++
+classes = ['foo', 'bar']
+sectionTitle = "title!"
++++
+
+# Hello
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
+
   test('should convert emoji', async () => {
     const src = `
 # :smile:
@@ -215,9 +228,29 @@ console.log(a + b);
     expect(await transformToJS(src)).toMatchSnapshot();
   });
 
+  test('should add background to props via frontmatter', async () => {
+    const src = `
++++
+background = "red"
++++
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
+
   test('should add background(url) to props', async () => {
     const src = `
 <!-- background: '../../img.jpeg' -->
+`;
+
+    expect(await transformToJS(src)).toMatchSnapshot();
+  });
+
+  test('should add background(url) to props via frontmatter', async () => {
+    const src = `
++++
+background = '../../img.jpeg'
++++
 `;
 
     expect(await transformToJS(src)).toMatchSnapshot();

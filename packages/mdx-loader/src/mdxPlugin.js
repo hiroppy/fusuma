@@ -4,6 +4,7 @@ const visit = require('unist-util-visit');
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
 const { htmlEscape } = require('escape-goat');
+const toml = require('toml');
 const transformQrToJSX = require('./transformers/transformQrToJSX');
 const transformScreenToJSX = require('./transformers/transformScreenToJSX');
 const transformChartToJSX = require('./transformers/transformChartToJSX');
@@ -53,6 +54,22 @@ function mdxPlugin() {
         fragmentId = 0;
         isFragmentArea = false;
         return;
+      }
+
+      if (type === 'toml') {
+        const meta = toml.parse(value);
+
+        if (meta.background) {
+          background = meta.background.includes('/')
+            ? `require("${meta.background}")`
+            : `'${meta.background}'`;
+        }
+        if (meta.sectionTitle) {
+          props.sectionTitle = meta.sectionTitle;
+        }
+        if (meta.classes) {
+          props.classes = meta.classes;
+        }
       }
 
       if (type === 'comment') {
