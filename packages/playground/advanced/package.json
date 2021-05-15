@@ -12,6 +12,6 @@
   "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me)",
   "license": "MIT",
   "dependencies": {
-    "mermaid": "^8.9.3"
+    "mermaid": "^8.10.1"
   }
 }
