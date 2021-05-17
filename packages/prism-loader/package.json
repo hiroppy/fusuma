@@ -15,8 +15,8 @@
   "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me/)",
   "license": "MIT",
   "dependencies": {
-    "@babel/generator": "^7.14.2",
-    "@babel/parser": "^7.14.2",
+    "@babel/generator": "^7.14.3",
+    "@babel/parser": "^7.14.3",
     "@babel/traverse": "^7.14.2",
     "@babel/types": "^7.14.2",
     "@mdx-js/mdx": "^1.6.22",
