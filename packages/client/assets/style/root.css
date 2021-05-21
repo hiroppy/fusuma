@@ -1,6 +1,6 @@
 @import 'modern-normalize/modern-normalize.css';
-@import 'swiper/swiper.min.css';
-@import 'swiper/components/a11y/a11y.min.css';
+/* @import 'swiper/swiper.min.css'; */
+/* @import 'swiper/components/a11y/a11y.min.css'; */
 @import './variables.css';
 @import './tags.css';
 @import './typography.css';

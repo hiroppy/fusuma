@@ -25,7 +25,7 @@ export const AppContainer = ({ slidesProps }) => {
 
   return (
     <>
-      {SidebarComponent && (
+      {/* {SidebarComponent && (
         <>
           <SidebarComponent
             isOpen={isOpenSidebar}
@@ -33,7 +33,7 @@ export const AppContainer = ({ slidesProps }) => {
           />
           <MdMenu className="btn-sidebar" onClick={() => updateOpenSidebarStatus(true)} />
         </>
-      )}
+      )} */}
       {ContentComponent && <ContentComponent />}
     </>
   );
