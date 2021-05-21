@@ -1,6 +1,5 @@
 export function getCurrentIndexFromUrl() {
-  const parsedUrl = new URL(window.location.href);
-  const index = parsedUrl.hash.match(/^#slide-(.+?)$/);
+  const params = new URLSearchParams(new URL(window.location.href).search);
 
-  return index !== null ? index[1] - 1 : 0;
+  return params.get('index') || 0;
 }

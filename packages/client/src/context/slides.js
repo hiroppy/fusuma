@@ -2,6 +2,7 @@ import React, { createContext, useContext, useReducer } from 'react';
 import { getModeFromUrl } from '../utils/getModeFromUrl';
 import { getCurrentIndexFromUrl } from '../utils/getCurrentIndexFromUrl';
 import { getSlideIndex } from '../utils/getSlideIndex';
+import { updateSearchParams } from '../utils/updateSearchParams';
 
 const initialState = {
   mode: getModeFromUrl(),
@@ -20,14 +21,21 @@ const reducer = (state, action) => {
       return { ...state, mode: action.payload };
     case 'ADD_SLIDES':
       return { ...state, ...action.payload };
-    case 'UPDATE_CURRENT_INDEX':
+    case 'UPDATE_CURRENT_INDEX': {
+      const current = getSlideIndex({
+        next: action.payload,
+        ...state,
+      });
+
+      if (state.currentIndex !== current.currentIndex) {
+        updateSearchParams('index', current.currentIndex);
+      }
+
       return {
         ...state,
-        ...getSlideIndex({
-          next: action.payload,
-          ...state,
-        }),
+        ...current,
       };
+    }
     case 'RESET_STATE':
       return {
         ...state,
