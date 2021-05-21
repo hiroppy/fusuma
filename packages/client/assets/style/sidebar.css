@@ -4,8 +4,15 @@
   --sidebar-color-black: #373a47;
   --sidebar-color-gray: #b7b8b7;
 }
+@keyframes fade-in {
+  100% {
+    transform: translateX(0%);
+  }
+}
 
 .sidebar {
+  transform: translateX(-100%);
+  animation: fade-in 0.5s forwards;
   color: var(--sidebar-color-white);
   min-width: 240px;
   max-width: 240px;
@@ -122,7 +129,7 @@
     width: 100%;
     zoom: 0.3;
     margin: 16px 0;
-    height: 360px;
+    height: 400px;
 
     & .slide-box {
       height: 100%;
