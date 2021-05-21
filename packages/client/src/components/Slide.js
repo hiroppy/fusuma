@@ -10,23 +10,14 @@ export const Slide = ({ slide }) => {
   const [mermaid] = useMermaid();
   const { slide: SlideComponent, fusumaProps } = slide;
 
-  if (import.meta.webpackHot) {
+  useEffect(() => {
     setTimeout(() => {
       if (process.env.CHART) {
         mermaid?.reload();
       }
       Prism.highlightAll();
     }, 0);
-  }
-
-  useEffect(() => {
-    Prism.highlightAll();
-
-    if (process.env.CHART) {
-      mermaid?.reload();
-    }
-    setIsShow(true);
-  }, []);
+  }, [slide]);
 
   return (
     <div
@@ -39,7 +30,9 @@ export const Slide = ({ slide }) => {
       {fusumaProps.background && (
         <div className="slide-background" style={fusumaProps.background} />
       )}
-      <div className="slide-internal-box">{isShow && <SlideComponent />}</div>
+      <div className="slide-internal-box">
+        <SlideComponent />
+      </div>
     </div>
   );
 };
