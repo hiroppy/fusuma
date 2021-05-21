@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { slide as Menu } from 'react-burger-menu';
 import screenfull from 'screenfull';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay, MdCode } from 'react-icons/md';
@@ -10,7 +9,7 @@ import '../../assets/style/sidebar.css';
 const formatStr = (num) => `${num}`.padStart(2, '0');
 
 const A = ({ href, areaLabel, children }) => (
-  <a key="twitter" rel="noopener noreferrer" target="_blank" href={href} aria-label={areaLabel}>
+  <a rel="noopener noreferrer" target="_blank" href={href} aria-label={areaLabel}>
     {children}
   </a>
 );
@@ -31,7 +30,7 @@ export const Sidebar = memo(({ isOpen, onStateChange }) => {
   };
 
   return (
-    <Menu isOpen={isOpen} disableAutoFocus onStateChange={onStateChange} outerContainerId="root">
+    <div className="sidebar">
       <div className="sidebar-social">
         {process.env.HAS_TWITTER && (
           <A
@@ -80,6 +79,9 @@ export const Sidebar = memo(({ isOpen, onStateChange }) => {
           />
         </Tooltip>
       </div>
+      <div className="sidebar-tabs">
+        <hr />
+      </div>
       {contentsList.length && (
         <ul className="sidebar-contents">
           {contentsList.map((content) => (
@@ -94,6 +96,6 @@ export const Sidebar = memo(({ isOpen, onStateChange }) => {
           ))}
         </ul>
       )}
-    </Menu>
+    </div>
   );
 });

@@ -4,6 +4,24 @@
   --sidebar-color-black: #373a47;
 }
 
+.sidebar {
+  color: var(--sidebar-color-white);
+  min-width: 240px;
+  background: var(--sidebar-color-black);
+  padding: 16px;
+  font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
+  font-size: 20px;
+
+  & > * {
+    outline: none;
+    box-shadow: none !important;
+
+    &:not(:first-child) {
+      margin-top: 20px;
+    }
+  }
+}
+
 .btn-sidebar {
   bottom: 20px;
   color: var(--sidebar-color-white);
@@ -25,7 +43,7 @@
   }
 }
 
-.bm-item-list {
+/* .bm-item-list {
   color: var(--sidebar-color-white);
   font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
   font-size: 20px;
@@ -44,7 +62,7 @@
     outline: none;
     box-shadow: none !important;
   }
-}
+} */
 
 .sidebar-social {
   margin: 0 12px;
