@@ -2,11 +2,14 @@
   --sidebar-color-cyan: #7bb7fa;
   --sidebar-color-white: #f5f5f5;
   --sidebar-color-black: #373a47;
+  --sidebar-color-gray: #b7b8b7;
 }
 
 .sidebar {
   color: var(--sidebar-color-white);
   min-width: 240px;
+  max-width: 240px;
+  max-height: 100vh;
   background: var(--sidebar-color-black);
   padding: 16px;
   font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
@@ -20,18 +23,6 @@
       margin-top: 20px;
     }
   }
-}
-
-.btn-sidebar {
-  bottom: 20px;
-  color: var(--sidebar-color-white);
-  cursor: pointer;
-  fill: #abc;
-  font-size: 32px !important;
-  left: 30px;
-  position: fixed;
-  right: 30px;
-  z-index: 100;
 }
 
 .bm-menu {
@@ -42,27 +33,6 @@
     color: var(--sidebar-color-cyan);
   }
 }
-
-/* .bm-item-list {
-  color: var(--sidebar-color-white);
-  font-family: 'Roboto', 'San Francisco', helvetica, arial, sans-serif;
-  font-size: 20px;
-  height: auto !important;
-
-  & > * {
-    outline: none;
-    box-shadow: none !important;
-
-    &:not(:first-child) {
-      margin-top: 20px;
-    }
-  }
-
-  & svg:focus {
-    outline: none;
-    box-shadow: none !important;
-  }
-} */
 
 .sidebar-social {
   margin: 0 12px;
@@ -91,11 +61,35 @@
   justify-content: space-evenly;
 }
 
+.sidebar-tabs {
+  & > .sidebar-tabs-title {
+    color: var(--sidebar-color-gray);
+    display: flex;
+    font-size: 16px;
+    justify-content: space-around;
+
+    & > span {
+      cursor: pointer;
+    }
+
+    & > .sidebar-tabs-title-active {
+      color: var(--sidebar-color-white);
+    }
+  }
+}
+
 .sidebar-contents {
+  margin-top: 12px;
+  width: auto;
+  height: calc(100vh - 200px);
+  overflow: auto;
+}
+
+.sidebar-tabs-agenda {
   display: flex !important;
   align-items: flex-start;
   flex-direction: column;
-  width: auto;
+  width: 100%;
 
   & > li {
     list-style: inherit;
@@ -115,6 +109,24 @@
         outline: none;
         box-shadow: none !important;
       }
+    }
+  }
+}
+
+.sidebar-tabs-slides {
+  list-style: none;
+  width: 100%;
+
+  & > li {
+    margin-left: 0;
+    width: 100%;
+    zoom: 0.3;
+    margin: 16px 0;
+    height: 360px;
+
+    & .slide-box {
+      height: 100%;
+      user-select: none;
     }
   }
 }

@@ -1,9 +1,11 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import screenfull from 'screenfull';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay, MdCode } from 'react-icons/md';
 import { Tooltip } from '../components/Tooltip';
 import { useSlides, updateCurrentIndex, setMode } from '../context/slides';
+import { Prism } from '../setup/prism';
+import { Slide } from './Slide';
 import '../../assets/style/sidebar.css';
 
 const formatStr = (num) => `${num}`.padStart(2, '0');
@@ -15,6 +17,7 @@ const A = ({ href, areaLabel, children }) => (
 );
 
 export const Sidebar = memo(({ isOpen, onStateChange }) => {
+  const [currentTab, setCurrentTab] = useState(1);
   const {
     state: { currentIndex, slides, contentsList },
     dispatch,
@@ -28,6 +31,14 @@ export const Sidebar = memo(({ isOpen, onStateChange }) => {
       );
     }
   };
+
+  useEffect(() => {
+    Prism.highlightAll();
+
+    if (process.env.CHART) {
+      mermaid?.reload();
+    }
+  }, []);
 
   return (
     <div className="sidebar">
@@ -81,21 +92,46 @@ export const Sidebar = memo(({ isOpen, onStateChange }) => {
       </div>
       <div className="sidebar-tabs">
         <hr />
+        <div className="sidebar-tabs-title">
+          <span
+            className={currentTab === 1 ? 'sidebar-tabs-title-active' : null}
+            onClick={() => setCurrentTab(1)}
+          >
+            contents
+          </span>
+          <span
+            className={currentTab === 2 ? 'sidebar-tabs-title-active' : null}
+            onClick={() => setCurrentTab(2)}
+          >
+            slides
+          </span>
+        </div>
+        <div className="sidebar-contents">
+          {currentTab === 1 && contentsList.length && (
+            <ul className="sidebar-tabs-agenda">
+              {contentsList.map((content) => (
+                <li key={content.title}>
+                  <a
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => dispatch(updateCurrentIndex(content.index - 1))}
+                  >
+                    {content.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+          {currentTab === 2 && (
+            <ul className="sidebar-tabs-slides">
+              {slides.map((slide, i) => (
+                <li key={i} onClick={() => dispatch(updateCurrentIndex(i))}>
+                  <Slide slide={slide} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
-      {contentsList.length && (
-        <ul className="sidebar-contents">
-          {contentsList.map((content) => (
-            <li key={content.title}>
-              <a
-                style={{ cursor: 'pointer' }}
-                onClick={() => dispatch(updateCurrentIndex(content.index - 1))}
-              >
-                {content.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
     </div>
   );
 });
