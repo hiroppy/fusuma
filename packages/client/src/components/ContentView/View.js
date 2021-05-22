@@ -1,12 +1,12 @@
 import React, { memo, useEffect, useState } from 'react';
 import { Receiver as PresentationReceiver } from '../../presentationMode/Receiver';
-import { SlideCore } from '../SlideCore';
 import { useSlides, updateCurrentIndex } from '../../context/slides';
+import { Slide } from '../Slide';
 import '../../../assets/style/view.css';
 
 const View = memo(() => {
   const {
-    state: { currentIndex },
+    state: { slides, currentIndex },
     dispatch,
   } = useSlides();
   const [presentationReceiver, setPresentationReceiver] = useState(null);
@@ -31,7 +31,7 @@ const View = memo(() => {
 
   return (
     <div className="fusuma-presenter-view">
-      <SlideCore id="main-slides" />
+      <Slide slide={slides[currentIndex]} />
     </div>
   );
 });
