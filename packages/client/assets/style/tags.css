@@ -1,31 +1,3 @@
-html {
-  font-size: 62.5%;
-  -webkit-print-color-adjust: exact;
-  background: var(--color-background);
-}
-
-body {
-  font-size: var(--base-font-size);
-}
-
-html,
-body {
-  font-family: var(--base-font-family);
-  font-weight: var(--base-font-weight);
-  line-height: 1;
-  text-rendering: optimizeLegibility;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: inherit;
-  margin: 0;
-}
-
 a,
 a:active,
 a:focus,
@@ -63,14 +35,6 @@ ul {
 li {
   margin: 0;
   text-align: left;
-}
-
-img {
-  margin: 0 auto;
-  border: var(--base-image-border);
-  border-radius: var(--base-image-border-radius);
-  height: var(--base-image-height);
-  width: var(--base-image-width);
 }
 
 ol {

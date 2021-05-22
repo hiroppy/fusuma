@@ -1,7 +1,3 @@
-#root {
-  display: flex;
-}
-
 .left {
   text-align: left;
 }
@@ -11,38 +7,15 @@
 }
 
 .slide-box {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-}
-
-.slide-internal-box {
-  display: flex;
-  flex-direction: column;
-  padding: var(--base-outer-margin);
-  align-items: center;
-  justify-content: var(--base-align);
-  max-width: var(--base-max-width);
-  min-width: 320px;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  color: var(--color-base);
-  text-align: var(--base-align);
   background: var(--color-background);
 }
 
-.slide-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-blend-mode: multiply;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+.slide-internal-box {
+  padding: var(--base-outer-margin);
+  justify-content: var(--base-align);
+  max-width: var(--base-max-width);
+  color: var(--color-base);
+  text-align: var(--base-align);
 }
 
 .katex-html {

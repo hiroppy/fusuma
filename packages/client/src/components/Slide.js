@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
 import classnames from 'classnames';
 import { Prism } from '../setup/prism';
 import { getSearchParams } from '../utils/getSearchParams';
@@ -20,19 +21,29 @@ export const Slide = ({ slide }) => {
   }, [slide]);
 
   return (
-    <div
+    <Box
+      h="100vh"
+      w="100%"
+      position="relative"
       className={classnames(
         'slide-box',
+        'slide-background',
         fusumaProps.classes,
         fusumaProps.sectionTitle ? 'section-title' : undefined
       )}
+      {...fusumaProps.background}
     >
-      {fusumaProps.background && (
-        <div className="slide-background" style={fusumaProps.background} />
-      )}
-      <div className="slide-internal-box">
+      <Flex
+        flexDirection="column"
+        alignItems="center"
+        minW="320px"
+        h="100%"
+        w="100%"
+        m="auto"
+        className="slide-internal-box"
+      >
         <SlideComponent />
-      </div>
-    </div>
+      </Flex>
+    </Box>
   );
 };

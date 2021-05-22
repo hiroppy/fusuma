@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, hydrate } from 'react-dom';
+import { ChakraProvider } from '@chakra-ui/react';
 import { SlidesProvider } from '../context/slides';
 import { fetchSlides } from '../utils/fetchSlides';
 import { setTargetBlank } from '../utils/targetBlank';
 import { AppContainer } from '../components/AppContainer';
 import { getSearchParams } from '../utils/getSearchParams';
 import { createSlidesProps } from '../utils/createSlidesProps';
+import { theme } from '../theme/global';
 import '../setup/css';
 
 function createBody(slides = []) {
@@ -13,7 +15,9 @@ function createBody(slides = []) {
 
   renderMethod(
     <SlidesProvider>
-      <AppContainer slidesProps={createSlidesProps(slides)} />
+      <ChakraProvider theme={theme}>
+        <AppContainer slidesProps={createSlidesProps(slides)} />
+      </ChakraProvider>
     </SlidesProvider>,
     document.getElementById('root')
   );
