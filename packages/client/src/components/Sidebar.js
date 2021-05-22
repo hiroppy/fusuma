@@ -1,4 +1,5 @@
 import React, { memo, useState, useEffect } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
 import screenfull from 'screenfull';
 import { FaTwitter, FaGithub } from 'react-icons/fa';
 import { MdFirstPage, MdLastPage, MdFullscreen, MdAirplay, MdCode } from 'react-icons/md';
@@ -41,8 +42,8 @@ export const Sidebar = memo(({ isOpen, onStateChange }) => {
   }, []);
 
   return (
-    <div className="sidebar">
-      <div className="sidebar-social">
+    <Box className="sidebar">
+      <Flex className="sidebar-social">
         {process.env.HAS_TWITTER && (
           <A
             href={`https://twitter.com/intent/tweet?text=${process.env.TITLE} ${url}`}
@@ -56,7 +57,7 @@ export const Sidebar = memo(({ isOpen, onStateChange }) => {
             <FaGithub style={{ width: 20, height: 20 }} />
           </A>
         )}
-      </div>
+      </Flex>
       <div className="sidebar-control">
         <MdFirstPage onClick={() => dispatch(updateCurrentIndex(0))} className="sidebar-cursor" />
         <span>{`${formatStr(currentIndex + 1)} / ${formatStr(totalSlides)}`}</span>
@@ -132,6 +133,6 @@ export const Sidebar = memo(({ isOpen, onStateChange }) => {
           )}
         </div>
       </div>
-    </div>
+    </Box>
   );
 });

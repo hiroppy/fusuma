@@ -1,7 +1,7 @@
 import React, { useState, memo, useEffect } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
 import { useSlides, updateCurrentIndex } from '../../context/slides';
 import { SlideCore } from '../SlideCore';
-import { SlideList } from '../SlideList';
 import { useKeyBind } from '../../hooks/useKeyBind';
 import { useSidebarComponent } from '../../hooks/useSidebarComponent';
 import { MdMenu } from 'react-icons/md';
@@ -32,14 +32,14 @@ export const Base = memo(() => {
   }, []);
 
   return (
-    <>
+    <Flex>
       {isOpenSidebar && SidebarComponent && (
         <SidebarComponent onStateChange={({ isOpen }) => updateOpenSidebarStatus(isOpen)} />
       )}
-      <div style={{ width: isOpenSidebar ? 'calc(100% - 240px)' : '100%' }}>
-        <SlideCore id="main-slides" />
-      </div>
+      <Box w={isOpenSidebar ? 'calc(100% - 240px)' : '100%'}>
+        <SlideCore />
+      </Box>
       <MdMenu className="btn-sidebar" onClick={() => updateOpenSidebarStatus(!isOpenSidebar)} />
-    </>
+    </Flex>
   );
 });

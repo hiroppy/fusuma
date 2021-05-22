@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
+    "@chakra-ui/react": "^1.6.2",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
     "classnames": "^2.3.1",
-    "modern-normalize": "^1.1.0",
+    "framer-motion": "^4.1.17",
     "prismjs": "^1.23.0",
     "react": "^17.0.2",
     "react-accessible-accordion": "^3.3.5",
