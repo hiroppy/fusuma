@@ -1,15 +1,15 @@
 import React, { useState, memo, useEffect } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { useSlides, updateCurrentIndex } from '../../context/slides';
-import { SlideCore } from '../SlideCore';
 import { useKeyBind } from '../../hooks/useKeyBind';
 import { useSidebarComponent } from '../../hooks/useSidebarComponent';
 import { MdMenu } from 'react-icons/md';
+import { Slide } from '../Slide';
 
 export const Base = memo(() => {
   const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
   const {
-    state: { currentIndex },
+    state: { slides, currentIndex },
     dispatch,
   } = useSlides();
   const SidebarComponent = useSidebarComponent('common');
@@ -37,7 +37,7 @@ export const Base = memo(() => {
         <SidebarComponent onStateChange={({ isOpen }) => updateOpenSidebarStatus(isOpen)} />
       )}
       <Box w={isOpenSidebar ? 'calc(100% - 240px)' : '100%'}>
-        <SlideCore />
+        <Slide slide={slides[currentIndex]} />
       </Box>
       <MdMenu className="btn-sidebar" onClick={() => updateOpenSidebarStatus(!isOpenSidebar)} />
     </Flex>

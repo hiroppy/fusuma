@@ -279,6 +279,8 @@ function mdxPlugin() {
         import { mdx } from '@mdx-js/react';
         import * as Client from '@fusuma/client';
         import * as Icons from 'react-icons/fa';
+        import * as Chakra from '@chakra-ui/react';
+        import { motion as Motion } from 'framer-motion';
         ${Array.from(getLangsFile(Array.from(langs)))
           .map((lang) => `import '${lang}';`)
           .join('\n')}
