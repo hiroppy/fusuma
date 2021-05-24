@@ -31,7 +31,7 @@
     "remark-html-katex": "^3.0.0",
     "remark-math": "^3.0.1",
     "strip-comments": "^2.0.1",
-    "toml": "^3.0.0",
-    "unist-util-visit": "^2.0.3"
+    "unist-util-visit": "^2.0.3",
+    "yaml": "^1.10.2"
   }
 }

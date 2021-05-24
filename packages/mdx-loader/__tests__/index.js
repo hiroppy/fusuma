@@ -68,12 +68,20 @@ This is Note!
 
   test('should add props via frontmatter', async () => {
     const src = `
-+++
-classes = ['foo', 'bar']
-sectionTitle = "title!"
-+++
+---
+classes:
+  - foo
+  - bar
+sectionTitle: title!
+---
 
 # Hello
+
+---
+
+<!-- section-title: title! -->
+
+# Hi!
 `;
 
     expect(await transformToJS(src)).toMatchSnapshot();
@@ -230,9 +238,9 @@ console.log(a + b);
 
   test('should add background to props via frontmatter', async () => {
     const src = `
-+++
-background = "red"
-+++
+---
+background: red
+---
 `;
 
     expect(await transformToJS(src)).toMatchSnapshot();
@@ -248,9 +256,9 @@ background = "red"
 
   test('should add background(url) to props via frontmatter', async () => {
     const src = `
-+++
-background = '../../img.jpeg'
-+++
+---
+background: ../../img.jpeg
+---
 `;
 
     expect(await transformToJS(src)).toMatchSnapshot();

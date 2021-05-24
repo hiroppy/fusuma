@@ -1,8 +1,12 @@
-<!-- section-title: many pages -->
+---
+sectionTitle: many pages
+---
 
 <a href="https://github.com/hiroppy/fusuma/issues/110" rel="noopener" aria-label="issue110">
-  https://github.com/hiroppy/fusuma/issues/110
+  tag: https://github.com/hiroppy/fusuma/issues/110
 </a>
+
+[markdown: https://github.com/hiroppy/fusuma/issues/110](https://github.com/hiroppy/fusuma/issues/110)
 
 <br />
 
