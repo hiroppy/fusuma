@@ -1,8 +1,8 @@
 import React, { memo, useEffect, useState } from 'react';
+import { Box } from '@chakra-ui/react';
 import { Receiver as PresentationReceiver } from '../../presentationMode/Receiver';
 import { useSlides, updateCurrentIndex } from '../../context/slides';
 import { Slide } from '../Slide';
-import '../../../assets/style/view.css';
 
 const View = memo(() => {
   const {
@@ -23,16 +23,10 @@ const View = memo(() => {
     };
   }, []);
 
-  useEffect(() => {
-    // TODO: swiper should be gone to context
-    const { swiper } = document.querySelector('#main-slides');
-    swiper?.slideTo(currentIndex);
-  }, [currentIndex]);
-
   return (
-    <div className="fusuma-presenter-view">
+    <Box h="100vh" w="100vw">
       <Slide slide={slides[currentIndex]} />
-    </div>
+    </Box>
   );
 });
 

@@ -13,9 +13,9 @@ function mdxLoader(src) {
     [
       frontmatter,
       {
-        type: 'toml',
-        marker: '+',
-        anywhere: true,
+        type: 'yaml',
+        marker: '-',
+        anywhere: false,
       },
     ],
     emoji,

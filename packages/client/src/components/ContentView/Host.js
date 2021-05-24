@@ -1,5 +1,6 @@
 import React, { memo, useState, useEffect, useRef } from 'react';
 import Modal from 'react-modal';
+import { Grid, Box, Text } from '@chakra-ui/react';
 import {
   FaTimes,
   FaHistory,
@@ -17,14 +18,8 @@ import { Timeline } from '../Timeline';
 import { formatTime } from '../../utils/formatTime';
 import { WebRTC } from '../../utils/webrtc';
 import '../../../assets/style/host.css';
-
-const Iframe = ({ slideUrl, slideIndex }) => (
-  <iframe
-    src={`${slideUrl.replace(/slide-(\d?)/, `slide-${slideIndex}`)}`}
-    width="100%"
-    height="100%"
-  />
-);
+import { Slide } from '../Slide';
+import { useKeyBind } from '../../hooks/useKeyBind';
 
 let recordedTimeline = [];
 let recordedStartedTime = 0;
@@ -127,6 +122,17 @@ const Host = () => {
     setUsedAudio(false);
   };
 
+  useKeyBind({
+    ArrowLeft: () => {
+      dispatchSlides(updateCurrentIndex('-'));
+      presentationControllerRef.current.changePage('-');
+    },
+    ArrowRight: () => {
+      dispatchSlides(updateCurrentIndex('+'));
+      presentationControllerRef.current.changePage('+');
+    },
+  });
+
   useEffect(() => {
     webrtc?.setupRecording();
   }, [webrtc]);
@@ -153,26 +159,12 @@ const Host = () => {
   useEffect(() => {
     dispatchSlides(resetState());
 
-    const keyboardListener = ({ key }) => {
-      if (key === 'ArrowLeft') {
-        dispatchSlides(updateCurrentIndex('-'));
-        presentationControllerRef.current.changePage('-');
-      } else if (key === 'ArrowRight') {
-        dispatchSlides(updateCurrentIndex('+'));
-        presentationControllerRef.current.changePage('+');
-      }
-    };
-
-    document.addEventListener('keydown', keyboardListener, false);
-
     return () => {
       if (presentationControllerRef.current) {
         terminate();
       }
 
       disposeRecording();
-
-      document.removeEventListener('keydown', keyboardListener);
     };
   }, []);
 
@@ -206,82 +198,98 @@ const Host = () => {
   //   usedAudio && status === 'start'
   //     mic
   return (
-    <div className="host-container">
-      <Modal isOpen={isOpenTimeline} onRequestClose={() => setOpenTimelineStatus(false)}>
-        <Timeline items={recordedTimeline} url={audioUrl} />
-      </Modal>
-      <div className="host-left-box">
-        <div className="host-note">
-          {slides && (
-            <pre
-              dangerouslySetInnerHTML={{
-                __html: slides[currentIndex].fusumaProps.note,
-              }}
-            />
-          )}
+    <Box bg="#333">
+      <Grid maxW="1280px" m="auto" className="host-container">
+        <Modal isOpen={isOpenTimeline} onRequestClose={() => setOpenTimelineStatus(false)}>
+          <Timeline items={recordedTimeline} url={audioUrl} />
+        </Modal>
+        <div className="host-left-box">
+          <div className="host-note">
+            {slides && (
+              <pre
+                dangerouslySetInnerHTML={{
+                  __html: slides[currentIndex].fusumaProps.note,
+                }}
+              />
+            )}
+          </div>
         </div>
-      </div>
-      <div className="host-right-box">
-        <div className="host-slide-layer">
-          <h2>Current</h2>
-          {slideUrl && (
-            <Iframe
-              slideUrl={slideUrl}
-              slideIndex={currentIndex + 1}
-              fragment={currentFragmentSteps}
+        <Box mx={10} justifyContent="center" gridArea="right">
+          <Box h="calc(90% / 2)">
+            <Text
+              bg="rgba(100, 100, 100, 0.6)"
+              color="#f5f5f5"
+              display="inline-block"
+              px={6}
+              py={1}
+              fontSize="3xl"
+            >
+              Current
+            </Text>
+            <Box style={{ zoom: 0.5 }} h="80%">
+              <Slide slide={slides[currentIndex]} h="100%" />
+            </Box>
+          </Box>
+          <Box h="calc(90% / 2)">
+            <Text
+              bg="rgba(100, 100, 100, 0.6)"
+              color="#f5f5f5"
+              display="inline-block"
+              px={6}
+              py={1}
+              fontSize="3xl"
+            >
+              Next
+            </Text>
+            {slides[currentIndex + 1] && (
+              <Box style={{ zoom: 0.5 }} h="100%">
+                <Slide slide={slides[currentIndex + 1]} h="100%" />
+              </Box>
+            )}
+          </Box>
+        </Box>
+        <div className="host-bottom-box">
+          <FaTimes onClick={terminate} className="terminate-button" />
+          <div className="host-bottom-box-info">
+            <Timer
+              start={start}
+              stop={stop}
+              reset={reset}
+              disabledStart={status === 'stop' && usedAudio && !start.isEmptyRecordedTimeline}
+              disabledStop={status === 'stop' && usedAudio && !start.isEmptyRecordedTimeline}
+              disabledReset={status === 'start' && usedAudio}
             />
-          )}
+            <span className="current-slide-num">
+              {/* TODO: fix */}
+              {`${currentIndex + 1}`.padStart(2, '0')} / {`${slides.length}`.padStart(2, '0')}
+            </span>
+            <FaHistory
+              onClick={() => setOpenTimelineStatus(true)}
+              size={18}
+              className={
+                (status === 'start' && usedAudio) || isEmptyRecordedTimeline
+                  ? 'disabled'
+                  : undefined
+              }
+            />
+            {usedAudio ? (
+              <FaMicrophoneAlt
+                onClick={disposeRecording}
+                className={status === 'start' || !isEmptyRecordedTimeline ? 'disabled' : undefined}
+                size={20}
+                color="#6fba1c"
+              />
+            ) : (
+              <FaMicrophoneAltSlash
+                onClick={setupRecording}
+                className={status === 'start' || !isEmptyRecordedTimeline ? 'disabled' : undefined}
+                size={20}
+              />
+            )}
+          </div>
         </div>
-        <div className="host-slide-layer">
-          <h2>Next</h2>
-          {slideUrl && (
-            <Iframe
-              slideUrl={slideUrl}
-              slideIndex={currentIndex + 2}
-              fragment={currentFragmentSteps}
-            />
-          )}
-        </div>
-      </div>
-      <div className="host-bottom-box">
-        <FaTimes onClick={terminate} className="terminate-button" />
-        <div className="host-bottom-box-info">
-          <Timer
-            start={start}
-            stop={stop}
-            reset={reset}
-            disabledStart={status === 'stop' && usedAudio && !start.isEmptyRecordedTimeline}
-            disabledStop={status === 'stop' && usedAudio && !start.isEmptyRecordedTimeline}
-            disabledReset={status === 'start' && usedAudio}
-          />
-          <span className="current-slide-num">
-            {/* TODO: fix */}
-            {`${currentIndex + 1}`.padStart(2, '0')} / {`${slides.length}`.padStart(2, '0')}
-          </span>
-          <FaHistory
-            onClick={() => setOpenTimelineStatus(true)}
-            size={18}
-            className={
-              (status === 'start' && usedAudio) || isEmptyRecordedTimeline ? 'disabled' : undefined
-            }
-          />
-          {usedAudio ? (
-            <FaMicrophoneAlt
-              onClick={disposeRecording}
-              className={status === 'start' || !isEmptyRecordedTimeline ? 'disabled' : undefined}
-              size={20}
-              color="#6fba1c"
-            />
-          ) : (
-            <FaMicrophoneAltSlash
-              onClick={setupRecording}
-              className={status === 'start' || !isEmptyRecordedTimeline ? 'disabled' : undefined}
-              size={20}
-            />
-          )}
-        </div>
-      </div>
-    </div>
+      </Grid>
+    </Box>
   );
 };
 

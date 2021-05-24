@@ -21,18 +21,11 @@
   grid-template-areas:
     'left right'
     'bottom bottom';
-
-  & > * {
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 .host-left-box {
   grid-area: left;
   margin: 20px 0;
-  color: var(--color-white);
-  width: calc(100vw - 480px - 20px * 2);
 
   & > .host-note {
     & pre {
@@ -49,35 +42,6 @@
 .host-right-box {
   grid-area: right;
   margin: 20px 0;
-
-  & > .host-slide-layer {
-    height: calc(100% / 2);
-    position: relative;
-    width: 100%;
-
-    & > h2,
-    & > svg {
-      background: rgba(100, 100, 100, 0.6);
-      color: var(--color-white) !important;
-      position: absolute;
-      top: 0;
-      margin: 0;
-      height: 40px;
-    }
-
-    & > h2 {
-      font-size: 20px;
-      line-height: 2;
-      left: 0;
-      padding: 2px 12px;
-    }
-
-    & > svg {
-      right: 0;
-      padding: 2px 6px;
-      width: 40px;
-    }
-  }
 }
 
 .host-bottom-box {

@@ -6,7 +6,7 @@ import { getSearchParams } from '../utils/getSearchParams';
 import { createVMEnv } from '../utils/createVMEnv';
 import { useMermaid } from '../hooks/useMermaid';
 
-export const Slide = ({ slide }) => {
+export const Slide = ({ slide, ...rest }) => {
   const [isShow, setIsShow] = useState(false);
   const [mermaid] = useMermaid();
   const { slide: SlideComponent, fusumaProps } = slide;
@@ -32,6 +32,7 @@ export const Slide = ({ slide }) => {
         fusumaProps.sectionTitle ? 'section-title' : undefined
       )}
       {...fusumaProps.background}
+      {...rest}
     >
       <Flex
         flexDirection="column"

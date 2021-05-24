@@ -4,7 +4,6 @@ const visit = require('unist-util-visit');
 const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
 const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
 const { htmlEscape } = require('escape-goat');
-const toml = require('toml');
 const transformQrToJSX = require('./transformers/transformQrToJSX');
 const transformScreenToJSX = require('./transformers/transformScreenToJSX');
 const transformChartToJSX = require('./transformers/transformChartToJSX');
@@ -13,6 +12,7 @@ const transformExecJSCodeButtonToJSX = require('./transformers/transformExecJSCo
 const transformAccountToJSX = require('./transformers/transformAccountToJSX');
 const commentParser = require('./commentParser');
 const getLangsFile = require('@fusuma/prism-loader/src/getLangFiles');
+const yaml = require('yaml');
 
 function mdxPlugin() {
   return (tree) => {
@@ -39,6 +39,24 @@ function mdxPlugin() {
     tree.children.forEach((n, i) => {
       const { type, value, lang, meta } = n;
 
+      if (type === 'yaml') {
+        const meta = yaml.parse(value);
+
+        if (meta.background) {
+          background = meta.background.includes('/')
+            ? `require("${meta.background}")`
+            : `'${meta.background}'`;
+        }
+        if (meta.sectionTitle) {
+          props.sectionTitle = meta.sectionTitle;
+        }
+        if (meta.classes) {
+          props.classes = meta.classes;
+        }
+
+        return;
+      }
+
       // move to a new slide
       if (type === 'thematicBreak') {
         slides.push({
@@ -54,22 +72,6 @@ function mdxPlugin() {
         fragmentId = 0;
         isFragmentArea = false;
         return;
-      }
-
-      if (type === 'toml') {
-        const meta = toml.parse(value);
-
-        if (meta.background) {
-          background = meta.background.includes('/')
-            ? `require("${meta.background}")`
-            : `'${meta.background}'`;
-        }
-        if (meta.sectionTitle) {
-          props.sectionTitle = meta.sectionTitle;
-        }
-        if (meta.classes) {
-          props.classes = meta.classes;
-        }
       }
 
       if (type === 'comment') {
@@ -172,6 +174,19 @@ function mdxPlugin() {
         fragmentSteps++;
       }
 
+      if (type === 'heading') {
+        slide.push({
+          ...n,
+          type: 'jsx',
+          value: `<Chakra.Heading
+            as="h${n.depth}"
+            fontSize="var(--h${n.depth}-font-size)"
+            fontWeight="var(--h${n.depth}-font-weight)"
+          >${n.children[0].value}</Chakra.Heading>`,
+        });
+        return;
+      }
+
       if (type === 'code') {
         if (lang === 'chart' || lang === 'mermaid') {
           slide.push({
@@ -204,17 +219,32 @@ function mdxPlugin() {
         }
       }
 
-      visit(n, null, (node) => {
-        if (node.type === 'image') {
-          const { type, value } = transformMarkdownImageNodeToJSX(node);
+      if (n.type === 'paragraph') {
+        function v(nv) {
+          visit(nv, null, (node) => {
+            if (node.type === 'text') {
+              node.type = 'jsx';
+              node.value = `<Chakra.Text>{\`${node.value}\`}</Chakra.Text>`;
+            } else if (node.type === 'link') {
+              node.type = 'jsx';
+              node.value = `<Chakra.Link href="${node.url}">${node.children[0].value}</Chakra.Link>`;
+            } else if (node.type === 'image') {
+              const { type, value } = transformMarkdownImageNodeToJSX(node);
+              node.type = type;
+              node.value = value;
+              delete node.alt;
+              delete node.title;
+              delete node.url;
+            }
 
-          node.type = type;
-          node.value = value;
-          delete node.alt;
-          delete node.title;
-          delete node.url;
+            if (node.children && node.children.length) {
+              v(node.children);
+            }
+          });
         }
-      });
+
+        v(n);
+      }
 
       slide.push(n);
 

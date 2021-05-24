@@ -26,7 +26,7 @@ async function start(config) {
   await webpackStart(config);
 
   spinner.stop();
-  await openBrowser(`http://localhost:${config.internal.port}`);
+  // await openBrowser(`http://localhost:${config.internal.port}`);
 }
 
 module.exports = start;
