@@ -13,255 +13,36 @@ const transformAccountToJSX = require('./transformers/transformAccountToJSX');
 const commentParser = require('./commentParser');
 const getLangsFile = require('@fusuma/prism-loader/src/getLangFiles');
 const yaml = require('yaml');
+const parseSlidesByDivider = require('./parseSlidesByDivider');
+const walk = require('./walk');
+
+function formatSlidesTimeline(fragmentSteps, fragmentId) {
+  if (fragmentSteps === 0) {
+    return [0];
+  } else {
+    return [[...Array(fragmentSteps)].fill(fragmentId)];
+  }
+}
 
 function mdxPlugin() {
   return (tree) => {
-    const slides = [];
+    const s2 = [];
     const langs = new Set();
-    let slide = [];
-    let props = {};
-    let background = 0; // TODO: hmm... combine into fusumaProps but need to transform to `require`
-    let videoId = 1;
-    let mermaidId = 1;
-    let isFragmentArea = false;
-    let fragmentSteps = 0;
-    let fragmentId = 0;
 
-    function formatSlidesTimeline(fragmentSteps, fragmentId) {
-      if (fragmentSteps === 0) {
-        return [0];
-      } else {
-        return [[...Array(fragmentSteps)].fill(fragmentId)];
-      }
-    }
+    const slides = parseSlidesByDivider(tree);
 
-    // TODO: refactor using visit
-    tree.children.forEach((n, i) => {
-      const { type, value, lang, meta } = n;
+    for (const slide of slides) {
+      for (const node of slide) {
+        const { ast, props, background, fragmentSteps } = walk(node);
 
-      if (type === 'yaml') {
-        const meta = yaml.parse(value);
-
-        if (meta.background) {
-          background = meta.background.includes('/')
-            ? `require("${meta.background}")`
-            : `'${meta.background}'`;
-        }
-        if (meta.sectionTitle) {
-          props.sectionTitle = meta.sectionTitle;
-        }
-        if (meta.classes) {
-          props.classes = meta.classes;
-        }
-
-        return;
-      }
-
-      // move to a new slide
-      if (type === 'thematicBreak') {
-        slides.push({
-          slide,
+        s2.push({
+          slide: node,
           props,
           background,
-          fragmentSteps: formatSlidesTimeline(fragmentSteps, fragmentId),
+          fragmentSteps,
         });
-        slide = [];
-        props = {};
-        background = 0; // why 0? because null, undefined, '' are omitted at client side
-        fragmentSteps = 0;
-        fragmentId = 0;
-        isFragmentArea = false;
-        return;
       }
-
-      if (type === 'comment') {
-        const { prefix, valueStr, valueArr } = commentParser(value);
-
-        if (prefix === 'background') {
-          background = valueStr.includes('/') ? `require(${valueStr})` : `'${valueStr}'`;
-          return;
-        }
-        if (prefix === 'section-title') {
-          props.sectionTitle = valueStr;
-          return;
-        }
-        if (prefix === 'classes') {
-          props.classes = valueArr;
-          return;
-        }
-        if (prefix === 'block-start') {
-          slide.push({
-            ...n,
-            type: 'jsx',
-            value: valueArr.length === 0 ? '<div>' : `<div className="${valueArr.join(' ')}">`,
-          });
-          return;
-        }
-        if (prefix === 'block-end') {
-          slide.push({
-            ...n,
-            type: 'jsx',
-            value: '</div>',
-          });
-          return;
-        }
-        if (prefix === 'fragments-start') {
-          fragmentId = Math.random();
-          slide.push({
-            ...n,
-            type: 'jsx',
-            value: `<Client.Fragments id={${fragmentId}}>`,
-          });
-          isFragmentArea = true;
-          return;
-        }
-        if (prefix === 'fragments-end') {
-          slide.push({
-            ...n,
-            type: 'jsx',
-            value: '</ Client.Fragments>',
-          });
-          isFragmentArea = false;
-          return;
-        }
-        if (prefix === 'contents') {
-          props.contents = true;
-          return;
-        }
-        if (prefix === 'note') {
-          props.note = htmlEscape(valueStr).replace(/\n/g, '\\n');
-          return;
-        }
-        if (prefix === 'account') {
-          slide.push({
-            ...n,
-            ...transformAccountToJSX(valueArr),
-          });
-          return;
-        }
-        if (prefix === 'qr') {
-          slide.push({
-            ...n,
-            ...transformQrToJSX(valueArr),
-          });
-          return;
-        }
-        if (prefix === 'screen') {
-          props.screen = true;
-          slide.push({
-            ...n,
-            ...transformScreenToJSX(videoId),
-          });
-          ++videoId;
-          return;
-        }
-        if (prefix === 'executable-code') {
-          const nextNode = tree.children[i + 1];
-
-          if (nextNode.type === 'code' && ['js', 'javascript'].includes(nextNode.lang)) {
-            props.hasExecutableCode = true;
-            slide.push({
-              ...n,
-              ...transformExecJSCodeButtonToJSX(nextNode.value),
-            });
-          }
-
-          return;
-        }
-      }
-
-      if (isFragmentArea) {
-        fragmentSteps++;
-      }
-
-      if (type === 'heading') {
-        slide.push({
-          ...n,
-          type: 'jsx',
-          value: `<Chakra.Heading
-            as="h${n.depth}"
-            fontSize="var(--h${n.depth}-font-size)"
-            fontWeight="var(--h${n.depth}-font-weight)"
-          >${n.children[0].value}</Chakra.Heading>`,
-        });
-        return;
-      }
-
-      if (type === 'code') {
-        if (lang === 'chart' || lang === 'mermaid') {
-          slide.push({
-            ...n,
-            ...transformChartToJSX(mermaidId, value),
-          });
-
-          ++mermaidId;
-          return;
-        } else if (lang) {
-          langs.add(lang);
-        }
-
-        if (meta) {
-          const lines = n.meta.match(/line="(.+?)"/);
-
-          if (lines === null) {
-            slide.push(n);
-          } else {
-            const line = lines[1];
-            const hash = mdxAstToMdxHast()(n);
-
-            slide.push({
-              ...n,
-              type: 'jsx',
-              value: toJSX(hash).replace('<pre>', `<pre data-line="${line}">`),
-            });
-          }
-          return;
-        }
-      }
-
-      if (n.type === 'paragraph') {
-        function v(nv) {
-          visit(nv, null, (node) => {
-            if (node.type === 'text') {
-              node.type = 'jsx';
-              node.value = `<Chakra.Text>{\`${node.value}\`}</Chakra.Text>`;
-            } else if (node.type === 'link') {
-              node.type = 'jsx';
-              node.value = `<Chakra.Link href="${node.url}">${node.children[0].value}</Chakra.Link>`;
-            } else if (node.type === 'image') {
-              const { type, value } = transformMarkdownImageNodeToJSX(node);
-              node.type = type;
-              node.value = value;
-              delete node.alt;
-              delete node.title;
-              delete node.url;
-            }
-
-            if (node.children && node.children.length) {
-              v(node.children);
-            }
-          });
-        }
-
-        v(n);
-      }
-
-      slide.push(n);
-
-      if (type === 'jsx') {
-        n.value = value
-          .replace(/src="(.+?\.(png|jpg|gif|svg|mp4|webm?))"/g, 'src={require("$1")}')
-          .replace(/class=/g, 'className=');
-      }
-    });
-
-    // push last slide
-    slides.push({
-      slide,
-      props,
-      background,
-      fragmentSteps: formatSlidesTimeline(fragmentSteps, fragmentId),
-    });
+    }
 
     const res = {
       jsx: [],
@@ -270,7 +51,7 @@ function mdxPlugin() {
       fragmentSteps: [],
     };
 
-    slides.forEach(({ slide, props, background, fragmentSteps }) => {
+    s2.forEach(({ slide, props, background, fragmentSteps }) => {
       const hash = mdxAstToMdxHast()({
         type: 'root',
         children: slide,
