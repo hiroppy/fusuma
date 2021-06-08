@@ -52,7 +52,7 @@
     "js-yaml": "^4.1.0",
     "mini-css-extract-plugin": "^1.6.0",
     "open": "^8.0.9",
-    "ora": "^5.4.0",
+    "ora": "^5.4.1",
     "pa11y": "^5.3.1",
     "postcss": "^8.2.15",
     "postcss-import": "^14.0.2",
