@@ -20,7 +20,7 @@
     "@babel/traverse": "^7.14.5",
     "@babel/types": "^7.14.5",
     "@mdx-js/mdx": "^1.6.22",
-    "globby": "^11.0.3",
+    "globby": "^11.0.4",
     "loader-utils": "^2.0.0",
     "prismjs": "^1.23.0"
   }
