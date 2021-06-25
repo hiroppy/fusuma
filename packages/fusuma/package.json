@@ -50,7 +50,7 @@
     "git-remote-origin-url": "^3.1.0",
     "html-webpack-plugin": "^5.3.2",
     "js-yaml": "^4.1.0",
-    "mini-css-extract-plugin": "^1.6.0",
+    "mini-css-extract-plugin": "^1.6.1",
     "open": "^8.0.9",
     "ora": "^5.4.1",
     "pa11y": "^5.3.1",
