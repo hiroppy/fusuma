@@ -35,7 +35,7 @@
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "engines": {
     "npm": ">=7.13.0",
-    "node": ">=v14.17.2"
+    "node": ">=v14.17.3"
   },
   "devDependencies": {
     "eslint": "^7.26.0",
