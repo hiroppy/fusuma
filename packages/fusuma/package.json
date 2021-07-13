@@ -30,7 +30,7 @@
   "dependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
-    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-react": "^7.14.5",
     "@fusuma/client": "^2.8.4",
     "@fusuma/generate-meta-webpack-plugin": "^2.8.2",
     "@fusuma/mdx-loader": "^2.8.4",
