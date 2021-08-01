@@ -29,7 +29,7 @@
   "homepage": "https://github.com/hiroppy/fusuma#readme",
   "dependencies": {
     "@babel/core": "^7.14.8",
-    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-env": "^7.14.9",
     "@babel/preset-react": "^7.13.13",
     "@fusuma/client": "^2.8.4",
     "@fusuma/generate-meta-webpack-plugin": "^2.8.2",
