@@ -8,7 +8,9 @@ export function fetchSlides(dir) {
       id: context.id,
       slides: context
         .keys()
-        .sort()
+        .sort(function(a, b) {
+          return +/\d+/.exec(a)[0] - +/\d+/.exec(b)[0];
+        })
         .map((e) => context(e)),
     };
   }
