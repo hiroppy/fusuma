@@ -66,7 +66,7 @@
     "regenerator-runtime": "^0.13.9",
     "rmfr": "^2.0.0",
     "style-loader": "^2.0.0",
-    "table": "^6.7.1",
+    "table": "^6.7.2",
     "terser-webpack-plugin": "^5.1.4",
     "webp-loader": "^0.6.0",
     "webpack": "^5.37.1",
