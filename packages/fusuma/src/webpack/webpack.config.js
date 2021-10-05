@@ -33,7 +33,7 @@ module.exports = (
   } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
   const { useCache, publicPath } = build;
-  const { basePath, remoteOrigin, htmlBody = '', outputDirPath } = internal;
+  const { basePath, remoteOrigin, htmlBody = '', inputDirPath, outputDirPath } = internal;
   const config = (() => {
     switch (type) {
       case 'production':
@@ -161,7 +161,7 @@ module.exports = (
           NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
           JS_PATH: JSON.stringify(join(basePath, jsPath || '')),
           CSS_PATH: JSON.stringify(join(basePath, cssPath || '')),
-          SLIDE_PATH: JSON.stringify(join(basePath, 'slides')),
+          SLIDE_PATH: JSON.stringify(inputDirPath || join(basePath, 'slides')),
           URL: JSON.stringify(url),
           HAS_TWITTER: JSON.stringify(sns.includes('twitter')),
           TITLE: JSON.stringify(title || 'slide'),
