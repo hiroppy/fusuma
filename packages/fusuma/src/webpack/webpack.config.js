@@ -25,7 +25,7 @@ module.exports = (
   const { url, description, thumbnail, siteName, sns, title } = meta;
   const {
     targetBlank,
-    ui: { sidebar, pagination, effect, vertical },
+    ui: { sidebar },
     code,
     chart,
     math,
@@ -173,9 +173,6 @@ module.exports = (
           CHART: JSON.stringify(chart),
           UI: {
             SIDEBAR: JSON.stringify(sidebar),
-            VERTICAL: JSON.stringify(vertical),
-            PAGINATION: JSON.stringify(pagination),
-            EFFECT: JSON.stringify(effect),
           },
         },
       }),

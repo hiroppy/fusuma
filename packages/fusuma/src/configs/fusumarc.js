@@ -17,9 +17,12 @@ const config = {
     },
     chart: false,
     math: false,
-    theme: {
-      defaultBackground: '',
-      defaultTitleTag: 'h2',
+    ui: {
+      sidebar: true,
+      theme: {
+        defaultBackground: '',
+        defaultTitleTag: 'h2',
+      },
     },
   },
   extends: {
