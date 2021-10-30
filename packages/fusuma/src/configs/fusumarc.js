@@ -10,20 +10,17 @@ const config = {
     sns: ['twitter'], // twitter
   },
   slide: {
-    loop: false,
     targetBlank: true,
-    ui: {
-      sidebar: true,
-      vertical: false,
-      pagination: null, // bullets | progressbar | fraction
-      effect: null, // fade | cube | flip
-    },
     code: {
       plugins: [],
       theme: 'default',
     },
     chart: false,
     math: false,
+    theme: {
+      defaultBackground: '',
+      defaultTitleTag: 'h2',
+    },
   },
   extends: {
     js: null,

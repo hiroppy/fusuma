@@ -26,7 +26,6 @@ module.exports = (
   const {
     targetBlank,
     ui: { sidebar, pagination, effect, vertical },
-    loop,
     code,
     chart,
     math,
@@ -63,6 +62,7 @@ module.exports = (
       alias: {
         // https://github.com/facebook/react/issues/13991
         react: require.resolve('react'),
+        '@chakra-ui/react': require.resolve('@chakra-ui/react'),
       },
       modules: [
         'node_modules',
@@ -168,7 +168,6 @@ module.exports = (
           BASE_PATH: JSON.stringify(basePath),
           REMOTE_ORIGIN_URL: JSON.stringify(remoteOrigin),
           TARGET_BLANK: JSON.stringify(targetBlank),
-          LOOP: JSON.stringify(loop),
           SERVER_PORT: JSON.stringify(server.port),
           SEARCH_KEYWORD: JSON.stringify(server.keyword),
           CHART: JSON.stringify(chart),

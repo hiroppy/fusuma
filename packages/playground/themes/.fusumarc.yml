@@ -5,11 +5,7 @@ meta:
   siteName: hiroppy.me
   sns: ['twitter']
 slide:
-  loop: false
   ui:
-    sidebar: true
-    pagination: bullets # bullets | progressbar | fraction
-    effect: # fade | cube | flip
   code:
     plugins: []
     theme: default

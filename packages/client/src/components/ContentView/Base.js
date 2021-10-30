@@ -1,5 +1,5 @@
-import React, { useState, memo, useEffect } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import React, { memo, useEffect } from 'react';
+import { Button, Box, useDisclosure } from '@chakra-ui/react';
 import { useSlides, updateCurrentIndex } from '../../context/slides';
 import { useKeyBind } from '../../hooks/useKeyBind';
 import { useSidebarComponent } from '../../hooks/useSidebarComponent';
@@ -7,12 +7,12 @@ import { MdMenu } from 'react-icons/md';
 import { Slide } from '../Slide';
 
 export const Base = memo(() => {
-  const [isOpenSidebar, updateOpenSidebarStatus] = useState(false);
   const {
     state: { slides, currentIndex },
     dispatch,
   } = useSlides();
   const SidebarComponent = useSidebarComponent('common');
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
   useKeyBind({
     ArrowRight: () => dispatch(updateCurrentIndex('+')),
@@ -32,14 +32,12 @@ export const Base = memo(() => {
   }, []);
 
   return (
-    <Flex>
-      {isOpenSidebar && SidebarComponent && (
-        <SidebarComponent onStateChange={({ isOpen }) => updateOpenSidebarStatus(isOpen)} />
-      )}
-      <Box w={isOpenSidebar ? 'calc(100% - 240px)' : '100%'}>
-        <Slide slide={slides[currentIndex]} />
+    <>
+      {SidebarComponent && <SidebarComponent isOpen={isOpen} onClose={onClose} />}
+      <Slide slide={slides[currentIndex]} />
+      <Box pos="fixed" bottom="24px" left="24px" color="#f5f5f5" onClick={onOpen} cursor="pointer">
+        <MdMenu />
       </Box>
-      <MdMenu className="btn-sidebar" onClick={() => updateOpenSidebarStatus(!isOpenSidebar)} />
-    </Flex>
+    </>
   );
 });

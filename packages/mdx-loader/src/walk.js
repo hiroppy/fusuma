@@ -1,7 +1,9 @@
 'use strict';
 
-const yaml = require('yaml');
 const visit = require('unist-util-visit');
+const { htmlEscape } = require('escape-goat');
+const mdxAstToMdxHast = require('@mdx-js/mdx/mdx-ast-to-mdx-hast');
+const { toJSX } = require('@mdx-js/mdx/mdx-hast-to-jsx');
 const transformQrToJSX = require('./transformers/transformQrToJSX');
 const transformScreenToJSX = require('./transformers/transformScreenToJSX');
 const transformChartToJSX = require('./transformers/transformChartToJSX');
@@ -18,7 +20,7 @@ function formatSlidesTimeline(fragmentSteps, fragmentId) {
   }
 }
 
-function walk(tree) {
+function walk(tree, langs) {
   const props = {};
   let isFragmentArea = false;
   let fragmentSteps = 0;
@@ -29,22 +31,6 @@ function walk(tree) {
   function walkAST(t) {
     visit(t, null, (node) => {
       const { type, value, lang, meta } = node;
-
-      if (type === 'yaml') {
-        const meta = yaml.parse(value);
-
-        if (meta.background) {
-          background = meta.background.includes('/')
-            ? `require("${meta.background}")`
-            : `'${meta.background}'`;
-        }
-        if (meta.sectionTitle) {
-          props.sectionTitle = meta.sectionTitle;
-        }
-        if (meta.classes) {
-          props.classes = meta.classes;
-        }
-      }
 
       if (type === 'comment') {
         const { prefix, valueStr, valueArr } = commentParser(value);
@@ -60,11 +46,14 @@ function walk(tree) {
         }
         if (prefix === 'block-start') {
           node.type = 'jsx';
-          node.value = valueArr.length === 0 ? '<div>' : `<div className="${valueArr.join(' ')}">`;
+          node.value =
+            valueArr.length === 0
+              ? '<Chakra.Box>'
+              : `<Chakra.Box className="${valueArr.join(' ')}">`;
         }
         if (prefix === 'block-end') {
           node.type = 'jsx';
-          node.value = '</div>';
+          node.value = '</Chakra.Box>';
         }
         if (prefix === 'fragments-start') {
           fragmentId = Math.random();
@@ -84,11 +73,8 @@ function walk(tree) {
         if (prefix === 'note') {
           props.note = htmlEscape(valueStr).replace(/\n/g, '\\n');
         }
-        if (prefix === 'account') {
-          Object.assign(node, ...transformAccountToJSX(valueArr));
-        }
         if (prefix === 'qr') {
-          Object.assign(node, ...transformQrToJSX(valueArr));
+          // Object.assign(node, ...transformQrToJSX(valueArr));
         }
         // if (prefix === 'executable-code') {
         //   const nextNode = tree.children[i + 1];
@@ -106,7 +92,7 @@ function walk(tree) {
 
       if (type === 'code') {
         if (lang === 'chart' || lang === 'mermaid') {
-          Object.assign(node, ...transformChartToJSX(mermaidId, value));
+          // Object.assign(node, ...transformChartToJSX(mermaidId, value));
 
           ++mermaidId;
         } else if (lang) {
@@ -114,13 +100,13 @@ function walk(tree) {
         }
 
         if (meta) {
-          const lines = n.meta.match(/line="(.+?)"/);
+          const lines = meta.match(/line="(.+?)"/);
 
           if (lines === null) {
-            // slide.push(n);
+            slide.push(node);
           } else {
             const line = lines[1];
-            const hash = mdxAstToMdxHast()(n);
+            const hash = mdxAstToMdxHast()(node);
 
             node.type = 'jsx';
             node.value = toJSX(hash).replace('<pre>', `<pre data-line="${line}">`);
@@ -136,34 +122,38 @@ function walk(tree) {
               fontSize="var(--h${node.depth}-font-size)"
               fontWeight="var(--h${node.depth}-font-weight)"
             >${node.children[0].value}</Chakra.Heading>`;
-      } else if (node.type === 'text') {
+      }
+      if (type === 'text') {
         node.type = 'jsx';
         node.value = `<Chakra.Text>{\`${node.value}\`}</Chakra.Text>`;
-      } else if (node.type === 'link') {
+      }
+      if (type === 'link') {
         node.type = 'jsx';
-        node.value = `<Chakra.Link href="${node.url}">${node.children[0].value}</Chakra.Link>`;
-      } else if (node.type === 'image') {
+        node.value = `<Chakra.Link href="${node.url}" isExternal>${node.children[0].value}</Chakra.Link>`;
+      }
+      if (type === 'image') {
         const { type, value } = transformMarkdownImageNodeToJSX(node);
+
         node.type = type;
         node.value = value;
         delete node.alt;
         delete node.title;
         delete node.url;
       }
-
       if (type === 'jsx') {
         node.value = value
           .replace(/src="(.+?\.(png|jpg|gif|svg|mp4|webm?))"/g, 'src={require("$1")}')
           .replace(/class=/g, 'className=');
       }
-
       if (node.children) {
         walkAST(node.children);
       }
     });
   }
 
-  walkAST(tree);
+  for (const node of tree) {
+    walkAST(node);
+  }
 
   return {
     ast: tree,

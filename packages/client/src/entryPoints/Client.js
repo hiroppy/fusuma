@@ -3,7 +3,6 @@ import { render, hydrate } from 'react-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { SlidesProvider } from '../context/slides';
 import { fetchSlides } from '../utils/fetchSlides';
-import { setTargetBlank } from '../utils/targetBlank';
 import { AppContainer } from '../components/AppContainer';
 import { getSearchParams } from '../utils/getSearchParams';
 import { createSlidesProps } from '../utils/createSlidesProps';
@@ -31,10 +30,6 @@ import.meta.webpackHot?.accept(slidesInfo.id, () => {
 });
 
 createBody(slidesInfo.slides);
-
-if (process.env.TARGET_BLANK) {
-  setTargetBlank();
-}
 
 if (process.env.NODE_ENV !== 'production') {
   const params = getSearchParams();

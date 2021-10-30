@@ -6,8 +6,9 @@ function parseSlidesByDivider(tree) {
     if (node.type === 'thematicBreak') {
       slides.push(current);
       current = [];
+    } else {
+      current.push(node);
     }
-    current.push(node);
   });
 
   // last page doesn't have a divider

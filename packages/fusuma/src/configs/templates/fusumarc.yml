@@ -5,12 +5,7 @@ meta:
   siteName:
   sns: ['twitter']
 slide:
-  loop: false
   ui:
-    sidebar: true
-    vertical: false
-    pagination: # bullets | progressbar | fraction
-    effect: # fade | cube | flip
   code:
     # https://prismjs.com/
     plugins: []

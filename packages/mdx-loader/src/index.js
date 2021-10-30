@@ -3,24 +3,12 @@
 const { getOptions } = require('loader-utils');
 const mdx = require('@mdx-js/mdx');
 const emoji = require('remark-emoji');
-const frontmatter = require('remark-frontmatter');
 const mdxPlugin = require('./mdxPlugin');
 
 function mdxLoader(src) {
   const { math } = getOptions(this);
   const cb = this.async();
-  const common = [
-    [
-      frontmatter,
-      {
-        type: 'yaml',
-        marker: '-',
-        anywhere: false,
-      },
-    ],
-    emoji,
-    mdxPlugin,
-  ];
+  const common = [emoji, mdxPlugin];
 
   const remarkPlugins = math
     ? [require('remark-math'), require('remark-html-katex') /* avoid warnings */, ...common]

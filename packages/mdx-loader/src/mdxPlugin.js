@@ -26,22 +26,19 @@ function formatSlidesTimeline(fragmentSteps, fragmentId) {
 
 function mdxPlugin() {
   return (tree) => {
-    const s2 = [];
+    const parsedSlides = [];
     const langs = new Set();
-
     const slides = parseSlidesByDivider(tree);
 
     for (const slide of slides) {
-      for (const node of slide) {
-        const { ast, props, background, fragmentSteps } = walk(node);
+      const { ast, props, background, fragmentSteps } = walk(slide, langs);
 
-        s2.push({
-          slide: node,
-          props,
-          background,
-          fragmentSteps,
-        });
-      }
+      parsedSlides.push({
+        slide,
+        props,
+        background,
+        fragmentSteps,
+      });
     }
 
     const res = {
@@ -51,7 +48,7 @@ function mdxPlugin() {
       fragmentSteps: [],
     };
 
-    s2.forEach(({ slide, props, background, fragmentSteps }) => {
+    parsedSlides.forEach(({ slide, props, background, fragmentSteps }) => {
       const hash = mdxAstToMdxHast()({
         type: 'root',
         children: slide,
