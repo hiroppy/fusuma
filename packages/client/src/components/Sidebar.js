@@ -126,6 +126,7 @@ export const Sidebar = memo(({ isOpen, onStateChange, onClose }) => {
                   <Link
                     cursor="pointer"
                     onClick={() => dispatch(updateCurrentIndex(content.index - 1))}
+                    key={content.index}
                   >
                     - {content.title}
                   </Link>

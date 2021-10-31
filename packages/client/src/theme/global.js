@@ -1,4 +1,7 @@
 import { extendTheme } from '@chakra-ui/react';
+import * as configs from '../configs/chakra';
+
+const colorScheme = process.env.UI.COLOR_SCHEME;
 
 export const theme = extendTheme({
   styles: {
@@ -18,11 +21,8 @@ export const theme = extendTheme({
     },
   },
   components: {
-    Heading: {
-      baseStyle: {
-        // fontSize: 'var(--h1-font-size)',
-      },
-    },
+    Heading: configs.headingConfig,
+    Link: configs.linkConfig,
     // h1: {
     //   fontSize: 'var(--h1-font-size)',
     //   fontWeight: 'var(--h1-font-weight)',

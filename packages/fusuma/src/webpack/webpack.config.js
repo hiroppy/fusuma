@@ -23,13 +23,7 @@ module.exports = (
 ) => {
   const entry = ['regenerator-runtime', join(clientBasePath, '/src/entryPoints/Client.js')];
   const { url, description, thumbnail, siteName, sns, title } = meta;
-  const {
-    targetBlank,
-    ui: { sidebar },
-    code,
-    chart,
-    math,
-  } = slide;
+  const { targetBlank, ui, code, chart, math } = slide;
   const { js: jsPath, css: cssPath, webpack: webpackPath } = fileExtends;
   const { useCache, publicPath } = build;
   const { basePath, remoteOrigin, htmlBody = '', outputDirPath } = internal;
@@ -157,24 +151,21 @@ module.exports = (
     },
     plugins: [
       new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-          JS_PATH: JSON.stringify(join(basePath, jsPath || '')),
-          CSS_PATH: JSON.stringify(join(basePath, cssPath || '')),
-          SLIDE_PATH: JSON.stringify(join(basePath, 'slides')),
-          URL: JSON.stringify(url),
-          HAS_TWITTER: JSON.stringify(sns.includes('twitter')),
-          TITLE: JSON.stringify(title || 'slide'),
-          BASE_PATH: JSON.stringify(basePath),
-          REMOTE_ORIGIN_URL: JSON.stringify(remoteOrigin),
-          TARGET_BLANK: JSON.stringify(targetBlank),
-          SERVER_PORT: JSON.stringify(server.port),
-          SEARCH_KEYWORD: JSON.stringify(server.keyword),
-          CHART: JSON.stringify(chart),
-          UI: {
-            SIDEBAR: JSON.stringify(sidebar),
-          },
-        },
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+        'process.env.JS_PATH': JSON.stringify(join(basePath, jsPath || '')),
+        'process.env.CSS_PATH': JSON.stringify(join(basePath, cssPath || '')),
+        'process.env.SLIDE_PATH': JSON.stringify(join(basePath, 'slides')),
+        'process.env.URL': JSON.stringify(url),
+        'process.env.HAS_TWITTER': JSON.stringify(sns.includes('twitter')),
+        'process.env.TITLE': JSON.stringify(title || 'slide'),
+        'process.env.BASE_PATH': JSON.stringify(basePath),
+        'process.env.REMOTE_ORIGIN_URL': JSON.stringify(remoteOrigin),
+        'process.env.TARGET_BLANK': JSON.stringify(targetBlank),
+        'process.env.SERVER_PORT': JSON.stringify(server.port),
+        'process.env.SEARCH_KEYWORD': JSON.stringify(server.keyword),
+        'process.env.CHART': JSON.stringify(chart),
+        'process.env.UI.SIDEBAR': JSON.stringify(ui.sidebar),
+        'process.env.UI.COLOR_SCHEME': JSON.stringify(ui.colorScheme),
       }),
       new HtmlWebpackPlugin({
         url,

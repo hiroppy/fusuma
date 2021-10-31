@@ -1,5 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React, { FC, useEffect, useRef, useState } from 'react';
+import classnames from 'classnames';
 import { useSlides, updateCurrentIndex } from '../context/slides';
 import { Slide } from './Slide';
 import { useKeyBind } from '../hooks/useKeyBind';
@@ -21,7 +22,7 @@ export const Slides = () => {
         currentIndex={currentIndex}
         onChange={(activeIndex) => dispatch(updateCurrentIndex(activeIndex))}
       >
-        {slides.map(({ slide: S }, i) => (
+        {slides.map(({ slide: Main, fusumaProps }, i) => (
           <Flex
             align="center"
             justify="center"
@@ -30,8 +31,16 @@ export const Slides = () => {
             w="100%"
             pos="absolute"
             key={i}
+            className={classnames(
+              // TODO
+              'slide-box',
+              'slide-background',
+              'slide-internal-box',
+              fusumaProps.classes,
+              fusumaProps.sectionTitle ? 'section-title' : undefined
+            )}
           >
-            <S />
+            <Main />
           </Flex>
         ))}
       </Slide>

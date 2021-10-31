@@ -89,7 +89,7 @@ function mdxPlugin() {
         import * as Icons from 'react-icons/fa';
         import * as Chakra from '@chakra-ui/react';
         import { motion as Motion } from 'framer-motion';
-        ${Array.from(getLangsFile(Array.from(langs)))
+        ${Array.from(getLangsFile(Array.from([] /* TODO: langs*/)))
           .map((lang) => `import '${lang}';`)
           .join('\n')}
 

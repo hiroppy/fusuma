@@ -13,7 +13,7 @@
 .slide-internal-box {
   padding: var(--base-outer-margin);
   justify-content: var(--base-align);
-  max-width: var(--base-max-width);
+  /* max-width: var(--base-max-width); */
   color: var(--color-base);
   text-align: var(--base-align);
 }

@@ -19,10 +19,9 @@ const config = {
     math: false,
     ui: {
       sidebar: true,
-      theme: {
-        defaultBackground: '',
-        defaultTitleTag: 'h2',
-      },
+      colorScheme: 'green',
+      defaultBackground: '',
+      defaultTitleTag: 'h2',
     },
   },
   extends: {
