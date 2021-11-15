@@ -35,7 +35,7 @@
     "@fusuma/generate-meta-webpack-plugin": "^2.8.2",
     "@fusuma/mdx-loader": "^2.8.4",
     "@fusuma/prism-loader": "^2.8.4",
-    "@soda/friendly-errors-webpack-plugin": "^1.8.0",
+    "@soda/friendly-errors-webpack-plugin": "^1.8.1",
     "babel-loader": "^8.2.3",
     "chalk": "^4.1.2",
     "commander": "^7.2.0",
