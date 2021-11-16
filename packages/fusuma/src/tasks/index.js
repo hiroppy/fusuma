@@ -17,7 +17,7 @@ async function tasks({ type, options }) {
   let config = {};
 
   if (type !== 'init' && !existsSync(inputDirPath)) {
-    error('preparation', '"slides" directory not found');
+    error('preparation', 'input directory "' + inputDirPath + '" could not be found');
     process.exit(1);
   }
 
