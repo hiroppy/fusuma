@@ -12,7 +12,7 @@ const transformMarkdownImageNodeToJSX = require('./transformers/transformMarkdow
 const transformExecJSCodeButtonToJSX = require('./transformers/transformExecJSCodeButtonToJSX');
 const transformAccountToJSX = require('./transformers/transformAccountToJSX');
 const commentParser = require('./commentParser');
-const getLangsFile = require('@fusuma/prism-loader/src/getLangFiles');
+const getLangFiles = require('@fusuma/prism-loader/src/getLangFiles');
 
 function mdxPlugin() {
   return (tree) => {
@@ -279,7 +279,7 @@ function mdxPlugin() {
         import { mdx } from '@mdx-js/react';
         import * as Client from '@fusuma/client';
         import * as Icons from 'react-icons/fa';
-        ${Array.from(getLangsFile(Array.from(langs)))
+        ${Array.from(getLangFiles(Array.from(langs)))
           .map((lang) => `import '${lang}';`)
           .join('\n')}
 
