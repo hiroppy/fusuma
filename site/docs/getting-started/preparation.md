@@ -68,7 +68,7 @@ The slide display order is as follows.
 
 ## package.json
 
-It is good to define in pacakge.json as follows.
+It is good to define in package.json as follows.
 
 ```json
 {
