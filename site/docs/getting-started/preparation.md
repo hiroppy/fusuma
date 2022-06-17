@@ -72,10 +72,12 @@ It is good to define in package.json as follows.
 
 ```json
 {
-  "start": "fusuma start",
-  "start:prod": "fusuma start-prod",
-  "build": "fusuma build",
-  "deploy": "npm run build && fusuma deploy",
-  "pdf": "npm run build && fusuma pdf"
+  "scripts": {
+    "start": "fusuma start",
+    "start:prod": "fusuma start-prod",
+    "build": "fusuma build",
+    "deploy": "npm run build && fusuma deploy",
+    "pdf": "npm run build && fusuma pdf"
+  }
 }
 ```
