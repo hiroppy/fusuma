@@ -186,18 +186,22 @@ function mdxPlugin() {
         }
 
         if (meta) {
-          const lines = n.meta.match(/line="(.+?)"/);
+          const line_number = n.meta.match(/numbering="(\d+)"/);
+          const highlight = n.meta.match(/highlight="(.+?)"/);
 
-          if (lines === null) {
+          if (line_number === null && highlight == null) {
             slide.push(n);
           } else {
-            const line = lines[1];
+            const data_start = line_number?.[1];
+            const data_line = highlight?.[1];
             const hash = mdxAstToMdxHast()(n);
 
             slide.push({
               ...n,
               type: 'jsx',
-              value: toJSX(hash).replace('<pre>', `<pre data-line="${line}">`),
+              value: toJSX(hash).replace('<pre>', `<pre ${data_start ? `className="line-numbers" data-start="${data_start}"` : ''}
+                                                        ${data_line ? `data-line="${data_line}"` : ''}
+                                                        ${data_line && data_start ? `data-line-offset="${data_start}"` : ''}>`),
             });
           }
           return;
