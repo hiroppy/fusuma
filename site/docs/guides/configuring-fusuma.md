@@ -66,10 +66,28 @@ code:
     - javascript
   plugins: # the default is []
     - line-numbers
+    - line-highlight
   theme: default # the default is default
 ```
 
-See these options for more details. [babel-plugin-prismjs#configuring-the-plugin](https://github.com/mAAdhaTTah/babel-plugin-prismjs#configuring-the-plugin), [Prism.js Playground](https://prismjs.com/test.html#language=markup)
+List of plugin names can be found on [Prism Github page](https://github.com/PrismJS/prism/tree/master/plugins).
+
+Numbering or higlighting one or more lines can be done by using `numbering` and `highlight` meta tags, respectively:
+
+````
+```c++ numbering="2000" highlight="2010-2012,2014"
+
+/* Starts the line numbering from 2000 and highlights lines indicated above */
+/* Either tag is optional */
+
+#include <iostream>
+
+int main() {
+  std::cout << "Hello, World!\n";
+  return 0;
+}
+```
+````
 
 ## extends
 
