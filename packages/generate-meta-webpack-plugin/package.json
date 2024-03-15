@@ -12,6 +12,6 @@
   "author": "hiroppy <git@hiroppy.me> (https://hiroppy.me/)",
   "license": "MIT",
   "dependencies": {
-    "schema-utils": "^3.0.0"
+    "schema-utils": "^3.3.0"
   }
 }
