@@ -23,15 +23,15 @@
     "@fusuma/prism-loader": "^2.8.4",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "escape-goat": "^3.0.0",
+    "escape-goat": "^4.0.0",
     "loader-utils": "^2.0.2",
     "qrcode-generator": "^1.4.4",
-    "remark-emoji": "^2.2.0",
+    "remark-emoji": "^5.0.1",
     "remark-frontmatter": "^2.0.0",
     "remark-html-katex": "^3.0.0",
     "remark-math": "^3.0.1",
     "strip-comments": "^2.0.1",
     "toml": "^3.0.0",
-    "unist-util-visit": "^2.0.3"
+    "unist-util-visit": "^5.0.0"
   }
 }
